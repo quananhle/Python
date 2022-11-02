@@ -55,5 +55,46 @@ class Solution(object):
             return [0,0]
         # Time complexity: O(N^2), nested loop
         # Space complexity: O(1), constant memory space
- ```       
-        
+ ```
+ 
+ ### Two Pass Hash Table
+
+```{Python}
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        hash_table = dict()
+        for i in range(len(nums)):
+            hash_table[nums[i]] = i
+        for i in range(len(nums)):
+            res = target - nums[i]
+            if res in hash_table and hash_table[res] != i:
+                return [i, hash_table[res]]
+        # Time complexity: O(N), travel through the length of input
+        # Space complexity: O(N), size of hash table depends on the size of input
+```  
+ 
+ ### One Pass Hash Table
+
+```{Python}
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        hash_table = dict()
+        for i in range(len(nums)):
+            hash_table[nums[i]] = i
+        for i in range(len(nums)):
+            res = target - nums[i]
+            if res in hash_table and hash_table[res] != i:
+                return [i, hash_table[res]]
+        # Time complexity: O(N), travel through the length of input
+        # Space complexity: O(N), size of hash table depends on the size of input
+``` 
