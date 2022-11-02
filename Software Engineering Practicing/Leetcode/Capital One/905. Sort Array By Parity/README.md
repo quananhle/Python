@@ -25,3 +25,32 @@ __Constraints:__
 0 <= nums[i] <= 5000
 ```
 
+### In-Place Sorting
+
+```{Python}
+class Solution(object):
+    def sortArrayByParity(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        i, j = 0, len(nums)-1
+        while i < j:
+            # n % 2 == 0 => even
+            # n % 2 == 1 => odd
+            """
+            if nums[i] % 2 == 0 and nums[j] % 2 == 1 => pass. Move i and j
+            if nums[i] % 2 == 1 and nums[j] % 2 == 0 => swap A[i] and A[j]. Move i and j
+            if nums[i] % 2 == 0 and nums[j] % 2 == 0 => move i
+            if nums[i] % 2 == 1 and nums[j] % 2 == 1 => move j
+            """
+            if nums[i] % 2 > nums[j] % 2:
+                nums[i], nums[j] = nums[j], nums[i]
+            if nums[i] % 2 == 0:
+                i += 1
+            if nums[j] % 2 == 1:
+                j -= 1
+        return nums
+        # Time complexity: O(N), pass through list once
+        # Space complexity: O(1), fixed memory space
+ ```
