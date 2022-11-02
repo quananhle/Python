@@ -74,3 +74,26 @@ class Solution(object):
         # Time complexity: O(NlogN), sort the array
         # Space complexity: O(1), constant memory space not depends on the size of input list
 ```
+
+```{Python}
+class Solution(object):
+    def twoSumLessThanK(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        nums.sort()
+        answer = -1
+        left, right = 0, len(nums) -1
+        while left < right:
+            max_sum = nums[left] + nums[right]
+            if (max_sum < k):
+                answer = max(answer, max_sum)
+                left += 1
+            else:
+                right -= 1
+        return answer
+        # Time complexity: O(NlogN), sort the array
+        # Space complexity: O(1), constant memory space not depends on the size of input list        
+```
