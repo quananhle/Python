@@ -54,3 +54,19 @@ class Solution(object):
         # Time complexity: O(N), pass through list once
         # Space complexity: O(1), fixed memory space
  ```
+ 
+ ### Two Pass
+ 
+ ```{Python}
+class Solution(object):
+    def sortArrayByParity(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        # even = [n for n in nums if n % 2 == 0]
+        # odd  = [m for m in nums if m % 2 != 0]
+        return [n for n in nums if n % 2 == 0] + [m for m in nums if m % 2 != 0]
+        # Time complexity: O(N) + O(N) = O(2N) = O(N), pass through the list twice
+        # Space complexity: O(M) + O(K) = O(N), memory space needed is the size of nums
+```
