@@ -90,11 +90,11 @@ class Solution(object):
         """
         hash_table = dict()
         for i in range(len(nums)):
-            hash_table[nums[i]] = i
-        for i in range(len(nums)):
             res = target - nums[i]
             if res in hash_table and hash_table[res] != i:
                 return [i, hash_table[res]]
+            else:
+                hash_table[nums[i]] = i
         # Time complexity: O(N), travel through the length of input
         # Space complexity: O(N), size of hash table depends on the size of input
 ``` 
