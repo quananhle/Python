@@ -28,3 +28,21 @@ class Solution(object):
         # Time complexity: O(N^2), nested loop
         # Space complexity: O(1)
 ```
+```{Python}
+class Solution(object):
+    def twoSumLessThanK(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        answer = -1
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                max_sum = nums[i] + nums[j]
+                if max_sum < k:
+                    answer = max(answer, max_sum)
+        return answer
+        # Time complexity: O(N^2), nested loop
+        # Space complexity: O(1)
+```
