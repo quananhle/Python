@@ -37,7 +37,7 @@ __Constraints:__
 Only one valid answer exists.
 ```
 
-### Nested Loop
+### Brute Force
 
 ```{Python}
 class Solution(object):
@@ -51,11 +51,9 @@ class Solution(object):
             for j in range(i+1, len(nums)):
                 if target - nums[i] == nums[j]:
                     return [i,j]
-                j += 1
-            i += 1
         else:
             return [0,0]
         # Time complexity: O(N^2), nested loop
-        # Space complexity: O(1), fixed memory space
+        # Space complexity: O(1), constant memory space
  ```       
         
