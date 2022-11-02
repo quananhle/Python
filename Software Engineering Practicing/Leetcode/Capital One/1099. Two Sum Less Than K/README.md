@@ -72,7 +72,7 @@ class Solution(object):
         else:
             return answer
         # Time complexity: O(NlogN), sort the array
-        # Space complexity: O(1), constant memory space not depends on the size of input list
+        # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
 ```
 
 ```{Python}
@@ -95,5 +95,5 @@ class Solution(object):
                 right -= 1
         return answer
         # Time complexity: O(NlogN), sort the array
-        # Space complexity: O(1), constant memory space not depends on the size of input list        
+        # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
 ```
