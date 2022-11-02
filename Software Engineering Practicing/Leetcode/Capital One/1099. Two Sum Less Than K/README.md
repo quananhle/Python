@@ -46,3 +46,31 @@ class Solution(object):
         # Time complexity: O(N^2), nested loop
         # Space complexity: O(1)
 ```
+
+### Two Pass
+
+```{Python}
+class Solution(object):
+    def twoSumLessThanK(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        nums.sort()
+        max_sum = answer = -1
+        left, right = 0, len(nums)-1
+        while left < right:
+            if k - nums[left] <= nums[right]:
+                right -= 1
+            else:
+                if max_sum < nums[left] + nums[right]:
+                    max_sum = nums[left] + nums[right]
+                left += 1
+        if max_sum != answer:
+            return max_sum
+        else:
+            return answer
+        # Time complexity: O(NlogN), sort the array
+        # Space complexity: O(1), constant memory space not depends on the size of input list
+```
