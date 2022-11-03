@@ -34,6 +34,10 @@ n == nums.length
 All the numbers of nums are unique.
 ```
 
+```
+Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
+```
+
 ### Sorted List
 ```{Python}
 class Solution(object):
@@ -103,10 +107,6 @@ class Solution(object):
                 return i
         # Time complexity: 0(N), go through the list
         # Space complexity: 0(N), input contains all distinc element so hash_table size = input size
-```
-
-```
-Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
 ```
 
 ### Sum Difference
