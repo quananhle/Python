@@ -72,7 +72,7 @@ class Solution(object):
             if nums[i] != i:
                 return i
         # Time complexity: 0(NlogN), sorting the list. Best case O(N) if input list is already sorted.
-        # Space complexity: O(N), size of sorted list depends on size of input                
+        # Space complexity: O(1) or 0(N), size of sorted list depends on size of input              
 ```
 
 ### Hash Table
