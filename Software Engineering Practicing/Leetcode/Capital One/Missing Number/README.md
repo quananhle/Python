@@ -111,3 +111,21 @@ class Solution(object):
         # Space complexity: O(N), size of sorted list depends on size of input                
 ```
 
+```
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        hash_table = dict()
+        n = len(nums)
+        for i in range(n):
+            if nums[i] not in hash_table:
+                hash_table[nums[i]] = i
+        for i in range(n+1):
+            if i not in hash_table:
+                return i
+        # Time complexity: 0(N), sorting the list. Best case O(N) if input list is already sorted.
+        # Space complexity: 0(N), input contains all distinc element so hash_table size = input size
+```
