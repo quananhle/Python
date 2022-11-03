@@ -68,7 +68,7 @@ class Solution(object):
         if nums[n-1] != n:
             return n
         # If missing number in between
-        for i in range(len(nums)):
+        for i in range(1, len(nums)):
             if nums[i] != i:
                 return i
         # Time complexity: 0(NlogN), sorting the list. Best case O(N) if input list is already sorted.
