@@ -60,6 +60,43 @@ class Solution(object):
          0   ith (n-1)th
         """
         # Edge cases:
+        # List index out of range, [0], n=1 -> 1, [1], n=1 -> 0
+        # If 0 not at the first index
+        if nums[0] != 0:
+            return 0
+        # If n not at the last index
+        if nums[n-1] != n:
+            return n
+        # If missing number in between
+        for i in range(len(nums)):
+            if nums[i] != i:
+                return i
+        # Time complexity: 0(NlogN), sorting the list. Best case O(N) if input list is already sorted.
+        # Space complexity: O(N), size of sorted list depends on size of input                
+```
+
+### Hash Table
+```{Python}
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        """
+        3 possible cases:
+        - Missing 0
+        - Missing n
+        - Missing the number in range (0,n)
+        """        
+        nums.sort()
+        n = len(nums)
+        """
+        [0 , ... , n]
+         |    |    |
+         0   ith (n-1)th
+        """
+        # Edge cases:
         # If 0 not at the first index
         if nums[0] != 0:
             return 0
