@@ -31,3 +31,43 @@ __Constraints:__
 s consists of English letters, digits, and dashes '-'.
 1 <= k <= 104
 ```
+
+```{Python}
+class Solution(object):
+    def licenseKeyFormatting(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
+        """
+        "5F3Z-2e-9-w"
+        3
+        "2-5g-3-J"
+        1
+        "2-5g-3-J"
+        2
+        "2-5g-3-J"
+        3
+        "2-5g-3-J"
+        4
+        "2-5g-3-J"
+        5
+        "2-5g-3-J"
+        6        
+        """
+        answer = []
+        step = k
+        for i in range(len(s)-1, -1, -1):
+            if s[i] != '-':
+                answer.append(s[i].upper())
+                step -= 1
+                if step == 0:
+                    answer.append('-')
+                    step = k
+        if len(answer) > 0 and answer[-1] == '-':
+            answer = answer[:-1]
+        answer = answer[::-1]
+        answer = "".join(answer)
+        return answer
+```        
