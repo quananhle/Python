@@ -32,6 +32,10 @@ s consists of English letters, digits, and dashes '-'.
 1 <= k <= 104
 ```
 
+### Right to Left Traversal
+
+![image](https://leetcode.com/problems/license-key-formatting/Figures/482/approach1.png)
+
 ```{Python}
 class Solution(object):
     def licenseKeyFormatting(self, s, k):
