@@ -74,4 +74,6 @@ class Solution(object):
         answer = answer[::-1]
         answer = "".join(answer)
         return answer
+        # Time complexity: O(N), travel through the input array
+        # Space complexity: O(1), ouput size is the same as or smaller than input size        
 ```        
