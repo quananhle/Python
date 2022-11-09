@@ -39,39 +39,38 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # Dynamic Programming
         """
-        # Brute force/Two pointers
+        min_price = sys.maxint
+        max_profit = 0
+        for i in range(len(prices)):
+            current_price = prices[i]
+            if min_price > current_price:
+                min_price = current_price
+            elif max_profit < current_price - min_price:
+                max_profit = current_price - min_price
+        return max_profit
+        """
+        # Brute Force
+        """
         max_profit = 0
         for i in range(len(prices)-1):
             for j in range(i+1, len(prices)):
                 if max_profit < prices[j] - prices[i]:
                     max_profit = prices[j] - prices[i]
         return max_profit
-        # Time complexity: O(N^2)
-        # Space complexity: O(1)
         """
-        # One pass
-        min_price = sys.maxint
+        # Two Pointers
+        """
         max_profit = 0
-        for i in range(len(prices)):
-            if prices[i] < min_price:
-                min_price = prices[i]
-            elif max_profit < prices[i] - min_price:
-                max_profit = prices[i] - min_price
-        return max_profit
-        # Time complexity: O(N)
-        # Space complexity: O(1)
-        
-        # Two pointer
         buy = 0
         sell = 1
-        max_profit = 0
         while sell < len(prices):
-            profit = prices[sell] - prices[buy]
             if prices[buy] < prices[sell]:
-                max_profit = max(max_profit, profit)
+                max_profit = max(max_profit, prices[sell] - prices[buy])
             else:
                 buy = sell
             sell += 1
         return max_profit
+        """
 ```
