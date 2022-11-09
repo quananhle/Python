@@ -53,6 +53,8 @@ Figure 4. Highlighting the remaining numbers as primes.
 
 We can start with the smallest prime number, 2, and mark all of its multiples up to "n" as non-primes. Then we repeat the same process for the next available number in the array that is not marked as composite and so on.
 
+---
+
 ```{Python}
 class Solution(object):
     def countPrimes(self, n):
