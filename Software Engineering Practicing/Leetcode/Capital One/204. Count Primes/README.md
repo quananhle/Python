@@ -91,10 +91,18 @@ class Solution(object):
         while i*i < n:
             # if prime number found:
             if primers[i]:
+                """ 
                 # travel at every i pace
                 for j in range(i*i, n, i):
                     # change the flag to non-prime number
                     primers[j] = False
+                """
+                # Set all multiples of i to False because they are not prime.
+                primers[i * i : n : i] = [False] * len(primers[i * i : n : i])
             i += 1
+        # primers = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
+        # return [primers[2*2:21:2],primers[3*3:21:3],primers[4*4:21:4]]
         return sum(primers)
+        # Time complexity: O(sqrt(N)), travel through the outer loop at i^2 speed
+        # Space complexity: O(N), space required for the list to track primes and their multiples
 ```
