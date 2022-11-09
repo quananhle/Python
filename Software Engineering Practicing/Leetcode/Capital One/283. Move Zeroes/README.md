@@ -39,5 +39,7 @@ class Solution(object):
             if nums[fast] != 0:
                 nums[fast], nums[slow] = nums[slow], nums[fast]
                 slow += 1
+        # Time complexity: O(n), travel through the input array
+        # Space complexity: O(1), mofications made in-place, no space needed
 ```
  
