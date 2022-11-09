@@ -26,6 +26,7 @@ Output: [0]
 -231 <= nums[i] <= 231 - 1
 ```
 
+### Two Pointers
 ```{Python}
 class Solution(object):
     def moveZeroes(self, nums):
@@ -42,4 +43,6 @@ class Solution(object):
         # Time complexity: O(n), travel through the input array
         # Space complexity: O(1), mofications made in-place, no space needed
 ```
+
+### Snowball
  
