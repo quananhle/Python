@@ -30,3 +30,48 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 1 <= prices.length <= 105
 0 <= prices[i] <= 104
 ```
+
+
+```{Python}
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        """
+        # Brute force/Two pointers
+        max_profit = 0
+        for i in range(len(prices)-1):
+            for j in range(i+1, len(prices)):
+                if max_profit < prices[j] - prices[i]:
+                    max_profit = prices[j] - prices[i]
+        return max_profit
+        # Time complexity: O(N^2)
+        # Space complexity: O(1)
+        """
+        # One pass
+        min_price = sys.maxint
+        max_profit = 0
+        for i in range(len(prices)):
+            if prices[i] < min_price:
+                min_price = prices[i]
+            elif max_profit < prices[i] - min_price:
+                max_profit = prices[i] - min_price
+        return max_profit
+        # Time complexity: O(N)
+        # Space complexity: O(1)
+        
+        # Two pointer
+        buy = 0
+        sell = 1
+        max_profit = 0
+        while sell < len(prices):
+            profit = prices[sell] - prices[buy]
+            if prices[buy] < prices[sell]:
+                max_profit = max(max_profit, profit)
+            else:
+                buy = sell
+            sell += 1
+        return max_profit
+```
