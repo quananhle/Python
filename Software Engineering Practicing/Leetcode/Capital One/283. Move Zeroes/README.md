@@ -45,4 +45,25 @@ class Solution(object):
 ```
 
 ### Snowball
- 
+```{Python}
+class Solution(object):
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
+        """
+        # Snowball
+        snowball_size = 0
+        for i in range(len(nums)):
+            # if 0 is found
+            if nums[i] == 0:
+                # increase the size of the snowball
+                snowball_size += 1
+            # else if snowball size is bigger than 0
+            elif snowball_size > 0:
+                # swap the snowball with non-zero elements
+                nums[i], nums[i-snowball_size] = nums[i-snowball_size], nums[i]
+            # Note that snowball needs to increase the size first, then swap with non-zero elements after that
+            # Time complexity: O(N), travel through the input array 
+            # Space complexity: O(1), no extra space needed, modifications made in-place only
+```
