@@ -45,8 +45,8 @@ class Solution(object):
                 s = s.replace(2*ch, '')
             if curr == len(s):
                 return s
-        # Time complexity: O(26 * M), nested loop for every N-2, loop through 26 possible combinations in ascii
-        # Space complexity: O(1), no extra space required
+        # Time complexity: O(26 * M * N), nested loop for every N-2, loop through 26 possible combinations in ascii, and run replace() which has O(N) runtime in average
+        # Space complexity: O(N), replace() creates a copy of the string
         """
         """
         duplicates = {2*ch for ch in string.ascii_lowercase}
@@ -56,6 +56,8 @@ class Solution(object):
             for ch in duplicates:
                 s = s.replace(ch, '')
         return s
+        # Time complexity: O(26 * M * N), nested loop for every N-2, loop through 26 possible combinations in ascii, and run replace() which has O(N) runtime in average
+        # Space complexity: O(N), replace() creates a copy of the string      
         """
         # Stack
         """
