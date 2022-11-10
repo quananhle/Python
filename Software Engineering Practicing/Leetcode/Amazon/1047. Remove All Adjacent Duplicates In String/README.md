@@ -48,6 +48,15 @@ class Solution(object):
         # Time complexity: O(26 * M), nested loop for every N-2, loop through 26 possible combinations in ascii
         # Space complexity: O(1), no extra space required
         """
+        """
+        duplicates = {2*ch for ch in string.ascii_lowercase}
+        curr_length = -1
+        while curr_length != len(s):
+            curr_length = len(s)
+            for ch in duplicates:
+                s = s.replace(ch, '')
+        return s
+        """
         # Stack
         """
         stack = []
