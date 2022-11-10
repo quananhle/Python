@@ -39,3 +39,30 @@ n == nums.length
 2 <= n <= 1000
 1 <= nums[i] <= 109
 ```
+
+---
+```{python}
+class Solution(object):
+    def maximumDifference(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # Dynamic Programming
+        """
+        min_number = sys.maxint
+        max_difference = -1
+        for i in range(len(nums)):
+            if nums[i] <= min_number:
+                min_number = nums[i]
+            elif max_difference < nums[i] - min_number:
+                max_difference = nums[i] - min_number
+        return max_difference
+        """
+        min_number = nums[0]
+        max_difference = -1
+        for i in range(1, len(nums)):
+            min_number = min(nums[i], min_number)
+            max_difference = max(nums[i] - min_number, max_difference)
+        return max_difference if max_difference != 0 else -1
+```
