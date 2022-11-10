@@ -29,3 +29,35 @@ Output: "ay"
 1 <= s.length <= 105
 s consists of lowercase English letters.
 ```
+
+```{Python}
+class Solution(object):
+    def removeDuplicates(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        # Replace
+        """
+        while True:
+            curr = len(s)
+            for ch in string.ascii_lowercase:
+                s = s.replace(2*ch, '')
+            if curr == len(s):
+                return s
+        # Time complexity: O(26 * M), nested loop for every N-2, loop through 26 possible combinations in ascii
+        # Space complexity: O(1), no extra space required
+        """
+        # Stack
+        """
+        stack = []
+        for i in range(len(s)):
+            if stack and stack[-1] == s[i]:
+                stack.pop()
+            else:
+                stack.append(s[i])
+        return ''.join(stack)
+        # Time complexity: O(N), loop through the input list
+        # Space complexity: O(N - D), where D is the total length of all duplicates      
+        """
+```
