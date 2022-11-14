@@ -38,3 +38,49 @@ There is at least one word in s.
 ```
 
 __Follow-up:__ If the string data type is mutable in your language, can you solve it in-place with O(1) extra space?
+
+```{Python}
+class Solution(object):
+    def trimSpace(self, s):
+        stack = list()
+        for i in range(len(s)):
+            stack.append(s[i])
+        # remove leading space
+        while stack[0] == ' ':
+            stack = stack[1:]
+        # remove trailing space
+        while stack[-1] == ' ':
+            stack = stack[:-1]
+        output = list()
+        # remove excessive spaces
+        for i in range(len(stack)):
+            if stack[i] != ' ':
+                output.append(stack[i])
+            elif output[-1] != ' ':
+                output.append(stack[i])
+        return output
+    
+    def reverse(self, s):
+        return s[::-1]
+    
+    def reverse_each_word(self, l):
+        slow = fast = 0
+        while fast < len(l):
+            if l[fast] == ' ':
+                l[slow:fast] = l[slow:fast][::-1]
+                slow = fast + 1
+            fast += 1
+            if fast == len(l):
+                l[slow::] = l[slow::][::-1]          
+        return l
+
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        output = self.trimSpace(s)
+        output = self.reverse(output)
+        output = self.reverse_each_word(output)
+        return "".join(output)
+```
