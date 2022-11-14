@@ -39,6 +39,8 @@ There is at least one word in s.
 
 __Follow-up:__ If the string data type is mutable in your language, can you solve it in-place with O(1) extra space?
 
+![image](https://leetcode.com/problems/reverse-words-in-a-string/Figures/151/reverse_whole2.png)
+
 ```{Python}
 class Solution(object):
     def trimSpace(self, s):
