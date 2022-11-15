@@ -38,6 +38,8 @@ s contains English letters (upper-case and lower-case), digits, and spaces ' '.
 There is at least one word in s.
 ```
 
+![image](https://leetcode.com/problems/reverse-words-in-a-string/Figures/151/reverse_whole2.png)
+
 ```{Python}
 class Solution(object):
     def trim_space(self, s):
