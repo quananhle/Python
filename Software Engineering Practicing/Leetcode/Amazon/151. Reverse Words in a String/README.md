@@ -40,6 +40,10 @@ There is at least one word in s.
 
 ![image](https://leetcode.com/problems/reverse-words-in-a-string/Figures/151/reverse_whole2.png)
 
+The implementation of this approach will be different for ```Java/Python``` (= ```immutable strings```) and ```C++``` (= ```mutable strings```).
+
+In the case of ```immutable``` strings one has first to convert string into ```mutable``` data structure, and hence it makes sense to trim all spaces during that conversion.
+
 ```{Python}
 class Solution(object):
     def trim_space(self, s):
@@ -95,3 +99,7 @@ class Solution(object):
         """
         return "".join(self.reverse_each_word(self.reverse_list(self.trim_space(s))))
 ```
+
+In the case of ```mutable strings```, there is no need to allocate an additional data structure, one could make all job done in-place. In such a case it makes sense to reverse words and trim spaces at the same time.
+
+![image](https://leetcode.com/problems/reverse-words-in-a-string/Figures/151/mutable2.png)
