@@ -27,6 +27,15 @@ __Constraints:__
 
 ### Brute Force
 
+#### Algorithm
+
+1. For each index ```i``` in ```nums```:
+
+    - For each index ```j > i``` in ```nums```:
+        - If ```nums[i] + nums[j]``` is less than ```k```:
+            - Track maximum ```nums[i] + nums[j]``` in the result answer.
+2. Return the result ```answer```.
+
 ```{Python}
 class Solution(object):
     def twoSumLessThanK(self, nums, k):
