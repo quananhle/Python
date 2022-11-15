@@ -2,7 +2,7 @@
 
 #### Difficulty: Medium
 
-Given an ```m x n``` matrix mat where every row is sorted in strictly __increasing__ order, return the __smallest common element__ in all rows.
+Given an ```m x n``` matrix ```mat``` where every row is sorted in strictly __increasing__ order, return the __smallest common element__ in all rows.
 
 If there is no common element, return ```-1```.
 
