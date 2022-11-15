@@ -26,3 +26,33 @@ n == mat[i].length
 1 <= mat[i][j] <= 104
 mat[i] is sorted in strictly increasing order.
 ```
+
+```{Python}
+from collections import Counter
+class Solution(object):
+    def smallestCommonElement(self, mat):
+        """
+        :type mat: List[List[int]]
+        :rtype: int
+        """
+        # Counter
+        ## stricly increasing = sorted and unique elements
+        #### Time complexity: O(N^2), nested loops to create a list
+        #### Space complexity: O(N), space needed to create a list of elements in mat
+        """
+        mat_list = list()
+        for i in range(len(mat)):
+            for j in range(len(mat[i])):
+                mat_list.append(mat[i][j])
+        hash_set = dict()
+        for n in mat_list:
+            if n not in hash_set:
+                hash_set[n] = 1
+            else:
+                hash_set[n] += 1
+        for key, val in hash_set.items():
+            if val == len(mat):
+                return key
+        return -1
+        """
+```
