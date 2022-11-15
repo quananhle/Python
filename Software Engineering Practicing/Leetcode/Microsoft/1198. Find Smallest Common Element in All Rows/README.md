@@ -37,7 +37,7 @@ class Solution(object):
         """
         # Counter
         ## stricly increasing = sorted and unique elements
-        #### Time complexity: O(N^2), nested loops to create a list
+        #### Time complexity: O(NM), nested loops through rows and columns of mat to create a list
         #### Space complexity: O(N), space needed to create a list of elements in mat
         """
         mat_list = list()
