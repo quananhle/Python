@@ -78,3 +78,36 @@ The total area considering the overlap between the two rectangles:
 6. Calculate the total area as - ```area1 + area2 - overlap```
 
 7. Return the total area.
+
+```{Python}
+class Solution(object):
+    def computeArea(self, ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
+        """
+        :type ax1: int
+        :type ay1: int
+        :type ax2: int
+        :type ay2: int
+        :type bx1: int
+        :type by1: int
+        :type bx2: int
+        :type by2: int
+        :rtype: int
+        """
+        # Area of the first rectangles  = distance(ax1,ax2) * distance(ay1,ay2)
+        area1 = (ax2-ax1) * (ay2-ay1)
+        # Area of the second rectangles = distance(bx1,bx2) * distance(by1,by2)
+        area2 = (bx2-bx1) * (by2-by1)
+        # xOverlap = min(ax2,bx2) - max(ax1,bx1)
+        left, right = min(ax2,bx2), max(ax1,bx1)
+        x_overlap = left - right
+        # yOverlap = min(ay2,by2) - max(ay1,by1)
+        top, down = min(ay2,by2), max(ay1,by1)
+        y_overlap = top - down
+        # Check if overlap, covered area = area1 + area2 - overlap. If not overlap, covered area = area1 * area2
+        overlap = 0
+        if x_overlap > 0 and y_overlap > 0:
+            # Overlap area = distance(xOverlap) * distance(yOverlap)
+            overlap = x_overlap * y_overlap
+        # Covered area = area1 + area2 - overlap
+        return area1 + area2 - overlap
+```
