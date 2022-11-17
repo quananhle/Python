@@ -35,8 +35,26 @@ Output: 16
 
 ![image](https://leetcode.com/problems/rectangle-area/Figures/223/overview.png)
 
+To find the overlap, we need to find the width and height of the overlapping area (if there is any). We can get the width by finding the overlap in the horizontal or x direction. height can be calculated by finding the overlap in the y direction.
+
+To find the x overlap, let's think about the projection made by the corners of the rectangles on the x-axis. In other words, draw a line perpendicular to the x-axis from both rectangles' bottom left and top right corners. We mark the points at which these lines meet the x-axis. We can see that these points create two line segments - one formed by (ax1, 0), (ax2, 0)(ax1, 0),(ax2, 0), and the other one formed by (bx1, 0), (bx2, 0)(bx1, 0),(bx2, 0).
+
 ![image](https://leetcode.com/problems/rectangle-area/Figures/223/projection.png)
 
 ![image](https://leetcode.com/problems/rectangle-area/Figures/223/not-overlapping-lines.png)
 
 ![image](https://leetcode.com/problems/rectangle-area/Figures/223/overlapping-lines.png)
+
+From the image above, we can see that if there is an overlap, min(ax2, bx2) - max(ax1, bx1) will be a positive quantity equal to the x overlap of the two rectangles. If the amount is negative or 0, there is no overlap between the two lines (and rectangles).
+
+xOverlap = min(ax2, bx2) - max(ax1, bx1)
+
+In a similar way, we can find the y overlap of the two rectangles.
+
+yOverlap = min(ay2, by2) - max(ay1, by1)
+
+The area of the overlap overlap = xOverlap * yOverlap
+
+The total area considering the overlap between the two rectangles:
+
+area = areaA + areaB - overlap
