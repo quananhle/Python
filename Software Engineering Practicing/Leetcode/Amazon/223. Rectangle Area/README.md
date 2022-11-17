@@ -45,16 +45,16 @@ To find the x overlap, let's think about the projection made by the corners of t
 
 ![image](https://leetcode.com/problems/rectangle-area/Figures/223/overlapping-lines.png)
 
-From the image above, we can see that if there is an overlap, min(ax2, bx2) - max(ax1, bx1) will be a positive quantity equal to the x overlap of the two rectangles. If the amount is negative or 0, there is no overlap between the two lines (and rectangles).
+From the image above, we can see that if there is an overlap, ```min(ax2, bx2) - max(ax1, bx1)``` will be a positive quantity equal to the x overlap of the two rectangles. If the amount is negative or 0, there is no overlap between the two lines (and rectangles).
 
-xOverlap = min(ax2, bx2) - max(ax1, bx1)
+```xOverlap = min(ax2, bx2) - max(ax1, bx1)```
 
 In a similar way, we can find the y overlap of the two rectangles.
 
-yOverlap = min(ay2, by2) - max(ay1, by1)
+```yOverlap = min(ay2, by2) - max(ay1, by1)```
 
-The area of the overlap overlap = xOverlap * yOverlap
+The area of the overlap ```overlap = xOverlap * yOverlap```
 
 The total area considering the overlap between the two rectangles:
 
-area = areaA + areaB - overlap
+```area = areaA + areaB - overlap```
