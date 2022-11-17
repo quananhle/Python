@@ -8,3 +8,4 @@ The first rectangle is defined by its __bottom-left__ corner (```ax1```, ```ay1`
 
 The second rectangle is defined by its __bottom-left__ corner (```bx1```, ```by1```) and its __top-right__ corner (```bx2```, ```by2```).
 
+![image](https://assets.leetcode.com/uploads/2021/05/08/rectangle-plane.png)
