@@ -33,3 +33,4 @@ Output: 16
 
 ---
 
+![image](https://leetcode.com/problems/rectangle-area/Figures/223/overview.png)
