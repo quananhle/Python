@@ -58,3 +58,23 @@ The area of the overlap ```overlap = xOverlap * yOverlap```
 The total area considering the overlap between the two rectangles:
 
 ```area = areaA + areaB - overlap```
+
+#### Algorithm
+
+1. We are given four points - ```{ax1, ay1}, {ax2, ay2} and {bx1, by1}, {bx2, by2}```.
+
+2. Calculate ```area1``` and ```area2``` by multiplying width and height of the respective rectangles.
+
+3. Calculate the x overlap:
+
+```xOverlap = min(ax2, bx2) - max(ax1, bx1)```
+
+4. Calculate the y overlap:
+
+```yOverlap = min(ay2, by2) - max(ay1, by1)```
+
+5. If ```xOverlap``` and ```yOverlap```, both are positive, multiply x and y overlaps to get the area of the overlap. Otherwise, it is 0.
+
+6. Calculate the total area as - ```area1 + area2 - overlap```
+
+7. Return the total area.
