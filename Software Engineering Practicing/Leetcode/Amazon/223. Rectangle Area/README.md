@@ -79,6 +79,8 @@ The total area considering the overlap between the two rectangles:
 
 7. Return the total area.
 
+---
+
 ```{Python}
 class Solution(object):
     def computeArea(self, ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
