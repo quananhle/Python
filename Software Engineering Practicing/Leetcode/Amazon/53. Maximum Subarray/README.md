@@ -74,3 +74,41 @@ class Solution(object):
 ```
 
 __Follow up:__ If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+
+```{Python}
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # Divide and Conquer
+        #### Time complexity: O(NlogN), loop through the length of the num
+        #### Space complexity: O(logN)
+        """
+        def divide_and_conquer(nums, left, right):
+            # Base case
+            # Empty list
+            if left > right:
+                return -sys.maxsize-1
+            mid = (left+right) // 2
+            current_subarray = left_subarray_candidate = right_subarray_candidate = 0
+            # Iterate from mid to start
+            for i in range(mid-1, left-1, -1):
+                current_subarray += nums[i]
+                left_subarray_candidate = max(current_subarray, left_subarray_candidate)
+            # Iterate from mid to end
+            current_subarray = 0
+            for i in range(mid+1, right+1):
+                current_subarray += nums[i]
+                right_subarray_candidate = max(current_subarray, right_subarray_candidate)
+            # Consider the combination of two candidate and the middle element
+            combined_sum = nums[mid] + left_subarray_candidate + right_subarray_candidate
+            # Recursively find the best subarray candidates for both halves
+            left_half_sum = divide_and_conquer(nums, left, mid-1)
+            right_half_sum = divide_and_conquer(nums, mid+1, right)
+            return max(combined_sum, left_half_sum, right_half_sum)
+        return divide_and_conquer(nums, 0, len(nums)-1)
+        """
+            
+```
