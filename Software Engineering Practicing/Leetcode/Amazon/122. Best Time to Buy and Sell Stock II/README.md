@@ -47,3 +47,29 @@ If we analyze the graph, we notice that the points of interest are the consecuti
 Mathematically speaking: Total Profit = ∑((peak)-(valley))
 
 The key point is we need to consider every peak immediately following a valley to maximize the profit. In case we skip one of the peaks (trying to obtain more profit), we will end up losing the profit over one of the transactions leading to an overall lesser profit.
+
+```{Python}
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        # Dynamic Programming
+        # Time complexity: O(N), single pass
+        # Space complexity: O(1), only constant space required, no extra space needed
+        """
+        maximum_profit = 0
+        i = 0
+        buy_price = sell_price = prices[0]
+        while i < len(prices)-1:
+            while (i < len(prices)-1 and prices[i] >= prices[i+1]):
+                i += 1
+            buy_price = prices[i]
+            while (i < len(prices)-1 and prices[i] <= prices[i+1]):
+                i += 1
+            sell_price = prices[i]
+            maximum_profit += sell_price - buy_price
+        return maximum_profit
+        """
+```
