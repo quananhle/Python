@@ -22,3 +22,17 @@ Initially, you are at the entrance cell [1,2].
 It is impossible to reach [2,3] from the entrance.
 Thus, the nearest exit is [0,2], which is 1 step away.
 ```
+
+#### Example 2:
+
+![image](https://assets.leetcode.com/uploads/2021/06/04/nearesr2-grid.jpg)
+
+```
+Input: maze = [["+","+","+"],[".",".","."],["+","+","+"]], entrance = [1,0]
+Output: 2
+Explanation: There is 1 exit in this maze at [1,2].
+[1,0] does not count as an exit since it is the entrance cell.
+Initially, you are at the entrance cell [1,0].
+- You can reach [1,2] by moving 2 steps right.
+Thus, the nearest exit is [1,2], which is 2 steps away.
+```
