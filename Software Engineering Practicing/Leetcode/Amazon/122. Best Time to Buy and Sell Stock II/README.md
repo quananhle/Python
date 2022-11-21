@@ -37,3 +37,7 @@ __Constraints:__
 1 <= prices.length <= 3 * 104
 0 <= prices[i] <= 104
 ```
+
+### Peak Valley
+
+![image](https://leetcode.com/media/original_images/122_maxprofit_1.PNG)
