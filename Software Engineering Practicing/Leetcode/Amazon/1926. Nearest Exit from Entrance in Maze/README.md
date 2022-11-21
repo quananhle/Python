@@ -112,7 +112,6 @@ class Solution(object):
                         visited.add((next_row, next_col))
                         queue.append((next_row, next_col, cell+1))
         return -1
-"""
 ```
 Let m, nm,n be the size of the input matrix maze.
 
