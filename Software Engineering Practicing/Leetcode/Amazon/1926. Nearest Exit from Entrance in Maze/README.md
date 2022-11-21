@@ -36,3 +36,25 @@ Initially, you are at the entrance cell [1,0].
 - You can reach [1,2] by moving 2 steps right.
 Thus, the nearest exit is [1,2], which is 2 steps away.
 ```
+
+#### Example 3:
+
+![image](https://assets.leetcode.com/uploads/2021/06/04/nearest3-grid.jpg)
+
+```
+Input: maze = [[".","+"]], entrance = [0,0]
+Output: -1
+Explanation: There are no exits in this maze.
+```
+
+#### Constraints:
+```
+maze.length == m
+maze[i].length == n
+1 <= m, n <= 100
+maze[i][j] is either '.' or '+'.
+entrance.length == 2
+0 <= entrancerow < m
+0 <= entrancecol < n
+entrance will always be an empty cell.
+```
