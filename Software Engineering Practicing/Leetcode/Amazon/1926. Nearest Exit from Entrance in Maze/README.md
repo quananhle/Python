@@ -58,3 +58,63 @@ entrance.length == 2
 0 <= entrancecol < n
 entrance will always be an empty cell.
 ```
+
+---
+
+### Breadth First Search (BFS)
+
+```{Python}
+"""
+[["+",".","+","+","+","+","+"],["+",".","+",".",".",".","+"],["+",".","+",".","+",".","+"],["+",".",".",".","+",".","+"],["+","+","+","+","+",".","+"]]
+[0,1]
+[["+","+",".","+"],[".",".",".","+"],["+","+","+","."]]
+[1,2]
+[["+","+","+"],[".",".","."],["+","+","+"]]
+[1,0]
+[[".","+"]]
+[0,0]
+"""
+class Solution(object):
+    def nearestExit(self, maze, entrance):
+        """
+        :type maze: List[List[str]]
+        :type entrance: List[int]
+        :rtype: int
+        """
+        # Breadth First Search (BFS)
+        ## For finding the shortest path in a matrix, Breadth First Search (BFS) is a promising method.
+        #### Time complexity:
+        #### Space complexity:
+
+        ROWS, COLS = len(maze), len(maze[0])
+        start_row, start_col = entrance
+        queue = collections.deque([(start_row, start_col, 0)])
+        visited = set([(start_row, start_col)])
+        directions = [(1,0),(-1,0),(0,1),(0,-1)]
+
+        # # Mark the entrance as visited to differentiate from exit
+        # maze[start_row][start_col] = '+'
+
+        while queue:
+            row, col, cell = queue.popleft()
+            # Check if cell visited and currently standing at the border of the maze
+            if cell != 0 and (row + 1 == ROWS or row - 1 == -1 or col + 1 == COLS or col - 1 == -1):
+                return cell
+            # Search for possible step in neighbor cells from the current position
+            for step_row, step_col in directions:
+                next_row, next_col = row + step_row, col + step_col
+                # If there exists an unvisited empty neighbor that is not border nor a wall
+                '''
+                if next_row < ROWS and next_row >= 0 and next_col < COLS \
+                    and next_col >= 0 and maze[next_row][next_col] != '+' \
+                    and (next_row, next_col) not in visited:
+                '''
+                if ROWS > next_row >= 0 <= next_col < COLS \
+                    and maze[next_row][next_col] != '+' and (next_row, next_col) not in visited:
+                        # Mark cell as visited and add to queue
+                        visited.add((next_row, next_col))
+                        queue.append((next_row, next_col, cell+1))
+        return -1
+
+        
+```
