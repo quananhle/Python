@@ -7,3 +7,18 @@ You are given an ```m x n``` matrix ```maze``` __(0-indexed)__ with empty cells 
 In one step, you can move one cell __up__, __down__, __left__, or __right__. You cannot step into a cell with a wall, and you cannot step outside the maze. Your goal is to find the __nearest exit__ from the ```entrance```. An __exit__ is defined as an __empty cell__ that is at the __border__ of the ```maze```. The ```entrance``` __does not count__ as an __exit__.
 
 Return the __number of steps__ in the _shortest path_ from the ```entrance``` to the nearest __exit__, or __-1__ if no such path exists.
+
+#### Example 1:
+
+![image](https://assets.leetcode.com/uploads/2021/06/04/nearest1-grid.jpg)
+
+```
+Input: maze = [["+","+",".","+"],[".",".",".","+"],["+","+","+","."]], entrance = [1,2]
+Output: 1
+Explanation: There are 3 exits in this maze at [1,0], [0,2], and [2,3].
+Initially, you are at the entrance cell [1,2].
+- You can reach [1,0] by moving 2 steps left.
+- You can reach [0,2] by moving 1 step up.
+It is impossible to reach [2,3] from the entrance.
+Thus, the nearest exit is [0,2], which is 1 step away.
+```
