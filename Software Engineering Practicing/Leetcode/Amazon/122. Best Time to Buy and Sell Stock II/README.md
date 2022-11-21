@@ -76,7 +76,7 @@ class Solution(object):
 
 ### Simple One Pass
 
-
+![image](https://leetcode.com/media/original_images/122_maxprofit_2.PNG)
 
 ```{Python}
 class Solution(object):
