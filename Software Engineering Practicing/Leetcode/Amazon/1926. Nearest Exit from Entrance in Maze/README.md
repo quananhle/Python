@@ -83,17 +83,14 @@ class Solution(object):
         """
         # Breadth First Search (BFS)
         ## For finding the shortest path in a matrix, Breadth First Search (BFS) is a promising method.
-        #### Time complexity:
-        #### Space complexity:
+        #### Time complexity: O(m⋅n)
+        #### Space complexity: O(max(m,n))
 
         ROWS, COLS = len(maze), len(maze[0])
         start_row, start_col = entrance
         queue = collections.deque([(start_row, start_col, 0)])
         visited = set([(start_row, start_col)])
         directions = [(1,0),(-1,0),(0,1),(0,-1)]
-
-        # # Mark the entrance as visited to differentiate from exit
-        # maze[start_row][start_col] = '+'
 
         while queue:
             row, col, cell = queue.popleft()
@@ -115,6 +112,19 @@ class Solution(object):
                         visited.add((next_row, next_col))
                         queue.append((next_row, next_col, cell+1))
         return -1
+"""
 
-        
-```
+Let m, nm,n be the size of the input matrix maze.
+
+Time complexity: ```O(M⋅N)```
+
+- For each visited cell, we add it to queue and pop it from queue once, which takes constant time as the operation on queue requires O(1) time.
+- For each cell in queue, we mark it as visited in maze, and check if it has any unvisited neighbors in all four directions. This also takes constant time.
+- In the worst-case scenario, we may have to visit ```O(M⋅N)``` cells before the iteration stops.
+- To sum up, the overall time complexity is ```O(M⋅N)```.
+
+Space complexity: ```O(max(M,N))```
+
+- We use a tuple to keep track of the visited cell, there may be ```O(M)``` visited cells
+- We use a queue to store the cells to be visited. In the worst-case scenario, there may be ```O(M+N)``` cells stored in queue.
+The space complexity is ```O(M+N)+O(max(M,N))```.
