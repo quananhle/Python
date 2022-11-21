@@ -73,3 +73,24 @@ class Solution(object):
         return maximum_profit
         """
 ```
+
+### Simple One Pass
+
+![image](https://leetcode.com/media/original_images/122_maxprofit_2.PNG)
+
+```{Python}
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        # Dynamic Programming
+        # Time complexity: O(N), single pass
+        # Space complexity: O(1), only constant space required, no extra space needed
+        maximum_profit = 0
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i-1]:
+                maximum_profit += prices[i] - prices[i-1]
+        return maximum_profit
+```
