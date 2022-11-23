@@ -122,3 +122,79 @@ class Solution(object):
         
         return check_row() and check_column() and check_box()
 ```
+
+### List
+
+```{Python}
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        # List
+        #### Time complexity: O(1), size of board is constant 9 x 9
+        #### Space complexity: O(1), size of board is constant 9 x 9
+        rows = [[0] * len(board) for _ in range(len(board))]
+        cols = [[0] * len(board[0]) for _ in range(len(board[0]))]
+        boxes = [[0] * 9 for _ in range(9)]
+        for row in range(len(board)):
+            for col in range(len(board[0])):
+                val = board[row][col]
+                if val != ".":
+                    # Check the row
+                    if val in rows[row]:
+                        return False
+                    else:
+                        rows[row].append(val)
+                    # Check the column
+                    if val in cols[col]:
+                        return False
+                    else:
+                        cols[col].append(val)
+                    # Check the boxes
+                    idx = row // 3 * 3 + col // 3
+                    if val in boxes[idx]:
+                        return False
+                    else:
+                        boxes[idx].append(val)
+        return True
+```
+
+### Hash Set
+
+```{Python}
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        # Hash Set
+        #### Time complexity: O(1), size of board is constant 9 x 9
+        #### Space complexity: O(1), size of board is constant 9 x 9
+        rows = [set() for _ in range(len(board))]
+        cols = [set() for _ in range(len(board[0]))]
+        boxes = [set() for _ in range(9)]
+        for row in range(len(board)):
+            for col in range(len(board[0])):
+                val = board[row][col]
+                if val != ".":
+                    # Check the row
+                    if val in rows[row]:
+                        return False
+                    else:
+                        rows[row].add(val)
+                    # Check the column
+                    if val in cols[col]:
+                        return False
+                    else:
+                        cols[col].add(val)
+                    # Check the box
+                    index = row // 3 * 3 + col // 3
+                    if val in boxes[index]:
+                        return False
+                    else:
+                        boxes[index].add(val)
+        return True
+```
