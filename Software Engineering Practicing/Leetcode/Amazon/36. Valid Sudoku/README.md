@@ -173,9 +173,10 @@ class Solution(object):
         # Hash Set
         #### Time complexity: O(1), size of board is constant 9 x 9
         #### Space complexity: O(1), size of board is constant 9 x 9
-        rows = [set() for _ in range(len(board))]
-        cols = [set() for _ in range(len(board[0]))]
-        boxes = [set() for _ in range(9)]
+        rows = defaultdict(set)
+        cols = defaultdict(set)
+        boxes = defaultdict(set)
+
         for row in range(len(board)):
             for col in range(len(board[0])):
                 val = board[row][col]
@@ -196,5 +197,5 @@ class Solution(object):
                         return False
                     else:
                         boxes[index].add(val)
-        return True
+        return True        
 ```
