@@ -6,6 +6,8 @@ Given an ```m x n``` grid of characters ```board``` and a string ```word```, ret
 
 The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
 
+<img width="814" alt="image" src="https://user-images.githubusercontent.com/35042430/203913679-73e0ca58-836b-45a4-9dd1-006d85b07ddf.png">
+
 __Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2020/11/04/word2.jpg)
@@ -30,3 +32,5 @@ __Example 3:__
 Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
 Output: false
 ```
+
+
