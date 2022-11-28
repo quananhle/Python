@@ -81,7 +81,7 @@ Let ```n``` be the size of the input array ```matches```.
 - Time complexity: O(n⋅logn)
 
     - The iteration over ```matches``` takes O(n) time.
-    - We need to store two kinds of players in two lists and sort them. In the worst-case scenario, there may be O(n) players in these arrays, thus it requires O(n⋅logn) time.
+    - We need to store two kinds of players in two lists and sort them. In the worst-case scenario, there may be O(n) players in these lists, thus it requires O(n⋅logn) time.
     - To sum up, the time complexity is O(n⋅logn).
 
 - Space complexity: O(n)
