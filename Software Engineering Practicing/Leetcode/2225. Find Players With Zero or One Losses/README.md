@@ -49,7 +49,7 @@ All matches[i] are unique.
 
 ---
 
-#### Hash Set
+### Hash Set
 
 ```{Python}
 class Solution(object):
@@ -74,7 +74,7 @@ class Solution(object):
         return [sorted(zero_loss),sorted(one_loss)]
 ```
 
-#### Collections Counter
+### Collections Counter
 
 ```{Python}
 class Solution(object):
@@ -120,7 +120,17 @@ class Solution(object):
         """
 ```
 
-#### Counting with List
+### Counting with List
+
+#### Algorithm
+
+1. Use an array ```losses_count``` to store the number of losses for each player. Initially, ```losses_count[i] = -1``` for every index ```i```.
+2. For each match ```[winner, loser]```:
+- If ```losses_count[loser] = -1```, set it to 1, otherwise increment it by 1.
+- If ```losses_count[winner] = -1```, set it to 0.
+3. Iterate over ```losses_count``` and use two arrays to store these 2 kinds of players, for each index ```i```:
+- If ```losses_count[i] = 0```, add this player to the first array.
+- If ```losses_count[i] = 1```, add this player to the second array.
 
 ```{Python}
 class Solution(object):
@@ -129,6 +139,8 @@ class Solution(object):
         :type matches: List[List[int]]
         :rtype: List[List[int]]
         """
+        # Time complexity: O(N + k),
+        # Space complexity: O(k)
         losses_count = [-1] * 100001
         for winner, loser in matches:
             if losses_count[winner] == -1:
@@ -145,3 +157,17 @@ class Solution(object):
                 answer[1].append(i)
         return answer      
 ```
+
+#### Complexity Analysis
+Let ```n``` be the size of the input array matches, and ```k``` be the range of values in winner or loser.
+
+- Time complexity: O(n + k)
+
+    - For each match, we need to update two values in the array ```losses_count``` which takes constant time. Thus the iteration requires O(n) time.
+    - We need to iterate over ```losses_count``` to collect two kinds of players, which takes O(k) time.
+    - Since we iterate over players from low to high, we don't need to sort them anymore.
+    - To sum up, the overall time complexity is O(n + k).
+    
+- Space complexity: O(k)
+
+    - We need to create an array of size O(k) to cover all players. Thus the overall space complexity is O(k).
