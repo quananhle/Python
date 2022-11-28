@@ -46,3 +46,76 @@ matches[i].length == 2
 winneri != loseri
 All matches[i] are unique.
 ```
+
+---
+
+#### Hash Set
+
+```{Python}
+class Solution(object):
+    def findWinners(self, matches):
+        """
+        :type matches: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        winning = {}
+        losing = {}
+        for winner, loser in matches:
+            if winner not in winning:
+                winning[winner] = 1
+            else:
+                winning[winner] += 1
+            if loser not in losing:
+                losing[loser] = 1
+            else:
+                losing[loser] += 1
+        zero_loss = [player for player in winning if player not in losing]
+        one_loss = [player for player in losing if losing[player] == 1]
+        return [sorted(zero_loss),sorted(one_loss)]
+```
+
+#### Collections Counter
+
+```{Python}
+class Solution(object):
+    def findWinners(self, matches):
+        """
+        :type matches: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        players = set(chain(*matches))
+        '''
+        players = set()
+        for winner, loser in matches:
+            player.add(winner)
+            player.add(loser)
+        '''
+        losses = collections.Counter([loser for _, loser in matches])
+        '''
+        losses = []
+        for _, loser in matches:
+            losses.append(loser)
+        counter = dict()
+        for loss in losses:
+            if loss not in counter:
+                counter[loss] = 1
+            else:
+                counter[loss] += 1
+        '''
+        zero = [player for player in players if player not in losses]
+        '''
+        zero = []
+        for player in players:
+            if player not in losses:
+                zero.append(player)
+        '''
+        one =  [player for player in players if losses[player] == 1]
+        '''
+        one = []
+        for player in players:
+            if losses[player] == 1:
+                one.append(player)
+        '''
+        return [sorted(zero), sorted(one)]
+        """
+```
