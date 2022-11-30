@@ -51,7 +51,7 @@ All matches[i] are unique.
 
 ### Hash Set
 
-```{Python}
+```Python
 class Solution(object):
     def findWinners(self, matches):
         """
@@ -90,7 +90,7 @@ Let ```n``` be the size of the input array ```matches```.
 
 ### Collections Counter
 
-```{Python}
+```Python
 class Solution(object):
     def findWinners(self, matches):
         """
@@ -146,7 +146,7 @@ class Solution(object):
 - If ```losses_count[i] = 0```, add this player to the first array.
 - If ```losses_count[i] = 1```, add this player to the second array.
 
-```{Python}
+```Python
 class Solution(object):
     def findWinners(self, matches):
         """
