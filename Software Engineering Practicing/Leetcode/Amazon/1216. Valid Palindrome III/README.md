@@ -43,8 +43,8 @@ class Solution(object):
         :rtype: bool
         """
         # Top-Down Dynamic Programming 
-        #### Time Complexity:
-        #### Space Complexity:
+        #### Time Complexity: O(N^2)
+        #### Space Complexity: O(N^2)
         res = [[None] * len(s) for _ in range(len(s))]
         def dp(s, left, right):
             # Base case, only 1 letter remaining
@@ -97,3 +97,4 @@ class Solution(object):
                                             return 0                                        return 0                                                                                        |
         ''' 
 ```
+![image](https://user-images.githubusercontent.com/35042430/204914985-680e1dcb-7810-4b66-9c76-c8166f79124e.png)
