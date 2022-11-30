@@ -18,3 +18,10 @@ __Example 2:__
 Input: s = "abbababa", k = 1
 Output: true
 ```
+
+__Constraints:__
+```
+1 <= s.length <= 1000
+s consists of only lowercase English letters.
+1 <= k <= s.length
+```
