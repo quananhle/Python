@@ -6,6 +6,8 @@ Given a string ```s``` and an integer ```k```, return ```true``` if ```s``` is a
 
 A string is ```k```-__palindrome__ if it can be transformed into a palindrome by removing at most ```k``` characters from it.
 
+![image](https://user-images.githubusercontent.com/35042430/204914434-98ae50b8-b192-4c7b-927e-34a6701f9397.png)
+
 __Example 1:__
 ```
 Input: s = "abcdeca", k = 2
