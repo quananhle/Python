@@ -34,6 +34,7 @@ __Constraints:__
 -10^6 <= nums[i] <= 10^6
 ```
 
+---
 
 ### One-liner with List Comprehension
 - Time Complexity: O(N)
@@ -46,6 +47,20 @@ class Solution(object):
         :rtype: List[int]
         """
         return [sum(nums[:i]) for i in range(len(nums)+1)][1:]
+```
+### In-Place Modification
+- Time Complexity: O(N)
+- Space Complexity: O(1)
+```Python
+class Solution(object):
+    def runningSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        for i in range(1, len(nums)):
+            nums[i] += nums[i - 1]
+        return nums
 ```
 ### Brute-Force
 - Time Complexity: O(N)
