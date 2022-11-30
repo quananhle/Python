@@ -31,7 +31,7 @@ s consist of printable ASCII characters.
 
 ### Two Pointers
 
-```{Python}
+```Python
 class Solution(object):
     def reverseVowels(self, s):
         """
