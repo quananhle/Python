@@ -56,10 +56,18 @@ class Solution(object):
         return len(set(s)) == len(set(t)) == len(set(zip(s, t)))
 ```
 
+### Character Mapping with Dictionary
+```Python
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
         # Character Mapping with Dictionary
         #### Time Complexity:  O(N), travel through length of s and t
         #### Space Complexity: O(1), the size of ASCII character is fixed with 26 characters
-        """
         s_dict = dict()
         t_dict = dict()
         for i in range(len(s)):
@@ -72,7 +80,7 @@ class Solution(object):
             if s_dict[s[i]] != t[i] or t_dict[t[i]] != s[i]:
                 return False
         return True
-        """  
+```
 
         s_dict = dict()
         t_dict = dict()                    
