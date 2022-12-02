@@ -33,7 +33,7 @@ s and t consist only of lowercase English letters.
 
 ---
 
-### Brute Force
+### Two-Pointers
 
 ```Python
 class Solution(object):
@@ -43,7 +43,7 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        # Brute Force
+        # Two-Pointers
         #### Time Complexity: O(N^2), traverse through length of input t while traversing through input s
         #### Space Complexity: O(1), only pointers are needed, no extra space required
         if len(t) < len(s):
