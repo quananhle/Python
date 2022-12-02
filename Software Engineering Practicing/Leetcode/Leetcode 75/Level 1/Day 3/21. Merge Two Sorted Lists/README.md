@@ -8,6 +8,6 @@ Merge the two lists in a one __sorted__ list. The list should be made by splicin
 
 Return _the head of the merged linked list_.
 
-Example 1:
+__Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg)
