@@ -57,6 +57,7 @@ class Solution(object):
 ```
 
 ### Character Mapping with Dictionary
+
 ```Python
 class Solution(object):
     def isIsomorphic(self, s, t):
@@ -81,7 +82,14 @@ class Solution(object):
                 return False
         return True
 ```
-
+```Python
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
         s_dict = dict()
         t_dict = dict()                    
         for c1, c2 in zip(s, t):
@@ -91,6 +99,8 @@ class Solution(object):
             elif s_dict.get(c1) != c2 or t_dict.get(c2) != c1:
                 return False
         return True
+```
+
 
         # Index Tracking
         #### Time Complexity:  O(N), travel through length of s and t
