@@ -82,6 +82,7 @@ class Solution(object):
                 return False
         return True
 ```
+
 ```Python
 class Solution(object):
     def isIsomorphic(self, s, t):
