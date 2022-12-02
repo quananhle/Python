@@ -21,3 +21,9 @@ __Example 2:__
 Input: list1 = [], list2 = []
 Output: []
 ```
+
+__Example 3:__
+```
+Input: list1 = [], list2 = [0]
+Output: [0]
+```
