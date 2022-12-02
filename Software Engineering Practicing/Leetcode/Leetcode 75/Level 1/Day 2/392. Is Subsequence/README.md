@@ -46,7 +46,6 @@ class Solution(object):
         # Brute Force
         #### Time Complexity: O(N^2), traverse through length of input t while traversing through input s
         #### Space Complexity: O(1), only pointers are needed, no extra space required
-        """
         if len(t) < len(s):
             return False
         else:
@@ -68,4 +67,4 @@ class Solution(object):
                         return True
                     else:
                         return False
-        """
+```
