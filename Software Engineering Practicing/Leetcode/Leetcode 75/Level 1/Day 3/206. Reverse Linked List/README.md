@@ -170,4 +170,34 @@ class Solution(object):
         head.next.next = head
         head.next = None
         return prev
-```        
+```
+```Python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        # Iterative
+        #### Time Complexity: O(N), traverse through the linked list
+        #### Space Complexity: O(1), fixed pointers size
+        if not head or not head.next:
+            return head
+        prev = ListNode(None)
+        is_first_node = True
+        while head:
+            node = ListNode(head.val)
+            if is_first_node:
+                is_first_node = False
+                prev = node
+            else:
+                node.next = prev
+                prev = node
+            head = head.next
+        return prev
+```
