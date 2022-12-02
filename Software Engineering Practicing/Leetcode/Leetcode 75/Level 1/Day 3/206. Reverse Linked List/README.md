@@ -53,7 +53,6 @@ class Solution(object):
         # Iterative
         #### Time Complexity: O(N), traverse through the linked list
         #### Space Complexity: O(1), fixed pointers size
-        """
         '''
         head->[1|O->[2|O->[3|O->[4|O->[5|O->None
         '''
@@ -149,7 +148,6 @@ class Solution(object):
             prev = curr
             curr = tmp_next
         return prev
-        """        
 ```
 
 
