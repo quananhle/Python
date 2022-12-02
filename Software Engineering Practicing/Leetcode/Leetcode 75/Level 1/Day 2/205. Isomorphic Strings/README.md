@@ -124,4 +124,4 @@ class Solution(object):
                 lst.append(str(dictionary[e]))
             return " ".join(lst)
         return helper(s) == helper(t)
-'''
+
