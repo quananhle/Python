@@ -4,6 +4,10 @@
 
 Given the ```head``` of a singly linked list, reverse the list, and _return the reversed list_.
 
+![image](https://user-images.githubusercontent.com/35042430/205354599-f2387f08-b3be-481f-84b3-f2e9ff0b378b.png)
+
+---
+
 __Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg)
@@ -31,3 +35,6 @@ __Constraints:__
 The number of nodes in the list is the range [0, 5000].
 -5000 <= Node.val <= 5000
 ```
+
+---
+
