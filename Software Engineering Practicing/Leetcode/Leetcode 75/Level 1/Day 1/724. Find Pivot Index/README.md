@@ -72,8 +72,17 @@ class Solution(object):
         return -1
 ```
 
-"""
+### Prefix Sum Lists
+
+```Python
+class Solution(object):
+    def pivotIndex(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
         # Prefix Sum Lists
+        #### Time Complexity: O(N)
+        #### Space Complexity: O(N)        
         left_sum, right_sum = list(), list()
         left, right = 0, len(nums)-1
         while left < len(nums):
@@ -90,7 +99,9 @@ class Solution(object):
             if left_sum[i] == right_sum[-i-1]:
                 return i
         else:
-            return -1        
+            return -1  
+```
+      
         """
         # Three Pointers
         left_sum, right_sum = 0, sum(nums)-nums[0]
