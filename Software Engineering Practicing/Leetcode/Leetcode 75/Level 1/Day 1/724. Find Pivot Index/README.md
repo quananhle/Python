@@ -50,57 +50,14 @@ __Constraints:__
 
 ---
 
+### Prefix Sum
+
 ```Python
 class Solution(object):
     def pivotIndex(self, nums):
         """
         :type nums: List[int]
         :rtype: int
-        """
-        '''
-        # Two Pointers
-        left, right = 0, len(nums)-1
-        left_sum, right_sum = nums[left], nums[right]
-        if sum(nums[1:]) == 0:
-            return 0
-        elif sum(nums[:len(nums)-1]) == 0:
-            return len(nums)-1
-        else:
-            while left < right:
-                if left_sum < right_sum:
-                    left += 1
-                    left_sum += nums[left]
-                if left_sum > right_sum:
-                    right -= 1
-                    right_sum += nums[right]
-                if left_sum == right_sum:
-                    if left + 1 == right - 1:
-                        pivot = right - 1
-                        return pivot
-                    else:
-                        # Handle list index out of range if left index or right index reaches the end of list
-                        if left == len(nums)-1 or right == 0:
-                            break
-                        else:
-                            left += 1
-                            right -= 1
-                            left_sum += nums[left]
-                            right_sum += nums[right]
-        return -1
-        '''
-        '''
-        3 | 3  |[1,7,3,6,5,6]
-        2 | -1 |[1,2,3]
-        2 | -1 |[-1,2,1]
-        -1| -1 |[-1,-1,-1,-1,-1,-1,0]
-        -1| -1 |[1,7,3,1,6,3,5,6]
-        4 | 4  |[1,7,3,1,6,1,5,6]
-        0 | 0  |[2,1,-1]
-        2 | 2  |[-1,1,0]
-        -1| -1 |[1,2]
-        -1| 2  |[-1,-1,-1,-1,-1,0]
-        '''
-        """
         # Prefix Sum
         #### Time Complexity: O(N)
         #### Space Complexity: O(1)
@@ -113,8 +70,9 @@ class Solution(object):
             else:
                 left_sum += e
         return -1
-        """
-        """
+```
+
+"""
         # Prefix Sum Lists
         left_sum, right_sum = list(), list()
         left, right = 0, len(nums)-1
@@ -142,4 +100,3 @@ class Solution(object):
             right_sum -= nums[pivot]
             left_sum += nums[pivot-1]
         return pivot if left_sum == right_sum else -1
-```
