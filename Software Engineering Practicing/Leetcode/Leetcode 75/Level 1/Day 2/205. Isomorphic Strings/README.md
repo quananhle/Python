@@ -101,11 +101,19 @@ class Solution(object):
         return True
 ```
 
+### Index Tracking
 
+```Python
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
         # Index Tracking
         #### Time Complexity:  O(N), travel through length of s and t
         #### Space Complexity: O(N), the size of lst can be as big as the size of input
-        """
         def helper(s):
             dictionary = dict()
             lst = list()
@@ -115,8 +123,4 @@ class Solution(object):
                 lst.append(str(dictionary[e]))
             return " ".join(lst)
         return helper(s) == helper(t)
-        """
-'''
-"abcdefghijklmnopqrstuvwxyzva"
-"abcdefghijklmnopqrstuvwxyzck"
 '''
