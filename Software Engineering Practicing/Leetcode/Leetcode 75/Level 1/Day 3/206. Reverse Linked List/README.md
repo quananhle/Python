@@ -38,3 +38,128 @@ The number of nodes in the list is the range [0, 5000].
 
 ---
 
+```Python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        # Iterative
+        #### Time Complexity: O(N), traverse through the linked list
+        #### Space Complexity: O(1), fixed pointers size
+        """
+        '''
+        head->[1|O->[2|O->[3|O->[4|O->[5|O->None
+        '''
+        prev = None
+        curr = head
+        '''
+        None
+         |
+        prev
+        head->[1|O->[2|O->[3|O->[4|O->[5|O->None
+         |
+        curr
+        '''
+        while curr:
+            '''
+            tmp_next
+               |
+            [1|O->[2|O->[3|O->[4|O->[5|O->None
+             |
+            curr
+            tmp_next
+               |                  
+            [1|O->None
+             |
+            curr
+            prev->[1|O->None
+            [2|O->[3|O->[4|O->[5|O->None
+             |
+            curr
+            ========================================
+            tmp_next
+               |
+            [2|O->[3|O->[4|O->[5|O->None
+             |
+            curr
+                  tmp_next
+                     |                  
+            [2|O->[1|O->None
+             |
+            curr
+            prev->[2|O->[1|O->None
+            [3|O->[4|O->[5|O->None
+             |
+            curr
+            ========================================
+            tmp_next
+               |
+            [3|O->[4|O->[5|O->None
+             |
+            curr
+            tmp_next
+               |                 
+            [3|O->[2|O->[1|O->None
+             |
+            curr
+            prev->[3|O->[2|O->[1|O->None
+            [4|O->[5|O->None
+             |
+            curr
+            ========================================
+            tmp_next
+               |
+            [4|O->[5|O->None
+             |
+            curr
+            tmp_next
+               |                 
+            [4|O->[3|O->[2|O->[1|O->None
+             |
+            curr
+            prev->[4|O->[3|O->[2|O->[1|O->None
+            [5|O->None
+             |
+            curr
+            ========================================
+            tmp_next
+               |
+            [5|O->None
+             |
+            curr
+            tmp_next
+               |                 
+            [5|O->[4|O->[3|O->[2|O->[1|O->None
+             |
+            curr
+            prev->[5|O->[4|O->[3|O->[2|O->[1|O->None
+            None
+             |
+            curr            
+            '''
+            tmp_next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = tmp_next
+        return prev
+        """        
+```
+
+
+        # Recursion
+        #### Time Complexity: O(N), traverse through the linked list
+        #### Space Complexity: O(N), recursive call does not return until reaches the end of the linked-list
+        if not head or not head.next:
+            return head
+        prev = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return prev
+        
