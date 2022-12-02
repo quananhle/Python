@@ -34,3 +34,38 @@ s and t consist only of lowercase English letters.
 ---
 
 ### Brute Force
+
+```Python
+class Solution(object):
+    def isSubsequence(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        # Brute Force
+        #### Time Complexity: O(N^2), traverse through length of input t while traversing through input s
+        #### Space Complexity: O(1), only pointers are needed, no extra space required
+        """
+        if len(t) < len(s):
+            return False
+        else:
+            if not s:
+                return True
+            else:
+                i, j = 0, 0
+                while i < len(s):
+                    while j < len(t):
+                        if i >= len(s):
+                            return True
+                        else:
+                            if t[j] == s[i]:
+                                i += 1
+                                j += 1
+                            else:
+                                j += 1
+                    if i >= len(s):
+                        return True
+                    else:
+                        return False
+        """
