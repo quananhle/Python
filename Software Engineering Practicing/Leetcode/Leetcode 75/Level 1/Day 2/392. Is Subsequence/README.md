@@ -6,6 +6,10 @@ Given two strings ```s``` and ```t```, return ```true``` if ```s``` is a __subse
 
 A __subsequence__ of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., ```"ace"``` is a __subsequence__ of ```"abcde"``` while ```"aec"``` is not).
 
+![image](https://user-images.githubusercontent.com/35042430/205380949-977ed83a-4f51-44f1-86d3-6411153715d2.png)
+
+---
+
 __Example 1:__
 ```
 Input: s = "abc", t = "ahbgdc"
