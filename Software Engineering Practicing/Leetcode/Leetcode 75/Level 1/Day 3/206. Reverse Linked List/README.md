@@ -38,6 +38,8 @@ The number of nodes in the list is the range [0, 5000].
 
 ---
 
+### Iterative
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -161,28 +163,6 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        # Recursion
-        #### Time Complexity: O(N), traverse through the linked list
-        #### Space Complexity: O(N), recursive call does not return until reaches the end of the linked-list
-        if not head or not head.next:
-            return head
-        prev = self.reverseList(head.next)
-        head.next.next = head
-        head.next = None
-        return prev
-```
-```Python
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-class Solution(object):
-    def reverseList(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
         # Iterative
         #### Time Complexity: O(N), traverse through the linked list
         #### Space Complexity: O(1), fixed pointers size
@@ -201,3 +181,29 @@ class Solution(object):
             head = head.next
         return prev
 ```
+
+### Recursion
+
+```Python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        # Recursion
+        #### Time Complexity: O(N), traverse through the linked list
+        #### Space Complexity: O(N), recursive call does not return until reaches the end of the linked-list
+        if not head or not head.next:
+            return head
+        prev = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return prev
+```
+
