@@ -151,6 +151,9 @@ class Solution(object):
             curr = tmp_next
         return prev
 ```
+
+![image](https://assets.leetcode.com/users/images/c93521ec-fc27-4f92-a0eb-1547fde0f4ae_1669983482.3510838.png)
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode(object):
