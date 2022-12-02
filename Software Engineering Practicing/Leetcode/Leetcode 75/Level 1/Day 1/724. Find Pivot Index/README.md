@@ -101,9 +101,18 @@ class Solution(object):
         else:
             return -1  
 ```
-      
+
+### Three Pointers
+
+```Python
+class Solution(object):
+    def pivotIndex(self, nums):
         """
+        :type nums: List[int]
+        :rtype: int
         # Three Pointers
+        #### Time Complexity: O(N)
+        #### Space Complexity: O(1)
         left_sum, right_sum = 0, sum(nums)-nums[0]
         pivot = 0
         while pivot < len(nums)-1 and left_sum != right_sum:
@@ -111,3 +120,5 @@ class Solution(object):
             right_sum -= nums[pivot]
             left_sum += nums[pivot-1]
         return pivot if left_sum == right_sum else -1
+```
+
