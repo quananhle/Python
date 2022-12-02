@@ -188,7 +188,7 @@ class Solution(object):
         #### Space Complexity: O(1), fixed pointers size
         if not head or not head.next:
             return head
-        prev = ListNode(None)
+        prev = None
         is_first_node = True
         while head:
             node = ListNode(head.val)
