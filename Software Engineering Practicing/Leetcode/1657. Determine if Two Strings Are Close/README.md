@@ -16,35 +16,43 @@ Given two strings, ```word1``` and ```word2```, return ```true``` if ```word1```
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: word1 = "abc", word2 = "bca"
 Output: true
 Explanation: You can attain word2 from word1 in 2 operations.
 Apply Operation 1: "abc" -> "acb"
 Apply Operation 1: "acb" -> "bca"
-Example 2:
+```
 
+__Example 2:__
+```
 Input: word1 = "a", word2 = "aa"
 Output: false
 Explanation: It is impossible to attain word2 from word1, or vice versa, in any number of operations.
-Example 3:
+```
 
+__Example 3:__
+```
 Input: word1 = "cabbba", word2 = "abbccc"
 Output: true
 Explanation: You can attain word2 from word1 in 3 operations.
 Apply Operation 1: "cabbba" -> "caabbb"
 Apply Operation 2: "caabbb" -> "baaccc"
 Apply Operation 2: "baaccc" -> "abbccc"
- 
+```
 
-Constraints:
-
+__Constraints:__
+```
 1 <= word1.length, word2.length <= 105
 word1 and word2 contain only lowercase English letters.
+```
 
 ---
 
+### HashMap
+
+```Python
 class Solution(object):
     def closeStrings(self, word1, word2):
         """
@@ -55,7 +63,6 @@ class Solution(object):
         # HashMap
         #### Time Complexity: O(N), iterate over the length of inputs containing fixed number of character of 26 word1 and word2. Sort operations take O(26log26) time.
         #### Space Complexity: O(1), constant extra space, maximum size of hashmap is 26 
-        """
         w1_dict, w2_dict = dict(), dict()
         for c in word1:
             if c not in w1_dict:
@@ -78,9 +85,21 @@ class Solution(object):
         w1_vals.sort(), w2_vals.sort()
         # return sorted(w1_dict.keys()) == sorted(w2_dict.keys()) and sorted(w1_dict.values()) == sorted(w2_dict.values())
         return w1_keys == w2_keys and w1_vals == w2_vals
+```
+
+### One Liner
+```Python
+class Solution(object):
+    def closeStrings(self, word1, word2):
         """
+        :type word1: str
+        :type word2: str
+        :rtype: bool
         """
+        # HashMap
+        #### Time Complexity: O(N), iterate over the length of inputs containing fixed number of character of 26 word1 and word2. Sort operations take O(26log26) time.
+        #### Space Complexity: O(1), constant extra space, maximum size of hashmap is 26 
         return sorted(collections.Counter(word1).keys()) == sorted(collections.Counter(word2).keys()) and sorted(collections.Counter(word1).values()) == sorted(collections.Counter(word2).values())
-        """
+```
     
     
