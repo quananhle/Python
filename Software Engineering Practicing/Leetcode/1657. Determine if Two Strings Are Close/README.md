@@ -42,3 +42,45 @@ Constraints:
 
 1 <= word1.length, word2.length <= 105
 word1 and word2 contain only lowercase English letters.
+
+---
+
+class Solution(object):
+    def closeStrings(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: bool
+        """
+        # HashMap
+        #### Time Complexity: O(N), iterate over the length of inputs containing fixed number of character of 26 word1 and word2. Sort operations take O(26log26) time.
+        #### Space Complexity: O(1), constant extra space, maximum size of hashmap is 26 
+        """
+        w1_dict, w2_dict = dict(), dict()
+        for c in word1:
+            if c not in w1_dict:
+                w1_dict[c] = 1
+            else:
+                w1_dict[c] += 1
+        for c in word2:
+            if c not in w2_dict:
+                w2_dict[c] = 1
+            else:
+                w2_dict[c] += 1
+        w1_keys, w2_keys = set(), set()
+        w1_vals, w2_vals = list(), list()
+        for key,val in w1_dict.items():
+            w1_keys.add(key)
+            w1_vals.append(val)
+        for key,val in w2_dict.items():
+            w2_keys.add(key)
+            w2_vals.append(val)
+        w1_vals.sort(), w2_vals.sort()
+        # return sorted(w1_dict.keys()) == sorted(w2_dict.keys()) and sorted(w1_dict.values()) == sorted(w2_dict.values())
+        return w1_keys == w2_keys and w1_vals == w2_vals
+        """
+        """
+        return sorted(collections.Counter(word1).keys()) == sorted(collections.Counter(word2).keys()) and sorted(collections.Counter(word1).values()) == sorted(collections.Counter(word2).values())
+        """
+    
+    
