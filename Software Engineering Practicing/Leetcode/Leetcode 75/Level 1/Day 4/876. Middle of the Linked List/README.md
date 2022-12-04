@@ -39,6 +39,8 @@ The number of nodes in the list is in the range [1, 100].
 
 ---
 
+### Two Pointers
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -65,4 +67,27 @@ class Solution(object):
             ll = ll.next
         return ll
 ```
-        
+
+### Two Pointers Fast & Slow
+
+```Python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def middleNode(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        # Two Pointers Fast & Slow
+        #### Time Complexity: O(N), traverse through head to count number of nodes
+        #### Space Complexity: O(1), space used by pointers
+
+        slow = fast = head
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+        return slow
+```
