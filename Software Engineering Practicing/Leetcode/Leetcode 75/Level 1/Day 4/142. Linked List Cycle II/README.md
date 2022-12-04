@@ -17,3 +17,23 @@ Input: head = [3,2,0,-4], pos = 1
 Output: tail connects to node index 1
 Explanation: There is a cycle in the linked list, where tail connects to the second node.
 ```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png)
+
+```
+Input: head = [1,2], pos = 0
+Output: tail connects to node index 0
+Explanation: There is a cycle in the linked list, where tail connects to the first node.
+```
+
+__Example 3:__
+
+![image](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png)
+
+```
+Input: head = [1], pos = -1
+Output: no cycle
+Explanation: There is no cycle in the linked list.
+```
