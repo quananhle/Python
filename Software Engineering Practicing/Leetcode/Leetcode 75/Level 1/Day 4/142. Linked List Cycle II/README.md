@@ -8,6 +8,10 @@ There is a cycle in a linked list if there is some node in the list that can be 
 
 __Do not modify__ the linked list.
 
+<img width="408" alt="image" src="https://user-images.githubusercontent.com/35042430/205470132-330610ba-1b98-4a00-b58e-4f581033e6c6.png">
+
+---
+
 __Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png)
@@ -44,4 +48,7 @@ The number of the nodes in the list is in the range [0, 104].
 -105 <= Node.val <= 105
 pos is -1 or a valid index in the linked-list.
 ```
+
+---
+
 
