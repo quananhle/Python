@@ -41,6 +41,8 @@ Both list1 and list2 are sorted in non-decreasing order.
 
 ---
 
+### Iteration
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -78,6 +80,9 @@ class Solution(object):
         # omit the first node of merged_list as it has default val
         return merged_list.next
 ```
+
+### Recursion
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode(object):
