@@ -98,6 +98,8 @@ class Solution(object):
         return False
 ```
 
+### Divide and Conquer with Greedy
+
 ```Python
 class Solution(object):
     def isSubsequence(self, s, t):
