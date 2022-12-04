@@ -38,3 +38,31 @@ The number of nodes in the list is in the range [1, 100].
 ```
 
 ---
+
+```Python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def middleNode(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        # Brute Force
+        #### Time Complexity: O(N), traverse through head to count number of nodes
+        #### Space Complexity: O(1), space used by pointers
+        size = 0
+        node = ll = head
+        while node:
+            size += 1
+            node = node.next
+        counter = size // 2
+        while counter > 0 and ll:
+            counter -= 1
+            ll = ll.next
+        return ll
+```
+        
