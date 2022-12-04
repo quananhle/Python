@@ -111,7 +111,6 @@ class Solution(object):
         # Divide and Conquer with Greedy
         #### Time Complexity:
         #### Space Complexity:
-        """
         S_BOUND, T_BOUND = len(s), len(t)
         def helper(s_idx, t_idx):
             # Base cases
