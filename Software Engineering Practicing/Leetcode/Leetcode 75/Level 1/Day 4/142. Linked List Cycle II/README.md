@@ -37,3 +37,11 @@ Input: head = [1], pos = -1
 Output: no cycle
 Explanation: There is no cycle in the linked list.
 ```
+
+__Constraints:__
+```
+The number of the nodes in the list is in the range [0, 104].
+-105 <= Node.val <= 105
+pos is -1 or a valid index in the linked-list.
+```
+
