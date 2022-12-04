@@ -43,44 +43,9 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        # Two-Pointers
-        #### Time Complexity: O(N), traverse through length of input t but iterate though length t and length s at the same time
-        #### Space Complexity: O(1), only pointers are needed, no extra space required
-        if len(t) < len(s):
-            return False
-        else:
-            if not s:
-                return True
-            else:
-                i, j = 0, 0
-                while i < len(s):
-                    while j < len(t):
-                        if i >= len(s):
-                            return True
-                        else:
-                            if t[j] == s[i]:
-                                i += 1
-                                j += 1
-                            else:
-                                j += 1
-                    if i >= len(s):
-                        return True
-                    else:
-                        return False
-```
-
-```Python
-class Solution(object):
-    def isSubsequence(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
         # Two Pointers
         #### Time Complexity: O(N), traverse through length of input t but iterate though length t and length s at the same time
         #### Space Complexity: O(1), only pointers are needed, no extra space required
-        """
         if len(t) < len(s):
             return False
         else:
@@ -99,8 +64,9 @@ class Solution(object):
                     if i >= len(s):
                         return True
                     return False
-        """
-        """
+```
+
+```Python
         s_idx, t_idx = 0, 0
         S_BOUND, T_BOUND = len(s), len(t)
         while s_idx < S_BOUND and t_idx < T_BOUND:
@@ -108,8 +74,9 @@ class Solution(object):
                 s_idx += 1
             t_idx += 1
         return s_idx == S_BOUND
-        """
-        """
+```
+
+```Python
         s_idx = t_idx = 0
         S_BOUND, T_BOUND = len(s), len(t)
         while s_idx < S_BOUND and t_idx < T_BOUND:
@@ -117,8 +84,9 @@ class Solution(object):
                 s_idx += 1
             t_idx += 1
         return s_idx == S_BOUND
-        """
-        """
+```
+
+```Python
         if len(s) == 0:
             return True
         seen = 0
@@ -128,6 +96,15 @@ class Solution(object):
             if seen == len(s):
                 return True
         return False
+```
+
+```Python
+class Solution(object):
+    def isSubsequence(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
         """
         # Divide and Conquer with Greedy
         #### Time Complexity:
@@ -145,5 +122,4 @@ class Solution(object):
             t_idx += 1
             return helper(s_idx, t_idx)
         return helper(0, 0)
-        """
 ```
