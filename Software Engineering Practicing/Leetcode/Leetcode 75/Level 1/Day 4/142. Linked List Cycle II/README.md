@@ -11,3 +11,9 @@ __Do not modify__ the linked list.
 __Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png)
+
+```
+Input: head = [3,2,0,-4], pos = 1
+Output: tail connects to node index 1
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+```
