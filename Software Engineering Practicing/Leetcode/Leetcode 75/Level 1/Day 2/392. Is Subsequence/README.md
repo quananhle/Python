@@ -68,3 +68,82 @@ class Solution(object):
                     else:
                         return False
 ```
+
+```Python
+class Solution(object):
+    def isSubsequence(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        # Two Pointers
+        #### Time Complexity: O(N), traverse through length of input t but iterate though length t and length s at the same time
+        #### Space Complexity: O(1), only pointers are needed, no extra space required
+        """
+        if len(t) < len(s):
+            return False
+        else:
+            if not s:
+                return True
+            else:
+                i, j = 0, 0
+                while i < len(s):
+                    while j < len(t):
+                        if i >= len(s):
+                            return True
+                        else:
+                            if t[j] == s[i]:
+                                i += 1
+                            j += 1
+                    if i >= len(s):
+                        return True
+                    return False
+        """
+        """
+        s_idx, t_idx = 0, 0
+        S_BOUND, T_BOUND = len(s), len(t)
+        while s_idx < S_BOUND and t_idx < T_BOUND:
+            if s[s_idx] == t[t_idx]:
+                s_idx += 1
+            t_idx += 1
+        return s_idx == S_BOUND
+        """
+        """
+        s_idx = t_idx = 0
+        S_BOUND, T_BOUND = len(s), len(t)
+        while s_idx < S_BOUND and t_idx < T_BOUND:
+            if s[s_idx] == t[t_idx]:
+                s_idx += 1
+            t_idx += 1
+        return s_idx == S_BOUND
+        """
+        """
+        if len(s) == 0:
+            return True
+        seen = 0
+        for c in t:
+            if s[seen] == c:
+                seen += 1
+            if seen == len(s):
+                return True
+        return False
+        """
+        # Divide and Conquer with Greedy
+        #### Time Complexity:
+        #### Space Complexity:
+        """
+        S_BOUND, T_BOUND = len(s), len(t)
+        def helper(s_idx, t_idx):
+            # Base cases
+            if s_idx == S_BOUND:
+                return True
+            elif t_idx == T_BOUND:
+                return False
+            elif s[s_idx] == t[t_idx]:
+                s_idx += 1
+            t_idx += 1
+            return helper(s_idx, t_idx)
+        return helper(0, 0)
+        """
+```
