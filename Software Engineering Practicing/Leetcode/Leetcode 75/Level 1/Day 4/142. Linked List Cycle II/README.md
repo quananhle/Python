@@ -51,6 +51,8 @@ pos is -1 or a valid index in the linked-list.
 
 ---
 
+### HashSet
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -78,6 +80,8 @@ class Solution(object):
                 return node
         return None
 ```
+
+### HashMap
 
 ```Python
 # Definition for singly-linked list.
