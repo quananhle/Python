@@ -68,8 +68,8 @@ class Solution(object):
 
 ### Iteration
 
-"""
 ```Python
+"""
 # Definition for a Node.
 class Node(object):
     def __init__(self, val=None, children=None):
