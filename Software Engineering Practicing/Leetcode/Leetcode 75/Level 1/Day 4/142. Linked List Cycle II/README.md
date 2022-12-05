@@ -51,4 +51,59 @@ pos is -1 or a valid index in the linked-list.
 
 ---
 
+```Python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
+class Solution(object):
+    def detectCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        # HashSet
+        #### Time Complexity: O(N), traverse through the size of input linked-list
+        #### Space Complexity: O(N), space required to build the hash set
+        """
+        visited = set()
+        node = head
+        while node:
+            if node not in visited:
+                visited.add(node)
+                node = node.next
+            else:
+                return node
+        return None
+```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def detectCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        # HashMap
+        #### Time Complexity: O(N), traverse through the size of input linked-list
+        #### Space Complexity: O(N), space required to build the hash map
+        visited = collections.defaultdict()
+        node = head
+        idx = 0
+        while node:
+            if node in visited:
+                return node
+            else:
+                visited[node] = idx
+            node = node.next
+        else:
+            return None
+```
