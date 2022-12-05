@@ -82,15 +82,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        # answer = 0
-        # counter = dict()
-        # for c in s:
-        #     if c not in counter:
-        #         counter[c] = 1
-        #     else:
-        #         counter.pop(c)
-        #         answer += 2
-        # if counter:
-        #     answer += 1
-        # return answer
+        answer = 0
+        counter = dict()
+        for c in s:
+            if c not in counter:
+                counter[c] = 1
+            else:
+                counter.pop(c)
+                answer += 2
+        if counter:
+            answer += 1
+        return answer
 ```
