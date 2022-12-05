@@ -82,6 +82,9 @@ class Solution(object):
         :type root: Node
         :rtype: List[int]
         """
+        # Iteration
+        #### Time Complexity: O(N), traverse through the tree, N is the size of the tree
+        #### Space Complexity: O(N), keep up to the entire tree
         stack, res = [root], list()
         if not root:
             return res
