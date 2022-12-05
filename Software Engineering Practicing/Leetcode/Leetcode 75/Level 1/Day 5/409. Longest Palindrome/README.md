@@ -65,14 +65,10 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        counter = collections.Counter(s)
         answer = 0
-        for key,val in counter.items():
+        for _,val in collections.Counter(s).items():
             answer  += val//2*2
-        if answer < len(s):
-            return answer+1
-        else:
-            return answer
+        return answer+1 if answer < len(s) else answer
 ```
 
 ```Python
@@ -90,7 +86,33 @@ class Solution(object):
             else:
                 counter.pop(c)
                 answer += 2
-        if counter:
-            answer += 1
-        return answer
+        return answer+1 if counter else answer
+```
+
+### HashSet
+
+```Python
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        # Hash Set 
+        #### Time complexity: O(N)
+        #### Space complexity: O(1), the space for the count is fixed as the number of alphabet is 26
+        ans = 0
+        hash_set = set()
+        for char in s:
+            # Check if character appeared before. If character appears for the first time
+            if char not in hash_set:
+                # Add character to HashSet
+                hash_set.add(char)
+            # If character met again
+            else:
+                # Found a pair
+                ans += 1
+                # Remove the character from the HashSet
+                hash_set.remove(char)
+        return ans*2+1 if hash_set else ans*2
 ```
