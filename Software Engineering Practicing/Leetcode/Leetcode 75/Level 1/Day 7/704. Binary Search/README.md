@@ -47,6 +47,24 @@ class Solution(object):
         # Binary Search
         #### Time Complexity: O(logN)
         #### Space Complexity: O(1)
+        lo, hi = 0, len(nums)-1
+        while lo < hi:
+            mid = lo + (hi-lo+1)//2
+            if nums[mid] <= target:
+                lo = mid
+            elif nums[mid] > target:
+                hi = mid - 1
+        return lo if nums[lo]==target else -1
+```
+
+```Python
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
         left, right = 0, len(nums)-1
         while left <= right:
             mid = left + (right-left)//2
