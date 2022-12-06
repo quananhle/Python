@@ -193,7 +193,7 @@ if (target < nums[mid]) {
 Now, imagine when there are only 2 elements left in the boundary. If the logic fell into the else statement, since we are using the left/lower mid, it's simply not doing anything. It just keeps shrinking itself to itself, and the program got stuck.
 We have to keep in mind that, the choice of mid and our shrinking logic has to work together in a way that every time, at least 1 element is excluded.
 
-```
+```Java
 let mid = lo + ((hi - lo + 1) / 2); // Bad! We should use left/lower mid!
 
 if (target > nums[mid]) {
