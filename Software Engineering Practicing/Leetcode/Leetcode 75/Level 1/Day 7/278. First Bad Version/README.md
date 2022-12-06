@@ -38,6 +38,8 @@ __Constraints:__
 
 ### Binary Search
 
+![image](https://user-images.githubusercontent.com/35042430/205963359-7651e08d-65f8-4651-86dc-aa19e19df012.png)
+
 ```Python
 # The isBadVersion API is already defined for you.
 # @param version, an integer
