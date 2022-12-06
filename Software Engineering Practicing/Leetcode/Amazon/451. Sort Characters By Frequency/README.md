@@ -54,3 +54,30 @@ class Solution(object):
 
 ### Multiset and Bucket Sort
 
+```Python
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        # Multiset and Bucket Sort
+        #### Time Complexity: O(N), traverse through the length of input s
+        #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
+        if not s:
+            return s
+        counter = collections.Counter(s)
+        max_freq = max(counter.values())
+        # Bucket sort the characters by frequency
+        bucket = [[] for _ in range(max_freq+1)]
+        # Extend size to extra 1 for 0th-index placeholder
+        for char,freq in counter.items():
+            # Sort characters based on frequency
+            bucket[freq].append(char)
+        ans = ""
+        # Get element in decreasing order
+        for i in range(len(bucket)-1, 0, -1):
+            for c in bucket[i]:
+                ans += c * i
+        return ans
+```
