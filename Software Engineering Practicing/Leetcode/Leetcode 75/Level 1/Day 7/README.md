@@ -22,7 +22,7 @@ Normally, to find the target in a group, such as an array of numbers, the worst 
 The reason behind this huge performance increase is because for each search iterations, we are able to cut the elements we will be looking at in half. Fewer elements to look at = faster search time. And this all comes from the simple fact that in a sorted list, everything to the right of n will be greater or equal to it, and vice versa.
 
 Before we look at the abstract ideas of binary search, let's see the code first:
-```Java
+```C#
 var search = function(nums, target) {
     let lo = 0, hi = nums.length-1;
     while (lo < hi) {
@@ -46,7 +46,7 @@ var search = function(nums, target) {
 We define two variables, let's call them ```lo``` and ```hi```. They will store array indexes and they work like a boundary such that we will only be looking at elements inside the boundary.
 Normally, we would want initialize the boundary to be the entire array.
 
-```Java
+```C#
 let lo = 0, hi = nums.length-1;
 ```
 
@@ -56,7 +56,7 @@ The ```mid``` variable indicates the middle element within the boundary. It sepa
 
 Note when an array has even number of elements, it's your decision to use either the left ```mid``` (lower mid) or the right ```mid``` (upper mid)
 
-```Java
+```C#
 let mid = lo + Math.floor((hi - lo) / 2); // left/lower mid
 
 let mid = lo + Math.floor((hi - lo + 1) / 2); // right/upper mid
@@ -66,7 +66,7 @@ let mid = lo + Math.floor((hi - lo + 1) / 2); // right/upper mid
 
 By comparing our ```target``` to ```mid```, we can identify which side of the boundary does the target belong. For example, If our target is __greater than__ ```mid``, this means it must exist in the right of ```mid```. In this case, there is no reason to even keep a record of all the numbers to its left. And this is the fundamental mechanics of binary search - keep shrinking the boundary.
 
-```Java
+```C#
 if (target < nums[mid]) {
 	hi = mid - 1
 } else {
@@ -78,7 +78,7 @@ if (target < nums[mid]) {
 
 Lastly, we use a while loop to keep the search going:
 
-```Java
+```C#
 while (lo < hi) { ... }
 ```
 
@@ -103,7 +103,7 @@ To solve these decision problems, I use the following set of rules to always kee
 
 Normally, we set the initial boundary to the number of elements in the array
 
-```Java
+```C#
 let lo = 0, hi = nums.length - 1;
 ```
 
@@ -114,7 +114,7 @@ The initial boundary should include ALL the elements, meaning all the possible a
 For example, In LeetCode 35, the question asks us to find an index to insert into the array.
 It is possible that we insert after the last element of the array, thus the complete range of boundary becomes
 
-```Java
+```C#
 let lo = 0, hi = nums.length;
 ```
 
@@ -122,7 +122,7 @@ let lo = 0, hi = nums.length;
 
 Calculating ```mid``` can result in overflow when the numbers are extremely big. I'll demonstrate a few ways of calculating ```mid``` from the worst to the best.
 
-```Java
+```C#
 let mid = Math.floor((lo + hi) / 2) // worst, very easy to overflow
 
 let mid = lo + Math.floor((hi - lo) / 2) // much better, but still possible
@@ -132,7 +132,7 @@ let mid = (lo + hi) >>> 1 // the best, but hard to understand
 
 When we are dealing with even elements, it is our choice to pick the left ```mid``` or the right ```mid```, and as I'll be explaining in a later section, a bad choice will lead to an infinity loop.
 
-```Java
+```C#
 let mid = lo + Math.floor((hi - lo) / 2) // left/lower mid
 
 let mid = lo + Math.floor((hi - lo + 1) / 2) // right/upper mid
@@ -144,7 +144,7 @@ I always try to keep the logic as simple as possible, that is a single pair of `
 
 Let's see an example:
 
-```Java
+```C#
 if (target < nums[mid]) {
 	hi = mid - 1
 } else {
@@ -156,7 +156,7 @@ Here, if the target is less than ```mid```, there's no way ```mid``` will be our
 
 On the other hand, we can rewrite the logic as:
 
-```Java
+```C#
 if (target > nums[mid]) {
 	lo = mid + 1; // mid is excluded
 } else {
@@ -168,7 +168,7 @@ if (target > nums[mid]) {
 
 To keep the logic simple, I always use
 
-```Java
+```C#
 while(lo < hi) { ... }
 ```
 
@@ -180,7 +180,7 @@ Remember I said a bad choice of left or right mid will lead to an infinity loop?
 
 __Example:__
 
-```Java
+```C#
 let mid = lo + ((hi - lo) / 2); // Bad! We should use right/upper mid!
 
 if (target < nums[mid]) {
@@ -193,7 +193,7 @@ if (target < nums[mid]) {
 Now, imagine when there are only 2 elements left in the boundary. If the logic fell into the else statement, since we are using the left/lower mid, it's simply not doing anything. It just keeps shrinking itself to itself, and the program got stuck.
 We have to keep in mind that, the choice of mid and our shrinking logic has to work together in a way that every time, at least 1 element is excluded.
 
-```Java
+```C#
 let mid = lo + ((hi - lo + 1) / 2); // Bad! We should use left/lower mid!
 
 if (target > nums[mid]) {
