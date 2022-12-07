@@ -97,7 +97,7 @@ class Solution(object):
         """
         # Iteration
         #### Time Complexity: O(N), traverse through every nodes of the tree
-        #### Space Complexity: O(N), keep up the size of the copy of the root  
+        #### Space Complexity: O(1), size of pointers
         node = root
         while node:
             parent = node.val
