@@ -4,6 +4,10 @@
 
 Given the ```root``` node of a binary search tree and two integers ```low``` and ```high```, return the sum of values of all nodes with a value in the __inclusive range__ ```[low, high]```.
 
+<img width="527" alt="image" src="https://user-images.githubusercontent.com/35042430/206097194-6710f456-410d-44fb-9929-f579162ad195.png">
+
+---
+
 __Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2020/11/05/bst1.jpg)
@@ -31,4 +35,63 @@ The number of nodes in the tree is in the range [1, 2 * 104].
 1 <= Node.val <= 105
 1 <= low <= high <= 105
 All Node.val are unique.
+```
+
+---
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def rangeSumBST(self, root, low, high):
+        """
+        :type root: TreeNode
+        :type low: int
+        :type high: int
+        :rtype: int
+        """
+        res = list()
+        def dfs(node):
+            if node:
+                if low < node.val:
+                    dfs (node.left)
+                if high > node.val:
+                    dfs (node.right)
+                if low <= node.val <= high:
+                    res.append(node.val)
+        dfs(root)
+        return sum(res)
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def rangeSumBST(self, root, low, high):
+        """
+        :type root: TreeNode
+        :type low: int
+        :type high: int
+        :rtype: int
+        """
+        ans = 0
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                if low <= node.val <= high:
+                    ans += node.val
+                if low < node.val:
+                    stack.append(node.left)
+                if high > node.val:
+                    stack.append(node.right)
+        return ans
 ```
