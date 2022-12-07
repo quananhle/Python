@@ -44,3 +44,74 @@ __Constraints:__
 - p != q
 - p and q will exist in the BST.
 ```
+
+---
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution(object):
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        # Depth-First Search
+        #### Time Complexity: O(N), traverse through every nodes of the tree
+        #### Space Complexity: O(N), keep up the size of the recursion stack
+        def dfs(node, p, q):
+            if node:
+                if p.val < node.val and q.val < node.val:
+                    return dfs(node.left, p, q)
+                elif p.val > node.val and q.val > node.val:
+                    return dfs(node.right, p, q)
+                else:
+                    return node
+        return dfs(root, p, q)
+```
+
+### Iteration
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution(object):
+    def lowestCommonAncestor(self, root, p, q):
+        """
+        :type root: TreeNode
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: TreeNode
+        """
+        # Iteration
+        #### Time Complexity: O(N), traverse through every nodes of the tree
+        #### Space Complexity: O(N), keep up the size of the copy of the root  
+        node = root
+        while node:
+            parent = node.val
+            # Check if p and q greater than current node
+            if p.val > parent and q.val > parent:
+                # Traverse to the right child node
+                node = node.right
+            # Check if p and q smaller than current node
+            elif p.val < parent and q.val < parent:
+                # Traverse to the left child node
+                node = node.left
+            # Otherwise, current node in range of p and q
+            else:
+                return node
+```
+
+
