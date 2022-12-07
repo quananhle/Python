@@ -42,7 +42,7 @@ The number of nodes in the tree is in the range [1, 104].
 
 ---
 
-### Recursion
+### DFS Recursion
 ![image](https://leetcode.com/problems/validate-binary-search-tree/solutions/204551/Figures/98/98_not_bst.png)
 ![image](https://leetcode.com/problems/validate-binary-search-tree/solutions/204551/Figures/98/98_not_bst_3.png)
 
@@ -59,7 +59,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        # Recursive Traversal with Valid Range
+        # DFS Recursive Traversal with Valid Range
         #### Time Complexity: O(N), traverse every node through the tree
         #### Space Complexity: O(N), keep up to the entire tree
         def validate(node, lo=-sys.maxsize-1, hi=sys.maxsize):
@@ -73,6 +73,37 @@ class Solution(object):
             # Validate left child node and right child node of the root node
             return validate(node.left, lo, node.val) and validate(node.right, node.val, hi )
         return validate(root)
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        # Iterative Traversal with Valid Range
+        #### Time Complexity: O(N), traverse every node through the tree
+        #### Space Complexity: O(N), keep up to the entire tree
+        """
+        stack = [(root, -sys.maxsize-1, sys.maxsize)]
+        if not root:
+            return True
+        while stack:
+            node, low, high = stack.pop()
+            if not node:
+                continue
+            if node.val <= low or high <= node.val:
+                return False
+            stack.append((node.left, low, node.val))
+            stack.append((node.right, node.val, high))
+        return True
 ```
 
 ### Depth-First Search
