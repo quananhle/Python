@@ -58,8 +58,8 @@ class Solution(object):
         """        
         count = 0
         # Depth-First Search
-        #### Time Complexity:
-        #### Space Complexity:
+        #### Time Complexity: O(M*N), traverse through every element in a 2D matrix
+        #### Space Complexity: O(M*N), traverse through every element in a 2D matrix
         ROWS, COLS = len(grid), len(grid[0])
         # Connecting horizontally or vertically
         directions = [(1,0),(0,1),(-1,0),(0,-1)]
@@ -100,8 +100,8 @@ class Solution(object):
         """        
         count = 0
         # Depth-First Search
-        #### Time Complexity:
-        #### Space Complexity:
+        #### Time Complexity: O(M*N), traverse through every element in a 2D matrix
+        #### Space Complexity: O(M*N), traverse through every element in a 2D matrix
         ROWS, COLS = len(grid), len(grid[0])
         # Connecting horizontally or vertically
         directions = [(1,0),(0,1),(-1,0),(0,-1)]
@@ -138,8 +138,8 @@ class Solution(object):
         """        
         count = 0
         # Depth-First Search
-        #### Time Complexity:
-        #### Space Complexity:
+        #### Time Complexity: O(M*N), traverse through every element in a 2D matrix
+        #### Space Complexity: O(M*N), traverse through every element in a 2D matrix
         ROWS, COLS = len(grid), len(grid[0])
         # Connecting horizontally or vertically
         directions = [(1,0),(0,1),(-1,0),(0,-1)]
