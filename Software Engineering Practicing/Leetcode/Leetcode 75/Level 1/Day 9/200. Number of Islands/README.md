@@ -11,6 +11,7 @@ An island is surrounded by water and is formed by connecting adjacent lands hori
 ---
 
 __Example 1:__
+
 ```
 Input: grid = [
   ["1","1","1","1","0"],
@@ -20,3 +21,27 @@ Input: grid = [
 ]
 Output: 1
 ```
+
+__Example 2:__
+
+```
+Input: grid = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
+Output: 3
+```
+
+__Constraints:__
+
+```
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+```
+
+---
+
