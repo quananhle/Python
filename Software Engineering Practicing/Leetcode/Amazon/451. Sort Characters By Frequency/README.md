@@ -121,15 +121,35 @@ class Solution(object):
         return ans
 ```
 
-### Priority Queue with Heap
-
-
 ```Python
-class Solution(object):
-    def frequencySort(self, s):
+### Priority Queue with Heap
+        # Priority Queue with Heap
+        #### Time Complexity: O(N), traverse through the length of input s
+        #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
+        # Using reverse sliding
         """
-        :type s: str
-        :rtype: str
+        counter = collections.Counter(s)
+        priority_queue = list()
+        for char, freq in counter.items():
+            heapq.heappush(priority_queue, (freq, char))
+        print (priority_queue)
+        res = list()
+        for _ in range(len(priority_queue)):
+            freq, char = heapq.heappop(priority_queue)
+            res += freq*char
+        return res[::-1]
         """
-        
+        # Using negative frequencies
+        """
+        counter = collections.Counter(s)
+        priority_queue = list()
+        for char, freq in counter.items():
+            heapq.heappush(priority_queue, (-freq, char))
+        print (priority_queue)
+        res = list()
+        for _ in range(len(priority_queue)):
+            freq, char = heapq.heappop(priority_queue)
+            res += (-freq)*char
+        return res
+        """
 ```
