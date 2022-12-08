@@ -120,7 +120,6 @@ class Solution(object):
             # Check surrounding area horizontally and vertically
             [traverse(grid, row + x, col + y) for x, y in directions]
         
-        
         for row in range(ROWS):
             for col in range(COLS):
                 if grid[row][col] == "1" and (row, col) not in visited:
