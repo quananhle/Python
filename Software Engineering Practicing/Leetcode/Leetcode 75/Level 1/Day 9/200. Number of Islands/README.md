@@ -45,3 +45,43 @@ grid[i][j] is '0' or '1'.
 
 ---
 
+### Depth-First Search
+
+```Python
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """        
+        count = 0
+        # Depth-First Search
+        #### Time Complexity:
+        #### Space Complexity:
+        ROWS, COLS = len(grid), len(grid[0])
+        # Connecting horizontally or vertically
+        directions = [(1,0),(0,1),(-1,0),(0,-1)]
+        # Track visited cells
+        visited = set()
+        '''
+        # Horizontally, vertically, and diagonally
+        directions = [(1,1),(1,0),(1,-1),(0,-1),(-1,-1),(-1,0),(-1,1),(0,1)]
+        '''
+        
+        def traverse(grid, row, col):
+            if not (0 <= row < ROWS and 0 <= col < COLS) or grid[row][col] != "1" or (row, col) in visited:
+                return
+            # Mark the land
+            visited.add((row, col))
+            # Check surrounding area horizontally and vertically
+            [traverse(grid, row + x, col + y) for x, y in directions]
+        
+        
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == "1" and (row, col) not in visited:
+                    traverse(grid, row, col)
+                    count += 1
+        return count
+```
+
