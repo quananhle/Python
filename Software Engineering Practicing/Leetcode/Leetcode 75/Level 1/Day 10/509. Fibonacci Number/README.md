@@ -70,7 +70,6 @@ class Solution(object):
         # Recursion
         #### Time Complexity: O(2^N)
         #### Space Complexity: O(N)
-        """
         # Base cases:
         if n == 0:
             return 0
@@ -79,7 +78,6 @@ class Solution(object):
             return 1
         else:
             return self.fib(n-1) + self.fib(n-2)
-        """
 ```
 
 #### Complexity Analysis
