@@ -106,9 +106,6 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        # Recursion
-        #### Time Complexity: O(2^N)
-        #### Space Complexity: O(N)
         # Top-Down Dynamic Programming using Memoization
         #### Time Complexity: O(N), calculate every number up to n and store into cache dictionary. If number calculated before and stored in cache, omit calculation and return value
         #### Space Complexity: O(N), keep all keys in cache up to n, size of the stack in memory is proportional to N
@@ -117,4 +114,33 @@ class Solution(object):
         else:
             self.cache[n] = self.fib(n - 1) + self.fib(n - 2)
         return self.cache[n]
+```
+
+### Bottom-Up Approach using Tabulation
+
+#### Algorithm
+
+- If ```N``` is less than or equal to 1, return ```N```
+- Otherwise, iterate through ```N```, storing each computed answer in an array along the way.
+- Use this array as a reference to the 2 previous numbers to calculate the current Fibonacci number.
+- Once we've reached the last number, return it's Fibonacci number.
+
+```Python
+class Solution(object):
+    cache = {0: 0, 1: 1}
+    def fib(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # Bottom-Up Dynamic Programming using Tabulation
+        #### Time Complexity: O(N), calculate every number from 2 up to n+1
+        #### Space Complexity: O(N), hash table size is up to n elements
+        if n <= 1:
+            return n
+        cache = [0] * (n + 1)
+        cache[0], cache[1] = 0, 1
+        for i in range(2, n + 1):
+            cache[i] = cache[i - 1] + cache[i - 2]
+        return cache[n]
 ```
