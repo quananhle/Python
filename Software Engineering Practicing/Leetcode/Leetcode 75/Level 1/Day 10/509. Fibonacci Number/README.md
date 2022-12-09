@@ -61,7 +61,6 @@ __Constraints:__
 
 ```Python
 class Solution(object):
-    cache = {0: 0, 1: 1}
     def fib(self, n):
         """
         :type n: int
@@ -131,7 +130,6 @@ Space complexity: O(N). The size of the stack in memory is proportional to N. Al
 
 ```Python
 class Solution(object):
-    cache = {0: 0, 1: 1}
     def fib(self, n):
         """
         :type n: int
@@ -175,7 +173,6 @@ Space complexity: O(N). The size of the data structure is proportional to N.
 
 ```Python
 class Solution(object):
-    cache = {0: 0, 1: 1}
     def fib(self, n):
         """
         :type n: int
@@ -222,7 +219,6 @@ In order to do this we can rely on the matrix equation for the Fibonacci sequenc
 
 ```Python
 class Solution(object):
-    cache = {0: 0, 1: 1}
     def fib(self, n):
         """
         :type n: int
