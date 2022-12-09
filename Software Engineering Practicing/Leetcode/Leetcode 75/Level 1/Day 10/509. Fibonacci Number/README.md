@@ -144,3 +144,43 @@ class Solution(object):
             cache[i] = cache[i - 1] + cache[i - 2]
         return cache[n]
 ```
+
+### Iterative Bottom-Up
+
+#### Algorithm
+
+- Check if ```N <= 1```, if it is, then we should return ```N```.
+- We need 3 variables to store each state ```fib(N)```, ```fib(N-1)```, and ```fib(N-2)```.
+- Preset the initial values:
+  - Initialize ```current``` with ```0```.
+  - Initialize ```prev1``` with ```1```, since this will represent ```fib(N-1)``` when computing the current value.
+  - Initialize ```prev2``` with ```0```, since this will represent ```fib(N-2)``` when computing the current value.
+- Iterate, incrementally by 1, all the way up to and including ```N```. Starting at 2, since ```0``` and ```1``` are pre-computed.
+- Set the ```current``` value to ```prev1 + prev2``` because that is the value we are currently computing.
+- Set the ```prev2``` value to ```prev1```.
+- Set the ```prev1``` value to ```current```.
+- When we reach ```N+1```, we will exit the loop and return the previously set ```current``` value.
+
+```Python
+class Solution(object):
+    cache = {0: 0, 1: 1}
+    def fib(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # Iterative Bottom-Up
+        #### Time Complexity: O(N), calculate every number from 2 up to n+1
+        #### Space Complexity: O(1), size of pointers
+        if n <= 1:
+            return n
+        curr = 0
+        prev1 = 1
+        prev2 = 0
+        # Since range is exclusive and operations need to perform n so range needs to be n+1
+        for _ in range(2, n + 1):
+            curr = prev1 + prev2
+            prev2 = prev1
+            prev1 = curr
+        return curr
+```
