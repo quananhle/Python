@@ -174,6 +174,86 @@ Space complexity : O(M×N) in case that the grid map is filled with lands where 
 
 ### Breath-First Search
 
-```Python
+#### Original input not modified
 
+```Python
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        if not grid:
+            return 0
+        count = 0
+        # Breadth-First Search
+        #### Time Complexity: O(M*N), traverse through every element in a 2D matrix
+        #### Space Complexity: O(min(M, N)), space keep up to the size of min(M,N) when the grid is filled with lands
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0),(0,-1),(-1,0),(0,1)]
+        visited = set()
+
+        def bfs(grid, queue):
+            while queue:
+                row, col = queue.pop()
+                if not (0 <= row < ROWS and 0 <= col < COLS) or grid[row][col] != "1" or (row, col) in visited:
+                    continue 
+                # Keep track of visited cells
+                visited.add((row, col))
+                # Expand the queue with surrounding cell
+                queue.extend([(row + x, col + y) for x, y in DIRECTIONS])
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == "1" and not (row, col) in visited:
+                    bfs(grid, [(row, col)])
+                    count += 1
+
+        return count
+```
+
+#### Original input modified
+
+```Python
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        if not grid:
+            return 0
+        count = 0
+        # Breadth-First Search
+        #### Time Complexity: O(M*N), traverse through every element in a 2D matrix
+        #### Space Complexity: O(min(M, N)), space keep up to the size of min(M,N) when the grid is filled with lands
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0),(0,-1),(-1,0),(0,1)]
+        visited = set()
+
+        def bfs(grid, queue):
+            while queue:
+                row, col = queue.pop()
+                if not (0 <= row < ROWS and 0 <= col < COLS) or grid[row][col] != "1":
+                    continue 
+                # Keep track of visited cells
+                grid[row][col] = "#"
+                # Expand the queue with surrounding cell
+                queue.extend([(row + x, col + y) for x, y in DIRECTIONS])
+                
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == "1":
+                    bfs(grid, [(row, col)])
+                    count += 1
+                    
+        return count
+```
+
+
+#### Complexity Analysis
+
+```
+Time Complexity: O(M*N), traverse through every element in a 2D matrix
+Space Complexity: O(min(M, N)), space keep up to the size of min(M,N) when the grid is filled with lands
 ```
