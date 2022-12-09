@@ -36,7 +36,7 @@ __Constraints:__
 
 ---
 
-```Python```
+```Python
 class Solution(object):
     def climbStairs(self, n):
         """
