@@ -1,6 +1,8 @@
 ## Graph
 
-### Depth-First Search v.s. ### Breadth-First Search
+### Depth-First Search v.s. Breadth-First Search
+
+---
 
 #### Solving a question using DFS
 
