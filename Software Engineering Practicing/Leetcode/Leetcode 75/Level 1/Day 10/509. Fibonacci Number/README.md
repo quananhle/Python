@@ -46,3 +46,75 @@ __Constraints:__
 ```
 
 ---
+
+### Recursion
+
+![image](https://leetcode.com/problems/fibonacci-number/solutions/362772/Figures/509/fibonacciRecursion5.png)
+
+#### Algorithm
+
+- Check if the provided input value, N, is less than or equal to 1. If true, return N.
+
+- Otherwise, the function ```fib(int N)``` calls itself, with the result of the 2 previous numbers being added to each other, passed in as the argument. This is derived directly from the ```recurrence relation```: F<sub>n</sub> = F<sub>n−1</sub> + F<sub>n−2</sub>
+ 
+- Do this until all numbers have been computed, then return the resulting answer.
+
+```Python
+class Solution(object):
+    cache = {0: 0, 1: 1}
+    def fib(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # Recursion
+        #### Time Complexity: O(2^N)
+        #### Space Complexity: O(N)
+        """
+        # Base cases:
+        if n == 0:
+            return 0
+        # Base cases:
+        elif n == 1:
+            return 1
+        else:
+            return self.fib(n-1) + self.fib(n-2)
+        """
+```
+
+#### Complexity Analysis
+```
+Time complexity: O(2^N), This is the slowest way to solve the Fibonacci Sequence because it takes exponential time. The amount of operations needed, for each level of recursion, grows exponentially as the depth approaches N.
+
+Space complexity: O(N). We need space proportional to N to account for the max size of the stack, in memory. This stack keeps track of the function calls to fib(N). This has the potential to be bad in cases that there isn't enough physical memory to handle the increasingly growing stack, leading to a StackOverflowError. 
+```
+
+### Top-Down Dynamic Programming using Memoization
+
+#### Algorithm
+
+- At first, create a map with ```0``` -> ```0``` and ```1``` -> ```1``` pairs.
+- Call ```fib(N)``` function.
+    - At every recursive call of ```fib(N)```, if ```N``` exists in the map, return the cached value for ```N```.
+    - Otherwise, set the key ```N```, in our mapping, to the value of ```fib(N - 1) + fib(N - 2)``` and return the computed value.
+
+```Python
+class Solution(object):
+    cache = {0: 0, 1: 1}
+    def fib(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # Recursion
+        #### Time Complexity: O(2^N)
+        #### Space Complexity: O(N)
+        # Top-Down Dynamic Programming using Memoization
+        #### Time Complexity: O(N), calculate every number up to n and store into cache dictionary. If number calculated before and stored in cache, omit calculation and return value
+        #### Space Complexity: O(N), keep all keys in cache up to n, size of the stack in memory is proportional to N
+        if n in self.cache:
+            return self.cache[n]
+        else:
+            self.cache[n] = self.fib(n - 1) + self.fib(n - 2)
+        return self.cache[n]
+```
