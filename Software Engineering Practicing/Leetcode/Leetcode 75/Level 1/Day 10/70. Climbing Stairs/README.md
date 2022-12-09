@@ -105,8 +105,8 @@ class Solution(object):
         return current
         """
         # Matrix Exponentiation - Binets Method
-        #### Time Complexity: O(logN)
-        #### Space Complexity: O(logN)
+        #### Time Complexity: O(logN), halving n after every check
+        #### Space Complexity: O(1), constant space is used for multiply
         def multiply(a, b):
             c = [[0] * (len(a)+1) for _ in range(len(b))]
             for i in range(len(a)):
