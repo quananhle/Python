@@ -43,7 +43,7 @@ n == image[i].length
 
 ---
 
-
+### Depth-First Search
 
 ```Python
 class Solution(object):
@@ -91,7 +91,31 @@ class Solution(object):
         return image
 ```
 
+```Python
+class Solution(object):
+    def floodFill(self, image, sr, sc, color):
         """
+        :type image: List[List[int]]
+        :type sr: int
+        :type sc: int
+        :type color: int
+        :rtype: List[List[int]]
+        """
+        ROWS, COLS = len(image), len(image[0])
+        queue = collections.deque([sr, sc, 0])
+        # Connected 4-directionally
+        directions = [(1,0),(-1,0),(0,1),(0,-1)]
+        # Mark the pixel as visited
+        visited = set([sr,sc])
+        base_color = image[sr][sc]
+        # Base case:
+        # Check if starting pixel is already colored the same as color 
+        if base_color == color:
+            # Make no changes to the image
+            return image        
+        # Depth-First Search
+        #### Time Complexity: O(N), where N is the number of pixels in the image
+        #### Space Complexity: O(N), the size of the implicit call stack when calling dfs
         def traverse(row, col):
             # Check if at the border of the image or the current pixel has different color than starting pixel
             if not (0 <= row < ROWS and 0 <= col < COLS) or image[row][col] != base_color:
@@ -104,3 +128,49 @@ class Solution(object):
         if image[sr][sc] != color:
             traverse(sr, sc)
         return image
+```
+
+__Complexity Analysis__
+
+```
+Time Complexity: O(N), where N is the number of pixels in the image. We might process every pixel.
+Space Complexity: O(N), the size of the implicit call stack when calling dfs.
+```
+
+### Breadth-First Search
+
+```Python
+class Solution(object):
+    def floodFill(self, image, sr, sc, color):
+        """
+        :type image: List[List[int]]
+        :type sr: int
+        :type sc: int
+        :type color: int
+        :rtype: List[List[int]]
+        """
+        ROWS, COLS = len(image), len(image[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        base_color = image[sr][sc]
+        if base_color == color:
+            return image
+        queue = [(sr, sc)]
+        visited = set()
+        # Breadth-First Search
+        #### Time Complexity: O(N), traverse through the entire grid if every cell has the same color
+        #### Space Complexity: O(N), keep up to the size of input
+        while queue:
+            row, col = queue.pop()
+            if not (0 <= row < ROWS and 0 <= col < COLS) or image[row][col] != base_color or image[row][col] == color or (row, col) in visited:
+                continue
+            image[row][col] = color
+            visited.add((row, col))
+            queue.extend([(row + x, col + y) for x, y in DIRECTIONS])
+            """
+            if 0 <= row < ROWS and 0 <= col < COLS and image[row][col] == base_color and image[row][col] != color and not(row, col) in visited:
+                image[row][col] = color
+                visited.add((row, col))
+                queue.extend([(row + x, col + y) for x, y in DIRECTIONS])
+            """
+        return image
+```
