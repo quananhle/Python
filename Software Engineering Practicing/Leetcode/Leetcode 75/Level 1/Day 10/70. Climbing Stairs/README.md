@@ -118,8 +118,10 @@ class Solution(object):
         def matrix_power(a, n):
             b = [[1, 0], [0, 1]]
             while n > 0:
+                # x & 1 is equivalent to x % 2.
                 if ((n & 1) == 1):
                     b = multiply(b, a)
+                # x >> 1 is equivalent to x / 2                    
                 n >>= 1
                 a = multiply(a, a)
             return b
