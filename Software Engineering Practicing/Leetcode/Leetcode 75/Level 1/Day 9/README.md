@@ -8,7 +8,7 @@ There are three things that you need to consider once you have identified that a
 
 1. The base case ( return condition )
 2. Mark that node as visited
-3. Given that I am at a particular node what operations do I need to perform
+3. Given that at current node, perform the needed operations
 
 The below solution explains how the above methodology can be used to sovle any DFS solution
 
@@ -16,9 +16,11 @@ The below solution explains how the above methodology can be used to sovle any D
 
 The current node cannot
 
-  a. Exit the matrix bounding condition
-  b. DIfferent from the base color
-  c. Be a node that we have already visited
+    a. Exit the matrix bounding condition
+  
+    b. DIfferent from the base color
+  
+    c. Be a node that we have already visited
   
 ```Java
 if(sc < 0 || sc >= cl || sr < 0 || sr >= rl || image[sr][sc] != baseColor || visited[sr][sc]) {
@@ -63,7 +65,7 @@ public static void dfs(int[][] image, int sr, int sc, int newColor, int baseColo
     // Mark the node as visited. 
     visited[sr][sc] = true;
 
-    // At every node what am I supposed to do ? This is the operation these are the operations.
+    // Change the value of the current node. Check every adjacent node 
     image[sr][sc] = newColor;
     dfs(image, sr + 1, sc, newColor, baseColor, visited);
     dfs(image, sr, sc + 1, newColor, baseColor, visited);
