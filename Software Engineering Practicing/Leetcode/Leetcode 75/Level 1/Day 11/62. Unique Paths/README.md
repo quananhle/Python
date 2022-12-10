@@ -79,7 +79,6 @@ class Solution(object):
                 dp[col][row] = dp[col-1][row] + dp[col][row-1]
         return dp[m-1][n-1]
         """
-        """
         dp = [[1] * m for _ in range(n)]
         for row in range(1, n):
             for col in range(1, m):
@@ -107,11 +106,9 @@ class Solution(object):
                 dp[row] += dp[row-1]
         return dp[-1]
         """
-        """
         dp = [1] * m
         for row in range(1, n):
             for col in range(1, m):
                 dp[col] += dp[col-1]
         return dp[-1]
-        """
 ```
