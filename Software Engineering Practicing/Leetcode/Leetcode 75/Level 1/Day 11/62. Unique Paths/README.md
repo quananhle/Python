@@ -47,6 +47,8 @@ __Constraints:__
 
 ---
 
+### Bottom-Up Dynamic Programming using 2D Tabulation
+
 ```Python
 class Solution(object):
     def uniquePaths(self, m, n):
@@ -83,6 +85,17 @@ class Solution(object):
             for col in range(1, m):
                 dp[row][col] = dp[row-1][col] + dp[row][col-1]
         return dp[n-1][m-1]
+```
+
+### Bottom-Up Dynamic Programming using Tabulation
+
+```Python
+class Solution(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
         """
         # Bottom-Up Dynamic Programming using Tabulation
         #### Time Complexity: O(N)
