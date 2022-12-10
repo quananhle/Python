@@ -47,3 +47,58 @@ __Constraints:__
 
 ---
 
+```Python
+class Solution(object):
+    def uniquePaths(self, m, n):
+        """
+        :type m: int
+        :type n: int
+        :rtype: int
+        """
+        '''
+        m = 1, n = 1 => 1
+        m = 2, n = 2 => 2
+        m = 3, n = 2 => 3
+        m = 2, n = 3 => 3
+        m = 3, n = 3 => 6
+        '''
+        """
+        if m == 1 or n == 1:
+            return 1
+        return self.uniquePaths(m - 1, n) + self.uniquePaths(m, n - 1)
+        """
+        # Bottom-Up Dynamic Programming using 2D Tabulation
+        #### Time Complexity: O(N * M)
+        #### Space Complexity: O(N * M)
+        """
+        dp = [[1] * n for _ in range(m)]
+        for col in range(1, m):
+            for row in range(1, n):
+                dp[col][row] = dp[col-1][row] + dp[col][row-1]
+        return dp[m-1][n-1]
+        """
+        """
+        dp = [[1] * m for _ in range(n)]
+        for row in range(1, n):
+            for col in range(1, m):
+                dp[row][col] = dp[row-1][col] + dp[row][col-1]
+        return dp[n-1][m-1]
+        """
+        # Bottom-Up Dynamic Programming using Tabulation
+        #### Time Complexity: O(N)
+        #### Space Complexity: O(N)
+        """
+        dp = [1] * n
+        for col in range(1, m):
+            for row in range(1, n):
+                dp[row] += dp[row-1]
+        return dp[-1]
+        """
+        """
+        dp = [1] * m
+        for row in range(1, n):
+            for col in range(1, m):
+                dp[col] += dp[col-1]
+        return dp[-1]
+        """
+```
