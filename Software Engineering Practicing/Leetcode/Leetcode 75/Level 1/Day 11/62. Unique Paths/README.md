@@ -30,3 +30,20 @@ Output: 28
 
 ![image](https://user-images.githubusercontent.com/35042430/206839446-2f00bd18-ada8-4d79-a994-73b05843412b.png)
 
+__Example 2:__
+```
+Input: m = 3, n = 2
+Output: 3
+Explanation: From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:
+1. Right -> Down -> Down
+2. Down -> Down -> Right
+3. Down -> Right -> Down
+```
+
+__Constraints:__
+```
+1 <= m, n <= 100
+```
+
+---
+
