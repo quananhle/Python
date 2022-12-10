@@ -19,3 +19,14 @@ __Example 1:__
 Input: m = 3, n = 7
 Output: 28
 ```
+
+![image](https://user-images.githubusercontent.com/35042430/206839417-1eaef390-98d9-43ed-bb76-5ddeb479b81c.png)
+
+![image](https://user-images.githubusercontent.com/35042430/206839432-7f0f191e-2ef8-485d-9133-5f05ffe95720.png)
+
+![image](https://user-images.githubusercontent.com/35042430/206839436-c4e3cf14-d50b-4867-b1e0-56292e0b199f.png)
+
+![image](https://user-images.githubusercontent.com/35042430/206839442-e94b79c5-ebf7-40a6-9592-ee25566482ba.png)
+
+![image](https://user-images.githubusercontent.com/35042430/206839446-2f00bd18-ada8-4d79-a994-73b05843412b.png)
+
