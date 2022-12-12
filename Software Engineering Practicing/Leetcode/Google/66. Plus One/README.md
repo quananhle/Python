@@ -37,4 +37,61 @@ Incrementing by one gives 9 + 1 = 10.
 Thus, the result should be [1,0].
 ```
 
+__Constraints:__
+```
+1 <= digits.length <= 100
+0 <= digits[i] <= 9
+digits does not contain any leading 0's.
+```
+
 ---
+
+```Python
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        number = 0
+        digits[-1] += 1
+        for i in range(len(digits)):
+            number +=  digits[i] * 10**(len(digits)-1-i)
+        return [int(n) for n in str(number)]
+
+
+```Python
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        for i in range(len(digits)):
+            idx = len(digits) - i - 1
+            if digits[idx] == 9:
+                digits[idx] = 0
+            else:
+                digits[idx] += 1
+                return digits
+        return [1] + digits
+```
+
+        # Bottom-Up Dynamic Programming
+        """
+        res = list()
+        def helper(num):
+            if len(num) == 0:
+                return [1]
+            digit = num.pop() + 1
+            if digit == 10:
+                num = helper(num)
+                digit = 0
+            num.append(digit)
+            return num
+        return helper(digits)
+        """
+        
+
+
+```
