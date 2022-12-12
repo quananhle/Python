@@ -46,4 +46,68 @@ __Constraints:__
 secret.length == guess.length
 secret and guess consist of digits only.
 ```
- 
+
+---
+
+### Hash Table
+
+```Python
+class Solution(object):
+    def getHint(self, secret, guess):
+        """
+        :type secret: str
+        :type guess: str
+        :rtype: str
+        """
+        # Hash Table
+        #### Time Complexity: O(N), traverse through the size of secret or guess
+        #### Space Complexity: O(1), size of hashmap has up to 10 digits from 0 to 9
+        bulls = cows = 0
+        freq_secret, freq_guess = collections.defaultdict(int), collections.defaultdict(int)
+        for a,b in zip(secret, guess):
+            if a == b:
+                bulls += 1
+            else:
+                freq_secret[a] += 1
+                freq_guess[b] += 1
+        for key in freq_secret:
+            cows += min(freq_secret[key], freq_guess[key])
+        return str(bulls) + "A" + str(cows) + "B"
+```
+
+
+### Hash Table
+
+```Python
+class Solution(object):
+    def getHint(self, secret, guess):
+        """
+        :type secret: str
+        :type guess: str
+        :rtype: str
+        """
+        # Hash Table
+        #### Time Complexity: O(N), traverse through the size of secret or guess
+        #### Space Complexity: O(1), size of hashmap has up to 10 digits from 0 to 9
+        counter = dict()
+        for digit in secret:
+            if digit not in counter:
+                counter[digit] = 1
+            else:
+                counter[digit] += 1
+        bulls = cows = 0
+        for index,digit in enumerate(guess):
+            if digit in counter:
+                # If bull found
+                if digit == secret[index]:
+                    bulls += 1
+                    if counter[digit] <= 0:
+                        cows -= 1
+                # If cow found
+                if digit != secret[index]:
+                    if counter[digit] > 0:
+                        cows += 1
+                # Update counter by decrementing the digit frequency
+                counter[digit] -= 1
+        return "{}A{}B".format(bulls, cows)
+```
