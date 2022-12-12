@@ -6,6 +6,10 @@ Given two strings ```s``` and ```p```, return an array of all the start indices 
 
 An __Anagram__ is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
+![image](https://user-images.githubusercontent.com/35042430/207155100-685a397d-6a97-40c7-8171-13bddaa06f85.png)
+
+---
+
 __Example 1:__
 
 ```
