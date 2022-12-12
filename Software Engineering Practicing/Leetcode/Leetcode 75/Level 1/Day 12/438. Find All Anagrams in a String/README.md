@@ -38,3 +38,47 @@ s and p consist of lowercase English letters.
 ```
 
 ---
+
+### Sliding Window
+
+```Python
+class Solution(object):
+    def findAnagrams(self, s, p):
+        """
+        :type s: str
+        :type p: str
+        :rtype: List[int]
+        """
+        # Sliding Windows
+        #### Time Complexity: O(N), traverse through the length of input string s
+        #### Space Complexity: O(1), fixed at 26 lowercase characters
+        if len(p) > len(s):
+            return []
+        p_counter, s_counter = dict(), dict()
+        for i in range(len(p)):
+            # Calculate the frequency of character p[i] in p
+            p_counter[p[i]] = 1 + p_counter.get(p[i], 0)
+            # Populate the s_counter with the size equals to p_counter
+            s_counter[s[i]] = 1 + s_counter.get(s[i], 0)
+        # Check if s_counter == p_counter, then the start index = 0, else an empty list
+        res = [0] if s_counter == p_counter else []
+        start = 0
+        # Check the remaining of the string s
+        for end in range(len(p), len(s)):
+            # Update the frequency counter
+            s_counter[s[end]] = 1 + s_counter.get(s[end], 0)
+            # Update the s_counter frequency of the start pointer character as start pointer moving to the right
+            s_counter[s[start]] -= 1
+            # Check if frequency of the character reduced to 0
+            if s_counter[s[start]] == 0:
+                # Pop the element out of the s_counter
+                s_counter.pop(s[start])
+            # Increment start pointer
+            start += 1
+            # Check the new s_counter == p_counter:
+            if s_counter == p_counter:
+                res.append(start)
+        return res
+```
+
+
