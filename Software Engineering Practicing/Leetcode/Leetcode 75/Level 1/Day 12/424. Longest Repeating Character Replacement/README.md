@@ -35,3 +35,48 @@ s consists of only uppercase English letters.
 
 ---
 
+### Sliding Window and Hash Table
+
+```Python
+class Solution(object):
+    def characterReplacement(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        # Sliding Window and Hash Table
+        #### Time Complexity: O(N), traverse through the length of input s
+        #### Space Complexity: O(1), hash table keeps up to the size of 26 characters
+        count = dict()
+        ans = 0
+        left = 0
+        max_frequency = 0
+        for right in range(len(s)):
+            '''
+            if s[right] not in count:
+                count[s[right]] = 1
+            else:
+                count[s[right]] += 1
+            '''
+            # Increment the frequency of s[right] by 1. If s[right] not in count before, assign 0                        
+            count[s[right]] = 1 + count.get(s[right] , 0) 
+            # Check the maximum frequency in counter
+            max_frequency = max(max_frequency, count[s[right]])
+            # Check if current sliding window is is valid. 
+            # If sliding window equals to or is smaller than k, expand the window by shifting by incrementing the right pointer
+            if (right - left + 1) - max_frequency <= k:
+                # Move right pointer to the right
+                right += 1
+            # If sliding window is bigger than k, shrink the window by incrementing left pointer
+            else:
+                # Reduce the frequency of element at left pointer in the counter
+                count[s[left]] -= 1
+                # Move the left pointer to the right
+                left += 1
+            # Keep up the maximum size of the sliding window
+            ans = max(ans, right - left)
+        return ans
+```
+
+
