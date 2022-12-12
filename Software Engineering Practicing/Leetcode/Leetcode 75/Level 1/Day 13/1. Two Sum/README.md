@@ -80,8 +80,20 @@ class Solution(object):
             if complement in memo and memo[complement] != i:
                 return [i, memo[complement]]
 ```
+
+```Python
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
         # Hash Table
         ### One Pass
+        #### Time Complexity: O(N), traverse through the size N of input nums
+        #### Space Complexity: O(N), stack keep up to the size of N
+        # Hash Table
         memo = dict()
         for i in range(len(nums)):
             complement = target - nums[i]
@@ -89,6 +101,4 @@ class Solution(object):
                 return [i, memo[complement]]
             else:
                 memo[nums[i]] = i
-
-
 ```
