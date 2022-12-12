@@ -60,3 +60,35 @@ class Solution(object):
 
 __Follow-up:__ Can you come up with an algorithm that is less than ```O(n^2)``` time complexity?
 
+```Python
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        # Hash Table
+        ### Two Pass
+        #### Time Complexity: O(N), traverse through the size N of input nums
+        #### Space Complexity: O(N), stack keep up to the size of N
+        memo = dict()
+        for i in range(len(nums)):
+            memo[nums[i]] = i
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in memo and memo[complement] != i:
+                return [i, memo[complement]]
+```
+        # Hash Table
+        ### One Pass
+        memo = dict()
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in memo:
+                return [i, memo[complement]]
+            else:
+                memo[nums[i]] = i
+
+
+```
