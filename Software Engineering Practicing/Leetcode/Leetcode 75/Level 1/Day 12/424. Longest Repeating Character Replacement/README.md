@@ -64,6 +64,7 @@ class Solution(object):
             # Check the maximum frequency in counter
             max_frequency = max(max_frequency, count[s[right]])
             # Check if current sliding window is is valid. 
+            # Left and right pointers are inclusive in sliding window, hence the size of the window is right - left + 1
             # If sliding window equals to or is smaller than k, expand the window by shifting by incrementing the right pointer
             if (right - left + 1) - max_frequency <= k:
                 # Move right pointer to the right
