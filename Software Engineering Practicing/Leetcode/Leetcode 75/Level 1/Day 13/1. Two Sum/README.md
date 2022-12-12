@@ -40,3 +40,23 @@ Only one valid answer exists.
 ```
 
 ---
+
+```Python
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        # Brute Force
+        ### Time Limit Exceeded
+        res = list()
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                if nums[i] + nums[j] == target:
+                    return [i,j]
+```
+
+__Follow-up:__ Can you come up with an algorithm that is less than ```O(n^2)``` time complexity?
+
