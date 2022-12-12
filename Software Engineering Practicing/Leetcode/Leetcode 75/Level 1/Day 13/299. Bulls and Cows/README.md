@@ -17,6 +17,33 @@ The hint should be formatted as ```"xAyB"```, where ```x``` is the number of bul
 
 ---
 
+__Example 1:__
 
+```
+Input: secret = "1807", guess = "7810"
+Output: "1A3B"
+Explanation: Bulls are connected with a '|' and cows are underlined:
+"1807"
+  |
+"7810"
+```
 
+__Example 2:__
+
+```
+Input: secret = "1123", guess = "0111"
+Output: "1A1B"
+Explanation: Bulls are connected with a '|' and cows are underlined:
+"1123"        "1123"
+  |      or     |
+"0111"        "0111"
+Note that only one of the two unmatched 1s is counted as a cow since the non-bull digits can only be rearranged to allow one 1 to be a bull.
+```
+
+__Constraints:__
+```
+1 <= secret.length, guess.length <= 1000
+secret.length == guess.length
+secret and guess consist of digits only.
+```
  
