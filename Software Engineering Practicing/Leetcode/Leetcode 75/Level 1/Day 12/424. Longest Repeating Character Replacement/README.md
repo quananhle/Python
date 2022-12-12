@@ -80,6 +80,41 @@ class Solution(object):
         return ans
 ```
 
+```Python
+class Solution(object):
+    def characterReplacement(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        # Sliding Window
+        #### Time Complexity: O(N), traverse through the length of input s
+        #### Space Complexity: O(1), hash table keeps up to the size of 26 characters        
+        start, max_frequency, longest_substring_length = 0, 0, 0
+        freq = dict()
+        for end in range(len(s)):
+            # Frequency counter of characters in s
+            if s[end] not in freq:
+                freq[s[end]] = 1
+            else:
+                freq[s[end]] += 1
+            # Check the current maximum frequency in counter
+            max_frequency = max(max_frequency, freq[s[end]])
+            # Check if current sliding window is is valid. 
+            # Left and right pointers are inclusive in sliding window, hence the size of the window is right - left + 1
+            is_valid = (end + 1 - start - max_frequency <= k)
+            # If sliding window is bigger than k, shrink the window by incrementing left pointer
+            if not is_valid:
+                # Reduce the frequency of element at left pointer in the counter
+                freq[s[start]] -= 1
+                # Move the left pointer to the right
+                start += 1
+            # Record the maximum size of the sliding window                
+            longest_substring_length = end + 1 - start
+        return longest_substring_length
+```
+
 ### Sliding Window and Hash Set
 
 
