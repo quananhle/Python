@@ -80,4 +80,43 @@ class Solution(object):
         return ans
 ```
 
+### Sliding Window and Hash Set
 
+
+```Python
+class Solution(object):
+    def characterReplacement(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        # Sliding Window and Hash Set
+        #### Time Complexity: O(26N), traverse through the length of input s while traversing through up to 26 alphabet characters
+        #### Space Complexity: O(1), hash table keeps up to the size of 26 characters        
+        
+        # Check if window size - count less than k operations
+        def helper(start, end, count, k):
+            # Start and end pointers are inclusive in sliding window, hence the size of the window is end - start + 1
+            return end + 1 - start - count <= k
+
+        hash_set = set(s)
+        ans = 0
+        for letter in hash_set:
+            start = count = 0
+            for end in range(len(s)):
+                # Increment the frequency
+                if s[end] == letter:
+                    count += 1
+                # If sliding window is bigger than k, shrink the window by incrementing left pointer
+                if not helper(start, end, count, k):
+                    # Reduce the frequency of element at left pointer in the counter
+                    if s[start] == letter:
+                        count -= 1
+                    # Move the left pointer to the right                        
+                    start += 1
+                else:
+                    # Keep up the maximum size of the sliding window
+                    ans = max(ans, end + 1 - start)
+        return ans
+```
