@@ -81,4 +81,48 @@ class Solution(object):
         return res
 ```
 
+```Python
+class Solution(object):
+    def findAnagrams(self, s, p):
+        """
+        :type s: str
+        :type p: str
+        :rtype: List[int]
+        """
+        # Sliding Windows
+        #### Time Complexity: O(N), traverse through the length of input string s
+        #### Space Complexity: O(1), fixed at 26 lowercase characters
+        if len(p) > len(s):
+            return []
+        res = list()
+        '''
+        p_counter, s_counter = dict(), dict()
+        for i in range(len(p)):
+            p_counter[p[i]] = 1 + p_counter.get(p[i], 0)
+        for i in range(len(s)):
+            s_counter[s[i]] = 1 + s_counter.get(s[i], 0)
+        '''
+        p_counter, s_counter = collections.defaultdict(int), collections.defaultdict(int)
+        for i in range(len(p)):
+            p_counter[p[i]] += 1
+        for end in range(len(s)):
+            # Initialize the the start of the sliding window
+            # Left and right pointers are inclusive in sliding window, hence the size of the window is end - start + 1            
+            start = end - len(p) + 1
+            # Calculate the frequency of character in s with right pointer
+            s_counter[s[end]] += 1
+            # Check the sliding windows when size of the window is larger than p
+            if end >= len(p):
+                # If the frequency of the character is 1, remove the element
+                if s_counter[s[end-len(p)]] == 1:
+                    s_counter.pop(s[end-len(p)])
+                # If the frequency of the character is larger than 1, decrement the frequency
+                else:
+                    s_counter[s[end - len(p)]] -= 1
+            # Check if s_counter == p_counter, record the start of the sliding window
+            if s_counter == p_counter:
+                res.append(start)
+        return res
+```
+
 
