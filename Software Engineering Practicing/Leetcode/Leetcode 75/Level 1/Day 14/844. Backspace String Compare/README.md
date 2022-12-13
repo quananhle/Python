@@ -35,4 +35,42 @@ s and t only contain lowercase letters and '#' characters.
 ```
 ---
 
+### Stack (FIFO)
+
+```Python
+class Solution(object):
+    def backspaceCompare(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        # Stack (FIFO)
+        #### Time Complexity: O(N + M), traverse through input s and t
+        #### Space Complexity: O(N + M), stacks keep up to the size of s and t 
+        def build(string):
+            res = list()
+            for char in string:
+                if char != "#":
+                    res.append(char)
+                elif res:
+                    res.pop()
+            return "".join(res)
+        return build(s) == build(t)
+        """
+        def build(string):
+            res = list()
+            for c in string:
+                if c != "#":
+                    res.append(c)
+                else:
+                    if not res:
+                        continue
+                    else:
+                        res.pop()
+            return res
+        return build(s) == build(t)
+        """
+```
+
 __Follow up:__ Can you solve it in ```O(n)``` time and ```O(1)``` space?
