@@ -74,3 +74,94 @@ class Solution(object):
 ```
 
 __Follow up:__ Can you solve it in ```O(n)``` time and ```O(1)``` space?
+
+```Python
+class Solution(object):
+    def backspaceCompare(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        # Follow up: O(n) time and O(1) space
+        # Two Pointers
+        def get_char(string, length):
+            char, skip_count = '', 0
+            while length >= 0 and not char:
+                # If encounter '#', increment skip_count
+                if string[length] == '#':
+                    skip_count += 1
+                # If current character is not backspace character '#' nor positioned after a backspace character
+                elif skip_count == 0:
+                    char = string[length]
+                # If previous character is backspace '#', decrement skip_count
+                else:
+                    skip_count  -= 1
+                length -= 1
+            return char, length
+        s1 = len(s) - 1
+        t1 = len(t) - 1
+        while s1 >= 0 or t1 >= 0:
+            c1 = c2 = ''
+            if s1 >= 0:
+                c1, s1 = get_char(s, s1)
+            if t1 >= 0:
+                c2, t1 = get_char(t, t1)
+            if c1 != c2:
+                return False
+        return True
+        '''
+        s = "ab#c"
+        t = "ad#c"
+        while 3 >= 0 or 3 >= 0:
+            s1 = 3 > 0: get_char("ab#c", 3)
+                            length = 3 > 0 and char == '':
+                                skip_count  == 0:
+                                    char = 'c'
+                                length = 2
+                            return 'c', 2
+            t1 = 3 > 0: get_char("ad#c", 3)
+                            length = 3 > 0 and char == '':
+                                skip_count  == 0:
+                                    char = 'c'
+                                length = 2
+                            return 'c', 2
+            c1 == c2
+        while 2 >= 0 or 2 >= 0:
+            s1 = 2 > 0: get_char("ab#c", 2)
+                            length = 2 > 0 and char == '':
+                                ad#c[2] == '#':
+                                    skip_count  += 1
+                                length = 1
+                            length = 1 > 0 and char == '':
+                                ab#c[1] = 'b' != '#'
+                                skip_count = 1 != 0
+                                else:
+                                    skip_count  -= 1
+                            length = 0 == 0 and char == '':
+                                ab#c[0] = 'a' != '#'
+                                skip_count == 0:
+                                    char = 'a'
+                                length = -1
+                            return 'a', -1
+            t1 = 2 > 0: get_char("ad#c", 2)
+                            length = 2 > 0 and char == '':
+                                ad#c[2] == '#':
+                                    skip_count  += 1
+                                length = 1
+                            length = 1 > 0 and char == '':
+                                ad#c[1] = 'd' != '#'
+                                skip_count = 1 != 0
+                                else:
+                                    skip_count  -= 1
+                            length = 0 == 0 and char == '':
+                                ad#c[0] = 'a' != '#'
+                                skip_count == 0:
+                                    char = 'a'
+                                length = -1
+                            return 'a', -1
+            c1 == c2            
+        while s1 = -1 < 0 or t1 = -1 < 0:
+            return True
+        '''
+```
