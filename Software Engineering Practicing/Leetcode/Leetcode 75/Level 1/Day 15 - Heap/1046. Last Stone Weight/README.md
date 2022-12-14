@@ -44,6 +44,8 @@ __Constraints:__
 
 ---
 
+### Sort Operation
+
 ```Python
 class Solution(object):
     def lastStoneWeight(self, stones):
@@ -64,6 +66,8 @@ class Solution(object):
                 stones.append(heaviest - second_heaviest)
         return stones[-1] if stones else 0
 ```
+
+### Getting index position of maximum value with Index()
 
 ```Python
     def lastStoneWeight(self, stones):
@@ -87,6 +91,8 @@ class Solution(object):
         return stones[0] if stones else 0
 ```
 
+### Heapify
+
 ```Python
     def lastStoneWeight(self, stones):
         """
@@ -108,6 +114,8 @@ class Solution(object):
                heapq.heappush(stones, heaviest - second_heaviest)
         return -heapq.heappop(stones) if stones else 0
 ```
+
+### Bucket Sort
 
 ```Python
     def lastStoneWeight(self, stones):
