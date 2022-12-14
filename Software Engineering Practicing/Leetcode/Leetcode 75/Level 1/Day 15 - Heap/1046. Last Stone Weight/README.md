@@ -76,7 +76,7 @@ class Solution(object):
         while current_weight > 0:
             # If there is not any stone at the current weight
             if bucket[current_weight] == 0:
-                # Decrement the iteration
+                # Decrement the iteration to find the next stone
                 current_weight -= 1
             # Found the current heaviest stone in the bucket
             elif heaviest == 0:
@@ -86,7 +86,7 @@ class Solution(object):
                 if bucket[current_weight] == 1:
                     # Get the heaviest weight
                     heaviest = current_weight
-                # Decrement the iteration
+                # Decrement the iteration to find the next stone
                 current_weight -= 1
             # Found the current second heaviest stone in the bucket
             else:
