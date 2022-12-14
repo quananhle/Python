@@ -2,17 +2,15 @@
 
 #### Difficulty: Easy
 
-You are given an array of integers stones where stones[i] is the weight of the ith stone.
+You are given an array of integers ```stones``` where ```stones[i]``` is the weight of the i<sup>th</sup> stone.
 
-We are playing a game with the stones. On each turn, we choose the heaviest two stones and smash them together. Suppose the heaviest two stones have weights x and y with x <= y. The result of this smash is:
+We are playing a game with the stones. On each turn, we choose the __heaviest two stones__ and smash them together. Suppose the heaviest two stones have weights ```x``` and ```y``` with ```x <= y```. The result of this smash is:
 
-If x == y, both stones are destroyed, and
-If x != y, the stone of weight x is destroyed, and the stone of weight y has new weight y - x.
-At the end of the game, there is at most one stone left.
+- If ```x == y```, both stones are destroyed, and
+- If ```x != y```, the stone of weight ```x``` is destroyed, and the stone of weight ```y``` has new weight ```y - x```.
+At the end of the game, there is __at most one__ stone left.
 
-Return the weight of the last remaining stone. If there are no stones left, return 0.
-
- 
+Return _the weight of the last remaining stone_. If there are no stones left, return ```0```.
 
 ![image](https://user-images.githubusercontent.com/35042430/207638530-a4384603-899f-401a-8c98-a348b4d1a527.png)
 
@@ -65,7 +63,6 @@ class Solution(object):
             stones[i] *= -1
         heapq.heapify(stones)
         while len(stones) > 1:
-            print (stones)
             heaviest = heapq.heappop(stones)
             second_heaviest = heapq.heappop(stones)
             if heaviest == second_heaviest:
