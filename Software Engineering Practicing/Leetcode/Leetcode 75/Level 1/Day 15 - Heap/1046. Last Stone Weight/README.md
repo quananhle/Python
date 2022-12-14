@@ -16,6 +16,34 @@ Return _the weight of the last remaining stone_. If there are no stones left, re
 
 ---
 
+__Example 1:__
+
+```
+Input: stones = [2,7,4,1,8,1]
+Output: 1
+Explanation: 
+We combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,
+we combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,
+we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,
+we combine 1 and 1 to get 0 so the array converts to [1] then that's the value of the last stone.
+```
+
+__Example 2:__
+
+```
+Input: stones = [1]
+Output: 1
+```
+
+__Constraints:__
+
+```
+1 <= stones.length <= 30
+1 <= stones[i] <= 1000
+```
+
+---
+
 ```Python
 class Solution(object):
     def lastStoneWeight(self, stones):
@@ -26,7 +54,6 @@ class Solution(object):
         # Sort()
         #### Time Complexity: O(N^2logN), sort operations takes O(NlogN), sort inside the loop every time
         #### Space Complexity: O(N), modify the input list takes O(N) to O(1)        
-        """
         while len(stones) > 1:
             stones.sort()
             heaviest = stones.pop()
@@ -36,12 +63,17 @@ class Solution(object):
             else:
                 stones.append(heaviest - second_heaviest)
         return stones[-1] if stones else 0
-        """
+```
 
+```Python
+    def lastStoneWeight(self, stones):
+        """
+        :type stones: List[int]
+        :rtype: int
+        """
         # Index()
         #### Time Complexity: O(N^2), sort operations takes O(NlogN), adding the new stone N-1 times while looping through length N of input list
         #### Space Complexity: O(N), modify the input list takes O(N) to O(1)        
-        """
         def find_heaviest():
             index_of_largest = stones.index(max(stones))
             stones[index_of_largest], stones[-1] = stones[-1], stones[index_of_largest]
@@ -53,12 +85,17 @@ class Solution(object):
             if y != x:
                 stones.append(y - x)
         return stones[0] if stones else 0
-        """
+```
 
+```Python
+    def lastStoneWeight(self, stones):
+        """
+        :type stones: List[int]
+        :rtype: int
+        """
         # Heappify()
         #### Time Complexity: O(NlogN), converting an array into a Heap takes O(N), heappop() and heappush() takes O(logN) time while looping through length N of input list
         #### Space Complexity: O(N) or O(log⁡N), O(N) to heapify() and create priority_queue
-        """      
         for i in range(len(stones)):
             stones[i] *= -1
         heapq.heapify(stones)
@@ -70,8 +107,14 @@ class Solution(object):
             else:
                heapq.heappush(stones, heaviest - second_heaviest)
         return -heapq.heappop(stones) if stones else 0
-        """
+```
 
+```Python
+    def lastStoneWeight(self, stones):
+        """
+        :type stones: List[int]
+        :rtype: int
+        """
         # Bucket Sort
         ### This approach is only viable when the maximum stone weight is small, or is at least smaller than the number of stones.
         # Set up the bucket list
