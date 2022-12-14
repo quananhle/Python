@@ -117,9 +117,19 @@ class Solution(object):
                     k -= 1
         return "".join(stack)
 ```
+
+### Stack
     
-        # Stack
+```Python
+class Solution(object):
+    def decodeString(self, s):
         """
+        :type s: str
+        :rtype: str
+        """
+        # Stack
+        #### Time Complexity: O(maxK*N), maxK is the maximum value of k and N is the length of a given string s
+        #### Space Complexity: O(N + M), where M is the number of letters(a-z) and N is the number of digits(0-9) in string s
         stack = list()
         k, curr_string = 0, ""
         for char in s:
@@ -140,10 +150,19 @@ class Solution(object):
             else:
                 curr_string += char
         return curr_string
-        """
+```
 
-        # Two Stacks
+### Two Stacks
+    
+```Python
+class Solution(object):
+    def decodeString(self, s):
         """
+        :type s: str
+        :rtype: str
+        """
+        #### Time Complexity: O(maxK*N), maxK is the maximum value of k and N is the length of a given string s
+        #### Space Complexity: O(N + M), where M is the number of letters(a-z) and N is the number of digits(0-9) in string s        
         str_stack, cnt_stack = list(), list()
         k, curr_string = 0, ""
         for char in s:
@@ -159,6 +178,4 @@ class Solution(object):
             else:
                 curr_string += char
         return curr_string
-        """
-
 ```
