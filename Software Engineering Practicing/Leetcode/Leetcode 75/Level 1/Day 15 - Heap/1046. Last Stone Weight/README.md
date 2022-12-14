@@ -125,6 +125,8 @@ class Solution(object):
         """
         # Bucket Sort
         ### This approach is only viable when the maximum stone weight is small, or is at least smaller than the number of stones.
+        #### Time Complexity: O(N + M), loop through the input array of size N and the new input array of size M
+        #### Space Complexity: O(M), space required to build bucket      
         # Set up the bucket list
         max_weight = max(stones)
         bucket = [0] * (max_weight + 1)
