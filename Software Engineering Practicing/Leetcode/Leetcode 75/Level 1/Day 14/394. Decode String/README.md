@@ -42,6 +42,8 @@ All the integers in s are in the range [1, 300].
 
 ---
 
+![image](https://leetcode.com/problems/decode-string/solutions/858759/Figures/394/decode_overview.png)
+
 ### Regular Expression
 
 ```Python
@@ -58,6 +60,28 @@ class Solution(object):
 ```
 
 ### Stack
+
+![image](https://user-images.githubusercontent.com/35042430/207691737-408386e6-51c1-470d-a85d-cde18b0b3fa4.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207691770-e2f12707-03d4-4b32-9a6b-b52d5ecbc627.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207691812-0ea302fc-7dca-4bb6-9d98-1c07fd432634.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207691839-6683c685-e3e9-40c4-a0de-1c502a3cc52d.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207691880-4b455501-faae-4435-a58a-08953acd96a2.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207691914-9cffdefd-91d4-4745-8b63-de9abfb1d935.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207691944-9d51e7f8-90dd-48b7-a7fa-ce6344ac54d2.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207691964-7df5102a-2cf7-4d5d-bf70-b0901415a344.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207691995-47afb77d-1325-4e05-92d4-122acc024f79.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207692030-9f03ef50-a4e2-4415-b4bb-3b95d1e0bfe0.png)
+
+![image](https://user-images.githubusercontent.com/35042430/207692056-a4d2579a-a5f6-466b-baf0-383655868492.png)
 
 ```Python
 class Solution(object):
