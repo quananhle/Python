@@ -69,7 +69,7 @@ class Solution(object):
         # Bucket sort
         for stone_weight in stones:
             bucket[stone_weight] += 1
-        # Scan through the buckets
+        # Scan through the bucket
         heaviest = 0
         current_weight = max_weight
         # Start from the heaviest stone in bucket
