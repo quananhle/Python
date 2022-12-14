@@ -42,6 +42,8 @@ All the integers in s are in the range [1, 300].
 
 ---
 
+### Regular Expression
+
 ```Python
 class Solution(object):
     def decodeString(self, s):
@@ -50,16 +52,23 @@ class Solution(object):
         :rtype: str
         """
         # Regular Expression
-        """
         while '[' in s:
             s = re.sub(r'(\d+)\[([a-z]*)\]', lambda x: int(x.group(1)) * (x.group(2)), s)
         return s
-        """
+```
 
+### Stack
+
+```Python
+class Solution(object):
+    def decodeString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
         # Stack
         #### Time Complexity: O(N*maxK^countK), where maxK is the maximum length of encoded string, countK is the number of nest k values, all were performed inside the loop of input size N
         #### Space Complexity: O(N*maxK^countK), where maxK is the maximum value of k, countK is the count of nested k values, and n is the maximum length of encoded string.
-        """
         stack = list()
         for i in range(len(s)):
             if s[i] != ']':
@@ -83,7 +92,7 @@ class Solution(object):
                         stack.append(decoded_string[i])
                     k -= 1
         return "".join(stack)
-        """
+```
     
         # Stack
         """
