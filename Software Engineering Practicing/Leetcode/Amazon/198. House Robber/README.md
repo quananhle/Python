@@ -33,3 +33,62 @@ __Constraints:__
 ```
 
 ---
+
+```Python
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        """
+        This particular problem and most of others can be approached using the following sequence:
+
+        1. Find recursive relation
+        2. Recursive (top-down)
+        3. Recursive + memo (top-down)
+        4. Iterative + memo (bottom-up)
+        5. Iterative + N variables (bottom-up)        
+        """
+        # Top-Down Dynamic Programming
+        def helper(houses, idx):
+            if idx < 0:
+                return 0
+            return max(helper(houses, idx - 2) + houses[idx], helper(houses, idx - 1))
+        return helper(nums, len(nums)-1)
+```
+
+```Python
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # Dynamic Programming with Tabulation
+        ans = 0
+        if len(nums) <= 2:
+            return max(nums)
+        memo = [0] * len(nums)
+        memo[0] = nums[0]
+        memo[1] = max(nums[0], nums[1])
+        for i in range(2, len(nums)):
+            memo[i] = max(memo[i-1], memo[i-2] + nums[i])
+        return memo[-1]
+```
+
+```Python
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # Iterative Dynamic Programming
+        house1, house2 = 0, 0
+        for num in nums:
+            tmp = house1
+            house1 = max(house2 + num, house1)
+            house2 = tmp
+        return house1
+```
