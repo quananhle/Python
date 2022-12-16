@@ -2,7 +2,7 @@
 
 #### Difficulty: Medium
 
-Dynamic Programming
+```Tag:``` [```Dynamic Programming```](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/README.md)
 
 Given two strings ```text1``` and ```text2```, return _the length of their __longest common subsequence___. If there is no __common subsequence__, return ```0```.
 
@@ -49,6 +49,8 @@ text1 and text2 consist of only lowercase English characters.
 
 ---
 
+#### Top-Down Recursive
+
 ```Python
 class Solution(object):
     def longestCommonSubsequence(self, text1, text2):
@@ -60,7 +62,6 @@ class Solution(object):
         # Top-Down Recursive
         #### Time Complexity: 0(M * N), traverse through the length of 2 input lists
         #### Space Complexity: O(M * N), recursively keep up to the size until base cases reached
-        """
         def dp(p1, p2):
             # Base cases:
             # Emtpy strings
@@ -77,21 +78,22 @@ class Solution(object):
                 # Find next matching characters in 2 possible cases and keep the maximum count
                 return max(dp(p1 + 1, p2), dp(p1, p2 + 1))
         return dp(0, 0)
+```
+
+### Bottom-Up Dynamic Programming with 2D Tabulation
+
+```Python
+class Solution(object):
+    def longestCommonSubsequence(self, text1, text2):
+        """
+        :type text1: str
+        :type text2: str
+        :rtype: int
         """
         # Bottom-Up Dynamic Programming with 2D Tabulation
         #### Time Complexity: 0(M * N), traverse through the length of 2 input lists
         #### Space Complexity: O(M * N), recursively keep up to the size until base cases reached
-        """
-        memo = [[0] * (len(text2)+1) for _ in range(len(text1)+1)]
-        for col in reversed(range(len(text2))):
-            for row in reversed(range(len(text1))):
-                if text2[col] == text1[row]:
-                    memo[row][col] = 1 + memo[row+1][col+1]
-                else:
-                    memo[row][col] = max(memo[row+1][col], memo[row][col+1])
-        return memo[0][0]
-        """
-        """
+        '''
         # Make a grid of 0's with len(text2) + 1 columns and len(text1) + 1 rows.        
         memo = [[0] * (len(text2)+1) for _ in range(len(text1)+1)]
         # Iterate up each column, starting from the last one.
@@ -105,12 +107,31 @@ class Solution(object):
                     memo[row][col] = max(memo[row+1][col], memo[row][col+1])
         # The original problem's answer is in dp_grid[0][0]. Return it.
         return memo[0][0]
+        '''
+        memo = [[0] * (len(text2)+1) for _ in range(len(text1)+1)]
+        for col in reversed(range(len(text2))):
+            for row in reversed(range(len(text1))):
+                if text2[col] == text1[row]:
+                    memo[row][col] = 1 + memo[row+1][col+1]
+                else:
+                    memo[row][col] = max(memo[row+1][col], memo[row][col+1])
+        return memo[0][0]
+```
+
+
+```Python
+class Solution(object):
+    def longestCommonSubsequence(self, text1, text2):
+        """
+        :type text1: str
+        :type text2: str
+        :rtype: int
         """
         # Bottom-Up Dynamic Programming with 1D Tabulation
         #### Time Complexity: 0(M * N), traverse through the length of 2 input lists
         #### Space Complexity: O(min(M, N)), recursively keep up to the size of shorter string
         # If text1 doesn't reference the shortest string, swap them.
-        """
+        ```
         if len(text1) < len(text2):
             text1, text2 = text2, text1
         previous = [0] * (len(text1) + 1)
@@ -123,8 +144,7 @@ class Solution(object):
                     current[row] = max(previous[row], current[row+1])
             previous = current
         return previous[0]
-        """
-        """
+        ```
         if len(text1) < len(text2):
             text1, text2 = text2, text1
         previous = [0] * (len(text1) + 1)
@@ -137,5 +157,4 @@ class Solution(object):
                     current[col] = max(previous[col], current[col+1])
             previous = current
         return previous[0]   
-        """     
 ```
