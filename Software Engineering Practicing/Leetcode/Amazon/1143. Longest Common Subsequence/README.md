@@ -44,3 +44,5 @@ __Constraints:__
 1 <= text1.length, text2.length <= 1000
 text1 and text2 consist of only lowercase English characters.
 ```
+
+---
