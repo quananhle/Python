@@ -40,3 +40,28 @@ __Constraints:__
 ```
 
 ---
+
+```Python
+class Solution(object):
+    def uniqueOccurrences(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: bool
+        """
+        # Hash Map and Hash set
+        #### Time Complexity: O(N), traverse through the size of input arr
+        #### Space Complexity: O(N), extra space required to build hash map
+        """
+        counter = dict()
+        for num in arr:
+            counter[num] = 1 + counter.get(num, 0)
+        freq_set = set()
+        for elem,freq in counter.items():
+            freq_set.add(freq)
+        return len(freq_set) == len(counter.values())
+        """
+        counter = dict()
+        for num in arr:
+            counter[num] = 1 + counter.get(num, 0)
+        return len(set(arr)) == len(set(counter.values()))
+```
