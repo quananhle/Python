@@ -41,6 +41,8 @@ __Constraints:__
 
 ---
 
+### Hash Map and Hash Set
+
 ```Python
 class Solution(object):
     def uniqueOccurrences(self, arr):
@@ -48,10 +50,10 @@ class Solution(object):
         :type arr: List[int]
         :rtype: bool
         """
-        # Hash Map and Hash set
+        # Hash Map and Hash Set
         #### Time Complexity: O(N), traverse through the size of input arr
         #### Space Complexity: O(N), extra space required to build hash map
-        """
+        '''
         counter = dict()
         for num in arr:
             counter[num] = 1 + counter.get(num, 0)
@@ -59,7 +61,7 @@ class Solution(object):
         for elem,freq in counter.items():
             freq_set.add(freq)
         return len(freq_set) == len(counter.values())
-        """
+        '''
         counter = dict()
         for num in arr:
             counter[num] = 1 + counter.get(num, 0)
