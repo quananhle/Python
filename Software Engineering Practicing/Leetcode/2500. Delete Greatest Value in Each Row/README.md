@@ -52,3 +52,53 @@ n == grid[i].length
 ```
 
 ---
+
+### One Liner
+
+```Python
+class Solution(object):
+    def deleteGreatestValue(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        return sum(max(col) for col in zip(*(sorted(row, reverse=True) for row in grid)))
+```
+
+```Python
+class Solution(object):
+    def deleteGreatestValue(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        ans = 0
+        for row in grid:
+            row.sort()
+        while grid and grid[0]:
+            res = [grid[i][-1] for i in range(len(grid))]
+            ans += max(res)
+            for row in grid:
+                row.pop()
+        return ans
+```
+
+### Zip()
+
+```Python
+class Solution(object):
+    def deleteGreatestValue(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        ans = 0
+        # Sort each row
+        for row in grid:
+            row.sort()
+        # Transpose grid; rows become cols and cols become rows
+        for col in zip(*grid):
+            # Sum the maxs from each row
+            ans += max(col)
+        return ans
+```
