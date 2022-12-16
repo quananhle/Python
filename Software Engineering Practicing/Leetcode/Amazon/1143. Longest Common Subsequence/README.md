@@ -82,6 +82,14 @@ class Solution(object):
 
 ### Bottom-Up Dynamic Programming with 2D Tabulation
 
+![image](https://user-images.githubusercontent.com/35042430/208011171-794c5f80-5eb6-45ca-8965-6fdca7342480.png)
+
+![image](https://user-images.githubusercontent.com/35042430/208011232-3b018ed9-1771-4254-b359-670dc95126cd.png)
+
+![image](https://user-images.githubusercontent.com/35042430/208011263-0295a76d-c516-4a97-bbee-d5119743b3e1.png)
+
+![image](https://user-images.githubusercontent.com/35042430/208011302-7d743aee-1b29-4bbb-af51-4b41225c2314.png)
+
 ```Python
 class Solution(object):
     def longestCommonSubsequence(self, text1, text2):
