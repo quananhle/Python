@@ -39,3 +39,38 @@ s consists of parentheses only '()[]{}'.
 ```
 
 ---
+
+```Python
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        """
+        stack = list()
+        dictionary = {'}':'{' , ')':'(' , ']':'['}
+        for c in s:
+            if c in dictionary:
+                if stack:
+                    paren = stack.pop()
+                else:
+                    paren = '#'
+                if dictionary[c] != paren:
+                    return False
+            else:
+                stack.append(c)
+        return not stack
+        """
+        stack = list()
+        brackets = {'{':'}' , '(':')' , '[':']'}
+        open_par = set(['(', '{', '['])
+        for c in s:
+            if c in open_par:
+                stack.append(c)
+            elif stack and brackets[stack[-1]] == c:
+                stack.pop()
+            else:
+                return False
+        return stack == []
+```
