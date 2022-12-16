@@ -9,3 +9,7 @@ A __subsequence__ of a string is a new string generated from the original string
 - For example, ```"ace"``` is a subsequence of ```"abcde"```.
 
 A __common subsequence__ of two strings is a subsequence that is common to both strings.
+
+![image](https://user-images.githubusercontent.com/35042430/208002321-3291acc0-dfa9-4f85-9298-bf4432120093.png)
+
+---
