@@ -34,6 +34,8 @@ __Constraints:__
 
 ---
 
+### Top-Down Recursive
+
 ```Python
 class Solution(object):
     def rob(self, nums):
@@ -58,6 +60,8 @@ class Solution(object):
         return helper(nums, len(nums)-1)
 ```
 
+### Bottom-Up Dynamic Programming with Tabulation
+
 ```Python
 class Solution(object):
     def rob(self, nums):
@@ -76,6 +80,8 @@ class Solution(object):
             memo[i] = max(memo[i-1], memo[i-2] + nums[i])
         return memo[-1]
 ```
+
+### Iterative Bottom-Up Dynamic Programming
 
 ```Python
 class Solution(object):
