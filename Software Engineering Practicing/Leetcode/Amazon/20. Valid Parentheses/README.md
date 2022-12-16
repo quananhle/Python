@@ -13,3 +13,29 @@ An input string is valid if:
 ![image](https://user-images.githubusercontent.com/35042430/207241914-2de3acf7-bcc0-42ae-9897-ed929081e03a.png)
 
 ---
+
+__Example 1:__
+```
+Input: s = "()"
+Output: true
+```
+
+__Example 2:__
+```
+Input: s = "()[]{}"
+Output: true
+```
+
+__Example 3:__
+```
+Input: s = "(]"
+Output: false
+```
+
+__Constraints:__
+```
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+```
+
+---
