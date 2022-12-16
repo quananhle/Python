@@ -13,3 +13,5 @@ Recall that there are two different techniques we can use to implement a dynamic
 - __Tabulation__ uses a table to keep track of subproblem results and works in a __bottom-up__ manner: solving the smallest subproblems before the large ones, in an __iterative__ manner. Often, people use the words ```"tabulation"``` and ```"dynamic programming"``` interchangeably.
 
 For most people, it's easiest to start by coming up with a recursive brute-force solution and then adding memoization to it. After that, they then figure out how to convert it into an (often more desired) bottom-up tabulated algorithm.
+
+## Problems
