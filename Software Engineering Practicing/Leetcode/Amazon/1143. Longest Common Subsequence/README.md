@@ -118,6 +118,7 @@ class Solution(object):
         return memo[0][0]
 ```
 
+### Bottom-Up Dynamic Programming with 1D Tabulation
 
 ```Python
 class Solution(object):
@@ -130,8 +131,8 @@ class Solution(object):
         # Bottom-Up Dynamic Programming with 1D Tabulation
         #### Time Complexity: 0(M * N), traverse through the length of 2 input lists
         #### Space Complexity: O(min(M, N)), recursively keep up to the size of shorter string
-        # If text1 doesn't reference the shortest string, swap them.
         ```
+        # If text1 doesn't reference the shortest string, swap them.
         if len(text1) < len(text2):
             text1, text2 = text2, text1
         previous = [0] * (len(text1) + 1)
