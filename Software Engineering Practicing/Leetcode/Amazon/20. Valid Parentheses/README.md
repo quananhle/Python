@@ -47,7 +47,6 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        """
         stack = list()
         dictionary = {'}':'{' , ')':'(' , ']':'['}
         for c in s:
@@ -61,6 +60,14 @@ class Solution(object):
             else:
                 stack.append(c)
         return not stack
+```
+
+```Python
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
         """
         stack = list()
         brackets = {'{':'}' , '(':')' , '[':']'}
