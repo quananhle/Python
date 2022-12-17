@@ -46,4 +46,57 @@ For shortest-path problems:
 - If graph weights are different and all are __positive__: ```Bellman-Ford``` and ```Dijkstra's algorithms``` are solutions but the ```Dijkstra's``` is the most efficient
 - If graph weights are different and could be __positive/negative__: ```Bellman-Ford``` algorithms is the only solution betweem the 3 algorithm mentioned here.
 
+### Breadth-First Search
 
+```Python
+class Solution:
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
+        """
+        Do not return anything, modify rooms in-place instead.
+        """
+        # Breadth-First Search
+        #### Time Complexity: O(M*N), breadth-first search takes at most M * N steps to reach all rooms
+        #### Space Complexity: O(M*N)
+
+        ROWS, COLS = len(rooms), len(rooms[0])
+        DIRECTIONS = [(1,0), (-1,0), (0,1), (0,-1)]
+        # Get the coordinators of gates in rooms and store them in queue
+        queue = [(i, j) for i, row in enumerate(rooms) for j, e in enumerate(row) if e == 0]
+        # Check every gate
+        for i, j in queue:
+            # Find the possible directions from the gate
+            for row, col in (i+1, j), (i-1, j), (i, j+1), (i, j-1):
+                # If not reached the borders of grid and is at an empty room
+                if not (0 <= row < ROWS and 0 <= col < COLS and rooms[row][col] == 2147483647):
+                    continue
+                # Start from the gate = 0, accumulate 1 to every cell from the gate
+                rooms[row][col] = 1 + rooms[i][j]
+                # Add the cell to queue
+                queue.append((row, col))
+```
+
+```Python
+
+        """
+        if not rooms:
+            return
+
+        visited = set()
+        ROWS, COLS = len(rooms), len(rooms[0])
+        DIRECTIONS = [(1,0),(0,1),(-1,0),(0,-1)]
+        queue = collections.deque()
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if rooms[row][col] == 0:
+                    queue.append((row, col))
+        
+        while queue:
+            row, col = queue.popleft()
+            for (x, y) in DIRECTIONS:
+                if (0 <= row + x < ROWS and 0 <= col + y < COLS) and rooms[row+x][col+y] == 2147483647 and (row + x, col + y) not in visited:
+                    rooms[row+x][col+y] = rooms[row][col] + 1
+                    visited.add((row+x, col+y))
+                    queue.append((row+x, col+y))
+        """
+```
