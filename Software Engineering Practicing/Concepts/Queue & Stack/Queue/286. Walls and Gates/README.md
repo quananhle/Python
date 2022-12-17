@@ -19,10 +19,10 @@ Fill each empty room with the distance to its _nearest gate_. If it is impossibl
 __Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2021/01/03/grid.jpg)
-
+```
 Input: rooms = [[2147483647,-1,0,2147483647],[2147483647,2147483647,2147483647,-1],[2147483647,-1,2147483647,-1],[0,-1,2147483647,2147483647]]
 Output: [[3,-1,0,1],[2,2,1,-1],[1,-1,2,-1],[0,-1,3,4]]
-
+```
 __Example 2:__
 
 ```
