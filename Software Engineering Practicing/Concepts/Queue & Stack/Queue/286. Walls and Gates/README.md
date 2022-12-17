@@ -106,3 +106,63 @@ class Solution:
                     visited.add((row+x, col+y))
                     queue.append((row+x, col+y))
 ```
+
+### Depth-First Search (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
+        """
+        Do not return anything, modify rooms in-place instead.
+        # Depth-First Search
+        ### Time Limit Exceeded
+        #### Time Complexity: O(M^2 * N^2)
+        #### Space Complexity: O(M^2 * N^2)
+
+        if not rooms:
+            return
+
+        visited = set()
+        ROWS, COLS = len(rooms), len(rooms[0])
+        DIRECTIONS = [(1,0),(0,1),(-1,0),(0,-1)]
+
+        def dfs(row, col, steps):
+            if (0 <= row < ROWS and 0 <= col < COLS) and steps <= rooms[row][col]:
+                rooms[row][col] = steps
+                [dfs(row + x, col + y, steps+1) for x,y in DIRECTIONS]
+    
+        for row in range(ROWS):
+            for col in range(COLS):
+                if rooms[row][col] == 0:
+                    dfs(row, col, 0)
+```
+
+```Python
+class Solution:
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
+        """
+        Do not return anything, modify rooms in-place instead.
+        """
+        # Depth-First Search
+        ### Time Limit Exceeded
+        #### Time Complexity: O(M^2 * N^2)
+        #### Space Complexity: O(M^2 * N^2)
+
+        if not rooms:
+            return
+
+        visited = set()
+        ROWS, COLS = len(rooms), len(rooms[0])
+        DIRECTIONS = [(1,0),(0,1),(-1,0),(0,-1)]
+
+        def dfs(rooms, row, col, step):
+            for x, y in DIRECTIONS:
+                if (0 <= row + x < ROWS and 0 <= col + y < COLS) and rooms[row][col] < rooms[row+x][col+y]:
+                    rooms[row+x][col+y] = step+1
+                    dfs(rooms, row + x, col + y, step+1)
+        
+        for row in range(ROWS):
+            for col in range(COLS):
+                if rooms[row][col] == 0:
+                    dfs(rooms, row, col, 0)
+```
