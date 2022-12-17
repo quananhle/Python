@@ -76,8 +76,14 @@ class Solution:
 ```
 
 ```Python
-
+class Solution:
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
         """
+        Do not return anything, modify rooms in-place instead.
+        """
+        # Breadth-First Search
+        #### Time Complexity: O(M*N), breadth-first search takes at most M * N steps to reach all rooms
+        #### Space Complexity: O(M*N)
         if not rooms:
             return
 
@@ -98,5 +104,4 @@ class Solution:
                     rooms[row+x][col+y] = rooms[row][col] + 1
                     visited.add((row+x, col+y))
                     queue.append((row+x, col+y))
-        """
 ```
