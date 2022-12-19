@@ -56,9 +56,17 @@ __Constraints:__
         return res
 ```
 
+### Monotonic Stack
 
-        # Monotonic Stack
+ ```Python
+ class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # Brute Force
+        ### Time Limit Exceeded
         """
+        # Monotonic Stack
+        #### Time Complexity: O(N), traversed through input array
+        #### Space Complexity: O(N), space required to build answer array
         res = [0] * len(temperatures)
         stack = list()
         for curr_day, curr_tmp in enumerate(temperatures):
@@ -67,14 +75,20 @@ __Constraints:__
                     res[prev_day] = curr_day - prev_day
             stack.append(curr_day)
         return res
+```
+
+```Python
+ class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # Brute Force
+        ### Time Limit Exceeded
         """
-
-
         # Dynamic Programming with Tabulations
+        #### Time Complexity: O(N), traversed through input array
+        #### Space Complexity: O(N), space required to build answer array        
         res = [0] * len(temperatures)
         hottest = 0
-
-
+        
         for curr_day in range(len(temperatures)-1, -1, -1):
             curr_temp = temperatures[curr_day]
             if curr_temp >= hottest:
@@ -85,4 +99,4 @@ __Constraints:__
                 days += res[curr_day + days]
             res[curr_day] = days
         return res
-
+```
