@@ -39,3 +39,50 @@ __Constraints:__
 
 ---
  
+ ### Brute Force
+ 
+ ```Python
+ class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # Brute Force
+        ### Time Limit Exceeded
+        """
+        res = [0] * len(temperatures)
+        for day in range(len(temperatures)):
+            for future_day in range(day+1, len(temperatures)):
+                if temperatures[future_day] > temperatures[day]:
+                    res[day] = future_day - day
+                    break
+        return res
+```
+
+
+        # Monotonic Stack
+        """
+        res = [0] * len(temperatures)
+        stack = list()
+        for curr_day, curr_tmp in enumerate(temperatures):
+            while stack and temperatures[stack[-1]] < curr_tmp:
+                    prev_day = stack.pop()
+                    res[prev_day] = curr_day - prev_day
+            stack.append(curr_day)
+        return res
+        """
+
+
+        # Dynamic Programming with Tabulations
+        res = [0] * len(temperatures)
+        hottest = 0
+
+
+        for curr_day in range(len(temperatures)-1, -1, -1):
+            curr_temp = temperatures[curr_day]
+            if curr_temp >= hottest:
+                hottest = curr_temp
+                continue
+            days = 1
+            while temperatures[curr_day + days] <= curr_temp:
+                days += res[curr_day + days]
+            res[curr_day] = days
+        return res
+
