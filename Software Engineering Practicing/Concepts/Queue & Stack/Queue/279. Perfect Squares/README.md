@@ -67,6 +67,8 @@ class Solution:
 class Solution:
     def numSquares(self, n: int) -> int:
         # Dynamic Programming with Tabulations
+        #### Time Complexity: O(N * N^(1/2)), traverse through list of square numbers, which takes at most square root N, while traversing through the size of input n
+        #### Space Complexity: O(N), extra space required to build memo
         square_nums = [i**2 for i in range(1, int(math.sqrt(n)+1))]
         memo = [float('inf')] * (n + 1)
         memo[0] = 0
