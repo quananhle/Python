@@ -50,3 +50,47 @@ target and deadends[i] consist of digits only.
 ```
 
 ---
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def openLock(self, deadends: List[str], target: str) -> int:
+        if "0000" in deadends:
+            return -1
+
+        DIRECTIONS = [(1), (-1)]
+        queue = collections.deque()
+        queue.append(["0000", 0])   # [lock combinations, turns]
+        # deadend and visited share the same properties so can be united
+        visited = set(deadends)
+
+        def children(lock):
+            res = list()
+            # For each wheel in 4 wheel
+            for n in range(4):
+                # Either rotate the wheel forward or backward
+                for d in DIRECTIONS:
+                    # Rotate forward
+                    if d > 0:
+                        # E.g.: (1 + 1) % 10 = 2, (9 + 1) % 10 = 0
+                        digit = str((int(lock[n]) + d) % 10)
+                        # String is immutable so rebuild string
+                        res.append(lock[:n] + digit + lock[n+1:])
+                    # Rotate backward
+                    else:
+                        # E.g.: (1 - 1 + 10) % 10 = 0, (0 - 1 + 10) % 10 = 9
+                        digit = str((int(lock[n]) + d + 10) % 10)
+                        res.append(lock[:n] + digit + lock[n+1:])                 
+            return res
+
+        while queue:
+            curr, turn = queue.popleft()
+            if curr == target:
+                return turn
+            for child in children(curr):
+                if not child in visited:
+                    visited.add(child)
+                    queue.append([child, turn + 1])
+        return -1
+```
