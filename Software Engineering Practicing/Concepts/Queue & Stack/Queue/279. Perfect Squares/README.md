@@ -11,3 +11,24 @@ A __perfect square__ is an integer that is the square of an integer; in other wo
 ![image](https://user-images.githubusercontent.com/35042430/208782879-492ec6d6-3c3c-4c3a-8e09-37c5c0b73419.png)
 
 ---
+
+__Example 1:__
+```
+Input: n = 12
+Output: 3
+Explanation: 12 = 4 + 4 + 4.
+```
+
+__Example 2:__
+```
+Input: n = 13
+Output: 2
+Explanation: 13 = 4 + 9.
+```
+ 
+__Constraints:__
+```
+1 <= n <= 104
+```
+
+---
