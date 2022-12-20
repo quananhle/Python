@@ -7,3 +7,5 @@
 ### Queue and BFS
 
 ## Stack Last-in-first-out Data Structure
+
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/06/03/screen-shot-2018-06-02-at-203523.png)
