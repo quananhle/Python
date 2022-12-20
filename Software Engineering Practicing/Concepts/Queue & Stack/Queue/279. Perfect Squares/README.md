@@ -32,3 +32,49 @@ __Constraints:__
 ```
 
 ---
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def numSquares(self, n: int) -> int:
+        # Breadth-First Search
+        #### Time Complexity: O(N^(h/2)), h the height of the N-ary tree
+        #### Space Complexity: O(N^(h/2)), number of nodes in N-ary tree
+        """
+        # square_nums = [i * i for i in range(1, int(n**0.5) + 1)]
+        square_nums = [i * i for i in range(1, int(math.sqrt(n)) + 1)]
+
+        count = 0
+        queue = {n}
+        while queue:
+            count += 1
+            next_queue = set()
+            for remainder in queue:
+                for square_num in square_nums:
+                    if remainder == square_num:
+                        return count
+                    elif remainder < square_num:
+                        continue
+                    else:
+                        next_queue.add(remainder - square_num)
+            queue = next_queue
+```
+
+### Dynamic Programming with Tabulations
+
+```Python
+class Solution:
+    def numSquares(self, n: int) -> int:
+        # Dynamic Programming with Tabulations
+        square_nums = [i**2 for i in range(1, int(math.sqrt(n)+1))]
+        memo = [float('inf')] * (n + 1)
+        memo[0] = 0
+        for i in range(1, n+1):
+            for square_num in square_nums:
+                if i < square_num:
+                    continue
+                memo[i] = min(memo[i], memo[i-square_num] + 1)
+        print (memo)
+        return memo[-1]
+```
