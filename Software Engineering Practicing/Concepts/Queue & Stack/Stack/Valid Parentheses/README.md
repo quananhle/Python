@@ -1,6 +1,6 @@
 ## Valid Parentheses
 
-```Tag```: ```Stack```
+```Tag```: ```Stack``` ```Hash Map```
 
 #### Difficulty: Easy
 
