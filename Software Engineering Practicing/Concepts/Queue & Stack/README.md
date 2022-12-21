@@ -75,3 +75,28 @@ int BFS(Node root, Node target) {
 ## Stack Last-in-first-out Data Structure
 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/06/03/screen-shot-2018-06-02-at-203523.png)
+
+### Stack and DFS
+
+In most cases, ```DFS``` can be used interchangeably when using BFS. But there is an important difference: ```the traversal order```
+
+Different from ```BFS```, ```the nodes you visit earlier might not be the nodes which are closer to the root node```. As a result, the first path you found in ```DFS``` ```might not be the shortest path```.
+
+
+#### Template I
+
+```Java
+/*
+ * Return true if there is a path from cur to target.
+ */
+boolean DFS(Node cur, Node target, Set<Node> visited) {
+    return true if cur is target;
+    for (next : each neighbor of cur) {
+        if (next is not in visited) {
+            add next to visted;
+            return true if DFS(next, target, visited) == true;
+        }
+    }
+    return false;
+}
+```
