@@ -54,3 +54,42 @@ tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the ran
 
 ---
 
+```Python
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        '''
+        Keep track of a pair of innermost digits standing before an operators, and recursively develop to the outside
+        Can be divided into subproblems; hence, dynamic programming and stack could be used
+        '''
+        #### Time Complexity: O(N), traverse through the input once
+        #### Space Complexity: O(N), to store all the digits of input
+        def helper(num1, num2, operator):
+
+            if operator == "+":
+                return num1 + num2
+            elif operator == "-":
+                return num2 - num1
+            elif operator == "*":
+                return num1 * num2
+            else:
+                # Python division does not truncate towards zero; hence, use int(a/b). Note that int(a/b) != int(a//b)                
+                return int(num2 / num1)
+                
+        operators = {"+", "-", "*", "/"}
+        digit_stack = list()
+        for token in tokens:
+            '''
+            if not token.strip('-').isdigit():
+            '''
+            '''
+            if token in "+-*/":
+            '''
+            if token in operators:
+                if digit_stack:
+                    num1 = digit_stack.pop()
+                    num2 = digit_stack.pop()
+                    digit_stack.append(helper(num1, num2, token))
+            else:
+                digit_stack.append(int(token))
+        return digit_stack.pop()
+```
