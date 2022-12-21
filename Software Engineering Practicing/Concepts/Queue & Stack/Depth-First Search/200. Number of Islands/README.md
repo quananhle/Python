@@ -1,12 +1,50 @@
 ## 200. Number of Islands
 
-```Tag```: ```Queue``` ```Breadth-First Search```
+```Tag```: ```Stack``` ```Depth-First Search```
 
-![image](https://user-images.githubusercontent.com/35042430/208777516-4db2391f-efa1-486b-b741-bca096c1be9a.png)
+Given an ```m x n``` 2D binary grid ```grid``` which represents a map of ```'1'```s (land) and ```'0'```s (water), return _the number of islands_.
+
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+![image](https://user-images.githubusercontent.com/35042430/209014236-3bbee08b-3a35-444a-855d-e634cdcaece3.png)
 
 ---
 
-### Breath-First Search
+__Example 1:__
+```
+Input: grid = [
+  ["1","1","1","1","0"],
+  ["1","1","0","1","0"],
+  ["1","1","0","0","0"],
+  ["0","0","0","0","0"]
+]
+Output: 1
+```
+
+__Example 2:__
+
+```
+Input: grid = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
+Output: 3
+```
+
+__Constraints:__
+
+```
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+```
+
+---
+
+### Depth-First Search
 
 ```Python
 class Solution:
