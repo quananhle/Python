@@ -2,7 +2,7 @@
 
 ```Tag```: ```Hash Table``` ```Depth-First Search``` ```Breadth-First Search``` ```Graph```
 
-# Difficulty: Medium
+#### Difficulty: Medium
 
 Given a reference of a node in a connected undirected graph.
 
