@@ -49,36 +49,28 @@ grid[i][j] is '0' or '1'.
 ```Python
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        # Depth-First Search
-        #### Time Complexity: O(N * M), where M is the number of rows and N is the number of columns.
-        #### Space Complexity: O(N * M), in case that the grid map is filled with lands where DFS goes by M×N deep.
-        
+        # Breadth-First Search
         ROWS, COLS = len(grid), len(grid[0])
         DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        visited = set()
 
+        queue = list()
         island = 0
+        
+        def bfs(queue):
+            while queue:
+                row, col = queue.pop()
+                if not (0 <= row < ROWS and 0 <= col < COLS and grid[row][col] != "0" and not (row, col) in visited):
+                    continue
+                visited.add((row, col))
+                queue.extend((row + x, col + y) for x, y in DIRECTIONS)
 
-        def dfs(row, col):
-            if not (0 <= row < ROWS and 0 <= col < COLS and grid[row][col] == "1"):           
-                return
-            grid[row][col] = "$"
-            '''
-            dfs(row + 1, col)
-            dfs(row, col + 1)
-            dfs(row - 1, col)
-            dfs(row, col - 1)
-            '''
-            [dfs(row + x, col + y) for x, y in DIRECTIONS]
-           
+        
         for row in range(ROWS):
             for col in range(COLS):
-                # Look for a "land" cell
-                if grid[row][col] == "1":
-                    # Search for all adjacent "land" cells
-                    dfs(row, col)
-                    # Island found
+                if grid[row][col] == "1" and not (row, col) in visited:
+                    bfs([(row, col)])
                     island += 1
-        
         return island
 ```
 
