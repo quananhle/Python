@@ -2,6 +2,29 @@
 
 ---
 
+### Depth-First Search with Top-Down Dynamic Programming with Memoization
+
+```Python
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:        
+        # Depth-First Search with Top-Down Dynamic Programming with Memoization
+        memo = dict()
+        def dfs(nums, idx, total, target, memo):
+            if idx == len(nums):
+                if total == target:
+                    return 1
+                else:
+                    return 0
+            else:
+                if (idx, total) in memo:
+                    return memo[(idx, total)]
+            ways = dfs(nums, idx + 1, total + nums[idx], target, memo) + dfs(nums, idx + 1, total - nums[idx], target, memo)
+            memo[(idx, total)] = ways
+            return ways
+        dfs(nums, 0, 0, target, memo)
+        return memo[(0, 0)]
+```
+
 ```Python
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
