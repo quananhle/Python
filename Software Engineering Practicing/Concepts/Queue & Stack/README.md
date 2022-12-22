@@ -130,7 +130,7 @@ boolean DFS(Node cur, Node target, Set<Node> visited) {
     }
     return false;
 }
-
+```
 
 The advantage of the recursion solution is that it is easier to implement. However, there is a huge disadvantage: if the depth of recursion is too high, you will suffer from stack overflow. In that case, you might want to use ```BFS``` instead or implement ```DFS``` using an explicit ```stack```. The logic is exactly the same with the recursion solution. But we use ```while``` loop and ```stack``` to simulate the ```system call stack```.
 
