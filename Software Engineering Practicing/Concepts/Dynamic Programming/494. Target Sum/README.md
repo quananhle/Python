@@ -12,6 +12,8 @@ You want to build an __expression__ out of nums by adding one of the symbols ```
 
 Return _the number of different expressions that you can build, which evaluates to ```target```_.
 
+![image](https://user-images.githubusercontent.com/35042430/209069887-c4436b2d-64b5-4a81-84a0-d04dc2fa3e6a.png)
+
 ---
 
 __Example 1:__
