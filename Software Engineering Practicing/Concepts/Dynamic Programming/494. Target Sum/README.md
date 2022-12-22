@@ -43,3 +43,45 @@ __Constraints:__
 ```
 
 ---
+
+### Bottom-Up Dynamic Programming with 2D Tabulation
+
+```Python
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        # Bottom-Up Dynamic Programming with 2D Tabulation
+        #### Time Complexity: O(N * M), nested loops
+        #### Space Complexity: O(N * M), size of DP
+        dp = [[0] * (2 * sum(nums) + 1) for _ in range(len(nums))]
+        dp[0][nums[0] + sum(nums)] = 1
+        dp[0][-nums[0] + sum(nums)] += 1
+        
+        for i in range(1, len(nums)):
+            for total in range(-sum(nums), sum(nums)+1):
+                if dp[i-1][sum(nums) + total] > 0:
+                    dp[i][total + nums[i] + sum(nums)] += dp[i-1][sum(nums) + total]
+                    dp[i][total - nums[i] + sum(nums)] += dp[i-1][sum(nums) + total]
+        return dp[-1][target + sum(nums)] if abs(target) <= sum(nums) else 0
+```
+
+### Bottom-Up Dynamic Programming with 1D Tabulation
+
+```Python
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:        
+        # Bottom-Up Dynamic Programming with 1D Tabulation
+        #### Time Complexity: O(N * M), nested loops
+        #### Space Complexity: O(N), 2 DP size N
+        dp = [0] * (2 * sum(nums) + 1)
+        dp[nums[0] + sum(nums)] = 1
+        dp[-nums[0] + sum(nums)] += 1
+        
+        for i in range(1, len(nums)):
+            next_dp = [0] * (2 * sum(nums) + 1)
+            for total in range(-sum(nums), sum(nums)+1):
+                if dp[sum(nums) + total] > 0:
+                    next_dp[total + nums[i] + sum(nums)] += dp[sum(nums) + total]
+                    next_dp[total - nums[i] + sum(nums)] += dp[sum(nums) + total]
+            dp = next_dp
+        return dp[target + sum(nums)] if abs(target) <= sum(nums) else 0        
+```
