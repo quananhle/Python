@@ -11,3 +11,33 @@ You want to build an __expression__ out of nums by adding one of the symbols ```
 - For example, if ```nums = [2, 1]```, you can add a ```'+'``` before ```2``` and a ```'-'``` before ```1``` and concatenate them to build the expression ```"+2-1"```.
 
 Return _the number of different expressions that you can build, which evaluates to ```target```_.
+
+---
+
+__Example 1:__
+```
+Input: nums = [1,1,1,1,1], target = 3
+Output: 5
+Explanation: There are 5 ways to assign symbols to make the sum of nums be target 3.
+-1 + 1 + 1 + 1 + 1 = 3
++1 - 1 + 1 + 1 + 1 = 3
++1 + 1 - 1 + 1 + 1 = 3
++1 + 1 + 1 - 1 + 1 = 3
++1 + 1 + 1 + 1 - 1 = 3
+```
+
+__Example 2:__
+```
+Input: nums = [1], target = 1
+Output: 1
+```
+
+__Constraints:__
+```
+1 <= nums.length <= 20
+0 <= nums[i] <= 1000
+0 <= sum(nums[i]) <= 1000
+-1000 <= target <= 1000
+```
+
+---
