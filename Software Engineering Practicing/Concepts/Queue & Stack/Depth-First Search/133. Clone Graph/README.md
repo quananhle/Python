@@ -109,6 +109,8 @@ class Solution:
 
 ### Breadth-First Search
 
+![image](https://leetcode.com/problems/clone-graph/solutions/421214/Figures/133/133_Clone_Graph_4.png)
+
 ```Python
 """
 # Definition for a Node.
