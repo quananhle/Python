@@ -65,6 +65,46 @@ The Graph is connected and all nodes can be visited starting from the given node
 
 ---
 
+### Depth-First Search
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Solution:
+    def __init__(self):
+        self.visited = {}
+
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        # Depth-First Search
+        #### Time Complexity: O(N+M), where N is a number of nodes (vertices) and M is a number of edges
+        #### Space Complexity: O(N), extra space required to build hash map visited
+        if not node:
+            return node
+        # Check if the node was already visited before
+        if node in self.visited:
+            # Return the clone from the visited dictionary
+            return self.visited[node]
+
+        # Create a clone for the given node.
+        clone_node = Node(node.val)
+
+        # Add the current node to visited
+        self.visited[node] = clone_node
+
+        # Iterate through the neighbors to generate their clones
+        if node.neighbors:
+            # Prepare a list of cloned neighbors to be added to the cloned node.                    
+            clone_node.neighbors = [self.cloneGraph(node) for node in node.neighbors]
+
+        return clone_node
+```
+
 ```Python
 """
 # Definition for a Node.
