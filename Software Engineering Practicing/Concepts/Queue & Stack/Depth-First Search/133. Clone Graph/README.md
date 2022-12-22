@@ -107,6 +107,53 @@ class Solution:
         return clone_node
 ```
 
+### Breadth-First Search
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Solution:
+    def __init__(self):
+        self.visited = {}
+
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        # Breadth-First Search
+        #### Time Complexity: O(N+M), where N is a number of nodes (vertices) and M is a number of edges
+        #### Space Complexity: O(N), extra space required to build hash map visited
+        if not node:
+            return node
+        
+        visited = dict()
+
+        # Put the first node into the queue
+        queue = collections.deque([node])
+
+        # Clone the node and mark as visited
+        visited[node] = Node(node.val)
+
+        # Start BFS traversal
+        while queue:
+            # Pop a node starting from the front of the queue
+            n = queue.popleft()
+            # Iterate through all the neighbors of the node
+            for neighbor in n.neighbors:
+                if not neighbor in visited:
+                    # Clone the neighbor and mark as visited
+                    visited[neighbor] = Node(neighbor.val)
+                    # Extend the queue with newly encountered node
+                    queue.append(neighbor)
+                # Add clone of neighbor to neighbors of the clone node
+                visited[n].neighbors.append(visited[neighbor])
+        
+        return visited[node]
+```
+
 ```Python
 """
 # Definition for a Node.
