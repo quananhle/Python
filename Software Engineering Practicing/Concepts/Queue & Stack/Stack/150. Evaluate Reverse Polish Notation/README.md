@@ -93,3 +93,34 @@ class Solution:
                 digit_stack.append(int(token))
         return digit_stack.pop()
 ```
+
+### Stack and Lambda
+
+```Python
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        '''
+        Keep track of a pair of innermost digits standing before an operators, and recursively develop to the outside
+        Can be divided into subproblems; hence, dynamic programming and stack could be used
+        '''
+        #### Time Complexity: O(N), traverse through the input once
+        #### Space Complexity: O(N), to store all the digits of input
+        
+        operations = {
+            "+" : lambda a, b: a + b,
+            "-" : lambda a, b: b - a,
+            "/" : lambda a, b: int(b / a),
+            "*" : lambda a, b: a * b
+        }
+        
+        digit_stack = []
+        for token in tokens:
+            if token in operations:
+                num1 = digit_stack.pop()
+                num2 = digit_stack.pop()
+                operation = operations[token]
+                digit_stack.append(operation(num1, num2))
+            else:
+                digit_stack.append(int(token))
+        return digit_stack.pop()
+```
