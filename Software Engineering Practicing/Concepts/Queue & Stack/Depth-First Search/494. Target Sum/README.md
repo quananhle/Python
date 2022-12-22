@@ -1,4 +1,4 @@
-## [494. Target Sum]
+## 494. Target Sum
 
 ```Tag```: [```Depth-First Search```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Depth-First%20Search/494.%20Target%20Sum) [```Dynamic Programming```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/494.%20Target%20Sum)
 
