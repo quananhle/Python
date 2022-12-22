@@ -67,6 +67,8 @@ The Graph is connected and all nodes can be visited starting from the given node
 
 ### Depth-First Search
 
+![image](https://leetcode.com/problems/clone-graph/solutions/421214/Figures/133/133_Clone_Graph_3.png)
+
 ```Python
 """
 # Definition for a Node.
