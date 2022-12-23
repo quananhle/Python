@@ -92,11 +92,34 @@ class Solution:
 ```
 
 ### 2 Stacks
+#### Time Complexity: O(maxK * n), where maxK is the maximum value of ```k``` and ```n``` is the length of a given string ```s```
+#### Space Complexity: O(N + M), N is the number of ```digits(0-9)``` in string ```s``` and M is the number of ```letters(a-z)``` and ```n```
 
 ![image](https://leetcode.com/problems/decode-string/solutions/858759/Figures/394/twoStack_diagram.png)
 
 ```Python
-
+class Solution:
+    def decodeString(self, s: str) -> str:
+        num_stack, str_stack = list(), list()
+        k, decoded_str = 0, ""
+        for ch in s:
+            # Input string is always valid => string pattern is guaranteed to be num k + open bracket + encoded string + closed bracket/repeated encoded string
+            # First, check if encountered k digit
+            if ch.isdigit():
+                k = k * 10 + int(ch)
+            # Next, check if encountered open bracket
+            elif ch == "[":
+                num_stack.append(k)
+                str_stack.append(decoded_str)
+                k, decoded_str = 0, ""
+            # Check if encountered closed bracket
+            elif ch == "]":
+                num = num_stack.pop()
+                decoded_str = str_stack.pop() + num * decoded_str
+            # Encountered encoded string
+            else:
+                decoded_str += ch
+        return decoded_str
 ```
 
 ### Recursion
