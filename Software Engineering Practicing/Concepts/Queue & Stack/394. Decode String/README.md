@@ -90,3 +90,17 @@ class Solution:
                 
         return "".join(digit_stack)
 ```
+
+### 2 Stacks
+
+![image](https://leetcode.com/problems/decode-string/solutions/858759/Figures/394/twoStack_diagram.png)
+
+```Python
+
+```
+
+### Recursion
+
+```Python
+
+```
