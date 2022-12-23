@@ -125,5 +125,37 @@ class Solution:
 ### Recursion
 
 ```Python
-
+class Solution(object):
+    idx = 0
+    def decodeString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        # Recursion
+        ### Bottom-Up
+        #### Time Complexity: O(N*maxK), where maxK is the maximum length of encoded string, countK is the number of nest k values, all were performed inside the loop of input size N
+        #### Space Complexity: O(N), extra space used to store the internal call stack used for recursion, the maximum depth of recursive call stack would not be more than N
+        ans = ""
+        while self.idx < len(s) and s[self.idx] != ']':
+            if not s[self.idx].isdigit():
+                # Build string s with the character of encoded_string inside the square bracket
+                ans += s[self.idx]
+                self.idx += 1
+            else:
+                k = 0
+                # Compute k while next character is digit
+                while self.idx < len(s) and s[self.idx].isdigit():
+                    k = k * 10 + int(s[self.idx])
+                    self.idx += 1
+                # Ignore the opening bracket '['
+                self.idx += 1
+                # Recursively check the inside encoded_string
+                decode_string = self.decodeString(s)
+                # Ignore the closing bracket ']'
+                self.idx += 1
+                while k > 0:
+                    ans += decode_string
+                    k -= 1
+        return ans
 ```
