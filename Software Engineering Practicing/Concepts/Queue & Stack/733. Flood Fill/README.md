@@ -46,3 +46,50 @@ n == image[i].length
 ```
 
 ---
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        # Depth-First Search
+
+        ROWS, COLS = len(image), len(image[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        visited = set()
+        start = image[sr][sc]
+
+        def dfs(image, row, col, color):
+            if not (0 <= row < ROWS and 0 <= col < COLS and image[row][col] == start and not (row, col) in visited):
+                return
+            image[row][col] = color
+            visited.add((row, col))
+            [dfs(image, row + x, col + y, color) for x, y in DIRECTIONS]
+
+        dfs(image, sr, sc, color)
+        return image
+```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        # Breadth-First Search
+        ROWS, COLS = len(image), len(image[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        visited = set()
+        queue = collections.deque()
+        queue.append((sr, sc))
+        start = image[sr][sc]
+
+        while queue:
+            row, col = queue.popleft()
+            if not (0 <= row < ROWS and 0 <= col < COLS and image[row][col] == start and not (row, col) in visited):
+                continue
+            image[row][col] = color
+            visited.add((row, col))
+            queue.extend((row + x, col + y) for x, y in DIRECTIONS)
+        
+        return image
+```
