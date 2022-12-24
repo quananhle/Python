@@ -79,3 +79,24 @@ class Solution:
         
         return all(visited)
 ``` 
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        # Breadth-First Search
+        queue = collections.deque()
+        visited = set()
+
+        queue.append(0)
+
+        while queue:
+            room = queue.popleft()
+            if not room in visited:
+                visited.add(room)
+                for key in rooms[room]:
+                    queue.append(key)
+        
+        return len(visited) == len(rooms)
+```
