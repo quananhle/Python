@@ -13,3 +13,34 @@ Given an array ```rooms``` where ```rooms[i]``` is the set of keys that you can 
 ![image](https://user-images.githubusercontent.com/35042430/209421209-ae030815-91f3-4c4a-9155-cdfa715c0679.png)
 
 ---
+
+__Example 1:__
+```
+Input: rooms = [[1],[2],[3],[]]
+Output: true
+Explanation: 
+We visit room 0 and pick up key 1.
+We then visit room 1 and pick up key 2.
+We then visit room 2 and pick up key 3.
+We then visit room 3.
+Since we were able to visit every room, we return true.
+```
+
+__Example 2:__
+```
+Input: rooms = [[1,3],[3,0,1],[2],[0]]
+Output: false
+Explanation: We can not enter room number 2 since the only key that unlocks it is in that room.
+```
+
+__Constraints:__
+```
+n == rooms.length
+2 <= n <= 1000
+0 <= rooms[i].length <= 1000
+1 <= sum(rooms[i].length) <= 3000
+0 <= rooms[i][j] < n
+All the values of rooms[i] are unique.
+```
+
+---
