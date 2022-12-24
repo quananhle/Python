@@ -49,7 +49,6 @@ All the values of rooms[i] are unique.
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         # Depth-First Search
-        '''
         visited = set()
         
         def dfs(room):
@@ -60,8 +59,13 @@ class Solution:
 
         dfs(0)
         return len(visited) == len(rooms)
-        '''
-        '''
+```
+
+```Python
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        # Depth-First Search
+
         stack = [0]
         visited = [0] * len(rooms)
         visited[0] = True
@@ -74,5 +78,4 @@ class Solution:
                     stack.append(key)
         
         return all(visited)
-        '''     
-```
+``` 
