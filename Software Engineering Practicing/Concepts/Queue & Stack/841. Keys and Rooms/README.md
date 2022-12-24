@@ -44,3 +44,35 @@ All the values of rooms[i] are unique.
 ```
 
 ---
+
+```Python
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        # Depth-First Search
+        '''
+        visited = set()
+        
+        def dfs(room):
+            if not room in visited:
+                visited.add(room)
+                for key in rooms[room]:
+                    dfs(key)
+
+        dfs(0)
+        return len(visited) == len(rooms)
+        '''
+        '''
+        stack = [0]
+        visited = [0] * len(rooms)
+        visited[0] = True
+
+        while stack:
+            room = stack.pop()
+            for key in rooms[room]:
+                if not visited[key]:
+                    visited[key] = True
+                    stack.append(key)
+        
+        return all(visited)
+        '''     
+```
