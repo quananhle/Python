@@ -52,3 +52,26 @@ class Solution:
             num = num * 10 + int(digit)
         return [int(d) for d in str(num+1)]
 ```
+
+```Python
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        n = len(digits)
+        '''
+        for i in range(n):
+            idx = n - i - 1
+            if digits[idx] == 9:
+                digits[idx] = 0
+            else:
+                digits[idx] += 1
+                return digits
+        return [1] + digits
+        '''
+        for i in range(n-1, -1, -1):
+            if digits[i] == 9:
+                digits[i] = 0
+            else:
+                digits[i] += 1
+                return digits                
+        return [1] + digits
+```
