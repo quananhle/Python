@@ -52,4 +52,37 @@ __Constraints:__
 
 ---
 
+### Brute Force
 
+```Python
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return -1
+        left = [0, nums[0]]
+        right = [0, nums[-1]]
+        for i in range(1, len(nums)-1):
+            left.append(nums[i] + left[-1])
+            right.append(nums[len(nums)-1-i] + right[-1])
+        right = right[::-1]
+        for i in range(len(left)):
+            if left[i] == right[i]:
+                return i
+        return -1
+```
+
+### Prefix Sum
+
+```Python
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        # Prefix Sum
+        total = sum(nums)
+        left_sum = 0
+        for i, e in enumerate(nums):
+            if left_sum == total - left_sum - e:
+                return i
+            else:
+                left_sum += e
+        return -1
+```
