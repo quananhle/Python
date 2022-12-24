@@ -69,3 +69,19 @@ class Solution:
                 if num == largest:
                     return idx 
 ```
+
+```Python
+class Solution:
+    def dominantIndex(self, nums: List[int]) -> int:
+        m = max(nums)
+        ans = -1
+        for i, n in enumerate(nums):
+            if n == 0:
+                continue
+            if m == n:
+                ans = i
+                continue
+            if m - n < n:
+                return -1
+        return ans
+```
