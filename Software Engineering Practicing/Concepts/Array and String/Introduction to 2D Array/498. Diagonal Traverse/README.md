@@ -95,20 +95,4 @@ class Solution:
                     change_direction = not change_direction
         return res
 ```
-        
-        
-        
-        
-        """
-        if not mat:
-            return []
-        ROWS, COLS = len(mat), len(mat[0])
-        stack = [(0,0,0)]
-        res = list()
-        
-        while stack:
-            row, col, direction = stack.pop()
-            res.append(mat[row][col])
-            
-            if 
-        """
+     
