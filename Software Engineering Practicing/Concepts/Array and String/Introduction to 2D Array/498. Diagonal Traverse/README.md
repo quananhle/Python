@@ -86,6 +86,16 @@ class Solution:
                 if not (row, col) in visited:
                     queue = list()
                     dfs(row, col, queue)
+
+                    """
+                    /  /  /  
+                    [1,2,3] /
+                    [4,5,6] /
+                    [7,8,9]
+                    Traverse by column and check diagonally. If no next column, move to next row
+                    [[1], [2,4], [3,5,7], [6,8], [9]]
+                    """
+
                     if change_direction:
                         res += queue[::-1]
                         # change_direction = False                       
@@ -94,5 +104,7 @@ class Solution:
                         # change_direction = True
                     change_direction = not change_direction
         return res
+
+
 ```
      
