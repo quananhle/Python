@@ -34,3 +34,79 @@ n == mat[i].length
 ```
 
 ---
+
+```Python
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        """
+        ROWS, COLS = len(mat), len(mat[0])
+        res = list()        
+        memo = collections.defaultdict(list)
+        
+        for row in range(ROWS):
+            for col in range(COLS):
+                '''
+                if not row + col in memo:
+                    memo[row+col] = [mat[row][col]]
+                else:
+                    memo[row+col].append(mat[row][col])
+                '''
+                memo[row+col].append(mat[row][col])
+        for key,val in memo.items():
+            if key % 2 != 0:
+                for num in val:
+                    res.append(num)
+            else:
+                for num in val[::-1]:
+                    res.append(num)
+        return res
+        """
+        
+        DIRECTIONS = [(1,-1)]
+        ROWS, COLS = len(mat), len(mat[0])
+        res = list()
+        visited = set()
+        change_direction = True
+        
+        def dfs(row, col, queue):
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in visited):
+                return
+            queue.append(mat[row][col])
+            visited.add((row, col))
+            [dfs(row + x, col + y, queue) for x, y in DIRECTIONS]
+        
+        for row in range(ROWS):
+            for col in range(COLS):
+                if not (row, col) in visited:
+                    queue = list()
+                    dfs(row, col, queue)
+                    if change_direction:
+                        res += queue[::-1]
+                        # change_direction = False                       
+                    else:
+                        res += queue
+                        # change_direction = True
+                    change_direction = not change_direction
+        return res
+        
+        
+        
+        
+        
+        """
+        if not mat:
+            return []
+        ROWS, COLS = len(mat), len(mat[0])
+        stack = [(0,0,0)]
+        res = list()
+        
+        while stack:
+            row, col, direction = stack.pop()
+            res.append(mat[row][col])
+            
+            if 
+        """
+
+
+
+```
