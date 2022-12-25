@@ -38,7 +38,6 @@ n == mat[i].length
 ```Python
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
-        """
         ROWS, COLS = len(mat), len(mat[0])
         res = list()        
         memo = collections.defaultdict(list)
@@ -60,8 +59,12 @@ class Solution:
                 for num in val[::-1]:
                     res.append(num)
         return res
-        """
+```
         
+
+```Python
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:        
         DIRECTIONS = [(1,-1)]
         ROWS, COLS = len(mat), len(mat[0])
         res = list()
@@ -88,7 +91,7 @@ class Solution:
                         # change_direction = True
                     change_direction = not change_direction
         return res
-        
+```
         
         
         
