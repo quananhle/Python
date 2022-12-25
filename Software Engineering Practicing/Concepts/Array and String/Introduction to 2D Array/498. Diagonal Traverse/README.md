@@ -65,7 +65,7 @@ class Solution:
 
 ### Depth-First Search
 
-!image](https://leetcode.com/problems/diagonal-traverse/solutions/459889/Figures/498/img1.png)
+![image](https://leetcode.com/problems/diagonal-traverse/solutions/459889/Figures/498/img1.png)
 
 ```Python
 class Solution:
