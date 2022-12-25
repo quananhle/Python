@@ -35,6 +35,8 @@ n == mat[i].length
 
 ---
 
+# Hash Table
+
 ```Python
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
@@ -60,7 +62,8 @@ class Solution:
                     res.append(num)
         return res
 ```
-        
+
+### Depth-First Search
 
 ```Python
 class Solution:
