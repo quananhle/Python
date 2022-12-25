@@ -35,7 +35,9 @@ n == mat[i].length
 
 ---
 
-# Hash Table
+### Hash Table
+
+The sum of row and col of all the cells in the same diagonal are equal
 
 ```Python
 class Solution:
