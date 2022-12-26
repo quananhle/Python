@@ -73,7 +73,8 @@ class Solution:
 
 ```Python
 class Solution:
-    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:        
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        # Move diagonally from top-down and right-left
         DIRECTIONS = [(1,-1)]
         ROWS, COLS = len(mat), len(mat[0])
         res = list()
@@ -117,6 +118,7 @@ class Solution:
 ```Python
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        # Move diagonally from bottom-up and left-right
         DIRECTIONS = [(-1,1)]
         ROWS, COLS = len(mat), len(mat[0])
         visited = set()
