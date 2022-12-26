@@ -142,7 +142,7 @@ class Solution:
                 / [4,5,6]
                 / [7,8,9]
                 /  /  /
-                Traverse by column and check diagonally. If no next column, move to next row
+                Traverse by row and check diagonally. If no next row, move to next column
                 [[1], [2,4], [3,5,7], [6,8], [9]]
                 """
                     
