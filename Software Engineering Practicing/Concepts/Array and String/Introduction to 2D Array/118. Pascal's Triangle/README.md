@@ -1,6 +1,8 @@
 ## 118. Pascal's Triangle
 
+```Tag```:
 
+#### Difficulty: Easy
 
 Given an integer ```numRows```, return the first numRows of __Pascal's triangle__.
 
