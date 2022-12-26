@@ -67,6 +67,8 @@ class Solution:
 
 ### Depth-First Search
 
+#### Traverse by column first, then row
+
 ![image](https://leetcode.com/problems/diagonal-traverse/solutions/459889/Figures/498/img1.png)
 
 ```Python
@@ -108,7 +110,47 @@ class Solution:
                         # change_direction = True
                     change_direction = not change_direction
         return res
-
-
 ```
      
+#### Traverse by row first, then column
+
+```Python
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        DIRECTIONS = [(-1,1)]
+        ROWS, COLS = len(mat), len(mat[0])
+        visited = set()
+        res = list()
+        cd = False
+
+        def dfs (row, col, arr):
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in visited):
+                return
+            arr.append(mat[row][col])
+            visited.add((row, col))
+            [dfs(row + dx, col + dy, arr) for dx, dy in DIRECTIONS]
+        
+        for col in range(COLS):
+            for row in range(ROWS):
+                if (row, col) in visited:
+                    continue
+                arr = list()
+                dfs(row, col, arr)
+                
+                """
+                  [1,2,3]
+                / [4,5,6]
+                / [7,8,9]
+                /  /  /
+                Traverse by column and check diagonally. If no next column, move to next row
+                [[1], [2,4], [3,5,7], [6,8], [9]]
+                """
+                    
+                if cd:
+                    res += arr[::-1]
+                else:
+                    res += arr
+                cd = not cd
+        
+        return res
+```
