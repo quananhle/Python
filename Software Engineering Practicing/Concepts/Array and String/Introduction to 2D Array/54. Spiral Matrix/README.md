@@ -77,6 +77,36 @@ class Solution:
         return res
 ```
 
+### Depth-First Search
+        
 ```Python
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        # Depth-First Search
+        ROWS, COLS = len(matrix), len(matrix[0])
+        res = list()
+        visited = set()
 
+        left, right, up, down = False, False, False, False
+
+        def dfs(row, col, dir):
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in visited):
+                return
+            visited.add((row, col))
+            res.append(matrix[row][col])
+            # Make sure to go all the way up until visited row reached
+            if dir:
+                up = True
+                dfs(row - 1, col, up)
+            # Traverse rightward
+            dfs(row, col + 1, right)
+            # Traverse downward
+            dfs(row + 1, col, down)
+            # Traverse leftward
+            dfs(row, col - 1, left)
+            # Traverse upward
+            dfs(row - 1, col, not down)
+
+        dfs(0, 0, right)
+        return res
 ```
