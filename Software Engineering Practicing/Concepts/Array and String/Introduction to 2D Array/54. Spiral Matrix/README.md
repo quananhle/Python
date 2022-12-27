@@ -187,16 +187,16 @@ class Solution:
 
                     - Start with the rightward direction, (0,1)
                     From beginning, (0,0), traverse to the right (0 + 0, 0 + 1). After reaching the last column, exit while loop
-                    At the current pos, (0,3), rightward direction, (0,1), update pos (0 - 0, 3 - 1), update start pos
+                    At the current pos, (0,3), rightward direction, (0,1), update pos (0 - 0, 3 - 1), update start pos (0,2)
                     - Move to the next direction, downward (1,0)
                     From current pos, (0,2), traverse to the bottom (0 + 1, 2 + 0). After reaching the last row, exit while loop
-                    At the current pos, (3,2), downward direction, (1,0), update pos (3 - 1, 2 - 0), update start pos
+                    At the current pos, (3,2), downward direction, (1,0), update pos (3 - 1, 2 - 0), update start pos (2,2)
                     - Move to the next direction, leftward (0,-1)
                     From current pos, (2,2), traverse to the left (2 + 0, 2 - 1). After reaching the first column, exit while loop
-                    At the current pos, (2,-1), leftward direction, (0,-1), update pos (2 + 0, -1 - (-1)), update start pos
+                    At the current pos, (2,-1), leftward direction, (0,-1), update pos (2 + 0, -1 - (-1)), update start pos (2,0)
                     - Move to the next direction, upward (-1,0)
                     From current pos, (2,0), traverse to the top (2 - 1, 0 + 0). After reaching the possible top row and visited cell, exit while loop
-                    At the current pos, (0,0), leftward direction, (-1,0), update pos (0 - (-1), 0 - 0), update start pos    
+                    At the current pos, (0,0), leftward direction, (-1,0), update pos (0 - (-1), 0 - 0), update start pos (1,0)
                     """
                     row += dx
                     col += dy
