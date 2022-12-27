@@ -1,6 +1,6 @@
 ## 118. Pascal's Triangle
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Easy
 
