@@ -78,6 +78,10 @@ class Solution:
 ```
 
 ### Depth-First Search
+
+Must make sure dfs to go all the way up before checking other cells
+
+![image](https://user-images.githubusercontent.com/35042430/209625162-71312a0c-a0c9-421d-b5c0-e53152ba89c5.png)
         
 ```Python
 class Solution:
