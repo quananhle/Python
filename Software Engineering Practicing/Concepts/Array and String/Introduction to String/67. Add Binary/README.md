@@ -45,11 +45,23 @@ Each string does not contain leading zeros except for the zero itself.
 ```Python
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-    class Solution:
-    def addBinary(self, a: str, b: str) -> str:
         x, y = int(a, 2), int(b, 2)
-        print (x, y)
         while y:
+            """
+            a = "11", b = "1"
+
+            x = 3, y = 1
+            x ^ y = 3 ^ 1 = 11 ^ 1 = 10 = 2
+            (x & y) << 1 = (3 & 1) << 1 = (11 & 1) << 1 = 1 << 1 = 10 = 2
+
+            x = 2, y = 2
+            x ^ y = 2 ^ 2 = 10 ^ 10 = 0 = 0
+            (x & y) << 1 = (2 & 2) << 1 = (10 & 10) << 1 = 10 << 1 = 100 = 4
+
+            x = 0, y = 4
+            x ^ y = 0 ^ 4 = 00 ^ 100 = 100 = 100
+            (x & y) << 1 = (0 & 4) << 1 = (00 & 100) << 1 = 0 << 1 = 0 = 0               
+            """
             answer = x ^ y
             carry = (x & y) << 1
             x, y = answer, carry
