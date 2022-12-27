@@ -69,3 +69,22 @@ class Solution:
         # Check if there are more rocks to fill than empty capacity
         return len(capacity)
 ```
+
+```Python
+class Solution:
+    def maximumBags(self, capacity: List[int], rocks: List[int], additionalRocks: int) -> int:
+        # Greedy Algorithm
+        #### Time Complexity: O(NlogN), sort opeartions take NlogN time
+        #### Space Complexity: O(N), extra space to store the empty capacity
+        remaining_capacity = [cap - rock for cap, rock in zip(capacity, rocks)]
+        remaining_capacity.sort()
+        count = 0
+
+        for cap in remaining_capacity:
+            if additionalRocks >= cap:
+                additionalRocks -= cap
+                count += 1
+            else:
+                break
+        return count 
+```
