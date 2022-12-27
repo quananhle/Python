@@ -36,3 +36,44 @@ n == matrix[i].length
 ```
 
 ---
+
+### Set Up Boundaries
+
+```Python
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        # Boundaries
+        res = list()
+        ROWS, COLS = len(matrix), len(matrix[0])
+        left, right, top, bottom = 0, len(matrix[0]) - 1, 0, len(matrix) - 1        
+        row, col = 0, 0
+
+        while len(res) < ROWS * COLS:
+            # If reached left boundary and top boundary, traverse rightward
+            for col in range(left, right + 1):
+                res.append(matrix[top][col])
+            
+            # If reached right boundary and top boundary, traverse downward
+            for row in range(top + 1, bottom + 1):
+                res.append(matrix[row][right])
+
+            # Make sure moved to the different row
+            if top != bottom:
+                # If reached right boundary and bottom boundary, traverse backward to leftward
+                for col in range(right - 1, left - 1, -1):
+                    res.append(matrix[bottom][col])
+
+            # Make sure moved to the different row
+            if left != right:        
+                # If reached left boundary and bottom boundary, traverse upward
+                for row in range(bottom - 1, top, -1):
+                    res.append(matrix[row][left])
+            
+            # Update the boundaries
+            left += 1
+            right -= 1
+            top += 1
+            bottom -= 1
+
+        return res
+```
