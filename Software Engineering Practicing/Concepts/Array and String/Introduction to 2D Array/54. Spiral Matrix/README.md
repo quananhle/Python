@@ -120,3 +120,31 @@ class Solution:
         dfs(0, 0, right)
         return res
 ```
+
+```Python
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        # Depth-First Search
+        ROWS, COLS = len(matrix), len(matrix[0])
+        res = list()
+
+        def dfs(matrix, row, col):
+            if not (0 <= row < ROWS and 0 <= col < COLS and  matrix[row][col] != "$"):
+                return
+            res.append(matrix[row][col])
+            matrix[row][col] = "$"  
+
+            # Only traversing right while at possible top cell
+            if row <= col + 1:
+                # Traverse rightward                
+                dfs(matrix, row, col + 1)  
+            # Traverse downward
+            dfs(matrix, row + 1, col)
+            # Traverse leftward
+            dfs(matrix, row, col - 1)
+            # Traverse upward
+            dfs(matrix, row - 1, col)
+
+        dfs(matrix, 0, 0)
+        return res
+```
