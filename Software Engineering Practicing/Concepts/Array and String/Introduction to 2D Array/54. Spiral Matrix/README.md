@@ -45,8 +45,7 @@ class Solution:
         # Boundaries
         res = list()
         ROWS, COLS = len(matrix), len(matrix[0])
-        left, right, top, bottom = 0, len(matrix[0]) - 1, 0, len(matrix) - 1        
-        row, col = 0, 0
+        left, right, top, bottom = 0, len(matrix[0]) - 1, 0, len(matrix) - 1
 
         while len(res) < ROWS * COLS:
             # If reached left boundary and top boundary, traverse rightward
@@ -64,7 +63,7 @@ class Solution:
                     res.append(matrix[bottom][col])
 
             # Make sure moved to the different row
-            if left != right:        
+            if left != right:
                 # If reached left boundary and bottom boundary, traverse upward
                 for row in range(bottom - 1, top, -1):
                     res.append(matrix[row][left])
