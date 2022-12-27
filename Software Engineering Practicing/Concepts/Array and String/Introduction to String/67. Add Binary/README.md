@@ -28,3 +28,18 @@ Each string does not contain leading zeros except for the zero itself.
 ```
 
 ---
+
+|OPERATOR |	DESCRIPTION	| SYNTAX
+|--       |--           |--
+|&	 |Bitwise AND	       |x & y
+|\|	 |Bitwise OR	        |x \| y
+|~	 |Bitwise NOT	       |~x
+|^	 |Bitwise XOR	       |x ^ y
+|>>	|Bitwise right shift|x>>
+|<<	|Bitwise left shift	|x<<
+
+```Python
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+    
+```
