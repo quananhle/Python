@@ -129,9 +129,10 @@ class Solution:
         res = list()
 
         def dfs(matrix, row, col):
-            if not (0 <= row < ROWS and 0 <= col < COLS and  matrix[row][col] != "$"):
+            if not (0 <= row < ROWS and 0 <= col < COLS and matrix[row][col] != "$"):
                 return
             res.append(matrix[row][col])
+            # Mark visited cell
             matrix[row][col] = "$"  
 
             # Only traversing right while at possible top cell
