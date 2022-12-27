@@ -13,3 +13,22 @@ In __Pascal's triangle__, each number is the sum of the two numbers directly abo
 ---
 
 ![image](https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif)
+
+__Example 1:__
+```
+Input: numRows = 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+```
+
+__Example 2:__
+```
+Input: numRows = 1
+Output: [[1]]
+```
+
+__Constraints:__
+```
+1 <= numRows <= 30
+```
+
+---
