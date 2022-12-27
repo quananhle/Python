@@ -88,3 +88,25 @@ class Solution:
                 break
         return count 
 ```
+
+### Hash Map
+
+```Python
+class Solution:
+    def maximumBags(self, capacity: List[int], rocks: List[int], additionalRocks: int) -> int:
+        # HashMap and Greedy Algorithm
+        #### Time Complexity: O(NlogN), sort opeartions take NlogN time
+        #### Space Complexity: O(N), extra space to store the empty capacity in dictionary
+        caps = collections.defaultdict(int)
+        count = 0
+        for i in range(len(capacity)):
+            caps[i] = capacity[i] - rocks[i]
+        # Sort caps by values
+        caps = dict(sorted(caps.items(), key=lambda item: item[1]))
+        print (caps)
+        for bag in caps:
+            if caps[bag] <= additionalRocks:
+                additionalRocks -= caps[bag]
+                count += 1
+        return count
+```
