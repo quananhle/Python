@@ -38,8 +38,20 @@ Each string does not contain leading zeros except for the zero itself.
 |>>	|Bitwise right shift|x>>
 |<<	|Bitwise left shift	|x<<
 
+![image](https://leetcode.com/problems/add-binary/solutions/414426/Figures/67/xor4.png)
+
+![image](https://leetcode.com/problems/add-binary/solutions/414426/Figures/67/carry2.png)
+
 ```Python
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-    
+    class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        x, y = int(a, 2), int(b, 2)
+        print (x, y)
+        while y:
+            answer = x ^ y
+            carry = (x & y) << 1
+            x, y = answer, carry
+        return bin(x)[2:]
 ```
