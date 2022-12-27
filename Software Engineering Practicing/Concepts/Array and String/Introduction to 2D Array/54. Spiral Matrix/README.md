@@ -81,6 +81,12 @@ class Solution:
 
 Must make sure dfs to go all the way up before checking other cells
 
+|1|2|3|4|
+|--|--|--|--
+|5|6|7|8|
+|9|10|11|12|
+|13|14|15|16
+
 ![image](https://user-images.githubusercontent.com/35042430/209625162-71312a0c-a0c9-421d-b5c0-e53152ba89c5.png)
         
 ```Python
