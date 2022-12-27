@@ -79,7 +79,7 @@ class Solution:
 
 ### Depth-First Search
 
-Must make sure dfs to go all the way up before checking other cells
+Must make sure dfs to go all the way up before checking other cells, or only checking right cell after being unable to move up any further
 
 |1|2|3|4|
 |--|--|--|--
