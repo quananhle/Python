@@ -79,7 +79,7 @@ class Solution:
                 if numbers[mid] == target:
                     return mid
                 elif numbers[mid] < target:
-                    left = mid
+                    left = mid + 1
                 else:
                     right = mid - 1
                 return -1
