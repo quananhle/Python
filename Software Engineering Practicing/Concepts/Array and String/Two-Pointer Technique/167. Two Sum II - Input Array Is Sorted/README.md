@@ -48,3 +48,17 @@ The tests are generated such that there is exactly one solution.
 
 ---
 
+```Python
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # Computational Memo
+        #### Time Complexity: O(N), iterarte through input list
+        #### Space Complexity: O(N), extra space required to build memo
+        memo = collections.defaultdict(int)
+        for idx, num in enumerate(numbers):
+            complement = target - num
+            if complement in memo:
+                return [memo[complement], idx + 1]
+            else:
+                memo[num] = idx + 1
+ ```
