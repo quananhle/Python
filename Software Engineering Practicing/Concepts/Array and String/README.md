@@ -35,3 +35,36 @@ So you can use the two-pointer technique:
       One pointer starts from the beginning while the other pointer starts from the end.
 
 And it is worth noting that this technique is often used in a ```sorted``` array.
+
+### Two-pointer Technique - Scenario II
+
+      Given an array and a value, remove all instances of that value in-place and return the new length.
+      
+```Java
+public int removeElement(int[] nums, int val) {
+    int k = 0;
+    for (int i = 0; i < nums.length; ++i) {
+        if (nums[i] != val) {
+            nums[k] = nums[i];
+            k++;
+        }
+    }
+    return k;
+}
+```
+
+We use two pointers, one faster-runner ```i``` and one slower-runner ```k```, in the example above. ```i``` moves one step each time while ```k``` moves one step only if a new needed value is added.
+
+This is a very common scenario of using the two-pointer technique when you need:
+
+      One slow-runner and one fast-runner at the same time.
+
+The key to solving this kind of problems is to
+
+      Determine the movement strategy for both pointers.
+
+Similar to the previous scenario, you might sometimes need to ```sort``` the array before using the two-pointer technique. And you might need a ```greedy``` thought to determine your movement strategy.
+
+---
+
+## Problems
