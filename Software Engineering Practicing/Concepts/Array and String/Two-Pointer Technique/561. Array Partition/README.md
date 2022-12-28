@@ -45,6 +45,17 @@ nums.length == 2 * n
 ```Python
 class Solution:
     def arrayPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        # Every element at even index position is the candidate
+        ans = 0
+        for i in range(0, len(nums), 2):
+            ans += nums[i]
+        return ans
+```
+
+```Python
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
         #### Time Complexity: O(NlogN), sort operations takes NlogN time, traverse through input every 2 steps at a time costs N/2 time
         #### Space Complexity: O(1), constant space for pointers
         nums.sort()
@@ -58,4 +69,11 @@ class Solution:
             else:
                 break
         return ans
+```
+
+### Dynamic Programming
+#### Counting Sort
+
+```Python
+
 ```
