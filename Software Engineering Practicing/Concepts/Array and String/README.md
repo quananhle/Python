@@ -21,3 +21,17 @@ To concatenate strings often, it will be better to use some other data structure
 String to be mutable, convert to char array
 
 ![image](https://user-images.githubusercontent.com/35042430/209711718-1ec73b82-10b4-4543-b72b-280cd1151fb0.png)
+
+---
+
+### Two-Pointer Technique
+
+To summarize, one of the typical scenarios to use two-pointer technique is that you want to
+
+      Iterate the array from two ends to the middle.
+
+So you can use the two-pointer technique:
+
+      One pointer starts from the beginning while the other pointer starts from the end.
+
+And it is worth noting that this technique is often used in a ```sorted``` array.
