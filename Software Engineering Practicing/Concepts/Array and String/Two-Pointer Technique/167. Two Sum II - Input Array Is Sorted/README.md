@@ -94,9 +94,55 @@ class Solution:
                 return [left + 1, right + 1]
 ```
  
+### Binary Search and Two Pointers
+ 
+```Python
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # Binary Search and Two Pointers
+        #### Time Complexity: O(N), iterate through the input size N
+        #### Space Complexity: O(1), constant memory space for pointers
+        left, right = 0, len(numbers) - 1
+        while left <= right:
+            mid = left + (right - left) // 2
+            total = numbers[left] + numbers[right]
+
+            if total < target:
+                # Update left pointer: if sum of mid pointer and right pointer still smaller than target, update left pointer
+                if numbers[mid] + numbers[right] < target:
+                    left = mid + 1
+                # Otherwise, complement of target - num lies between left pointer and mid pointer
+                else:
+                    # Increment left pointer
+                    left += 1
+            elif total > target:
+                # Update right pointer: if sum of mid pointer and left pointer still larger than target, update right pointer
+                if numbers[left] + numbers[mid] > target:
+                    right = mid - 1
+                # Otherwise, complement of target - num lies between right pointer and mid pointer
+                else:
+                    # Decrement right pointer
+                    right -= 1
+            # If found the only one solution
+            else:
+                return [left + 1, right + 1]
+```
+ 
 ### Two Pointers
  
 ```Python
- 
- 
- ```
+ class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # Two Pointers
+        #### Time Complexity: O(N), iterate through the input size N
+        #### Space Complexity: O(1), constant memory space for pointers
+        left, right = 0, len(numbers) - 1
+        while left < right:
+            total = numbers[left] + numbers[right]
+            if total < target:
+                left += 1
+            elif total > target:
+                right -= 1
+            else:
+                return [left + 1, right + 1]
+```
