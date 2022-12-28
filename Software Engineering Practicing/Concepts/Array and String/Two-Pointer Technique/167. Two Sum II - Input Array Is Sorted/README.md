@@ -63,11 +63,17 @@ class Solution:
                 return [memo[complement], idx + 1]
             else:
                 memo[num] = idx + 1
- ```
+```
  
- ### Two Pointers
+### Binary Search
  
- ```Python
+```Python
+
+```
+ 
+### Two Pointers
+ 
+```Python
  
  
  ```
