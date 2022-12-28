@@ -75,19 +75,23 @@ class Solution:
         #### Space Complexity: O(1), constant memory space for pointers
         def binary_search(left, right, target):
             while left <= right:
+                # Initialize a mid pointer
                 mid = left + (right - left) // 2
-                if numbers[mid] == target:
-                    return mid
-                elif numbers[mid] < target:
+                # If target not in the left half, update left pointer
+                if numbers[mid] < target:
                     left = mid + 1
-                else:
+                # If target not in the right half, update right pointer
+                elif numbers[mid] > target:
                     right = mid - 1
-                return -1
+                # If target found, return index
+                else:
+                    return mid
+            return -1
         for left, num in enumerate(numbers):
-            right = binary_search(0, len(numbers)-1, target)
+            # Start searching for complement from the rest of the input
+            right = binary_search(left + 1, len(numbers)-1, target - num)
             if right != -1:
                 return [left + 1, right + 1]
-        return -1
 ```
  
 ### Two Pointers
