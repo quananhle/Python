@@ -45,6 +45,8 @@ nums.length == 2 * n
 ```Python
 class Solution:
     def arrayPairSum(self, nums: List[int]) -> int:
+        #### Time Complexity: O(NlogN), sort operations takes NlogN time, traverse through input every 2 steps at a time costs N/2 time
+        #### Space Complexity: O(1), constant space for pointers
         nums.sort()
         ans = 0
         i, j = 0, 1
@@ -56,5 +58,4 @@ class Solution:
             else:
                 break
         return ans
-
 ```
