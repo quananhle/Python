@@ -68,7 +68,26 @@ class Solution:
 ### Binary Search
  
 ```Python
-
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # Binary Search
+        #### Time Complexity: O(NlogN), binary search costs logN time while iterate through the input size N
+        #### Space Complexity: O(1), constant memory space for pointers
+        def binary_search(left, right, target):
+            while left <= right:
+                mid = left + (right - left) // 2
+                if numbers[mid] == target:
+                    return mid
+                elif numbers[mid] < target:
+                    left = mid
+                else:
+                    right = mid - 1
+                return -1
+        for left, num in enumerate(numbers):
+            right = binary_search(0, len(numbers)-1, target)
+            if right != -1:
+                return [left + 1, right + 1]
+        return -1
 ```
  
 ### Two Pointers
