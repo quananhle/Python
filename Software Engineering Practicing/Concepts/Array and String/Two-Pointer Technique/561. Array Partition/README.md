@@ -75,5 +75,31 @@ class Solution:
 #### Counting Sort
 
 ```Python
-
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        # Dynamic Programming
+        ### Counting Sort
+        #### Time Complexity: O(N + K), iterate through input nums of size 2N and through elements in frequency of size 2K+1
+        #### Space Complexity: O(K), extra space required to build K range
+        K = 10000
+        # Store the frequency of each element
+        frequency = [0] * (2 * K + 1)
+        for num in nums:
+            # Add K value to offset any negative value
+            frequency[num + K] += 1
+        
+        # Initialize sum to 0
+        ans = 0
+        is_even_idx = True
+        for element in range(2 * K + 1):
+            while frequency[element] > 0:
+                # Start from 10000th index
+                if is_even_idx:
+                    # Add element if it is at even index
+                    ans += element - K
+                # Flip the flag
+                is_even_idx = not is_even_idx
+                # Decrement the frequency of the element
+                frequency[element] -= 1
+        return ans
 ```
