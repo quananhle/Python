@@ -10,7 +10,7 @@ Return _the indices of the two numbers, ```index1``` and ```index2```, __added b
 
 The tests are generated such that there is __exactly one solution__. You may not use the same element twice.
 
-Your solution must use only constant extra space.
+Your solution must use only __constant extra space__.
 
 ![image](https://user-images.githubusercontent.com/35042430/209867460-fea452f2-d20c-4c79-9c6a-b90722630225.png)
 
@@ -48,6 +48,8 @@ The tests are generated such that there is exactly one solution.
 
 ---
 
+### Hash Table
+
 ```Python
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
@@ -61,4 +63,11 @@ class Solution:
                 return [memo[complement], idx + 1]
             else:
                 memo[num] = idx + 1
+ ```
+ 
+ ### Two Pointers
+ 
+ ```Python
+ 
+ 
  ```
