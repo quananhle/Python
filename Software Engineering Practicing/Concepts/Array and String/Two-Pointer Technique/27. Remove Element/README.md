@@ -59,3 +59,20 @@ __Constraints:__
 ```
 
 ---
+
+### Pop()
+
+```Python
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        # Pop()
+        #### Time Complexity: O(N), traverse through input once
+        #### Space Complexity: O(1), in-place modifications 
+        """
+        idx = 0
+        while nums and idx < len(nums):
+            if nums[idx] != val:
+                idx += 1 
+            else:
+                nums.pop(idx)
+```
