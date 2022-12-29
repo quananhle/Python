@@ -96,6 +96,6 @@ class Solution:
 
 __Time complexity__: ```O(n)```, single iteration of ```O(n)```.
 
-    - Each element can be visited atmost twice, once by the right pointer(i) and (atmost) once by the ```left``` pointer.
+- Each element can be visited atmost twice, once by the right pointer(i) and (atmost) once by the ```left``` pointer.
     
 __Space complexity__: ```O(1)```, constant space required for ```left```, ```total```, ```res``` and ```i```.
