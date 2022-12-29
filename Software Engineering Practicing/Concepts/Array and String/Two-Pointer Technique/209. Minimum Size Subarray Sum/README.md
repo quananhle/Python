@@ -71,7 +71,7 @@ class Solution:
 - Iterate over the ```nums```:
     - Add ```nums[i]``` to ```sum```
     - While ```total``` is greater than or equal to ```target```:
-        - Update ```ans=min⁡(ans,i+1−left)```, where ```i+1−left``` is the size of current subarray
+        - Update ```ans = min⁡(ans, i+1−left)```, where ```i+1−left``` is the size of current subarray
         - It means that the first index can safely be incremented, since, the minimum subarray starting with this index with ```total ≥ s``` has been achieved
         - Subtract ```nums[left]``` from ```sum``` and increment ```left```
 
