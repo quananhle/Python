@@ -77,7 +77,7 @@ class Solution:
                 nums.pop(idx)
 ```
 
-### Twp Pointers
+### Two Pointers
 
 ```Python
 class Solution:
