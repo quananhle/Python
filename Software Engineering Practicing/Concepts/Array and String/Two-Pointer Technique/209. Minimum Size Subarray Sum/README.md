@@ -39,3 +39,45 @@ __Constraints:__
 ---
 
 __Follow up:__ If you have figured out the ```O(n)``` solution, try coding another solution of which the time complexity is ```O(n log(n))```.
+
+```Python
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        # Brute Force with Nested Loops
+        ### Time Limit Exceeded
+        #### Time Complexity: O(N^2)
+        #### Space Complexity: O(1)
+        
+        res = sys.maxsize
+        if not nums:
+            return 0
+        for i in range(len(nums)):
+            total = 0
+            for j in range(i, len(nums)):
+                total += nums[j]
+                if total >= target:
+                    res = min(res, j - i + 1)
+                    break
+            if res == sys.maxsize and total < target and i == len(nums) - 1:
+                return 0
+        return res if res != sys.maxsize else 0
+```
+
+### Two Pointers
+
+```
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        # Two Pointers
+        #### Time Complexity:
+        #### Space Complexity:
+        res = sys.maxsize
+        left, total = 0, 0
+        for i in range(len(nums)):
+            total += nums[i]
+            while total >= target:
+                res = min(res, i + 1 - left)
+                total -= nums[left]
+                left += 1
+        return res if res != sys.maxsize else 0
+```
