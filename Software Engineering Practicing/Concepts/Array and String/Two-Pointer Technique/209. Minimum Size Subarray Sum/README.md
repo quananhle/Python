@@ -65,7 +65,17 @@ class Solution:
 
 ### Two Pointers
 
-```
+#### Algorithm
+
+- Initialize ```left``` pointer to 0 and ```total``` to 0
+- Iterate over the ```nums```:
+    - Add ```nums[i]``` to ```sum```
+    - While ```total``` is greater than or equal to ```target```:
+        - Update ```ans=min⁡(ans,i+1−left)```, where ```i+1−left``` is the size of current subarray
+        - It means that the first index can safely be incremented, since, the minimum subarray starting with this index with ```total ≥ s``` has been achieved
+        - Subtract ```nums[left]``` from ```sum``` and increment ```left```
+
+```Python
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         # Two Pointers
@@ -81,3 +91,7 @@ class Solution:
                 left += 1
         return res if res != sys.maxsize else 0
 ```
+
+__Time complexity__: ```O(n)```, single iteration of ```O(n)```.
+    - Each element can be visited atmost twice, once by the right pointer(i) and (atmost) once by the ```left``` pointer.
+__Space complexity__: ```O(1)```, constant space required for ```left```, ```total```, ```res``` and ```i```.
