@@ -1,6 +1,6 @@
 ## 1962. Remove Stones to Minimize the Total
 
-```Tag```: ```Heap```
+```Tag```: ```Heap``` ```Priority Queue```
 
 #### Difficulty: Medium
 
@@ -47,3 +47,19 @@ __Constraints:__
 ```
 
 ---
+
+```Python
+class Solution:
+    def minStoneSum(self, piles: List[int], k: int) -> int:
+        # Heap
+        heap = list()
+        for pile in piles:
+            heapq.heappush(heap, -pile)
+        while k:
+            pile = -heapq.heappop(heap)
+            pile -= pile // 2
+            heapq.heappush(heap, -pile)
+            k -= 1
+        return -sum(heap)
+```
+        
