@@ -49,3 +49,32 @@ class Solution:
                 ans = max(ans, count)
         return ans
 ```
+
+### Two Pointers
+
+```Python
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        # Two Pointers
+        count, ans = 0, 0
+        for num in nums:
+            if num == 1:
+                count += 1
+            else:
+                ans = max(ans, count)
+                count = 0
+        return max(ans, count)
+```
+```Python
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        # Two Pointers
+        count, ans = 0, 0
+        for num in nums:
+            if num == 1:
+                count += 1
+                ans = max(ans, count)
+            else:
+                count = 0
+        return ans
+```
