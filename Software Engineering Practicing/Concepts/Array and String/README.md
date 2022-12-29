@@ -67,4 +67,19 @@ Similar to the previous scenario, you might sometimes need to ```sort``` the arr
 
 ---
 
+### Array-related Techniques
+
+1. As we mentioned, we can call the built-in function to sort an array. But it is useful to understand the principle of some widely-used sorting algorithms and their complexity.
+
+2. ```Binary search``` is also an important technique used to search a specific element in a sorted array.
+
+3. It is not easy to use ```two-pointer``` technique flexibly. This technique can also be used to solve:
+
+- Slow-pointer and fast-pointer problem in Linked List
+- Sliding Window Problem
+
+4. The ```two-pointer``` technique sometimes will relate to ```Greedy Algorithm``` which helps us design our pointers' movement strategy.
+
+---
+
 ## Problems
