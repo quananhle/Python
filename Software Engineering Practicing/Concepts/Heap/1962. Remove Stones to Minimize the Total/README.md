@@ -62,4 +62,18 @@ class Solution:
             k -= 1
         return -sum(heap)
 ```
+
+```Python
+class Solution:
+    def minStoneSum(self, piles: List[int], k: int) -> int:
+        # Heap
+        heap = [-pile for pile in piles]
+        heapq.heapify(heap)
+        while k:
+            pile = -heapq.heappop(heap)
+            pile -= pile // 2
+            heapq.heappush(heap, -pile)
+            k -= 1
+        return -sum(heap)
+```
         
