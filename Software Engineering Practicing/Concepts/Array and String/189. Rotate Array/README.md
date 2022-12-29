@@ -88,3 +88,25 @@ class Solution:
         return nums[::-1][:k] + nums[:len(nums)-k]
 ```
 
+### Pop() and Prepend (insert(0, n))
+
+```Python
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+
+        # Stack Pop() and Prepend
+        #### Time Complexity: O(k), loop k time
+        #### Space Complexity: O(1), constant memory space
+        # Base Cases
+        # If k == n, rotate a complete round similar to k == 0
+        n = len(nums)
+        if k >= n:
+            # k = k - (k // n) * n
+            k %= n
+        for _ in range(k):
+            num = nums.pop()
+            nums.insert(0, num)
+```
