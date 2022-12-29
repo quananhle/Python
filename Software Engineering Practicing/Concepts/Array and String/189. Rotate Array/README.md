@@ -43,6 +43,8 @@ __Follow up__:
 - Try to come up with as many solutions as you can. There are at least three different ways to solve this problem.
 - Could you do it in-place with ```O(1)``` extra space?
 
+### Brute Force
+
 ```Python
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
@@ -67,3 +69,22 @@ class Solution:
             nums[0] = tail
             k -= 1
 ```
+
+### Splicing
+
+```Python
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        #### Time Complexity: O(N), splicing cost N time to copy all element to a new array
+        #### Space Complexity: O(N), extra memory space to create a copy of the input array
+        # Splicing
+        n = len(nums)
+        if k >= n:
+            # k = k - (k // n) * n
+            k %= n
+        return nums[::-1][:k] + nums[:len(nums)-k]
+```
+
