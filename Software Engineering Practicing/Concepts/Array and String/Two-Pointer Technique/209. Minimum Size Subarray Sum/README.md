@@ -40,6 +40,8 @@ __Constraints:__
 
 __Follow up:__ If you have figured out the ```O(n)``` solution, try coding another solution of which the time complexity is ```O(n log(n))```.
 
+### Brute Force with Nested Loops
+
 ```Python
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
