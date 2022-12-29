@@ -76,3 +76,19 @@ class Solution:
             else:
                 nums.pop(idx)
 ```
+
+### Twp Pointers
+
+```Python
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        # Two Pointers
+        #### Time Complexity: O(1), traverse through the input once
+        #### Space Complexity: O(1), in-place modifications
+        count = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[count] = nums[i]
+                count += 1
+        return count
+``` 
