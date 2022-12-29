@@ -33,5 +33,19 @@ nums[i] is either 0 or 1.
 ![image](https://leetcode.com/problems/max-consecutive-ones/solutions/409193/Figures/485/485_Max_Consecutive_Ones_1.png)
 
 ```Python
-
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        # Brute Force with Nested Loop
+        ### Time Limit Exceeded
+        ans = 0
+        for slow in range(len(nums)):
+            if nums[slow] == 1:
+                count = 0
+                for fast in range(slow, len(nums)):
+                    if nums[fast] == 1:
+                        count += 1
+                    else:
+                        break
+                ans = max(ans, count)
+        return ans
 ```
