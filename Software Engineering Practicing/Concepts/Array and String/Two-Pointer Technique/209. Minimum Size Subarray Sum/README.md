@@ -1,6 +1,6 @@
 ## 209. Minimum Size Subarray Sum
 
-```Tag```:
+```Tag```: ```Two Pointers``` ```Sliding Window```
 
 #### Difficulty: Medium
 
