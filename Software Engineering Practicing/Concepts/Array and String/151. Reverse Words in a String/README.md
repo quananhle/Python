@@ -13,7 +13,7 @@ Note that ```s``` may contain leading or trailing spaces or multiple spaces betw
 
 ![image](https://user-images.githubusercontent.com/35042430/210085423-e6f70ea0-15c1-490e-8682-334f79d2a126.png)
 
-```
+---
 
 __Example 1:__
 ```
