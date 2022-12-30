@@ -39,7 +39,9 @@ __Constraints:__
 
 ---
 
-### Brute Force with Nested Loop
+### Dynamic Programming
+#### Time Complexity: O(K^2)
+#### Space Complexity: O(K)
 
 ```Python
 class Solution:
@@ -51,7 +53,24 @@ class Solution:
         return res[rowIndex]
 ```
 
+### Memory-efficient Dynamic Programming
+
+```Python
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        # Memory-efficient Dynamic Programming
+        #### Time Complexity: O(K^2)
+        #### Space Complexity: O(K)
+        row = [1]
+        for i in range(rowIndex):
+            for j in range(i, 0, -1):
+                row[j] = row[j-1] + row[j]
+            row += [1]
+        return row
+```
+
+__Follow up__: Could you optimize your algorithm to use only ```O(rowIndex)``` extra space?
+
 ```Python
 
 ```
-__Follow up__: Could you optimize your algorithm to use only ```O(rowIndex)``` extra space?
