@@ -126,10 +126,35 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        #### Time Complexity: O(N), N element reversed 3 times
+        #### Space Complexity: O(1), constant memory space
+        
         n = len(nums)
         k %= n
+        
+        # [1,2,3,4,5,6,7]
+        self.__reverse__(nums, 0, n-1)  # [7, 6, 5, 4, 3, 2, 1]
+        self.__reverse__(nums, 0, k-1)  # [5, 6, 7, 4, 3, 2, 1]
+        self.__reverse__(nums, k, n-1)  # [5, 6, 7, 1, 2, 3, 4]
+```
 
-        self.__reverse__(nums, 0, n-1)
-        self.__reverse__(nums, 0, k-1)
-        self.__reverse__(nums, k, n-1)
+```Python
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        #### Time Complexity: O(N), N element reversed 3 times
+        #### Space Complexity: O(1), constant memory space        
+        
+        n = len(nums)
+        k %= n
+        def __reverse__(start, end):
+            while start < end:    
+                nums[start], nums[end] = nums[end], nums[start]
+                start += 1
+                end -= 1
+        __reverse__(0, n-1)
+        __reverse__(0, k-1)
+        __reverse__(k, n-1)   
 ```
