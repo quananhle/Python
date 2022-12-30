@@ -65,7 +65,7 @@ class Solution:
         return res if res != sys.maxsize else 0
 ```
 
-### Two Pointers
+### Two Pointers (Sliding Window)
 
 #### Algorithm
 
