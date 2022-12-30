@@ -71,6 +71,8 @@ class Solution:
 
 __Follow up__: Could you optimize your algorithm to use only ```O(rowIndex)``` extra space?
 
+![image](https://user-images.githubusercontent.com/35042430/210084160-64f03a11-03fb-42c1-a4ad-b8cfed407fee.png)
+
 #### Time Complexity: O(K)
 #### Space Complexity: O(K)
 
