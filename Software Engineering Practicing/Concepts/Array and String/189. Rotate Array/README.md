@@ -53,14 +53,19 @@ class Solution:
         """
         # Brute Force with Nested Loop
         ### Time Limit Exceeded
-        #### Time Complexity: O(N^2), nested loop
+        #### Time Complexity: O(N * k), nested loop traverse the input size N in k times
         #### Space Complexity: O(1), constant memory space
-
+        '''
+        k %= len(nums)
+        for _ in range(k):
+            previous = nums[-1]
+            for j in range(len(nums)):
+                previous, nums[j] = nums[j], previous
+        '''
         # Base Cases
         # If k == n, rotate a complete round similar to k == 0
         n = len(nums)
-        if k >= n:
-            k = k - (k // n) * n
+        k = k - (k // n) * n
         left, right = 0, len(nums) - 1
         while k:
             tail = nums[right]   
@@ -79,13 +84,12 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         #### Time Complexity: O(N), splicing cost N time to copy all element to a new array
-        #### Space Complexity: O(N), extra memory space to create a copy of the input array
-        # Splicing
-        n = len(nums)
-        if k >= n:
-            # k = k - (k // n) * n
-            k %= n
-        return nums[::-1][:k] + nums[:len(nums)-k]
+        #### Space Complexity: O(N), extra memory space to create a copy of the input array        
+        k %= len(nums)
+        res = [None] * len(nums)
+        for i in range(len(nums)):
+            res[(i + k) % len(nums)] = nums[i]
+        nums[:] = res
 ```
 
 ### Pop() and Prepend (insert(0, n))
@@ -102,11 +106,30 @@ class Solution:
         #### Space Complexity: O(1), constant memory space
         # Base Cases
         # If k == n, rotate a complete round similar to k == 0
-        n = len(nums)
-        if k >= n:
-            # k = k - (k // n) * n
-            k %= n
+        k %= len(nums)
         for _ in range(k):
             num = nums.pop()
             nums.insert(0, num)
+```
+
+### Reverse
+
+```Python
+class Solution:
+    def __reverse__(self, nums: List[int], start: int, end: int) -> None:
+        while start < end:    
+            nums[start], nums[end] = nums[end], nums[start]
+            start += 1
+            end -= 1
+
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        k %= n
+
+        self.__reverse__(nums, 0, n-1)
+        self.__reverse__(nums, 0, k-1)
+        self.__reverse__(nums, k, n-1)
 ```
