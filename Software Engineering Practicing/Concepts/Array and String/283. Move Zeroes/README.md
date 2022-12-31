@@ -48,3 +48,21 @@ class Solution:
                 slow += 1
             fast += 1
 ```
+
+### Snowball
+
+![image](https://assets.leetcode.com/users/olsh/image_1537442610.png)
+
+```Python
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        snow_ball = 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                snow_ball += 1
+            elif snow_ball > 0:
+                nums[i], nums[i-snow_ball] = nums[i-snow_ball], nums[i]
+```
