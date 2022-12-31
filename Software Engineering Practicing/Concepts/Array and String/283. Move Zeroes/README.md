@@ -62,7 +62,10 @@ class Solution:
         snow_ball = 0
         for i in range(len(nums)):
             if nums[i] == 0:
+                # Increase snowball size
                 snow_ball += 1
-            elif snow_ball > 0:
+            # If encounter a non-zero integer and there is a snowball:
+            elif snow_ball:
+                # Swap to the first index of the snow ball
                 nums[i], nums[i-snow_ball] = nums[i-snow_ball], nums[i]
 ```
