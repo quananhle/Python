@@ -75,12 +75,12 @@ class Solution:
 ```Python
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        slow, curr, fast = 0, 1, 1
+        curr, slow, fast = 0, 1, 1
         while fast < len(nums):
-            if nums[slow] != nums[fast]:
-                nums[curr] = nums[fast]
-                curr += 1
+            if nums[curr] != nums[fast]:
+                nums[slow] = nums[fast]
+                slow += 1
             fast += 1
-            slow += 1
-        return curr
+            curr += 1
+        return slow
 ```
