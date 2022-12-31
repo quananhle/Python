@@ -1,6 +1,6 @@
 ## 557. Reverse Words in a String III
 
-```Tag```: ```Array``` ```String```
+```Tag```: ```Array``` ```String``` ```Two Pointers```
 
 #### Difficulty: Easy
 
@@ -32,6 +32,16 @@ All the words in s are separated by a single space.
 ```
 
 ---
+
+### One Liner
+
+```Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        return " ".join([word[::-1] for word in s.split()])
+```
+
+### Fast and Slow Pointers
 
 ```Python
 class Solution:
