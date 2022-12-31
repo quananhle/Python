@@ -14,7 +14,7 @@ __Custom Judge:__
 
 The judge will test your solution with the following code:
 
-```Javascript```
+```JavaScript
 int[] nums = [...]; // Input array
 int[] expectedNums = [...]; // The expected answer with correct length
 
