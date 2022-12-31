@@ -48,6 +48,22 @@ For example, let's add a new node 9 at the beginning of the list.
 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/19/screen-shot-2018-04-19-at-125350.png)
 
+#### Delete Operation - Singly Linked List
+
+If we want to delete an existing node ```cur``` from the singly linked list, we can do it in two steps:
+
+1. Find ```cur```'s previous node ```prev``` and its next node ```next```;
+
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/27/screen-shot-2018-04-26-at-203558.png)
+
+2. Link ```prev``` to cur's next node ```next```.
+
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/26/screen-shot-2018-04-26-at-203640.png)
+
+In our first step, we need to find out ```prev``` and ```next```. It is easy to find out ```next``` using the reference field of ```cur```. However, we have to traverse the linked list from the head node to find out ```prev``` which will take ```O(N)``` time on average, where N is the length of the linked list. So the time complexity of deleting a node will be ```O(N)```.
+
+The space complexity is ```O(1)``` because we only need constant space to store our pointers.
+
 ## Doubly Linked List
 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
