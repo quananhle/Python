@@ -44,4 +44,55 @@ There is at least one word in s.
 
 ---
 
-__Follow-up__: If the string data type is mutable in your language, can you solve it in-place with __O(1)__ extra space?
+```Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        res = s.split(' ')
+        res = [word for word in res[::-1] if word != '']       
+        return ' '.join(res)
+```
+
+```Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        def split_and_trim_spaces(s):
+            output = list()
+            # Remove leading spaces
+            while s[0] == ' ':
+                s = s[1:] 
+            # Remove trailing spaces
+            while s[-1] == ' ':
+                s = s[:len(s)-1]
+            # Remove excessive spaces
+            for word in s:
+                if word != ' ':
+                    output.append(word)
+                elif output[-1] != ' ':
+                    output.append(word)
+            return output
+
+        def reverse_str(arr, start, end):
+            # Reverse element in an array in-place
+            while start < end:
+                arr[start], arr[end] = arr[end], arr[start]
+                start += 1
+                end -= 1
+            return arr
+            # return arr[::-1]
+        
+        def reverse_each_word(arr):
+            slow, fast = 0, 0
+            while fast < len(arr):
+                if arr[fast] == ' ':
+                    arr[slow:fast] = arr[slow:fast][::-1]
+                    slow = fast + 1
+                fast += 1
+                if fast == len(arr):
+                    arr[slow:] = arr[slow:][::-1]
+            return arr
+        
+        ans = split_and_trim_spaces(s)
+        ans = reverse_str(ans, 0, len(ans)-1)
+        ans = reverse_each_word(ans)
+        return ''.join(ans)
+```
