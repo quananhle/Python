@@ -60,7 +60,7 @@ All the words in s are separated by a single space.
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         '''
-        str_lst = s.split(' ')
+        str_lst = s.split()
         '''
         left = 0
         str_lst = list()
@@ -124,5 +124,32 @@ class Solution:
 ### Frequency Counter
 
 ```Python
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        '''
+        words = s.split(' ')
+        char, word, maps = collections.Counter(pattern), collections.Counter(words), collections.Counter(zip(pattern, words))
+        '''
 
+        # Split()
+        left, right = 0, 0
+        words = list()
+        while right < len(s):
+            if s[right] == ' ':
+                words.append(s[left:right])
+                left = right + 1
+            right += 1
+            if right == len(s):
+                words.append(s[left:right])
+
+        # Frequency Counter
+        char, word, maps = dict(), dict(), dict()
+        for c in pattern:
+            char[c] = 1 + char.get(c, 0)
+        for w in words:
+            word[w] = 1 + word.get(w, 0)
+        for z in zip(pattern, words):
+            maps[z] = 1 + maps.get(z, 0)
+
+        return len(char) == len(word) == len(maps) and len(words) == len(pattern)
 ```
