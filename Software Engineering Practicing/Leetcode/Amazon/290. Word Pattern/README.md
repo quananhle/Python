@@ -24,7 +24,7 @@ __Example 2:__
 ```
 Input: pattern = "abba", s = "dog cat cat fish"
 Output: false
-``
+```
 
 __Example 3:__
 
