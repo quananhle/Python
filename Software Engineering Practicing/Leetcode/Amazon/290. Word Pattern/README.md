@@ -57,5 +57,31 @@ All the words in s are separated by a single space.
 ### Two Hash Tables
 
 ```Python
-
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        '''
+        str_lst = s.split(' ')
+        '''
+        left = 0
+        str_lst = list()
+        for right in range(len(s)):
+            if s[right] == ' ':
+                str_lst.append(s[left:right])
+                left = right + 1
+            elif right == len(s)-1:
+                str_lst.append(s[left:right+1])
+        if len(pattern) != len(str_lst):
+            return False
+        p_memo, s_memo = dict(), dict()
+        for key, val in zip(pattern, str_lst):
+            if not key in p_memo:
+                if val in s_memo:
+                    return False
+                else:
+                    p_memo[key] = val
+                    s_memo[val] = key
+            else:
+                if p_memo[key] != val:
+                    return False
+        return True
 ```
