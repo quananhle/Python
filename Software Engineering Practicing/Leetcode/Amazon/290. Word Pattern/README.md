@@ -75,10 +75,12 @@ class Solution:
         p_memo, s_memo = dict(), dict()
         for key, val in zip(pattern, str_lst):
             if not key in p_memo:
+                # To handle the case pattern = "abba", s = "dog dog dog dog"
                 if val in s_memo:
                     return False
                 else:
                     p_memo[key] = val
+                    # To handle the case pattern = "abba", s = "dog dog dog dog"
                     s_memo[val] = key
             else:
                 if p_memo[key] != val:
