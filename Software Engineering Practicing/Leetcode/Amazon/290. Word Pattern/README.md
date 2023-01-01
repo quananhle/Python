@@ -87,3 +87,9 @@ class Solution:
                     return False
         return True
 ```
+
+### One Hash Table
+
+```Python
+
+```
