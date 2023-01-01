@@ -33,6 +33,14 @@ Input: pattern = "aaaa", s = "dog cat cat dog"
 Output: false
 ```
 
+
+__Example 4:__
+
+```
+Input: pattern = "abba", s = "dog dog dog dog"
+Output: false
+```
+
 __Constraints:__
 
 ```
