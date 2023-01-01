@@ -70,8 +70,10 @@ class Solution:
                 left = right + 1
             elif right == len(s)-1:
                 str_lst.append(s[left:right+1])
+                
         if len(pattern) != len(str_lst):
             return False
+            
         p_memo, s_memo = dict(), dict()
         for key, val in zip(pattern, str_lst):
             if not key in p_memo:
@@ -88,7 +90,38 @@ class Solution:
         return True
 ```
 
-### One Hash Table
+### Single Index Hash Map
+
+```Python
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        memo = dict()
+        words = s.split(' ')
+
+        if len(pattern) != len(words):
+            return False
+
+        for i in range(len(pattern)):
+            char = pattern[i]
+            word = words[i]
+
+            # To differentiate the letter from pattern and word from s
+            char_key = 'c_{}'.format(char)
+            word_key = 'w_{}'.format(word)
+            
+            if not char_key in memo:
+                memo[char_key] = i
+            
+            if not word_key in memo:
+                memo[word_key] = i
+
+            if memo[char_key] != memo[word_key]:
+                return False
+        
+        return True
+```
+
+### Frequency Counter
 
 ```Python
 
