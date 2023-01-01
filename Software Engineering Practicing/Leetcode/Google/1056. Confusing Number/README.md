@@ -12,6 +12,8 @@
 
 ---
 
+![image](https://leetcode.com/problems/confusing-number/solutions/2918441/Figures/1056/1.png)
+
 ### Invert and Reverse with Hash Table
 
 ```Python
@@ -29,3 +31,20 @@ class Solution:
             rotated_num += int(memo[rotated[i]]) * 10**(len(rotated)-1-i)
         return rotated_num != n
 ```
+
+```Python
+class Solution:
+    def confusingNumber(self, n: int) -> bool:
+        memo = {'0': '0', '1': '1', '6': '9', '8': '8', '9': '6'}
+        rotated = list()
+
+        for char in str(n):
+            if not char in memo:
+                return False
+            rotated.append(memo[char])
+
+        rotated = "".join(rotated)
+        return int(rotated[::-1]) != n
+```
+
+### Remainder
