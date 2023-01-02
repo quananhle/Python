@@ -53,7 +53,42 @@ pos is -1 or a valid index in the linked-list.
 ### Hash Set
 
 ```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        visited = set()
+        curr = head
+        while curr:
+            if curr in visited:
+                return True
+            visited.add(curr)
+            curr = curr.next
+        return False
 ```
 
 __Follow up:__ Can you solve it using O(1) (i.e. constant) memory?
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        if not head or not head.next:
+            return False
+        slow, fast = head, head.next            
+        while slow != fast:
+            if not fast or not fast.next:
+                return False
+            fast = fast.next.next
+            slow = slow.next
+        return True
+```
