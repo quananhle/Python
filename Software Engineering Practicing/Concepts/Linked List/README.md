@@ -64,6 +64,16 @@ In our first step, we need to find out ```prev``` and ```next```. It is easy to 
 
 The space complexity is ```O(1)``` because we only need constant space to store our pointers.
 
+## Two Pointer Technique
+
+Two scenarios to use the two-pointer technique:
+
+1. Two pointers ```starts at different position```: ```one starts at the beginning``` while another ```starts at the end```;
+2. Two pointers are ```moved at different speed```: ```one is faster``` while another ```one might be slower```.
+
+For a singly linked list, since we can only traverse the linked list in one direction, the first scenario might not work. However, the second scenario, which is also called ```slow-pointer``` and ```fast-pointer``` technique, is really useful.
+
 ## Doubly Linked List
 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
+
