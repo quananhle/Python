@@ -67,6 +67,8 @@ class Solution:
         return None
 ```
 
+__Follow up__: Can you solve it using ```O(1)``` (i.e. constant) memory?
+
 ### Floyd's Tortoise and Hare
 
 ![image](https://user-images.githubusercontent.com/35042430/210284097-f3426858-4526-45f9-a566-3681d1c2be1c.png)
@@ -75,5 +77,31 @@ class Solution:
 ![image](https://user-images.githubusercontent.com/35042430/210283436-a31da7e3-e4e8-41af-96a1-da40e28b6e81.png)
 
 ```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
+class Solution:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        def get_intersection(head):
+            slow, fast = head, head
+            while fast and fast.next:
+                fast = fast.next.next
+                slow = slow.next
+                if slow == fast:
+                    return fast
+            return None
+
+        if not head or not head.next:
+            return None
+        ptr2 = get_intersection(head)
+        if not ptr2:
+            return None
+        ptr1 = head
+        while ptr1 != ptr2:
+            ptr1 = ptr1.next
+            ptr2 = ptr2.next
+        return ptr1
 ```
