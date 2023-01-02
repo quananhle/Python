@@ -48,17 +48,38 @@ At most 2000 calls will be made to get, addAtHead, addAtTail, addAtIndex and del
 
 ---
 
-![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly4.png)
-
-![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_insert.png)
-
-![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_insert_head.png)
-
-![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_delete.png)
-
-![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_get.png)
-
 ### Singly Linked List
+
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly4.png)
+```Python
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+class MyLinkedList:
+    def __init__(self):
+        self.size = 0
+        self.head = ListNode(0)  # sentinel node as pseudo-head
+```
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_insert.png)
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_insert_head.png)
+```Python
+to_add.next = pred.next
+pred.next = to_add
+```
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_delete.png)
+```Python
+# delete pred.next 
+pred.next = pred.next.next
+```
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_get.png)
+```Python
+# index steps needed 
+# to move from sentinel node to wanted index
+for _ in range(index + 1):
+    curr = curr.next
+return curr.val
+```
 
 ```Python
 class ListNode:
