@@ -36,6 +36,23 @@ word consists of lowercase and uppercase English letters.
 
 ---
 
+### Compare Character by Character
+
+```Python
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        DICTIONARY = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}
+        upper_count, lower_count = 0, 0
+        for w in word:
+            if w in DICTIONARY:
+                upper_count += 1
+            else:
+                lower_count += 1
+        if upper_count == len(word) or lower_count == len(word) or (word[0] in DICTIONARY and lower_count == len(word) - 1):
+            return True
+        return False
+```
+
 The pattern of case 1 in regex is [A−Z]∗[A-Z]*[A−Z]∗, where [A−Z][A-Z][A−Z] matches one char from 'A' to 'Z', ∗*∗ represents repeat the pattern before it at least 0 times. Therefore, this pattern represents "All capital".
 
 The pattern of case 2 in regex is [a−z]∗[a-z]*[a−z]∗, where similarly, [a−z][a-z][a−z] matches one char from 'a' to 'z'. Therefore, this pattern represents "All not capital".
