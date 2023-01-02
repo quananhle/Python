@@ -145,7 +145,7 @@ class MyLinkedList:
 
 ### Doubly Linked List
 
-https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/dll.png
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/dll.png)
 ```Python
 class ListNode:
     def __init__(self, x):
@@ -161,19 +161,19 @@ class MyLinkedList:
         self.head.next = self.tail
         self.tail.prev = self.head
 ```
-https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/dll_get2.png
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/dll_get2.png)
 ```Python
 to_add.prev = pred
 to_add.next = succ
 pred.next = to_add
 succ.prev = to_add
 ```
-https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/dll_insert2.png
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/dll_insert2.png)
 ```Python
 pred.next = succ
 succ.prev = pred
 ```
-https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/dll_delete2.png
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/dll_delete2.png)
 ```Python
 # choose the fastest way: to move from the head
 # or to move from the tail
