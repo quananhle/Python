@@ -1,4 +1,4 @@
-# Linked List
+# [Linked List](https://leetcode.com/explore/learn/card/linked-list/)
 
 ## Singly Linked List
 
