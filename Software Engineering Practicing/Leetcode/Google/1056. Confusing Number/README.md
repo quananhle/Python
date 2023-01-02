@@ -48,3 +48,20 @@ class Solution:
 ```
 
 ### Remainder
+
+```Python
+class Solution:
+    def confusingNumber(self, n: int) -> bool:
+        memo = {0:0, 1:1, 6:9, 8:8, 9:6}
+        rotated = 0
+        num = n
+
+        while num:
+            res = num % 10
+            if not res in memo:
+                return False
+            rotated = rotated * 10 + memo[res]
+            num //= 10
+        
+        return rotated != n
+```
