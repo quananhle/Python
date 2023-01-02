@@ -66,3 +66,13 @@ class Solution:
             curr = curr.next
         return None
 ```
+
+### Floyd's Tortoise and Hare
+
+![image](https://user-images.githubusercontent.com/35042430/210283411-1e8b3484-9b54-41ca-b6dd-f788fe2b4055.png)
+![image](https://user-images.githubusercontent.com/35042430/210283424-82430abb-0a84-4636-b9ed-0d9e603f708e.png)
+![image](https://user-images.githubusercontent.com/35042430/210283436-a31da7e3-e4e8-41af-96a1-da40e28b6e81.png)
+
+```Python
+
+```
