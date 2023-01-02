@@ -20,29 +20,37 @@ Given an integer ```n```, return ```true``` if it is a confusing number, or ```f
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2019/03/23/1268_1.png)
+```
 Input: n = 6
 Output: true
 Explanation: We get 9 after rotating 6, 9 is a valid number, and 9 != 6.
-Example 2:
+```
 
+__Example 2:__
 
+![image](https://assets.leetcode.com/uploads/2019/03/23/1268_2.png)
+```
 Input: n = 89
 Output: true
 Explanation: We get 68 after rotating 89, 68 is a valid number and 68 != 89.
-Example 3:
+```
 
+__Example 3:__
 
+![image](https://assets.leetcode.com/uploads/2019/03/26/1268_3.png)
+```
 Input: n = 11
 Output: false
 Explanation: We get 11 after rotating 11, 11 is a valid number but the value remains the same, thus 11 is not a confusing number
+```
  
-
-Constraints:
-
+__Constraints:__
+```
 0 <= n <= 109
+```
 
 ---
 
