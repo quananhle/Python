@@ -38,6 +38,8 @@ word consists of lowercase and uppercase English letters.
 
 ### Compare Character by Character
 
+#### Counter
+
 ```Python
 class Solution:
     def detectCapitalUse(self, word: str) -> bool:
@@ -53,6 +55,50 @@ class Solution:
         return False
 ```
 
+#### Scanning
+
+```Python
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        '''
+        if len(word) == 1:
+            return True
+        if word[0].isupper():
+            if word[1].isupper():
+                for i in range(2, len(word)):
+                    if not word[i].isupper():
+                        return False
+            else:
+                for i in range(1, len(word)):
+                    if word[i].isupper():
+                        return False
+        else:
+            for i in range(1, len(word)):
+                if word[i].isupper():
+                    return False
+        return True
+        '''
+        # Check if only 1 letter in word, always True uppercase or lowercase
+        if len(word) == 1:
+            return True
+        # Case 1:
+        # Check if the first letter is Capital and the second letter is also Capital
+        if word[0].isupper() and word[1].isupper():
+            # If any lowercase letter found the rest of the word, return False
+            for i in range(2, len(word)):
+                if not word[i].isupper():
+                    return False
+        # Case 2 and case 3:
+        # Since if not case 1, the first letter does not matter if it is capital as long as the rest of the word is lowercase
+        else:
+            for i in range(1, len(word)):
+                if word[i].isupper():
+                    return False
+        return True
+```
+
+### Regex
+
 The pattern of case 1 in regex is [A−Z]∗[A-Z]*[A−Z]∗, where [A−Z][A-Z][A−Z] matches one char from 'A' to 'Z', ∗*∗ represents repeat the pattern before it at least 0 times. Therefore, this pattern represents "All capital".
 
 The pattern of case 2 in regex is [a−z]∗[a-z]*[a−z]∗, where similarly, [a−z][a-z][a−z] matches one char from 'a' to 'z'. Therefore, this pattern represents "All not capital".
@@ -64,3 +110,7 @@ Take these three pattern together, we have [A−Z]∗∣[a−z]∗∣[A−Z][a�
 Still, we can combine case 2 and case 3, and we get .[a−z]∗.[a-z]*.[a−z]∗, where "." can matches any char.
 
 Therefore, the final pattern is [A−Z]∗∣.[a−z]∗[A-Z]*|.[a-z]*[A−Z]∗∣.[a−z]∗.
+
+```Python
+
+```
