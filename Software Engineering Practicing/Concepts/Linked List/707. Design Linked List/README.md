@@ -48,6 +48,16 @@ At most 2000 calls will be made to get, addAtHead, addAtTail, addAtIndex and del
 
 ---
 
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly4.png)
+
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_insert.png)
+
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_insert_head.png)
+
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_delete.png)
+
+![image](https://leetcode.com/problems/design-linked-list/solutions/398730/Figures/707/singly_get.png)
+
 ### Singly Linked List
 
 ```Python
