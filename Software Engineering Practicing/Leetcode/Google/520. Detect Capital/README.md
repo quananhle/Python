@@ -55,6 +55,20 @@ class Solution:
         return False
 ```
 
+```Python
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        upper_count, lower_count = 0, 0
+        for w in word:
+            if w.isupper():
+                upper_count += 1
+            elif w.islower():
+                lower_count += 1
+        if upper_count == len(word) or lower_count == len(word) or (word[0].isupper() and lower_count == len(word) - 1):
+            return True
+        return False
+```
+
 #### Scanning
 
 ```Python
