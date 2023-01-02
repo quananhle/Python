@@ -126,5 +126,8 @@ Still, we can combine case 2 and case 3, and we get ```.[a−z]∗```, where ```
 Therefore, the final pattern is ```[A−Z]∗∣.[a−z]∗```.
 
 ```Python
-
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        # Regex
+        return re.fullmatch(r"[A-Z]*|.[a-z]*", word)
 ```
