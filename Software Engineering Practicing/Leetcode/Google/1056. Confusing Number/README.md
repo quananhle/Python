@@ -1,6 +1,6 @@
 ## 1056. Confusing Number
 
-```Tag```:
+```Tag```: ```Hash Map``` ```Math```
 
 #### Difficulty: Easy
 
