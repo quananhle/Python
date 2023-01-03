@@ -87,6 +87,8 @@ By this way, we successfully move node 15 to the head of the list. And we can re
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    #### Time Complexity: O(N), traverse through the entire linked list
+    #### Space Complexity: O(1), contanst memory space for pointers
         curr = head
         prev = None
         while curr:
