@@ -73,6 +73,32 @@ Two scenarios to use the two-pointer technique:
 
 For a singly linked list, since we can only traverse the linked list in one direction, the first scenario might not work. However, the second scenario, which is also called ```slow-pointer``` and ```fast-pointer``` technique, is really useful.
 
+```Java
+// Initialize slow & fast pointers
+ListNode slow = head;
+ListNode fast = head;
+/**
+ * Change this condition to fit specific problem.
+ * Attention: remember to avoid null-pointer error
+ **/
+while (slow != null && fast != null && fast.next != null) {
+    slow = slow.next;           // move slow pointer one step each time
+    fast = fast.next.next;      // move fast pointer two steps each time
+    if (slow == fast) {         // change this condition to fit specific problem
+        return true;
+    }
+}
+return false;   // change return value to fit specific problem
+```
+
+__1. Always examine if the node is null before you call the next field.__
+
+Getting the next node of a null node will cause the null-pointer error. For example, before we run ```fast = fast.next.next```, we need to examine both ```fast``` and ```fast.next``` is not null.
+
+__2. Carefully define the end conditions of your loop.__
+
+Run several examples to make sure your end conditions will not result in an endless loop. And you have to take our first tip into consideration when you define your end conditions.
+
 ## Doubly Linked List
 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
