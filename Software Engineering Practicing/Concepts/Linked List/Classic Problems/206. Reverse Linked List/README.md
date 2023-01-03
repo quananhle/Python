@@ -42,6 +42,21 @@ The number of nodes in the list is the range [0, 5000].
 
 ### Iterative
 
+1. Initialize 2 pointers: ```curr``` and ```prev```. ```prev``` will point to null as the tail of the reversed linked list, while ```curr``` will point to the head of the original linked list.
+2. We need a pointer to store the next node before changing the reference,
+```Python
+tmp = curr.next
+```
+3. Since a node does not have reference to its previous node, we must store its previous element beforehand,
+```Python
+curr.next = prev
+```
+4. While traversing the list, we can change the current node's next pointer to point to its previous element,
+```Python
+prev = curr
+curr = curr.next
+```
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
