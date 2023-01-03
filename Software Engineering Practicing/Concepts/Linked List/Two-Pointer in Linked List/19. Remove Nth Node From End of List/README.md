@@ -79,3 +79,9 @@ class Solution:
 ```
 
 __Follow up__: Could you do this in one pass?
+
+### One Pass Algorithm
+
+```Python
+
+```
