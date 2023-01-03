@@ -86,5 +86,23 @@ __Follow up__: Could you do this in one pass?
 ### One Pass Algorithm
 
 ```Python
-
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        size = 1
+        curr, node = head, head
+        while node.next:
+            node = node.next
+            if size > n:
+                curr = curr.next
+            size += 1
+        if size == n:
+            return head.next
+        else:
+            curr.next = curr.next.next
+        return head
 ```
