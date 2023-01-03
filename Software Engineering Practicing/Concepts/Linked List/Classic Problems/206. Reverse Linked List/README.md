@@ -54,6 +54,10 @@ tmp = curr.next
 curr.next = prev
 ```
 4. While traversing the list, we can change the current node's next pointer to point to its previous element, so ```prev``` will point to ```curr``` while ```curr``` point to the next node
+```Python
+prev = curr
+curr = curr.next
+```
 
 There are two nodes which we should keep track of: ```the original head node``` and ```the new head node```.
 
@@ -74,11 +78,6 @@ Therefore, we need to use two pointers in one linked list at the same time. One 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/15/screen-shot-2018-04-14-at-182507.png)
 
 By this way, we successfully move node 15 to the head of the list. And we can repeat this process until the next node of ```head``` is null.
-
-```Python
-prev = curr
-curr = curr.next
-```
 
 ```Python
 # Definition for singly-linked list.
