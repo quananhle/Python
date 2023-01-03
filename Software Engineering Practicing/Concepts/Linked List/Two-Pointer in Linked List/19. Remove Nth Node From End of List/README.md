@@ -67,14 +67,17 @@ class Solution:
         # Traverse to the (n-1)th node
         k = size - n
         while k > 1:
-            curr = curr.next
             k -= 1
+            curr = curr.next
+        '''
         # Check if curr is not the last node
         if curr.next.next:
             curr.next = curr.next.next
         # Otherwise, point to empty
         else:
             curr.next = None
+        '''
+        curr.next = curr.next.next
         return head
 ```
 
