@@ -89,3 +89,47 @@ class Solution:
 ```
 
 __Follow up:__ Could you write a solution that runs in O(m + n) time and use only O(1) memory?
+
+![image](https://leetcode.com/problems/intersection-of-two-linked-lists/solutions/1089148/Figures/160/image4.png)
+
+The total length of ```a```, the exclusive part of ```list A```, plus ```b```, the exclusive part of ```list B```, and ```c```, the shared part.
+Traverse through ```a -> c -> b``` = traverse through ```b -> c -> a```.
+
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if not headA or not headB:
+            return None
+        ptrA, ptrB = headA, headB
+        while ptrA != ptrB:
+            '''
+            if not ptrA:
+                ptrA = headB
+            else:
+                ptrA = ptrA.next
+            if not ptrB:
+                ptrB = headA
+            else:
+                ptrB = ptrB.next
+            '''
+            ptrA = headB if not ptrA else ptrA.next
+            ptrB = headA if not ptrB else ptrB.next
+        return ptrB
+```
+
+__Time complexity__: ```O(N+M)```
+
+In the worst case, each list is traversed twice giving 2⋅M+2⋅N2 \cdot M + 2 \cdot N2⋅M+2⋅N, which is equivalent to O(N+M)O(N + M)O(N+M). This is because the pointers firstly go down each list so that they can be "lined up" and then in the second iteration, the intersection node is searched for.
+
+An interesting observation you might have made is that when the lists are of the same length, this algorithm only traverses each list once. This is because the pointers are already "lined up" from the start, so the additional pass is unnecessary.
+
+__Space complexity__: ```O(1)```
+
+We aren't allocating any additional data structures, so the amount of extra space used does not grow with the size of the input
