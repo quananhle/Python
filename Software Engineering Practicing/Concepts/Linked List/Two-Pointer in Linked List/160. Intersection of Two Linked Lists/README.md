@@ -1,6 +1,6 @@
 ## 160. Intersection of Two Linked Lists
 
-```Tag```: ```Linked List```
+```Tag```: ```Linked List``` ```Hash Set``` ```Two Pointers```
 
 #### Difficulty: Easy
 
@@ -89,6 +89,8 @@ class Solution:
 ```
 
 __Follow up:__ Could you write a solution that runs in O(m + n) time and use only O(1) memory?
+
+### Two Pointers
 
 ![image](https://leetcode.com/problems/intersection-of-two-linked-lists/solutions/1089148/Figures/160/image4.png)
 
