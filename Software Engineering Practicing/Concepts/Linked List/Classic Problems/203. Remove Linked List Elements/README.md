@@ -41,6 +41,47 @@ The number of nodes in the list is in the range [0, 104].
 
 ---
 
-```Python
+### Two Pointers
 
+If node to be deleted is in the middle of linked list,
+
+- Pick the node-predecessor ```prev``` of the node to delete.
+
+- Set its next pointer to point to the node next to the one to delete.
+
+```Python
+prev.next = prev.next.next
+```
+
+![image](https://leetcode.com/problems/remove-linked-list-elements/solutions/391977/Figures/203/middle2.png)
+
+When the node or nodes to delete are in the head of linked list, need a new head or sentinel node to point to the head of the linked list before deleting the node or the nodes in the head
+
+![image](https://leetcode.com/problems/remove-linked-list-elements/solutions/391977/Figures/203/head_delete.png)
+
+Their main purpose of the sentinel node is to standardize the situation, for example, make linked list to be never empty and never headless and hence simplify insert and delete.
+
+![image](https://leetcode.com/problems/remove-linked-list-elements/solutions/391977/Figures/203/to_delete2.png)
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        # sentinel node as pseudo-head
+        sentinel = ListNode(0)
+        sentinel.next = head
+        # Initialize the prev and curr nodes
+        prev, curr = sentinel, head
+        while curr:
+            # If found the node to delete
+            if curr.val == val:
+                prev.next = prev.next.next
+            else:
+                prev = curr
+            curr = curr.next
+        return sentinel.next
 ```
