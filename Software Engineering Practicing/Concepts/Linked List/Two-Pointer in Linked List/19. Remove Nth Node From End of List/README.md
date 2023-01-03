@@ -40,4 +40,42 @@ The number of nodes in the list is sz.
 
 ---
 
+### Two Pass Algorithm
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        size = 0
+        node, curr = head, head
+        # Count the size of the list
+        while node:
+            node = node.next
+            size += 1
+        # Check if there is only 1 node in the list
+        if size == 1:
+            head = None
+            return head
+        # Check if to delete the first node
+        if size == n:
+            head = head.next
+            return head
+        # Traverse to the (n-1)th node
+        k = size - n
+        while k > 1:
+            curr = curr.next
+            k -= 1
+        # Check if curr is not the last node
+        if curr.next.next:
+            curr.next = curr.next.next
+        # Otherwise, point to empty
+        else:
+            curr.next = None
+        return head
+```
+
 __Follow up__: Could you do this in one pass?
