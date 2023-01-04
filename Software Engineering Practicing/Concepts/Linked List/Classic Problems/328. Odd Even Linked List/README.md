@@ -64,3 +64,28 @@ class Solution:
         odd.next = even_head
         return head
 ```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        # First node is considered
+        odd_tail, even_tail = head, head.next
+        odd_head, even_head = odd_tail, even_tail
+        while even_tail and even_tail.next:
+            # odd_tail.next = even_tail.next
+            odd_tail.next = odd_tail.next.next
+            odd_tail = odd_tail.next
+            # even_tail.next = odd_tail.next
+            even_tail.next = even_tail.next.next
+            even_tail = even_tail.next
+        # Odd nodes list followed by even nodes list
+        odd_tail.next = even_head
+        return odd_head 
+```
