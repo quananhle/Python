@@ -132,3 +132,14 @@ Similar to the singly linked list, both the time and the space complexity of the
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-202600.png)
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/18/screen-shot-2018-04-17-at-202643.png)
+
+### Delete Operation
+
+If we want to delete an existing node cur from the doubly linked list, we can simply link its previous node ```prev``` with its next node ```next```.
+
+Unlike the singly linked list, it is easy to get the previous node in constant time with the "prev" field.
+
+Since we no longer need to traverse the linked list to get the previous node, both the time and space complexity are ```O(1)```.
+
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/18/screen-shot-2018-04-18-at-142428.png)
