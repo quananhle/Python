@@ -75,7 +75,7 @@ class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head:
             return None
-        # First node is considered
+        # First node is odd, second node is even, and so on
         odd_tail, even_tail = head, head.next
         odd_head, even_head = odd_tail, even_tail
         while even_tail and even_tail.next:
