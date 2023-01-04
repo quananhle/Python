@@ -43,9 +43,6 @@ A well-formed ```LinkedList``` need two pointers ```head``` and ```tail``` to su
 The algorithm traverses the original ```LinkedList``` and put the ```odd``` nodes into the ```oddList``` and the ```even``` nodes into the ```evenList```. To traverse a ```LinkedList``` we need at least one pointer as an iterator for the current node. But here the pointers ```odd``` and ```even``` not only serve as the tail pointers but also act as the iterators of the original list.
 
 ![image](https://leetcode.com/problems/odd-even-linked-list/solutions/127831/Figures/328_Odd_Even.svg)
-![image](https://leetcode.com/problems/odd-even-linked-list/solutions/127831/Figures/328_Odd_Even.svg)
-![image](https://leetcode.com/problems/odd-even-linked-list/solutions/127831/Figures/328_Odd_Even.svg)
-![image](https://leetcode.com/problems/odd-even-linked-list/solutions/127831/Figures/328_Odd_Even.svg)
 
 ```Python
 # Definition for singly-linked list.
