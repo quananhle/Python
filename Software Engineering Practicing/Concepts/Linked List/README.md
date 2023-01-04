@@ -143,3 +143,7 @@ Since we no longer need to traverse the linked list to get the previous node, bo
 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/18/screen-shot-2018-04-18-at-142428.png)
+
+## Conclusion
+
+![image](https://assets.leetcode.com/uploads/2020/10/02/comparison_of_time_complexity.png)
