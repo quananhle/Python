@@ -147,3 +147,7 @@ Since we no longer need to traverse the linked list to get the previous node, bo
 ## Conclusion
 
 ![image](https://assets.leetcode.com/uploads/2020/10/02/comparison_of_time_complexity.png)
+
+    If you need to add or delete a node frequently, a linked list could be a good choice.
+
+    If you need to access an element by index often, an array might be a better choice than a linked list.
