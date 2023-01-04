@@ -99,6 +99,20 @@ __2. Carefully define the end conditions of your loop.__
 
 Run several examples to make sure your end conditions will not result in an endless loop. And you have to take our first tip into consideration when you define your end conditions.
 
+__3. Going through some test cases will save you time.__
+
+It is not easy to debug when using a linked list. Therefore, it is always useful to try several different examples on your own to validate your algorithm before writing code.
+
+__4. Feel free to use several pointers at the same time.__
+
+Sometimes when you design an algorithm for a linked-list problem, there might be several nodes you want to track at the same time. You should keep in mind which nodes you need to track and feel free to use several different pointers to track these nodes at the same time.
+
+If you use several pointers, it will be better to give them suitable names in case you have to debug or review your code in the future.
+
+__5. In many cases, you need to track the previous node of the current node.__
+
+You are not able to trace back the previous node in a singly linked list. So you have to store not only the current node but also the previous node. This is different in a doubly linked list which we will cover in the later chapter.
+
 ## Doubly Linked List
 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
