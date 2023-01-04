@@ -117,3 +117,18 @@ You are not able to trace back the previous node in a singly linked list. So you
 
 ![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
 
+### Add Operation
+
+If we want to insert a new node ```cur``` after an existing node ```prev```, we can divide this process into two steps:
+
+1. link ```cur``` with ```prev``` and ```next```, where ```next``` is the original next node of ```prev```;
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/28/screen-shot-2018-04-28-at-173045.png)
+
+2. re-link the ```prev``` and ```next``` with ```cur```. 
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/29/screen-shot-2018-04-28-at-173055.png)
+
+Similar to the singly linked list, both the time and the space complexity of the add operation are ```O(1)```.
+
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-161130.png)
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/17/screen-shot-2018-04-17-at-202600.png)
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/18/screen-shot-2018-04-17-at-202643.png)
