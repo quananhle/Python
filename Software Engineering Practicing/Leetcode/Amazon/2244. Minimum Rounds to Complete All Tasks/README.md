@@ -39,6 +39,48 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/solutions/2779140/Figures/2244/2244A.png)
+
+To find the minimum number of groups for other integers, we can divide the integers into three groups:
+
+- Integers that are multiples of ```3``` i.e., of the form ```3∗K```.
+- Integers that leaves ```remainder of 1``` when divided by 3 i.e., of the form ```3∗K+1```.
+- Integers that leaves ```remainder of 2``` when divided by 3 i.e., of the form ```3∗K+2```.
+
 ```Python
+class Solution:
+    def minimumRounds(self, tasks: List[int]) -> int:
+        """
+        freq = dict()
+        count = 0
+        for task in tasks:
+            freq[task] = 1 + freq.get(task, 0)
+        for val in freq.values():
+            # Check if val == 1, cannot complete all the tasks
+            if val == 1:
+                return -1
+            # Check if val == 3, 6, 9, 12,..., n + 3 for n % 3 == 0
+            if val % 3 == 0:
+                count += val // 3
+            # Check if val == 4, 7, 10, 13,..., n + 3 for n % 3 == 1
+            elif val % 3 == 1:
+                count += val // 3 + 1
+            # Check if val == 2, 5, 8, 11, 14,..., n + 3 for n % 3 == 2
+            elif val % 3 == 2:
+                count += val // 3 + 1
+        return count
+```
+
+```Python
+class Solution:
+    def minimumRounds(self, tasks: List[int]) -> int:
+        """
+        round = 0
+        counter = collections.Counter(tasks)
+        for task in counter.values():
+            if task == 1:
+                return -1
+            round += task // 3 + min(1, task % 3)
+        return round
 
 ```
