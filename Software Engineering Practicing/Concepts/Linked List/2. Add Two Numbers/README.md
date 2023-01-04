@@ -42,6 +42,14 @@ It is guaranteed that the list represents a number that does not have leading ze
 
 ---
 
+![image](https://leetcode.com/problems/add-two-numbers/solutions/127833/Figures/2_add_two_numbers.svg)
+
+|Test Cases | Explanation |
+|-- |-- |
+|l1=[0,1], l2=[0,1,2]|When one list is longer than the other.|
+|l1=[], l2=[0,1]|When one list is null, which means an empty list.|
+|l1=[9,9], l2=[1]l2=[1]l2=[1]|The sum could have an extra carry of one at the end, which is easy to forget.|
+
 ### List()
 
 ```Python
@@ -83,5 +91,44 @@ class Solution:
         for num in res[::-1]:
             node.next = ListNode(num)
             node = node.next
+        return head.next
+```
+
+# Math
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        head = ListNode(-1)
+        node = head
+        list1, list2 = l1, l2
+        carry = 0
+
+        while list1 or list2 or carry:
+            if list1:
+                num1 = list1.val
+            else:
+                num1 = 0
+            if list2:
+                num2 = list2.val
+            else:
+                num2 = 0
+                
+            column_total = num1 + num2 + carry
+            carry = column_total // 10
+            
+            node.next = ListNode(column_total % 10)
+            node = node.next
+
+            if list1:
+                list1 = list1.next
+            if list2:
+                list2 = list2.next
+
         return head.next
 ```
