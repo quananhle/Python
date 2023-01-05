@@ -39,3 +39,25 @@ intervals[i].length == 2
 ```
 
 ---
+
+```Python
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        # Greedy Algorithms
+        ### Find all the overlapping ranges: check if the end point of an interval overlapped the start point of other interval
+        if not intervals:
+            return 0
+        # Sort the intervals by the end point
+        intervals.sort(key= lambda x : x[1])
+        # Pick the first overlapping intervals
+        count = 0
+        pivot_end = intervals[0][1]
+        for start, end in intervals[1:]:
+            # Check if end point of an interval does not overlap the start point of other interval
+            if pivot_end <= start:
+                pivot_end = end
+            # If overlapping, delete interval
+            else:
+                count += 1
+        return count
+```
