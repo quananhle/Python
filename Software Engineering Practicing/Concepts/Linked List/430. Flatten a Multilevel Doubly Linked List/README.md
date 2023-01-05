@@ -27,7 +27,7 @@ After flattening the multilevel linked list it becomes:
 
 __Example 2:__
 
-![image](https://assets.leetcode.com/uploads/2021/11/09/flatten21.jpg)
+![image](https://user-images.githubusercontent.com/35042430/210683668-f4629ee5-5638-42a9-993f-7176efe77f6a.png)
 ```
 Input: head = [1,2,null,3]
 Output: [1,3,2]
@@ -110,12 +110,16 @@ class Solution:
 
         while stack:
             curr = stack.pop()
+            
+            # Build the doubly linked list
             prev_node.next = curr
             curr.prev = prev_node
+            
             if curr.next:
                 stack.append(curr.next)
             if curr.child:
                 stack.append(curr.child)
+                # The nodes in the list must have all of their child pointers set to None
                 curr.child = None
             prev_node = curr
         
@@ -124,7 +128,40 @@ class Solution:
 ```
 
 ### Recursive Depth-First Search
+#### Time Complexity: O(N), traverse through the entire length of the linked list recursively
+#### Space Complexity: O(N), extra memory space required to keep up the recursive call until the base case reached
 
 ```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, prev, next, child):
+        self.val = val
+        self.prev = prev
+        self.next = next
+        self.child = child
+"""
+class Solution:
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        # Preorder Depth-First Search
+        ### Iteration
+        if not head:
+            return head
+        
+        def dfs(curr, previous_node):
+            if not curr:
+                return previous_node
+            
+            previous_node.next = curr
+            curr.prev = previous_node
 
+            tmp_node = curr.next
+            tail = dfs(curr.child, curr)
+            curr.child = None
+            return dfs(tmp_node, tail)        
+
+        pseudo_head = Node(None, None, head, None)
+        dfs(head, pseudo_head)
+        pseudo_head.next.prev = None
+        return pseudo_head.next
 ```
