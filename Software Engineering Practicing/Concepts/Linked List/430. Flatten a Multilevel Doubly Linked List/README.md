@@ -80,6 +80,8 @@ Merging the serialization of each level and removing trailing nulls we obtain:
 
 ---
 
+![image](https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/solutions/438341/Figures/430/430_dfs_tree.png)
+
 ### Iterative Depth-First Search
 #### Time Complexity: O(N), traverse through the entire length of the linked list
 #### Space Complexity: O(N), extra memory space required to build stack up to the size of linked list
