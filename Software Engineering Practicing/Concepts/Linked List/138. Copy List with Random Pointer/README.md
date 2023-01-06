@@ -22,3 +22,36 @@ Your code will only be given the ```head``` of the original linked list.
 ![image](https://user-images.githubusercontent.com/35042430/211053722-da621a7e-1998-4772-89d6-179efffac75a.png)
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2019/12/18/e1.png)
+```
+Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2019/12/18/e2.png)
+```
+Input: head = [[1,1],[2,1]]
+Output: [[1,1],[2,1]]
+```
+
+__Example 3:__
+
+![image](https://assets.leetcode.com/uploads/2019/12/18/e3.png)
+```
+Input: head = [[3,null],[3,0],[3,null]]
+Output: [[3,null],[3,0],[3,null]]
+```
+
+__Constraints:__
+```
+0 <= n <= 1000
+-104 <= Node.val <= 104
+Node.random is null or is pointing to some node in the linked list.
+```
+
+---
