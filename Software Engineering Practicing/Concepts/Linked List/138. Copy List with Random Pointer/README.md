@@ -1,6 +1,6 @@
 ## 138. Copy List with Random Pointer
 
-```Tag```: ```Linked List```
+```Tag```: ```Linked List``` ```Hash Table```
 
 #### Difficulty: Medium
 
@@ -55,3 +55,43 @@ Node.random is null or is pointing to some node in the linked list.
 ```
 
 ---
+
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_1.png)
+
+### Recursive
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+
+class Solution:
+    # Recursive
+    #### Time Complexity: O(N), where N is the number of nodes in the linked list.
+    #### Space Complexity: O(N), extra memory space to keep up the recursion stack and the visited dictionary
+    def __init__(self):
+        self.visited = dict()
+    
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head:
+            return None
+        
+        if head in self.visited:
+            return self.visited[head]
+        
+        node = Node(head.val, None, None)
+
+        self.visited[head] = node
+
+        node.next = self.copyRandomList(head.next)
+        node.random = self.copyRandomList(head.random)
+
+        return node
+```
+
+
