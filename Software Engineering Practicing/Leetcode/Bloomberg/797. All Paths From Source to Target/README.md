@@ -40,3 +40,56 @@ The input graph is guaranteed to be a DAG.
 ```
 
 ---
+
+### Backtracking
+
+__Time Complexity__: O(2<sup>N</sup> * N), 2<sup>N−1</sup> - 1 paths while traversing through the entire graph
+__Space Complexity: O(N), extra memory space to keep up the size of the recursion stack until last node reached
+
+```Python
+class Solution:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        # Backtracking
+        target = len(graph) - 1
+        res = list()
+
+        def backtrack(curr, path):
+            # Check if target reached
+            if curr == target:
+                res.append(list(path))
+            else:
+                for node in graph[curr]:
+                    path.append(node)
+                    backtrack(node, path)
+                    # After the path found, pop out the path to start another path
+                    path.pop()
+        path = [0]
+        backtrack(0, path)
+        return res
+```
+
+### Top-Down Dynamic Programming
+
+__Time Complexity__: O(2<sup>N</sup> * N), there are at most 2<sup>N−1</sup> - 1 paths while traversing through the entire graph
+__Space Complexity: O(2<sup>N</sup> * N),  since at most we could have 2<sup>N−1</sup> − 1 paths as the results and each path can contain up to ```N``` nodes
+
+```Python
+class Solution:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        # Top-Down Dynamic Programming
+        target = len(graph) - 1
+
+        @lru_cache(maxsize = None)
+        def dp(curr):
+            if curr == target:
+                return [[target]]
+
+            res = list()
+            for node in graph[curr]:
+                for path in dp(node):
+                    res.append([curr] + path)
+
+            return res
+
+        return dp(0)
+```
