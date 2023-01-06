@@ -152,3 +152,69 @@ class Solution:
             new_node = new_node.next
         return self.visited[head]
 ```
+
+### Iterative with Optimized Space Usage
+
+1. Traverse the original list and clone the nodes as you go and place the cloned copy next to its original node. This new linked list is essentially a interweaving of original and cloned nodes.
+
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_8_1.png)
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_8_2.png)
+
+2. Iterate the list having both the new and old nodes intertwined with each other and use the original nodes' random pointers to assign references to random pointers for cloned nodes.
+
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_9_1.png)
+
+3. Now that the random pointers are assigned to the correct node, the next pointers need to be correctly assigned to unweave the current linked list and get back the original list and the cloned list.
+
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_10.png)
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        # Iterative
+        #### Time Complexity: O(N), where N is the number of nodes in the linked list.
+        #### Space Complexity: O(1), constant memory space for pointers
+        if not head: 
+            return head
+
+        sentinel = head
+        while sentinel:
+            new_node = Node(sentinel.val, None, None)
+            # Inserting the clone node next to the origianl node
+            new_node.next = sentinel.next
+            sentinel.next = new_node
+            # Iterate the sentinel node
+            sentinel = new_node.next
+        sentinel = head
+        while sentinel:
+            # Use the original nodes random pointers to assign references to random pointers for cloned nodes
+            if sentinel.random:
+                sentinel.next.random = sentinel.random.next
+            # Iterate the sentinel nodes
+            sentinel = sentinel.next.next
+        old_list = head
+        new_list = head.next
+        sentinel = head.next
+        while old_list:
+            # Return the original list
+            old_list.next = old_list.next.next
+            # Link the new nodes together
+            if new_list.next:
+                new_list.next = new_list.next.next
+            # When no more node to link, point to null
+            else:
+                new_list.next = None
+            # Iterate through the lists
+            old_list = old_list.next
+            new_list = new_list.next
+        return sentinel
+```
