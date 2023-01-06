@@ -46,6 +46,23 @@ The number of nodes in the list is in the range [0, 5 * 104].
 
 ---
 
+### Two Pointers
+
+![image](https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/solutions/431630/Figures/708/708_two_pointers.png)
+
+    Case 1). The value of new node sits between the minimal and maximal values of the current list. As a result, it should be inserted within the list.
+    
+   ![image](https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/solutions/431630/Figures/708/708_case_1.png)
+   
+    Case 2). The value of new node goes beyond the minimal and maximal values of the current list, either less than the minimal value or greater than the maximal value. In either case, the new node should be added right after the tail node (i.e. the node with the maximal value of the list).
+    
+   ![image](https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/solutions/431630/Figures/708/708_case_2_1.png)
+   ![image](https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/solutions/431630/Figures/708/708_case_2_2.png)
+   
+    Case 3). Finally, there is one case that does not fall into any of the above two cases. This is the case where the list contains uniform values.
+    
+   ![image](https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/solutions/431630/Figures/708/708_case_3.png)
+
 ```Python
 """
 # Definition for a Node.
