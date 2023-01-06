@@ -94,4 +94,24 @@ class Solution:
         return node
 ```
 
+### Iterative
 
+1. Traverse the linked list starting at ```head``` of the linked list.
+
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_3.png)
+
+2. Random pointer
+
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_4.png)
+
+3. Next pointer
+
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_5.png)
+
+4. Repeat step 2 & step 3
+
+![image](https://leetcode.com/problems/copy-list-with-random-pointer/solutions/169069/Figures/138/138_Copy_List_Random_6.png)
+
+```Python
+
+```
