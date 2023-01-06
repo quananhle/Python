@@ -44,7 +44,8 @@ The input graph is guaranteed to be a DAG.
 ### Backtracking
 
 __Time Complexity__: O(2<sup>N</sup> * N), 2<sup>N−1</sup> - 1 paths while traversing through the entire graph
-__Space Complexity: O(N), extra memory space to keep up the size of the recursion stack until last node reached
+
+__Space Complexity__: O(N), extra memory space to keep up the size of the recursion stack until last node reached
 
 ```Python
 class Solution:
@@ -71,7 +72,8 @@ class Solution:
 ### Top-Down Dynamic Programming
 
 __Time Complexity__: O(2<sup>N</sup> * N), there are at most 2<sup>N−1</sup> - 1 paths while traversing through the entire graph
-__Space Complexity: O(2<sup>N</sup> * N),  since at most we could have 2<sup>N−1</sup> − 1 paths as the results and each path can contain up to ```N``` nodes
+
+__Space Complexity__: O(2<sup>N</sup> * N),  since at most we could have 2<sup>N−1</sup> − 1 paths as the results and each path can contain up to ```N``` nodes
 
 ```Python
 class Solution:
