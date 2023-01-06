@@ -1,6 +1,6 @@
 ## 1833. Maximum Ice Cream Bars
 
-```Tag```: ```Greedy Algorithms``` ```Heapify``` ```Sorting``` ```Bucket Sort```
+```Tag```: ```Greedy Algorithms``` ```Heapify``` ```Sorting``` ```Bucket Sort``` ```Priority Queue```
 
 #### Difficulty: Medium
 
@@ -45,3 +45,22 @@ costs.length == n
 
 ---
 
+### Priority Queue
+
+```Python
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        # Priority Queue and Greedy Algorithms
+        #### Time Complexity: O(NlogN), heappop takes logN time while traversing through the size N of input list
+        #### Space Complexity: O(logN), binary tree of height logN
+        if not costs:
+            return 0
+        count = 0
+        heapq.heapify(costs)
+        while coins and costs:
+            cost = heapq.heappop(costs)
+            if coins >= cost:
+                coins -= cost
+                count += 1
+        return count
+```
