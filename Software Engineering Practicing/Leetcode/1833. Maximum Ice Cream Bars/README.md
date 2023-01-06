@@ -118,3 +118,12 @@ class Solution:
             ice_cream += count
         return ice_cream
 ```
+
+### One Liner
+
+```Python
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        # One Liner
+        return sum(1 for cream in sorted(costs) if (coins := coins - cream ) >= 0)
+```
