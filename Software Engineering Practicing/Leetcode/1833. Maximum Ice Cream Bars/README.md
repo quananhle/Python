@@ -64,3 +64,24 @@ class Solution:
                 count += 1
         return count
 ```
+
+### Sort()
+
+```Python
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        # Sort() and Greedy Algorithms
+        #### Time Complexity: O(NlogN), sort operations cost NlogN time
+        #### Space Complexity: O(N), extra memory space to build sorted list
+        count = 0
+        costs = sorted(costs)
+        if not costs:
+            return count
+        for cost in costs:
+            if coins >= cost:
+                coins -= cost
+                count += 1
+            else:
+                break
+        return count
+```
