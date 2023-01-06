@@ -74,6 +74,9 @@ class Node:
 
 class Solution:
     def insert(self, head: 'Optional[Node]', insertVal: int) -> 'Node':
+    # Two Pointers
+    #### Time Complexity: O(N), traverse through the entire linked list
+    #### Space Complexity: O(1), constant memory space for pointers
         if not head:
             node = Node(insertVal)
             head = node
