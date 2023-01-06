@@ -85,3 +85,36 @@ class Solution:
                 break
         return count
 ```
+
+### Bucket Sort
+
+```Python
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        # Bucket Sort and Greedy Algorithms
+        #### Time Complexity: O(N + M), traverse through the bucket of size M, max() takes O(N) time, build bucket costs O(N) time
+        #### Space Complexity: O(M), extra memory space to build sorted list of size M
+        ice_cream = 0
+        '''
+        m = -1
+        for cost in costs:
+            if m < cost:
+                m = cost
+        '''
+        m = max(costs)
+        bucket = [0] * (m + 1)
+        for cost in costs:
+            bucket[cost] += 1
+        for cost in range(1, m + 1):
+            # No ice cream available at this cost
+            if not bucket[cost]:
+                continue
+            # If not enough coins to buy ice cream, break from the loop
+            if coins < cost:
+                break
+            # Count how many ice creams of the same cost can be bought with the remaining coins: either all ice cream of cost, or as many as remaining coins can get
+            count = min(bucket[cost], coins // cost)
+            coins -= cost * count
+            ice_cream += count
+        return ice_cream
+```
