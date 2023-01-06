@@ -37,6 +37,8 @@ The number of nodes in the list is in the range [0, 500].
 
 ![image](https://leetcode.com/problems/rotate-list/solutions/240869/Figures/61/rotate.png)
 
+```k``` could be rewritten as a sum ```k = (k // n) * n + k % n```, where the first term doesn't result in any rotation. Hence one could simply replace ```k``` by ```k % n``` to always have number of rotation places smaller than ```n```.
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
