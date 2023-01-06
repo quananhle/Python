@@ -30,3 +30,45 @@ Figure 2 is an example of a directed graph.
 Each edge in a “weighted graph” has an associated weight. The weight can be of any metric, such as time, distance, size, etc. The most commonly seen “weighted map” in our daily life might be a city map. In Figure 3, each edge is marked with the distance, which can be regarded as the weight of that edge.
 
 ![image](https://assets.leetcode.com/static_assets/explore/The_basic_of_graph_3.png)
+
+### Quick Find - Disjoint Set
+
+```Python
+# UnionFind class
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+
+    def find(self, x):
+        return self.root[x]
+		
+    def union(self, x, y):
+        rootX = self.find(x)
+        rootY = self.find(y)
+        if rootX != rootY:
+            for i in range(len(self.root)):
+                if self.root[i] == rootY:
+                    self.root[i] = rootX
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
+
+# Test Case
+uf = UnionFind(10)
+# 1-2-5-6-7 3-8-9 4
+uf.union(1, 2)
+uf.union(2, 5)
+uf.union(5, 6)
+uf.union(6, 7)
+uf.union(3, 8)
+uf.union(8, 9)
+print(uf.connected(1, 5))  # true
+print(uf.connected(5, 7))  # true
+print(uf.connected(4, 9))  # false
+# 1-2-5-6-7 3-8-9-4
+uf.union(9, 4)
+print(uf.connected(4, 9))  # true
+```
+
+![image](https://user-images.githubusercontent.com/35042430/211098278-bb581e43-d3e7-474b-80ae-7b3520d136c0.png)
