@@ -89,3 +89,43 @@ class Solution:
             sentinel = sentinel.next
         return sentinel
 ```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        # Base cases
+        if not head or not head.next:
+            return head
+        if not k:
+            return head
+        # Check if k == size of linked list, a complete rotation. If k >= size, recalculate new k to be < size        
+        size = 1
+        node = head
+        while node.next:
+            size += 1
+            node = node.next
+        if k >= size:
+            k = k % size
+        # Base case:
+        if k == 0:
+            return head
+        
+        # Close the linked list to be a circular linked list
+        node.next = head
+
+        new_tail = head
+        # New tail: (size - k - 1)th node and new head: (size - k) node
+        for _ in range(size - k - 1):
+            new_tail = new_tail.next
+        # Link the tail to the head
+        
+        new_head = new_tail.next
+        # Break the circle
+        new_tail.next = None
+        return new_head
+```
