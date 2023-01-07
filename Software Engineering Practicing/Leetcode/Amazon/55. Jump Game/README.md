@@ -1,6 +1,6 @@
 ## 55. Jump Game
 
-```Tag```:
+```Tag```: ```Greedy``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
