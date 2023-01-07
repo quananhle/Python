@@ -83,8 +83,7 @@ class Solution:
 ```Python
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        # Brute Force (Greedy)
-        ### Time Limit Exceeded
+        # Greedy
         #### Time Complexity: O(N), one pass
         #### Space Complexity: O(N), extra memory space for hash table
         ans, total = 0, 0
