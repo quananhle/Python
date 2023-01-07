@@ -33,3 +33,18 @@ __Constraints:__
 ```
 
 ---
+
+### Greedy
+
+```Python
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        # Greedy
+        #### Time Complexity: O(N), traverse through the input array size nums
+        #### Space Complexity: O(1), constant memory space for pointers
+        target = len(nums) - 1
+        for i in range(len(nums)-1, -1, -1):
+            if i + nums[i] >= target:
+                target = i
+        return target == 0
+```
