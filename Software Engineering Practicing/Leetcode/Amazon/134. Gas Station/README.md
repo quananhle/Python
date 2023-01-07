@@ -77,3 +77,53 @@ class Solution:
                 return i
         return -1
 ```
+
+### Hash Table
+
+```Python
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        # Brute Force (Greedy)
+        ### Time Limit Exceeded
+        #### Time Complexity: O(N), one pass
+        #### Space Complexity: O(N), extra memory space for hash table
+        ans, total = 0, 0
+        if (sum(gas) < sum(cost)) or (sum(gas) == 0 and sum(cost) != 0):
+            return -1
+        scores = dict()
+        # gas.length == cost.length == n
+        for station, amount in enumerate(zip(gas, cost)):
+            scores[station] = amount[0] - amount[1]
+        # Must always start at positive score and finish at negative score. scores[i] + scores[i+1] > 0
+        print (scores)
+        for station, remaining in scores.items():
+            total += remaining
+            if total < 0:
+                # Reset total amount of gas
+                total = 0
+                # Since it is guaranteed to be a unique solution, so if it is not current station, it might be the next station
+                ans = station + 1
+        return ans
+```
+
+### One Pass Optimized Space
+
+```Python
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        # Greedy
+        #### Time Complexity: O(N), one pass
+        #### Space Complexity: O(1), constant memory space for pointers
+        ans, total_gas, remaining = 0, 0, 0
+        n = len(gas)
+        for station in range(n):
+            total_gas += gas[station] - cost[station]
+            remaining += gas[station] - cost[station]
+            # Check if remaining is less than 0, can no longer continue.
+            if remaining < 0:
+                # Reset the remaining for the next gas station
+                remaining = 0
+                # Since if there exists a solution, it is guaranteed to be unique, so it the answer is not the current station where the remaining gas is negative, it will be the next one
+                ans = station + 1
+        return ans if total_gas >= 0 else -1
+```
