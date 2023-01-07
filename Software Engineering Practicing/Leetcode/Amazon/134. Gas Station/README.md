@@ -50,3 +50,30 @@ n == gas.length == cost.length
 
 ---
 
+### Brute Force 
+
+```Python
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        # Brute Force (Greedy)
+        ### Time Limit Exceeded
+        #### Time Complexity: O(N^2), nested loops
+        #### Space Complexity: O(1), constant memory space for pointers
+        n = len(gas)
+        if (sum(gas) < sum(cost)) or (sum(gas) == 0 and sum(cost) != 0):
+            return -1
+        for i in range(n):
+            remaining = 0
+            # Starting from station gas[i] with remaining gas == 0
+            for j in range(n):
+                # Round traversal
+                k = (i + j) % n
+                remaining += gas[k] - cost[k]
+                # If remaining gas is negative, trip can not be completed, break out of the loop for next gas station
+                if remaining < 0:
+                    break
+            # If no early break, return the gas station
+            else:
+                return i
+        return -1
+```
