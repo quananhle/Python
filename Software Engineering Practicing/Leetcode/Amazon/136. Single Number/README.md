@@ -37,3 +37,56 @@ __Constraints:__
 
 ---
 
+### Hash Table
+
+```Python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        # Hash Table
+        #### Time complexity : O(n)
+        #### Space complexity: O(n)        
+        freq = dict()
+        for num in nums:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+        for num, frequency in freq.items():
+            if frequency == 1:
+                return num
+```
+
+### Math
+```
+2 * (a + b + c) - (a + a + b + b + c) = c
+```
+
+```Python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        # Math
+        #### Time complexity : O(n)
+        #### Space complexity: O(n)
+        return 2 * sum(set(nums)) - sum(nums)
+```
+
+### Bit Manipulation
+```
+a ⊕ 0 = a
+a ⊕ a = 0
+a ⊕ b ⊕ a = (a ⊕ a) ⊕ b = 0 ⊕ b = b
+```
+
+```Python
+class Solution:
+        # Bit Manipulation
+        #### Time complexity : O(n)
+        #### Space complexity: O(1)
+        xor = 0
+        for num in nums:
+            # a ⊕ 0 = a
+            # a ⊕ a = 0
+            # a ⊕ b ⊕ a = (a ⊕ a) ⊕ b = 0 ⊕ b = b
+            xor ^= num
+        return xor
+```
