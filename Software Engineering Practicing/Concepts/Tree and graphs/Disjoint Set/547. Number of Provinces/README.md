@@ -45,20 +45,25 @@ isConnected[i][j] == isConnected[j][i]
 ### Depth-First Search
 
 ```Python
-
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
 
 ```
 
 ### Breadth-First Search
 
 ```Python
-
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+    
 ```
 
 ### Union-Find
 
 ```Python
-
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+    
 
 ```
 
