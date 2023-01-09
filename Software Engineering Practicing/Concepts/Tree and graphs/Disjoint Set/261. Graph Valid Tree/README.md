@@ -38,6 +38,121 @@ There are no self-loops or repeated edges.
 
 ---
 
+### Iterative Depth-First Search
+
+A graph, ```G```, is a tree iff the following two conditions are met:
+
+- ```G``` is fully connected. In other words, for every pair of nodes in ```G```, there is a path between them.
+- ```G``` contains no cycles. In other words, there is exactly one path between each pair of nodes in ```G```.
+
+```Adjacency List```, ```Adjacency Matrix```, ```Linked Representation```
+
+Convert the input into an __adjacency list__
+
+```Java
+// Create a new list of lists.
+List<List<Integer>> adjacencyList = new ArrayList<>();
+// Initialise an empty list for each node.
+for (int i = 0; i < n; i++) {
+    adjacencyList.add(new ArrayList<>());
+}
+// Go through the edge list, populating the adjacency list.
+for (int[] edge : edges) {
+    adjacencyList.get(edge[0]).add(edge[1]);
+    adjacencyList.get(edge[1]).add(edge[0]);
+}
+```
+
+- An adjacency matrix would be an acceptable, although not ideal, representation for this problem. Often, we'd only use an adjacency matrix if we know that the number of edges is substantially higher than the number of nodes. We have no reason to believe that is the case here.
+- A linked representation, where you make actual nodes objects, would be an overly complicated representation and could suggest to an interviewer that you have a limited understanding of adjacency lists and adjacency matrices. They are not commonly used in interview questions.
+
+![IMAGE](https://leetcode.com/problems/graph-valid-tree/solutions/539585/Figures/261/trivial_cycles.png)
+
+```Python
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        # Iterative Depth-First Search
+        '''
+            0   1   2   3   4
+        0   1   1   1   1   0            
+        
+        1   1   1   0   0   1
+
+        2   1   0   1   0   0
+
+        3   1   0   0   1   0
+
+        4   0   1   0   0   1
+        '''
+        if len(edges) != n - 1:
+            return False
+        adjacency_list = [[] for _ in range(n)]
+        for x, y in edges:
+            adjacency_list[x].append(y)
+            adjacency_list[y].append(x)
+        self.root = {0:-1}
+        stack = [0]
+        while stack:
+            node = stack.pop()
+            for neighbor in adjacency_list[node]:
+                # Skip if the node is the root node
+                if neighbor == self.root[node]:
+                    continue
+                if neighbor in self.root:
+                    return False
+                self.root[neighbor] = node
+                stack.append(neighbor)
+        return len(self.root) == n
+```
+
+### Advanced graph theory with Iterative Depth-First Search
+
+```Python
+
+```
+
+### Iterative Breadth-First Search
+
+```Python
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        # Iterative Depth-First Search
+        '''
+            0   1   2   3   4
+        0   1   1   1   1   0            
+        
+        1   1   1   0   0   1
+
+        2   1   0   1   0   0
+
+        3   1   0   0   1   0
+
+        4   0   1   0   0   1
+        '''
+        if len(edges) != n - 1:
+            return False
+        adjacency_list = [[] for _ in range(n)]
+        # Look up the adjacent (immediate neighbors) of x and y node
+        for x, y in edges:
+            adjacency_list[x].append(y)
+            adjacency_list[y].append(x)
+        
+        parents = {0 : -1}
+        queue = collections.deque([0])
+
+        while queue:
+            node = queue.popleft()
+            for neighbor in adjacency_list[node]:
+                if neighbor == parents[node]:
+                    continue
+                if neighbor in parents:
+                    return False
+                # Keep track of the root node of the neighbor node
+                parents[neighbor] = node
+                queue.append(neighbor)
+        return len(parents) == n
+```
+
 ### Union-Find
 
 ```Python
