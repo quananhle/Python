@@ -8,6 +8,8 @@ You have a graph of ```n``` nodes labeled from ```0``` to ```n - 1```. You are g
 
 Return _```true``` if the edges of the given graph make up a valid tree, and ```false``` otherwise_.
 
+![image](https://user-images.githubusercontent.com/35042430/211407427-4e6b068c-8f02-4471-9563-18f7a72867bc.png)
+
 ---
 
 __Example 1:__
