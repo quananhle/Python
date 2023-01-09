@@ -56,8 +56,8 @@ s only contains lower case English letters.
 ![image](https://leetcode.com/problems/smallest-string-with-swaps/solutions/1862995/Figures/1202/Slide1.png)
 
 ### Optimized “disjoint set” with Path Compression and Union by Rank
-#### Time Complexity : O((E + N) ⋅ α(N) + NlogN), ```union()``` method takes amortized time complexity for each union-find operation is ```O(α(N))``` while traversing through each pair costs ```O(E⋅α(N))``` time. Iterate through the string s of size ```N``` and perform ```find()``` costs ```O(N⋅α(N))```. Sort() takes NlogN time.
-#### Space Complexity: O(N), extra memory space required to build a hash table contain as many as N keys 
+#### Time Complexity : ```O((E + N) ⋅ α(N) + NlogN)```, ```union()``` method takes amortized time complexity for each union-find operation is ```O(α(N))``` while traversing through each pair costs ```O(E⋅α(N))``` time. Iterate through the string s of size ```N``` and perform ```find()``` costs ```O(N⋅α(N))```. Sort() takes NlogN time.
+#### Space Complexity: ```O(N)```, extra memory space required to build a hash table contain as many as N keys 
 
 ```Python
 class UnionFind:
