@@ -38,6 +38,51 @@ There are no self-loops or repeated edges.
 
 ---
 
+### Union-Find
+
+```Python
+#Union-Find class
+class UnionFind:
+    def __init__(self, size):
+        self.root = [node for node in range(size)]
+
+
+    # find() traces up the parent links until it finds the root node for x, and returns that root.
+    def find(self, x):
+        if x != self.root[x]:
+            x = self.root[x]
+        print (self.root)
+        return x
+
+    # union() check if merge happened then return True, otherwise return False
+    def union(self, x, y):
+        # Find the root node of x and y in the set
+        root_x = self.find(x)
+        root_y = self.find(y)
+        # Check if x and y are already in the same set
+        if root_x == root_y:
+            # Return False and check the another edge
+            return False
+        # Merge the sets containing x and y
+        self.root[root_x] = root_y
+        print ("Merged self.root: ", self.root)
+        return True
+
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        # Checking if the graph is fully connected, and if it contains n - 1 edges, then it is a tree
+        if len(edges) != n - 1:
+            return False
+        union_find = UnionFind(n)
+        # Check each edge
+        for x, y in edges:
+            # Check if a merge happens, a cycle found, False
+            if not union_find.union(x, y):
+                return False
+        # If ther is no merge, all nodes in the same set and share the same root node, True
+        return True
+```
+
 ```Python
 #Union-Find class
 class UnionFind:
