@@ -235,7 +235,7 @@ class Solution:
 
 ### Optimized “disjoint set” with Path Compression and Union by Rank
 #### Time Complexity : ```O(N⋅α(N))```, ```α(N)``` in "practice" it is effectively O(1)
-#### Space Compelxity: ```O(N), extra memory space needed to build root
+#### Space Compelxity: ```O(N)```, extra memory space needed to build root
 
 ```Python
 # Union-Find class
