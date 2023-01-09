@@ -38,7 +38,7 @@ There are no repeated edges.
 
 ---
 
-### Depth-First Search
+### Recursive Depth-First Search
 
 ```Python
 class Solution:
@@ -84,4 +84,61 @@ class Solution:
                 dfs(row)
                 count += 1
         return count
+```
+
+### Iterative Breadth-First Search
+
+```Python
+class Solution:
+    def countComponents(self, n: int, edges: List[List[int]]) -> int:
+        # Depth-First Search
+        #### Time Complexity : O((N * N)^2), traverse through the 2D array of size N x N
+        #### Space Complexity: O(N^2), extra memory space required to build a 2D array of N rows and N columns
+        '''
+            0   1   2   3   4
+        0   1   1   0   0   0
+
+        1   1   1   1   0   0
+
+        2   0   1   1   0   0
+
+        3   0   0   0   1   1
+
+        4   0   0   0   1   1
+
+        [[1, 1, 0, 0, 0], [1, 1, 1, 0, 0], [0, 1, 1, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]]
+
+        '''
+        graph = [[0] * n for _ in range(n)]
+        for row, col in edges:
+            # [[1, 1, 0, 0, 0], [1, 1, 1, 0, 0], [0, 1, 1, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]]
+            # Mark where there is a link between two nodes or two nodes are directly connected
+            graph[row][col] = 1           # [[0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 1], [0, 0, 0, 0, 0]]
+            graph[col][row] = 1           # [[0, 0, 0, 0, 0], [1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 1, 0]]
+            graph[row][row] = 1           # [[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 0]]
+            graph[col][col] = 1           # [[0, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 1]]
+        ROWS, COLS = len(graph), len(graph[0])        
+        visited = [0] * ROWS
+        count = 0
+        queue = collections.deque()
+
+        for row in range(ROWS):
+            print (row, visited[row])
+            if visited[row] == 0:
+                queue.append(row)
+                while queue:
+                    row = queue.pop()
+                    visited[row] = 1
+                    for col in range(COLS):
+                        if graph[row][col] == 1 and visited[col] == 0:
+                            queue.append(col)
+                count += 1
+        return count
+```
+
+### Adjacency List Depth-First Search
+
+```Python
+
+
 ```
