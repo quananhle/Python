@@ -42,5 +42,23 @@ isConnected[i][j] == isConnected[j][i]
 
 ---
 
+### Depth-First Search
 
+```Python
+
+
+```
+
+### Breadth-First Search
+
+```Python
+
+```
+
+### Union-Find
+
+```Python
+
+
+```
 
