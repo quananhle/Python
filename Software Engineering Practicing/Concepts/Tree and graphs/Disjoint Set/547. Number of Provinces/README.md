@@ -12,6 +12,8 @@ You are given an ```n x n``` matrix ```isConnected``` where ```isConnected[i][j]
 
 Return _the total number of __provinces___.
 
+![image](https://user-images.githubusercontent.com/35042430/211407318-7a2b870e-6643-4c41-8303-736f96aed004.png)
+
 ---
 
 __Example 1:__
