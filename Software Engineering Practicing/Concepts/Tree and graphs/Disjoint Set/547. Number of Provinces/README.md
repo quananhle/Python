@@ -129,6 +129,8 @@ class Solution:
             return count
 ```
 
+### Optimized “disjoint set” with Path Compression and Union by Rank
+
 ```Python
 # UnionFind class
 class UnionFind:
