@@ -65,7 +65,6 @@ class Solution:
         for row in range(ROWS):
             if visited[row] == 0:
                 dfs(row)
-                print (visited)
                 count += 1
         return count
 ```
@@ -114,7 +113,6 @@ class Solution:
             def union(x, y):
                 root_x = find(x)
                 root_y = find(y)
-                print (root_x, root_y)
                 if root_x != root_y:
                     root[root_x] = root_y
 
