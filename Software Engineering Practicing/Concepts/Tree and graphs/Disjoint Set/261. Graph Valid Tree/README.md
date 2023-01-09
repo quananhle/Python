@@ -40,6 +40,9 @@ There are no self-loops or repeated edges.
 
 ### Iterative Depth-First Search
 
+#### Time Complexity : ```O(N + E)```, traverse through stack/queue and edges
+#### Space Complexity: ```O(N)```, build stack/queue of size N and adjacency list of size of edges
+
 A graph, ```G```, is a tree iff the following two conditions are met:
 
 - ```G``` is fully connected. In other words, for every pair of nodes in ```G```, there is a path between them.
@@ -66,7 +69,7 @@ for (int[] edge : edges) {
 - An adjacency matrix would be an acceptable, although not ideal, representation for this problem. Often, we'd only use an adjacency matrix if we know that the number of edges is substantially higher than the number of nodes. We have no reason to believe that is the case here.
 - A linked representation, where you make actual nodes objects, would be an overly complicated representation and could suggest to an interviewer that you have a limited understanding of adjacency lists and adjacency matrices. They are not commonly used in interview questions.
 
-![IMAGE](https://leetcode.com/problems/graph-valid-tree/solutions/539585/Figures/261/trivial_cycles.png)
+![image](https://leetcode.com/problems/graph-valid-tree/solutions/539585/Figures/261/trivial_cycles.png)
 
 ```Python
 class Solution:
@@ -103,12 +106,6 @@ class Solution:
                 self.root[neighbor] = node
                 stack.append(neighbor)
         return len(self.root) == n
-```
-
-### Advanced graph theory with Iterative Depth-First Search
-
-```Python
-
 ```
 
 ### Iterative Breadth-First Search
@@ -151,6 +148,47 @@ class Solution:
                 parents[neighbor] = node
                 queue.append(neighbor)
         return len(parents) == n
+```
+
+### Advanced graph theory with Iterative Depth-First Search
+#### Time Complexity : ```O(N)```, traverse through stack/queue
+#### Space Complexity: ```O(N)```, build stack/queue
+
+```Python
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        # Iterative Depth-First Search
+        '''
+            0   1   2   3   4
+        0   1   1   1   1   0            
+        
+        1   1   1   0   0   1
+
+        2   1   0   1   0   0
+
+        3   1   0   0   1   0
+
+        4   0   1   0   0   1
+        '''
+        if len(edges) != n - 1:
+            return False
+        adjacency_list = [[] for _ in range(n)]
+        # Look up the adjacent (immediate neighbors) of x and y node
+        for x, y in edges:
+            adjacency_list[x].append(y)
+            adjacency_list[y].append(x)
+        
+        seen = {0}
+        stack = [0]
+
+        while stack:
+            node = stack.pop()
+            for neighbor in adjacency_list[node]:
+                if neighbor in seen:
+                    continue
+                seen.add(neighbor)
+                stack.append(neighbor)
+        return len(seen) == n
 ```
 
 ### Union-Find
@@ -196,6 +234,8 @@ class Solution:
 ```
 
 ### Optimized “disjoint set” with Path Compression and Union by Rank
+#### Time Complexity : ```O(N⋅α(N))```, ```α(N)``` in "practice" it is effectively O(1)
+#### Space Compelxity: ```O(N), extra memory space needed to build root
 
 ```Python
 # Union-Find class
