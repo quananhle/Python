@@ -46,12 +46,10 @@ class UnionFind:
     def __init__(self, size):
         self.root = [node for node in range(size)]
 
-
     # find() traces up the parent links until it finds the root node for x, and returns that root.
     def find(self, x):
         if x != self.root[x]:
             x = self.root[x]
-        print (self.root)
         return x
 
     # union() check if merge happened then return True, otherwise return False
@@ -65,7 +63,6 @@ class UnionFind:
             return False
         # Merge the sets containing x and y
         self.root[root_x] = root_y
-        print ("Merged self.root: ", self.root)
         return True
 
 class Solution:
@@ -83,31 +80,52 @@ class Solution:
         return True
 ```
 
+### Optimized “disjoint set” with Path Compression and Union by Rank
+
 ```Python
-#Union-Find class
+# Union-Find class
 class UnionFind:
     def __init__(self, size):
+        # Initializing all the sets
         self.root = [node for node in range(size)]
+        # Initilize the rank to keep track the size of each set
         self.rank = [1] * size
     
+    # Optimized find() method with path compression
     def find(self, x):
         root = x
+        # Trace up the parent links until it finds the root node for x
         while root != self.root[root]:
             root = self.root[root]
+        print ("self.root: ", self.root)
+        # Check the node which is not the root node
         while x != root:
+            # Set each node to point directly at x
             self.root[x], x = root, self.root[x]
+        print ("Path compression: ", self.root)
         return root
 
     def union(self, x, y):
+        print (x, y)
+        # Find the root node of x and y
         root_x = self.find(x)
         root_y = self.find(y)
+        print (root_x, root_y)        
+        # Check if the root of x and root of y are not in the same set
         if root_x != root_y:
+            # Ensure the set with larger size remains the root
+            # If the set of root of x has larger size than the set of root of y
             if self.rank[root_x] > self.rank[root_y]:
+                # Root of x is the overall root
                 self.root[root_y] = root_x
+                # Update the size of the set rooted at x the total of 2 sets 
                 self.rank[root_x] += self.rank[root_y]
             else:
-                self.root[root_y] = root_x
+                # Root of y is the overall root
+                self.root[root_x] = root_y
+                # Update the size of the set rooted at y the total of 2 sets 
                 self.rank[root_y] += self.rank[root_x]
+            print (self.rank)
             return True
         else:
             return False
