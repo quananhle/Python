@@ -49,7 +49,25 @@ The given matrix can be viewed as the __Adjacency Matrix__ of a graph. By viewin
 ```Python
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        # Depth-First Search
+        #### Time Complexity: O(N^2), traverse through the entire 2D array
+        #### Space Complexity: O(N), extra memory space required to build visited
+        ROWS, COLS = len(isConnected), len(isConnected[0])
+        visited = [0] * ROWS
 
+        def dfs(row):
+            for col in range(COLS):
+                if isConnected[row][col] == 1 and visited[col] == 0:
+                    visited[col] = 1
+                    dfs(col)
+
+        count = 0
+        for row in range(ROWS):
+            if visited[row] == 0:
+                dfs(row)
+                print (visited)
+                count += 1
+        return count
 ```
 
 ### Breadth-First Search
@@ -57,7 +75,24 @@ class Solution:
 ```Python
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-    
+        # Breath-First Search
+        #### Time Complexity: O(N^2), traverse through the entire 2D array
+        #### Space Complexity: O(N), extra memory space required to build visited  
+        ROWS, COLS = len(isConnected), len(isConnected[0])
+        visited = [0] * ROWS
+        queue = collections.deque()
+        count = 0
+        for row in range(ROWS):
+            if visited[row] == 0:
+                queue.append(row)
+                while queue:
+                    row = queue.pop()
+                    visited[row] = 1
+                    for col in range(COLS):
+                        if isConnected[row][col] == 1 and visited[col] == 0:
+                            queue.append(col)
+                count += 1
+        return count
 ```
 
 ### Union-Find
@@ -65,7 +100,32 @@ class Solution:
 ```Python
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-    
+            # Union Find
+            #### Time Complexity: O(N^3), union and find take o(N) time while traversing through the entire 2D array
+            #### Space Complexity: O(N), extra memory space required to build root        
+            ROWS, COLS = len(isConnected), len(isConnected[0])
+            root = [-1] * ROWS
 
+            def find(x):   
+                if root[x] == -1:
+                    return x
+                return find(root[x])
+
+            def union(x, y):
+                root_x = find(x)
+                root_y = find(y)
+                print (root_x, root_y)
+                if root_x != root_y:
+                    root[root_x] = root_y
+
+            for row in range(ROWS):
+                for col in range(COLS):
+                    if isConnected[row][col] == 1 and row != col:
+                        union(row, col)
+            count = 0
+            for row in range(ROWS):
+                if root[row] == -1:
+                    count += 1
+            return count
 ```
 
