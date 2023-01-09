@@ -8,6 +8,8 @@ You have a graph of ```n``` nodes. You are given an integer ```n``` and an array
 
 Return _the number of connected components in the graph._
 
+![image](https://user-images.githubusercontent.com/35042430/211407530-7507a985-859c-48ce-8cb5-71db2b28f026.png)
+
 ---
 
 __Example 1:__
