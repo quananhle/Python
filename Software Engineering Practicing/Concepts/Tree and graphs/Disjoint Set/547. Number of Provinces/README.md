@@ -44,7 +44,9 @@ isConnected[i][j] == isConnected[j][i]
 
 ### Depth-First Search
 
-The given matrix can be viewed as the __Adjacency Matrix__ of a graph. By viewing the matrix in such a manner, our problem reduces to the problem of __finding the number of connected components in an undirected graph__. 
+The given matrix can be viewed as the __Adjacency Matrix__ of a graph. By viewing the matrix in such a manner, our problem reduces to the problem of __finding the number of connected components in an undirected graph__.
+
+![image](https://user-images.githubusercontent.com/35042430/211258836-93da295a-a309-4311-a2e2-eb2fcf183d9f.png)
 
 ```Python
 class Solution:
