@@ -143,6 +143,50 @@ class Solution:
 ### Optimized “disjoint set” with Path Compression and Union by Rank
 
 ```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.count = size
 
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
 
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x != root_y:
+            '''
+            if self.rank[root_x] > self.rank[root_y]:
+                root_x, root_y = root_y, root_x
+            self.rank[root_y] += self.rank[root_x]
+            self.root[root_x] = root_y
+            '''
+            # Modify the root of the smaller group as the root of the larger group, also decrement the number of all groups.
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += self.rank[root_x]
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += self.rank[root_y]
+            self.count -= 1
+            return True
+        else:
+            return False 
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        # Disjoint Set
+        #### Time complexity : O(M ⋅ α(N)), amortized complexity for performing m union find operations where α is the Inverse Ackermann Function
+        #### Space Complexity: O(N), extra memory space to build root and rank
+        union_find = UnionFind(n)
+        for a, b in edges:
+            union_find.union(a, b)
+        return union_find.connected(source, destination) 
 ```
