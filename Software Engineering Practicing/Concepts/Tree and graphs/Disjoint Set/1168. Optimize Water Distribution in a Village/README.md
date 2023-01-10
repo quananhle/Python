@@ -108,3 +108,77 @@ class Solution:
         # Loop terminates when we have added all the vertices from the graph into the MST
         return total_cost
 ```
+
+### Kruskal's Algorithm with Union-Find
+
+
+Similiar to Prim's algorithm, Kruskal's algorithm applies the greedy strategy to incrementally add new edges to the final solution.
+
+![image](https://leetcode.com/problems/optimize-water-distribution-in-a-village/solutions/1301513/Figures/1168/KruskalDemo.gif)
+
+The above animation shows how Kruskal's algorithm grows the minimum spanning tree.
+
+    A major difference between them is that in Prim's algorithm the MST (minimal spanning tree) remains connected as a whole throughout the entire process, while in Kruskal's algorithm, the tree is formed by merging the disjoint components together.
+    
+![image](https://leetcode.com/problems/optimize-water-distribution-in-a-village/solutions/1301513/Figures/1168/1168_union_find_examples.png)
+__Add or Not to Add?__
+
+The above diagram shows three example scenarios and for each scenario, specifies whether a new edge should be added or not. The solid edges have already been added to the MST, while the dashed edges have yet to be decided.
+
+- In the example on the left, we should add the new edge, since the edge bridges the gap between the two disjoint components.
+- In the middle example, we should also add the new edge, since it connects to an unseen vertex (i.e. connecting more dots).
+- In the example on the right, we should not add the new edge. Because it does not help us to make the current MST more connected, since all vertices are connected already.
+    
+```Python
+class UnionFind:
+    def __init__(self, size):
+        # container to hold the group id for each member. the index of member starts from 1, add one more element to the container
+        self.root = [i for i in range(size + 1)]
+        self.rank = [1] * (size + 1)
+        self.count = size
+
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        else:
+            self.root[x] = self.find(self.root[x])
+            return self.root[x]
+
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += self.rank[root_x]
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += self.rank[root_y]
+            self.count -= 1
+            return True
+        else:
+            return False
+
+class Solution:
+    def minCostToSupplyWater(self, n: int, wells: List[int], pipes: List[List[int]]) -> int:
+        edges = list()
+        for index, weight in enumerate(wells):
+            # Add the virtual vertex (index with 0) along with the new edges
+            edges.append((weight, 0, index + 1))
+        
+        # Add the existing edges with weight, origin, destination
+        for house1, house2, weight in pipes:
+            edges.append((weight, house1, house2))
+
+        # Sort the edges by weight
+        edges.sort(key=lambda x: x[0])
+
+        union_find = UnionFind(n)
+        total_cost = 0
+        # Iterate through the sorted edges
+        for cost, house1, house2 in edges:
+            # Check if both ends of the edge belong to different groups, add this edge into the final MST            
+            if union_find.union(house1, house2):
+                total_cost += cost
+        return total_cost
+```
