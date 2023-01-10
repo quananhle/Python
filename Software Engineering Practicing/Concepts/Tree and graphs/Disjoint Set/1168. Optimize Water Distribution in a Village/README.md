@@ -14,15 +14,18 @@ Return _the minimum total cost to supply water to all houses_.
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2019/05/22/1359_ex1.png)
+```
 Input: n = 3, wells = [1,2,2], pipes = [[1,2,1],[2,3,1]]
 Output: 3
 Explanation: The image shows the costs of connecting houses using pipes.
 The best strategy is to build a well in the first house with cost 1 and connect the other houses to it with cost 2 so the total cost is 3.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: n = 2, wells = [1,1], pipes = [[1,2,1],[1,2,2]]
 Output: 2
 Explanation: We can supply water with cost two using one of the three options:
@@ -39,10 +42,10 @@ Option 3:
   - Connect house 1 with house 2 with cost 1.
 The total cost will be 2.
 Note that we can connect houses 1 and 2 with cost 1 or with cost 2 but we will always choose the cheapest option. 
- 
+```
 
-Constraints:
-
+__Constraints:__
+```
 2 <= n <= 104
 wells.length == n
 0 <= wells[i] <= 105
@@ -51,3 +54,10 @@ pipes[j].length == 3
 1 <= house1j, house2j <= n
 0 <= costj <= 105
 house1j != house2j
+```
+
+---
+
+```Python
+
+```
