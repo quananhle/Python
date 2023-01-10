@@ -60,6 +60,35 @@ Ai, Bi, Cj, Dj consist of lower case English letters and digits.
 ```Python
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        graph = collections.defaultdict(set)
+        for (u, v), val in zip(equations, values):
+            graph[u].add((v, val))
+            graph[v].add((u, 1/val))
+            
+        def dfs(x, y, visited):
+            if not x in graph:
+                return -1.0
+            elif x == y:
+                return 1.0
+            visited.add(x)
+            for key, val in graph[x]:
+                if key == y:
+                    return val
+                elif not key in visited:
+                    output = dfs(key, y, visited)
+                    if output != -1:
+                        return val * output
+            return -1.0
+            
+        res = list()
+        for c, d in queries:
+            res.append(dfs(c, d, set()))
+        return res
+```
+
+```Python
+class Solution:
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         # Depth-First Search
         visited = set()
         graph = collections.defaultdict(collections.defaultdict)
