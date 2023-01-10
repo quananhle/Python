@@ -96,7 +96,6 @@ class Solution:
         while stack:
             curr = stack.pop()
             for next in graph[curr]:
-                print (next)
                 # Reached the destination
                 if destination in visited or next == destination:
                     return True
@@ -104,4 +103,40 @@ class Solution:
                     visited.add(next)
                     stack.append(next)
         return True if destination in visited else False
+```
+
+### Recursive Depth-First Search
+
+```Python
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        # Recursive Depth-First Search
+        #### Time complexity : O(N + M), N number of vertices and M number of edges
+        #### Space Complexity: O(N + M), extra memory space needed to build hash map that stores edges and visited set to store vertices
+        visited = set()
+        # Build the adjacency list
+        graph = collections.defaultdict(set)
+        for x, y in edges:
+            graph[x].add(y)
+            graph[y].add(x)
+        # Check if destination can be reached
+        def dfs(curr):
+            if curr == destination or destination in visited:
+                return True
+            if not curr in visited:
+                visited.add(curr)
+                for next in graph[curr]:
+                    if not next in visited:
+                        if dfs(next):
+                            return True
+            return False
+
+        return dfs(source)
+```
+
+### Optimized “disjoint set” with Path Compression and Union by Rank
+
+```Python
+
+
 ```
