@@ -1,6 +1,6 @@
 ## 1168. Optimize Water Distribution in a Village
 
-```Tag```: 
+```Tag```: ```Depth-First Search``` ```Union-Find```
 
 #### Difficulty: Hard
 
@@ -61,6 +61,8 @@ house1j != house2j
 Since the problem description involves connecting ```houses``` (vertices) using ```pipes``` (edges), we can tell that this problem is a variant of __graph__ problems. More precisely, we can convert it into a standard __minimum spanning tree (MST)__
 
 ### Prim's Algorithm with Heap
+#### Time Complexity: ```O((N+M)⋅log⁡(N+M)```, iterate through the ```houses``` and ```pipes``` in the input, which takes ```O(N+M)```, ```push()``` in heap costs ```log(N + M)``` time
+#### Space Complexity: ```O(N + M)```, extra memory space to build ```graph```
 
 Prim's (also known as Jarník's) algorithm is a greedy algorithm used to find the minimum spanning tree in a weighted and undirected graph.
 
