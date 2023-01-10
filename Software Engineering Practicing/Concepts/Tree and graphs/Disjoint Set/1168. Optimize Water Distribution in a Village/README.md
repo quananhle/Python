@@ -58,6 +58,18 @@ house1j != house2j
 
 ---
 
+Since the problem description involves connecting ```houses``` (vertices) using ```pipes``` (edges), we can tell that this problem is a variant of __graph__ problems. More precisely, we can convert it into a standard __minimum spanning tree (MST)__
+
+### Prim's Algorithm with Heap
+
+Prim's (also known as Jarník's) algorithm is a greedy algorithm used to find the minimum spanning tree in a weighted and undirected graph.
+
+    The algorithm operates by building the tree one vertex at a time, from an arbitrary starting vertex, at each step adding the cheapest possible connection from any vertex in the tree to a vertex that is not in the tree.
+
+![image](https://leetcode.com/problems/optimize-water-distribution-in-a-village/solutions/1301513/Figures/1168/PrimAlgDemo.gif)
+
+The above illustration demonstrates how Prim's algorithm works. Starting from an arbitrary vertex, Prim's algorithm grows the minimum spanning tree by adding one vertex at a time to the tree. The choice of a vertex is based on the greedy strategy, i.e. the addition of the new vertex incurs the minimum cost.
+
 ```Python
 
 ```
