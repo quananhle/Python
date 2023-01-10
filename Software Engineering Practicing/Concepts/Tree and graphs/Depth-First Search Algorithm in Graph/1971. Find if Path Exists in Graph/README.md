@@ -115,10 +115,16 @@ class Solution:
         #### Space Complexity: O(N + M), extra memory space needed to build hash map that stores edges and visited set to store vertices
         visited = set()
         # Build the adjacency list
+        '''
         graph = collections.defaultdict(set)
         for x, y in edges:
             graph[x].add(y)
             graph[y].add(x)
+        '''
+        graph = [[] for _ in range(n)]
+        for a, b in edges:
+            graph[a].append(b)
+            graph[b].append(a)
         # Check if destination can be reached
         def dfs(curr):
             if curr == destination or destination in visited:
