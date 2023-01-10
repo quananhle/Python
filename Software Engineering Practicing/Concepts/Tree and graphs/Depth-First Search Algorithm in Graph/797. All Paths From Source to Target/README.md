@@ -69,6 +69,28 @@ class Solution:
         return res
 ```
 
+```Python
+class Solution:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        path = list()
+        res = list()
+        if not graph or len(graph) == 0:
+            return res
+
+        def dfs(curr):
+            path.append(curr)
+            if curr == len(graph) - 1:
+                res.append(path.copy())
+                return
+            next_nodes = graph[curr]
+            for node in next_nodes:
+                dfs(node)
+                path.pop()
+
+        dfs(0)
+        return res
+```
+
 ### Top-Down Dynamic Programming
 
 __Time Complexity__: O(2<sup>N</sup> * N), there are at most 2<sup>N−1</sup> - 1 paths while traversing through the entire graph
