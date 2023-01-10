@@ -71,5 +71,38 @@ Prim's (also known as Jarník's) algorithm is a greedy algorithm used to find th
 The above illustration demonstrates how Prim's algorithm works. Starting from an arbitrary vertex, Prim's algorithm grows the minimum spanning tree by adding one vertex at a time to the tree. The choice of a vertex is based on the greedy strategy, i.e. the addition of the new vertex incurs the minimum cost.
 
 ```Python
+class Solution:
+    def minCostToSupplyWater(self, n: int, wells: List[int], pipes: List[List[int]]) -> int:
+        # Build a bidirectional graph with the adjacency list
+        graph = collections.defaultdict(list)
+        # To convert problem into the MST problem, add a virtual vertex (index it as 0) together with the additional n edges to each house
+        for index, cost in enumerate(wells):
+            graph[0].append((cost, index + 1))
+        # Since the graph is undirected (i.e. bidirectional), for each pipe,add two entries in the adjacency list, with each end of the pipe as a starting vertex
+        for house1, house2, cost in pipes:
+            # Add the bidirectional edges to the graph
+            graph[house1].append((cost, house2))
+            graph[house2].append((cost, house1))
+        # Set to maintain all the vertices added to the final minimum spanning tree, during the construction of the tree
+        visited = set([0])
+        # Heap to maitain the order of edges to be visited starting from the edges originated from the vertex 0
+        heapq.heapify(graph[0])
+        # Prim's algorithm can use any vertex as a starting point; hence, start from the newly-added virtual vertex
+        edges_heap = graph[0]
 
+        total_cost = 0
+        while len(visited) < n + 1:
+            # Pop an element from the heap containing a vertex along with the cost that is associated with the edge that connecting the vertex to the tree
+            cost, next_house = heapq.heappop(edges_heap)
+            if not next_house in visited:
+                # Add new vertex to the set
+                visited.add(next_house)
+                # The cost of this vertex is minimal among all choices because it was popped from the heap
+                total_cost += cost
+                # Find the neighbor houses
+                for new_cost, neighbor in graph[next_house]:
+                    if not neighbor in visited:
+                        heapq.heappush(edges_heap, (new_cost, neighbor))
+        # Loop terminates when we have added all the vertices from the graph into the MST
+        return total_cost
 ```
