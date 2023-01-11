@@ -122,3 +122,33 @@ class Solution:
         return dfs(source)
 ```
 
+### Iterative Depth-First Search
+
+```Python
+class Solution:
+    def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        # Iterative Depth-First Search
+        #### Time Complexity : O(V+E), where V the number of vertices in the graph and E the number of edges in the graph
+        #### Space Complexity: O(V+E),  where O(E) is occupied by the adjacency list and O(V) is occupied by the recursion stack 
+        graph = collections.defaultdict(set)
+        for x, y in edges:
+            graph[x].add(y)
+        
+        stack = [(source, [source])]
+
+        while stack:
+            curr, path = stack.pop()
+            # Check if curr is the destination as it has no path starting from
+            if not graph[curr]:
+                # Check if curr is not the destination, path lead to curr does not lead to destination
+                if curr != destination:
+                    return False
+            
+            for next_node in graph[curr]:
+                # Check if there is a loop
+                if next_node in path:
+                    return False
+                else:
+                    stack.append((next_node, path + [next_node]))
+        return True
+```
