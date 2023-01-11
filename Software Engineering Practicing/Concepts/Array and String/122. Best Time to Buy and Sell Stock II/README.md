@@ -50,7 +50,39 @@ __Constraints:__
 
 ### Peak and Valley
 
+![image](https://leetcode.com/media/original_images/122_maxprofit_1.PNG)
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # One-Pass Peak Valley
+        #### Time complexity : O(N), single pass as actively checking the future prices
+        #### Space complexity: O(1), only constant space required for pointers
+        max_profit = 0
+        i = 0
+        buy = sell = prices[0]
+        while i < len(prices) - 1:
+            # Check if the price keeps plummeting in the future
+            while i < len(prices) - 1 and prices[i] >= prices[i + 1]:
+                i += 1
+            # When the price stops going down, buy
+            buy = prices[i]
+            # Check if the price keeps rising in the future
+            while i < len(prices) - 1 and prices[i] <= prices[i + 1]:
+                i += 1
+            # When the price stops going up, sell
+            sell = prices[i]            
+            # After got the right prices to buy and sell, make profit
+            profit = sell - buy
+            # Record the total profit
+            max_profit += profit
+        return max_profit
+```
+
 ![image](https://leetcode.com/media/original_images/122_maxprofit_2.PNG)
+
+#### Time Complexity : ```O(N)```, traverse through input array once
+#### Space Complexity: ```O(1)```, constant memory space for pointer
 
 ```Python
 class Solution:
