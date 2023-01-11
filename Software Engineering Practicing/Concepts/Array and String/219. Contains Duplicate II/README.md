@@ -37,3 +37,55 @@ __Constraints:__
 
 ---
 
+### Hash Table
+
+```Python
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        # Hash Table
+        #### Time Complexity : O(N), traverse through the input array to build the hash map
+        #### Space Complexity: O(N), extra memory space required to build hash map
+        memo = collections.defaultdict(list)
+        for i, n in enumerate(nums):
+            memo[n].append(i)
+        for key, val in memo.items():
+            if len(val) >= 2:
+                for i in range(1, len(val)):
+                    if val[i] - val[i - 1] <= k:
+                        return True
+        return False
+```
+
+### Optimized Hash Table
+
+```Python
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        # Hash Table
+        #### Time Complexity : O(N), traverse through the input array to build the hash map
+        #### Space Complexity: O(N), extra memory space required to build hash map
+        memo = dict()
+        for idx, num in enumerate(nums):
+            if num in memo and idx - memo[num] <= k:
+                return True
+            memo[num] = idx
+        return False
+```
+
+### Hash Set with Sliding Window
+
+```Python
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        # Hash Set with Sliding Window
+        #### Time Complexity : O(N), traverse through the input array to do operations of search (O(1)), delete (O(1)) and insert (O(1))
+        #### Space Complexity: O(min(N, k)), extra memory space of sliding window to build hash table
+        memo = set()
+        for i in range(len(nums)):
+            if nums[i] in memo:
+                return True
+            memo.add(nums[i])
+            if len(memo) > k:
+                memo.remove(nums[i-k])
+        return False
+```
