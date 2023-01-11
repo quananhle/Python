@@ -55,6 +55,24 @@ The given graph may have self-loops and parallel edges.
 
 ---
 
+As for cycle detection, there are multiple ways one can go about modifying the standard DFS algorithm. We will be following the node-coloring variant of the algorithm. The idea is to do DFS of a given graph and while doing traversal, assign one of the below three colors to every vertex. There are three different colors we can assign a node:
+
+- ```WHITE``` ~ Vertex is not processed yet. Initially, all vertices are WHITE.
+
+- ```GRAY``` ~ Vertex is being processed (DFS for this vertex has started, but not finished which means that all descendants (in DFS tree) of this vertex are not processed yet (or this vertex is in the function call stack).
+
+![image[/(https://leetcode.com/problems/all-paths-from-source-lead-to-destination/solutions/1007695/Figures/1059/img2.png)
+Figure 1. Highlighting an edge to a GRAY node thus creating a cycle in the graph.
+
+- ```BLACK``` ~ Vertex and all its descendants are processed.
+
+![image](https://leetcode.com/problems/all-paths-from-source-lead-to-destination/solutions/1007695/Figures/1059/img1.png)
+Figure 2. Highlighting an edge to a BLACK node.
+
+```
+While doing DFS, if an edge is encountered from current vertex to a GRAY vertex, then this edge is a back edge and hence there is a cycle. A GRAY node represents a node whose processing is still ongoing. Thus, if a descendent eventually leads back to a node whose processing is ongoing, it ends up creating a cycle in the directed graph and we call the edge leading back to a GRAY node as a backward edge.
+```
+
 ### Recursive Depth-First Search
 
 ```Python
