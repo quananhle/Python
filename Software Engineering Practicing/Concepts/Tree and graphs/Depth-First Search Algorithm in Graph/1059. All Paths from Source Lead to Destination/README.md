@@ -61,7 +61,7 @@ As for cycle detection, there are multiple ways one can go about modifying the s
 
 - ```GRAY``` ~ Vertex is being processed (DFS for this vertex has started, but not finished which means that all descendants (in DFS tree) of this vertex are not processed yet (or this vertex is in the function call stack).
 
-![image[/(https://leetcode.com/problems/all-paths-from-source-lead-to-destination/solutions/1007695/Figures/1059/img2.png)
+![image](https://leetcode.com/problems/all-paths-from-source-lead-to-destination/solutions/1007695/Figures/1059/img2.png)
 Figure 1. Highlighting an edge to a GRAY node thus creating a cycle in the graph.
 
 - ```BLACK``` ~ Vertex and all its descendants are processed.
