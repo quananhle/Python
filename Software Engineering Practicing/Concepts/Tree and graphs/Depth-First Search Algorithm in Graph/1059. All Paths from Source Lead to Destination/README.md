@@ -73,6 +73,52 @@ Figure 2. Highlighting an edge to a BLACK node.
 While doing DFS, if an edge is encountered from current vertex to a GRAY vertex, then this edge is a back edge and hence there is a cycle. A GRAY node represents a node whose processing is still ongoing. Thus, if a descendent eventually leads back to a node whose processing is ongoing, it ends up creating a cycle in the directed graph and we call the edge leading back to a GRAY node as a backward edge.
 ```
 
+```Python
+class Solution:
+    WHITE = 0
+    GRAY = 1
+    BLACK = 2
+    def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        graph = collections.defaultdict(set)
+        # All nodes are white by default
+        visited = ["WHITE"] * n
+        for x, y in edges:
+            graph[x].add(y)
+        
+        def dfs(curr):
+            '''
+            if visited[curr] != "WHITE":
+                return visited[curr] == "BLACK"
+            '''
+            # Check if current node is already visited and it is being revisited
+            if visited[curr] == "GRAY":
+                # This is a backward edge and hence it creates a loop
+                return False
+            # Check if current node is already visited and all the paths that lead to it are traversed
+            elif visited[curr] == "BLACK":
+                # There is no other edge left, return True
+                return True            
+            # Check if the current node has no path to other node => stuck at the current node
+            elif not graph[curr]:
+                # True if current node is the destination and False if current node is not the destination
+                return curr == destination
+            else:
+                # Mark the current node as GREY
+                visited[curr] = "GRAY"
+                # Check the path from the current node
+                next_nodes = graph[curr]
+                # Loop through all the possible paths from the current node
+                for node in next_nodes:
+                    # Check if the stuck at the node but not in the destination node
+                    if not dfs(node):
+                        return False
+                visited[curr] = "BLACK"
+            # print (visited)
+            return True
+
+        return dfs(source)
+```
+
 ### Recursive Depth-First Search
 
 ```Python
