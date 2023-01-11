@@ -64,7 +64,7 @@ To be more specific, the algorithm consists of two steps:
 
 - If this circle covers all nodes it is an Eulerian cycle and the algorithm is finished. Otherwise, one chooses another node among the cycles' nodes with unvisited edges and constructs another circle, called subtour.
 
-![image](https://leetcode.com/problems/reconstruct-itinerary/solutions/514368/Figures/332/332_eulerian_cycle.png_
+![image](https://leetcode.com/problems/reconstruct-itinerary/solutions/514368/Figures/332/332_eulerian_cycle.png)
 By connecting all the circles in the above process, we build the Eulerian cycle at the end.
 
 #### Eulerian Path
