@@ -44,6 +44,46 @@ fromi != toi
 
 ---
 
+### Backtracking and Greedy
+
+```Python
+class Solution:
+    res = list()
+
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        # Depth-First Search
+        visited = dict()
+        res = list()
+        route = ['JFK']
+        # Build the adjacency list
+        flight_map = collections.defaultdict(list)
+        for origin, destination in tickets:
+            flight_map[origin].append(destination)
+        for origin, destination in flight_map.items():
+            # Sort the destination airport in lexico order
+            destination.sort()
+            visited[origin] = [False] * len(destination)
+        
+        def backtracking(airport, route,):
+            # Check if found all routes from the departure airports to the arrival airports
+            if len(route) == len(tickets) + 1:
+                self.res = route
+                return True
+            for index, next_airport in enumerate(flight_map[airport]):
+                if not visited[airport][index]:
+                    # Mark the airport as visited so that recursion call won't go back to the departure
+                    visited[airport][index] = True
+                    ans = backtracking(next_airport, route + [next_airport])
+                    # Reset the visited list for the next route
+                    visited[airport][index] = False
+                    if ans:
+                        return True
+            return False
+
+        backtracking("JFK", route)
+        return self.res
+```
+
 ### Hierholzer's Algorithm
 
 #### Eulerian Cycle
@@ -54,7 +94,7 @@ In our problem, we are asked to construct an itinerary that uses all the flights
 
     Similarly, an Eulerian circuit or Eulerian cycle is an Eulerian trail that starts and ends on the same vertex.
     
-### Hierholzer's Algorithm 
+#### Hierholzer's Algorithm 
 
     Hierholzer's algorithm is the stepwise construction of the Eulerian cycle by connecting disjunctive circles.
 
