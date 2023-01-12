@@ -32,3 +32,60 @@ __Constraints:__
 
 ---
 
+```Python
+class Solution:
+    def duplicateZeros(self, arr: List[int]) -> None:
+        # Copy of the array
+        #### Time Complexity : O(N), traverse through the input arr
+        #### Space Complexity: O(N^2), the worst case is when the entire input only has 0
+        """
+        res = list()
+        n = len(arr)
+        for num in arr:
+            res.append(num)
+            if num == 0:
+                res.append(0)
+        for i in range(n):
+            arr[i] = res[i]
+```
+
+```Python
+class Solution:
+    def duplicateZeros(self, arr: List[int]) -> None:
+        # Insert() and Pop()
+        #### Time Complexity : O(N), traverse through the input arr
+        #### Space Complexity: O(1), constant memory space for pointers
+        """
+        curr = 0
+        while curr < len(arr):
+            if arr[curr] == 0:
+                arr.pop()
+                to_insert = curr + 1
+                arr.insert(to_insert, 0)
+                curr = to_insert
+            curr += 1
+```
+
+```Python
+class Solution:
+    def duplicateZeros(self, arr: List[int]) -> None:
+        """
+        Do not return anything, modify arr in-place instead.
+        """
+        # Sliding Window
+        #### Time Complexity : O(N), traverse through the input arr
+        #### Space Complexity: O(1), constant memory space for pointers        
+        zeroes = arr.count(0)
+        n = len(arr)
+        for i in range(n - 1, -1, -1):
+            # Shift the array based on the amount of zeroes in the array, but also keep track of the index i
+            if i + zeroes < n:
+                arr[i + zeroes] = arr[i]
+            # Check if encountering 0
+            if arr[i] == 0:
+                # Update the number of zeroes counter
+                zeroes -= 1
+                # Add the zero to the right position
+                if i + zeroes < n:
+                    arr[i + zeroes] = 0
+```
