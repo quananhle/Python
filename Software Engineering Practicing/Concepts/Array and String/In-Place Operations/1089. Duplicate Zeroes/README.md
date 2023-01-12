@@ -1,4 +1,4 @@
-## 1089. Duplicate Zeros
+## 1089. Duplicate Zeroes
 
 ```Tag```: ```Array``` ```Sliding Window```
 
