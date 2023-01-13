@@ -1,6 +1,6 @@
 ## 2246. Longest Path With Different Adjacent Characters
 
-```Tag```: ``` ```
+```Tag```: ``` ``` ``` ```
  ``` ```
 #### Difficulty: Hard
 
