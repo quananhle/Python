@@ -55,7 +55,32 @@ So, for a node ```p``` if we find the two longest chains of its child nodes, say
 ```Python
 class Solution:
     def longestPath(self, parent: List[int], s: str) -> int:
-    
-    
-    
+        # Depth-First Search
+        tree = collections.defaultdict(list)
+        for pos, par in enumerate(parent):
+            tree[par].append(pos)
+        
+        res = 1
+
+        def dfs(curr=0):
+            nonlocal res
+            # Longest and second longest path starting from current node, not includinh the current node itself
+            longest = second_longest = 0
+            next_nodes = tree[curr]
+            for node in next_nodes:
+                # Get the number of nodes in the longest chain starting from the child, including the child.                
+                point = dfs(node)
+                if s[node] != s[curr]:
+                    # Update the length of the top two longest paths
+                    if point > longest:
+                        second_longest, longest = longest, point
+                    elif point > second_longest:
+                        second_longest = point
+            # Add 1 of the current node to the two chains
+            res = max(res, longest + second_longest + 1)
+            # Return the length of the longest chain including the current node which is longest chain + 1
+            return longest + 1
+
+        dfs()
+        return res
 ```
