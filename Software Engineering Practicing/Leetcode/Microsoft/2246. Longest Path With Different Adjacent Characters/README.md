@@ -1,7 +1,7 @@
 ## 2246. Longest Path With Different Adjacent Characters
 
-```Tag```: ``` ``` ``` ```
- ``` ```
+```Tag```: ``` ``` ``` ```  ``` ```
+
 #### Difficulty: Hard
 
 You are given a __tree__ (i.e. a connected, undirected graph that has no cycles) __rooted__ at node ```0``` consisting of ```n``` nodes numbered from ```0``` to ```n - 1```. The tree is represented by a __0-indexed__ array ```parent``` of size ```n```, where ```parent[i]``` is the parent of node ```i```. Since node ```0``` is the root, ```parent[0] == -1```.
@@ -42,6 +42,14 @@ s consists of only lowercase English letters.
 ```
 
 ---
+
+### Depth-First Search
+
+Intuitively, we can think that for any parent node, the longest path will be formed by choosing at most the two longest chains of its child nodes. Here's a visual explanation of the two scenarios that could occur where node ```p``` is the parent node:
+
+![image](https://leetcode.com/problems/longest-path-with-different-adjacent-characters/solutions/2889382/Figures/2246/2246-1.png)
+
+So, for a node ```p``` if we find the two longest chains of its child nodes, say ```L1``` and ```L2``` we can compute the longest path centered at node ```p```. For each node, we can find the maximum of value ```1 + L1 + L2``` to find the answer. The addition of one comes for the node ```p``` itself.
 
 
 ```Python
