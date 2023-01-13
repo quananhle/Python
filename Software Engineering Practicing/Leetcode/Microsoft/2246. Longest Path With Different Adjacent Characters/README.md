@@ -1,7 +1,7 @@
 ## 2246. Longest Path With Different Adjacent Characters
 
 ```Tag```: ``` ```
-
+ ``` ```
 #### Difficulty: Hard
 
 You are given a __tree__ (i.e. a connected, undirected graph that has no cycles) __rooted__ at node ```0``` consisting of ```n``` nodes numbered from ```0``` to ```n - 1```. The tree is represented by a __0-indexed__ array ```parent``` of size ```n```, where ```parent[i]``` is the parent of node ```i```. Since node ```0``` is the root, ```parent[0] == -1```.
