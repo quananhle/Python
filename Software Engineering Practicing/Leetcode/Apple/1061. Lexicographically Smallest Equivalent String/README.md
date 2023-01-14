@@ -60,6 +60,58 @@ s1, s2, and baseStr consist of lowercase English letters.
 ### Optimized “disjoint set” with Path Compression and Union by Rank
 
 ```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)] 
+        self.rank = [1] * size
+        self.count = size
 
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        else:
+            self.root[x] = self.find(self.root[x])
+            return self.root[x]
 
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x != root_y:
+            if root_x < root_y:
+                self.root[root_y] = root_x
+            else:
+                self.root[root_x] = root_y
+            self.count -= 1
+            return True
+        else:
+            return False
+        
+        def get_count(self):
+            return self.count
+        
+        def connected(self, x, y):
+            return self.find(x) == self.find(y)
+
+class Solution:
+    def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
+        res = list()
+        union_find = UnionFind(26)
+        # Union merge for all the edges
+        for i in range(len(s1)):
+            '''
+            union_find.union(ord(s1[i]) - 97, ord(s2[i]) - 97)
+            '''
+            union_find.union(ord(s1[i]) - ord('a'), ord(s2[i]) - ord('a'))
+        # Iterate over all the characters from 0 until 26, and make each character represent itself in root vector
+        for i in range(26):
+            union_find.find(i)
+        # Map the characters to the representative of characters in the string baseStr
+        for c in baseStr:
+            '''
+            x = union_find.find(ord(c) - 97)
+            res.append(chr(x + 97))
+            '''
+            res.append(chr(union_find.find(ord(c) - ord('a')) + ord('a')))
+        return "".join(res)
+        # return "".join(chr(ord('a') + union_find.find(ord(c) - 97)) for c in baseStr)
 ```
