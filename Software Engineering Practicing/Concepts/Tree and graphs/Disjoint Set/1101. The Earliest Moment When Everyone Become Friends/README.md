@@ -99,4 +99,7 @@ class Solution:
                 return time
         # Otherwise, not every person is the acquaitance of each other
         return -1
+        
+        
+        
 ```
