@@ -24,3 +24,42 @@ Return _the lexicographically smallest equivalent string of ```baseStr``` by usi
 
 ---
 
+__Example 1:__
+```
+Input: s1 = "parker", s2 = "morris", baseStr = "parser"
+Output: "makkek"
+Explanation: Based on the equivalency information in s1 and s2, we can group their characters as [m,p], [a,o], [k,r,s], [e,i].
+The characters in each group are equivalent and sorted in lexicographical order.
+So the answer is "makkek".
+```
+
+__Example 2:__
+```
+Input: s1 = "hello", s2 = "world", baseStr = "hold"
+Output: "hdld"
+Explanation: Based on the equivalency information in s1 and s2, we can group their characters as [h,w], [d,e,o], [l,r].
+So only the second letter 'o' in baseStr is changed to 'd', the answer is "hdld".
+```
+
+__Example 3:__
+```
+Input: s1 = "leetcode", s2 = "programs", baseStr = "sourcecode"
+Output: "aauaaaaada"
+Explanation: We group the equivalent characters in s1 and s2 as [a,o,e,r,s,c], [l,p], [g,t] and [d,m], thus all letters in baseStr except 'u' and 'd' are transformed to 'a', the answer is "aauaaaaada".
+```
+
+__Constraints:__
+```
+1 <= s1.length, s2.length, baseStr <= 1000
+s1.length == s2.length
+s1, s2, and baseStr consist of lowercase English letters.
+```
+
+---
+
+### Optimized “disjoint set” with Path Compression and Union by Rank
+
+```Python
+
+
+```
