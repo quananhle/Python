@@ -100,8 +100,5 @@ class Solution:
             if union_find.get_count() == 1:
                 return time
         # Otherwise, not every person is the acquaitance of each other
-        return -1
-        
-        
-        
+        return -1 
 ```
