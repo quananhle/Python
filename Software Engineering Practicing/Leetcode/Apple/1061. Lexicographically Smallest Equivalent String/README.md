@@ -115,3 +115,54 @@ class Solution:
         return "".join(res)
         # return "".join(chr(ord('a') + union_find.find(ord(c) - 97)) for c in baseStr)
 ```
+
+### Optimized “disjoint set” with Path Compression and Union by Rank with Hash Table
+
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = collections.defaultdict()
+        self.rank = [1] * size
+        self.count = size
+
+    def find(self, x):
+        '''
+        self.root.setdefault(x, x)
+        '''
+        if not x in self.root:
+            self.root[x] = x        
+        if x != self.root[x]:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x != root_y:
+            if root_x < root_y:
+                self.root[root_y] = root_x
+            else:
+                self.root[root_x] = root_y
+            self.count -= 1
+            return True
+        else:
+            return False
+        
+        def get_count(self):
+            return self.count
+        
+        def connected(self, x, y):
+            return self.find(x) == self.find(y)
+
+class Solution:
+    def smallestEquivalentString(self, s1: str, s2: str, baseStr: str) -> str:
+        union_find = UnionFind(26)
+        # Union the two equivalent characters from s1 and s2 into the same group
+        for i in range(len(s1)):
+            union_find.union(s1[i], s2[i])
+        res = list()
+        for c in baseStr:
+            # Find the root of the character in baseStr
+            res.append(union_find.find(c))
+        return "".join(res)
+```
