@@ -1,6 +1,6 @@
 ## 1533. Find the Index of the Large Integer
 
-```Tag```:
+```Tag```: ```Binary Search```
 
 #### Difficulty: Medium
 
