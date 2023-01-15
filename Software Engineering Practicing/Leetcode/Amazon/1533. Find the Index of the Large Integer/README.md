@@ -52,3 +52,90 @@ What if there is one number that is bigger than other numbers and one number tha
 ```
 
 ---
+
+### Iterative Binary Search
+
+```Python
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader(object):
+#	 # Compares the sum of arr[l..r] with the sum of arr[x..y]
+#	 # return 1 if sum(arr[l..r]) > sum(arr[x..y])
+#	 # return 0 if sum(arr[l..r]) == sum(arr[x..y])
+#	 # return -1 if sum(arr[l..r]) < sum(arr[x..y])
+#    def compareSub(self, l: int, r: int, x: int, y: int) -> int:
+#
+#	 # Returns the length of the array
+#    def length(self) -> int:
+#
+
+class Solution:
+    def getIndex(self, reader: 'ArrayReader') -> int:
+        # Binary Search
+        #### Time Complexity : O(logN), binary search
+        #### Space Complexity: O(1), constant memory space for pointers
+        lo, hi = 0, reader.length() - 1
+        while lo < hi:
+            '''
+            mid = lo + (hi - lo >> 1)
+            '''
+            mid = lo + (hi - lo) // 2
+            # Check if the size of arr is even
+            if (hi - lo + 1) % 2 == 0:
+                compare = reader.compareSub(lo, mid, mid + 1, hi)
+            else:
+                compare = reader.compareSub(lo, mid, mid, hi)
+            # Check if compare == -1, largest integer is in the right half of the array
+            if compare < 0:
+                # Update the boundary of subarray
+                lo = mid + 1
+            # Check if compare >= 0, largest integer is in the left half of the array
+            else:
+                hi = mid
+        return lo
+```
+
+### Recursive Binary Search
+
+```Python
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader(object):
+#	 # Compares the sum of arr[l..r] with the sum of arr[x..y]
+#	 # return 1 if sum(arr[l..r]) > sum(arr[x..y])
+#	 # return 0 if sum(arr[l..r]) == sum(arr[x..y])
+#	 # return -1 if sum(arr[l..r]) < sum(arr[x..y])
+#    def compareSub(self, l: int, r: int, x: int, y: int) -> int:
+#
+#	 # Returns the length of the array
+#    def length(self) -> int:
+#
+
+class Solution:
+    def getIndex(self, reader: 'ArrayReader') -> int:
+        # Binary Search
+        #### Time Complexity : O(logN), binary search
+        #### Space Complexity: O(1), constant memory space for pointers
+        def binary_search(left: int, right: int) -> int:
+            if left == right:
+                return left
+            mid = (right - left + 1) // 2
+            compare = reader.compareSub(left, left + mid - 1, left + mid, left + mid + mid - 1)
+            # Check if largest integer is in the lower boundary of the array
+            if compare == 1:
+                # Shrink the search boundary to the left
+                return binary_search(left, left + mid - 1)
+            # Check if largest integer is in the upper boundary of the array
+            elif compare == -1:
+                # Shrink the search boundary to the right
+                return binary_search(left + mid, left + mid + mid - 1)
+            # Otherwise, found the integer
+            else:
+                return right
+
+        return binary_search(0, reader.length() - 1)
+```
