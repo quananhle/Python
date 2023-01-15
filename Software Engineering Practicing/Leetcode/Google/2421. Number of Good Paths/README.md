@@ -66,3 +66,79 @@ edges represents a valid tree.
 ```
 
 ---
+
+### Optimized “disjoint set” with Path Compression and Union by Rank
+
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.count = size
+
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        else:
+            self.root[x] = self.find(self.root[x])
+            return self.root[x]
+
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += self.rank[root_x]
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_y] += self.rank[root_x]
+            self.count -= 1
+            return True
+        else:
+            return False
+
+class Solution:
+    def numberOfGoodPaths(self, vals: List[int], edges: List[List[int]]) -> int:
+        # Union Find
+        #### Time Complexity : O(n⋅log(n)), sort operations takes NlogN time
+        #### Space Complexity: O(n)
+        # Build the adjacency list where tree[x] contains all the neighbor of node x and tree[y] contains neighbors of node y
+        tree = collections.defaultdict(list)
+        # Build a map where key node is an array that contains all the nodes having same value of key
+        values_to_nodes = collections.defaultdict(set)
+        for x, y in edges:
+            tree[x].append(y)
+            tree[y].append(x)
+            values_to_nodes[vals[x]].add(x)
+            values_to_nodes[vals[y]].add(y)
+        
+        n = len(vals)
+        res = n
+        union_find = UnionFind(n)
+
+        # Iterate over all the nodes with the same value in sorted order, starting from the lowest value.
+        for curr in sorted(values_to_nodes.keys()):
+            for node in values_to_nodes[curr]:
+                if not node in tree:
+                    continue
+
+                # For every node in nodes, combine the sets of the node and its neighbors into one set.                    
+                for next_node in tree[node]:
+                    # Check if its neighbor has a value smaller than the current node curr
+                    if vals[next_node] <= curr:
+                        # Only choose neighbors with a smaller value, as there is no point in traversing to other neighbors.
+                        union_find.union(node, next_node)
+
+            group = collections.defaultdict(int)
+            # Count the number of nodes that have same value as node curr
+            for val in values_to_nodes[curr]:
+                # Get the set of each node and increase the count of the set by 1.
+                group[union_find.find(val)] += 1
+
+            for root in group.keys():
+                # Check if there are n number of nodes that have the same value as current node curr in a group, the number of paths is the number of combinations for selecting 2 elements from n elements (repetitions are not allowed).
+                size = group[root]
+                res += size * (size - 1) // 2
+        return res
+```
