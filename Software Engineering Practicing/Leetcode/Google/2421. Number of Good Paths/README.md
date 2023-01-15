@@ -1,6 +1,6 @@
 ## 2421. Number of Good Paths
 
-```Tag```: ```Graph``` ```Tree```
+```Tag```: ```Graph``` ```Tree``` ```Union Find```
 
 #### Difficulty: Hard
 
