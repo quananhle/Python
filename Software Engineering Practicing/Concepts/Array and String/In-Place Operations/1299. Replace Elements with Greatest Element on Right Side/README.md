@@ -45,6 +45,9 @@ __Constraints:__
 ```Python
 class Solution:
     def replaceElements(self, arr: List[int]) -> List[int]:
+        # Two Pointers
+        #### Time Complexity : O(N), traverse through the input array
+        #### Space Complexity: O(1), in-place operations, constant memory space for pointers
         peak = arr[len(arr)-1]
         arr[-1] = -1
         for i in range(len(arr)-2, -1, -1):
@@ -58,6 +61,9 @@ class Solution:
 ```Python
 class Solution:
     def replaceElements(self, arr: List[int]) -> List[int]:
+        # Two Pointers
+        #### Time Complexity : O(N), traverse through the input array
+        #### Space Complexity: O(1), in-place operations, constant memory space for pointers    
         peak = -1
         for i in range(len(arr)-1, -1, -1):
             curr, arr[i] = arr[i], peak
@@ -68,5 +74,13 @@ class Solution:
 ### Slicing
 
 ```Python
-
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        # Head and Tail
+        #### Time Complexity : O(N), traverse through the input array
+        #### Space Complexity: O(N), list slicing creates extra array
+        for i in range(len(arr)-1):
+            arr[i] = max(arr[i+1:])
+        arr[-1] = -1
+        return arr
 ```
