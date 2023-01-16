@@ -44,3 +44,37 @@ __Constraints:__
 ```
 
 ---
+
+### Two Pointers
+
+```Python
+class Solution:
+    def validMountainArray(self, arr: List[int]) -> bool:
+        # Two Pointers
+        #### Time Complexity : O(N), traverse through the input array from both side
+        #### Space Complexity: O(1), constant memory space for pointers
+        if not arr:
+            return False
+        elif len(arr) == 1:
+            return False
+        else:
+            left, right = 0, len(arr)-1
+            # Find peak
+            # Traverse from the left
+            while left < right:
+                if arr[left] < arr[left+1]:
+                    left += 1
+                else:
+                    if left == 0:
+                        return False
+                    break
+            # Traverse from the right
+            while right > 0:
+                if arr[right-1] > arr[right]:
+                    right -= 1
+                else:
+                    if right == len(arr) - 1:
+                        return False
+                    break
+        return left == right
+```
