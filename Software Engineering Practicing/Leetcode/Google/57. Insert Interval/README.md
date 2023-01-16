@@ -1,6 +1,6 @@
 ## 57. Insert Interval
 
-```Tag```: ```Union Find```
+```Tag```: ```Stack``` ```Binary Search```
 
 #### Difficulty: Medium
 
