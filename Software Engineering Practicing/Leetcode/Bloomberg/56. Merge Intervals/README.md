@@ -36,3 +36,19 @@ intervals[i].length == 2
 ![image](https://leetcode.com/problems/merge-intervals/solutions/127480/Figures/56/sort.png)
 
 ### Sort
+
+```Python
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        # Time Complexity : O(NlogN), sort operations take NlogN time at worst
+        # Space Complexity: O(N), extra memory space to rebuild the list of intervals
+        intervals.sort(key=lambda x:x[0])
+        res = []
+        for interval in intervals:
+            if not res or res[-1][1] < interval[0]:
+                res.append(interval)
+            else:
+                merged_interval = [min(res[-1][0], interval[0]), max(res[-1][1], interval[1])]
+                res[-1] = merged_interval
+        return res
+```
