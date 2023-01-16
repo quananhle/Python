@@ -55,9 +55,7 @@ class Solution:
         # Two Pointers
         #### Time Complexity : O(N), traverse through the input array from both side
         #### Space Complexity: O(1), constant memory space for pointers
-        if not arr:
-            return False
-        elif len(arr) == 1:
+        if not arr or len(arr) == 1:
             return False
         else:
             left, right = 0, len(arr)-1
@@ -82,3 +80,25 @@ class Solution:
 ```
 
 #### Traverse from the left side
+
+```Python
+class Solution:
+    def validMountainArray(self, arr: List[int]) -> bool:
+        # Two Pointers
+        #### Time Complexity : O(N), traverse through the input array from both side
+        #### Space Complexity: O(1), constant memory space for pointers
+        peak = max(arr)
+        if not arr or len(arr) == 1:
+            return False
+        i = 0
+        # Walk from the left and find the peak
+        while i + 1 < len(arr) and arr[i] < arr[i+1]:
+            i += 1
+        # Check if peak is at the beginning or last index
+        if i == 0 or i == len(arr) - 1:
+            return False
+        # Walk from the peak to the right
+        while i + 1 < len(arr) and arr[i] > arr[i+1]:
+            i += 1
+        return i == len(arr)-1
+```
