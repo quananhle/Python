@@ -32,3 +32,7 @@ intervals[i].length == 2
 ```
 
 ---
+
+![image](https://leetcode.com/problems/merge-intervals/solutions/127480/Figures/56/sort.png)
+
+### Sort
