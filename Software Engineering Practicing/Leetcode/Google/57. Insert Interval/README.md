@@ -41,5 +41,25 @@ newInterval.length == 2
 
 
 ```Python
-
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        res = list()
+        new_start, new_end = newInterval[0], newInterval[1]
+        for i in range(len(intervals)):
+            start = intervals[i][0]
+            end = intervals[i][1]
+            # Check if the end of the new interval does not overlap the start of the intervals
+            if new_end < start:
+                res.append(newInterval)
+                return res + intervals[i:]
+            # Check if the start of the new interval does not overlap the end of the intervals
+            elif new_start > end:
+                res.append(intervals[i])
+            else:
+                # Update the boundary of the new interval if intervals overlapping
+                new_start = min(start, new_start)
+                new_end = max(end, new_end)
+                newInterval = [new_start, new_end]
+        res.append(newInterval)
+        return res
 ```
