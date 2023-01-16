@@ -18,3 +18,29 @@ Recall that ```arr``` is a mountain array if and only if:
 ![image](https://user-images.githubusercontent.com/35042430/212525271-e8ded11a-1753-40af-9607-1b80b2a400de.png)
 
 ---
+
+__Example 1:__
+```
+Input: arr = [2,1]
+Output: false
+```
+
+__Example 2:__
+```
+Input: arr = [3,5,5]
+Output: false
+```
+
+__Example 3:__
+```
+Input: arr = [0,3,2,1]
+Output: true
+```
+
+__Constraints:__
+```
+1 <= arr.length <= 104
+0 <= arr[i] <= 104
+```
+
+---
