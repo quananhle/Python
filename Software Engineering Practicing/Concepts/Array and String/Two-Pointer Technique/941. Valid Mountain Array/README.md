@@ -47,6 +47,8 @@ __Constraints:__
 
 ### Two Pointers
 
+#### Traverse from both sides
+
 ```Python
 class Solution:
     def validMountainArray(self, arr: List[int]) -> bool:
@@ -78,3 +80,5 @@ class Solution:
                     break
         return left == right
 ```
+
+#### Traverse from the left side
