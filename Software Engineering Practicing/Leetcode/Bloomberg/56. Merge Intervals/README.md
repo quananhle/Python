@@ -1,6 +1,6 @@
 ## 56. Merge Intervals
 
-```Tag```:
+```Tag```: ```Intervals``` ```Sort```
 
 #### Difficulty: Medium
 
