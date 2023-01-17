@@ -84,6 +84,7 @@ class Solution:
         # Three Pointers
         #### Time Complexity : O(N + M), traverse through total length of nums1 and nums2
         #### Space Complexity: O(1), modified in-place, constant memory space for pointers
+        '''
         n1, n2, length = m - 1, n - 1, m + n - 1
         while length >= 0:
             # Check if all numbers from nums2 merged into nums1
@@ -98,6 +99,28 @@ class Solution:
             else:
                 nums1[length] = nums1[n1]
                 n1 -= 1
+            length -= 1
+        '''
+        pointer1, pointer2, length = m - 1, n - 1, m + n - 1
+        # Check every position index in nums1
+        while length >= 0:
+            # Check until there is no more number from nums2 to merge
+            if pointer2 < 0:
+                break
+            # Check if nums1 is empty or the current number in nums2 > current number in nums1
+            num2_curr = nums2[pointer2]
+            num1_curr = nums1[pointer1]
+            if pointer1 < 0 or num2_curr > num1_curr:
+                # Merge nums2 with nums1
+                nums1[length] = num2_curr
+                # Keep checking the next number in nums2
+                pointer2 -= 1
+            # Otherwise, current number in nums2 < current number in nums1
+            else:
+                # Swap number in nums1 with 0
+                nums1[length] = num1_curr
+                # Keep checking the next number in nums1
+                pointer1 -= 1
             length -= 1
 '''
 [1,2,3,0,0,0]   [4,5,6]
