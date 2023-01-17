@@ -161,7 +161,7 @@ class Solution:
 class Solution:
     def thirdMax(self, nums: List[int]) -> int:
         # Three Pointers
-        #### Time Complexity : O(N), traverse through the input array thrrice to find maximum numbers first, second, third
+        #### Time Complexity : O(N), traverse through the input array once to find maximum, second maximum, third maximum numbers
         #### Space Complexity: O(1), constant memory space for pointers
         first = float('-inf')
         second = float('-inf')
