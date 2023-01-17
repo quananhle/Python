@@ -1,6 +1,6 @@
 ## 1051. Height Checker
 
-```Tag```:
+```Tag```: ```Array``` ```Sort```
 
 #### Difficulty: Easy
 
