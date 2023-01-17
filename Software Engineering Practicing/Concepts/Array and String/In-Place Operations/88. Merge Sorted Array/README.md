@@ -60,7 +60,7 @@ class Solution:
         """
         # Sort
         #### Time Complexity : O((N+M)log(N+M)), sort operations through the combined length of nums1 and nums2
-        #### Space Complexity: O(N), slicing create a copy array
+        #### Space Complexity: O(N), slicing creates a copy array
         '''
         for i in range(m, m + n):
             nums1[i] = nums2[i - m]
