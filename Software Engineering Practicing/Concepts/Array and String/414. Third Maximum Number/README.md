@@ -131,3 +131,28 @@ class Solution:
                 heapq.heappop(min_heap)
         return min_heap[0]
 ```
+
+### Three Pointers
+
+```Python
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        # Three Pointers
+        #### Time Complexity : O(N), traverse through the input array thrrice takes 3*N time to find maximum numbers first, second, third
+        #### Space Complexity: O(1), constant memory space for pointers
+        first = float('-inf')
+        second = float('-inf')
+        third = float('-inf')
+        for num in nums:
+            if first < num:
+                first = num
+        for num in nums:
+            if second < num < first:
+                second = num
+        for num in nums:
+            if third < num < second:
+                third = num
+        if second == float('-inf') or third == float('-inf'):
+            return int(first)
+        return int(third)
+```
