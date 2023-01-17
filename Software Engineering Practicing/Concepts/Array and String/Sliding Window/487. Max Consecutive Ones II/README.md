@@ -44,6 +44,8 @@ nums[i] is either 0 or 1.
 class Solution:
     def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
         # Brute Force
+        #### Time Complexity : O(N^2), nested loops
+        #### Space Complexity: O(1), constant memory space for pointers
         ans = 0
         for left in range(len(nums)):
             num_zeroes = 0        
