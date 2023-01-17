@@ -53,3 +53,82 @@ nums2.length == n
 
 
 __Follow up__: Can you come up with an algorithm that runs in O(m + n) time?
+
+### Two Pointers
+
+```Python
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        # Two Pointers
+        #### Time Complexity : O(N + M), traverse through total length of nums1 and nums2
+        #### Space Complexity: O(1), modified in-place, constant memory space for pointers
+        n1, n2 = m - 1, n - 1
+        length = m + n - 1
+        while length >= 0:
+            # Check if all numbers from nums2 merged into nums1
+            if n2 < 0:
+                break
+            # Check if edge case example 3 or check the largest number of nums2 > largest number of nums1
+            if n1 < 0 or nums2[n2] > nums1[n1]:
+                nums1[length] = nums2[n2]
+                # Decrement the nums2 to keep checking until found the number in nums2 < number in nums1
+                n2 -= 1
+            # Since current number in nums1 > number in nums2, swap current number of nums1 with 0
+            else:
+                nums1[length] = nums1[n1]
+                n1 -= 1
+            length -= 1
+'''
+[1,2,3,0,0,0]   [4,5,6]
+     |     |         |
+     n1    l         n2
+     n2 > n1: nums1[l] = nums2[n2]
+     n2 = 1
+[1,2,3,0,0,6]   [4,5,6]
+     |   |         |
+     n1  l         n2
+     n2 > n1: nums1[l] = nums2[n2]
+     n2 = 0
+[1,2,3,0,5,6]   [4,5,6]
+     | |         |
+     n1l         n2
+     n2 > n1: nums1[l] = nums2[n2]
+     n2 = -1
+[1,2,3,4,5,6]   [4,5,6]
+n2 < 0: break
+'''
+
+'''
+[1,2,3,0,0,0]   [2,5,6]
+     |     |         |
+     n1    l         n2
+     n2 > n1: nums1[l] = nums2[n2]
+     n2 = 1
+[1,2,3,0,0,6]   [2,5,6]
+     |   |         |
+     n1  l         n2
+     n2 > n1: nums1[l] = nums2[n2]
+     n2 = 0
+[1,2,3,0,5,6]   [2,5,6]
+     | |         |
+     n1l         n2
+     n2 < n1: nums1[l] = nums1[n1]
+     n1 = 1
+[1,2,0,3,5,6]   [2,5,6]
+   | |           |
+   n1l          n2
+     n2 = n1: nums1[l] = nums2[n2]
+     n2 = -1
+[1,2,2,3,5,6]   [2,5,6]
+n2 < 0: break
+'''
+
+'''
+[0]   [1]
+ |     |
+ l     n2
+'''
+```
