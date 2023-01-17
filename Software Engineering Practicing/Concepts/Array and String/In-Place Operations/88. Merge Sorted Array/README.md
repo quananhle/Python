@@ -1,6 +1,6 @@
 ## 88. Merge Sorted Array
 
-```Tag```:
+```Tag```: ```Two Pointers``` 
 
 #### Difficulty: Easy
 
@@ -50,7 +50,21 @@ nums2.length == n
 
 ---
 
+### Sort
 
+```Python
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        # Sort
+        #### Time Complexity : O(NlogN), sort operations take NlogN time
+        #### Space Complexity: O(1), modified in-place
+        for i in range(m, m + n):
+            nums1[i] = nums2[i-m]
+        nums1.sort()
+```
 
 __Follow up__: Can you come up with an algorithm that runs in O(m + n) time?
 
