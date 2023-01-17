@@ -48,6 +48,52 @@ __Constraints:__
 
 ---
 
+### Brute Force
 
+```Python
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        # Brute Force
+        #### Time Complexity : O(N), traverse through the input array twice
+        #### Space Complexity: O(N), extra memory space to buid the lists
+        if len(set(nums)) < 3:
+            return max(nums)
+        distinct_list = list()
+        max_num = max(nums)
+        for num in set(nums):
+            if not num in distinct_list and num < max_num:
+                distinct_list.append(num)
+        res = list()
+        max_num = max(distinct_list)
+        for num in set(distinct_list):
+            if not num in res and num <max_num:
+                res.append(num)
+        return max(res)
+```
 
-Follow up: Can you find an O(n) solution?
+### Sorting
+
+```Python
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        # Sorting
+        #### Time Complexity : O(NlogN), sort operations take NlogN time
+        #### Space Complexity: O(1), constant memory as the unique number array contains at most 3 elements
+        if len(set(nums)) < 3:
+            return max(nums)
+        distinct_list = list()
+        for num in sorted(nums)[::-1]:
+            if not num in distinct_list:
+                distinct_list.append(num)
+            if len(distinct_list) == 4:
+                distinct_list.pop()
+        return distinct_list[2]
+```
+
+__Follow up__: Can you find an O(n) time and O(1) space solution?
+
+### Priority Queue
+
+```Python
+
+```
