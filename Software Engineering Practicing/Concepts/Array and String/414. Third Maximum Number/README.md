@@ -156,3 +156,28 @@ class Solution:
             return int(first)
         return int(third)
 ```
+
+```Python
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        # Three Pointers
+        #### Time Complexity : O(N), traverse through the input array thrrice to find maximum numbers first, second, third
+        #### Space Complexity: O(1), constant memory space for pointers
+        first = float('-inf')
+        second = float('-inf')
+        third = float('-inf')
+        for num in nums:
+            # Check if num has already been encountered
+            if first == num or second == num or third == num:
+                continue
+            if first < num:
+                third, second, first = second, first, num
+            elif second < num:
+                third, second = second, num
+            elif third < num:
+                third = num
+        # Check if third number was updated; if not, the third maximum does not exist
+        if third == -inf:
+            return first
+        return third
+```
