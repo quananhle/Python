@@ -41,7 +41,25 @@ nums[i] is either 0 or 1.
 ### Brute Force
 
 ```Python
-
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        # Brute Force
+        ans = 0
+        for left in range(len(nums)):
+            num_zeroes = 0        
+            # Check every possible consecutive sequence
+            for right in range(left, len(nums)):
+                # Flip at most one 0; hence, if encounter second 0, break from the inner loop
+                if num_zeroes == 2:
+                    break
+                # Count number of 0's
+                if nums[right] == 0:
+                    num_zeroes += 1
+                # Check if sequence has one or fewer 0's, count the longest consecutive subsequence of 0's
+                if num_zeroes <= 1:
+                    ans = max(ans, right - left + 1)
+                    print (ans)
+        return ans
 ```
 
 __Follow up__: What if the input numbers come in one by one as an infinite stream? In other words, you can't store all numbers coming from the stream as it's too large to hold in memory. Could you solve it efficiently?
