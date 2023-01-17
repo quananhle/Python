@@ -69,7 +69,31 @@ __Follow up__: What if the input numbers come in one by one as an infinite strea
 ### Sliding Window
 
 ```Python
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        # Sliding Window with Two Pointers
+        #### Time Complexity : O(N), traverse through the input array
+        #### Space Complexity: O(1), constant memory space for pointers
+        ans = 0
+        left, right = 0, 0
+        num_zeroes = 0
 
+        while right < len(nums):
+            # Keep track of the zero
+            if nums[right] == 0:
+                num_zeroes += 1
+            # Once the second zero reached
+            while num_zeroes == 2:
+                if nums[left] == 0:
+                    # Update consequence of zeroes
+                    num_zeroes -= 1
+                # Shrink the left boundary
+                left += 1
+            # Update longest consequence
+            ans = max(ans, right - left + 1)
+            right += 1
+
+        return ans
 ```
 
 
