@@ -73,7 +73,7 @@ class Solution:
 
 __Follow up__: Can you come up with an algorithm that runs in O(m + n) time?
 
-### Two Pointers
+### Three Pointers
 
 ```Python
 class Solution:
@@ -81,11 +81,10 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        # Two Pointers
+        # Three Pointers
         #### Time Complexity : O(N + M), traverse through total length of nums1 and nums2
         #### Space Complexity: O(1), modified in-place, constant memory space for pointers
-        n1, n2 = m - 1, n - 1
-        length = m + n - 1
+        n1, n2, length = m - 1, n - 1, m + n - 1
         while length >= 0:
             # Check if all numbers from nums2 merged into nums1
             if n2 < 0:
