@@ -72,7 +72,7 @@ __Follow up__: What if the input numbers come in one by one as an infinite strea
 class Solution:
     def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
         # Sliding Window with Two Pointers
-        #### Time Complexity : O(N), traverse through the input array
+        #### Time Complexity : O(N), since both the pointers only move forward, each of the left and right pointer traverse a maximum of n steps.
         #### Space Complexity: O(1), constant memory space for pointers
         ans = 0
         left, right = 0, 0
@@ -94,6 +94,7 @@ class Solution:
             right += 1
 
         return ans
+
 ```
 
 
