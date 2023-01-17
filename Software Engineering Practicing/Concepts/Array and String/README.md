@@ -26,6 +26,8 @@ String to be mutable, convert to char array
 
 ### Two-Pointer Technique
 
+![image](https://leetcode.com/explore/learn/card/fun-with-arrays/523/conclusion/Figures/Array_Explore/Array_Basics_Conclusion_1.png)
+
 To summarize, one of the typical scenarios to use two-pointer technique is that you want to
 
       Iterate the array from two ends to the middle.
@@ -82,4 +84,9 @@ Similar to the previous scenario, you might sometimes need to ```sort``` the arr
 
 ---
 
+### Circular Array
+
+![image](https://leetcode.com/explore/learn/card/fun-with-arrays/523/conclusion/Figures/Array_Explore/Array_Basics_Conclusion_2.png)
+
+---
 ## Problems
