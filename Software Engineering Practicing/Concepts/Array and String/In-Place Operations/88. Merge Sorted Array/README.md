@@ -59,10 +59,15 @@ class Solution:
         Do not return anything, modify nums1 in-place instead.
         """
         # Sort
-        #### Time Complexity : O(NlogN), sort operations take NlogN time
-        #### Space Complexity: O(1), modified in-place
+        #### Time Complexity : O((N+M)log(N+M)), sort operations through the combined length of nums1 and nums2
+        #### Space Complexity: O(N), slicing create a copy array
+        '''
         for i in range(m, m + n):
-            nums1[i] = nums2[i-m]
+            nums1[i] = nums2[i - m]
+        nums1.sort()
+        '''
+        for i in range(n):
+            nums1[i + m] = nums2[i]
         nums1.sort()
 ```
 
