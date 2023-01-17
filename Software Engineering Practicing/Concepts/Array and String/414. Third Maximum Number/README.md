@@ -90,10 +90,44 @@ class Solution:
         return distinct_list[2]
 ```
 
+### Priority Queue
+
+```Python
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        # Priority Queue
+        #### Time Complexity : O(N), traverse through the input array to build min heap
+        #### Space Complexity: O(N), extra memory space to buid the priority queue
+        if len(set(nums)) < 3:
+            return max(nums)
+        min_heap = list()
+        heapq.heapify(min_heap)
+        for num in nums:
+            if not -num in min_heap:
+                heapq.heappush(min_heap, -num)
+        for _ in range(3):
+            ans = heapq.heappop(min_heap)
+        return -ans
+```
+
 __Follow up__: Can you find an O(n) time and O(1) space solution?
 
 ### Priority Queue
 
 ```Python
-
+class Solution:
+    def thirdMax(self, nums: List[int]) -> int:
+        # Priority Queue
+        #### Time Complexity : O(N), traverse through the input array to build min heap
+        #### Space Complexity: O(N), extra memory space to buid the priority queue
+        if len(set(nums)) < 3:
+            return max(nums)
+        min_heap = list()
+        heapq.heapify(min_heap)
+        for num in nums:
+            if not num in min_heap:
+                heapq.heappush(min_heap, num)
+            if len(min_heap) > 3:
+                heapq.heappop(min_heap)
+        return min_heap[0]
 ```
