@@ -48,6 +48,10 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/happy-number/solutions/421162/Figures/202/image1.png)
+
+![image](https://leetcode.com/problems/happy-number/solutions/421162/Figures/202/image2.png)
+
 ### Hash Set
 
 ```Python
@@ -62,4 +66,29 @@ class Solution:
             seen.add(n)
             n = sum([int(num)**2 for num in str(n)])
         return True
+```
+
+```Python
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        # Time Complexity : O(logN), divide n by 10 or traverse through the length of string of n
+        # Space Complexity: O(logN)
+        def get_next(n):
+            total = 0
+            while n > 0:
+                '''
+                n, digit = divmod(n, 10)
+                total += digit ** 2
+                '''
+                mod = n % 10
+                total += mod**2
+                n //= 10
+            return total
+
+        seen = set()
+        while n != 1 and not n in seen:
+            seen.add(n)
+            n = get_next(n)
+
+        return n == 1
 ```
