@@ -72,10 +72,33 @@ class Solution:
         return list(set(nums1) & set(nums2))
 ```
 
-__Follow up__: On-site Facebook interview question: solve the question O(N) time complexity and O(1) space complexity
+__Follow up__: On-site Facebook interview question: solve the problem in O(N) time complexity and O(1) space complexity. Arrays already sorted and resulting array memory space is not taken into consideration.
 
 ### Two Pointers
 
 ```Python
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        '''
+        Provided conditions: input arrays are sorted, output memory space is precomputed and reserved
+        '''
+        nums1.sort()
+        nums2.sort()
+        res = list()
 
+        p1, p2 = 0, 0
+        while p1 < len(nums1) and p2 < len(nums2):
+            val1 = nums1[p1]
+            val2 = nums2[p2]
+            if val1 < val2:
+                p1 += 1
+            elif val1 > val2:
+                p2 += 1
+            else:
+                # Check if output is empty or if element is the same as the last element in the output to avoid duplicate 
+                if not res or res[-1] != val1:
+                    res.append(val1)
+                p1 += 1
+                p2 += 1
+        return res
 ```
