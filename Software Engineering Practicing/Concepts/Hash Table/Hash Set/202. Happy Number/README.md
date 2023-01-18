@@ -53,6 +53,8 @@ __Constraints:__
 ```Python
 class Solution:
     def isHappy(self, n: int) -> bool:
+        # Time Complexity : O(logN), divide n by 10 or traverse through the length of string of n
+        # Space Complexity: O(logN)
         seen = set()
         while n != 1:
             if n in seen:
