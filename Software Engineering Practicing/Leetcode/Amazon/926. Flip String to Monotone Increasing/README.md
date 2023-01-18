@@ -43,3 +43,28 @@ s[i] is either '0' or '1'.
 
 ---
 
+### Dynamic Window
+
+```Python
+class Solution:
+    def minFlipsMonoIncr(self, s: str) -> int:
+        ans = 0
+        num_zeroes = 0
+        # Count the number of 0's in the string
+        for c in s:
+            if c == '0':
+                num_zeroes += 1
+        ans = num_zeroes
+        for c in s:
+            # Either flip 0 to 1 or 1 to 0 and get the minimum of flips
+            if c == '0':
+                # Encounter 0, flip 0 to 1
+                num_zeroes -= 1
+                # Update the minimum number of flip if flip 0
+                ans = min(ans, num_zeroes)
+            # Encounter 1, flip 1 to 0, update the number of flip
+            else:
+                num_zeroes += 1
+        return ans
+```
+
