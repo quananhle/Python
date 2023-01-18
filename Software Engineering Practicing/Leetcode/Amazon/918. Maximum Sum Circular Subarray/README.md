@@ -43,3 +43,30 @@ n == nums.length
 ```
 
 ---
+
+### Dynamic Programming
+#### Bottom-Up Memoization with 2D Tabulation
+
+```Python
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        # Bottom-Up Memoization with 2D Tabulation
+        #### Time Complexity : O(N), traverse through the input array
+        #### Space Complexity: O(N), extra memory space to build memo
+        """
+        total = sum(nums)
+        # A circular array is made of a combination of maximum subarray and minimum subarray
+        dp = [[0, 0] for _ in range(len(nums))]
+        # Base case: for the first element in nums, the maximum non-empty subarray is nums[0] and the minimum is 0
+        dp[0][0], dp[0][1] = nums[0], 0
+        res = nums[0]
+        for i in range(1, len(nums)):
+            # In an array that has at positive number, only care about positive numbers.
+            # In an array that has all nevegative number, the maximum subarray is the negative number itself
+            dp[i][0] = max(dp[i-1][0] + nums[i], nums[i])
+            # In an array that has at positive number, the minimum subarray is the negative number itself.
+            # In an array that has all nevegative number, the minimum subarray adds up together
+            dp[i][1] = min(dp[i-1][1] + nums[i], nums[i])
+            res = max(res, dp[i][0], total - dp[i][1])
+        return res
+```
