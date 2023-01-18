@@ -19,15 +19,14 @@ Return _```true``` if n is a happy number, and ```false``` if not_.
 ---
 
 __Example 1:__
-```
 Input: n = 19
 Output: true
 Explanation:
-12 + 92 = 82
-82 + 22 = 68
-62 + 82 = 100
-12 + 02 + 02 = 1
-```
+1<sup>2</sup> + 9<sup>2</sup> = 82
+8<sup>2</sup> + 2<sup>2</sup> = 68
+6<sup>2</sup> + 8<sup>2</sup> = 100
+1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> = 1
+
 
 __Example 2:__
 ```
@@ -41,3 +40,17 @@ __Constraints:__
 ```
 
 ---
+
+### Hash Set
+
+```Python
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+        while n != 1:
+            if n in seen:
+                return False
+            seen.add(n)
+            n = sum([int(num)**2 for num in str(n)])
+        return True
+```
