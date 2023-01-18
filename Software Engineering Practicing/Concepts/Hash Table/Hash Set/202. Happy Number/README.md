@@ -92,3 +92,34 @@ class Solution:
 
         return n == 1
 ```
+
+### Floyd's Cycle-Finding Algorithm
+
+![image](https://user-images.githubusercontent.com/35042430/213306981-d300dfcc-2536-4286-a89c-4d56144505df.png)
+
+Detect the cycle. If there is no cycle, return True.
+
+```Python
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        def get_next(n):
+            total = 0
+            while n > 0:
+                '''
+                n, digit = divmod(n, 10)
+                total += digit ** 2
+                '''
+                mod = n % 10
+                total += mod**2
+                n //= 10
+            return total
+
+        slow = n
+        fast = get_next(n)
+        # If slow meets fast, cycle detected. If there is no circle, eventually fast will be 1
+        while slow != 1 and slow != fast:
+            # Turtoise moves 1 node at a time. Hare moves 2 nodes at a time
+            slow = get_next(slow)
+            fast = get_next(get_next(fast))
+        return fast == 1
+```
