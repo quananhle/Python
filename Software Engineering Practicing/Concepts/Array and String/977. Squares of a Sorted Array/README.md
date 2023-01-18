@@ -66,8 +66,8 @@ __Follow up:__ Squaring each element and sorting the new array is very trivial, 
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
         # Two Pointers
-        #### Time Complexity : O(N), 
-        #### Space Complexity: O(N), 
+        #### Time Complexity : O(N), traverse through the input array
+        #### Space Complexity: O(N), extra memory space for output array
         n = len(nums)
         res = [0] * n
         left, right = 0, n - 1
