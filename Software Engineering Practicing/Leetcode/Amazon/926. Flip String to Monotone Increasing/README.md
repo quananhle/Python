@@ -1,6 +1,6 @@
 ## 926. Flip String to Monotone Increasing
 
-```Tag```: 
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -66,5 +66,35 @@ class Solution:
             else:
                 num_zeroes += 1
         return ans
+```
+
+### Dynamic Programming
+
+```Python
+class Solution:
+    def minFlipsMonoIncr(self, s: str) -> int:
+        count1 = count0 = 0
+        for c in s:
+            if c == '0':
+                count0 += 1
+            else:
+                count1 += 1
+            count0 = min(count0, count1)
+        return count0
+```
+
+```Python
+class Solution:
+    def minFlipsMonoIncr(self, s: str) -> int:
+        count1 = count0 = 0
+        for c in s:
+            # Count the number of 0's
+            if c == '0':
+                # Keep track of the minimum number of flips either flipping all 1's to 0's or flipping the current 0
+                count0 = min(count1, count0 + 1)
+            # Count the number of 1's
+            else:
+                count1 += 1
+        return count0
 ```
 
