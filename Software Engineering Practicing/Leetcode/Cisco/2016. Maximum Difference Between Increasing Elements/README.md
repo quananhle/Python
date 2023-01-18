@@ -41,7 +41,7 @@ n == nums.length
 ```
 
 ---
-```{python}
+```Python
 class Solution(object):
     def maximumDifference(self, nums):
         """
@@ -49,7 +49,6 @@ class Solution(object):
         :rtype: int
         """
         # Dynamic Programming
-        """
         min_number = sys.maxint
         max_difference = -1
         for i in range(len(nums)):
@@ -58,7 +57,16 @@ class Solution(object):
             elif max_difference < nums[i] - min_number:
                 max_difference = nums[i] - min_number
         return max_difference
+```
+
+```Python
+class Solution(object):
+    def maximumDifference(self, nums):
         """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # Dynamic Programming
         min_number = nums[0]
         max_difference = -1
         for i in range(1, len(nums)):
