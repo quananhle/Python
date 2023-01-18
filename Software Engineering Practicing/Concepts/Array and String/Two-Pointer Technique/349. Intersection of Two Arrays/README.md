@@ -1,6 +1,6 @@
 ## 349. Intersection of Two Arrays
 
-```Tag```: ```Hash Set``` ```Hash Table``` ```Two Pointers``` ```
+```Tag```: ```Hash Set``` ```Hash Table``` ```Two Pointers```
 
 #### Difficulty: Easy
 
@@ -62,6 +62,14 @@ class Solution:
         #### Time Complexity : O(N + M)
         #### Space Complexity: O(N + M)
         return [num for num in set(nums1 + nums2) if num in nums1 and num in nums2]
+```
+
+```Python
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        #### Time Complexity : O(N + M)
+        #### Space Complexity: O(N + M)
+        return list(set(nums1) & set(nums2))
 ```
 
 __Follow up__: On-site Facebook interview question: solve the question O(N) time complexity and O(1) space complexity
