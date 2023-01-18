@@ -44,6 +44,16 @@ n == nums.length
 
 ---
 
+![image](https://assets.leetcode.com/users/motorix/image_1538888300.png)
+
+So the max subarray circular sum equals to ```max(the max subarray sum, the total sum - the min subarray sum)```
+
+![image](https://leetcode.com/problems/maximum-sum-circular-subarray/solutions/2868539/Figures/918/918_Maximum_Sum_Circular_Subarray.png)
+
+__Corner case__:
+
+If all numbers are negative, ```maxSum = max(A)``` and ```minSum = sum(A)```. In this case, ```max(maxSum, total - minSum) = 0```, which means the sum of an empty subarray. According to the description,return the ```max(A)```, instead of sum of an empty subarray. So we return the ```maxSum``` to handle this corner case.
+
 ### Dynamic Programming
 #### Bottom-Up Memoization with 2D Tabulation
 
@@ -53,7 +63,6 @@ class Solution:
         # Bottom-Up Memoization with 2D Tabulation
         #### Time Complexity : O(N), traverse through the input array
         #### Space Complexity: O(N), extra memory space to build memo
-        """
         total = sum(nums)
         # A circular array is made of a combination of maximum subarray and minimum subarray
         dp = [[0, 0] for _ in range(len(nums))]
@@ -69,4 +78,23 @@ class Solution:
             dp[i][1] = min(dp[i-1][1] + nums[i], nums[i])
             res = max(res, dp[i][0], total - dp[i][1])
         return res
+```
+
+#### Bottom-Up Memoization with Optimized Space
+
+```Python
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        # Bottom-Up Memoization (Optimized Space)
+        #### Time Complexity : O(N), traverse through the input array
+        #### Space Complexity: O(1), constant memory space for pointers
+        total = sum(nums)
+        max_subarray = cur_min_subarray = min_subarray = cur_max_subarray = nums[0]
+        for num in nums[1:]:
+            cur_max_subarray = max(num, cur_max_subarray + num)
+            cur_min_subarray = min(num, cur_min_subarray + num)
+            max_subarray = max(max_subarray, cur_max_subarray)
+            min_subarray = min(min_subarray, cur_min_subarray)
+        # Edge case: if all numbers are negative, the maximum subarray is the maximum of the array
+        return max(max_subarray, total - min_subarray) if max_subarray > 0 else max_subarray
 ```
