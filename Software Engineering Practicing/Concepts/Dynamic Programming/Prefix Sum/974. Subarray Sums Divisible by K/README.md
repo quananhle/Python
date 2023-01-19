@@ -110,3 +110,16 @@ class Solution:
             dp[prefix_mod] += 1
         return res    
 ```
+
+```Python
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        memo = collections.defaultdict(int)
+        memo[0] = 1
+        res = prefix_sum = 0
+        for num in nums:
+            prefix_sum = (prefix_sum + num % k + k) % k
+            res += memo[prefix_sum]
+            memo[prefix_sum] += 1
+        return res
+```
