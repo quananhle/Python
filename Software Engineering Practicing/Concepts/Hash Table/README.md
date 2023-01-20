@@ -24,7 +24,7 @@ Here are some takeaways about how to design the key for you.
 
 5. In a Sudoku, you can combine the row index and the column index to identify which ```block``` this element belongs to.
 
-!image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/28/screen-shot-2018-02-28-at-145454.png)
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/28/screen-shot-2018-02-28-at-145454.png)
 
 6. Sometimes, in a matrix, you might want to aggregate the values in the same ```diagonal line```. 
 
