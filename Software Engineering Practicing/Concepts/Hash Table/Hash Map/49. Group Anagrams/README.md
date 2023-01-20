@@ -32,3 +32,55 @@ Output: [["a"]]
 
 ---
 
+### Hash Table
+
+```Python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        #### Time Complexity: O(100 * N), based on constrains, length of the longest single anagram is 100, traverse through every string of the input
+        #### Time Complexity: O(26 * N), extra memory space for a list to hold index of 26 characters, and a hash table
+        '''
+        dictionary = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+        upper_dict = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+        '''
+        alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+        memo = collections.defaultdict(list)
+        for string in strs:
+            # Initialize a list with index representing the 26 character of alphabet 
+            order = [0] * 26
+            for s in string:
+                # Anagrams have the same order of index count
+                order[alphabet.index(s)] += 1
+            # Group anagrams by order of index count
+            memo[tuple(order)].append(string)
+        return memo.values()
+```
+
+```Python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        #### Time Complexity: O(100 * N), based on constrains, length of the longest single anagram is 100, traverse through every string of the input
+        #### Time Complexity: O(26 * N), extra memory space for a list to hold index of 26 characters, and a hash table
+        res = list()
+        memo = collections.defaultdict(list)
+        for string in strs:
+            res = [0] * 26
+            for s in string:
+                res[ord(s) - ord('a')] += 1
+            memo[tuple(res)].append(string)
+        return memo.values()
+```
+
+### Sorting
+
+```Python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        #### Time Complexity: O(N * 100 log 100), traverse through every string of the input size N, and sort operations take NlogN time, based on constrains, length of the longest single anagram is 100, 
+        #### Time Complexity: O(26 * N), extra memory space for a list to hold index of 26 characters, and a hash table
+        res = list()
+        memo = collections.defaultdict(list)
+        for index, string in enumerate(strs):
+            memo[tuple(sorted(string))].append(string)
+        return memo.values()
+```
