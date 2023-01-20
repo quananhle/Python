@@ -34,7 +34,9 @@ Whenever you have a problem where you need to check the __subsequences/combinati
 
 ### Backtracking
 
-#### Time Complexity : Time complexity: O(2<sup>n</sup>⋅n), the total number of subsequences (including the empty one) of an array ```nums``` is 2<sup>n</sup>. In the worst case, we may check all of them. If we use ```Java HashSet``` or ```Python set``` (which are implemented as hash sets under the hood), the total time complexity is O(2<sup>n</sup>⋅n) because we add to the hash set O(2<sup>n</sup>) sequences each having a length of O(n)
+__Time Complexity__: O(2<sup>n</sup>⋅n), the total number of subsequences (including the empty one) of an array ```nums``` is 2<sup>n</sup>. In the worst case, we may check all of them. If we use ```Java HashSet``` or ```Python set``` (which are implemented as hash sets under the hood), the total time complexity is O(2<sup>n</sup>⋅n) because we add to the hash set O(2<sup>n</sup>) sequences each having a length of ```O(n)```
+
+__Space complexity__: O(2<sup>n</sup>⋅n) sequences, each having a length of ```O(n)```. If we do not count the answer as part of the space complexity, then the space complexity is ```O(n)``` for the recursion call stack and space needed to build each sequence.
 
 ```Python
 class Solution:
