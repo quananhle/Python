@@ -38,3 +38,17 @@ strings[i] consists of lowercase English letters.
 ```
 
 ---
+
+### Hash Table 
+
+```Python
+class Solution:
+    def groupStrings(self, strings: List[str]) -> List[List[str]]:
+        group = collections.defaultdict(list)
+        for string in strings:
+            pattern = tuple()
+            for i in range(1, len(string)):
+                pattern += ((ord(string[i]) - ord(string[i-1]) + 26) % 26,)
+            group[pattern].append(string)
+        return group.values()
+```
