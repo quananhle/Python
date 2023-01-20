@@ -31,3 +31,9 @@ __Constraints:__
 ---
 
 Whenever you have a problem where you need to check the __subsequences/combinations/permutations__ of some group of __letters/numbers__, the first thought you should have is ```backtracking```. ```Backtracking``` algorithms can often keep the space complexity __linear__ with the input size.
+
+### Backtracking
+
+```Python
+
+```
