@@ -60,8 +60,8 @@ It is a recursive representation because the parts in the brackets are represent
 
 For example, the representation of the tree in the picture is ```((4)2())1(((4)2())3(4))```.
 
-#### Time Complexity : O(N<sup>2</sup>)
-#### Space Complexity: O(N<sup>2</sup>)
+#### Time Complexity : O(N<sup>2</sup>), traverse through the root of ```N``` nodes, and each subtree of length up to ```O(N)``` to create the representation
+#### Space Complexity: O(N<sup>2</sup>), there are ```O(N)``` subtree, and each subtree has ```O(N)``` representation
 
 ```Python
 # Definition for a binary tree node.
@@ -88,7 +88,7 @@ class Solution:
         return res
 ```
 
-#### Time Complexity : O(N)
+#### Time Complexity : O(N), traverse the tree with N nodes and, for each subtree, find a triplet subtree and an index. We perform operations with the hash maps ```tree``` and ```count```. Since an IindexD is an integer and a triplet has a length of 3, these operations take O(1) time for each of the ```N``` nodes
 #### Space Complexity: O(N)
 
 ```Python
