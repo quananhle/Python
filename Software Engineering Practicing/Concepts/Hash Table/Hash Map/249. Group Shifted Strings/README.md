@@ -39,6 +39,12 @@ strings[i] consists of lowercase English letters.
 
 ---
 
+__Note__: Modulo operator ```%``` behaves differently in C++/Java and Python. The difference lies in the operator implementation.
+
+```C++/Java```: ```a % b = a - int(a / b) * b```
+
+```Python```: ```a % b = a - floor(a / b) * b```
+
 ### Hash Table 
 
 ```Python
@@ -50,5 +56,18 @@ class Solution:
             for i in range(1, len(string)):
                 pattern += ((ord(string[i]) - ord(string[i-1]) + 26) % 26,)
             group[pattern].append(string)
+        return group.values()
+```
+
+```Python
+class Solution:
+    def groupStrings(self, strings: List[str]) -> List[List[str]]:
+        group = collections.defaultdict(list)
+        for string in strings:
+            key = list()
+            for a, b in zip(string, string[1:]):
+                key.append(chr((ord(b) - ord(a)) % 26 + ord('a')))
+            hash_key = ''.join(key)
+            group[hash_key].append(string)
         return group.values()
 ```
