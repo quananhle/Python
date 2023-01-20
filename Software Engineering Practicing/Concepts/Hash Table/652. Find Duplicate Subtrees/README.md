@@ -45,4 +45,19 @@ The number of the nodes in the tree will be in the range [1, 5000]
 ```
 
 ---
- 
+
+### Hash Map
+
+#### Tree Representation
+
+One may represent a tree with a string. There exist different ways to do so. One of the possible representations of a tree is the following:
+
+  ```(representation of the left subtree) root.val (representation of the right subtree)```. 
+
+It is a recursive representation because the parts in the brackets are representations of smaller subtrees.
+
+![image](https://leetcode.com/problems/find-duplicate-subtrees/solutions/3011042/Figures/652/652_example_1.jpg)
+
+For example, the representation of the tree in the picture is ```((4)2())1(((4)2())3(4))```.
+
+
