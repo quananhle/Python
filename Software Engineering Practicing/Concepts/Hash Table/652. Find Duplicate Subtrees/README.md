@@ -60,4 +60,62 @@ It is a recursive representation because the parts in the brackets are represent
 
 For example, the representation of the tree in the picture is ```((4)2())1(((4)2())3(4))```.
 
+#### Time Complexity : O(N<sup>2</sup>)
+#### Space Complexity: O(N<sup>2</sup>)
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
+        res = list()
+        counter = collections.defaultdict(int)
+        
+        def traverse(node):
+            if not node:
+                return ""
+            graph = ( "(" + traverse(node.left) + ")" + str(node.val) + "(" + traverse(node.right) + ")" )
+            counter[graph] += 1
+            if counter[graph] == 2:
+                res.append(node)
+            return graph
+
+        traverse(root)
+        return res
+```
+
+#### Time Complexity : O(N)
+#### Space Complexity: O(N)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
+        res = list()
+        tree = collections.defaultdict(int)
+        count = collections.defaultdict(int)
+        
+        def traverse(node):
+            if not node:
+                return 0
+            subtree = (traverse(node.left), node.val, traverse(node.right))
+            if not subtree in tree:
+                tree[subtree] = len(tree) + 1
+            index = tree[subtree]
+            count[index] += 1
+            if count[index] == 2:
+                res.append(node)
+            return index
+
+        traverse(root)
+        return res
+```
