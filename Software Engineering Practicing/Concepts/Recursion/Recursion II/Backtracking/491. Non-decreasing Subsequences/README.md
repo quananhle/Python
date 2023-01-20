@@ -35,5 +35,17 @@ Whenever you have a problem where you need to check the __subsequences/combinati
 ### Backtracking
 
 ```Python
-
+class Solution:
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        res = set()
+        def backtracking(i, subsequence):
+            if len(subsequence) > 1:
+                res.add(tuple(subsequence))
+            if i == len(nums):
+                return
+            if not subsequence or subsequence[-1] <= nums[i]:
+                backtracking(i+1, subsequence + [nums[i]])
+            backtracking(i+1, subsequence)
+        backtracking(0, [])
+        return res
 ```
