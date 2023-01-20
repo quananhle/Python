@@ -61,6 +61,8 @@ board[i][j] is a digit 1-9 or '.'.
 
 ---
 
+The index of the current box is ```(curr_row / 3) * 3 + (curr_col / 3)``` where ```/``` represents floor division
+
 ### Hash Set
 
 ```Python
