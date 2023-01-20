@@ -38,6 +38,32 @@ Whenever you have a problem where you need to check the __subsequences/combinati
 class Solution:
     def findSubsequences(self, nums: List[int]) -> List[List[int]]:
         res = set()
+        subsequence = list()
+        def backtracking(i):
+            # Check if subsequence has more than 1 element, add to the final answer
+            if len(subsequence) > 1:
+                res.add(tuple(subsequence))
+            # Check if at the last index to avoid out of bound
+            if i == len(nums):
+                return
+            # Check if the subsequence is empty or the last element in subsequence is smaller or equal the current number in the array
+            if not subsequence or subsequence[-1] <= nums[i]:
+                # Append the element to the subsequence
+                subsequence.append(nums[i])
+                # Check the next element in the array
+                backtracking(i + 1)
+                # Pop out the last index of the subsequence
+                subsequence.pop()
+            # If current index is not non-decreasing, increment the index to check the next num
+            backtracking(i + 1)
+        backtracking(0)
+        return res
+```
+
+```Python
+class Solution:
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        res = set()
         def backtracking(i, subsequence):
             if len(subsequence) > 1:
                 res.add(tuple(subsequence))
