@@ -60,3 +60,39 @@ board[i][j] is a digit 1-9 or '.'.
 ```
 
 ---
+
+### Hash Set
+
+```Python
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        N = 9
+        ROWS, COLS = len(board), len(board[0])
+        # Hash Set
+        row_set = [set() for _ in range(N)]
+        col_set = [set() for _ in range(N)]
+        box_set = [set() for _ in range(N)]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                val = board[row][col]
+                # Check if val is empty
+                if val == ".":
+                    continue
+                # Check row
+                if val in row_set[row]:
+                    return False
+                row_set[row].add(val)          
+                 # Check col
+                if val in col_set[col]:
+                    return False
+                col_set[col].add(val)
+                # Check boxes
+                idx = (row // 3) * 3 + (col // 3)
+                if val in box_set[idx]:
+                    return False
+                box_set[idx].add(val)
+        return True
+```
+
+
