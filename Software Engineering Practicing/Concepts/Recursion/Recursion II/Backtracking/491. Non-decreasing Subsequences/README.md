@@ -1,6 +1,6 @@
 ## 491. Non-decreasing Subsequences
 
-```Tag```: ```Backtracking``` ```Hash Table```
+```Tag```: ```Backtracking``` ```Hash Set```
 
 #### Difficulty: Medium
 
