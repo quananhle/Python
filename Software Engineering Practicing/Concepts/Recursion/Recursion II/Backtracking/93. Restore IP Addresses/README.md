@@ -39,3 +39,41 @@ s consists of digits only.
 ```
 
 ---
+
+### Backtracking
+
+__Time Complexity__: O(M<sup>N * N), traverse the size N of the input array, and have possibilities O(M * N)
+
+__Space Complexity__: O(N), the size of up to the size of input array
+
+```Python
+class Solution:
+    def restoreIpAddresses(self, s: str) -> List[str]:
+        # Backtracking
+        res = list()
+        address = [int(s[0])]
+
+        def backtracking(i):
+            # If i == len(s), we have reached to the end of s
+            if i == len(s):
+                # Check if the current address consists of exactly four integers
+                if len(address) == 4:
+                    res.append('.'.join(map(str, address)))
+                return
+            
+            # Check if not leading zeroes or the current integer is between 0 and 255
+            if address[-1] != 0 and address[-1] * 10 + int(s[i]) <= 255:
+                last_integer = address[-1]
+                address[-1] = last_integer * 10 + int(s[i])
+                # Keep checking the next character in string s
+                backtracking(i + 1)
+                # If the IP address is invalid, drop the path or backtrack
+                address[-1] = last_integer
+                                
+            if len(address) < 4:
+                address.append(int(s[i]))
+                backtracking(i + 1)
+                address.pop()
+
+        backtracking(1)
+```
