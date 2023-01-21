@@ -65,3 +65,26 @@ class Solution:
             seen[c] = i
         return max(longest, count)
 ```
+
+### Sliding Window
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        # Hash Map
+        #### Time Complexity : O(N), traverse through input string
+        #### Space Complexity: O(N), extra memory space to build dictionary to keep track of seen characters
+        seen = collections.defaultdict(int)
+        longest = start = 0
+        for curr, char in enumerate(s):
+            if char in seen:
+                # Update the position of the current character c
+                pos = seen[char] + 1
+                if pos > start:             # Edge case: " a c a c  ", check pos != start to offset leading space
+                    start = pos
+            # Sliding window + 1 as index starts at 0 so that length is index + 1
+            length = curr - start + 1
+            longest = max(length, longest)
+            seen[char] = curr
+        return longest
+```
