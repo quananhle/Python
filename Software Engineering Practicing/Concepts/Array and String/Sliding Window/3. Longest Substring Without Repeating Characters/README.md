@@ -40,6 +40,11 @@ s consists of English letters, digits, symbols and spaces.
 
 ---
 
+### Brute Force
+
+```Python
+
+
 ### Hash Map
 
 ```Python
@@ -86,5 +91,24 @@ class Solution:
             length = curr - start + 1
             longest = max(length, longest)
             seen[char] = curr
+        return longest
+```
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        # Sliding Window
+        #### Time Complexity : O(N), traverse through input string
+        #### Space Complexity: O(N), extra memory space to build dictionary to keep track of seen characters
+        n = len(s)
+        longest = 0
+        seen = collections.defaultdict(int)
+        left = right = 0
+        while right < n:
+            if s[right] in seen:
+                left = max(left, seen[s[right]])
+            longest = max(longest , right - left + 1)
+            seen[s[right]] = right + 1
+            right += 1
         return longest
 ```
