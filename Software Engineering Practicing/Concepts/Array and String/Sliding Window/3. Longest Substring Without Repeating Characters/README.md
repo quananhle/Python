@@ -40,3 +40,28 @@ s consists of English letters, digits, symbols and spaces.
 
 ---
 
+### Hash Map
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        # Hash Map
+        #### Time Complexity : O(N), traverse through input string
+        #### Space Complexity: O(N), extra memory space to build dictionary to keep track of seen characters
+        seen = collections.defaultdict(int)
+        longest = count = start = 0
+        for i, c in enumerate(s):
+            # Check if c is already seen
+            if c in seen and seen[c] >= start:
+                longest = max(longest, count)
+                # Update the current length starting from character c to current index i
+                count = i - seen[c]
+                # Update start position to start at the next character of the current character c
+                start = seen[c] + 1
+            # Otherwise, c is not seen before
+            else:
+                count += 1
+            # Update the current index i in memo of character c
+            seen[c] = i
+        return max(longest, count)
+```
