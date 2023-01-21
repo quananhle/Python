@@ -73,6 +73,7 @@ class Solution:
             if len(address) < 4:
                 address.append(int(s[i]))
                 backtracking(i + 1)
+                # If the IP address is invalid, drop the path or backtrack
                 address.pop()
 
         backtracking(1)
