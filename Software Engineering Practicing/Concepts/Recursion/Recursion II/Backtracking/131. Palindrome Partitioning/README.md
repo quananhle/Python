@@ -32,7 +32,8 @@ s contains only lowercase English letters.
 
 ### Depth-First Search
 
-#### Time Complexity: O(), 
+#### Time Complexity: O(N * 2<sup>N</sup>), N is the size of input string, and while traversing the input, creating up to 2<sup>N</sup> possible substring
+#### Space Complexity: O(N), ouput rray has up to size N when all substrings are palindrome
 
 
 ![image](https://leetcode.com/problems/palindrome-partitioning/solutions/857510/Figures/131/time_complexity.png)
