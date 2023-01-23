@@ -82,6 +82,26 @@ class Solution:
 
 ### Counter
 
-```Python
+__Time Complexity__: O(N<sup>k/2</sup>), nested loops through k input arrays
 
+__Space Complexity__:O(N<sup>k/2</sup>), extra memory space to build hash map
+
+```Python
+class Solution:
+    def fourSumCount(self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
+        def sum_count(arrays):
+            res = collections.defaultdict(int)
+            res[0] = 1
+            for arr in arrays:
+                counter = collections.defaultdict(int)
+                for c in arr:
+                    for total in res:
+                        counter[total + c] += res[total]
+                res = counter
+            return res
+        
+        arrays = [nums1, nums2, nums3, nums4]
+        k = len(arrays)
+        left, right = sum_count(arrays[:k//2]), sum_count(arrays[k//2:])
+        return sum(left[n] * right[-n] for n in left)
 ```
