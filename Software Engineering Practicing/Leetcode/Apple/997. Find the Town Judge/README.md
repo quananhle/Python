@@ -56,6 +56,7 @@ ai != bi
 #### Two Arrays
 
 __Time Complexity__: ```O(E)```, with E is the number of edges representing the total of trusts
+
 __Space Complexity__: ```O(N)```, arrays to have up to n people
 
 ```Python
@@ -83,6 +84,7 @@ class Solution:
 Build a score system, with the result of ```(indegree - outdegree)``` for each person. In other words, we'll ```+1``` to their "score" for each person they are trusted by, and ```-1``` from their "score" for each person they trust. Therefore, for a person to maximize their "score", they should be trusted by as many people as possible, and trust as few people as possible.
 
 __Time Complexity__: ```O(E)```, with E is the number of edges representing the total of trusts
+
 __Space Complexity__: ```O(N)```, arrays to have up to n people
 
 ```Python
@@ -110,6 +112,7 @@ class Solution:
 #### Two Hash Maps
 
 __Time Complexity__: ```O(E)```, with E is the number of edges representing the total of trusts
+
 __Space Complexity__: ```O(N)```, arrays to have up to n people
 
 ```Python
@@ -131,6 +134,10 @@ class Solution:
 ```
 
 #### One Hash Map
+
+__Time Complexity__: ```O(E)```, with E is the number of edges representing the total of trusts
+
+__Space Complexity__: ```O(N)```, arrays to have up to n people
 
 ```Python
 class Solution:
