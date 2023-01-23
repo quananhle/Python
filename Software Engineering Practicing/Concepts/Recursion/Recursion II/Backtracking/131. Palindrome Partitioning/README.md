@@ -66,3 +66,50 @@ class Solution:
         dfs(0, list())
         return res
 ```
+
+### Backtracking
+
+```Python
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        # Backtracking
+        partitions = set()
+        
+        def backtrack(s, combo, partitions):
+            tmp = list(combo)
+            if is_palindrome(s):
+                if not tuple(tmp + [s]) in partitions:
+                    partitions.add(tuple(tmp + [s]))
+            for i in range(1, len(s)):
+                if is_palindrome(s[:i]):
+                    backtrack(s[i:], tuple(tmp + [s[:i]]), partitions)
+
+        def is_palindrome(s):
+            left, right = 0, len(s) - 1
+            while left <= right:
+                if s[left] != s[right]:
+                    return False
+                left += 1
+                right -= 1
+            return True
+
+        backtrack(s, tuple(), partitions)
+        res = list()
+        for partition in partitions:
+            res.append(list(partition))
+        return res
+```
+
+```Python
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        # Backtracking
+        if not s:
+            return [[]]
+        res = list()
+        for i in range(1, len(s)+1):
+            if s[:i] == s[:i][::-1]:
+                for sub in self.partition(s[i:]):
+                    res.append([s[:i]] + sub)
+        return res
+```
