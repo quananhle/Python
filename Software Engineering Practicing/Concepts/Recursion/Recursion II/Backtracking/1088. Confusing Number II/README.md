@@ -70,6 +70,28 @@ class Solution:
         return count
 ```
 
+```Python
+class Solution:
+    def confusingNumberII(self, n: int) -> int:
+        rotate_digits = {'0':0, '1':1, '6':9, '8':8, '9':6}
+        res = list()
+
+        def dfs(num, rotate, units):
+            if int(num) != rotate:
+                res.append(int(num))
+            for digit in rotate_digits:
+                confusing_number = int(num) * 10 + int(digit)
+                if confusing_number > n: 
+                    return
+                dfs(confusing_number, rotate_digits[digit] * units + rotate, units * 10)
+        
+        for digit in rotate_digits:
+            if rotate_digits[digit] != 0:
+                dfs(digit, rotate_digits[digit], 10)
+
+        return len(res)
+```
+
 ### Backtracking
 
 ```Python
