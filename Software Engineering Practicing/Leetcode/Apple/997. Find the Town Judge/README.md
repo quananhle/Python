@@ -8,6 +8,30 @@
 
 ---
 
+### Array
+
+#### Two Arrays
+
+```Python
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        # Count the number of people trusted by every one in town
+        trusting = [0] * (n + 1)
+        trusted = [0] * (n + 1)
+
+        for a, b in trust:
+            trusting[a] += 1
+            trusted[b] += 1
+            
+        # Check from person 1 to person n
+        for person in range(1, n+1):
+            # Check if there exists a person p who does not trust anyone and trusted by n - 1 people
+            if trusting[person] == 0 and trusted[person] == n - 1:
+                return person
+        else:
+            return -1
+```
+
 ### Hash Map
 
 ```Python
