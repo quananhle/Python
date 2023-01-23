@@ -78,6 +78,24 @@ class Solution:
         return count
 ```
 
+```Python
+class Solution:
+    def fourSumCount(self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
+        counter = collections.defaultdict(int)
+        count = 0
+        for i in nums1:
+            for j in nums2:
+                if not i + j in counter:
+                    counter[i+j] = 1
+                else:
+                    counter[i+j] += 1                
+        for k in nums3:
+            for l in nums4:
+                if -k-l in counter:
+                    count += counter[-k-l]
+        return count
+```
+
 ### Follow Up: Develop a universal solution to handle k Sum 
 
 ### Counter
