@@ -10,7 +10,7 @@ If the town judge exists, then:
 
 - The town judge trusts nobody.
 - Everybody (except for the town judge) trusts the town judge.
-- 
+
 There is exactly one person that satisfies properties 1 and 2.
 
 You are given an array ```trust``` where ```trust[i]``` = [a<sub>i</sub>, b<sub>i</sub>] representing that the person labeled a<sub>i</sub> trusts the person labeled b<sub>i</sub>.
@@ -157,4 +157,47 @@ class Solution:
                 return person
         else:
             return -1
+```
+
+### Bonus
+
+Can There Be More Than One Town Judge?
+
+In the problem description, we're told that iff there is a town judge, there'll only be one town judge.
+
+It's likely that not all interviewers would tell you directly that there can only be one town judge. If you asked them whether or not there could be more than one town judge, they might ask you if there could be. And the answer is... it's __impossible__!
+
+If there were two town judges, then they would have to trust each other, otherwise we'd have a town judge not trusted by everybody. But this doesn't work, because town judges aren't supposed to trust anybody. Therefore, we know there can be at most one town judge.
+
+### Graph
+
+```Python
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        # Directed Graph
+        graph = collections.defaultdict()
+        for i in range(1, n+1):
+            graph[i] = set()
+
+        for a, b in trust:
+            graph[a].add(b)
+
+        candidate = list()
+        # Search for the only person who has no edge in graph or trusting nobody. It is impossible to have two judges
+        for v, e in graph.items():
+            if len(e) == 0:
+                candidate.append(v)
+        
+        if len(candidate) == 0:                
+            return -1
+        else:
+            # Search for the person who are being trusted by everyone except himself
+            for v, e in graph.items():
+                # Check if found the judge
+                if candidate[0] == v:
+                    continue
+                # Check if found someone who does not trust the candidate
+                elif not candidate[0] in graph[v]:
+                    return -1 
+            return candidate[0]
 ```
