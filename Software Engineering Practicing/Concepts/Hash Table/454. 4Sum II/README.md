@@ -40,3 +40,48 @@ n == nums4.length
 -2<sup>28</sup> <= nums1[i], nums2[i], nums3[i], nums4[i] <= 2<sup>28</sup>
 
 ---
+
+### Hash Map
+
+```a + b + c + d = 0``` == ```a + b = -c - d``` == ```a + b = -(c + d)```
+
+__Time Complexity__: O(N<sup>2</sup>), nested loops through 4 input arrays
+
+__Space Complexity__:O(N<sup>2</sup>), extra memory space to build hash map
+
+
+```Python
+class Solution:
+    def fourSumCount(self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
+        count = 0
+        memo = collections.defaultdict(int)
+        for i in nums1:
+            for j in nums2: 
+                memo[i+j] += 1
+        for k in nums3:
+            for l in nums4:                 
+                count += memo[-(k+l)]
+        return count
+```
+
+```Python
+class Solution:
+    def fourSumCount(self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
+        count = 0
+        memo = collections.defaultdict(int)
+        for i in nums1:
+            for j in nums2: 
+                memo[i+j] += 1
+        for k in nums3:
+            for l in nums4:                 
+                count += memo[-k-l]
+        return count
+```
+
+### Follow Up: Develop a universal solution to handle k Sum 
+
+### Counter
+
+```Python
+
+```
