@@ -34,8 +34,26 @@ class Solution:
 
 #### One Array
 
-```Python
+Build a score system, with the result of ```(indegree - outdegree)``` for each person. In other words, we'll ```+1``` to their "score" for each person they are trusted by, and ```-1``` from their "score" for each person they trust. Therefore, for a person to maximize their "score", they should be trusted by as many people as possible, and trust as few people as possible.
 
+```Python
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        # Count the number of people trusted by every one in town
+        score = [0] * (n + 1)
+
+        # People with the highest score of all is the one who is trusting nobody and being trusted by everyone except himself 
+        for a, b in trust:
+            score[a] -= 1
+            score[b] += 1
+        
+        # Check from person 1 to person n
+        for person in range(1, n+1):
+            # Check if there exists an exact one person who gets a scores of n - 1
+            if score[person] == n - 1:
+                return person
+        else:
+            return -1
 ```
 
 ### Hash Map
