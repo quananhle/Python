@@ -1,6 +1,6 @@
 ## 454. 4Sum II
 
-```Tag```:
+```Tag```: ```Hash Map``` ```Counter```
 
 #### Difficulty: Medium
 
