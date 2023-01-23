@@ -32,7 +32,15 @@ class Solution:
             return -1
 ```
 
+#### One Array
+
+```Python
+
+```
+
 ### Hash Map
+
+#### Two Hash Maps
 
 ```Python
 class Solution:
@@ -50,4 +58,10 @@ class Solution:
             if trusting[person] == 0 and being_trusted[person] == n-1:
                 return person
         return -1
+```
+
+#### One Hash Map
+
+```Python
+
 ```
