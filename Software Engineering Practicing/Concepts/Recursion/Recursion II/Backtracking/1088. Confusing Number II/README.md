@@ -55,7 +55,7 @@ class Solution:
         rotate_digits = {'0':0, '1':1, '6':9, '8':8, '9':6}
         count = 0
 
-        def dfs(num, rotation, digits):        
+        def dfs(num, rotation, units):        
             nonlocal count
             if num != rotation:
                 count += 1
@@ -64,7 +64,7 @@ class Solution:
                     continue
                 if num * 10 + int(digit) > n:
                     break
-                dfs(num * 10 + int(digit), rotate_digits[digit] * digits + rotation, digits * 10)
+                dfs(num * 10 + int(digit), rotate_digits[digit] * units + rotation, units * 10)
         
         dfs(0, 0, 1)
         return count
@@ -75,25 +75,24 @@ class Solution:
 ```Python
 class Solution:
     def confusingNumberII(self, n: int) -> int:
-        valid_digits = {0, 1, 6, 8, 9}
         rotate_digits = {'0':0, '1':1, '6':9, '8':8, '9':6}
         count = 0
 
-        def backtrack(v, rotation, digits):
+        def backtrack(num, rotation, units):
             nonlocal count
-            if v:
-                if v != rotation:
+            if num:
+                if num != rotation:
                     count += 1
-            for i in valid_digits:
-                if v * 10 + i > n:
+            for digit in rotate_digits:
+                if num * 10 + int(digit) > n:
                     break
                 else:
-                    backtrack(v * 10 + i, rotate_digits[str(i)] * digits + rotation, digits * 10)
+                    backtrack(num * 10 + int(digit), rotate_digits[digit] * units + rotation, units * 10)
         
         backtrack(1, 1, 10)
         backtrack(6, 9, 10)
         backtrack(8, 8, 10)
         backtrack(9, 6, 10)
-    
+
         return count
 ```
