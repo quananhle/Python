@@ -29,3 +29,39 @@ s contains only lowercase English letters.
 ```
 
 ---
+
+### Depth-First Search
+
+#### Time Complexity: O(), 
+
+
+![image](https://leetcode.com/problems/palindrome-partitioning/solutions/857510/Figures/131/time_complexity.png)
+
+```Python
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        # Depth-First Search
+        res = list()
+
+        def is_palindrome(s, low, high):
+            while low < high:
+                if s[low] != s[high]:
+                    return False
+                low += 1
+                high -= 1
+            return True
+
+        def dfs(left, stack):
+            if left >= len(s):
+                res.append(list(stack))
+            for right in range(left, len(s)):
+                # Add current substring into the current list
+                if is_palindrome(s, left, right):
+                    stack.append(s[left : right+1])
+                    dfs(right + 1, stack)
+                    # Backtrack and remove the current substring from the current list
+                    stack.pop()
+
+        dfs(0, list())
+        return res
+```
