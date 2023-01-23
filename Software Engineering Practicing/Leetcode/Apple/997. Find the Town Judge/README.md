@@ -1,5 +1,10 @@
 ## 997. Find the Town Judge
 
+```Tag```: ```Array``` ```Hash Map``` ```Graph```
+
+#### Difficulty: Easy
+
+![image](https://user-images.githubusercontent.com/35042430/213986662-f76a8197-0abf-4e36-9eec-ab93adf823b5.png)
 
 ---
 
