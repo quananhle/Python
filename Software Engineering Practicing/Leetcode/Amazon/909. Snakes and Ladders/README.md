@@ -1,6 +1,6 @@
 ## 909. Snakes and Ladders
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Seaarch```
+```Tag```: ```Breadth-First Seaarch``` ```Shortest-Path```
 
 #### Difficulty: Medium
 
@@ -23,5 +23,36 @@ Note that you only take a snake or ladder at most once per move. If the destinat
 Return _the least number of moves required to reach the square n<sup>2</sup>_. If it is not possible to reach the square, return ```-1```.
 
 ![image](https://user-images.githubusercontent.com/35042430/214199552-c162dc1e-0626-4b4a-888b-28ec6fb91bfd.png)
+
+---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2018/09/23/snakes.png)
+```
+Input: board = [[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1],[-1,35,-1,-1,13,-1],[-1,-1,-1,-1,-1,-1],[-1,15,-1,-1,-1,-1]]
+Output: 4
+Explanation: 
+In the beginning, you start at square 1 (at row 5, column 0).
+You decide to move to square 2 and must take the ladder to square 15.
+You then decide to move to square 17 and must take the snake to square 13.
+You then decide to move to square 14 and must take the ladder to square 35.
+You then decide to move to square 36, ending the game.
+This is the lowest possible number of moves to reach the last square, so return 4.
+```
+
+__Example 2:__
+```
+Input: board = [[-1,-1],[-1,3]]
+Output: 1
+```
+
+__Constraints:__
+```
+n == board.length == board[i].length
+2 <= n <= 20
+grid[i][j] is either -1 or in the range [1, n2].
+The squares labeled 1 and n2 do not have any ladders or snakes.
+```
 
 ---
