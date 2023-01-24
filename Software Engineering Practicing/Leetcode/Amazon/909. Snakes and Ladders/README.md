@@ -22,7 +22,7 @@ Note that you only take a snake or ladder at most once per move. If the destinat
 
 Return _the least number of moves required to reach the square n<sup>2</sup>_. If it is not possible to reach the square, return ```-1```.
 
-![image](https://user-images.githubusercontent.com/35042430/214199552-c162dc1e-0626-4b4a-888b-28ec6fb91bfd.png)
+[image](https://user-images.githubusercontent.com/35042430/214199552-c162dc1e-0626-4b4a-888b-28ec6fb91bfd.png)
 
 ---
 
