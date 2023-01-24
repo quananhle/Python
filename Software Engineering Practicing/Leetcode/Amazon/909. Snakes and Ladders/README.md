@@ -1,6 +1,6 @@
 ## 909. Snakes and Ladders
 
-```Tag```: ```Breadth-First Seaarch``` ```Shortest-Path```
+```Tag```: ```Breadth-First Seaarch``` ```Shortest-Path``` ```Dijkstra's algorithm```
 
 #### Difficulty: Medium
 
@@ -56,6 +56,8 @@ The squares labeled 1 and n2 do not have any ladders or snakes.
 ```
 
 ---
+
+![image[(https://leetcode.com/problems/snakes-and-ladders/solutions/2912646/Figures/909/909_example.drawio.png)
 
 ### Breadth-First Search
 
@@ -151,4 +153,9 @@ class Solution:
         # If last cell is not reachabled, return -1
         return -1
 ```
-        
+
+### Dijkstra's algorithm
+
+```Python
+
+```
