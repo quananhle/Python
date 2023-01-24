@@ -56,3 +56,54 @@ The squares labeled 1 and n2 do not have any ladders or snakes.
 ```
 
 ---
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        # Breadth-First Search
+        ### Find the shortest path
+        ROWS, COLS = len(board), len(board[0])
+        queue = collections.deque([1])
+        visited = {1}
+        count = 0
+        '''
+        new_board = list()
+        for i in range(len(board)-1, -1, -1):
+            new_board.append(board[i])
+        print (new_board)
+        '''
+        # Reverse board to get start to the top of the board
+        board.reverse()
+        
+        # Traverse from left to right and right to left, by maintaing the orders of columns and reversing every 2 row
+        for i in range(1, len(board), 2):
+            board[i].reverse()
+        # Flatten the 2D to 1D array and add None for the start cell to offset the 0-th index
+        cells = [None] + list(itertools.chain(*board))
+        n = len(cells) - 1
+
+        while queue:
+            for _ in range(len(queue)):
+                curr = queue.popleft()
+                if curr == n:
+                    return count
+                # Roll the next possible moves from 1 to 6 on the die for as far as the last cell on the board
+                for i in range(curr + 1, min(curr + 6, n) + 1):
+                    # Check if the ladder or snake
+                    if cells[i] + 1:    # snake or ladder + 1 != 0
+                        next = cells[i]
+                    # Otherwise, get all possible moves from the die
+                    else:               # normal cell -1 + 1 == 0
+                        next = i
+
+                    if next in visited:
+                        continue
+                    visited.add(next)
+                    queue.append(next)
+            # Increment count after every time die rolling
+            count += 1
+        return -1
+```
+        
