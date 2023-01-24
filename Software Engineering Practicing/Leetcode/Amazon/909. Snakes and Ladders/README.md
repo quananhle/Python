@@ -1,6 +1,6 @@
 ## 909. Snakes and Ladders
 
-```Tag```: ```Breadth-First Seaarch``` ```Shortest-Path``` ```Dijkstra's algorithm```
+```Tag```: ```Breadth-First Seaarch``` ```Shortest-Path``` [```Dijkstra's algorithm```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Dijkstra's%20Algorithm)
 
 #### Difficulty: Medium
 
@@ -60,6 +60,10 @@ The squares labeled 1 and n2 do not have any ladders or snakes.
 ![image[(https://leetcode.com/problems/snakes-and-ladders/solutions/2912646/Figures/909/909_example.drawio.png)
 
 ### Breadth-First Search
+
+__Time Complexity: O(N<sup>2</sup>)__
+
+__Space Complexity: O(N<sup>2</sup>)__
 
 ```Python
 class Solution:
@@ -154,8 +158,54 @@ class Solution:
         return -1
 ```
 
-### Dijkstra's algorithm
+### Dijkstra's Algorithm
+
+
+__Time Complexity: O(N<sup>2</sup>) * logn__
+
+__Space Complexity: O(N<sup>2</sup>)__
 
 ```Python
+class Solution:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        # Dijkstra's Algorithm
+        ### Find the shortest path
+        n = len(board)
+        # Add None to the start to offset the 0-th index
+        cells = [None] * (n**2 + 1)
+        label = 1
+        # Flatten the 2D array into 1D array
+        columns = list(range(0, n))
+        for row in range(n - 1, -1, -1):
+            for column in columns:
+                cells[label] = (row, column)
+                label += 1
+            # Reverse the column after every row as direction alternating each row
+            columns.reverse()
+        # Maintain distance to all cells from the start
+        dist = [-1] * (n * n + 1)
+        # Mark the first cell as distance to itself is 0
+        dist[1] = 0
+        # Priority queue of cells as pairs of (label, distance)
+        queue = [(1, 0)]
 
+        # Dijkstra's Algorithm
+        while queue:
+            curr, distance = heapq.heappop(queue)
+
+            if distance != dist[curr]:
+                continue
+            for next in range(curr + 1, min(curr + 6, n**2) + 1):
+                r, c = cells[next]
+                # Check if there is snake or ladder
+                if board[r][c] != -1:
+                    # Go to the destination of snake or ladder
+                    destination = board[r][c]
+                else:
+                    destination = next
+                # Check if next destination is -1, not reached the last cell yet, or if found a shorter path
+                if dist[destination] == -1 or dist[curr] + 1 < dist[destination]:
+                    dist[destination] = dist[curr] + 1
+                    heapq.heappush(queue, (destination, dist[destination]))
+        return dist[n * n]
 ```
