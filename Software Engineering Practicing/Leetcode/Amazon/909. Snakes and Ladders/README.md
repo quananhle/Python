@@ -57,7 +57,7 @@ The squares labeled 1 and n2 do not have any ladders or snakes.
 
 ---
 
-![image[(https://leetcode.com/problems/snakes-and-ladders/solutions/2912646/Figures/909/909_example.drawio.png)
+![image](https://leetcode.com/problems/snakes-and-ladders/solutions/2912646/Figures/909/909_example.drawio.png)
 
 ### Breadth-First Search
 
