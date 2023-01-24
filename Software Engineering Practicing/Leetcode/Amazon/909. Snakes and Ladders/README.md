@@ -106,4 +106,49 @@ class Solution:
             count += 1
         return -1
 ```
+
+```Python
+class Solution:
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
+        # Breadth-First Search
+        ### Find the shortest path
+        ROWS, COLS = len(board), len(board[0])
+        n = len(board)
+        queue = collections.deque([(1, 0)])
+        visited = set()
+        count = 0
+
+        def compute_index(cell):
+            '''
+            col = (cell - 1) % COLS
+            row = (cell - 1) // ROWS
+            '''
+            row, col = divmod(cell-1, n)
+            # Starting from the bottom left of the board and alternating direction each row
+            if row % 2:
+                # Left -> right
+                return ROWS - row - 1, COLS - col - 1
+            else:
+                # Right -> left
+                return ROWS - row - 1, col
+            
+        while queue:
+            curr, step = queue.popleft()
+            r, c = compute_index(curr)
+            print (board[r][c], r, c)
+            # Check if there is snake or ladder
+            if board[r][c] != -1:
+                # Go to the destination of that snake or ladder
+                curr = board[r][c]
+            # Check if at the last cell
+            if curr == n**2:
+                return step
+            # Check the next possible moves
+            for next in range(curr + 1, min(curr + 6, n**2) + 1):       # min(curr + 6, n**2) not inclusive; hence, +1 in loop
+                if not next in visited:
+                    visited.add(next)
+                    queue.append((next, step+1))
+        # If last cell is not reachabled, return -1
+        return -1
+```
         
