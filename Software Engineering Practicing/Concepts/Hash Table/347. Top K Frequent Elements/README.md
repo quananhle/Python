@@ -84,6 +84,8 @@ class Solution:
 
 ### Quickselect (Hoare's selection algorithm)
 
+#### Lomuto's Partition Scheme
+
 ![image](https://leetcode.com/problems/top-k-frequent-elements/solutions/646157/Figures/347_rewrite/details.png)
 
 ```Python
@@ -106,6 +108,53 @@ def partition(left, right, pivot_index) -> int:
 ```
 
 ```Python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # Quick Select
+        ### Lomuto's Partition Scheme
+        #### Time Complexity: O(N) on average, O(N^2) worst case 
+        #### Space Complexity: O(N),
 
+        counter = collections.defaultdict(int)
+        for num in nums:
+            counter[num] = 1 + counter.get(num, 0)
+        unique = list(counter.keys())
+
+        def partition(left, right, pivot):
+            pivot_freq = counter[unique[pivot]]
+            # Move pivot to the end
+            unique[pivot], unique[right] = unique[right], unique[pivot]
+            # Move all less frequent elements to the left
+            index = left
+            for i in range(left, right):
+                if counter[unique[i]] < pivot_freq:
+                    unique[index], unique[i] = unique[i], unique[index]
+                    index += 1
+            # Move more frequen elements to the right
+            unique[right], unique[index] = unique[index], unique[right]
+            return index
+        
+        def quick_select(left, right, k):
+            # Base case
+            if left == right:
+                return
+            pivot = random.randint(left, right)
+            # Get the pivot index from the sorted list
+            pivot = partition(left, right, pivot)
+            # Check if the pivot is already at the correct position
+            if pivot == k:
+                return
+            # Check if pivot is at the left
+            elif k < pivot:
+                quick_select(left, pivot - 1, k)
+            # Otherwise, check the right
+            else:
+                quick_select(pivot + 1, right, k)
+        
+        n = len(unique)
+        # After the partitial sort, all the left elements are less frequent, all the right elements are more frequent
+        quick_select(0, n-1, n-k)
+        # Return the top k elements
+        return unique[n-k:]
 ```
 
