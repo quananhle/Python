@@ -81,3 +81,10 @@ class Solution:
             res.append(num)
         return res
 ```
+
+### Quickselect (Hoare's selection algorithm)
+
+```Python
+
+```
+
