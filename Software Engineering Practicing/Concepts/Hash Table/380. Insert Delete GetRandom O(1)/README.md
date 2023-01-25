@@ -44,7 +44,7 @@ __Constraints:__
 
 ---
 
-### Hash Set (O(N) time)
+### Hash Set (O(N) Time)
 
 ```Python
 class RandomizedSet:
@@ -78,8 +78,49 @@ class RandomizedSet:
 # param_3 = obj.getRandom()
 ```
 
-###
+### Hash Map and List (O(1) Time)
 
 ```Python
+class RandomizedSet:
 
+    def __init__(self):
+        self.dict = collections.defaultdict(int)
+        self.list = list()
+
+    def insert(self, val: int) -> bool:
+        #### Time Complexity: O(1)
+        #### Space Complexity: O(N)
+        if not val in self.dict:
+            self.dict[val] = len(self.list)
+            self.list.append(val)
+        else:
+            return False
+        return True
+        
+    def remove(self, val: int) -> bool:
+        #### Time Complexity: O(1)
+        #### Space Complexity: O(1)
+        if not val in self.dict:
+            return False
+        else:
+            # Get the last element and the index of val
+            last_element, to_delete = self.list[-1], self.dict[val]
+            # Update the position of last element in dictionary and list
+            self.list[to_delete], self.dict[last_element] = last_element, to_delete
+            # Remove the val and update the list
+            self.list.pop()
+            del self.dict[val]
+        return True
+        
+    def getRandom(self) -> int:
+        #### Time Complexity: O(1)
+        #### Space Complexity: O(1)
+        return random.choice(self.list)
+
+
+# Your RandomizedSet object will be instantiated and called as such:
+# obj = RandomizedSet()
+# param_1 = obj.insert(val)
+# param_2 = obj.remove(val)
+# param_3 = obj.getRandom()
 ```
