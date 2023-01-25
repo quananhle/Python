@@ -43,3 +43,43 @@ __Constraints:__
 - There will be at least one element in the data structure when ```getRandom``` is called.
 
 ---
+
+### Hash Set (O(N) time)
+
+```Python
+class RandomizedSet:
+
+    def __init__(self):
+        self.hashset = set()
+
+    def insert(self, val: int) -> bool:
+        if not val in self.hashset:
+            self.hashset.add(val)
+        else:
+            return False
+        return True
+        
+    def remove(self, val: int) -> bool:
+        if not val in self.hashset:
+            return False
+        else:
+            self.hashset.remove(val)
+        return True
+
+    def getRandom(self) -> int:
+        index = random.randint(0, len(self.hashset)-1)
+        return list(self.hashset)[index]
+
+
+# Your RandomizedSet object will be instantiated and called as such:
+# obj = RandomizedSet()
+# param_1 = obj.insert(val)
+# param_2 = obj.remove(val)
+# param_3 = obj.getRandom()
+```
+
+###
+
+```Python
+
+```
