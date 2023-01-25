@@ -46,3 +46,37 @@ edges[i] != i
 ```
 
 ---
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def closestMeetingNode(self, edges: List[int], node1: int, node2: int) -> int:
+        # Depth-First Search
+        #### Time Complexity: O(N), traverse through every node once
+        #### Space Complexity: O(N), recursion call stack can have up to N nodes
+        n = len(edges)
+        ans = -1
+        min_distance = math.inf
+        dist1 = [0] * n
+        dist2 = [0] * n
+        visited1 = set()
+        visited2 = set()
+
+        def dfs(node, edges, distance, visited):
+            visited.add(node)
+            neighbor = edges[node]
+            if neighbor != -1 and not neighbor in visited:
+                distance[neighbor] = distance[node] + 1
+                dfs(neighbor, edges, distance, visited)
+        
+        dfs(node1, edges, dist1, visited1)
+        dfs(node2, edges, dist2, visited2)
+
+        for curr in range(n):
+            if curr in visited1 and curr in visited2 and min_distance > max(dist1[curr], dist2[curr]):
+                min_distance = max(dist1[curr], dist2[curr])
+                ans = curr
+
+        return ans
+```
