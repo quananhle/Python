@@ -48,3 +48,37 @@ __Constraints:__
 - At most ```5000``` calls will be made to ```isUnique.```
 
 ---
+
+### Hash Map
+
+```Python
+class ValidWordAbbr:
+    
+    def __init__(self, dictionary: List[str]):
+        self.dict = collections.defaultdict(set)
+        self.counter = collections.defaultdict(int)
+        for word in dictionary:
+            abbreviation = word[0] + str(len(word)-2) + word[-1]
+            self.dict[abbreviation].add(word)
+            self.counter[abbreviation] = 1 + self.counter.get(abbreviation, 0)
+
+    def isUnique(self, word: str) -> bool:
+        if len(word) == 1:
+            return True
+        abbreviation = word[0] + str(len(word)-2) + word[-1]
+        # Check if there is word in dictionary whose abbreviation is equal to word's abbreviation
+        if self.dict[abbreviation]:
+            # Same abbreviation but not the same word
+            if not word in self.dict[abbreviation]:
+                return False
+            # Other word in the dictionary has same abbreviation
+            elif word in self.dict[abbreviation] and self.counter[abbreviation] != 1:
+                return False
+        # There is no word in dictionary whose abbreviation is equal to word's abbreviation
+        return True
+
+
+# Your ValidWordAbbr object will be instantiated and called as such:
+# obj = ValidWordAbbr(dictionary)
+# param_1 = obj.isUnique(word)
+```
