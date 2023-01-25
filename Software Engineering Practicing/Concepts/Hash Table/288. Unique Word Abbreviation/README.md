@@ -63,6 +63,7 @@ class ValidWordAbbr:
             self.counter[abbreviation] = 1 + self.counter.get(abbreviation, 0)
 
     def isUnique(self, word: str) -> bool:
+        # Corner case: If a word has only 1 characters, then it is an abbreviation of itself.
         if len(word) == 1:
             return True
         abbreviation = word[0] + str(len(word)-2) + word[-1]
