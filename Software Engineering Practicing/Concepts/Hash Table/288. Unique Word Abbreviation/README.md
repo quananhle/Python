@@ -40,9 +40,11 @@ validWordAbbr.isUnique("cake"); // return true, because "cake" is already in the
 
 __Constraints:__
 
-1 <= dictionary.length <= 3 * 104
-1 <= dictionary[i].length <= 20
-dictionary[i] consists of lowercase English letters.
-1 <= word.length <= 20
-word consists of lowercase English letters.
-At most 5000 calls will be made to isUnique.
+- 1 <= dictionary.length <= 3 * 10<sup>4</sup>
+- ```1 <= dictionary[i].length <= 20```
+- ```dictionary[i]``` consists of lowercase English letters.
+- ```1 <= word.length <= 20```
+- ```word``` consists of lowercase English letters.
+- At most ```5000``` calls will be made to ```isUnique.```
+
+---
