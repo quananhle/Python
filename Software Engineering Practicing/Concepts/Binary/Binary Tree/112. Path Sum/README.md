@@ -1,6 +1,6 @@
 ## 112. Path Sum
 
-```Tag```: ```Recursion``` ```Top-Down``` ```Bottom-Up```
+```Tag```: ```Recursion``` ```Top-Down``` ```Bottom-Up``` ```Depth-First Search```
 
 #### Difficulty: Easy
 
@@ -96,3 +96,4 @@ class Solution:
 
         return False
 ```
+
