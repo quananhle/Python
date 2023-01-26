@@ -86,9 +86,6 @@ class Solution:
             stop += 1
             distance = new_distance
 
-        print (distance)
-        print (graph)
-
         return distance[dst]
 ```
 
