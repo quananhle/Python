@@ -92,6 +92,55 @@ class Solution:
         return distance[dst]
 ```
 
+```Python
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        '''
+        Create an adjacency list where graph[X] contains all the neighbors of node X and the corresponding price it takes to move to a neighbor.
+        '''
+        graph = [[] for _ in range(n)]
+        for vector1, vector2, edge in flights:
+            graph[vector1].append((vector2, edge))
+        
+        '''
+        Initialize a queue storing {node, distance} pairs. Initially, the queue should have only {src, 0}.
+        '''
+        queue = [(src, 0)]
+        '''
+        Intialize distances array, storing the minimum price to reach a node from the src node. Intialize it with large values.
+        '''
+        distances = [float("inf") for _ in range(n)]
+        stops = 0
+
+        '''
+        Perform BFS until the queue is empty or stops > k
+        '''
+        while queue and stops <= k:
+            size = len(queue)
+            '''
+            Iterate over all the nodes at a particular level. This will be done by starting a nested loop and visiting all the nodes currently present in the queue.
+            '''
+            while size:
+                curr, distance = queue.pop(0)
+                '''
+                At each pair {node, distance}, iterate over all the neighbors of node. For each neighbour, check if distances[neighbor] is less than distance + the price of the edge. If it is, then update distances[neighbor] and push {neighbor, distances[neighbor]} onto the queue.
+                '''
+                for next_node, next_distance in graph[curr]:
+                    if distance + next_distance >= distances[next_node]:
+                        continue
+                    distances[next_node] = distance + next_distance
+                    queue.append((next_node, distances[next_node]))
+                '''
+                After iterating over all the nodes in the current level, increase stops by one. We've visited all the nodes at a particular level and are ready to visit the next level of nodes.
+                '''
+                size -= 1
+            stops += 1
+        '''
+        Once we reach a condition where either the queue is empty or stops == k, we have our answer as distances[dst]. If distances[dst] hasn't changed from the initial large value, then we never reached it, so return -1.
+        '''
+        return -1 if distances[dst] == float("inf") else distances[dst]
+```
+
 ### Iterative Breadth-First Search with Priority Queue (Dijkstra's Algorithm)
 
 ```Python
