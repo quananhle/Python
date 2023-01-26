@@ -92,14 +92,26 @@ class Solution:
         return distance[dst]
 ```
 
-### Iterative Breadth-First Search with Priority Queue
+### Iterative Breadth-First Search with Priority Queue (Dijkstra's Algorithm)
 
 ```Python
-
-```
-
-### Dijkstra's Algorithm
-
-```Python
-
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        graph = collections.defaultdict(list)
+        for origin, destination, distance in flights:
+            graph[origin].append((destination, distance))
+        h = [(0, 0, src)]
+        visited = set()
+        while h:
+            # Use distance between two nodes interchangeably as price between two cities
+            distance, stop, curr_city = heapq.heappop(h)
+            # Check if reached the destination from the origin
+            if curr_city == dst:
+                return distance
+            if (stop, curr_city) in visited or stop > k:
+                continue
+            visited.add((stop, curr_city))
+            for neighbor_city in graph[curr_city]:
+                heapq.heappush(h, (distance + neighbor_city[1], stop + 1, neighbor_city[0]))
+        return -1
 ```
