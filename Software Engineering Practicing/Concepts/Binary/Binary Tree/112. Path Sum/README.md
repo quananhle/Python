@@ -46,12 +46,12 @@ __Constraints:__
 - ```-1000 <= Node.val <= 1000```
 - ```-1000 <= targetSum <= 1000```
 
- ---
+---
  
- ### Recursive Top-Down
+### Recursive Top-Down
  
- ```Python
- # Definition for a binary tree node.
+```Python
+# Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
@@ -68,10 +68,39 @@ class Solution:
         return self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum)
  ```
  
- ### Iterative Top-Down
- 
  ```Python
- # Definition for a binary tree node.
+ 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        # Depth-First Search
+        ans = False
+        if not root:
+            return False
+
+        def dfs(node, total):
+            nonlocal ans
+            if not node:
+                return
+            if not node.left and not node.right and total == node.val:
+                ans = True
+                return ans
+            dfs(node.left, total - node.val)
+            dfs(node.right, total - node.val)
+
+        dfs(root, targetSum)
+        return ans
+```
+ 
+### Iterative Top-Down
+ 
+```Python
+# Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
@@ -97,3 +126,24 @@ class Solution:
         return False
 ```
 
+ ### Recursive Bottom-Up
+ 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        # Recursive Bottom-Up
+        if not root:
+            return False
+
+        if not root.left and not root.right:
+            return targetSum == root.val
+
+        return self.hasPathSum(root.left, targetSum - root.val) or self.hasPathSum(root.right, targetSum - root.val) 
+```
+ 
