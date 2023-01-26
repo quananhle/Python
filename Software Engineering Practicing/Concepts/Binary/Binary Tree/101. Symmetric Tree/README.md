@@ -74,3 +74,37 @@ class Solution:
 
 
 __Follow up__: Could you solve it both recursively and iteratively?
+
+### Iterative Recursion
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        stack1 = list()
+        stack2 = list()
+
+        left_subtree = [root]
+        right_subtree = [root]
+
+        while left_subtree:
+            node = left_subtree.pop()
+            if node:
+                stack1.append(node.val)
+            left_subtree.append(node.left) if node.left else stack1.append("L")
+            left_subtree.append(node.right) if node.right else stack1.append("R")
+
+        while right_subtree:
+            node = right_subtree.pop()
+            if node:
+                stack2.append(node.val)
+            right_subtree.append(node.right) if node.right else stack2.append("L")
+            right_subtree.append(node.left) if node.left else stack2.append("R")
+
+        return stack1 == stack2
+```
