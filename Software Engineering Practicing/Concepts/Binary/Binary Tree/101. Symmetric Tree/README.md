@@ -34,5 +34,43 @@ The number of nodes in the tree is in the range [1, 1000].
 
 ---
 
+### Top-Down Recursion
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        stack1 = list()
+        stack2 = list()
+        
+        def left_subtree(stack, node):
+            if not node:
+                stack.append("None")
+                return
+            if node:
+                stack.append(node.val)
+            left_subtree(stack, node.left)
+            left_subtree(stack, node.right)
+
+        def right_subtree(stack, node):
+            if not node:
+                stack.append("None")
+                return
+            if node:
+                stack.append(node.val)
+            right_subtree(stack, node.right)
+            right_subtree(stack, node.left)
+        
+        left_subtree(stack1, root)
+        right_subtree(stack2, root)
+        
+        return stack1 == stack2
+```
+
 
 __Follow up__: Could you solve it both recursively and iteratively?
