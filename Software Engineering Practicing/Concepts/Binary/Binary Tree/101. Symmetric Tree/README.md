@@ -72,10 +72,30 @@ class Solution:
         return stack1 == stack2
 ```
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        def symmetric_traverse(left_subtree, right_subtree):
+            if not left_subtree and not right_subtree:
+                return True
+            if not left_subtree or not right_subtree:
+                return False
+            if left_subtree.val != right_subtree.val:
+                return False
+            return symmetric_traverse(left_subtree.left, right_subtree.right) and symmetric_traverse(left_subtree.right, right_subtree.left)
+
+        return symmetric_traverse(root.left, root.right)
+```
 
 __Follow up__: Could you solve it both recursively and iteratively?
 
-### Iterative Recursion
+### Top-Down Iterative
 
 ```Python
 # Definition for a binary tree node.
