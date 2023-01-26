@@ -25,7 +25,7 @@ Recursive or Iterative
 
 ```Post-order traversal``` is to traverse the left subtree first. Then traverse the right subtree. Finally, visit the root.
 
-(![image](https://user-images.githubusercontent.com/35042430/214708794-f7ead713-761c-4823-807b-0c6435a59802.png)
+![image](https://user-images.githubusercontent.com/35042430/214708794-f7ead713-761c-4823-807b-0c6435a59802.png)
 
 ---
 
@@ -63,4 +63,61 @@ Here we will define the depth of the root node as 1 (although often, the depth o
 5. maximum_depth(root.right, depth + 1)    // call the function recursively for right child
 ```
 
----
+```Java
+private int answer; // don't forget to initialize answer before call maximum_depth
+private void maximum_depth(TreeNode root, int depth) {
+    if (root == null) {
+        return;
+    }
+    if (root.left == null && root.right == null) {
+        answer = Math.max(answer, depth);
+    }
+    maximum_depth(root.left, depth + 1);
+    maximum_depth(root.right, depth + 1);
+}
+```
+
+### "Bottom-up" Solution
+
+"Bottom-up" is another recursive solution. In each recursive call, we will firstly call the function recursively for all the children nodes and then come up with the answer according to the returned values and the value of the current node itself. This process can be regarded as a kind of ```postorder traversal```. Typically, a "bottom-up" recursive function ```bottom_up(root)``` will be something like this:
+
+```
+1. return specific value for null node
+2. left_ans = bottom_up(root.left)      // call function recursively for left child
+3. right_ans = bottom_up(root.right)    // call function recursively for right child
+4. return answers                       // answer <-- left_ans, right_ans, root.val
+```
+
+Here is the pseudocode for the recursive function ```maximum_depth(root)```:
+
+```
+1. return 0 if root is null                 // return 0 for null node
+2. left_depth = maximum_depth(root.left)
+3. right_depth = maximum_depth(root.right)
+4. return max(left_depth, right_depth) + 1  // return depth of the subtree rooted at root
+```
+
+```Java
+public int maximum_depth(TreeNode root) {
+    if (root == null) {
+        return 0;                                   // return 0 for null node
+    }
+    int left_depth = maximum_depth(root.left);
+    int right_depth = maximum_depth(root.right);
+    return Math.max(left_depth, right_depth) + 1;   // return depth of the subtree rooted at root
+}
+```
+
+### Conclusion
+
+When you meet a tree problem, ask yourself two questions: 
+- Can you determine some parameters to help the node know its answer? 
+- Can you use these parameters and the value of the node itself to determine what should be the parameters passed to its children? 
+
+If the answers are both yes, try to solve this problem using a ```"top-down" recursive solution```.
+
+Or, you can think of the problem in this way: 
+
+- for a node in a tree, if you know the answer of its children, can you calculate the answer of that node? 
+
+If the answer is yes, solving the problem recursively using a ```bottom up``` approach might be a good idea.
