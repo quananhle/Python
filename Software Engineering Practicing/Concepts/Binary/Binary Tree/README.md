@@ -111,6 +111,7 @@ public int maximum_depth(TreeNode root) {
 ### Conclusion
 
 When you meet a tree problem, ask yourself two questions: 
+
 - Can you determine some parameters to help the node know its answer? 
 - Can you use these parameters and the value of the node itself to determine what should be the parameters passed to its children? 
 
@@ -118,6 +119,6 @@ If the answers are both yes, try to solve this problem using a ```"top-down" rec
 
 Or, you can think of the problem in this way: 
 
-- for a node in a tree, if you know the answer of its children, can you calculate the answer of that node? 
+- For a node in a tree, if you know the answer of its children, can you calculate the answer of that node? 
 
 If the answer is yes, solving the problem recursively using a ```bottom up``` approach might be a good idea.
