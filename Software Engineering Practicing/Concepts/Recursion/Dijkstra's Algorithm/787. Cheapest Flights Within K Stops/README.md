@@ -60,7 +60,7 @@ __Constraints:__
 
 ---
 
-### Breadth-First Search
+### Iterative Breadth-First Search
 
 __Time Complexity__:
 
@@ -90,6 +90,12 @@ class Solution:
             distance = new_distance
 
         return distance[dst]
+```
+
+### Iterative Breadth-First Search with Priority Queue
+
+```Python
+
 ```
 
 ### Dijkstra's Algorithm
