@@ -63,7 +63,33 @@ __Constraints:__
 ### Breadth-First Search
 
 ```Python
+class Solution:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        graph = collections.defaultdict(list)
+        distance = [-1 for _ in range(n)]
+        for fr, to, pr in flights:
+            graph[fr].append([to, pr])
 
+        distance[src] = 0
+        queue = collections.deque([src])
+        print (queue)
+        stop = 0
+
+        while queue and stop <= k:
+            new_distance = list(distance)
+            for _ in range(len(queue)):
+                curr = queue.popleft()
+                for neighbor in graph[curr]:
+                    if new_distance[neighbor[0]] == -1 or new_distance[neighbor[0]] > distance[curr] + neighbor[1]:
+                        new_distance[neighbor[0]] = distance[curr] + neighbor[1]
+                        queue.append(neighbor[0])
+            stop += 1
+            distance = new_distance
+
+        print (distance)
+        print (graph)
+
+        return distance[dst]
 ```
 
 ### Dijkstra's Algorithm
