@@ -72,7 +72,6 @@ class Solution:
 
         distance[src] = 0
         queue = collections.deque([src])
-        print (queue)
         stop = 0
 
         while queue and stop <= k:
