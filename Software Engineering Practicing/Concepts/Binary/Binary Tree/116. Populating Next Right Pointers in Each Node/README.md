@@ -6,7 +6,7 @@
 
 You are given a __perfect binary tree__ where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
 
-```Java
+```C++
 struct Node {
   int val;
   Node *left;
