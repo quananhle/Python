@@ -74,3 +74,30 @@ class Solution:
         
         return self.count
 ```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def countUnivalSubtrees(self, root: Optional[TreeNode]) -> int:
+        # Bottom-Up Recursion
+        if not root:
+            return 0
+        self.count = 0
+
+        def count(node):
+            left_val = count(node.left) if node.left else node.val
+            right_val = count(node.right) if node.right else node.val
+            
+            if left_val == right_val == node.val:
+                self.count += 1
+                return node.val
+            
+        count(root)
+
+        return self.count
+```
