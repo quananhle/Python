@@ -134,6 +134,14 @@ class Solution:
         return root
 ```
 
+![image](https://assets.leetcode.com/users/images/01e68f51-4905-4f58-b2dd-061aa64c8a91_1640764834.4913242.png)
+![image](https://assets.leetcode.com/users/images/e2a49b2c-1493-4e3f-bb36-28b89153bf73_1640768916.6068268.png)
+![image](https://assets.leetcode.com/users/images/67ff2271-2b5d-4b5f-8e31-6e14809146ad_1640765277.2783518.png)
+![image](https://assets.leetcode.com/users/images/e1067d5d-3c94-4efc-b202-f4d18b93a0ac_1640765388.5706594.png)
+![image](https://assets.leetcode.com/users/images/d8a07cf0-aa8c-44b9-ab35-98a2e1422d43_1640765420.4366648.png)
+![image](https://assets.leetcode.com/users/images/ce1046fb-3212-46a5-b2f7-445ab32df816_1640765451.180103.png)
+![image](https://assets.leetcode.com/users/images/bd5a4aff-19fe-4aad-b4e6-5dee5156536f_1640765483.7865818.png)
+
 ```Python
 """
 # Definition for a Node.
