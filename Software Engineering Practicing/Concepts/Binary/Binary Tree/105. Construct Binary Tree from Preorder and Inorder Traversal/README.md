@@ -35,3 +35,45 @@ __Constraints:__
 - ```inorder``` is __guaranteed__ to be the inorder traversal of the tree.
 
 ---
+
+### Recursion
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        #### Time Complexity: O(N), traverse every node once
+        #### Space Complexity: O(N), rebuild the tree of all nodes
+        idx_map = collections.defaultdict(int)
+        for idx, val in enumerate(inorder):
+            idx_map[val] = idx
+
+        queue = collections.deque(preorder)
+
+        def helper(left, right):
+            # Base case:
+            if left > right:
+                return
+
+            # Get the root node value from preorder traversal
+            val = queue.popleft()
+            # Build the tree from the root node
+            root = TreeNode(val)
+
+            # Get the index value of the root node from inorder traversal
+            idx = idx_map[val]
+
+            # Rebuilding the tree from inorder traversal starts from left subtree
+            root.left = helper(left, idx - 1)
+            # Rebuilding the right subtree 
+            root.right = helper(idx + 1, right)
+
+            return root
+
+        return helper(0, len(inorder) - 1)
+```
