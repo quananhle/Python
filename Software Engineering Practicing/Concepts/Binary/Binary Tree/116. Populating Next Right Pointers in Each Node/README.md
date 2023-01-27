@@ -134,6 +134,42 @@ class Solution:
         return root
 ```
 
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+"""
+
+class Solution:
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        # Breadth-First Search
+        if not root:
+            return root
+        
+        queue = collections.deque([root])
+        
+        while queue:
+            size = len(queue)
+            right_node = None
+            for _ in range(size):
+                # Get the node from the left - right, bottom - down
+                curr = queue.popleft()
+                # Root node, for instance, point to null. If right child node, left child node points to right.
+                curr.next = right_node
+                # Update the right child node of the root
+                right_node = curr
+                # Move on to child node. Perfect binary tree ensures 2 child nodes for each 1 parent node
+                if curr.right:
+                    queue.extend([curr.right, curr.left])
+        
+        return root
+```
+
 ### Constant Space ```O(1)``` Using Previously Established Next Pointers
 
 ```Pseudo
