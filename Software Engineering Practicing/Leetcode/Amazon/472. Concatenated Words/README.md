@@ -1,6 +1,6 @@
 ## 472. Concatenated Words
 
-```Tag```:
+```Tag```: ```Recursion``` ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -34,3 +34,29 @@ __Constraints:__
 - ```words[i]``` consists of only lowercase English letters.
 - All the strings of ```words``` are unique.
 - 1 <= sum(words[i].length) <= 10<sup>5</sup>
+
+---
+
+### Recursion
+
+```Python
+class Solution:
+    def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
+        string = set()
+        res = list()
+
+        def check_concatenate(word, string):
+            for i in range(1, len(word)):
+                prefix = word[:i]
+                suffix = word[i:]
+                if prefix in string and (suffix in string or check_concatenate(suffix, string)):
+                    return True
+            return False
+        
+        for word in words:
+            string.add(word)
+        for word in words:
+            if check_concatenate(word, string):
+                res.append(word)
+        return res
+```
