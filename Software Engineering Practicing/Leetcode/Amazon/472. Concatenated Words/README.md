@@ -12,3 +12,25 @@ A __concatenated word__ is defined as a string that is comprised entirely of at 
 
 ---
 
+__Example 1:__
+```
+Input: words = ["cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"]
+Output: ["catsdogcats","dogcatsdog","ratcatdogcat"]
+Explanation: "catsdogcats" can be concatenated by "cats", "dog" and "cats"; 
+"dogcatsdog" can be concatenated by "dog", "cats" and "dog"; 
+"ratcatdogcat" can be concatenated by "rat", "cat", "dog" and "cat".
+```
+
+__Example 2:__
+```
+Input: words = ["cat","dog","catdog"]
+Output: ["catdog"]
+```
+
+__Constraints:__
+
+- 1 <= words.length <= 10<sup>4</sup>
+- ```1 <= words[i].length <= 30```
+- ```words[i]``` consists of only lowercase English letters.
+- All the strings of ```words``` are unique.
+- 1 <= sum(words[i].length) <= 10<sup>5</sup>
