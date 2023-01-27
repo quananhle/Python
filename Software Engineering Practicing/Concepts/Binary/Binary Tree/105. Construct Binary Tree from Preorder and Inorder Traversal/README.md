@@ -36,6 +36,14 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solutions/1102530/Figures/105/105-Page-1.png)
+
+1. ```Preorder``` traversal follows ```Root -> Left -> Right```; therefore, given the preorder array ```preorder```, we have easy access to the root which is ```preorder[0]```.
+
+2. ```Inorder``` traversal follows ```Left -> Root -> Right```; therefore if we know the position of ```Root```, we can recursively split the entire array into two subtrees.
+
+![image](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solutions/1102530/Figures/105/105-Page-2.png)
+
 ### Recursion
 
 ```Python
