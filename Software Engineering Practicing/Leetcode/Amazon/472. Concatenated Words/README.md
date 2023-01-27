@@ -37,7 +37,7 @@ __Constraints:__
 
 ---
 
-### Recursion
+### Recursive Dynamic Programming
 
 ```Python
 class Solution:
@@ -61,10 +61,35 @@ class Solution:
         return res
 ```
 
-
-### Dynamic Programming
-
 ```Python
+class Solution:
+    def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
+        shortest_length = 31
+        res = list()
+        dp = list()
+        set_word = set()
 
+        for word in words:
+            set_word.add(word)
+        # Find the length of the shortest word
+        for word in words:
+            shortest_length = min(len(word), shortest_length)
+
+        def check_concatenate(word, s):
+            if word in dp:
+                return True
+            for i in range(1, len(word)):
+                prefix = word[:i]
+                suffix = word[i:]
+                if prefix in s and (suffix in s or check_concatenate(suffix, s)):
+                    dp.append(word)
+                    return True
+            return False
+        
+        for word in words:
+            if check_concatenate(word, set_word):
+                res.append(word)
+        
+        return res
 ```
 
