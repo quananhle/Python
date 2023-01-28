@@ -4,7 +4,7 @@
 
 #### Difficulty: Medium
 
-You are given a __perfect binary tree__ where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+You are given a __binary tree__ 
 
 ```C++
 struct Node {
@@ -25,7 +25,7 @@ Initially, all next pointers are set to ```NULL```.
 
 __Example 1:__
 
-![image](https://assets.leetcode.com/uploads/2019/02/14/116_sample.png)
+![image](https://assets.leetcode.com/uploads/2019/02/15/117_sample.png)
 ```
 Input: root = [1,2,3,4,5,6,7]
 Output: [1,#,2,3,#,4,5,6,7,#]
