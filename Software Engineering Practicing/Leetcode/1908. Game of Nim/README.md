@@ -1,6 +1,6 @@
 ## 1908. Game of Nim
 
-```Tag```: 
+```Tag```: ```Dynamic Programming``` ```Bit Manipulation```
 
 #### Difficulty: Medium
 
@@ -53,8 +53,37 @@ __Constraints:__
  
 ---
 
+### Memoization
 
+```Python
+class Solution:
+    def nimGame(self, piles: List[int]) -> bool:
+        memo = collections.defaultdict()
+        if sum(piles) == 0:
+            return False
 
-
+        def moves(piles):
+            # Generate a key by concatenating the count of the stone in every pile
+            key = "-".join(map(str, piles))
+            # Check if this scenario has been come accross
+            if key in memo:
+                return memo[key]
+            for i in range(len(piles)):
+                # Check the stones in the pile
+                for j in range(1, piles[i] + 1):
+                    # Remove 1 stone from current pile[i]
+                    piles[i] -= j
+                    # Get all the possible next moves from here on out
+                    next = sorted(piles)
+                    # Check if there is no next possible move for opponent, win
+                    if not moves(next):
+                        memo[key] = True
+                        return True
+                    # Backtracking
+                    piles[i] += j
+            # All scenarios have been checked and no possible move next, lose
+            memo[key] = False
+            return False
+```
 
 __Follow-up__: Could you find a linear time solution? Although the linear time solution may be beyond the scope of an interview, it could be interesting to know.
