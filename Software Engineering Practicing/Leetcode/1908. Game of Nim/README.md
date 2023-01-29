@@ -53,7 +53,11 @@ __Constraints:__
  
 ---
 
+![image](https://user-images.githubusercontent.com/35042430/215310525-20d187bb-3798-4f63-8118-38cb8068a7af.png)
+
 ### Memoization
+
+![image](https://user-images.githubusercontent.com/35042430/215310538-8fd2f1cf-ea14-4cef-bb5c-312d9aef78f1.png)
 
 #### Algorithm
 
