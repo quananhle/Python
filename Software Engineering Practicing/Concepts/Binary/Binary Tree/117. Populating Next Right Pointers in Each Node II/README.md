@@ -137,3 +137,50 @@ class Solution:
 ```
 
 ### Constant Space ```O(1)``` Using Previously Established Next Pointers
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+"""
+
+class Solution:
+    def connect(self, root: 'Node') -> 'Node':
+        # Breadth-First Search
+        if not root:
+            return root
+
+        def helper(child, prev, left_most):
+            if child:
+                # Check if there is already prev pointer
+                if prev:
+                    # Point its next pointer to the current node
+                    prev.next = child
+                # Otherwise, establish a prev pointer
+                else:
+                    left_most = child
+                prev = child
+            return prev, left_most
+        
+        # Intialize a left_most pointer to the root, as the root is the only node of the first level; hence, the leftmost node as well
+        left_most = root
+
+        # Iterate through every level of the tree
+        while left_most:
+            prev, curr = None, left_most
+            left_most = None
+            # Iterate through every node of the current level
+            while curr:
+                # Process both the children, update the prev and left_most pointers
+                prev, left_most = helper(curr.left, prev, left_most)
+                prev, left_most = helper(curr.right, prev, left_most)
+                # Move onto the next node
+                curr = curr.next
+        
+        return root
+```
