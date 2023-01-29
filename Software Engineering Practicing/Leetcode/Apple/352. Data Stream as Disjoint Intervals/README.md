@@ -43,9 +43,44 @@ __Constraints:__
 - 0 <= value <= 10<sup>4</sup>
 - At most 3 * 10<sup>4</sup> calls will be made to ```addNum``` and ```getIntervals```.
 
----
-
 __Follow up__: What if there are lots of merges and the number of disjoint intervals is small compared to the size of the data stream?
 
 ---
 
+```Python
+class SummaryRanges:
+    def __init__(self):
+        self.intervals = []
+
+    def addNum(self, value: int) -> None:
+        if not self.intervals:
+            self.intervals.append([value, value])
+            return
+        left, right = 0, len(self.intervals) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            if self.intervals[mid][1] < value:
+                left = mid + 1
+            else:
+                right = mid - 1
+        if left < len(self.intervals) and self.intervals[left][0] <= value <= self.intervals[left][1]:
+            return
+        if left > 0 and self.intervals[left - 1][1] + 1 == value:
+            self.intervals[left - 1][1] = value
+            if left < len(self.intervals) and value + 1 == self.intervals[left][0]:
+                self.intervals[left - 1][1] = self.intervals[left][1]
+                self.intervals.pop(left)
+        elif left < len(self.intervals) and value + 1 == self.intervals[left][0]:
+            self.intervals[left][0] = value
+        else:
+            self.intervals.insert(left, [value, value])
+
+    def getIntervals(self) -> List[List[int]]:
+        return self.intervals
+
+
+# Your SummaryRanges object will be instantiated and called as such:
+# obj = SummaryRanges()
+# obj.addNum(value)
+# param_2 = obj.getIntervals()
+```
