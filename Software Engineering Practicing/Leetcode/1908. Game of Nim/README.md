@@ -107,3 +107,12 @@ class Solution:
 __Follow-up__: Could you find a linear time solution? Although the linear time solution may be beyond the scope of an interview, it could be interesting to know.
 
 ### Bitwise Manipulation
+
+```Python
+class Solution:
+    def nimGame(self, piles: List[int]) -> bool:
+        ans = 0
+        for pile in piles:
+            ans ^= pile
+        return ans != 0
+```
