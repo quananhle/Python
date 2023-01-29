@@ -55,6 +55,20 @@ __Constraints:__
 
 ### Memoization
 
+#### Algorithm
+
+1. We create a hash map for memoization. We store the game's results for a given state in the hash map. In other words, the hash map stores whether a player wins or loses the game for a given state.
+2. We create a recursive function determining whether the current player wins the game. The function takes in the state of the piles as an argument. We name this function ```moves``` because we always call it from the context of the other player.
+3. We check if the state is already in our hash map. If it is, we return the result stored in the hash map.
+4. Otherwise, we check if all the piles are zero. If they are, the current player loses the game, and we return ```false```.
+5. If the piles are not zero, we check all the next possible states.
+6. For all the following states, we sort the next state before making the recursive call. Sorting the piles ensures that the order of the piles does not affect the result. For example, if there are three piles, ```[1, 0, 0]```, ```[0, 1, 0]```, and ```0, 0, 1]```, we only need to check the first pile. If the first pile is zero, the piles become ```[0, 0, 0]``` for the next player. We check if the next player wins in the next state. If the next player loses, the current player wins, and we return ```true```.
+7. If the next player wins in all states after a move, the current player loses the game, and we return ```false```.
+
+__Time Complexity__: ![image](https://user-images.githubusercontent.com/35042430/215310336-80837292-841a-40db-b5a6-c22f3b44939b.png)
+
+__Space Complexity__: ![image](https://user-images.githubusercontent.com/35042430/215310342-f1ed5594-06b5-4194-9c19-48176bd6ef61.png)
+
 ```Python
 class Solution:
     def nimGame(self, piles: List[int]) -> bool:
@@ -87,3 +101,5 @@ class Solution:
 ```
 
 __Follow-up__: Could you find a linear time solution? Although the linear time solution may be beyond the scope of an interview, it could be interesting to know.
+
+### Bitwise Manipulation
