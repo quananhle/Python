@@ -40,8 +40,12 @@ summaryRanges.getIntervals(); // return [[1, 3], [6, 7]]
 
 __Constraints:__
 
-0 <= value <= 104
-At most 3 * 104 calls will be made to addNum and getIntervals.
- 
+- 0 <= value <= 10<sup>4</sup>
+- At most 3 * 10<sup>4</sup> calls will be made to ```addNum``` and ```getIntervals```.
 
-Follow up: What if there are lots of merges and the number of disjoint intervals is small compared to the size of the data stream?
+---
+
+__Follow up__: What if there are lots of merges and the number of disjoint intervals is small compared to the size of the data stream?
+
+---
+
