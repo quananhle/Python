@@ -10,7 +10,7 @@ Design an algorithm to serialize and deserialize a binary tree. There is no rest
 
 Clarification: The input/output format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
 
-![image](https://user-images.githubusercontent.com/35042430/215418296-bbb0f039-91c7-490b-b9f1-f4a9115772a8.png)
+![image](https://user-images.githubusercontent.com/35042430/215418914-98395789-0d13-4127-b544-5a68dceb635f.png)
 
 ---
 
