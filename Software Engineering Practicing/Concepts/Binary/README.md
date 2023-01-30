@@ -24,24 +24,24 @@ public List<Integer> inorderTraversal(TreeNode root) {
 Question : [Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
 
 ```Java
- public int kthSmallest(TreeNode root, int k) {
-     Stack<TreeNode> stack = new Stack<>();
-     while(root != null || !stack.isEmpty()) {
-         while(root != null) {
-             stack.push(root);    
-             root = root.left;   
-         } 
-         root = stack.pop();
-         if(--k == 0) break;
-         root = root.right;
-     }
-     return root.val;
- }
- ```
+public int kthSmallest(TreeNode root, int k) {
+    Stack<TreeNode> stack = new Stack<>();
+    while(root != null || !stack.isEmpty()) {
+        while(root != null) {
+            stack.push(root);    
+            root = root.left;   
+        } 
+        root = stack.pop();
+        if(--k == 0) break;
+        root = root.right;
+    }
+    return root.val;
+}
+```
  
- Question : [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
+Question : [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
  
- ```Python
+```Python
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -65,3 +65,31 @@ class Solution:
         return True
 ```
  
+Question : [Inorder Successor in BST](https://leetcode.com/problems/inorder-successor-in-bst/)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def inorderSuccessor(self, root: TreeNode, p: TreeNode) -> Optional[TreeNode]:
+        stack = list()
+        found = False
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if found:
+                return root
+            value = root.val
+            if value == p.val:
+                found = True
+            root = root.right
+        return root
+```
+
