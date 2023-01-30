@@ -35,3 +35,34 @@ __Constraints:__
 - The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
 
 ---
+
+### Dynamic Programming with Memorization using Hash Map
+
+```Python
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        # Dynamic Programming with Memorization using Hash Map
+        #### Time Complexity: O(N), traverse through the size of n
+        #### Space Complexity: O(N), extra memory space to build hash map up to n numbers
+        memo = collections.defaultdict(int)
+        memo[0], memo[1], memo[2] = 0, 1, 1
+        for i in range(3, n+1):
+            memo[i] = memo[i-1] + memo[i-2] + memo[i-3]
+        return memo[n]
+```
+
+### Dynamic Programming with Optimized Memorization (O(1) space) using List 
+
+```Python
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        # Dynamic Programming with Optimized Memorization (O(1) space) using List 
+        #### Time Complexity: O(N), traverse through the size of n
+        #### Space Complexity: O(1), constant memory of 3 
+        cache = [[] * (3) for _ in range(3)]
+        cache[0], cache[1], cache[2] = 0, 1, 1
+        for i in range(3, n+1):
+            cache[i % 3] = cache[0] + cache[1] + cache[2]
+        return cache[n % 3]
+```
+
