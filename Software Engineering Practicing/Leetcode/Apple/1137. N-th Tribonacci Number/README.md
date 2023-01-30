@@ -85,3 +85,36 @@ class Solution:
         return memo[n % 3]
 ```
 
+### Optimize Runtime Performance
+
+#### Recursion with Memorization
+
+```Python
+# Precompute Tribonacci number
+class Tribonacci:
+    def __init__(self) -> None:
+        n = 38
+        self.nums = [0] * n
+        self.nums[1] = self.nums[2] = 1
+
+        def helper(k):
+            if k == 0:
+                return 0
+
+            if self.nums[k]:
+                return self.nums[k]
+
+            self.nums[k] = helper(k-1) + helper(k-2) + helper(k-3)
+            return self.nums[k]
+
+        helper(n - 1)
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        # Recursion with Memorization
+        #### Time Complexity: O(1), to retrieve the preliminary computed Tribonacci number
+        #### Space Complexity: O(1), constant space up to the constraint
+        tri = Tribonacci()
+        return tri.nums[n]
+```
+
