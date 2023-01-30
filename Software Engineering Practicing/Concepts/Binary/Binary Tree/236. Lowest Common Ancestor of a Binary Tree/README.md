@@ -1,6 +1,6 @@
 ## 236. Lowest Common Ancestor of a Binary Tree
 
-```Tag```: ```Backtracking```
+```Tag```: ```Backtracking``` ```Recursion```
 
 #### Difficulty: Medium
 
@@ -132,7 +132,7 @@ class Solution:
         return root
 ```
 
-### Depth-First Search
+### Backtracking
 
 ```Python
 # Definition for a binary tree node.
@@ -144,7 +144,7 @@ class Solution:
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        # Depth-First Search
+        # Backtracking
         ### Iterative using Parent Pointers
         #### Time Complexity: O(N) where N is the number of nodes in the binary tree
         #### Space Complexity: O(N), extra memory space to keep up the recursion stack
@@ -171,4 +171,77 @@ class Solution:
             q = parent[q]
         # Return the first ancestor of q in set of ancestors of p is the lower common ancestor
         return q
+```
+
+### Backtracking using Flags
+
+#### Algorithm
+
+1. Start with ```root``` node.
+2. Put the ```(root, root_state)``` on to the stack. ```root_state``` defines whether one of the children or both children of ```root``` are left for traversal.
+3. While the stack is not empty, peek into the top element of the stack represented as ```(parent_node, parent_state)```.
+4. Before traversing any of the child nodes of ```parent_node``` we check if the ```parent_node``` itself is one of ```p``` or ```q```.
+5. First time we find either of ```p``` or ```q```, set a boolean flag called ```one_node_found``` to ```True```. Also start keeping track of the __lowest common ancestors__ by keeping a note of the top index of the stack in the variable ```LCA_index```. Since all the current elements of the stack are ancestors of the node we just found.
+6. The second time ```parent_node == p or parent_node == q``` it means we have found both the nodes and we can return the ```LCA node```.
+7. Whenever we visit a ```child``` of a ```parent_node``` we push the ```(parent_node, updated_parent_state)``` onto the stack. We update the state of the parent since a child/branch has been visited/processed and accordingly the state changes.
+8. A node finally gets popped off from the stack when the state becomes ```BOTH_FOUND``` implying both left and right subtrees have been pushed onto the stack and processed. If ```one_node_found``` is ```True``` then we need to check if the top node being popped could be one of the ancestors of the found node. In that case we need to reduce ```LCA_index``` by one. Since one of the ancestors was popped off.
+
+![image](https://user-images.githubusercontent.com/35042430/215390906-b8e11209-e336-463e-967b-1498f0e5f170.png)
+
+Whenever both ```p``` and ```q``` are found, ```LCA_index``` would be pointing to an index in the stack which would contain all the common ancestors between ```p``` and ```q```. And the ```LCA_index``` element has the lowest ancestor common between ```p``` and ```q```.
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    # Three static flags to keep track of post-order traversal
+    BOTH_NOT_FOUND = 2
+    ONE_FOUND = 1
+    BOTH_FOUND = 0
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # Depth-First Search
+        #### Time Complexity: O(N) where N is the number of nodes in the binary tree
+        #### Space Complexity: O(N), extra memory space to keep up the recursion stack
+        stack = [(root, self.BOTH_NOT_FOUND)]
+        one_node_found = False
+        LCA_idx = -1
+        # Post-order traversal
+        while stack:
+            parent, state = stack[-1]
+            if state != self.BOTH_FOUND:
+                if state == self.BOTH_NOT_FOUND:
+                    if parent == p or parent == q:
+                        # Check if one node has already been found before, both nodes are found
+                        if one_node_found:
+                            # Return the lowest common ancestor node
+                            return stack[LCA_idx][0]
+                        # Otherwise, mark one node has been found
+                        else:
+                            one_node_found = True
+                            # Record the current top index of the stack as the LCA index
+                            LCA_idx = len(stack) - 1
+                    # If both q and p are not found or STATE == BOTH_NOT_FOUND, keep traversing
+                    child = parent.left
+                # If at least 1 node has been found or state == ONE_FOUND, keep traversing the other subtree
+                else:
+                    child = parent.right
+                # Update the current node state as the node has been found
+                stack.pop()
+                stack.append((parent, state-1))
+                
+                # Add the child node to the stack for traversal
+                if child:
+                    stack.append((child, self.BOTH_NOT_FOUND))
+            # Otherwise, both nodes are found or state == BOTH_FOUND
+            else:
+                # If LCA index equals the length of the stack, update LCA index
+                if one_node_found and LCA_idx == len(stack) - 1:
+                    LCA_idx -= 1
+                stack.pop()
+        return None
 ```
