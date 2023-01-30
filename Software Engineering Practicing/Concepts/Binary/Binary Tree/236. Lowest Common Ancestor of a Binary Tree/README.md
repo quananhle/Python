@@ -97,9 +97,78 @@ class Solution:
             # Check if any two of the three flags left, right or mid become True.
             if mid + left + right >= 2:
                 ans = curr
-            # Check if any of mid or left or right is True, meaning p or q was found
+            # Check if any of mid or left or right is True, meaning p or q was found, or False, meaning p or q has not been found yet
             return mid or left or right
         
         helper(root)
         return ans
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # Bottom-Up Recursion
+        #### Time Complexity: O(N) where N is the number of nodes in the binary tree
+        #### Space Complexity: O(N), extra memory space to keep up the recursion stack
+        if not root:
+            return None
+        if root == p or root == q:
+            return root
+
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+
+        if not left:
+            return right
+        if not right:
+            return left
+        return root
+```
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # Depth-First Search
+        ### Iterative using Parent Pointers
+        #### Time Complexity: O(N) where N is the number of nodes in the binary tree
+        #### Space Complexity: O(N), extra memory space to keep up the recursion stack
+        stack = [root]
+        # Hash map to store the parent pointer for every node, starting from the root node
+        parent = {root: None}
+        # Keep iterating until both p and q are found
+        while p not in parent or q not in parent:
+            node = stack.pop()
+            # Record the parent pointer while traversing
+            if node.left:
+                parent[node.left] = node
+                stack.append(node.left)
+            if node.right:
+                parent[node.right] = node
+                stack.append(node.right)
+        # Once p and q are both found, get the ancestors of p from dictionary and add all ancestors of p to a set 
+        ancestors = set()
+        while p:
+            ancestors.add(p)
+            p = parent[p]
+        # Traverse upward until parent of q is met in set of ancestors of p
+        while q not in ancestors:
+            q = parent[q]
+        # Return the first ancestor of q in set of ancestors of p is the lower common ancestor
+        return q
 ```
