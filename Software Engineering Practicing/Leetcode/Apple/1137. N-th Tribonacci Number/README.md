@@ -13,3 +13,25 @@ Given ```n```, return _the value of T<sub>n</sub>_.
 ![image](https://user-images.githubusercontent.com/35042430/215408044-3d540d06-efba-4207-9746-dd48893fa4a0.png)
 
 ---
+
+__Example 1:__
+```
+Input: n = 4
+Output: 4
+Explanation:
+T_3 = 0 + 1 + 1 = 2
+T_4 = 1 + 1 + 2 = 4
+```
+
+__Example 2:__
+```
+Input: n = 25
+Output: 1389537
+```
+
+__Constraints:__
+
+- ```0 <= n <= 37```
+- The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
+
+---
