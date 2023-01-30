@@ -36,7 +36,11 @@ __Constraints:__
 
 ---
 
-### Dynamic Programming with Memorization using Hash Map
+![image](https://leetcode.com/problems/n-th-tribonacci-number/solutions/348243/Figures/1137/methods.png)
+
+### Optimized Space
+
+#### Dynamic Programming with Memorization using Hash Map
 
 ```Python
 class Solution:
@@ -51,7 +55,7 @@ class Solution:
         return memo[n]
 ```
 
-### Dynamic Programming with Optimized Memorization (O(1) space) using List 
+#### Dynamic Programming with Optimized Memorization (O(1) space) using List 
 
 ```Python
 class Solution:
@@ -66,7 +70,7 @@ class Solution:
         return cache[n % 3]
 ```
 
-### Dynamic Programming with Optimized Memorization (O(1) space) using Hash Map 
+#### Dynamic Programming with Optimized Memorization (O(1) space) using Hash Map 
 
 ```Python
 class Solution:
