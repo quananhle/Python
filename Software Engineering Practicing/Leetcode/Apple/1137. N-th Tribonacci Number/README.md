@@ -66,3 +66,18 @@ class Solution:
         return cache[n % 3]
 ```
 
+### Dynamic Programming with Optimized Memorization (O(1) space) using Hash Map 
+
+```Python
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        # Dynamic Programming with Optimized Memorization (O(1) space) using Hash Map
+        #### Time Complexity: O(N), traverse through the size of n
+        #### Space Complexity: O(1), constant memory of 3 
+        memo = collections.defaultdict(int)
+        memo[0], memo[1], memo[2] = 0, 1, 1
+        for i in range(3, n+1):
+            memo[i % 3] = memo[0] + memo[1] + memo[2]
+        return memo[n % 3]
+```
+
