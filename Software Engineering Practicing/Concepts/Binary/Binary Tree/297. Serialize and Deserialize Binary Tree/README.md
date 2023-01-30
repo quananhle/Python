@@ -34,3 +34,55 @@ __Constraints:__
 - ```-1000 <= Node.val <= 1000```
 
 ---
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Codec:
+    def serialize(self, root):
+        """Encodes a tree to a single string.
+        
+        :type root: TreeNode
+        :rtype: str
+        """
+        def helper(node, string):
+            if not node:
+                string += 'None,'
+            else:
+                string += str(node.val) + ','
+                string = helper(node.left, string)
+                string = helper(node.right, string)
+            return string
+        
+        return helper(root, '')
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+        
+        :type data: str
+        :rtype: TreeNode
+        """
+        def helper(queue):
+            if queue[0] == 'None':
+                queue.popleft()
+                return None
+            root = TreeNode(queue[0])
+            queue.popleft()
+            root.left = helper(queue)
+            root.right = helper(queue)
+            return root
+
+        queue = collections.deque(data.split(','))
+        root = helper(queue)
+        return root
+        
+# Your Codec object will be instantiated and called as such:
+# ser = Codec()
+# deser = Codec()
+# ans = deser.deserialize(ser.serialize(root))
+```
