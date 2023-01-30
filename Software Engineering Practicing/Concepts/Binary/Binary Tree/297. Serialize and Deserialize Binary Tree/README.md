@@ -13,3 +13,24 @@ Clarification: The input/output format is the same as how LeetCode serializes a 
 ![image](https://user-images.githubusercontent.com/35042430/215418296-bbb0f039-91c7-490b-b9f1-f4a9115772a8.png)
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2020/09/15/serdeser.jpg)
+```
+Input: root = [1,2,3,null,null,4,5]
+Output: [1,2,3,null,null,4,5]
+```
+
+__Example 2:__
+```
+Input: root = []
+Output: []
+```
+
+__Constraints:__
+
+- The number of nodes in the tree is in the range [0, 10<sup>4</sup>].
+- ```-1000 <= Node.val <= 1000```
+
+---
