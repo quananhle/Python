@@ -74,7 +74,8 @@ BACKTRACK 11 --> 5 --> 2
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         # Bottom-Up Recursion
-    
+        #### Time Complexity: O(N) where N is the number of nodes in the binary tree
+        #### Space Complexity: O(N), extra memory space to keep up the recursion stack
         ans = 0
 
         def helper(curr):
