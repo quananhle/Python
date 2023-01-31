@@ -52,6 +52,8 @@ __Constraints:__
 
 ### Iterative Inorder Traversal
 
+__Follow up__: Could you solve it with time complexity O(height of tree)?
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -61,6 +63,8 @@ __Constraints:__
 #         self.right = right
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        #### Time Complexity: O(logN), traverse on a BST to find the node to delete
+        #### Space Complexity: O(H), recursion stack to keep up to the height of the tree
         if not root:
             return root
 
@@ -97,5 +101,3 @@ class Solution:
                 root.right = self.deleteNode(root.right, root.val)
         return root
 ```
-
-__Follow up__: Could you solve it with time complexity O(height of tree)?
