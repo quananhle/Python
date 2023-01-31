@@ -44,7 +44,74 @@ __Constraints:__
 
 ---
 
+### Top-Down Dynamic Programming
+
+__Time Complexity__: ```O(N^2)```
+
+__Space Complexity__: ```O(N)```
+
+![image](https://leetcode.com/problems/best-team-with-no-conflicts/solutions/2886659/Figures/1626/1626A.png)
+
+```Python
+class Solution:
+    def bestTeamScore(self, scores: List[int], ages: List[int]) -> int:
+        # Top-Down Dynamic Programming
+        n = len(scores)
+        ages_scores = list(zip(ages, scores))
+        ages_scores.sort()
+        ans = 0
+        
+        @lru_cache(None)
+        def dp(curr):
+            score = ages_scores[curr][1]
+            for j in range(curr + 1, n):
+                if ages_scores[curr][0] == ages_scores[j][0] or ages_scores[curr][1] <= ages_scores[j][1]:
+                    score = max(score, dp(j) + ages_scores[curr][1])
+            return score
+
+        for i in range(n):
+            ans = max(ans, dp(i))
+
+        return ans
+```
+
+```Python
+class Solution:
+    def bestTeamScore(self, scores: List[int], ages: List[int]) -> int:
+        # Top-Down Dynamic Programming
+        ages, scores = zip(*sorted(zip(ages, scores)))
+
+        @lru_cache(None)
+        def dp(i):
+            # Return max score up to ith player included
+            if i < 0:
+                return 0
+            return scores[i] + max((dp(j) for j in range(i) if ages[j] == ages[i] or scores[j] <= scores[i]), default=0)
+
+        return max(dp(i) for i in range(len(scores)))
+```
+
 ### Bottom-Up Dynamic Programming
+
+__Time Complexity__: ```O(N^2)```
+
+__Space Complexity__: ```O(N)```
+
+#### Algorithm
+
+1. Store the ```ages``` and ```scores``` of all the players in the list ```player_info```.
+
+2. Sort the list player_info in ascending order of ```age``` and then in ascending order of ```score```.
+
+3. Initialize the array ```cache``` of size ```N```. The ```cache[i]``` represents the maximum score possible by taking i<sup>th</sup> player and possible players before it. All values initially will be equal to the score of individual players.
+
+4. Iterate over players from ```0``` to ```N - 1``` for each player at index ```i```
+
+    - Iterate over the players on the left, i.e., from ```0``` to ```i - 1```. For each such player, ```j```, check if the score of the i<sup>th</sup> player is greater than or equal to the j<sup>th</sup> player's score. If it is, we can add the total score of the j<sup>th</sup> player ```(dp[j])``` to the score of the i<sup>th</sup> player and update the maximum score of the i<sup>th</sup> player ```dp[i]``` accordingly.
+
+6. Store the maximum of all ```dp[i]``` in the variable ```answer```.
+
+7. Return answer.
 
 ```Python
 class Solution:
@@ -52,14 +119,14 @@ class Solution:
         # Bottom-Up Dynamic Programming
         player_info = sorted(zip(ages, scores), key=lambda x: (x[0], x[1]))
         n = len(player_info)
-        dp = [0] * n
+        cache = [0] * n
         for i in range(n):
             age, score = player_info[i]
-            dp[i] = score
+            cache[i] = score
             for j in range(i):
                 _, pre_score = player_info[j]
                 if pre_score <= score:
-                    dp[i] = max(dp[i], dp[j] + score)
+                    cache[i] = max(dp[i], cache[j] + score)
         return max(dp)
 ```
 
