@@ -60,7 +60,7 @@ There are three possible situations here :
 
 - Node is a leaf, and one could delete it straightforward : ```node = null```.
 
-![image](https://user-images.githubusercontent.com/35042430/215684108-a839c3b4-aeae-433e-9955-eefa0a1cc9f1.png)
+![image](https://leetcode.com/problems/delete-node-in-a-bst/solutions/281988/Figures/450/del_leaf.png)
 
 - Node is not a leaf and has a right child. Then the node could be replaced by its successor which is somewhere lower in the right subtree. Then one could proceed down recursively to delete the successor.
 
