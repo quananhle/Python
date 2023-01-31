@@ -1,6 +1,6 @@
 ## 450. Delete Node in a BST
 
-```Tag```:
+```Tag```: ```Binary Search Tree``` ```Recursion```
 
 #### Difficulty: Medium
 
