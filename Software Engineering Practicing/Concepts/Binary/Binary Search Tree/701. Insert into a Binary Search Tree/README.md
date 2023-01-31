@@ -44,3 +44,32 @@ __Constraints:__
 - It's __guaranteed__ that ```val``` does not exist in the original BST.
 
 ---
+
+### Iterative Inorder Traversal
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        if not root:
+            return TreeNode(val)
+        curr = prev = root
+        while curr:
+            prev = curr
+            # Traverse left
+            if curr.val > val:
+                curr = curr.left
+                if not curr:
+                    prev.left = TreeNode(val)
+            # Traverse right
+            else:
+                curr = curr.right
+                if not curr:
+                    prev.right = TreeNode(val)
+        return root
+```
