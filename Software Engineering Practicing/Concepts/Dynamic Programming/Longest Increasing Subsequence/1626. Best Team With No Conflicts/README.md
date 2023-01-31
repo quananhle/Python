@@ -43,3 +43,43 @@ __Constraints:__
 - ```1 <= ages[i] <= 1000```
 
 ---
+
+### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def bestTeamScore(self, scores: List[int], ages: List[int]) -> int:
+        # Bottom-Up Dynamic Programming
+        player_info = sorted(zip(ages, scores), key=lambda x: (x[0], x[1]))
+        n = len(player_info)
+        dp = [0] * n
+        for i in range(n):
+            age, score = player_info[i]
+            dp[i] = score
+            for j in range(i):
+                _, pre_score = player_info[j]
+                if pre_score <= score:
+                    dp[i] = max(dp[i], dp[j] + score)
+        return max(dp)
+```
+
+```Python
+class Solution:
+    def bestTeamScore(self, scores: List[int], ages: List[int]) -> int:
+        # Bottom-Up Dynamic Programming
+        n = len(scores)
+        memo = [0] * n
+        ans = 0
+        
+        players = [(ages[i], scores[i]) for i in range(n)]
+        players.sort(key = lambda x: (x[0], x[1]))
+        
+        for i in range(n):
+            memo[i] = players[i][1]
+            for j in range(i):
+                if players[j][1] <= players[i][1]:
+                    memo[i] = max(memo[i], memo[j] + players[i][1])
+            ans = max(ans, memo[i])
+
+        return ans
+```
