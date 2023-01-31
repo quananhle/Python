@@ -50,6 +50,52 @@ __Constraints:__
  
 ---
 
+### Iterative Inorder Traversal
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        if not root:
+            return root
+
+        def successor(node):
+            node = node.right
+            while node.left:
+                node = node.left
+            return node.val
+        
+        def predecessor(node):
+            node = node.left
+            while node.right:
+                node = node.right
+            return node.val
+
+        # Traverse left
+        if root.val > key:
+            root.left = self.deleteNode(root.left, key)
+        # Traver right
+        elif root.val < key:
+            root.right = self.deleteNode(root.right, key)
+        # Found the node to delete
+        else:
+            # Node is a leaf
+            if not root.left and not root.right:
+                root = None
+            # Node has a left child
+            elif root.left:
+                root.val = predecessor(root)
+                root.left = self.deleteNode(root.left, root.val)
+            # Node has a right child
+            else:
+                root.val = successor(root)
+                root.right = self.deleteNode(root.right, root.val)
+        return root
+```
 
 __Follow up__: Could you solve it with time complexity O(height of tree)?
