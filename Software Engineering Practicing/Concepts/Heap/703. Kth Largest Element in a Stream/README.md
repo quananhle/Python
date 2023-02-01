@@ -1,4 +1,4 @@
-## 703. Kth Largest Element in a Stream
+## 703. K<sup>th</sup> Largest Element in a Stream
 
 ```Tag```: ```Heap```
 
