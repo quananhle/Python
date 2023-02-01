@@ -57,3 +57,27 @@ __Constraints:__
 - All the pairs (x<sub>i</sub>, y<sub>i</sub>) are distinct.
 
 ---
+
+### Adjacency Graph
+
+```Python
+class Solution:
+    def areSentencesSimilar(self, sentence1: List[str], sentence2: List[str], similarPairs: List[List[str]]) -> bool:        
+        if len(sentence1) != len(sentence2):
+            return False
+        # Build the adjacency graph of set of similar pairs
+        graph = collections.defaultdict(set)
+        for x, y in similarPairs:
+            graph[x].add(y)
+            graph[y].add(x)
+        for i in range(len(sentence1)):
+            '''
+            Check 2 scenarios:
+            - sentence1[i] and sentence2[i] are the same
+            - sentence1[i] and sentence2[i] are in the same pair of similarPairs
+            '''
+            if sentence1[i] == sentence2[i] or sentence2[i] in graph[sentence1[i]] or sentence1[i] in graph[sentence2[i]]:
+                continue
+            return False
+        return True
+```
