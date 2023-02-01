@@ -20,3 +20,37 @@ Notice that a word is always similar to itself, also notice that the similarity 
 ![image](https://user-images.githubusercontent.com/35042430/216117203-80deee40-aaf0-4f5f-a718-b88a27449f81.png)
 
 ---
+
+__Example 1:__
+```
+Input: sentence1 = ["great","acting","skills"], sentence2 = ["fine","drama","talent"], similarPairs = [["great","fine"],["drama","acting"],["skills","talent"]]
+Output: true
+Explanation: The two sentences have the same length and each word i of sentence1 is also similar to the corresponding word in sentence2.
+```
+
+__Example 2:__
+```
+Input: sentence1 = ["great"], sentence2 = ["great"], similarPairs = []
+Output: true
+Explanation: A word is similar to itself.
+```
+
+__Example 3:__
+```
+Input: sentence1 = ["great"], sentence2 = ["doubleplus","good"], similarPairs = [["great","doubleplus"]]
+Output: false
+Explanation: As they don't have the same length, we return false.
+```
+
+__Constraints:__
+
+- ```1 <= sentence1.length, sentence2.length <= 1000```
+- ```1 <= sentence1[i].length, sentence2[i].length <= 20```
+- ```sentence1[i]``` and ```sentence2[i]``` consist of English letters.
+- ```0 <= similarPairs.length <= 1000```
+- ```similarPairs[i].length == 2```
+- ```1 <= xi.length, yi.length <= 20```
+- x<sub>i</sub> and y<sub>i</sub> consist of lower-case and upper-case English letters.
+- All the pairs (x<sub>i</sub>, y<sub>i</sub>) are distinct.
+
+---
