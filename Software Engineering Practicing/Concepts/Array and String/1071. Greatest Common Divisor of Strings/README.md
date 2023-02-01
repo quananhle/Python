@@ -36,3 +36,34 @@ __Constraints:__
 - ```str1``` and ```str2``` consist of English uppercase letters.
 
 ---
+
+### Backward Iterator
+
+```Python
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        # Assure str1 is always longer than str2
+        if len(str1) < len(str2):
+            str1, str2 = str2, str1
+        if str1 == str2:
+            return str1
+        # Iterate backward through the short string
+        for i in range(len(str2), 0, -1):
+            # Shrink the size of the common divisor as we keep looking
+            common_divisor = str2[:i]
+            # Check if both strings have a common divisor
+            if common_divisor * (len(str2) // i) == str2 and common_divisor * (len(str1) // i) == str1:
+                return common_divisor
+        return ""
+```
+
+### Built-in Function
+
+```Python
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        if str1 + str2 != str2 + str1:
+            return ""
+        idx = math.gcd(len(str1), len(str2))
+        return str1[:idx]
+```
