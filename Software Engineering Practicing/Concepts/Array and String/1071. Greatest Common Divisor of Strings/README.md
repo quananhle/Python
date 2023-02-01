@@ -39,6 +39,8 @@ __Constraints:__
 
 ### Backward Iterator
 
+![image](https://leetcode.com/problems/greatest-common-divisor-of-strings/solutions/3024822/Figures/1071/bf1.png)
+
 ```Python
 class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
