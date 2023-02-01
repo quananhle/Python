@@ -23,9 +23,11 @@ Notice that a word is always similar to itself, also notice that the similarity 
 
 __Example 1:__
 ```
-Input: sentence1 = ["great","acting","skills"], sentence2 = ["fine","drama","talent"], similarPairs = [["great","fine"],["drama","acting"],["skills","talent"]]
+Input: sentence1 = ["great","acting","skills"], sentence2 = ["fine","drama","talent"], 
+       similarPairs = [["great","fine"],["drama","acting"],["skills","talent"]]
 Output: true
-Explanation: The two sentences have the same length and each word i of sentence1 is also similar to the corresponding word in sentence2.
+Explanation: The two sentences have the same length and each word i of sentence1 is 
+             also similar to the corresponding word in sentence2.
 ```
 
 __Example 2:__
@@ -37,7 +39,8 @@ Explanation: A word is similar to itself.
 
 __Example 3:__
 ```
-Input: sentence1 = ["great"], sentence2 = ["doubleplus","good"], similarPairs = [["great","doubleplus"]]
+Input: sentence1 = ["great"], sentence2 = ["doubleplus","good"], 
+       similarPairs = [["great","doubleplus"]]
 Output: false
 Explanation: As they don't have the same length, we return false.
 ```
