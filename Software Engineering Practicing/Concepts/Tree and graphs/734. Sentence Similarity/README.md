@@ -70,13 +70,17 @@ class Solution:
         for x, y in similarPairs:
             graph[x].add(y)
             graph[y].add(x)
+        # Check 2 scenarios:
+        # - sentence1[i] and sentence2[i] are the same
+        # - sentence1[i] and sentence2[i] are in the same pair of similarPairs
+        '''
         for i in range(len(sentence1)):
-            '''
-            Check 2 scenarios:
-            - sentence1[i] and sentence2[i] are the same
-            - sentence1[i] and sentence2[i] are in the same pair of similarPairs
-            '''
             if sentence1[i] == sentence2[i] or sentence2[i] in graph[sentence1[i]] or sentence1[i] in graph[sentence2[i]]:
+                continue
+            return False
+        '''
+        for word1, word2 in zip(sentence1, sentence2):
+            if word1 == word2 or word1 in graph[word2] or word2 in graph[word1]:
                 continue
             return False
         return True
