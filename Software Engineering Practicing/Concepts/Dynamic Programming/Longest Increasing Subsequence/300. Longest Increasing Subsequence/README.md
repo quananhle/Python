@@ -65,6 +65,10 @@ The third component is the simplest: we need a base case. For this problem, we c
 
 3. Return the ```max``` value from ```dp```.
 
+__Time Complexity__: ```O(N^2)```, nested loop through the entire input array in the worst case
+
+__Space Complexity__: ```O(N)```, subarray can be as large in size as the input array if every element in input array is strictly increasing
+
 ```Python
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
@@ -83,6 +87,10 @@ class Solution:
 It appears the best way to build an increasing subsequence is: for each element ```num```, if ```num``` is greater than the largest element in our ```subsequence```, then add it to the ```subsequence```. Otherwise, perform a linear scan through the ```subsequence``` starting from the smallest element and replace the __first element that is greater than or equal to__ ```num``` with ```num```. This opens the door for elements that are greater than ```num``` but less than the element replaced to be included in the sequence.
 
 One thing to add: this algorithm __does not__ always generate a valid subsequence of the input, but the length of the ```subsequence``` will always __equal__ the length of the longest increasing subsequence. For example, with the input ```[3, 4, 5, 1]```, at the end we will have ```longest_increasing_subsequence = [1, 4, 5]```, which isn't a subsequence, but the length is still correct. The length remains correct because the length only changes when a new element is larger than any element in the subsequence. In that case, the element is appended to the subsequence instead of replacing an existing element.
+
+__Time Complexity__: ```O(N^2)```, nested loop through the entire input array in the worst case
+
+__Space Complexity__: ```O(N)```, subarray can be as large in size as the input array if every element in input array is strictly increasing
 
 ```Python
 class Solution:
@@ -105,10 +113,23 @@ class Solution:
         return len(longest_increasing_subsequence)
 ```
 
-__Follow up__: Can you come up with an algorithm that runs in O(n log(n)) time complexity?
+__Follow up__: Can you come up with an algorithm that runs in ```O(n log(n))``` time complexity?
+
+__Time Complexity__: ```O(N log(n))```, perform a binary search while traversing the input array
+
+__Space Complexity__: ```O(N)```, subarray can be as large in size as the input array if every element in input array is strictly increasing
 
 ### Binary Search
 
 ```Python
-
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        longest_increasing_subsequence = list()
+        for num in nums:
+            index = bisect.bisect_left(longest_increasing_subsequence, num)
+            if index == len(longest_increasing_subsequence):
+                longest_increasing_subsequence.append(num)
+            else:
+                longest_increasing_subsequence[index] = num
+        return len(longest_increasing_subsequence)
 ```
