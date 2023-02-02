@@ -57,6 +57,14 @@ Second, we need a way to transition between states, such as ```dp[5]``` and ```d
 
 The third component is the simplest: we need a base case. For this problem, we can initialize every element of dp to 1, since every element on its own is technically an increasing subsequence.
 
+### Algorithm
+
+1. Initialize an array ```dp``` with length ```nums.length``` and all elements equal to 1. ```dp[i]``` represents the length of the longest increasing subsequence that ends with the element at index ```i```.
+
+2. Iterate from ```i = 1``` to ```i = nums.length - 1```. At each iteration, use a second for loop to iterate from ```j = 0``` to ```j = i - 1``` (all the elements before ```i```). For each element before ```i```, check if that element is smaller than ```nums[i]```. If so, set ```dp[i] = max(dp[i], dp[j] + 1)```.
+
+3. Return the ```max``` value from ```dp```.
+
 ```Python
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
