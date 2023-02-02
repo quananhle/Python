@@ -61,3 +61,20 @@ class Solution:
                     break
         return True
 ```
+
+### List Comparisons
+
+```Python
+class Solution:
+    def isAlienSorted(self, words: List[str], order: str) -> bool:
+        dictionary = collections.defaultdict(int)
+        for i, c in enumerate(order):
+            dictionary[c] = i
+        prev = list(dictionary[c] for c in words[0])
+        for i in range(1, len(words)):
+            curr = list(dictionary[c] for c in words[i])
+            if curr < prev:
+                return False
+            prev = curr
+        return True
+```
