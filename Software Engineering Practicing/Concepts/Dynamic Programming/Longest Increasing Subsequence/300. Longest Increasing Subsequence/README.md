@@ -80,6 +80,10 @@ class Solution:
 
 ### Build Longest Increasing Subsequence
 
+It appears the best way to build an increasing subsequence is: for each element ```num```, if ```num``` is greater than the largest element in our ```subsequence```, then add it to the ```subsequence```. Otherwise, perform a linear scan through the ```subsequence``` starting from the smallest element and replace the __first element that is greater than or equal to__ ```num``` with ```num```. This opens the door for elements that are greater than ```num``` but less than the element replaced to be included in the sequence.
+
+One thing to add: this algorithm __does not__ always generate a valid subsequence of the input, but the length of the ```subsequence``` will always __equal__ the length of the longest increasing subsequence. For example, with the input ```[3, 4, 5, 1]```, at the end we will have ```longest_increasing_subsequence = [1, 4, 5]```, which isn't a subsequence, but the length is still correct. The length remains correct because the length only changes when a new element is larger than any element in the subsequence. In that case, the element is appended to the subsequence instead of replacing an existing element.
+
 ```Python
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
@@ -91,7 +95,7 @@ class Solution:
             idx = 0
             # Check if the consequence is not increasing with the current numbe
             if num <= longest_increasing_subsequence[-1]:
-                # Search for the smaller candidate to keep in the subsequence
+                # Search for the candidate to keep in the subsequence
                 while longest_increasing_subsequence[idx] < num:
                     idx += 1
                 longest_increasing_subsequence[idx] = num
@@ -102,3 +106,9 @@ class Solution:
 ```
 
 __Follow up__: Can you come up with an algorithm that runs in O(n log(n)) time complexity?
+
+### Binary Search
+
+```Python
+
+```
