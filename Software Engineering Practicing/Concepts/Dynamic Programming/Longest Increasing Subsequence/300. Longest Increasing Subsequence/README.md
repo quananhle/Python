@@ -1,6 +1,6 @@
 ## 300. Longest Increasing Subsequence
 
-```Tag```: ```Dynamic Programming``` ```
+```Tag```: ```Dynamic Programming``` ```Binary Search```
 
 #### Difficulty: Medium
 
