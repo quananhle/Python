@@ -78,6 +78,27 @@ class Solution:
         return max(dp)
 ```
 
-###
+### Build Longest Increasing Subsequence
+
+```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        pivot = nums[0]
+        longest_increasing_subsequence = list()
+        longest_increasing_subsequence.append(pivot)
+
+        for num in nums[1:]:
+            idx = 0
+            # Check if the consequence is not increasing with the current numbe
+            if num <= longest_increasing_subsequence[-1]:
+                # Search for the smaller candidate to keep in the subsequence
+                while longest_increasing_subsequence[idx] < num:
+                    idx += 1
+                longest_increasing_subsequence[idx] = num
+            # Check if the subsequence is increasing, or the next number is bigger than the newest number in the subsequence
+            else:
+                longest_increasing_subsequence.append(num)
+        return len(longest_increasing_subsequence)
+```
 
 __Follow up__: Can you come up with an algorithm that runs in O(n log(n)) time complexity?
