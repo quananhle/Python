@@ -108,6 +108,8 @@ class Solution:
 
 ### Binary Search Tree Properties
 
+#### Recursive Traversal
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -132,4 +134,32 @@ class Solution:
         # Otherwise, found the common node or split point where p and q has the same parent
         else:
             return root
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root:
+            return root
+
+        def traverse(curr):
+            # Check if p and q are both bigger than the current node
+            if curr.val < p.val and curr.val < q.val:
+                # Traverse to the right subtree
+                curr = traverse(curr.right)
+            # Check if p and q are both smaller than the current node
+            if curr.val > p.val and curr.val > q.val:
+                # Traverse to the left subtree
+                curr = traverse(curr.left)
+            # At this point, this is the common ancestor of p and q before splitting
+            return curr
+
+        return traverse(root)
 ```
