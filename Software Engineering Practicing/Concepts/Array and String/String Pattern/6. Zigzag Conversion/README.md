@@ -116,3 +116,32 @@ class Solution:
                 index += 1
         return ''.join(rows)
 ```
+
+```Python
+# simulate and add each character to the corresponding row
+# go down -> reach bottom -> go up -> reach top -> go down ...
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        # Edge case
+        if numRows == 1: 
+            return s
+            
+        rows = [''] * numRows
+        # index is the index to track which rows a character should be added to
+        # direction is the direction: +1 go down, -1 go up
+        index, direction = 0, 1
+
+        for c in s:
+            # Add the current character to corresponding row
+            rows[index] += c
+            # Check if currently in the first row or reaches the first row, go down
+            if index == 0: 
+                direction = 1
+            # Check if reaches to the last row, go up
+            if index == numRows - 1: 
+                direction = -1
+            # Move index according to the direction
+            index += direction
+
+        return ''.join(rows)
+```
