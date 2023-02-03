@@ -62,3 +62,37 @@ class Solution:
 
         return abs(get_height(root.left) - get_height(root.right)) < 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
 ```
+
+### Bottom-Up Recursion
+
+#### Cache
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+        
+        def helper(node):
+            if not node:
+                return True, -1
+                
+            right_balanced, right_height = helper(node.right)
+            if not right_balanced:
+                return False, 0
+
+            left_balanced, left_height = helper(node.left)
+            if not left_balanced:
+                return False, 0
+
+            return (abs(left_height - right_height) < 2), (1 + max(right_height, left_height))
+        
+        ans, height = helper(root)
+        return ans
+```
