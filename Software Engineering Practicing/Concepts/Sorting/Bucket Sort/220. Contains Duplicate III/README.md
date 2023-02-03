@@ -59,3 +59,52 @@ class Solution:
                     return True
         return False
 ```
+
+### Bucket Sort
+
+```Bucket sort``` is a sorting algorithm that works by distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, using a different sorting algorithm
+
+![image](https://leetcode.com/problems/contains-duplicate-iii/solutions/127827/Figures/220/220_Buckets.png)
+
+From the above example, we have 8 unsorted integers. We create 5 buckets covering the inclusive ranges of ```[0,9],[10,19],[20,29],[30,39],[40,49]``` individually. Each of the eight elements is in a particular bucket. For element with value x, its bucket label is x/w and here we have w=10. Sort each bucket using some other sorting algorithm and then collect all of them bucket by bucket.
+
+```Python
+class Solution:
+    def containsNearbyAlmostDuplicate(self, nums: List[int], indexDiff: int, valueDiff: int) -> bool:
+        bucket_size = valueDiff + 1
+        bucket = collections.defaultdict(int)
+
+        def get_bucket_index(num):
+            if num >= 0:
+                return num // bucket_size
+            return (num + 1) // bucket_size - 1
+        
+        for idx, num in enumerate(nums):
+            bucket_idx = get_bucket_index(num)
+            if bucket_idx in bucket:
+                return True
+
+            # Check left and right bucket of the current bucket
+            left, right = bucket_idx - 1, bucket_idx + 1
+            # Check if the following requirements are met
+                # abs(i - j) <= indexDiff.
+                # abs(nums[i] - nums[j]) <= valueDiff
+            if (left in bucket and abs(bucket[left] - num) <= valueDiff) \
+                or (right in bucket and abs(bucket[right] - num) <= valueDiff):
+                    return True
+            
+            # Otherwise, create new bucket for num
+            bucket[bucket_idx] = num
+
+            # Remove invalid bucket which element index does not meet the indexDiff condition
+            if idx >= indexDiff:
+                bucket.pop(get_bucket_index(nums[idx - indexDiff]))
+        
+        return False
+```
+
+
+
+```Python
+
+```
