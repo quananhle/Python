@@ -127,3 +127,7 @@ class BSTIterator:
 # param_1 = obj.next()
 # param_2 = obj.hasNext()
 ```
+
+## Introduction to the Height-Balanced BST
+
+![IMAGE](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/01/25/balanced_bst.png)
