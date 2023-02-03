@@ -60,3 +60,31 @@ class Solution:
 
         return root
 ```
+
+### Preorder Traversal
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        if not nums:
+            return None
+
+        def helper(lo, hi):
+            if lo > hi:
+                return None
+
+            mi = lo + (hi - lo) // 2
+            
+            root = TreeNode(nums[mi])
+            root.left = helper(lo, mi-1)
+            root.right = helper(mi+1, hi)
+            return root
+        
+        return helper(0, len(nums)-1)
+```
