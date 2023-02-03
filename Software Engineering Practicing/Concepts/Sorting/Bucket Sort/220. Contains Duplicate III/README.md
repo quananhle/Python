@@ -1,6 +1,6 @@
 ## 220. Contains Duplicate III
 
-```Tag```: ```Binary Search Tree```
+```Tag```: ```Binary Search Tree``` ```Bucket Sort``` ```Sliding Window```
 
 #### Difficulty: Hard
 
