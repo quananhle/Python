@@ -82,17 +82,16 @@ class Solution:
         def helper(node):
             if not node:
                 return True, -1
-                
-            right_balanced, right_height = helper(node.right)
-            if not right_balanced:
-                return False, 0
 
             left_balanced, left_height = helper(node.left)
-            if not left_balanced:
+            right_balanced, right_height = helper(node.right)
+            
+            if not left_balanced or not right_balanced:
                 return False, 0
-
+            
             return (abs(left_height - right_height) < 2), (1 + max(right_height, left_height))
         
         ans, height = helper(root)
+        print (height)
         return ans
 ```
