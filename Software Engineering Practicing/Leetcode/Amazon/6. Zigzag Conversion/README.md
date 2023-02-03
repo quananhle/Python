@@ -52,3 +52,27 @@ __Constraints:__
 - ```1 <= numRows <= 1000```
 
 ---
+
+### Pattern
+
+#### Array Pattern
+
+![image](https://user-images.githubusercontent.com/35042430/216508458-aa8bd57f-0a63-4531-87d0-3456738bca19.png)
+
+```Python
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if not s or numRows == 1:
+            return s
+
+        res = list()
+        step = 2 * numRows - 2
+        for i in range(0, numRows):
+            for j in range(i, len(s), step):
+                res.append(s[j])
+                # Check if not in first and last rows and not step out of bound
+                if 0 < i < numRows - 1 and (j + step - 2*i) < len(s):
+                    res.append(s[j + step - 2*i])
+
+        return ''.join(res)
+```
