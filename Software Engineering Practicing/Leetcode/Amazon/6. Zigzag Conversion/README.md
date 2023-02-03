@@ -57,7 +57,19 @@ __Constraints:__
 
 #### Array Pattern
 
+![image](https://leetcode.com/problems/zigzag-conversion/solutions/2868537/Figures/6/Slide4.jpg)
+
+![image](https://leetcode.com/problems/zigzag-conversion/solutions/2868537/Figures/6/Slide5.jpg)
+
+![image](https://leetcode.com/problems/zigzag-conversion/solutions/2868537/Figures/6/Slide6.jpg)
+
+![image](https://leetcode.com/problems/zigzag-conversion/solutions/2868537/Figures/6/Slide7.jpg)
+
 ![image](https://user-images.githubusercontent.com/35042430/216508458-aa8bd57f-0a63-4531-87d0-3456738bca19.png)
+
+__Time Complexity__: ```O(M * N)```, loop M times while iterating through the input string size N
+
+__Space Complexity__: ```O(N)```, ouput size is the same as input string size 
 
 ```Python
 class Solution:
@@ -75,4 +87,32 @@ class Solution:
                     res.append(s[j + step - 2*i])
 
         return ''.join(res)
+```
+
+### Reverse Flag
+
+![image](https://leetcode.com/problems/zigzag-conversion/solutions/2868537/Figures/6/Slide3.jpg)
+
+__Time Complexity__: ```O(N)```, iterate through the input string size N
+
+__Space Complexity__: ```O(N)```, ouput size is the same as input string size 
+
+```Python
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1 or not s:
+            return s
+        rows = [''] * numRows
+        backward = True
+        index = 0
+        for c in s:
+            rows[index] += c
+            # Check if not in the first and last row
+            if index == 0 or index == numRows - 1:
+                backward = not backward
+            if backward:
+                index -= 1
+            else:
+                index += 1
+        return ''.join(rows)
 ```
