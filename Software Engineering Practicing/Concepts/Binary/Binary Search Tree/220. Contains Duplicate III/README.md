@@ -43,3 +43,19 @@ __Constraints:__
 
 ---
 
+### Sliding Window
+
+```Python
+class Solution:
+    def containsNearbyAlmostDuplicate(self, nums: List[int], indexDiff: int, valueDiff: int) -> bool:
+        # Brute Force Sliding Window
+        n = len(nums)
+        for i in range(n):
+            # i != j
+            # abs(i - j) <= indexDiff
+            for j in range(max(i - indexDiff, 0), i):
+                # abs(nums[i] - nums[j]) <= valueDiff
+                if abs(nums[i] - nums[j]) <= valueDiff:
+                    return True
+        return False
+```
