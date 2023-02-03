@@ -102,9 +102,3 @@ class Solution:
         
         return False
 ```
-
-
-
-```Python
-
-```
