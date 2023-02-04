@@ -13,7 +13,7 @@ A recursive function should have the following properties so that it does not re
 
 ---
 
-### Reverse String
+#### Reverse String
 
 Write a function that reverses a string. The input string is given as an array of characters ```s```.
 
@@ -29,6 +29,8 @@ Input: s = ["H","a","n","n","a","h"]
 Output: ["h","a","n","n","a","H"]
 ```
 
+![image](https://assets.leetcode.com/uploads/2019/01/27/344_reverse_string.png)
+
 ```Python
 class Solution:
     def reverseString(self, s: List[str]) -> None:
@@ -43,3 +45,24 @@ class Solution:
         
         helper(0, len(s)-1)
 ```
+
+---
+
+### Recursion Function
+
+![image](https://user-images.githubusercontent.com/35042430/216683224-18b4fb72-993f-4413-a96a-56f3a282025e.png)
+
+## Recurrence Relation
+
+There are two important things that one needs to figure out before implementing a recursive function:
+
+  - ```recurrence relation```: the relationship between the result of a problem and the result of its subproblems.
+  - ```base case```: the case where one can compute the answer directly without any further recursion calls. Sometimes, the base cases are also called bottom cases, since they are often the cases where the problem has been reduced to the minimal scale, i.e. the bottom, if we consider that dividing the problem into subproblems is in a top-down manner.
+
+```Once we figure out the above two elements, to implement a recursive function we simply call the function itself according to the recurrence relation until we reach the base case.```
+
+---
+
+## Memoization
+
+### Duplicate Calculation in Recursion
