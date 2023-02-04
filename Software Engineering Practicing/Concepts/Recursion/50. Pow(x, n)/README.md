@@ -129,3 +129,28 @@ class Solution:
         
         return fast_power(x, n)
 ```
+
+#### Iterative Approach
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        # Base cases
+        if not x:
+            return 0
+        if n == 0:
+            return 1
+        # Edge cases
+        if n < 0:
+            x = 1/x
+            n = -n
+
+        ans, cur = 1, x
+
+        while n > 0: 
+            if n % 2 == 1:
+                ans *= cur
+            cur *= cur
+            n //= 2
+        return ans
+```
