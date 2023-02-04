@@ -95,4 +95,37 @@ class Solution:
         return cache[n]
 ```
 
-### 
+### Fast Power Algorithm
+
+#### Recursive Approach
+
+![image](https://user-images.githubusercontent.com/35042430/216752727-5ab9120e-6cb4-4458-9dc4-94f7278f927d.png)
+
+#### Algorithm
+
+![image](https://user-images.githubusercontent.com/35042430/216752885-c966f64e-13b2-41af-8098-eb2c65a9f945.png)
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        # Edge cases
+        if n < 0:
+            x = 1/x
+            n = -n
+        
+        def fast_power(x, n):
+            # Base cases
+            if not x:
+                return 0
+            if not n or x == 1:
+                return 1
+
+            half = fast_power(x, n // 2)
+
+            if n % 2 == 0:
+                return half * half
+            else:
+                return half * half * x
+        
+        return fast_power(x, n)
+```
