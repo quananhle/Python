@@ -48,6 +48,7 @@ __Constraints:__
 ![image](https://leetcode.com/problems/swap-nodes-in-pairs/solutions/441911/Figures/24/24_Swap_Nodes_4.png)
 
 __Time Complexity__: ```O(N)``` where ```N``` is the size of the linked list.
+
 __Space Complexity__: ```O(N)``` stack space utilized for recursion.
 
 ```Python
@@ -103,6 +104,7 @@ class Solution:
 This is an iterative step, so the nodes are swapped on the go and attached to the previously swapped list. And in the end we get the final swapped list.
 
 __Time Complexity__: ```O(N)``` where ```N``` is the size of the linked list.
+
 __Space Complexity__: ```O(1)```
 
 ```Python
