@@ -37,3 +37,62 @@ __Constraints:__
 - -10<sup>4</sup> <= x<sup>n</sup> <= 10<sup>4</sup>
 
 ---
+
+### Brute Force
+
+#### Time Limit Exceeded
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        # Brute Force
+        ### Time Limit Exceeded
+        """
+        if not x:
+            return 0
+        if not n or x == 1:
+            return 1
+        if n < 0:
+            x = 1/x
+            n = -n
+        ans = x
+        for _ in range(2, n+1):
+            ans *= x
+        return ans
+```
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if not x:
+            return 0
+        if not n or x == 1:
+            return 1
+        if n < 0:
+            x = 1/x
+            n = -n
+        cache = [0] * (n + 1)
+        cache[0], cache[1] = 1, x
+        for i in range(2, len(cache)):
+            cache[i] = x * cache[i-1]
+        return cache[n]
+```
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if not x:
+            return 0
+        if not n or x == 1:
+            return 1
+        if n < 0:
+            x = 1/x
+            n = -n
+        cache = collections.defaultdict(int)
+        cache[0], cache[1] = 1, x
+        for i in range(2, n + 1):
+            cache[i] = x * cache[i-1]
+        return cache[n]
+```
+
+### 
