@@ -31,3 +31,24 @@ __Constraints:__
 - ```s1``` and ```s2``` consist of lowercase English letters.
 
 ---
+
+### Hashmap and Counter
+
+```Python
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        def matches(counter1, counter2):
+            for key, val in counter1.items():
+                if counter1[key] - counter2.get(key, -1) != 0:
+                    return False
+            return True
+
+        s1_counter = collections.Counter(s1)
+        for i in range(len(s2) - len(s1) + 1):
+            s2_counter = collections.defaultdict(int)
+            for j in range(len(s1)):
+                s2_counter[s2[i + j]] = 1 + s2_counter.get(s2[i + j], 0)
+            if matches(s1_counter, s2_counter):
+                return True
+        return False
+```
