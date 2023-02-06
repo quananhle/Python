@@ -66,3 +66,11 @@ There are two important things that one needs to figure out before implementing 
 ## Memoization
 
 ### Duplicate Calculation in Recursion
+
+This idea is also known as ```memoization```, which is a technique that is frequently used together with recursion.
+
+```
+Memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+```
+
+---
