@@ -74,3 +74,20 @@ Memoization is an optimization technique used primarily to speed up computer pro
 ```
 
 ---
+
+## Tips
+
+```
+When in doubt, write down the recurrence relationship.
+```
+
+```
+Whenever possible, apply memoization.
+```
+
+```
+When stack overflows, tail recursion might come to help. 
+```
+
+![image](https://assets.leetcode.com/uploads/2019/01/27/tail_recursion_is_its_own_reward.png)
+
