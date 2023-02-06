@@ -32,6 +32,8 @@ __Constraints:__
 
 ---
 
+![image](https://user-images.githubusercontent.com/35042430/216882985-aa2efee1-a6b8-40f5-9bcd-94d9526ffeed.png)
+
 ### Hashmap and Counter
 
 ```Python
