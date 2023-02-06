@@ -74,3 +74,57 @@ class Solution:
 
         return int(row_memo[n-1][k-1])
 ```
+
+### Recursion
+
+```Python
+class Solution:
+    def kthGrammar(self, n: int, k: int) -> int:
+        '''
+        row 1: 0
+        row 2: 01
+        row 3: 0110
+        row 4: 01101001
+        row 5: 0110100110010110
+        row 6: 01101001100101101001011001101001
+        row 7: 0110100110010110100101100110100110010110011010010110100110010110
+        ...
+        '''
+        # Base cases
+        if n == 1:
+            return 0
+        if n == 2:
+            if k == 1: return 0
+            if k == 2: return 1
+        
+        # For any nth level, the size of the row is 2**(n-1), and half the size of the current row equals the size of the previous row
+        prev_row_size = 2**(n - 2)
+
+        # Check if k index is in the first half of the current row
+        if k <= prev_row_size:
+            return self.kthGrammar(n - 1, k)
+        # Otherwise, k index is in the second half of the current row
+        else:
+            if self.kthGrammar(n - 1, k - prev_row_size) == 0:
+                return 1
+            else:
+                return 0
+
+        '''
+        row 4: 0 1 1 0 1 0 0 1
+               | | | | | | | |
+               1 2 3 4 5 6 7 8
+        row 4 size = 8
+        row 3 size = 4
+        row 2 size = 2
+        row 1 size = 1
+        Case 1: k = 3 => k < 4 -> self.kthGrammar(3, 3) -> k > 2 -> self.kthGrammar(2, 1)
+                                                                 -> k == 1 -> self.kthGrammar(1, 1) -> n == 1: self.kthGrammar(2, 1) == 0
+                                                                 -> return 1
+        Case 1: k = 7 => k > 4 -> self.kthGrammar(3, 3)
+                               -> k > 2 -> self.kthGrammar(2, 1)
+                                        -> k == 1 -> self.kthGrammar(1, 1) -> n == 1: self.kthGrammar(2, 1) == 0
+                                        -> self.kthGrammar(3, 3) == 1
+                               -> return 0
+        '''
+```
