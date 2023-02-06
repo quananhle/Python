@@ -129,7 +129,7 @@ class Solution:
         '''
 ```
 
-### Bitwise
+### Bitwise Manipulation
 
 #### Recursive Approach
 
