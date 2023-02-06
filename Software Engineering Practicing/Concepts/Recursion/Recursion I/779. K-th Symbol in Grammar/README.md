@@ -143,7 +143,7 @@ class Solution:
         return self.kthGrammar(n-1, k // 2) ^ 1
 ```
 
-### Iterative Approach
+#### Iterative Approach
 
 ```Python
 class Solution:
