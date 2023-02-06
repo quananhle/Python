@@ -154,3 +154,11 @@ class Solution:
             K = (K >> 1) + (K & 1)
         return ans
 ```
+
+### One Liner
+
+```Python
+class Solution:
+    def kthGrammar(self, N, K):
+        return bin(K - 1).count('1') & 1
+```
