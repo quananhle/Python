@@ -38,3 +38,50 @@ __Constraints:__
 - ```1 <= nums[i] <= 10^3```
 
 ---
+
+### One Liner
+
+__Time Complexity__: ```O(N)```, iterate through the half of the input array size 2N -> array size N
+
+__Space Complexity__: ```O(1)```, memory space for output does not count as additional array usage
+
+```Python
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return [num for pair in zip(nums[:len(nums)//2], [len(nums)//2:]) for num in pair]
+```
+
+```Python
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return list(chain(*zip(nums[:n], nums[n:])))
+```
+
+### Iterator and Extend()
+
+```Python
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        '''
+        res = list()
+        left, right = 0, len(nums)//2
+        while right < len(nums):
+            res.extend([nums[left], nums[right]])
+            left += 1
+            right += 1
+        return res
+        '''
+        res = list()
+        for i in range(n, len(nums)):
+            res.extend([nums[i-n], nums[i]])
+        return res
+```
+
+```Python
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        res = list()
+        for pair in zip(nums[:n], nums[n:]):
+            res.extend([pair[0], pair[1]])
+        return res
+```
