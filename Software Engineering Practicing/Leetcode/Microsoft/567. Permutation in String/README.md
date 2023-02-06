@@ -37,6 +37,31 @@ __Constraints:__
 ```Python
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
+        s1_counter = collections.defaultdict(int)
+        for c in s1:
+            if not c in s1_counter:
+                s1_counter[c] = 1
+            else:
+                s1_counter[c] += 1
+
+        def matches(counter1, counter2):
+            for key, val in counter1.items():
+                if counter1[key] - counter2.get(key, -1) != 0:
+                    return False
+            return True
+
+        for i in range(len(s2) - len(s1) + 1):
+            s2_counter = collections.defaultdict(int)
+            for j in range(len(s1)):
+                s2_counter[s2[i + j]] = 1 + s2_counter.get(s2[i + j], 0)
+            if matches(s1_counter, s2_counter):
+                return True
+        return False
+```
+
+```Python
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
         def matches(counter1, counter2):
             for key, val in counter1.items():
                 if counter1[key] - counter2.get(key, -1) != 0:
@@ -49,6 +74,19 @@ class Solution:
             for j in range(len(s1)):
                 s2_counter[s2[i + j]] = 1 + s2_counter.get(s2[i + j], 0)
             if matches(s1_counter, s2_counter):
+                return True
+        return False
+```
+
+```Python
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        l1, l2 = len(s1), len(s2)
+        s1_counter = collections.Counter(s1)
+        for i in range(l2 - l1 + 1):
+            window = s2[i : i+l1]
+            s2_counter = collections.Counter(window)
+            if s1_counter == s2_counter:
                 return True
         return False
 ```
