@@ -128,3 +128,29 @@ class Solution:
                                -> return 0
         '''
 ```
+
+### Bitwise
+
+#### Recursive Approach
+
+```Python
+class Solution:
+    def kthGrammar(self, n: int, k: int) -> int:
+        if k == 1:
+            return 0
+        if k & 1: 
+            return self.kthGrammar(n-1, k // 2 + 1)
+        return self.kthGrammar(n-1, k // 2) ^ 1
+```
+
+### Iterative Approach
+
+```Python
+class Solution:
+    def kthGrammar(self, N, K):
+        ans = 0
+        while K > 1:
+            ans ^= ((K & 1) ^ 1)
+            K = (K >> 1) + (K & 1)
+        return ans
+```
