@@ -1,6 +1,6 @@
 ## 904. Fruit Into Baskets
 
-```Tag```: ```Sliding Window```
+```Tag```: ```Sliding Window``` ```Hash Map```
 
 #### Difficulty: Medium
 
