@@ -94,3 +94,44 @@ def divide_and_conquer( S ):
 
 #### Validate Binary Search Tree
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        '''
+        stack = list()
+        parent = -sys.maxsize - 1
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if root.val <= parent:
+                return False
+            parent = root.val
+            root = root.right
+        return True
+        '''
+        # Recursion
+        self.parent = -sys.maxsize - 1
+        def inorder(node):
+            # Base case: if traverse through every node of the tree
+            if not node:
+                return True
+            # Check left subtree, return False if failed
+            if not inorder(node.left):
+                return False
+            if node.val <= self.parent:
+                return False
+            # Update the limit
+            self.parent = node.val
+            # Check the right subtree
+            return inorder(node.right)
+        
+        return inorder(root)
+```
