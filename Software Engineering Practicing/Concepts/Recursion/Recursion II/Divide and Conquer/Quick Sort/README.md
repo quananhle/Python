@@ -1,5 +1,7 @@
 ## Quick Sort
 
+![image](https://assets.leetcode.com/uploads/2019/03/24/quicksort.png)
+
 ```Python
 class Solution:
     def quick_sort(self, nums: List[int]) -> List[int]:
