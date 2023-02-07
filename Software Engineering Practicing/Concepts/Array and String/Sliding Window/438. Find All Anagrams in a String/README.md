@@ -1,6 +1,6 @@
 ## 438. Find All Anagrams in a String
 
-```Tag```: ```Sliding Window```
+```Tag```: ```Sliding Window``` ```Hash Map```
 
 #### Difficulty: Medium
 
