@@ -82,6 +82,107 @@ class Solution:
 
 ### Optimized Brute Force
 
-```Python
+![image](https://leetcode.com/problems/fruit-into-baskets/solutions/2960000/Figures/904/904-no_dup.png)
 
+![image](https://leetcode.com/problems/fruit-into-baskets/solutions/2960000/Figures/904/904-early_stop.png)
+
+#### Algorithm
+
+1. Initialize ```max_picked``` as 0.
+2. Iterate over ```left```, the left index of the subarray.
+3. For every subarray start at index ```left```, we iterate over every index ```right``` to fix the end of subarray, and calculate the types of fruits in this subarray.
+  - If there are no more than 2 types, this subarray is valid, we update ```max_picked``` with the length of this subarray.
+  - Otherwise, the current subarray, as well as all the longer subarrays (with the same left index ```left```) are invalid. Move on to the next left index ```left + 1```.
+4. Once we finish the iteration, return ```max_picked``` as the maximum number of fruits we can collect.
+
+```Python
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        # Optimized Brute Force
+        max_picked = 0
+
+        for left in range(len(fruits)):
+            basket = set()
+            right = left
+            while right < len(fruits):
+                # Check if adding new fruits makes 3 types of fruit in basket
+                if not fruits[right] in basket and len(basket) == 2:
+                    break
+                # Otherwise, add fruit to the basket
+                basket.add(fruits[right])
+                right += 1
+            max_picked = max(max_picked, right - left)
+        
+        return max_picked
+```
+
+### Sliding Window
+
+![image](https://leetcode.com/problems/fruit-into-baskets/solutions/2960000/Figures/904/904_sw_exp.png)
+
+#### Algorithm
+
+1. Start with an empty window with ```left``` and ```right``` as its left and right index.
+2. We iterate over ```right``` and add ```fruits[right]``` to this window.
+  - If the number is no larger than 2, meaning that we collect no more than 2 types of fruits, this subarray is valid.
+  - Otherwise, it is not the right time to expand the window and we must keep its size. Since we have added one fruit from the right side, we should remove one fruit from the left side of the window, and increment ```left``` by 1.
+3. Once we are done iterating, the difference between ```left``` and ```right``` stands for the longest valid subarray we encountered, i.e. the maximum number of fruits we can collect.
+
+```Python
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        # Sliding Window
+        basket = collections.defaultdict(int)
+        left = 0
+
+        for right, fruit in enumerate(fruits):
+            if not fruit in basket:
+                basket[fruit] = 1
+            else:
+                basket[fruit] += 1
+            
+            # Check if current window has more than 2 types of fruits
+            if len(basket) > 2:
+                # Remove 1 fruit from the left index of the window
+                basket[fruits[left]] -= 1
+
+                # Check if number of the fruit at left index of the window is now 0, update the basket
+                if basket[fruits[left]] == 0:
+                    del basket[fruits[left]]
+                left += 1
+        
+        return right - left + 1
+```
+
+### Optimized Sliding Window
+
+__Time Complexity__: ```O(N)```, iterate through the input array once
+
+__Space Complexity__: ```O(1)```, only maintain at most 3 types of fruit in the basket hashmap at any given time
+
+```Python
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        # Sliding Window
+        basket = collections.defaultdict(int)
+        left = 0
+        max_picked = 0
+
+        for right, fruit in enumerate(fruits):
+            if not fruit in basket:
+                basket[fruit] = 1
+            else:
+                basket[fruit] += 1
+            
+            # Check if current window has more than 2 types of fruit, keep removing the fruits from the left index
+            while len(basket) > 2:
+                basket[fruits[left]] -= 1
+                # Check if quantity of fruit[left] is 0, update the basket
+                if basket[fruits[left]] == 0:
+                    del basket[fruits[left]]
+                left += 1
+            
+            max_picked = max(max_picked, right - left + 1)
+        
+        return max_picked
 ```
