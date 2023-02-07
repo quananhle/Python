@@ -306,3 +306,33 @@ class Solution:
 
         return False
 ```
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not len(matrix) or not len(matrix[0]):
+            return False
+        
+        ROWS, COLS = len(matrix), len(matrix[0])
+
+        # Start the pointer from "bottom-left" of the matrix as integers are sorted in ascending order form left - right, top - bottom
+        '''
+        matrix[left][top] is the smallest element
+        matrix[right][bottom] is the largest element
+        '''
+
+        # Traverse from bottom-up and left-right
+        def traverse(row, col):
+            while col < COLS and row >= 0:
+                if matrix[row][col] > target:
+                    # Move up
+                    row -= 1
+                elif matrix[row][col] < target:
+                    # Move right
+                    col += 1
+                else:
+                    return True
+            return False
+
+        return traverse(ROWS - 1, 0)
+```
