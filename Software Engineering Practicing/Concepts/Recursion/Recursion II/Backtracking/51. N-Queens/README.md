@@ -58,3 +58,48 @@ We'll create a recursive function ```backtrack``` that takes a few arguments to 
 
 4. The function call made in step 3 explores all valid board states with the queen we placed in step 2. Since we're done exploring that path, backtrack by removing the queen from the square - this includes removing the values we added to our sets on top of removing the ```"Q"``` from the board.
 
+```Python
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        res = list()
+        empty_board = [["."] * n for _ in range(n)]
+
+        def create_board(state):
+            board = list()
+            for row in state:
+                board.append("".join(row))
+            return board
+        
+        def backtrack(row, diagonals, anti_diagonals, cols, state):
+            # Base case, all queens have been placed correctly
+            if row == n:
+                res.append(create_board(state))
+                return
+            
+            for col in range(n):
+                curr_diagonal = row - col
+                curr_anti_diagonal = row + col
+                # Check if the current cell is placeable by checking col, diagonal, and anti diagonal
+                if col in cols or curr_diagonal in diagonals or curr_anti_diagonal in anti_diagonals:
+                    continue
+                # Otherwise, the current cell is a candidate to place the queen
+                cols.add(col)
+                diagonals.add(curr_diagonal)
+                anti_diagonals.add(curr_anti_diagonal)
+                # Mark the cell
+                state[row][col] = "Q"
+
+                # Move on to the next row with updated board state
+                backtrack(row + 1, diagonals, anti_diagonals, cols, state)
+                
+                # Backtrack after completing exploring all the possible path from current cell
+                cols.remove(col)
+                diagonals.remove(curr_diagonal)
+                anti_diagonals.remove(curr_anti_diagonal)
+                # Remove the queen
+                state[row][col] = "."
+
+        backtrack(0, set(), set(), set(), empty_board)
+        
+        return res
+```
