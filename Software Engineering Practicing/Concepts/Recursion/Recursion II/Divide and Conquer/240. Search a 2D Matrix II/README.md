@@ -212,3 +212,93 @@ class Solution:
                     return True
         return False
 ```
+
+### Divide and Conquer
+
+__Time Complexity__: ```0(NlogN)```, perform binary search operation while traversing every row of the matrix
+
+__Space Complexity__: ```O(logN)```, extra memory to keep up recursion stack
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not matrix:
+            return False
+        
+        def search(left, up, right, down):
+            if left > right or up > down:
+                return False
+            
+            elif target < matrix[up][left] or target > matrix[down][right]:
+                return False
+            
+            mid = left + (right - left) // 2
+
+            row = up
+            while row <= down and matrix[row][mid] <= target:
+                if matrix[row][mid] == target:
+                    return True
+                row += 1
+            
+            return search(left, row, mid - 1, down) or search(mid + 1, up, right, row - 1)
+        
+        return search(0, 0, len(matrix[0]) - 1, len(matrix) - 1)
+```
+
+### Search Space Reduction
+
+#### Algorithms
+
+Because the rows are sorted from left-to-right, we know that every value to the right of the current value is larger. Therefore, if the current value is already larger than target, we know that every value to its right will also be too large. A very similar argument can be made for the columns, so this manner of search will always find target in the matrix (if it is present).
+
+![image](https://user-images.githubusercontent.com/35042430/217356242-01cf01bc-2d13-4b61-a511-24072e539720.png)
+```
+row -= 1
+```
+![image](https://user-images.githubusercontent.com/35042430/217356282-b0c32d85-a459-48a9-818e-2beb181cd193.png)
+```
+row -= 1
+```
+![image](https://user-images.githubusercontent.com/35042430/217356341-186bb63e-c70f-468d-bc43-4266d9711527.png)
+```
+col += 1
+```
+![image](https://user-images.githubusercontent.com/35042430/217356419-46796d38-c0a6-4342-aadc-dd0b1f246fbf.png)
+```
+col += 1
+```
+![image](https://user-images.githubusercontent.com/35042430/217356465-670b72ac-8b62-4574-b3e6-4b712e5b9f9a.png)
+```
+row -= 1
+```
+![image](https://user-images.githubusercontent.com/35042430/217356506-7698bfac-c26b-4a17-bbd6-4564f095ce65.png)
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not len(matrix) or not len(matrix[0]):
+            return False
+        
+        ROWS, COLS = len(matrix), len(matrix[0])
+
+        # Start the pointer from "bottom-left" of the matrix as integers are sorted in ascending order form left - right, top - bottom
+        '''
+        matrix[left][top] is the smallest element
+        matrix[right][bottom] is the largest element
+        '''
+
+        row, col = ROWS - 1, 0
+        
+        # Traverse from bottom-up and left-right
+        while col < COLS and row >= 0:
+            if matrix[row][col] > target:
+                # Move up
+                row -= 1
+            elif matrix[row][col] < target:
+                # Move right
+                col += 1
+            else:
+                return True
+
+        return False
+```
