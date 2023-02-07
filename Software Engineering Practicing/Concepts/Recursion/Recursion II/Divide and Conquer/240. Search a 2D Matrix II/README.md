@@ -273,6 +273,10 @@ row -= 1
 ```
 ![image](https://user-images.githubusercontent.com/35042430/217356506-7698bfac-c26b-4a17-bbd6-4564f095ce65.png)
 
+__Time Complexity__: ```0(N + M)```, traverse the total length of rows and columns at worst
+
+__Space Complexity__: ```O(1)```, constant memory space for pointers
+
 ```Python
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
