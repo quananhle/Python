@@ -1,6 +1,6 @@
 ## 240. Search a 2D Matrix II
 
-```Tag```: ```Recursion```
+```Tag```: ```Recursion``` ```Depth-First Search``` ```Breadth-First Seach```
 
 #### Difficulty: Medium
 
@@ -40,3 +40,32 @@ __Constraints:__
 - -10<sup>9</sup> <= ```target``` <= 10<sup>9</sup>
 
 ---
+
+### Depth-First Seach
+
+#### Recursive Approach
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        self.found = False
+        ROWS, COLS = len(matrix), len(matrix[0])
+        visited = set()
+        DIRECTIONS = [(1,0), (0,1)]
+
+        def dfs(row, col):
+            if not (0 <= row < ROWS and 0 <= col < COLS) or (row, col) in visited or self.found: 
+                return
+            visited.add((row, col))
+            if target == matrix[row][col]:
+                self.found = True
+                return
+            else:
+                [dfs(row + x, col + y) for x, y in DIRECTIONS]
+    
+        
+        dfs(0, 0)
+
+        return self.found
+```
+
