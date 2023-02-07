@@ -45,31 +45,52 @@ Merging two sorted lists can be done in linear time complexity ```O(N)```, where
 ![image](https://assets.leetcode.com/uploads/2019/04/06/merge_sort_merge.gif)
 
 ```Python
-def merge_sort(nums):
-    # bottom cases: empty or list of a single element.
-    if len(nums) <= 1:
-        return nums
-
-    pivot = int(len(nums) / 2)
-    left_list = merge_sort(nums[0:pivot])
-    right_list = merge_sort(nums[pivot:])
-    return merge(left_list, right_list)
-
-
-def merge(left_list, right_list):
-    left_cursor = right_cursor = 0
-    ret = []
-    while left_cursor < len(left_list) and right_cursor < len(right_list):
-        if left_list[left_cursor] < right_list[right_cursor]:
-            ret.append(left_list[left_cursor])
-            left_cursor += 1
-        else:
-            ret.append(right_list[right_cursor])
-            right_cursor += 1
-    
-    # append what is remained in either of the lists
-    ret.extend(left_list[left_cursor:])
-    ret.extend(right_list[right_cursor:])
-    
-    return ret
+class Solution:
+    def merge_sort(self, nums: List[int]) -> List[int]:
+        if len(nums) <= 1:
+            return nums
+        
+        def merge(left_list, right_list):
+            l, r = len(left_list), len(right_list)
+            left_cursor = right_cursor = cursor = 0
+            res = list()
+            while left_cursor < l and right_cursor < r:
+                if left_list[left_cursor] < right_list[right_cursor]:
+                    res.append(left_list[left_cursor])
+                    left_cursor += 1
+                else:
+                    res.append(right_list[right_cursor])
+                    right_cursor += 1
+            res.extend(left_list[left_cursor:])
+            res.extend(right_list[right_cursor:])
+        
+            return res
+        
+        pivot = len(nums) // 2
+        left_list = self.merge_sort(nums[:pivot])
+        right_list = self.merge_sort(nums[pivot:])
+        
+        return merge(left_list, right_list)
 ```
+
+### D&C Template
+
+![image](https://user-images.githubusercontent.com/35042430/217106087-919d268c-9707-4088-a95c-0b5d18cad5ca.png)
+
+```Python
+def divide_and_conquer( S ):
+    # (1). Divide the problem into a set of subproblems.
+    [S1, S2, ... Sn] = divide(S)
+
+    # (2). Solve the subproblem recursively,
+    #   obtain the results of subproblems as [R1, R2... Rn].
+    rets = [divide_and_conquer(Si) for Si in [S1, S2, ... Sn]]
+    [R1, R2,... Rn] = rets
+
+    # (3). combine the results from the subproblems.
+    #   and return the combined result.
+    return combine([R1, R2,... Rn])
+```
+
+#### Validate Binary Search Tree
+
