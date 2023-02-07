@@ -135,3 +135,25 @@ class Solution:
         
         return inorder(root)
 ```
+
+### Master Theorem
+
+## Backtracking
+
+![image](https://assets.leetcode.com/uploads/2019/04/15/backtracking.png)
+
+```
+Backtracking is a general algorithm for finding all (or some) solutions to some computational problems (notably Constraint satisfaction problems or CSPs), which incrementally builds candidates to the solution and abandons a candidate ("backtracks") as soon as it determines that the candidate cannot lead to a valid solution. [1]
+
+Once we can determine if a certain node cannot possibly lead to a valid solution, we abandon the current node and backtrack to its parent node to explore other possibilities. It is due to this backtracking behaviour, the backtracking algorithms are often much faster than the brute-force search [2] algorithm, since it eliminates many unnecessary exploration. 
+```
+
+![image](https://assets.leetcode.com/uploads/2019/05/30/backtracking1.jpeg)
+
+__Brute approach__
+
+![image](https://assets.leetcode.com/uploads/2019/05/30/backtracking2.jpeg)
+
+__Backtracking approach__
+
+![image](https://assets.leetcode.com/uploads/2019/05/30/backtracking3.jpeg)
