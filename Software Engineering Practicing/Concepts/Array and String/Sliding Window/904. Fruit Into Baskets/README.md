@@ -48,3 +48,40 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/fruit-into-baskets/solutions/2960000/Figures/904/904-example_1.png)
+
+![image](https://leetcode.com/problems/fruit-into-baskets/solutions/2960000/Figures/904/904-example_2.png)
+
+### Brute Force
+
+__Algorithm__
+
+1. Initialize ```max_picked = 0``` to track the maximum number of fruits we can collect.
+2. Iterate over the left index ```slow``` of subarrays.
+3. For every subarray start at index ```left```, iterate over every index ```right``` to fix the end of subarray.
+4. For each subarray ```(left, right)```, count the types of fruits it contains.
+  - If there are no more than 2 types, this subarray is valid, we take its length to update ```max_picked```.
+  - Otherwise, if the current subarray is __invalid__, we move on to the next subarray.
+5. Once we finish the iteration, return ```max_picked``` as the maximum number of fruits we can collect.
+
+```Python
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        # Brute Force
+        max_picked = 0
+        n = len(fruits)
+        for slow in range(n):
+            for fast in range(slow, n):
+                basket = set()
+                for curr in range(slow, fast + 1):
+                    basket.add(fruits[curr])
+                if len(basket) <= 2:
+                    max_picked = max(max_picked, fast - slow + 1)
+        return max_picked
+```
+
+### Optimized Brute Force
+
+```Python
+
+```
