@@ -43,6 +43,49 @@ s and p consist of lowercase English letters.
 
 ### Sliding Window
 
+![image](https://user-images.githubusercontent.com/35042430/217167331-76f39d00-143a-4053-b726-84749caf8839.png)
+
+![image](https://user-images.githubusercontent.com/35042430/217167544-7f490e0f-baa7-4aa9-bd29-39311664ed5e.png)
+
+![image](https://user-images.githubusercontent.com/35042430/217167566-be3092d4-bea1-4bcc-8549-b4bf7bde9339.png)
+
+![image](https://user-images.githubusercontent.com/35042430/217167614-306acd4b-889d-4131-b0d1-3b285554fb94.png)
+
+![image](https://user-images.githubusercontent.com/35042430/217167647-a0fc3bc0-b57d-456d-904f-18beb4aab782.png)
+
+```Python
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        # Sliding Window
+        res = list()
+
+        if len(s) < len(p):
+            return []
+
+        s_counter = collections.defaultdict(int)
+        p_counter = collections.Counter(p)
+
+        for right in range(len(s)):
+            if not s[right] in s_counter:
+                s_counter[s[right]] = 1
+            else:
+                s_counter[s[right]] += 1
+            # Check if the current length of window is larger than length of p
+            if right >= len(p):
+                # Check if the quantity of the character at the right index in counter is 1
+                if s_counter[s[right - len(p)]] == 1:
+                    # Remove the element at the right index of the window
+                    del s_counter[s[right - len(p)]]
+                # Otherwise, update the frequency of the character at the right index
+                else:
+                    s_counter[s[right - len(p)]] -= 1
+            # Compare the counters and get the start index
+            if s_counter == p_counter:
+                res.append(right - len(p) + 1)
+        
+        return res
+```
+
 ```Python
 class Solution(object):
     def findAnagrams(self, s, p):
