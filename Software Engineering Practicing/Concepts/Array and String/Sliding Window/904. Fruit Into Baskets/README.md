@@ -156,6 +156,8 @@ class Solution:
 
 ### Optimized Sliding Window
 
+![image](https://leetcode.com/problems/fruit-into-baskets/solutions/2960000/Figures/904/904_sc_3.png)
+
 __Time Complexity__: ```O(N)```, iterate through the input array once
 
 __Space Complexity__: ```O(1)```, only maintain at most 3 types of fruit in the basket hashmap at any given time
