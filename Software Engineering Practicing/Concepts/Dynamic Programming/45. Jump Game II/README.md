@@ -68,6 +68,8 @@ class Solution:
 
 ### Backtracking
 
+The most intuitive way is to, at each index, check every index you can go to. Then, consider every index you can go to from there. At the end, the candidate with the least indices is our answer. We can make an optimization by discarding any candidates of length greater than what we've already found to be the best, but this algorithm is still exponential.
+
 ```Python
 class Solution:
     def jump(self, nums: List[int]) -> int:
@@ -92,6 +94,8 @@ class Solution:
 ```
 
 ### Top-Down Dynamic Programming
+
+Clearly there is a lot of repeated work in the above algorithm. It calculates ```backtrack(candidate + i, i)``` for identical values of ```candidate``` and ```i``` repeatedly. By memoizing every result, we can bring the time complexity down to polynomial time, as the maximum number of iterations will be ```candidate``` (```O(M)```) times ```i``` (```O(N)```).
 
 ```Python
 class Solution:
@@ -121,6 +125,55 @@ class Solution:
 
 ### Bottom-Up Dynamic Programming
 
-```Python
+Let's make an observation about the top-down DP: we are memoizing values that do not need to be memoized. The key intuition here is that if we have a score for index_start and index_end, we need not recompute values in the middle. Why? Well, if we can get to a certain ending index, then we can necessarily get to every index before that too.
 
+At each jump, jump to the index that gives us the farthest possible next jump. This works because even if the optimal next jump isn't the farthest, it will be contained in range(farthest). Optimal jump will always be at an index less than or equal to the farthest possible jump
+
+    dp[i+1] = max_i(nums[j]+j for j in range(dp[i]+1))
+
+```Python
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return 0
+        # Start at index 0
+        dp = [0]
+        for curr in range(len(nums)):
+            '''
+            dp.append(max((nums[j] + j) for j in range(dp[curr]+1)))
+            '''
+            farthest = 0
+            # Find the farthest jump from all indices which are within jump from the current index
+            for next in range(dp[curr] + 1):
+                farthest = max(farthest, nums[next] + next)
+            dp.append(farthest)
+            # Check if already jumped to the last index, break out of the loop
+            if dp[curr + 1] >= len(nums) - 1:
+                break
+        # Return the total number of jumps exclude the start position
+        return len(dp) - 1
+```
+
+### Greedy
+
+Finally, we can get rid of trivial repeated work in order to optimize to linear time and constant space.
+
+Why loop from 0 each time? Just loop from the last farthest index, which is the end of the last jump. And why store all values of dp? We only need two at a time.
+
+```Python
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return 0
+        last = farthest = 0
+        count = 1
+        for _ in range(len(nums)):
+            tmp = farthest
+            for next in range(last, farthest + 1):
+                farthest = max(farthest, nums[next] + next)
+            if farthest >= len(nums) - 1:
+                break
+            count += 1
+            last = tmp
+        return count
 ```
