@@ -74,6 +74,9 @@ class Solution:
             # Base case, all queens have been placed correctly
             if row == n:
                 res.append(create_board(state))
+                '''
+                res.append(["".join(row) for row in board])
+                '''
                 return
             
             for col in range(n):
