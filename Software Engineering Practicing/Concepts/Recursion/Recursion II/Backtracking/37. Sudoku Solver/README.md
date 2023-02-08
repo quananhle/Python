@@ -74,6 +74,29 @@ One tip to enumerate sub-boxes: let's use ```box_index = (row / 3) * 3 + column 
 
 ![image](https://leetcode.com/problems/sudoku-solver/solutions/259057/Figures/36/36_boxes_2.png)
 
+#### Algorithm
+
+Now everything is ready to write down the backtrack function ```backtrack(row = 0, col = 0)```.
+
+1. Start from the upper left cell ```row = 0, col = 0```. Proceed till the first free cell.
+
+2. Iterate over the numbers from ```1``` to ```9``` and try to put each number ```num``` in the ```(row, col)``` cell.
+
+  - If number ```num``` is not yet in the current ```row```, ```column``` and ```box``` :
+
+    - Place the ```num``` in a ```(row, col)``` cell.
+    
+    - Write down that ```num``` is now present in the current ```row```, ```column``` and ```box```.
+
+    - If we're on the last cell ```row == 8```, ```col == 8``` :
+    
+        - That means that we've solved the sudoku.
+  - Else
+
+    - Proceed to place further numbers.
+
+    - Backtrack if the solution is not yet here : remove the last number from the ```(row, col)``` cell.
+
 ```Python
 class Solution:
     def solveSudoku(self, board: List[List[str]]) -> None:
