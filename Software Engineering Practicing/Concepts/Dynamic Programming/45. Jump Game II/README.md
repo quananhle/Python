@@ -1,6 +1,6 @@
 ## 45. Jump Game II
 
-```Tag```: ```Dynamic Programming``` ```Greedy Algorithm```
+```Tag```: ```Dynamic Programming``` ```Greedy Algorithm``` ```Backtracking```
 
 #### Difficulty: Medium
 
@@ -36,3 +36,91 @@ __Constraints:__
 - ```0 <= nums[i] <= 1000```
 
 ---
+
+### Greedy Algorithm
+
+![image](https://leetcode.com/problems/jump-game-ii/solutions/3076867/Figures/45_re/3h.png)
+
+![image](https://leetcode.com/problems/jump-game-ii/solutions/3076867/Figures/45_re/4.png)
+
+![image](https://leetcode.com/problems/jump-game-ii/solutions/3076867/Figures/45_re/e.png)
+
+```Python
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        # Dynamic Programming and Greedy Algorithm
+        ### To keep the jumps at minimum, must get maximum distance after each jump
+        n = len(nums)
+
+        curr_dist = next_dist = 0
+        ans = 0
+
+        for curr in range(n):
+            # If jump, update the number of jumps and move to the starting range of the next jump
+            if curr > curr_dist:
+                ans += 1
+                curr_dist = next_dist
+            # Get the farthest distance reachable index from the current position
+            next_dist = max(next_dist, curr + nums[curr])
+                
+        return ans
+```
+
+### Backtracking
+
+```Python
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        # Backtracking
+        self.ans = sys.maxsize
+
+        def backtrack(jump, last):
+            # Check every possible jump from current index
+            for curr in range(last-1, -1, -1):
+                if nums[curr] + curr >= last:
+                    # Update the jump and the new position after the jump
+                    backtrack(jump + 1, curr)
+            # If need more jumps than necessary, backtrack
+            if jump >= self.ans:
+                return
+            # If reached the end, get the number of jumps
+            if last <= 0:
+                self.ans = jump
+
+        backtrack(0, len(nums)-1)
+        return self.ans
+```
+
+### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        # Backtracking
+        self.ans = sys.maxsize
+        memo = collections.defaultdict(tuple)
+
+        def dp(jumps, last):
+            if (jumps, last) in memo:
+                return memo[(jumps, last)]
+            if jumps >= self.ans:
+                return
+            if last <= 0:
+                self.ans = jumps
+            for curr in range(last-1, -1, -1):
+                if nums[curr] + curr >= last:
+                    dp(jumps + 1, curr)
+
+            memo[(jumps, last)] = self.ans
+            return memo[(jumps, last)]
+        
+        dp(0, len(nums)-1)
+
+        return self.ans
+```
+
+### Bottom-Up Dynamic Programming
+
+```Python
+
+```
