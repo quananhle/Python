@@ -54,6 +54,8 @@ __Constraints__:
 
 ---
 
+### Backtracking
+
 There are two programming conceptions here which could help.
 
     The first one is called constrained programming.
@@ -105,10 +107,6 @@ class Solution:
             boxes[get_box_index(r,c)][num] += 1
             # Fill number into cell
             board[r][c] = str(num)
-            # rows[r][num] += 1
-            # cols[c][num] += 1
-            # boxes[get_box_index(r, c)][num] += 1
-            # board[r][c] = str(num)
 
 
         # Fill every cell which has only a number to fill and no backtracking needed
@@ -180,5 +178,61 @@ class Solution:
 
 
         quick_scan()
+        backtrack(0, 0)
+```
+
+```Python
+class Solution:
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        ROWS, COLS = len(board), len(board[0])
+
+        rows, cols, boxes = collections.defaultdict(set), collections.defaultdict(set), collections.defaultdict(set)
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if board[row][col] != ".":
+                    rows[row].add(int(board[row][col]))
+                    cols[col].add(int(board[row][col]))
+                    boxes[(row//3, col//3)].add(int(board[row][col]))
+
+        def backtrack(row, col):
+            # Check if at the last cell
+            if row == ROWS - 1 and col == COLS:
+                return True
+            
+            # Check if already at the last column, move down to the next row and first column
+            if col == COLS:
+                row += 1
+                col = 0
+            
+            if board[row][col] != ".":
+                return backtrack(row, col + 1)
+
+            for num in range(1, 10):
+                if num in rows[row] or num in cols[col] or num in boxes[(row//3, col//3)]:
+                    continue
+                
+                # Fill the cell and add to the caches of rows, columns, and sub-boxes
+                rows[row].add(num)
+                cols[col].add(num)
+                boxes[(row//3, col//3)].add(num)
+                board[row][col] = str(num)
+
+
+                if backtrack(row, col + 1):
+                    return True
+                
+                # Backtracking
+                rows[row].remove(num)
+                cols[col].remove(num)
+                boxes[(row//3, col//3)].remove(num)
+                board[row][col] = "."
+
+            return False
+
+
         backtrack(0, 0)
 ```
