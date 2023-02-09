@@ -83,7 +83,6 @@ class Solution:
                         intersections += 1
                 '''
                 intersections = len(suff1 & suff2)
-                print (intersections)
                 
                 # Valid name are only from distinct suffixes in both groups
                 count += (len(suff1) - intersections) * (len(suff2) - intersections)
