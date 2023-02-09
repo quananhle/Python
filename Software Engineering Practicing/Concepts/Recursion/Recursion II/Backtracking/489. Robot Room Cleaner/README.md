@@ -186,6 +186,7 @@ class Solution:
         :type robot: Robot
         :rtype: None
         """
+        0: 'UP', 1: 'RIGHT', 2: 'DOWN', 3: 'LEFT'
         DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
         k = len(DIRECTIONS)
         visited = set()
@@ -202,7 +203,7 @@ class Solution:
             visited.add((x, y))
 
             for i in range(k):
-
+                # Armotized robot movement within 4 directions: 0: 'up', 1: 'right', 2: 'down', 3: 'left'
                 new_dir = (direction + i) % k
                 new_x_dir, new_y_dir = DIRECTIONS[new_dir][0], DIRECTIONS[new_dir][1]
                 neighbor = (x + new_x_dir, y + new_y_dir)
@@ -220,6 +221,7 @@ class Solution:
                 '''
                 robot.turnRight()
                 '''
-            
-        dfs(0, 0, 0)
+        
+        # Start at cell (0, 0) and select any of 0 -> 3 directions, 2 for going down
+        dfs(0, 0, 2)
 ```
