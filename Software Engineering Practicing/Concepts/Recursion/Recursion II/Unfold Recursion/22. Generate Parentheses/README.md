@@ -62,6 +62,10 @@ class Solution:
 
 #### Recursive Approach
 
+For n = 2, the recursion tree will be like this,
+
+![image](https://user-images.githubusercontent.com/35042430/217900413-39b4f66f-81e5-4cf8-a484-1963743dbfc1.png)
+
 ```Python
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
