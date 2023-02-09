@@ -138,6 +138,8 @@ class Solution:
 
 ### Master Theorem
 
+---
+
 ## Backtracking
 
 ![image](https://assets.leetcode.com/uploads/2019/04/15/backtracking.png)
@@ -157,3 +159,32 @@ __Brute approach__
 __Backtracking approach__
 
 ![image](https://assets.leetcode.com/uploads/2019/05/30/backtracking3.jpeg)
+
+---
+
+## Unfold Recursion
+
+Recursion could be an elegant and intuitive solution, when applied properly. Nevertheless, sometimes, one might have to convert a recursive algorithm to iterative one for various reasons.
+
+__Risk of Stackoverflow__
+
+The recursion often incurs additional memory consumption on the system stack, which is a limited resource for each program. If not used properly, the recursion algorithm could lead to stackoverflow. One might argue that a specific type of recursion called tail recursion could solve this problem. Unfortunately, not every recursion can be converted to tail recursion, and not every compiler supports the optimization of the tail recursion.
+
+__Efficiency__
+
+Along with the additional memory consumption, the recursion could impose at least the additional cost of function calls, and in a worse case duplicate calculation, i.e. one of the caveats of recursion that we discussed previously in the Explore card of Recursion I.  
+
+__Complexity__
+
+The nature of recursion is quite close to the mathematics, which is why the recursion appears to be more intuitive and comprehensive for many people. However, when we abuse the recursion, the recursive program could become more difficult to read and understand than the non-recursive one, e.g. nested recursion etc.
+
+        The good news is that we can always convert a recursion to iteration. In order to do so, in general, we use a 
+        data structure of stack or queue, which replaces the role of the system call stack during the process of recursion. 
+
+To convert a recursion approach to an iteration one, we could perform the following two steps:
+
+1. We use a ```stack``` or ```queue``` data structure within the function, to replace the role of the system call stack. At each occurrence of recursion, we simply push the parameters as a new element into the data structure that we created, instead of invoking a recursion.
+
+2. In addition, we create a loop over the data structure that we created before. The chain invocation of recursion would then be replaced with the iteration within the loop.
+
+---
