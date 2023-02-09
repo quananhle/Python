@@ -70,3 +70,42 @@ class Solution:
 
         return res
 ```
+
+### Depth-First Search
+
+#### Recursive Approach
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        res = list()
+
+        def dfs(node, path):
+            if not node:
+                return
+
+            if path:
+                path += "->"
+            path += str(node.val)
+
+            if not node.left and not node.right:
+                res.append(path)
+            if node.left: dfs(node.left, path)
+            if node.right: dfs(node.right, path)
+
+        dfs(root, "")
+
+        return res
+```
+
+#### Iterative Approach
+
+```Python
+
+```
