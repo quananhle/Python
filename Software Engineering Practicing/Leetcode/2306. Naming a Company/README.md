@@ -52,3 +52,41 @@ __Constraints:__
 - All the strings in ```ideas``` are __unique__.
 
 ---
+
+![image](https://leetcode.com/problems/naming-a-company/solutions/3081799/Figures/2306/2.png)
+
+![image](https://leetcode.com/problems/naming-a-company/solutions/3081799/Figures/2306/4.png)
+
+![image](https://leetcode.com/problems/naming-a-company/solutions/3081799/Figures/2306/5.png)
+
+```Python
+class Solution:
+    def distinctNames(self, ideas: List[str]) -> int:
+        count = 0
+        cache = collections.defaultdict(set)
+        for idea in ideas:
+            cache[idea[0]].add(idea[1:])
+            '''
+            cache[ord(idea[0]) - ord('a')].add(idea[1:])
+            '''
+
+        for init1, suff1 in cache.items():
+            for init2, suff2 in cache.items():
+                if init1 == init2:
+                    continue
+                # Get the number of mutual suffixes
+                '''
+                intersections = 0
+
+                for word in suff1:
+                    if word in suff2:
+                        intersections += 1
+                '''
+                intersections = len(suff1 & suff2)
+                print (intersections)
+                
+                # Valid name are only from distinct suffixes in both groups
+                count += (len(suff1) - intersections) * (len(suff2) - intersections)
+
+        return count
+```
