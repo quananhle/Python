@@ -1,6 +1,6 @@
 ## 257. Binary Tree Paths
 
-```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Backtracking```
+```Tag```: ```Binary Tree``` [```Depth-First Search```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Depth-First%20Search) [```Backtracking```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II/Backtracking)
 
 #### Difficulty: Easy
 
