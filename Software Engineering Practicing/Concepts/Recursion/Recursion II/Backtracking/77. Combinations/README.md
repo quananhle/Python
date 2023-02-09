@@ -44,7 +44,7 @@ class Solution:
             if len(combinations) == k:
                 res.append(combinations[:])
                 
-            # Check if there are fewer numbers in the range than the vacant spots needed to fill up to kth length input
+            # Check if there are fewer numbers in the range than the vacant spots needed to fill up to kth length input, ignore
             if (k - len(combinations)) > (n - start + 1):
                 return
             
