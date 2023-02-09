@@ -43,6 +43,10 @@ class Solution:
             # Base case: check if the combination is complete
             if len(combinations) == k:
                 res.append(combinations[:])
+                
+            # Check if there are fewer numbers in the range than the vacant spots needed to fill up to kth length input
+            if (k - len(combinations)) > (n - start + 1):
+                return
             
             for i in range(start, n + 1):
                 # Add i to the current combinations
@@ -55,4 +59,5 @@ class Solution:
         backtrack(1, [])
 
         return res
+
 ```
