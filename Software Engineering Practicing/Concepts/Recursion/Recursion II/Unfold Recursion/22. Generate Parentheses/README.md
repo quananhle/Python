@@ -10,3 +10,22 @@ Given ```n``` pairs of parentheses, write a function to generate all combination
 
 ---
 
+__Example 1:__
+```
+Input: n = 3
+Output: ["((()))","(()())","(())()","()(())","()()()"]
+```
+
+__Example 2:__
+```
+Input: n = 1
+Output: ["()"]
+```
+
+__Constraints:__
+```
+1 <= n <= 8
+```
+
+---
+
