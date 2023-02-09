@@ -34,3 +34,25 @@ __Constraints:__
 
 ---
 
+```Python
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = list()
+
+        def backtrack(start, combinations):
+            # Base case: check if the combination is complete
+            if len(combinations) == k:
+                res.append(combinations[:])
+            
+            for i in range(start, n + 1):
+                # Add i to the current combinations
+                combinations.append(i)
+                # Move to the next integer in the range
+                backtrack(i + 1, combinations)
+                # Backtracking
+                combinations.pop()
+
+        backtrack(1, [])
+
+        return res
+```
