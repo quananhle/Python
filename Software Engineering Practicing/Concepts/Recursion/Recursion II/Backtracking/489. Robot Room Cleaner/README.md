@@ -74,6 +74,22 @@ __Constraints:__
 
 ### Backtracking Depth-First Search
 
+Let's use here two programming concepts.
+
+      The first one is called constrained programming.
+
+That basically means to put restrictions after each robot move. Robot moves, and the cell is marked as ```visited```. That propagates constraints and helps to reduce the number of combinations to consider.
+
+![image](https://leetcode.com/problems/robot-room-cleaner/solutions/265763/Figures/489/489_constraints.png)
+
+      The second one called backtracking.
+
+Let's imagine that after several moves the robot is surrounded by the visited cells. But several steps before there was a cell which proposed an alternative path to go. That path wasn't used and hence the room is not yet cleaned up. What to do? To __backtrack__. That means to come back to that cell, and to explore the alternative path.
+
+![image](https://leetcode.com/problems/robot-room-cleaner/solutions/265763/Figures/489/489_backtrack.png)
+
+![image](https://leetcode.com/problems/robot-room-cleaner/solutions/265763/Figures/489/489_implementation.png)
+
 ```Python
 # """
 # This is the robot's control interface.
