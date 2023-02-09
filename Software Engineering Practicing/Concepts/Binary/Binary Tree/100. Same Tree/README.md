@@ -1,6 +1,6 @@
 ## 100. Same Tree
 
-```Tag```: ```Depth-First Search``` ```Binary Tree``` ```Recursion```
+```Tag```: ```Depth-First Search``` ```Binary Tree``` [```Recursion```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II)
 
 #### Difficulty: Easy
 
