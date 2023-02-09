@@ -39,3 +39,35 @@ The input is only given to initialize the room and the robot's position internal
 ![image](https://user-images.githubusercontent.com/35042430/217732939-5072de1d-905d-4a65-be85-6bf233287a0b.png)
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2021/07/17/lc-grid.jpg)
+```
+Input: room = [[1,1,1,1,1,0,1,1],[1,1,1,1,1,0,1,1],[1,0,1,1,1,1,1,1],[0,0,0,1,0,0,0,0],[1,1,1,1,1,1,1,1]], row = 1, col = 3
+Output: Robot cleaned all rooms.
+Explanation: All grids in the room are marked by either 0 or 1.
+0 means the cell is blocked, while 1 means the cell is accessible.
+The robot initially starts at the position of row=1, col=3.
+From the top left corner, its position is one row below and three columns right.
+```
+
+__Example 2:__
+```
+Input: room = [[1]], row = 0, col = 0
+Output: Robot cleaned all rooms.
+```
+
+__Constraints:__
+
+- ```m == room.length```
+- ```n == room[i].length```
+- ```1 <= m <= 100```
+- ```1 <= n <= 200```
+- ```room[i][j]``` is either ```0``` or ```1```.
+- ```0 <= row < m```
+- ```0 <= col < n```
+- ```room[row][col] == 1```
+- All the empty cells can be visited from the starting position.
+
+---
