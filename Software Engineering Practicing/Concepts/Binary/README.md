@@ -127,6 +127,46 @@ class BSTIterator:
 # param_1 = obj.next()
 # param_2 = obj.hasNext()
 ```
+ 
+Question : [Convert Binary Search Tree to Sorted Doubly Linked List]([https://leetcode.com/problems/inorder-successor-in-bst/](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/description/))
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+"""
+
+class Solution:
+    def treeToDoublyList(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if not root:
+            return root
+
+        stack = list()
+        linked_list = list()
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            linked_list.append(root)
+            root = root.right
+        
+        node = linked_list[0]
+        self.head = node
+        for next_node in linked_list[1:]:
+            node.right = next_node
+            next_node.left = node
+            node = next_node
+            
+        node.right = self.head
+        self.head.left = node
+        return self.head
+```
 
 ## Introduction to the Height-Balanced BST
 
