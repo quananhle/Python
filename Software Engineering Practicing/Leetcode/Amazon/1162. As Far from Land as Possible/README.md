@@ -41,6 +41,8 @@ __Constraints:__
 
 ### Breadth-First Search
 
+#### Mark the grid
+
 ```Python
 class Solution:
     def maxDistance(self, grid: List[List[int]]) -> int:
@@ -68,3 +70,68 @@ class Solution:
 
         return distance - 1
 ```
+
+#### Visited Hash Set
+
+![image](https://leetcode.com/problems/as-far-from-land-as-possible/solutions/3043174/Figures/1162/1162A.png)
+
+__Algorithm__
+
+1. Iterate over the matrix and insert the land cell coordinates into the queue. Initialize a variable ```distance``` as ```-1``` to store the current step of BFS. Also, create a ```visited``` set to mark the water cells as visited so that we don't revisit them again.
+
+        Note: The visited set can be avoided by updating the original matrix grid but changing the input parameter is not considered under good practices.
+
+2. Perform BFS: Traverse the current elements in the ```queue```, and for each element, check the coordinates in the four directions if they are water cells (```0```). If yes, insert them into the ```queue``` and change them to land cell (```1```) in the ```visited``` set.
+
+3. After each level is traversed, i.e., the inner while loop completes, increment the variable distance.
+
+4. Repeat the above until the ```queue``` becomes empty.
+
+5. Return ```distance```. If it is equal to ```0```, it means there was no water cell, and the BFS finished after the first step itself, hence returning ```-1```. When the matrix doesn't have any land cell, the while loop will not start at all, and hence distance will have its initial value (```-1```).
+
+```Python
+class Solution:
+    def maxDistance(self, grid: List[List[int]]) -> int:
+        # Breadth-First Search
+        ROWS, COLS = len(grid), len(grid[0])
+        # Four directions: Up, Down, Left and Right.        
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        visited = set()
+        distance = 0
+
+        # Insert all the land cells into the queue
+        queue = collections.deque()
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 1:
+                    visited.add((row, col))
+                    queue.append((row, col))
+
+        # Edge cases: grid has no land or no water
+        if not queue or ROWS * COLS == len(queue): # no land or all land
+            return -1
+
+        while queue:
+            size = len(queue)
+            # Iterate over all the current cells in the queue
+            while size > 0:
+                row, col = queue.popleft()
+                # From the current land cell, traverse to all the four directions 
+                for x, y in DIRECTIONS:
+                    new_row, new_col = row + x, col + y
+                    # Check if the new cell is within the grid boundary and the cell is not land
+                    if not (0 <= new_row < ROWS and 0 <= new_col < COLS and not (new_row, new_col) in visited):
+                        continue
+                    # If neighbor cell is water, convert it to land and add it to the queue.
+                    visited.add((new_row, new_col))
+                    queue.append((new_row, new_col))
+
+                size -= 1
+
+            # After each iteration of queue elements, increment distance by 1 as traversing to next neighbor cells
+            distance += 1
+
+        return distance - 1
+```
+
+
