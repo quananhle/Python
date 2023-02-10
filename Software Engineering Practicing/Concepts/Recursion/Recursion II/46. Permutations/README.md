@@ -36,4 +36,41 @@ __Constraints:__
 
 ---
 
+### Backtracking
 
+![image](https://user-images.githubusercontent.com/35042430/218038353-82608c41-73d5-43f3-934f-1a4c2c40bfd1.png)
+
+#### Algorithm
+
+1. If the first integer to consider has index ```n``` that means that the current permutation is done.
+2. Iterate over the integers from index ```first``` to index ```n - 1```.
+3. Place i-th integer first in the permutation, i.e. ```swap(nums[first], nums[i])```.
+4. Proceed to create all permutations which starts from i-th integer : ```backtrack(first + 1)```.
+5. Now backtrack, i.e. ```swap(nums[first], nums[i])``` back.
+
+```Python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = list()
+        n = len(nums)
+
+        def backtrack(start):
+            # Base case
+            # Check if all possible permutations have been computed
+            if start == n:
+                res.append(nums[:])
+                return
+
+            for i in range(start, n):
+                nums[start], nums[i] = nums[i], nums[start]
+
+                # Move on to the next integer in the permutation
+                backtrack(start + 1)
+
+                # Backtrack
+                nums[start], nums[i] = nums[i], nums[start]
+
+        backtrack(0)
+
+        return res
+```
