@@ -1,6 +1,6 @@
 ## 426. Convert Binary Search Tree to Sorted Doubly Linked List
 
-```Tag```: ```Recursion```
+```Tag```: ```Recursion``` ```Binary Search Tree``` ```Linked List```
 
 Convert a __Binary Search Tree__ to a sorted __Circular Doubly-Linked List__ in place.
 
@@ -39,3 +39,88 @@ __Constraints:__
 - All the values of the tree are unique.
 
 ---
+
+### Inorder Traversal
+
+#### Iterative Approach
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+"""
+
+class Solution:
+    def treeToDoublyList(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if not root:
+            return root
+
+        stack = list()
+        linked_list = list()
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            linked_list.append(root)
+            root = root.right
+        
+        node = linked_list[0]
+        head = node
+        for next_node in linked_list[1:]:
+            node.right = next_node
+            next_node.left = node
+            node = next_node
+            
+        node.right = head
+        head.left = node
+        return head
+```
+
+#### Recursive Approach
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+"""
+
+class Solution:
+    def treeToDoublyList(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        if not root:
+            return root
+
+        linked_list = list()
+
+        def inorder(node):
+            if not node:
+                return
+            
+            inorder(node.left)
+            linked_list.append(node)
+            inorder(node.right)
+        
+        inorder(root)
+
+        node = linked_list[0]
+        self.head = node
+
+        for next_node in linked_list[1:]:
+            node.right = next_node
+            next_node.left = node
+            node = next_node
+        
+        linked_list[-1].right = self.head
+        self.head.left = linked_list[-1]
+
+        return self.head
+```
