@@ -11,3 +11,30 @@ The distance used in this problem is the Manhattan distance: the distance betwee
 ![image](https://user-images.githubusercontent.com/35042430/218019593-cdce712a-d2db-4f27-8904-47fb92ce7faf.png)
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2019/05/03/1336_ex1.JPG)
+```
+Input: grid = [[1,0,1],[0,0,0],[1,0,1]]
+Output: 2
+Explanation: The cell (1, 1) is as far as possible from all the land with distance 2.
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2019/05/03/1336_ex2.JPG)
+```
+Input: grid = [[1,0,0],[0,0,0],[0,0,0]]
+Output: 4
+Explanation: The cell (2, 2) is as far as possible from all the land with distance 4.
+```
+
+__Constraints:__
+
+- ```n == grid.length```
+- ```n == grid[i].length```
+- ```1 <= n <= 100```
+- ```grid[i][j]``` is ```0``` or ```1```
+
+---
