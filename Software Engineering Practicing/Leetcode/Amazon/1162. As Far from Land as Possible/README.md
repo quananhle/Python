@@ -38,3 +38,33 @@ __Constraints:__
 - ```grid[i][j]``` is ```0``` or ```1```
 
 ---
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def maxDistance(self, grid: List[List[int]]) -> int:
+        # Breadth-First Search
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        distance = 0
+
+        # Add all the land cells into the queue
+        queue = collections.deque()
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 1:
+                    queue.append((row, col))
+
+        while queue:
+            row, col = queue.popleft()
+            for x, y in DIRECTIONS:
+                new_row, new_col = row + x, col + y
+                if not (0 <= new_row < ROWS and 0 <= new_col < COLS) or grid[new_row][new_col]:
+                    continue
+                queue.append((new_row, new_col))
+                grid[new_row][new_col] = 1 + grid[row][col]
+                distance = max(distance, grid[new_row][new_col])
+
+        return distance - 1
+```
