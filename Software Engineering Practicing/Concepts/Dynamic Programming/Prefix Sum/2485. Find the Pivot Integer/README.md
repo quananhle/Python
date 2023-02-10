@@ -1,6 +1,6 @@
 ## 2485. Find the Pivot Integer
 
-```Tag```: ```Prefix Sum```
+```Tag```: ```Prefix Sum``` ```Dynamic Programming```
 
 #### Difficulty: Easy
 
@@ -40,5 +40,52 @@ __Constraints:__
 - ```1 <= n <= 1000```
 
 ---
+
+### Prefix Sum
+
+```Python
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        '''
+        left_sum = right_sum
+        left_sum + right_sum = total_sum + pivot
+        '''
+        total = 0
+        for num in range(1, n+1):
+            total += num
+        left_sum = 0
+
+        for num in range(1, n+1):
+            left_sum += num
+            if left_sum * 2 - num == total:
+                return num
+        return -1
+```
+
+```Python
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        total = 0
+        prefix = list()
+        for num in range(n + 1):
+            total += num
+            prefix.append(total)
+        
+        for idx, num in enumerate(prefix):
+            if num * 2 - idx == prefix[-1]:
+                return idx
+        return -1
+```
+
+```Python
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        nums = [num for num in range(1, n + 1)]
+        memo = [sum(nums[:i]) for i in range(len(nums) + 1)]
+        for idx, num in enumerate(memo):
+            if num * 2 - idx == memo[-1]:
+                return idx
+        return -1  
+```
 
 
