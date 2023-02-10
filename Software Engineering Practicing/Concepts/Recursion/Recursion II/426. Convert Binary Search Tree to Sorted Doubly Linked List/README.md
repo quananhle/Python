@@ -42,6 +42,8 @@ __Constraints:__
 
 ### Inorder Traversal
 
+![image](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/solutions/263241/Figures/426/process.png)
+
 #### Iterative Approach
 
 ```Python
