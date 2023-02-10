@@ -128,7 +128,7 @@ class BSTIterator:
 # param_2 = obj.hasNext()
 ```
  
-Question : [Convert Binary Search Tree to Sorted Doubly Linked List]([https://leetcode.com/problems/inorder-successor-in-bst/](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/description/))
+Question : [Convert Binary Search Tree to Sorted Doubly Linked List](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list)
 
 ```Python
 """
