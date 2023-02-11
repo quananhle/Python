@@ -2,7 +2,7 @@
 
 ```Tag```: ```Recursion``` ```Divide and Conquer``` ```Monotonic Stack```
 
-#### Difficulty: Medium
+#### Difficulty: Hard
 
 Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
 
@@ -118,7 +118,7 @@ class Solution:
         return divide_and_conquer(heights, 0, len(heights) - 1)
 ```
 
-### Monotonic Stack
+### Monotonic Stack (Increasing Stack)
 
 __Time complexity:__ ```O(n)```, n numbers are pushed and popped.
 
@@ -147,5 +147,20 @@ class Solution:
             curr_width = len(heights) - stack[-1] - 1
             max_area = max(max_area, curr_height * curr_width)
 
+        return max_area
+```
+
+```Python
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        stack = []
+        max_area = 0
+
+        for idx, bar in enumerate(heights + [0]):
+            while stack and heights[stack[-1]] >= bar:
+                height = heights[stack.pop()]
+                width = idx if not stack else idx - stack[-1] - 1
+                max_area = max(max_area, height * width)
+            stack.append(idx)
         return max_area
 ```
