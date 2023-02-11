@@ -46,6 +46,17 @@ __Constraints:__
 ```Python
 class Solution:
     def pivotInteger(self, n: int) -> int:
+        total = 0
+        prefix_sum = list()
+        for num in range(n + 1):
+            total += num
+            prefix_sum.append(total)
+        return (max(set([idx if num * 2 == total + idx else -1 for idx, num in enumerate(prefix_sum)])))
+```
+
+```Python
+class Solution:
+    def pivotInteger(self, n: int) -> int:
         '''
         left_sum = right_sum
         left_sum + right_sum = total_sum + pivot
