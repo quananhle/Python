@@ -36,3 +36,59 @@ __Constraints:__
 
 ---
 
+### Breadth-First Search
+
+A __breadth-first search__ is a good algorithm to use if we want to find the __shortest path in an unweighted graph__. The property of BFS is that the first time a node is reached during the traversal, it was reached in the __minimum__ possible steps from the source.
+
+The path used in BFS traversal always has the least number of edges. The BFS algorithm does a level-wise iteration of the graph. As a result, it first finds all paths that are one edge away from the source node, followed by all paths that are two edges away from the source node, and so on. This allows BFS to find the shortest path in terms of steps from the source node to any other node. It is implemented with a queue. 
+
+![image](https://leetcode.com/problems/shortest-path-with-alternating-colors/solutions/3049265/Figures/1129/1129-bfs-1.png)
+
+![image](https://leetcode.com/problems/shortest-path-with-alternating-colors/solutions/3049265/Figures/1129/1129-bfs-2.png)
+
+__Algorithm__
+
+1. Create an adjacency list ```graph``` that contains a list of pairs of integers such that ```graph[node]``` contains the neighbors of ```node``` in the form ```(neighbor, color)``` where ```neighbor``` is the neighbor of ```node``` and ```color``` denotes the edge color that connects ```node``` and ```neighbor```. We use the number ```0``` for red and the number ```1``` for blue.
+2. Create a ```distance``` array with the value ```math.inf```
+3. Create a hash set ```visited``` for ```(node, color)``` indicates whether ```node``` has yet been visited using an edge of ```color```.
+4. Create a queue of triplets. It will save three integers per triplet:
+
+        a) the current node, 
+        b) the steps taken to visit the node, and 
+        c) the color of the previous edge used. 
+      
+5. While the queue is not empty:
+- Remove the first element out of the queue to obtain ```[node, steps, prevColor]```.
+- Loop through all ```(neighbor, color)``` pairs in ```graph[node]```. If a neighbor has not yet been visited with a color edge and ```color != last_color```, we visit neighbor with the color edge by pushing ```[neighbor, steps + 1, color]``` in the queue. If this is neighbor's first visit, i.e., ```answer[neighbor] == float("inf")```, we set ```answer[neighbor] = steps + 1```.
+6. Return answer.
+
+```Python
+class Solution:
+    def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
+        # Breadth-First Search
+        visited = set()
+        level = 0
+        distance = [float("inf")] * n
+        # Build adjacency list
+        graph = collections.defaultdict(list)
+        # 0 - red, 1 - blue
+        for e, v in redEdges:
+            graph[e].append((v, 0))
+        for e, v in blueEdges:
+            graph[e].append((v, 1))
+        
+        queue = collections.deque([(0,0),[0,1]])
+
+        while queue:
+            for _ in range(len(queue)):
+                node, last_color = queue.popleft()
+                distance[node] = min(distance[node], level)
+
+                for neighbor, curr_color in graph[node]:
+                    if last_color != curr_color and not (neighbor, curr_color) in visited:
+                        visited.add((neighbor, curr_color))
+                        queue.append((neighbor, curr_color))
+            level += 1
+        
+        return [dist if dist != math.inf else -1 for dist in distance]
+```
