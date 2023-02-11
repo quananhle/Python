@@ -31,3 +31,29 @@ __Constraints:__
 - ```All the numbers of ```nums``` are unique.
 
 ---
+
+### Backtracking
+
+```Python
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = list()
+
+        def backtrack(curr_index, subset):
+            # Base case
+            if len(subset) == k:
+                res.append(subset[:])
+                return
+            
+            for i in range(curr_index, len(nums)):
+                subset.append(nums[i])
+
+                backtrack(i + 1, subset)
+
+                subset.pop()
+
+        for k in range(len(nums) + 1):
+            backtrack(0, [])
+
+        return res
+```
