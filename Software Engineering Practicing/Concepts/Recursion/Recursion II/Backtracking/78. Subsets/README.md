@@ -47,9 +47,9 @@ class Solution:
             
             for i in range(curr_index, len(nums)):
                 subset.append(nums[i])
-
+                # Move on to the next element in the subset
                 backtrack(i + 1, subset)
-
+                # Backtracking
                 subset.pop()
 
         for k in range(len(nums) + 1):
