@@ -73,20 +73,20 @@ __Constraints:__
 
 We are given a tree with ```n``` nodes (or cities) from ```0``` to ```n - 1``` and exactly ```n - 1``` edges.
 
-There is one car and one representative at each node. We are given an integer seats that represents the maximum number of representatives that can together go in any car. The cost of travelling over an edge using a car takes one liter of fuel.
+There is __one__ car and __one__ representative at each node. We are given an integer ```seats``` that represents the maximum number of representatives that can together go in any car. The cost of travelling over an edge using a car takes __one__ liter of fuel.
 
-Our task is to move all the representatives to node 0 by using the minimum fuel and return the minimum fuel required to do so.
+Our task is to move all the representatives to node ```0``` by using the minimum fuel and return the minimum fuel required to do so.
 
 Before moving on to the solution, consider some of the graph terminologies that will be used later:
 
 ![image](https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/solutions/3080167/Figures/2477/2477-1.png)
 
-1. Child: A node that is one edge further away from a given node in a rooted tree. In the above image, nodes 3, 4 are children of 1, which is called the parent.
-2. Descendants: Descendants of a node are children, children of children, and so on. In the above image, nodes 3, 4, 6, 7, 9 are all descendants of 1.
-3. Subtree: A subtree of a node T is a tree S consisting of a node T and all of its descendants in T. The subtree corresponding to the root node is the entire tree.
-4. Level: A node's level (or depth) in a tree data structure is its distance from the tree's root node. The root node is said to be at level 0, and its children are at level 1, and the children of the nodes at level 1 are at level 2, and so on. In our case, the root node is node 0, because this is where we want to take all of the representatives.
+1. __Child__: A node that is one edge further away from a given node in a rooted tree. In the above image, nodes ```3```, ```4``` are children of ```1```, which is called the __parent__.
+2. __Descendants__: Descendants of a node are __children, children of children, and so on__. In the above image, nodes ```3, 4, 6, 7, 9``` are all descendants of ```1```.
+3. __Subtree__: A subtree of a node ```T``` is a tree ```S``` consisting of a node ```T``` and all of its descendants in ```T```. The subtree corresponding to the root node is the entire tree.
+4. __Level__: A node's level (or depth) in a tree data structure is its distance from the tree's root node. The root node is said to be at level ```0```, and its children are at level ```1```, and the children of the nodes at level ```1``` are at level ```2```, and so on. In our case, the root node is node ```0```, because this is where we want to take all of the representatives.
 
-Although the edges are given as undirected, we will treat the graph as a tree where 0 is the root and only consider moving in one direction.Although the edges are given as undirected, we will treat the graph as a tree where 0 is the root and only consider moving in one direction.
+Although the edges are given as undirected, we will treat the graph as a tree where ```0``` is the root and only consider moving in one direction. Although the edges are given as undirected, we will treat the graph as a tree where ```0``` is the root and only consider moving in one direction.
 
 ### Depth-First Search
 
