@@ -88,3 +88,10 @@ Before moving on to the solution, consider some of the graph terminologies that 
 
 Although the edges are given as undirected, we will treat the graph as a tree where 0 is the root and only consider moving in one direction.Although the edges are given as undirected, we will treat the graph as a tree where 0 is the root and only consider moving in one direction.
 
+### Depth-First Search
+
+```Python
+
+```
+
+### Breadth-First Search
