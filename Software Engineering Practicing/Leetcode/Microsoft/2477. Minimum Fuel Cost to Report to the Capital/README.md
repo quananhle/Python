@@ -1,6 +1,6 @@
 ## 2477. Minimum Fuel Cost to Report to the Capital
 
-```Tag```: ```Graph``` ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Graph & Tree``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
