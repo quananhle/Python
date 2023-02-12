@@ -70,3 +70,13 @@ __Constraints:__
 - 1 <= ```seats``` <= 10<sup>5</sup>
 
 ---
+
+We are given a tree with n nodes (or cities) from 0 to n - 1 and exactly n - 1 edges.
+
+There is one car and one representative at each node. We are given an integer seats that represents the maximum number of representatives that can together go in any car. The cost of travelling over an edge using a car takes one liter of fuel.
+
+Our task is to move all the representatives to node 0 by using the minimum fuel and return the minimum fuel required to do so.
+
+Before moving on to the solution, consider some of the graph terminologies that will be used later:
+
+![image](https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/solutions/3080167/Figures/2477/2477-1.png)
