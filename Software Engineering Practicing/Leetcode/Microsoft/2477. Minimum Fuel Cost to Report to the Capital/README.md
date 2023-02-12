@@ -71,7 +71,7 @@ __Constraints:__
 
 ---
 
-We are given a tree with n nodes (or cities) from 0 to n - 1 and exactly n - 1 edges.
+We are given a tree with ```n``` nodes (or cities) from ```0``` to ```n - 1``` and exactly ```n - 1``` edges.
 
 There is one car and one representative at each node. We are given an integer seats that represents the maximum number of representatives that can together go in any car. The cost of travelling over an edge using a car takes one liter of fuel.
 
