@@ -83,3 +83,21 @@ Another instinctive idea is to use a vertical line of infinite length to sweep o
 ![image](https://leetcode.com/problems/the-skyline-problem/solutions/2375781/Figures/218_re/218_sw_exp.png)
 
 For more information about Sweep Line Algorithm, please refer to [wikipedia](https://en.wikipedia.org/wiki/Sweep_line_algorithm).
+
+__Algorithm__
+
+1. Initialize an empty list ```res``` for skyline key points.
+2. Use a hash set ```unique_positions``` to store all distinct edges in buildings.
+3. Iterate over the sorted positions, and for each position:
+    - Check for buildings that intersect with the imaginary vertical line at ```position```. (A building is considered to be intersecting with the line if position is within the range ```[left, right)```.)
+4. The ```max_height``` is the maximum height of the intersecting buildings at ```position```, or ```0``` if no building intersects with the line.
+5. If ```max_height``` differs from that of the previous skyline point, add a new skyline point to ```res```.
+6. Return ```res``` as the skyline.
+
+__Time Complexity:__ ```O(N^2)```
+
+__Space Complexity:__ ```O(N)```
+
+```Python
+
+```
