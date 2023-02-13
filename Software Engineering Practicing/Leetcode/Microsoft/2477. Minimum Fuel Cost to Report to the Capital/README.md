@@ -91,7 +91,28 @@ Although the edges are given as undirected, we will treat the graph as a tree wh
 ### Depth-First Search
 
 ```Python
+class Solution:
+    def minimumFuelCost(self, roads: List[List[int]], seats: int) -> int:
+        # Build the adjacency list
+        graph = collections.defaultdict(list)
+        for e, v in roads:
+            graph[e].append(v)
+            graph[v].append(e)
+        
+        fuel_consumption = 0
 
+        def dfs(node, parent):
+            nonlocal fuel_consumption
+            representatives = 1
+            for neighbor in graph[node]:
+                if neighbor != parent:
+                    representatives += dfs(neighbor, node)
+            if node != 0:
+                fuel_consumption += math.ceil(representatives / seats)
+            return representatives
+        
+        dfs(0, -1)
+        return fuel_consumption
 ```
 
 ### Breadth-First Search
