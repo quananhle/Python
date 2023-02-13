@@ -1,6 +1,6 @@
 ## 218. The Skyline Problem
 
-```Tag```: ```Priority Queue``` ```Recursion``` ```Divide & Conquer``` ```Hash Map``` ```Hash Set``` ```Sweep Line Algorithm```
+```Tag```: ```Priority Queue``` ```Recursion``` ```Divide & Conquer``` ```Hash Map``` ```Hash Set``` ```Sweep Line Algorithm``` ```Union-Find```
 
 #### Difficulty: Hard
 
@@ -87,7 +87,7 @@ For more information about Sweep Line Algorithm, please refer to [wikipedia](htt
 __Algorithm__
 
 1. Initialize an empty list ```res``` for skyline key points.
-2. Use a hash set ```unique_positions``` to store all distinct edges in buildings.
+2. Use a hash map ```unique_positions``` to store all distinct edges in buildings.
 3. Iterate over the sorted positions, and for each position:
     - Check for buildings that intersect with the imaginary vertical line at ```position```. (A building is considered to be intersecting with the line if position is within the range ```[left, right)```.)
 4. The ```max_height``` is the maximum height of the intersecting buildings at ```position```, or ```0``` if no building intersects with the line.
@@ -99,5 +99,81 @@ __Time Complexity:__ ```O(N^2)```
 __Space Complexity:__ ```O(N)```
 
 ```Python
+class Solution:
+    def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
+        # Get the unique positions of left and right edges of all buildings
+        unique_positions = sorted(list(set([x for building in buildings for x in building[:2]])))
 
+        res = list()
+
+        # Draw a vertical line for every position
+        for position in unique_positions:
+            max_height = 0
+            # Get the maximum height for the vertical line
+            for left, right, height in buildings:
+                if left <= position < right:
+                    max_height = max(max_height, height)
+            
+            # Record the first change in height
+            if not res or res[-1][1] != max_height:
+                res.append([position, max_height])
+        
+        return res
+```
+
+### Approach 3: Sweep Line + Priority Queue
+
+![image](https://leetcode.com/problems/the-skyline-problem/solutions/2375781/Figures/218_re/218_sl_exp2.png)
+
+__Algorithm__
+
+1. Iterate over ```buildings``` and store each building's edges separately with the building's index as a reference in edges.
+2. Sort the entries in ```edges``` by their first element.
+3. Iterate over the sorted ```edges``` and for each edge/index:
+    - If ```buildings[b][0] == curr_x```, meaning its a left edge and the ```building[b]``` is live, we add ```(height, right)``` to ```live```.
+    - While the tallest live building has been passed, remove it from ```live```.
+4. Once we finish handling all the edges at the ```curr_x```, we shall move on to the next position.
+5. After the iteration, return ```res``` as the skyline.
+
+__Time Complexity:__ ```O(NlogN)```
+
+__Space Complexity:__ ```O(N)```
+
+```Python
+class Solution:
+    def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
+        edges = list()
+        for index, build in enumerate(buildings):
+            edges.append([build[0], index])
+            edges.append([build[1], index])
+        
+        edges.sort()
+        h, res = list(), list()
+        idx = 0
+
+        while idx < len(edges):
+            # Since multiple edges can be at the same position, get current position
+            curr_position = edges[idx][0]
+
+            # Check if the buildings are overlapped
+            while idx < len(edges) and edges[idx][0] == curr_position:
+                building = edges[idx][1]
+                # Check if this is the left edge of building b, add (height, right) of building building to the priority queue
+                if buildings[building][0] == curr_position:
+                    right = buildings[building][1]
+                    height = buildings[building][2]
+                    heapq.heappush(h, [-height, right])
+
+                # Check if the tallest building has been passed, pop from the prioty queue
+                while h and h[0][1] <= curr_position:
+                    heapq.heappop(h)
+                idx += 1
+        
+            # Get the maximum height from heap
+            max_height = -h[0][0] if h else 0
+            
+            # Record height for the first building and the change in height every building right after
+            if not res or max_height != res[-1][1]:
+                res.append([curr_position, max_height])
+        return res
 ```
