@@ -184,6 +184,58 @@ __Algorithm__
 
 ![image](https://user-images.githubusercontent.com/35042430/218411473-85feb94f-252e-42f9-95d2-e0149740f930.png)
 
+__Time Complexity:__ ```O(NlogN)```
+
+__Space Complexity:__ ```O(N)```
+
+```Python
+class Solution:
+    def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
+        # Iterate over the left and right edges of all the buildings, 
+        # If its a left edge, add (left, height) to 'edges'.
+        # Otherwise, add (right, -height) to 'edges'.
+        edges = []
+        for left, right, height in buildings:
+            edges.append([left, height])
+            edges.append([right, -height])
+
+        edges.sort()
+        # Initailize two empty priority queues 'live' and 'past' for the live buildings and the past buildings.
+        live, past, res = list(), list(), list()
+        idx = 0
+
+        # Iterate over the sorted edges
+        while idx < len(edges):
+            # Since multiple edges can be at the same position, get current position
+            curr_position = edges[idx][0]
+
+            # Check if the buildings are overlapped
+            while idx < len(edges) and edges[idx][0] == curr_position:
+                height = edges[idx][1]
+                # Record the left edge and right edge based on height
+                if height > 0:
+                    heapq.heappush(live, -height)
+                else:
+                    heapq.heappush(past, height)
+                idx += 1
+                
+            # Check if the tallest building has been passed, pop from the prioty queue
+            while past and past[0] == live[0]:
+                heapq.heappop(live)
+                heapq.heappop(past)
+
+            # Get the maximum height from heap            
+            max_height = -live[0] if live else 0
+
+            # Record height for the first building and the change in height every building right after
+            if not res or res[-1][1] != max_height:
+                res.append([curr_position, max_height])
+
+        return res
+```
+
+### Approach 5: Union Find
+
 ```Python
 
 ```
