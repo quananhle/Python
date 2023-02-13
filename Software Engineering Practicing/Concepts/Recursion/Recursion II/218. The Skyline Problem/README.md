@@ -177,3 +177,13 @@ class Solution:
                 res.append([curr_position, max_height])
         return res
 ```
+
+### Approach 4: Sweep Line + Two Priority Queue
+
+__Algorithm__
+
+![image](https://user-images.githubusercontent.com/35042430/218411473-85feb94f-252e-42f9-95d2-e0149740f930.png)
+
+```Python
+
+```
