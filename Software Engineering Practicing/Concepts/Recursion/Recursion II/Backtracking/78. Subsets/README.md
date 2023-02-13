@@ -32,7 +32,25 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/subsets/solutions/464411/Figures/78/recursion.png)
+
+### Cascading
+
+```Python
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        res = [[]]
+        for num in nums:
+            res += [curr + [num] for curr in res]
+        return res
+```
+
 ### Backtracking
+
+![image](https://leetcode.com/problems/subsets/solutions/464411/Figures/78/combinations.png)
+
+![image](https://leetcode.com/problems/subsets/solutions/464411/Figures/78/backtracking.png)
 
 ```Python
 class Solution:
