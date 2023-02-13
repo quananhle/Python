@@ -118,6 +118,34 @@ class Solution:
 ### Breadth-First Search
 
 ```Python
+class Solution:
+    def minimumFuelCost(self, roads: List[List[int]], seats: int) -> int:
+        degree = [0] * (len(roads) + 1)
 
+        # Build the adjacency list
+        graph = collections.defaultdict(set)
+        for e, v in roads:
+            graph[e].add(v)
+            graph[v].add(e)
+            degree[e] += 1
+            degree[v] += 1
+        # Append to the queue with all the nodes that have 1 degree
+        queue = collections.deque()
+        for i in range(1, len(roads) + 1):
+            if degree[i] == 1:
+                queue.append(i)
 
+        representatives = [1] * (len(roads) + 1)
+        fuel_consumption = 0
+
+        while queue:
+            curr = queue.popleft()
+            fuel_consumption += math.ceil(representatives[curr] / seats)
+            for neighbor in graph[curr]:
+                degree[neighbor] -= 1
+                representatives[neighbor] += representatives[curr]
+                if degree[neighbor] == 1 and neighbor:
+                    queue.append(neighbor)
+
+        return fuel_consumption
 ```
