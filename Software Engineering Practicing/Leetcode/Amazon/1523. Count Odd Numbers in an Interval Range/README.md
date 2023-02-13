@@ -29,3 +29,37 @@ __Constraints:__
 - ```0 <= low <= high <= 10^9```
 
 ---
+
+### List Comprehension
+
+```Python
+class Solution:
+    def countOdds(self, low: int, high: int) -> int:
+        # List Comprehension
+        ### Time Limit Exceeded
+        #### Time Complexity: O(N), iterate through the range
+        #### Space Complexity: O(N), list comprehension
+        return len([k for k in range(low, high + 1) if k % 2 != 0])
+```
+
+### Math
+
+```Python
+class Solution:
+    def countOdds(self, low: int, high: int) -> int:
+        """
+        return (high + 1) // 2 - (low // 2)
+        """        
+```
+
+```Python
+class Solution:
+    def countOdds(self, low: int, high: int) -> int:
+        '''
+        if low % 2 != 0:
+            low -= 1
+        complement = high + 1 - low
+        return complement // 2
+        '''
+        return (high + 1 - low + 1) // 2 if low % 2 != 0 else (high + 1 - low) // 2
+```
