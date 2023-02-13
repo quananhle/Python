@@ -47,6 +47,34 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/combination-sum/solutions/824635/Figures/39/39_exploration_tree.png)
 
-```Python
+__Complexity Analysis__:
 
+Let N be the number of candidates, T be the target value, and M be the minimal value among the candidates.
+
+__Time Complexity__: O(N<sup>T/M + 1</sup>), the execution of the backtracking is unfolded as a DFS traversal in a N-ary tree. The total number of steps during the backtracking would be the number of nodes in the tree. The maximal number of nodes in N-ary tree of ```T/M``` height would be N<sup>T/M + 1</sup>
+
+__Space Complexity__: O(<sup>T/M</sup>), The number of recursive calls can pile up to ```T/M```, where we keep on adding the smallest element to the combination
+
+```Python
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = list()
+
+        def backtrack(combinations, remaining, curr):
+            # Base case
+            if remaining == 0:
+                res.append(combinations[:])
+                return
+            elif remaining < 0:
+                return
+            
+            for i in range(curr, len(candidates)):
+                combinations.append(candidates[i])
+                # Stay in the same number until base cases reached
+                backtrack(combinations, remaining - candidates[i], i)
+                # Backtrack
+                combinations.pop()
+
+        backtrack([], target, 0)
+        return res
 ```
