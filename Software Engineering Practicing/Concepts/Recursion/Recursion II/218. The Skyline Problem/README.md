@@ -236,6 +236,56 @@ class Solution:
 
 ### Approach 5: Union Find
 
-```Python
+![image](https://leetcode.com/problems/the-skyline-problem/solutions/2375781/Figures/218_re/218_uf_mark.png)
 
+![image](https://leetcode.com/problems/the-skyline-problem/solutions/2375781/Figures/218_re/218_uf_skip.png)
+
+![image](https://user-images.githubusercontent.com/35042430/218416055-726e6ca6-bdba-4178-b95b-ab4913800402.png)
+
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+    
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        else:
+            self.root[x] = self.find(self.root[x])
+            return self.root[x]
+    
+    def union(self, x, y):
+        self.root[x] = self.root[y]
+        
+class Solution:
+    def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
+        # Sort the unique positions of all the edges.
+        unique_positions = sorted(list(set([x for building in buildings for x in building[:2]])))
+
+        edge_index_map = {x:idx for idx, x in enumerate(unique_positions)} 
+
+        # Sort buildings in descending order of the heights
+        buildings.sort(key=lambda x: -x[2])
+
+        n = len(unique_positions)
+        union_find = UnionFind(n)
+        heights = [0] * n
+    
+        for left, right, height in buildings:
+            left_idx, right_idx = edge_index_map[left], edge_index_map[right]
+
+            while left_idx < right_idx:
+                left_idx = union_find.find(left_idx)
+                if left_idx < right_idx:
+                    union_find.union(left_idx, right_idx)
+                    heights[left_idx] = height
+                    left_idx += 1
+        res = list()
+        for i in range(n):
+            if i == 0 or heights[i] != heights[i - 1]:
+                res.append([unique_positions[i], heights[i]])
+        
+        return res
 ```
+    
