@@ -45,6 +45,57 @@ class Solution:
 
 ---
 
+[__40. Combination Sum II__](https://leetcode.com/problems/combination-sum-ii/)
+
+Given a collection of candidate numbers (```candidates```) and a target number (```target```), find all unique combinations in ```candidates``` where the candidate numbers sum to ```target```.
+
+Each number in ```candidates``` may only be used once in the combination.
+
+Note: The solution set must not contain duplicate combinations.
+
+__Example:__
+```
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: 
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]
+```
+
+```Python
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = list()
+        candidates.sort()
+
+        def backtrack(combination, remaining, curr):
+            # Base case
+            if remaining == 0:
+                res.append(combination[:])
+                return
+            elif remaining < 0:
+                return
+
+            for i in range(curr, len(candidates)):
+                # Check combination is empty and two elements standing next to each other in a sorted array are the same
+                if i > curr and candidates[i] == candidates[i - 1]:
+                    continue
+                combination.append(candidates[i])
+                # Move on to the next element
+                backtrack(combination, remaining - candidates[i], i + 1)
+                # Backtracking
+                combination.pop()
+
+            
+        backtrack([], target, 0)
+        return res
+```
+
+---
+
 [__46. Permutations__](https://leetcode.com/problems/permutations/)
 
 Given an array ```nums``` of distinct integers, return _all the possible permutations_. You can return the answer in any order.
