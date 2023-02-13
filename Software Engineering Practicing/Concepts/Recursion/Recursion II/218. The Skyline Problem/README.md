@@ -75,3 +75,11 @@ class Solution:
         
         return res
 ```
+
+### Approach 2: Brute Force II, Sweep Line
+
+Another instinctive idea is to use a vertical line of infinite length to sweep over the ground from the left to right. The line stops by every edge and we shall record the maximum height among all the buildings that intersect with the line. As shown in the picture below, the right edge of a building doesn't count!
+
+![image[(https://leetcode.com/problems/the-skyline-problem/solutions/2375781/Figures/218_re/218_sw_exp.png)
+
+For more information about Sweep Line Algorithm, please refer to [wikipedia](https://en.wikipedia.org/wiki/Sweep_line_algorithm).
