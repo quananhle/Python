@@ -88,6 +88,8 @@ Before moving on to the solution, consider some of the graph terminologies that 
 
 Although the edges are given as undirected, we will treat the graph as a tree where ```0``` is the root and only consider moving in one direction. Although the edges are given as undirected, we will treat the graph as a tree where ```0``` is the root and only consider moving in one direction.
 
+![image](https://assets.leetcode.com/users/images/9d2614da-54f9-42a4-9040-354501667645_1668989416.5838492.png)
+
 ### Depth-First Search
 
 ```Python
