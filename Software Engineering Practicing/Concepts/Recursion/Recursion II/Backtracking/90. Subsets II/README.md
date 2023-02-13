@@ -28,3 +28,70 @@ __Constraints:__
 - ```-10 <= nums[i] <= 10```
 
 ---
+
+### Cascading
+
+```Python
+        res = [[]]
+        nums.sort()
+        size = 0
+
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i-1]:
+                start_idx = size
+            else:
+                start_idx = 0
+            size = len(res)
+            for j in range(start_idx, size):
+                curr_subset = res[j][:]
+                curr_subset.append(nums[i])
+                res.append(curr_subset)
+
+        return res
+```
+
+### Backtracking
+
+```Python
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        # Backtracking
+        res = list()
+
+        nums.sort()
+
+        def backtracking(subset, curr):
+            # Base case
+            if len(subset) == k and not subset in res:
+                res.append(subset[:])
+                return
+            
+            for i in range(curr, len(nums)):
+                subset.append(nums[i])
+                backtracking(subset, i + 1)
+                subset.pop()
+        
+        for k in range(len(nums) + 1):
+            backtracking([], 0)
+        return res
+```
+
+```Python
+
+        res = list()
+        nums.sort()
+
+        def backtrack(curr, subset):
+            res.append(subset[:])
+
+            for i in range(curr, len(nums)):
+                # Check if subset not empty or two elements standing next to each other are the same
+                if i != curr and nums[i] == nums[i - 1]:
+                    continue
+                subset.append(nums[i])
+                backtrack(i + 1, subset)
+                subset.pop()
+
+        backtrack(0, [])
+        return res
+```
