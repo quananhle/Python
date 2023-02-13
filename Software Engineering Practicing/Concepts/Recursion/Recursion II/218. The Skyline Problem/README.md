@@ -28,6 +28,19 @@ In this problem, we are given a list of buildings and would like to construct th
 
 ### Approach 1: Brute Force
 
+__Algorithm__
+
+1. Collect all unique positions for the left and right edges of the buildings in ```buildings``` and save them in list ```unique_positions```.
+2. Initalize:
+    - An empty list ```heights``` of the same length as ```unique_positions```.
+    - A hash map ```edge_index_map``` stores corresponding index and value of elements from ```heights```.
+    - An empty list ```res``` for skyline key points.
+3. Iterate over ```buildings```, for each building ```buildings[i]```:
+    - Get the index of its left edge and right edge ```left_index```, ```right_index```, and its height ```height```.
+    - For index in ```[left_index, right_index]```, update ```heights[index]``` if necessary.
+4. Traverse the updated ```heights``` and add all the positions where the height changes to ```res``` as skyline key points.
+5. Return ```res``` as the skyline.
+
 __Time Complexity:__ ```O(N^2)```
 
 __Space Complexity:__ ```O(N)```
