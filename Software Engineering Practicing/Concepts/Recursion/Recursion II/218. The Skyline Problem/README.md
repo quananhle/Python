@@ -1,6 +1,6 @@
 ## 218. The Skyline Problem
 
-```Tag```: ```Priority Queue``` ```Divide & Conquer```
+```Tag```: ```Priority Queue``` ```Recursion``` ```Divide & Conquer``` ```Hash Map``` ```Hash Set``` ```Sweep Line Algorithm```
 
 #### Difficulty: Hard
 
