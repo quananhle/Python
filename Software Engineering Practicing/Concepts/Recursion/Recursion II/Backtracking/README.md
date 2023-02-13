@@ -1,6 +1,51 @@
 ## Pattern for Multiple Backtracking Problems
 
-[46. Permutations](https://leetcode.com/problems/permutations/)
+[__39. Combination Sum__](https://leetcode.com/problems/combination-sum/)
+
+Given an array of __distinct__ integers ```candidates``` and a target integer ```target```, return _a list of all __unique combinations__ of ```candidates``` where the chosen numbers sum to ```target```_. You may return the combinations in any order.
+
+The __same__ number may be chosen from ```candidates``` an __unlimited number of times__. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+
+The test cases are generated such that the number of unique combinations that sum up to ```target``` is less than ```150``` combinations for the given input.
+
+__Example:__
+```
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+Explanation:
+2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
+7 is a candidate, and 7 = 7.
+These are the only two combinations.
+```
+
+```Python
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = list()
+
+
+        def backtrack(combinations, remaining, curr):
+            # Base case
+            if remaining == 0:
+                res.append(combinations[:])
+                return
+            elif remaining < 0:
+                return
+            
+            for i in range(curr, len(candidates)):
+                combinations.append(candidates[i])
+                # Stay in the same number until base cases reached
+                backtrack(combinations, remaining - candidates[i], i)
+                # Backtrack
+                combinations.pop()
+
+        backtrack([], target, 0)
+        return res
+```
+
+---
+
+[__46. Permutations__](https://leetcode.com/problems/permutations/)
 
 Given an array ```nums``` of distinct integers, return _all the possible permutations_. You can return the answer in any order.
 
@@ -36,7 +81,7 @@ class Solution:
 
 ---
 
-[47. Permutations II](https://leetcode.com/problems/permutations-ii/)
+[__47. Permutations II__](https://leetcode.com/problems/permutations-ii/)
 
 Given a collection of numbers, ```nums```, that might contain duplicates, return _all possible unique permutations in any order_.
 
@@ -101,7 +146,7 @@ class Solution:
 
 ---
 
-[78. Subsets](https://leetcode.com/problems/subsets/)
+[__78. Subsets__](https://leetcode.com/problems/subsets/)
 
 Given an integer array ```nums``` of unique elements, return _all possible subsets (the power set)_.
 
@@ -139,7 +184,7 @@ class Solution:
 
 ---
 
-[90. Subsets II](https://leetcode.com/problems/subsets-ii/)
+[__90. Subsets II__](https://leetcode.com/problems/subsets-ii/)
 
 Given an integer array ```nums``` that may contain duplicates, return _all possible subsets (the power set)_.
 
