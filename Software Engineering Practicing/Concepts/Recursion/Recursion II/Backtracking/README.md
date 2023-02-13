@@ -36,6 +36,71 @@ class Solution:
 
 ---
 
+[47. Permutations II](https://leetcode.com/problems/permutations-ii/)
+
+Given a collection of numbers, ```nums```, that might contain duplicates, return _all possible unique permutations in any order_.
+
+__Example_:
+```
+Input: nums = [1,1,2]
+Output:
+[[1,1,2],
+ [1,2,1],
+ [2,1,1]]
+```
+
+```Python
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        res = list()
+
+        def backtrack(curr):
+            # Base case
+            if curr == len(nums) and not nums in res:
+                res.append(nums[:])
+                return
+            
+            for i in range(curr, len(nums)):
+                nums[i], nums[curr] = nums[curr], nums[i]
+                backtrack(curr + 1)
+                nums[i], nums[curr] = nums[curr], nums[i]
+
+        backtrack(0)
+        return res
+```
+
+```Python
+        res = list()
+
+        def backtrack(permutations, counter):
+            # Base case
+            if len(permutations) == len(nums):
+                '''
+                res.append(permutations[:])
+                '''
+                res.append(list(permutations))
+                return
+            
+            for num in counter:
+                # To avoid the duplicate permutations 
+                if counter[num] > 0:
+                    permutations.append(num)
+                    # Update the frequency of num
+                    counter[num] -= 1
+
+                    # Move on to the next element in nums to add into permutations
+                    backtrack(permutations, counter)
+
+                    # Backtrack
+                    permutations.pop()
+                    counter[num] += 1
+
+        backtrack([], collections.Counter(nums))
+        return res
+```
+
+---
+
 [78. Subsets](https://leetcode.com/problems/subsets/)
 
 Given an integer array ```nums``` of unique elements, return _all possible subsets (the power set)_.
@@ -111,5 +176,6 @@ class Solution:
 ```
 
 ---
+
 
 
