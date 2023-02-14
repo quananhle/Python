@@ -43,3 +43,70 @@ __Constraints:__
 - ```0 <= cost[i] <= 999```
 
 ---
+
+### Dynamic Programming
+
+#### Top-Down Recursion
+
+__Time Complexity__: ```O(N)```, recursive call every element of input array
+
+__Space Complexity__: ```O(N)```, recursive call stack size
+
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        # Top-Down DP (Recursive)
+        memo = collections.defaultdict(int)
+        n = len(cost)
+        def dp(i):
+            # Base cases:
+            if i <= 1:
+                return 0
+            if i in memo:
+                return memo[i]
+            # Recurrence relation
+            memo[i] = min(dp(i - 1) + cost[i-1], dp(i - 2) + cost[i-2])
+            return memo[i]
+
+        return dp(n)
+```
+
+#### Bottom-Up Tabulation
+
+__Time Complexity__: ```O(N)```, iterate through the entire input array
+
+__Space Complexity__: ```O(N)```, hash map memo size
+
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        # Bottom-Up DP (Tabulation)
+        memo = collections.defaultdict(int)
+        n = len(cost)
+        for i in range(2, len(cost)+1):
+            memo[i] = min(memo[i-1] + cost[i-1], memo[i-2] + cost[i-2])
+        return memo[n]
+```
+
+#### Bottom-Up Iteration
+
+__Time Complexity__: ```O(N)```, iterate through the entire input array
+
+__Space Complexity__: ```O(1)```, constant space for pointers
+
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        # Bottom-Up DP (Iterative)
+        '''
+        for i in range(2, len(cost)):
+            cost[i] = min(cost[i-1], cost[i-2]) + cost[i]
+        return min(cost[-1], cost[-2])
+        '''
+        climb1 = climb2 = 0
+        for i in range(2, len(cost) + 1):
+            tmp = climb1
+            climb1 = min(climb1 + cost[i-1], climb2 + cost[i-2])
+            climb2 = tmp
+        return climb1
+```
