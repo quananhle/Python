@@ -37,6 +37,65 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/house-robber/solutions/1113644/Figures/198/img1.png)
+_Figure 1. An example showing the robber making the optimal choices to obtain the most money._
+
+![image](https://leetcode.com/problems/house-robber/solutions/1113644/Figures/198/img2.png)
+_Figure 2. The same example showing the robber making sub-optimal choices._
+
+![image](https://leetcode.com/problems/house-robber/solutions/1113644/Figures/198/img3.png)
+_Figure 3. Depicting the failure of a greedy strategy on the same example._
+
+### The Framework
+
+![image](https://user-images.githubusercontent.com/35042430/218662640-75fcda9d-62ac-4268-9dd9-ec81d43fef96.png)
+
+![image](https://user-images.githubusercontent.com/35042430/218662669-4d0f430f-151d-42f4-8f80-3302f5a46d0f.png)
+
+![image](https://user-images.githubusercontent.com/35042430/218662708-29b4e063-8113-4de5-9eb0-c04db1eb0990.png)
+
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        #### Time Complexity: O(N)
+        memo = collections.defaultdict(int)
+        n = len(nums)
+
+        def dp(i):
+            # Base cases
+            if i == 0:
+                return nums[0]
+            if i == 1:
+                return max(nums[0], nums[1])
+            
+            if not i in memo:
+                # Recurrence relation
+                memo[i] = max(dp(i-1), dp(i-2) + nums[i])
+            return memo[i]
+        
+        return dp(n - 1)
+```
+
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        # Bottom-Up DP (Tabulation)
+        #### Time Complexity: O(N)
+        if len(nums) == 1:
+            return nums[0]
+
+        memo = collections.defaultdict(int)
+        memo[0], memo[1] = nums[0], max(nums[0], nums[1])
+
+        for i in range(2, len(nums)):
+            memo[i] = max(memo[i-1] , memo[i-2] + nums[i])
+
+        return memo[len(nums)-1]
+```
+
+---
+
 ### Top-Down Recursive
 
 ```Python
