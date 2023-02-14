@@ -77,6 +77,10 @@ class Solution:
         return res
 ```
 
+__Time Complexity__: O(2<sup>N</sup>), The number of combination for an array of size ```N``` would be 2<sup>N</sup>, each number is either included or excluded in a combination
+
+__Space Complexity__: O(N), size of combinations, counter, and recursion stack.
+
 ```Python
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -107,6 +111,10 @@ class Solution:
 ```
 
 ### Counter
+
+__Time Complexity__: O(2<sup>N</sup>), The number of combination for an array of size ```N``` would be 2<sup>N</sup>, each number is either included or excluded in a combination
+
+__Space Complexity__: O(N), size of combinations, counter, and recursion stack.
 
 ```Python
 class Solution:
