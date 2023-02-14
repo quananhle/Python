@@ -136,3 +136,89 @@ class Solution:
 
         return dp(highest_point)
 ```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+__Time Complexity__: ```O(N + K)```, iterate through input array size N and highest point k
+
+__Space Complexity__: ```O(N + K)```, hash table and cache
+
+```Python
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        # Bottom-Up DP (Tabulation)
+        points = collections.defaultdict(int)
+        highest_point = max(nums)
+        for num in nums:
+            points[num] += num
+        
+        memo = collections.defaultdict(int)
+        memo[0], memo[1] = 0, points[1]
+
+        for i in range(2, highest_point + 1):
+            memo[i] = max(memo[i-1], memo[i-2] + points[i])
+        
+        return memo[highest_point]
+```
+
+#### Space Optimized Dynamic Programming (Iteration)
+
+__Time Complexity__: ```O(N + K)```, iterate through input array size N and highest point k
+
+__Space Complexity__: ```O(N)```, hash table
+
+```Python
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        # Bottom-Up DP
+        points = collections.defaultdict(int)
+        highest_point = max(nums)
+        for num in nums:
+            points[num] += num
+
+        # Base cases
+        case0, case1 = 0, points[1]
+        
+        # Iterate to the highest point
+        for num in range(2, highest_point + 1):
+            # Recurrence relation
+            tmp = case1
+            case1 = max(case1, case0 + points[num])
+            case0 = tmp
+        return case1
+```
+
+#### Bottom-Up Dynamic Programming (Iteration)
+
+In the previous three approaches, we found the maximum element in nums, and iterated from ```0``` to ```highest_point```. The problem with this idea is that in some test cases, there could be large gaps between elements that we will waste time iterating over. In all three approaches, our time complexity was ```O(N+k)```, or ```O(nums.length+max(nums))```. This is very inefficient for a case such as ```nums = [1, 2, 3, 10000]```.
+
+Instead of iterating over all numbers from ```0``` to ```max(nums)```, we can iterate over only the elements that appear in nums. Unfortunately, we will need to perform a ```sort``` to do this, but in cases like ```nums = [1, 2, 3, 10000]```, the algorithm will run much faster.
+
+__Time Complexity__: ```O(NlogN)```, sort operations take NlogN time
+
+__Space Complexity__: ```O(N)```, hash table
+
+```Python
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        # Bottom-Up DP
+        points = collections.defaultdict(int)
+        for num in nums:
+            points[num] += num
+        
+        elements = sorted(points.keys())
+        case0, case1 = 0, points[elements[0]]
+
+        for i in range(1, len(elements)):
+            curr = elements[i]
+            # Check to ensure that elements are in the range [nums[i]-1, nums[i]+1]
+            if curr == elements[i-1] + 1:
+                tmp = case1
+                case1 = max(case1, case0 + points[curr])
+                case0 = tmp
+            else:
+                tmp = case1
+                case1 = case1 + points[curr]
+                case0 = tmp
+        return case1
+```
