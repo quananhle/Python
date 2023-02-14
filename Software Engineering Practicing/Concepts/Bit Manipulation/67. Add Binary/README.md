@@ -44,7 +44,7 @@ class Solution:
         return bin(x)[2:]
 ```
 
-### String and Array
+### Bit-by-Bit Computation
 
 ```Python
 class Solution:
