@@ -120,3 +120,24 @@ class Solution:
         tri = Tribonacci()
         return tri.nums[n]
 ```
+
+#### Iterative Approach
+
+```Python
+# Precomputing Tribonacci number
+class Tribonacci:
+    def __init__(self) -> None:
+        n = 38
+        self.nums = [0] * n
+        self.nums[1] = self.nums[2] = 1
+        for i in range (3, n):
+            self.nums[i] = self.nums[i-1] + self.nums[i-2] + self.nums[i-3]
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        # Recursion with Memorization
+        #### Time Complexity: O(1), to retrieve the preliminary computed Tribonacci number
+        #### Space Complexity: O(1), constant space up to the constraint
+        tri = Tribonacci()
+        return tri.nums[n]
+```
