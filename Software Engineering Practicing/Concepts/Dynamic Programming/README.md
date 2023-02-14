@@ -90,10 +90,29 @@ class Solution:
         return dp(n)
 ```
 
+```
+You may notice that a hashmap is overkill for caching here, and an array can be used instead. This is true, 
+but using a hashmap isn't necessarily bad practice as some DP problems will require one, and they're hassle-free 
+to use as you don't need to worry about sizing an array correctly. Furthermore, when using top-down DP, some 
+problems do not require us to solve every single subproblem, in which case an array may use more memory than a hashmap.
+```
+
 #### Bottom-Up Implementation
 
 ```Python
+    def climbStairs(self, n: int) -> int:
+        if n == 1:
+            return 1
+            
+        # An array that represents the answer to the problem for a given state
+        dp = [0] * (n + 1)
+        dp[1] = 1 # Base cases
+        dp[2] = 2 # Base cases
+        
+        for i in range(3, n + 1):
+            dp[i] = dp[i - 1] + dp[i - 2] # Recurrence relation
 
+        return dp[n]
 ```
 
 ---
