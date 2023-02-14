@@ -32,6 +32,8 @@ __Constraints:__
 
 ### Bitwise Manipulation
 
+![image](https://leetcode.com/problems/add-binary/solutions/414426/Figures/67/carry2.png)
+
 ```Python
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
