@@ -56,6 +56,48 @@ When it comes to identifying if a problem should be solved with DP, this first c
 
 __The second characteristic__ that is common in DP problems is that future "decisions" depend on earlier decisions. Deciding to do something at one step may affect the ability to do something in a later step. This characteristic is what makes a greedy algorithm invalid for a DP problem - we need to factor in results from previous decisions. Admittedly, this characteristic is not as well defined as the first one, and the best way to identify it is to go through some examples.
 
+---
+
+## Framework for DP Problems
+
+### The Framework
+
+To solve a DP problem, we need to combine 3 things:
+
+#### 1. A function or data structure that will compute/contain the answer to the problem for every given state.
+#### 2. A recurrence relation to transition between states.
+#### 3. Base cases, so that our recurrence relation doesn't go on infinitely.
+
+Problem [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/) as an example, with a top-down (recursive) implementation
+
+#### Top-down Implementation
+
+```Python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        #### Time complexity: O(n)
+        def dp(i):
+            if i <= 2: 
+                return i
+            if i not in memo:
+                # Instead of just returning dp(i - 1) + dp(i - 2), calculate it once and then
+                # store the result inside a hashmap to refer to in the future.
+                memo[i] = dp(i - 1) + dp(i - 2)
+            
+            return memo[i]
+        
+        memo = {}
+        return dp(n)
+```
+
+#### Bottom-Up Implementation
+
+```Python
+
+```
+
+---
+
 ## Applying Dynamic Programming to a Problem
 
 While it's _very difficult to be certain_ that there is no greedy algorithm for your interview problem, over time you'll build up an intuition about when to give up. You also don't want to risk spending so long trying to find a greedy algorithm that you run out of time to write a dynamic programming one (and it's also best to make sure you write a working solution!).
@@ -63,7 +105,9 @@ While it's _very difficult to be certain_ that there is no greedy algorithm for 
 Besides, sometimes the process used to develop a dynamic programming solution can lead to a greedy one. So, you might end up being able to further optimize your dynamic programming solution anyway.
 
 ```
-When you're solving a problem on your own and trying to decide if the second characteristic is applicable, assume it isn't, then try to think of a counterexample that proves a greedy algorithm won't work. If you can think of an example where earlier decisions affect future decisions, then DP is applicable.
+When you're solving a problem on your own and trying to decide if the second characteristic is applicable, assume it isn't, 
+then try to think of a counterexample that proves a greedy algorithm won't work. If you can think of an example where earlier 
+decisions affect future decisions, then DP is applicable.
 ```
 
 Recall that there are two different techniques we can use to implement a dynamic programming solution; memoization and tabulation.
