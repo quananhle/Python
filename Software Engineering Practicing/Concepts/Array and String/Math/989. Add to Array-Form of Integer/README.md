@@ -127,7 +127,7 @@ class Solution:
 
 ### One-Liner
 
-```
+```Python
 class Solution:
     def addToArrayForm(self, num: List[int], k: int) -> List[int]:
         return [int(d) for d in str(int("".join(map(str, num))) + k)]
