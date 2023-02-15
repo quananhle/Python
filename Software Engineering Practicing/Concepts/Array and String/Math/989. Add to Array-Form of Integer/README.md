@@ -46,7 +46,7 @@ __Constraints:__
 
 ### Brute Force
 
-#### Time Limit Exceeded
+#### Time Limit Exceeded (Left to Right)
 
 ```Python
 class Solution:
@@ -70,7 +70,7 @@ class Solution:
         return res
 ```
 
-#### In-Place Add Operations
+#### In-Place Add Operations (Right to Left)
 
 ```Python
 class Solution:
@@ -94,7 +94,7 @@ class Solution:
         return res[::-1]
 ```
 
-### Divmod
+### Divmod()
 
 ```Python
 class Solution:
