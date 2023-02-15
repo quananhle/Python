@@ -44,4 +44,91 @@ __Constraints:__
 
 ---
 
+### Brute Force
 
+#### Time Limit Exceeded
+
+```Python
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        # Time Limit Exceeded
+        """
+        whole_number = 0
+        for i in range(len(num)):
+            whole_number += num[i] * 10**(len(num) - 1 - i)
+        whole_number += k
+        tmp = whole_number
+        n = 0
+        while tmp > 0:
+            tmp //= 10
+            n += 1
+        res = list()
+        for i in range(n-1, -1, -1):
+            digit = whole_number // 10**i
+            whole_number %= 10**i
+            res.append(digit)
+        return res
+```
+
+#### In-Place Add Operations
+
+```Python
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        carry = 0
+        res = []
+        for i in range(len(num)-1, -1, -1):
+            total = num[i] + carry + (k % 10)
+            carry = total // 10
+            res.append(total % 10)
+            k //= 10
+        # Check if carry in k
+        while k > 0:
+            total = carry + (k % 10)
+            carry = total // 10
+            res.append(total % 10)
+            k //= 10
+        # Check if carry in num
+        if carry > 0:
+            res.append(carry)
+        return res[::-1]
+```
+
+### Divmod
+
+```Python
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        num[-1] += k
+        for i in range(len(num) - 1, -1, -1):
+            '''
+            carry, num[i] = divmod(num[i], 10)
+            '''
+            carry = num[i] // 10
+            num[i] %= 10
+            if i: 
+                num[i-1] += carry        
+        while carry:
+            num = [carry % 10] + num
+            carry //= 10
+        return num
+```
+
+### Built-in str() and map() and int()
+
+```Python
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        res = map(str, num)
+        whole_number = "".join(res)
+        ans = int(whole_number) + k
+        return [int(d) for d in str(ans)]
+```
+
+### One-Liner
+
+```
+class Solution:
+    def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+        return [int(d) for d in str(int("".join(map(str, num))) + k)]
+```
