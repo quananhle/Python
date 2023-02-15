@@ -64,7 +64,6 @@ __Constraints:__
 class Solution:
     def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
         # Top-Down DP (Recursion)
-        memo = collections.defaultdict(int)
         n, m = len(nums), len(multipliers)
 
         '''
