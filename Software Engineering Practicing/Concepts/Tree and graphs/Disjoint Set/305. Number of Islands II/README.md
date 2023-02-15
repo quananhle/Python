@@ -46,4 +46,83 @@ __Constraints:__
  
 ---
 
-__Follow up:__ Could you solve it in time complexity ```O(k log(mn))```, where ```k == positions.length```?
+### Union Find
+
+
+__Time Complexity__: ```O(M * N + L)```, for M and N are the number of rows and columns in the given grid, and L is the size of positions. 
+
+__Space Complexity__: ```O(M * N)```, build the rank and root of size M * N
+
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.count = size
+
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+
+    def union(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += self.rank[root_x]
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += self.rank[root_y]
+            self.count -= 1
+            return True
+        else:
+            return False
+
+    def get_count(self):
+        return self.count
+
+
+class Solution:
+    def numIslands2(self, m: int, n: int, positions: List[List[int]]) -> List[int]:
+        ROWS, COLS = m, n
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        lands = set()
+        answer = list()
+        count = 0
+        
+        if not positions or len(positions) == 0:
+            return [0]
+
+        union_find = UnionFind(ROWS * COLS)
+
+        # Check from every position in positions
+        for row, col in positions:
+            # Check if the position has neven been visited before
+            if not (row, col) in lands:
+                # Record the land cell
+                lands.add((row, col))
+                # Increment the count of island
+                count += 1
+
+            # Check every direction from the position
+            for dx, dy in DIRECTIONS:
+                new_row, new_col = row + dx, col + dy
+                if not (0 <= new_row < ROWS and 0 <= new_col < COLS):
+                    continue
+                # Check if the cell is water
+                if not (new_row, new_col) in lands:
+                    continue
+                # Otherwise, found corresponding land cell
+                current_land = union_find.find(row * n + col)
+                neighbor_land = union_find.find(new_row * n + new_col)
+
+                # Merge two corresponding land cells into an island
+                if current_land != neighbor_land:
+                    union_find.union(current_land, neighbor_land)
+                    count -= 1
+            answer.append(count)
+        return answer
+```
