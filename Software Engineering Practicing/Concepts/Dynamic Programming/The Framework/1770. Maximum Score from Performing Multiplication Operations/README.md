@@ -58,7 +58,39 @@ __Constraints:__
 
 ### The Framework
 
-#### Top-Down Dynamic Programming (Recursion)
+#### Top-Down DP (Recursion)
+
+![image](https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/solutions/2414564/Documents/1770/1770_Recursion_Tree.svg)
+
+```Python
+class Solution:
+    def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        n, m = len(nums), len(multipliers)
+
+        memo = collections.defaultdict(int)
+
+        def dp(left, curr):
+            # Base cases
+            if curr == m:
+                return 0
+            
+            if (left, curr) in memo:
+                return memo[(left, curr)]
+            
+            right = n - 1 - (curr - left)
+            current_multiplier = multipliers[curr]
+
+            # Recurrence relation
+            memo[(left, curr)] = max(nums[left] * current_multiplier + dp(left + 1, curr + 1), \
+                                  nums[right] * current_multiplier + dp(left, curr + 1))
+                
+            return memo[(left, curr)]
+
+        return dp(0, 0)
+```
+
+#### Top-Down DP (Recursion) with Built-in LRU Cache
 
 ```Python
 class Solution:
@@ -96,4 +128,51 @@ class Solution:
                       nums[right] * current_multiplier + dp(curr + 1, left))
 
         return dp(0,0)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+![image](https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/solutions/2414564/Documents/1770/1770_Lower_Half_Triangle.svg)
+
+```Python
+class Solution:
+    def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
+        # Bottom-Up DP (Tabulation)
+        n, m = len(nums), len(multipliers)
+        # Add one extra space to avoid out of bound at the first iteration of the outer loop
+        dp = [[0] * (m + 1) for _ in range(m + 1)]
+
+        # Iterate backward from m since the base case happens when curr equals m
+        for curr in range(m - 1, -1, -1):
+            for left in range(curr, -1, -1):
+                right = n - 1 - (curr - left)
+                current_multiplier = multipliers[curr]
+
+                # Recurrence relation
+                dp[curr][left] = max(nums[left] * current_multiplier + dp[curr + 1][left + 1], \
+                                    nums[right] * current_multiplier + dp[curr + 1][left])
+
+        return dp[0][0]
+```
+
+#### Space Optimized Bottom-Up DP (Iteration)
+
+![image](https://user-images.githubusercontent.com/35042430/218959085-75ceb22e-e802-41ab-a9f8-08bc29738110.png)
+
+```Python
+class Solution:
+    def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
+        # Space Optimized Bottom-Up DP (Iteration)
+        dp = collections.defaultdict(int)
+        n, m = len(nums), len(multipliers)
+
+        for curr in range(m - 1, -1, -1):
+            for left in range(curr + 1):
+                right = n - 1 - (curr - left)
+                current_multiplier = multipliers[curr]
+
+                dp[left] = max(nums[left] * current_multiplier + dp[left + 1], \
+                              nums[right] * current_multiplier + dp[left])
+        
+        return dp[0]
 ```
