@@ -43,3 +43,32 @@ __Constraints:__
 - ```text1``` and ```text2``` consist of only lowercase English characters.
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        # Top-Down DP (Recursion)
+        n, m = len(text1), len(text2)
+        memo = collections.defaultdict(int)
+
+        def dp(n, m):
+            # Base case
+            if n == 0 or m == 0:
+                return 0
+            if memo[(n, m)]:
+                return memo[(n, m)]
+
+            # Recurrence relation
+            if text1[n - 1] == text2[m - 1]:
+                memo[(n, m)] = 1 + dp(n - 1, m - 1)
+            else:
+                memo[(n, m)] = max(dp(n, m - 1), dp(n - 1, m))
+
+            return memo[(n, m)]
+
+        return dp(n, m)
+```
