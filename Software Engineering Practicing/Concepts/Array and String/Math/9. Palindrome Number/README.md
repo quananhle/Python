@@ -37,5 +37,58 @@ __Constraints:__
 
 ---
 
+### One-Liner
+
+```Python
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        return str(x) == str(x)[::-1]
+```
+
+__Follow up__: Could you solve it without converting the integer to a string?
+
+### Math
+
+#### Reverse Whole Number
+
+```Python
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        # Reverse the whole number
+        if x < 0 or (x % 10 == 0 and x != 0):
+            return False
+        
+        palindrome = 0
+        original = x
+
+        # Reverse whole interger x
+        while x > 0:
+            palindrome = palindrome * 10 + x % 10
+            x //= 10
+
+        return palindrome == original
+```
+
+#### Reverse Half Number 
+
+```Python
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        # Reverse half of the number
+        if x < 0 or (x % 10 == 0 and x != 0):
+            return False
+
+        right_half = 0
+
+        # Reverse half interger x
+        while x > right_half:
+            right_half = right_half * 10 + x % 10
+            x //= 10
+
+        # Check 2 scenarios:
+        # - len(x) is even, check if left half of x == right half of x 
+        # - len(x) is odd, get rid of the middle digit in right half
+        return x == right_half or right_half // 10 == x
+```
 
  
