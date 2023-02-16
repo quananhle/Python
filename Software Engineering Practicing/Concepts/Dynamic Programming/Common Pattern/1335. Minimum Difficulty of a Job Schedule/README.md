@@ -53,6 +53,8 @@ We can tell this is a problem where Dynamic Programming can be used because
   1. We are asked for the minimum of something, and
   2. Deciding how many jobs to do on a given day affects the jobs we can do on all future days.
 
+![image](https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/solutions/2371487/Figures/1335/1335_1BruteForce.JPG)
+
 ### The Framework
 
 __1. A function that answers the problem for a given state__
@@ -94,26 +96,135 @@ class Solution:
         for i in range(n - 1, -1, -1):
             # Get the hardest job
             hardest_job = max(hardest_job, jobDifficulty[i])
-            # Precompute remaining jobs at ith day
+            # Precompute the maximum job difficulty for remaining jobs
             memo[i] = hardest_job
         
         @lru_cache(3000)
-        def dp(curr, day):
+        def dp(curr, days_remaining):
             # Base cases
             # At the last day, all the jobs must be finished
-            if day == d:
+            if days_remaining == d:
                 return memo[curr]
             
-            best = math.inf
+            ans = math.inf
+            # Keep track of the maximum difficulty for today
             curr_hardest = 0
 
-            # Leave at least 1 job per remaining day
-            for i in range(curr, n - (d - day)):
+            # Iterate through possible starting index for the next day and ensure at least 1 job per remaining day
+            for i in range(curr, n - (d - days_remaining)):
                 curr_hardest = max(curr_hardest, jobDifficulty[i])
                 # Recurrence relation
-                best = min(best, curr_hardest + dp(i + 1, day + 1))
+                best = min(best, curr_hardest + dp(i + 1, days_remaining + 1))
 
-            return best
+            return ans
             
         return dp(0, 1)
+```
+
+```Python
+class Solution:
+    def minDifficulty(self, jobDifficulty: List[int], d: int) -> int:
+        memo = collections.defaultdict(int)
+        hardest_job = 0
+        n = len(jobDifficulty)
+
+        # Check if there are less jobs than days to complete at least 1 job per day, have a free day
+        if n < d:
+            return -1
+
+        for i in range(n - 1, -1, -1):
+            # Get the hardest job
+            hardest_job = max(hardest_job, jobDifficulty[i])
+            # Precompute the maximum job difficulty for remaining jobs
+            memo[i] = hardest_job
+
+        @lru_cache(3000)
+        def dp(curr, days_remaining):
+            # Base cases
+            # At the last day, all the jobs must be finished
+            if days_remaining == 1:
+                return memo[curr]
+
+            ans = math.inf
+            # Keep track of the maximum difficulty for today
+            curr_hardest = 0
+
+            for i in range(curr, n - days_remaining + 1):
+                curr_hardest = max(curr_hardest, jobDifficulty[i])
+                # Recurrence relation
+                ans = min(ans, curr_hardest + dp(i + 1, days_remaining - 1))
+            
+            return ans
+
+        return dp(0, d)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+![image](https://user-images.githubusercontent.com/35042430/219476931-507218dd-4803-41cb-b7a1-4ee802156d30.png)
+
+```
+Example 1: 
+Input: jobDifficulty = [6,5,4,3,2,1], d = 2
+Output: 7
+[[∞, 7, 6], 
+ [∞, 6, 5], 
+ [∞, 5, 4], 
+ [∞, 4, 3], 
+ [∞, 3, 2], 
+ [∞, ∞, 1]]
+```
+
+```Python
+class Solution:
+    def minDifficulty(self, jobDifficulty: List[int], d: int) -> int:
+        n = len(jobDifficulty)
+
+        if n < d:
+            return -1
+
+        # To find minimum, default value needs to be maximum integer
+        dp = [[sys.maxsize] * (d + 1) for _ in range(n)]
+
+        # Set base cases
+        dp[-1][d] = jobDifficulty[-1]
+
+        # All remaining jobs must be scheduled on the last day
+        for i in range(n - 2, -1, -1):
+            # Precompute the hardest job on or after ith day
+            dp[i][d] = max(dp[i + 1][d], jobDifficulty[i])
+
+        for days_remaining in range(d - 1, 0, -1):
+            for curr_day in range(days_remaining - 1, n - (d - days_remaining)):
+                curr_hardest = 0
+                for next_day in range(curr_day, n - (d - days_remaining)):
+                    curr_hardest = max(curr_hardest, jobDifficulty[next_day])
+                    # Recurrence relation
+                    dp[curr_day][days_remaining] = min(dp[curr_day][days_remaining], curr_hardest + dp[next_day + 1][days_remaining + 1])
+
+        return dp[0][1]
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def minDifficulty(self, jobDifficulty: List[int], d: int) -> int:
+        n = len(jobDifficulty)
+        # Initialize the next_dp matrix to record the minimum difficulty of the job schedule
+        next_dp = [float('inf')] * n + [0]
+
+        for days_remaining in range(1, d + 1):
+            curr_dp = [float('inf')] * n + [0]
+            for curr_day in range(n - days_remaining + 1):
+                curr_hardest = 0
+                for next_day in range(curr_day + 1, n - days_remaining + 2):
+                    # Use curr_hardest to record maximum job difficulty
+                    curr_hardest = max(curr_hardest, jobDifficulty[next_day - 1])
+                    # Recurrence relation
+                    curr_dp[curr_day] = min(curr_dp[curr_day], curr_hardest + next_dp[next_day])
+
+            next_dp = curr_dp
+
+        return next_dp[0] if next_dp[0] != float('inf') else -1
 ```
