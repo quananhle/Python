@@ -152,6 +152,10 @@ You might have noticed in the previous bottom-up approach, only current column a
 
 ![image](https://user-images.githubusercontent.com/35042430/219426437-08edc4ac-907f-4a67-8d71-49f9f4c307a0.png)
 
+__Time complexity__: ```O(M ⋅ N)```, there are M ⋅ N subproblems
+
+__Space complexity__: ```O(min(M, N))```, allocating a hash map of shortest string subproblems
+
 ```Python
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
