@@ -46,7 +46,18 @@ __Constraints:__
 
 ### The Framework
 
+![image](https://leetcode.com/problems/longest-common-subsequence/solutions/598321/Figures/1143/subproblem_partial_graph_with_all_links.png)
+
+There are 2 scenarios:
+
+   - If the first character of each string is not the same, then either one or both of those characters will not be used in the final result (i.e. not have a line drawn to or from it). Therefore, the length of the longest common subsequence is ```max(LCS(p1 + 1, p2), LCS(p1, p2 + 1))```.
+   - When the first character of each string is the same, the length of the longest common subsequence is ```1 + LCS(p1 + 1, p2 + 1)```. In other words, we draw a line between the first two characters, adding 1 to the length to represent that line, and then solving the resulting subproblem (that has the first character removed from each string).
+
 #### Top-Down Dynamic Programming (Recursion)
+
+__Time complexity__: ```O(M ⋅ N)```, there are M ⋅ N subproblems
+
+__Space complexity__: ```O(M ⋅ N)```, store M ⋅ N subproblems in a recursive call stack
 
 ```Python
 class Solution:
@@ -71,4 +82,66 @@ class Solution:
             return memo[(n, m)]
 
         return dp(n, m)
+```
+
+```Python
+        n, m = len(text1), len(text2)
+        memo = collections.defaultdict(int)
+
+        def dp(t1, t2):
+            if t1 == n or t2 == m:
+                return 0
+            if memo[(t1, t2)]:
+                return memo[(t1, t2)]
+            
+            if text1[t1] == text2[t2]:
+                memo[(t1, t2)] = 1 + dp(t1 + 1, t2 + 1)
+            else:
+                memo[(t1, t2)] = max(dp(t1 + 1, t2), dp(t1, t2 + 1))
+            
+            return memo[(t1, t2)]
+
+        return dp(0, 0)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+__Time complexity__: ```O(M ⋅ N)```, there are M ⋅ N subproblems
+
+__Space complexity__: ```O(M ⋅ N)```, allocating a hash map of M ⋅ N subproblems
+
+```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        # Bottom-Up DP (Tabulation)
+        n, m = len(text1), len(text2)
+        dp = collections.defaultdict(int)
+
+        for i in range(1, n + 1):
+            for j in range(1, m + 1):
+                # Recurrence relation
+                if text1[i - 1] == text2[j - 1]:
+                    dp[(i, j)] = 1 + dp[(i - 1, j - 1)]
+                else:
+                    dp[(i, j)] = max(dp[(i - 1, j)], dp[(i, j - 1)])
+        
+        return dp[(n, m)]
+```
+
+```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        # Bottom-Up DP (Tabulation)
+        n, m = len(text1), len(text2)
+        dp = collections.defaultdict(int)
+
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                # Recurrence relation
+                if text1[i] == text2[j]:
+                    dp[(i, j)] = 1 + dp[(i + 1, j + 1)]
+                else:
+                    dp[(i, j)] = max(dp[(i, j + 1)], dp[(i + 1, j)])
+        
+        return dp[(0, 0)]
 ```
