@@ -145,3 +145,55 @@ class Solution:
         
         return dp[(0, 0)]
 ```
+
+#### Optimized Space Bottom-Up Dynamic Programming
+
+You might have noticed in the previous bottom-up approach, only current column and the previous column are looked at. After that, previously computed columns are no longer needed.
+
+![image](https://user-images.githubusercontent.com/35042430/219426437-08edc4ac-907f-4a67-8d71-49f9f4c307a0.png)
+
+```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        # If text1 doesn't reference the shortest string, swap them 
+        if len(text1) > len(text2):
+            text1, text2 = text2, text1
+
+        n, m = len(text1), len(text2)
+        previous = collections.defaultdict(int)
+        current = collections.defaultdict(int)
+
+        for row in range(n - 1, -1, -1):
+            for col in range(m - 1, -1, -1):
+                if text1[row] == text2[col]:
+                    current[col] = 1 + previous[col + 1]
+                else:
+                    current[col] = max(previous[col], current[col + 1])
+            # The current column becomes the previous one, and vice versa.
+            previous, current = current, previous
+
+        return previous[0]
+```
+
+```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        # If text1 doesn't reference the shortest string, swap them 
+        if len(text1) > len(text2):
+            text1, text2 = text2, text1
+
+        n, m = len(text1), len(text2)
+        previous = collections.defaultdict(int)
+        current = collections.defaultdict(int)
+
+        for i in range(n - 1, -1, -1):
+            for j in range(m - 1, -1, -1):
+                if text1[i] == text2[j]:
+                    current[j] = 1 + previous[j + 1]
+                else:
+                    current[j] = max(previous[j], current[j + 1])
+            # The current column becomes the previous one, and vice versa.
+            previous, current = current, previous
+            
+        return previous[0]
+```
