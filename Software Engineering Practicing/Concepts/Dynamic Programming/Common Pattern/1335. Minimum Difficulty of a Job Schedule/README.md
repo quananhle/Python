@@ -82,6 +82,10 @@ __3. Base cases__
 
 #### Top-Down Dynamic Programming (Recursion)
 
+__Time complexity__: ```O(n^2 ⋅ d)```, since there are n * d possible states, and we need O(n) time to calculate the result for each state.
+
+__Space complexity__: ```O(n ⋅ d)```, extra space required to memorize all n ⋅ d states.
+
 ```Python
 class Solution:
     def minDifficulty(self, jobDifficulty: List[int], d: int) -> int:
@@ -161,6 +165,10 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming (Tabulation)
 
+__Time complexity__: ```O(n^2 ⋅ d)```, since there are n * d possible states, and we need O(n) time to calculate the result for each state.
+
+__Space complexity__: ```O(n ⋅ d)```, extra space required for 2D array to memorize all n ⋅ d states.
+
 ![image](https://user-images.githubusercontent.com/35042430/219476931-507218dd-4803-41cb-b7a1-4ee802156d30.png)
 
 ```
@@ -206,6 +214,10 @@ class Solution:
 ```
 
 #### Optimized Space Bottom-Up Dynamic Programming
+
+__Time complexity__: ```O(n^2 ⋅ d)```, since there are n * d possible states, and we need O(n) time to calculate the result for each state.
+
+__Space complexity__: ```O(n)```, as we only use two arrays of length n+1 to store all relevant states at any given time.
 
 ```Python
 class Solution:
