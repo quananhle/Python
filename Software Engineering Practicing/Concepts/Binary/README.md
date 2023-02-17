@@ -93,6 +93,38 @@ class Solution:
         return root
 ```
 
+Question: [783. Minimum Distance Between BST Nodes](https://leetcode.com/problems/minimum-distance-between-bst-nodes/)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def minDiffInBST(self, root: Optional[TreeNode]) -> int:
+        # Space Optimized Iterative Inorder Traversal
+        if not root:
+            return 0
+
+        child = None
+        stack = list()
+        ans = sys.maxsize
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if child:
+                ans = min(ans, root.val - child.val)
+            child = root
+            root = root.right
+        
+        return ans
+```
+
 Question: [Binary Search Tree Iterator](https://leetcode.com/problems/binary-search-tree-iterator/)
 
 ```Python
