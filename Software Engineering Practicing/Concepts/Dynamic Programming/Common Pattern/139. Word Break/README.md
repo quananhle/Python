@@ -43,3 +43,45 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+1. An __array__ that answers the problem for a given state
+2. A __recurrence relation__ to transition between states
+3. __Base cases__
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        word_set = set(wordDict)
+
+        @lru_cache(None)
+        def dp(start):
+            # Base case
+            if start == len(s):
+                return True
+            
+            for end in range(start + 1, n + 1):
+                # Check every substring from start to end
+                word = s[start:end]
+                # Check if the substring in the word dictionary and other criterias are true
+                if word in word_set and dp(end):
+                    return True
+            return False
+
+        return dp(0)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+![image](https://leetcode.com/explore/learn/card/Figures/DP1/C3A3_1_cropped.png)
+
+![image](https://leetcode.com/explore/learn/card/Figures/DP1/C3A3_2_cropped.png)
+
+![image](https://leetcode.com/explore/learn/card/Figures/DP1/C3A3_3_cropped.png)
+
+```Python
+
+```
