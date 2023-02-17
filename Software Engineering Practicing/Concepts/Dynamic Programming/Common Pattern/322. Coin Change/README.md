@@ -126,6 +126,27 @@ class Solution:
 
 ```
 
+![image](https://user-images.githubusercontent.com/35042430/219751308-2390dc0c-86bb-4d90-b672-758df2892625.png)
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # Bottom-Up DP (Tabulation) 
+        n = len(coins)
+        # 'coin' has value of at least 1, so it can take up to 'amount' times to make up 'amount'
+        dp = [[float('inf')] * (amount + 1) for _ in range(n)]
+
+        for i in range(n):
+            # Base case: since there is no 'coin' of 0 value, therefore 'dp[i][0] = 0' in case 'amount' = 0
+            dp[i][0] = 0
+            for amt in range(1, amount + 1):
+                dp[i][amt] = dp[i - 1][amt]
+                if amt >= coins[i]:
+                    # Recurrence relation
+                    dp[i][amt] = min(dp[i][amt], dp[i][amt - coins[i]] + 1)
+        
+        return dp[n - 1][amount] if dp[n - 1][amount] != float('inf') else -1
+```
 
 ---
 
