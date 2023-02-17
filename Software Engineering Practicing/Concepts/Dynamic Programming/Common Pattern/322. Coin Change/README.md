@@ -46,5 +46,54 @@ __Constraints:__
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # Top-Down DP (Recursion)
+        
+        @lru_cache(None)
+        def dp(curr, remaining):
+            # Base cases
+            if remaining == 0:
+                return 0
+            if curr < 0:
+                return math.inf
+            
+            # Check next coin in coins
+            ans = dp(curr - 1, remaining)
 
+            # Check if there is remaining amount left
+            if remaining >= coins[curr]:
+                # Recurrence relation
+                ans = min(ans, dp(curr, remaining - coins[curr]) + 1)
+            return ans 
+            
+        n = len(coins)
+        ans = dp(n - 1, amount)
+        return ans if ans != math.inf else -1
+```
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # Top-Down DP (Recursion)
+        @lru_cache(None)
+        def dp(remaining):
+            # Base cases
+            if remaining < 0:
+                return -1
+            if remaining == 0:
+                return 0
+
+            ans = float('inf')
+
+            # Check every coin in coins
+            for coin in coins:
+                # Ignore cases where amount can not be made up
+                result = dp(remaining - coin)
+                if result != -1:
+                    # Recurrence relation
+                    ans = min(ans, dp(remaining - coin) + 1)
+            return ans if ans != float('inf') else -1
+
+        return dp(amount)
 ```
