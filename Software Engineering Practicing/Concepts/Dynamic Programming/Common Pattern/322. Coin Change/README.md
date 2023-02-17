@@ -1,6 +1,6 @@
 ## 322. Coin Change
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -122,10 +122,6 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
-```Python
-
-```
-
 ![image](https://user-images.githubusercontent.com/35042430/219751308-2390dc0c-86bb-4d90-b672-758df2892625.png)
 
 ```Python
@@ -142,10 +138,47 @@ class Solution:
             for amt in range(1, amount + 1):
                 dp[i][amt] = dp[i - 1][amt]
                 if amt >= coins[i]:
-                    # Recurrence relation
+                    # Recurrence relation: To not take the coin or to take the coin
                     dp[i][amt] = min(dp[i][amt], dp[i][amt - coins[i]] + 1)
         
         return dp[n - 1][amount] if dp[n - 1][amount] != float('inf') else -1
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming
+
+![image](https://leetcode.com/media/original_images/322_coin_change_table.png)
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # Optimized Space Bottom-Up DP (Tabulation) 
+        n = len(coins)
+        # 'coin' has value of at least 1, so it can take up to 'amount' times to make up 'amount'
+        dp = [float('inf')] * (amount + 1)
+        dp[0] = 0
+
+        for amnt in range(1, amount+1):
+            for coin in coins:
+                if amnt >= coin:
+                    # Recurrence relation
+                    dp[amnt] = min(dp[amnt], dp[amnt-coin] + 1)
+
+        return dp[amount] if dp[amount] != math.inf else -1
+```
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # Optimized Space Bottom-Up DP (Tabulation) 
+        # 'coin' has value of at least 1, so it can take up to 'amount' times to make up 'amount'
+        dp = [float('inf')] * (amount + 1)
+        dp[0] = 0
+        
+        for coin in coins:
+            for x in range(coin, amount + 1):
+                dp[x] = min(dp[x], dp[x - coin] + 1)
+                
+        return dp[amount] if dp[amount] != float('inf') else -1 
 ```
 
 ---
@@ -153,11 +186,50 @@ class Solution:
 ### Depth-First Search
 
 ```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # Depth-First Search
+        ### Time Limit Exceeded
+        n = len(coins)
 
+        def dfs(curr, amnt):
+            if amnt == 0:
+                return 0
+            if curr >= n or amount < 0:
+                return -1
+
+            ans = float('inf')
+            for coin in range(0, amnt // coins[curr] + 1):
+                remaining = amnt - coin * coins[curr]
+                # Move on to the next coin
+                res = dfs(curr + 1, remaining)
+                # Check only if amount can be made up
+                if res != -1:
+                    ans = min(ans, res + coin)
+            return ans if ans != float('inf') else -1
+
+        return dfs(0, amount)
 ```
 
 ### Breadth-First Search
 
 ```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # Breadth-First Search
+        ### Time Limit Exceeded
+        n = len(coins)
+        if not amount:
+            return amount
+        
+        queue = collections.deque([(0, amount)])
 
+        while queue:
+            current, remaining = queue.popleft()
+            for coin in coins:
+                if remaining == coin:
+                    return current + 1
+                elif remaining > coin:
+                    queue.append((current + 1, remaining - coin))
+        return -1
 ```
