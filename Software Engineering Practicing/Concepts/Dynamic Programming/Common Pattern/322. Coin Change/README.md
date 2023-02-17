@@ -97,3 +97,46 @@ class Solution:
 
         return dp(amount)
 ```
+
+```Python
+        @lru_cache(None)
+        def dp(remaining):
+            # Base case
+            if remaining == 0:
+                return 0
+            
+            ans = math.inf
+
+            # Check every coin in coins
+            for coin in coins:
+                # Check if there is any remaining amount left
+                if remaining >= coin:
+                    # Recurrence relation
+                    ans = min(ans, dp(remaining - coin) + 1)
+
+            return ans
+        
+        ans = dp(amount)
+        return ans if ans != math.inf else -1
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+
+---
+
+### Depth-First Search
+
+```Python
+
+```
+
+### Breadth-First Search
+
+```Python
+
+```
