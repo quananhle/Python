@@ -83,5 +83,56 @@ class Solution:
 ![image](https://leetcode.com/explore/learn/card/Figures/DP1/C3A3_3_cropped.png)
 
 ```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        dp = [False] * (n + 1)
+        word_set = set(wordDict)
 
+        dp[0] = True
+
+        for end in range(1, n + 1):
+            for start in range(end):
+                word = s[start:end]
+                if word in word_set and dp[start]:
+                    dp[end] = True
+                    break
+
+        return dp[n]
+```
+
+```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        dp = [False] * (n + 1)
+        word_set = set(wordDict)
+
+        dp[0] = True
+
+        for start in range(n):
+            for end in range(start + 1, n + 1):
+                word = s[start:end]
+                if word in word_set and dp[start]:
+                    dp[end] = True
+
+        return dp[n]
+```
+
+```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        dp = [False] * (n + 1)
+        word_set = set(wordDict)
+
+        dp[n] = True
+
+        for left in range(n - 1, -1, -1):
+            for right in range(left + 1, n + 1):
+                if dp[right] and s[left:right] in word_set:
+                    dp[left] = True
+                    break
+                    
+        return dp[0]
 ```
