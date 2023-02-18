@@ -57,7 +57,23 @@ Second, we need a way to transition between states, such as ```dp[5]``` and ```d
 
 The third component is the simplest: we need a base case. For this problem, we can initialize every element of dp to 1, since every element on its own is technically an increasing subsequence.
 
-### Algorithm
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming (1D Array)
+
+#### Algorithm
 
 1. Initialize an array ```dp``` with length ```nums.length``` and all elements equal to 1. ```dp[i]``` represents the length of the longest increasing subsequence that ends with the element at index ```i```.
 
@@ -81,6 +97,8 @@ class Solution:
                     dp[i] = max(dp[i], dp[j] + 1)
         return max(dp)
 ```
+
+---
 
 ### Build Longest Increasing Subsequence
 
@@ -110,26 +128,5 @@ class Solution:
             # Check if the subsequence is increasing, or the next number is bigger than the newest number in the subsequence
             else:
                 longest_increasing_subsequence.append(num)
-        return len(longest_increasing_subsequence)
-```
-
-__Follow up__: Can you come up with an algorithm that runs in ```O(n log(n))``` time complexity?
-
-__Time Complexity__: ```O(N log(n))```, perform a binary search while traversing the input array
-
-__Space Complexity__: ```O(N)```, subarray can be as large in size as the input array if every element in input array is strictly increasing
-
-### Binary Search
-
-```Python
-class Solution:
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        longest_increasing_subsequence = list()
-        for num in nums:
-            index = bisect.bisect_left(longest_increasing_subsequence, num)
-            if index == len(longest_increasing_subsequence):
-                longest_increasing_subsequence.append(num)
-            else:
-                longest_increasing_subsequence[index] = num
         return len(longest_increasing_subsequence)
 ```
