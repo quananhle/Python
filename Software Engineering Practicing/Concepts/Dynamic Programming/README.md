@@ -143,6 +143,17 @@ __Usually__ a __top-down algorithm__ is easier to implement than the equivalent 
 
 ---
 
+### Time and Space Complexity
+
+![image](https://user-images.githubusercontent.com/35042430/219430186-03668395-5e9f-436b-81d2-74dadd698d7f.png)
+
+---
+
+## Common Pattern
+
+![image](https://user-images.githubusercontent.com/35042430/219432227-697d63c9-e269-4e88-96a5-15bd7dd13d50.png)
+
+
 ## Applying Dynamic Programming to a Problem
 
 While it's _very difficult to be certain_ that there is no greedy algorithm for your interview problem, over time you'll build up an intuition about when to give up. You also don't want to risk spending so long trying to find a greedy algorithm that you run out of time to write a dynamic programming one (and it's also best to make sure you write a working solution!).
