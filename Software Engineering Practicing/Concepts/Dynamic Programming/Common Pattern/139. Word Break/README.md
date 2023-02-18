@@ -1,6 +1,6 @@
 ## 139. Word Break
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` 
 
 #### Difficulty: Medium
 
