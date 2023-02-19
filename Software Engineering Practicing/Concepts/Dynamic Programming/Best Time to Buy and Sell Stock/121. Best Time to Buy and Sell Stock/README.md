@@ -91,3 +91,28 @@ class Solution:
 
         return ans
 ```
+
+#### Space Optimized Bottom-Up Dynamic Programming (1D Array)
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Top-Down Dynamic Programming
+        n = len(prices)
+        ans = 0
+        dp = [0] * (n + 1)
+        
+        for sell in range(n):
+            for buy in range(sell):
+                if prices[buy] < prices[sell]:
+                    dp[buy] = max(dp[buy], prices[sell] - prices[buy])
+
+        for profit in dp:
+            ans = max(ans, profit)
+
+        return ans
+```
+
+---
+
+### Greedy Algorithm
