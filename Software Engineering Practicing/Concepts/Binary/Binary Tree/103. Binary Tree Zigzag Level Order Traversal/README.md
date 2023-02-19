@@ -141,3 +141,42 @@ class Solution:
         return res
 ```
 
+### Get Binary Tree Height
+
+An alternative way not using hash map is to calculate the height of the binary tree and initialize the output array with the precomputed size.
+
+- Time complexity: ```0(N)```, recursively traverse through every node of root
+
+- Space complexity: ```O(N)```, recursive call stack builds up to n nodes of root
+
+```Python
+class Solution:
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return None
+
+        def get_height(node):
+            if not node or (not node.left and not node.right):
+                return 0
+            
+            return 1 + max(get_height(node.left), get_height(node.right))
+                
+        height = get_height(root)
+        res = [[] for _ in range(height + 1)]
+
+        def dfs(node, level):
+            res[level].append(node.val)
+
+            if node.left:
+                dfs(node.left, level + 1)
+            if node.right:
+                dfs(node.right, level + 1)
+
+        dfs(root, 0)
+        
+        for i in range(len(res)):
+            if i % 2 != 0:
+                res[i] = res[i][::-1]
+
+        return res
+```
