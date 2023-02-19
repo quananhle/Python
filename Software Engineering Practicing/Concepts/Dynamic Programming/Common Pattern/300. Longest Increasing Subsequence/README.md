@@ -90,15 +90,7 @@ class Solution:
         return dp(-1, 0)
 ```
 
-#### Bottom-Up Dynamic Programming (Tabulation)
-
-```Python
-
-```
-
-#### Optimized Space Bottom-Up Dynamic Programming (1D Array)
-
-#### Algorithm
+#### Bottom-Up Dynamic Programming (1D Array)
 
 1. Initialize an array ```dp``` with length ```nums.length``` and all elements equal to 1. ```dp[i]``` represents the length of the longest increasing subsequence that ends with the element at index ```i```.
 
@@ -133,6 +125,7 @@ class Solution:
                 if nums[j] < nums[i] and dp[i] < dp[j] + 1 : 
                     dp[i] = dp[j] + 1 
         return max(dp)
+```
 
 ---
 
