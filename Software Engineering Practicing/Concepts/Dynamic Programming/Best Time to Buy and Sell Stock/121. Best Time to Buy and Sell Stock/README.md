@@ -38,71 +38,46 @@ __Constraints:__
 
 ---
 
-### Brute Force
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
 
 ```Python
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        # Brute Force
-        #### Time Complexity: O(N^2), nested loop traverse through the length of input
-        #### Space Complexity: O(1)
-        max_profit = 0
-        for i in range(len(prices)-1):
-            for j in range(i+1, len(prices)):
-                if max_profit < prices[j] - prices[i]:
-                    max_profit = prices[j] - prices[i]
-        return max_profit
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Top-Down Dynamic Programming
+        n = len(prices)
+        ans = 0
+        dp = [[0] * (n + 1) for _ in range(n + 1)]
+        
+        for sell in range(n):
+            for buy in range(sell):
+                if prices[buy] < prices[sell]:
+                    dp[buy][sell] = prices[sell] - prices[buy]
+
+        for profit in dp:
+            ans = max(ans, max(profit))
+
+        return ans
 ```
 
-### Dynamic Programming
+#### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        # Dynamic Programming
-        #### Time Complexity: O(N), traverse through the length of input
-        #### Space Complexity: O(1)        
-        min_price = sys.maxint
-        max_profit = 0
-        for i in range(len(prices)):
-            current_price = prices[i]
-            if min_price > current_price:
-                min_price = current_price
-            elif max_profit < current_price - min_price:
-                max_profit = current_price - min_price
-        return max_profit
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Top-Down Dynamic Programming
+        n = len(prices)
+        ans = 0
+        dp = [[0] * (n + 1) for _ in range(n + 1)]
+        
+        for sell in range(n):
+            for buy in range(sell):
+                if prices[buy] < prices[sell]:
+                    dp[buy][sell] = prices[sell] - prices[buy]
+
+        for profit in dp:
+            ans = max(ans, max(profit))
+
+        return ans
 ```
-
-### Two Pointers
-
-```Python
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        # Two Pointers
-        #### Time Complexity: O(N), traverse through the length of input
-        #### Space Complexity: O(1)
-        max_profit = 0
-        buy = 0
-        sell = 1
-        while sell < len(prices):
-            if prices[buy] < prices[sell]:
-                max_profit = max(max_profit, prices[sell] - prices[buy])
-            else:
-                buy = sell
-            sell += 1
-        return max_profit
-```
-
-
