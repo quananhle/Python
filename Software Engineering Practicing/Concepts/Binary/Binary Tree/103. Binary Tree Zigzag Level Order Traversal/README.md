@@ -1,6 +1,6 @@
 ## 103. Binary Tree Zigzag Level Order Traversal
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Breadth-First Search``` ```Queue``` ```Stack``` ```Recursion```
 
 #### Difficulty: Medium
 
@@ -75,3 +75,34 @@ class Solution:
 ```
 
 #### Iteartive
+
+- Time complexity: ```0(N)```, iteratively traverse through every node of root
+
+- Space complexity: ```O(N)```, stack and hash table contains n nodes of root
+
+```Python
+class Solution:
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return None
+        
+        level_order = collections.defaultdict(list)
+        stack = [(root, 0)]
+        res = list()
+
+        while stack:
+            node, level = stack.pop()
+            level_order[level].append(node.val)
+            if node.right:
+                stack.append((node.right, level + 1))
+            if node.left:
+                stack.append((node.left, level + 1))
+        
+        for key, val in level_order.items():
+            if key % 2 != 0:
+                res.append(val[:][::-1])
+            else:
+                res.append(val[:])
+        return res
+```
+
