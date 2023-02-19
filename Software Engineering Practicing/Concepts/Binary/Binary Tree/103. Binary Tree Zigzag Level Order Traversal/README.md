@@ -39,7 +39,7 @@ __Constraints:__
 
 ### Depth-First Search
 
-#### Recursive
+#### Recursive Approach
 
 Using hash map to keep track of the node of each level of the tree, then using add element to list and reverse at every odd index
 
@@ -74,7 +74,7 @@ class Solution:
         return res
 ```
 
-#### Iteartive
+#### Iterative Approach
 
 - Time complexity: ```0(N)```, iteratively traverse through every node of root
 
@@ -108,7 +108,7 @@ class Solution:
 
 ### Breadth-First Search
 
-## Iterative Breadth-First Search
+#### Iterative Approach
 
 - Time complexity: ```0(N)```, iteratively traverse through every node of root
 
