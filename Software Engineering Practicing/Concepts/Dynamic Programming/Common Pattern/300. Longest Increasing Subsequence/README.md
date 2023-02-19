@@ -62,7 +62,32 @@ The third component is the simplest: we need a base case. For this problem, we c
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        n = len(nums)
+        memo = [-1] * (n + 1)
 
+        def dp(prev, curr):
+            # Base case
+            if curr == len(nums):
+                return 0
+            if memo[prev + 1] != -1:
+                return memo[prev + 1]
+            
+            # Recurrence relation
+            to_take_next_element = 0
+
+            if prev == -1 or nums[prev] < nums[curr]:
+                to_take_next_element = 1 + dp(curr, curr + 1)
+            
+            not_to_take_next_element = dp(prev, curr + 1)
+
+            memo[prev + 1] = max(to_take_next_element, not_to_take_next_element)
+
+            return memo[prev + 1]
+
+        return dp(-1, 0)
 ```
 
 #### Bottom-Up Dynamic Programming (Tabulation)
