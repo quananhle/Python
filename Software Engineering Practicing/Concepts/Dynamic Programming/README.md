@@ -153,6 +153,11 @@ __Usually__ a __top-down algorithm__ is easier to implement than the equivalent 
 
 ![image](https://user-images.githubusercontent.com/35042430/219432227-697d63c9-e269-4e88-96a5-15bd7dd13d50.png)
 
+### State Transition by Inaction
+
+![image](https://user-images.githubusercontent.com/35042430/219916952-0cdb40d0-e169-4176-9c19-94dd6c0233a5.png)
+
+---
 
 ## Applying Dynamic Programming to a Problem
 
