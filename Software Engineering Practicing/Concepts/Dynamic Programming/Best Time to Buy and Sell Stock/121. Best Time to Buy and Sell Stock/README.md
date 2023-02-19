@@ -116,3 +116,18 @@ class Solution:
 ---
 
 ### Greedy Algorithm
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        buy = float('inf')
+        profit = 0
+
+        for price in prices:
+            if buy > price:
+                buy = price
+            elif profit < price - buy:
+                profit = price - buy
+                
+        return profit 
+```
