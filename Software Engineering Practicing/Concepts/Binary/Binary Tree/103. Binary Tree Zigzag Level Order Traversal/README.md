@@ -37,3 +37,41 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
+
+#### Recursive
+
+Using hash map to keep track of the node of each level of the tree, then using add element to list and reverse at every odd index
+
+- Time complexity: ```0(N)```, recursively traverse through every node of root
+
+- Space complexity: ```O(N)```, recursive call stack builds up to n nodes and hash table contains n nodes of root
+
+```Python
+class Solution:
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return None
+
+        level_order = collections.defaultdict(list)
+        res = list()
+
+        def dfs(node, level):
+            level_order[level].append(node.val)
+            
+            if node.left:
+                dfs(node.left, level + 1)
+            if node.right:
+                dfs(node.right, level + 1)
+
+        dfs(root, 0)
+        
+        for key, val in level_order.items():
+            if key % 2 != 0:
+                res.append(val[:][::-1])
+            else:
+                res.append(val[:])
+        return res
+```
+
+#### Iteartive
