@@ -43,6 +43,8 @@ __Constraints:__
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
         # Top-Down Dynamic Programming
         res = list()
 
