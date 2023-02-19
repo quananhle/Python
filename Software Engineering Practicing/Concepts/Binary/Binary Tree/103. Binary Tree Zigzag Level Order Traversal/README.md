@@ -106,3 +106,38 @@ class Solution:
         return res
 ```
 
+### Breadth-First Search
+
+## Iterative Breadth-First Search
+
+- Time complexity: ```0(N)```, iteratively traverse through every node of root
+
+- Space complexity: ```O(N)```, queue and hash table contains n nodes of root
+
+```Python
+class Solution:
+    def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return None
+        
+        level_order = collections.defaultdict(list)
+        queue = collections.deque([(root, 0)])
+        res = list()
+        
+        while queue:
+            node, level = queue.popleft()
+            level_order[level].append(node.val)
+
+            if node.left:
+                queue.append((node.left, level + 1))
+            if node.right:
+                queue.append((node.right, level + 1))
+        
+        for key, val in level_order.items():
+            if key % 2 != 0:
+                res.append(val[:][::-1])
+            else:
+                res.append(val[:])
+        return res
+```
+
