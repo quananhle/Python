@@ -36,3 +36,44 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+State Transition by Inaction
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        @lru_cache(None)
+        def dp(i, holding, cooldown):
+            # Base case
+            if i == len(prices):
+                return 0
+            
+            do_nothing = do_something = 0
+
+            # Decide not to buy or to sell, do nothing, move on to the next day
+            do_nothing = dp(i + 1, holding, cooldown)
+
+            # Check if not holding
+            if not holding:
+                # Check if in the cooldown period, move on to the next day, reset cooldown
+                if cooldown:
+                    cooldown = not cooldown
+                    do_nothing = dp(i + 1, holding, cooldown)
+                # Otherwise, not in the cooldown period, move on to the next day, update ownership status, pay price at day ith
+                else:
+                    holding = not holding
+                    do_something = dp(i + 1, holding, cooldown) - prices[i]
+            # Otherwise, currently holding, sell if possible
+            else:                
+                cooldown = not cooldown
+                holding = not holding
+                do_something = dp(i + 1, False, True) + prices[i]
+            
+            return max(do_nothing, do_something)
+
+        return dp(0, False, False)
+```
