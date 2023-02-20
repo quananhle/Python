@@ -79,7 +79,7 @@ class Solution:
 ```Python
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        dp = dict() # key = (i, buying), val = max_profit
+        dp = dp = collections.defaultdict() # key = (i, buying), val = max_profit
 
         def dfs(i, holding):
             if i >= len(prices):
@@ -88,20 +88,19 @@ class Solution:
             # Check if transaction precomputed
             if (i, holding) in dp:
                 return dp[(i, holding)]
+
+            # Decide not to buy or sell yet, move on to the next day
+            do_nothing = dfs(i + 1, holding)
             
             # Check if not holding any stock
             if not holding:
                 # Decide to buy, move on to the next day, update ownership status, pay the price at day ith
                 buy = dfs(i + 1, not holding) - prices[i]
-                # Decide not to buy yet, move on to the next day
-                do_nothing = dfs(i + 1, holding)
                 # Get the maximum profit out of this path of decisions
                 dp[(i, holding)] = max(buy, do_nothing)
             else:
                 # Decide to sell, move on to the day after the cooldown period ends, reset ownership status, take the profit
                 sell = dfs(i + 2, not holding) + prices[i]
-                # Decide not to buy yet, move on to the next day
-                do_nothing = dfs(i + 1, holding)
                 # Get the maximum profit out of this path of decisions
                 dp[(i, holding)] = max(sell, do_nothing)
 
@@ -113,7 +112,60 @@ class Solution:
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        dp = [[[0] * 2 for _ in range(2)] for _ in range(n + 1)]
 
+        for i in range(n - 1, -1, -1):
+            for holding in range(2):            
+                for cooldown in range(2):
+                    # Decide not to buy or sell yet, move on to the next day
+                    do_nothing = dp[i + 1][holding][cooldown]
+                    do_something = 0
+
+                    # Decide to buy or sell, sell if holding stock or buy if not holding stock
+                    if not holding:
+                        # Check if is in the cooldown period
+                        if cooldown:
+                            # Move on the next day, reset cooldown status
+                            do_nothing = dp[i + 1][0][0]
+                        else:
+                            # Buy: move on to the next day, update ownership status, pay price at ith day
+                            do_something = dp[i + 1][1][0] - prices[i]
+                    else:
+                        # Sell: move on to the day after cooldown period ends, change ownership status, update cooldown, take profit
+                        do_something = dp[i + 1][0][1] + prices[i]
+
+                    # Recurrence relation
+                    dp[i][holding][cooldown] = max(do_nothing, do_something)
+        
+        return dp[0][0][0]
+```
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        dp = [[0] * 2 for _ in range(n + 2)]
+
+        for i in range(n - 1, -1, -1):
+            for holding in range(2):
+                # Decide not to buy or sell yet, move on to the next day
+                do_nothing = dp[i + 1][holding]
+
+                # Decide to buy or sell, check if holding stock
+                if not holding:
+                    # Buy: move on to the next day, change ownership status, pay price at ith day
+                    do_something = dp[i + 1][1] - prices[i]
+                else:
+                    # Sell: move on to the day after cooldown period ends, change ownership status, take profit
+                    do_something = dp[i + 2][0] + prices[i]
+
+                # Recurrence relation
+                dp[i][holding] = max(do_nothing, do_something)
+        
+        return dp[0][0]
 ```
 
 ---
