@@ -54,15 +54,15 @@ class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
         # Top-Down DP (Recursion)
         @lru_cache(None)
-        def dp(curr, have, k):
+        def dp(curr, have, remaining):
             # Base cases
-            if curr == len(prices) or k <= 0:
+            if curr == len(prices) or remaining <= 0:
                 return 0
 
             # Recurrence relation: to make transaction or not to make transaction
             
             # If not making the transaction, move on to the next day
-            profit_1 = dp(curr + 1, have, k)
+            do_nothing = dp(curr + 1, have, remaining)
 
             # If making the transaction, decrement k transaction limit by 1 
             
@@ -70,13 +70,13 @@ class Solution:
             if not have:
                 # Buy: move on to the next day, update ownership status, pay price
                 have = not have
-                profit_2 = dp(curr + 1, have, k) - prices[curr]
+                do_something = dp(curr + 1, have, remaining) - prices[curr]
             else:
                 # Sell: move on to the next day, update ownership status, complete transaction hence decrement k, take profit
                 have = not have
-                profit_2 = dp(curr + 1, have, k - 1) + prices[curr]
+                do_something = dp(curr + 1, have, remaining - 1) + prices[curr]
             
-            return max(profit_1, profit_2)
+            return max(do_nothing, do_something)
 
         return dp(0, False, k)
 ```
