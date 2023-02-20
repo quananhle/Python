@@ -138,13 +138,13 @@ class Solution:
         if n == 1:
             return k
 
-        two_posts_back = k
-        one_post_back = k**2
+        two_prev_posts = k
+        one_prev_post = k**2
 
         for i in range(3, n + 1):
-            curr = (k - 1) * (two_posts_back + one_post_back)
-            two_posts_back = one_post_back
-            one_post_back = curr
+            tmp = one_prev_post
+            one_prev_post = (k - 1) * (two_prev_posts + one_prev_post)
+            two_prev_posts = tmp
 
-        return one_post_back
+        return one_prev_post
 ```
