@@ -109,9 +109,3 @@ class Solution:
 
         return dp[0][k][0]
 ```
-
-# Optimized Space Bottom-Up Dynamic Programming
-
-```Python
-
-```
