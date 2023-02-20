@@ -157,6 +157,32 @@ __Usually__ a __top-down algorithm__ is easier to implement than the equivalent 
 
 ![image](https://user-images.githubusercontent.com/35042430/219916952-0cdb40d0-e169-4176-9c19-94dd6c0233a5.png)
 
+### State Reduction
+
+Note: state reductions for space complexity usually only apply to bottom-up implementations, while improving time complexity by reducing the number of state variables applies to both implementations.
+
+__Fibonacci number__
+
+```Python
+class Solution:
+    def fib(self, n: int) -> int:
+        if n <= 1: return n
+        one_back = 1
+        two_back = 0
+        for i in range(2, n + 1):
+            temp = one_back
+            one_back += two_back
+            two_back = temp
+
+        return one_back
+```
+
+Whenever you notice that values calculated by a DP algorithm are only reused a few times and then never used again, try to see if you can save on space by replacing an array with some variables. A good first step for this is to look at the recurrence relation to see what previous states are used. For example, in Fibonacci, we only refer to the previous two states, so all results before n - 2 can be discarded.
+
+### Counting DP
+
+![image](https://user-images.githubusercontent.com/35042430/220183069-f24b4c0b-e43c-4c15-8efe-309273e3a04c.png)
+
 ---
 
 ## Applying Dynamic Programming to a Problem
