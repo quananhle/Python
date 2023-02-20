@@ -48,3 +48,60 @@ __Constraints:__
 - ```0 <= amount <= 5000```
 
 ---
+
+### The Framework
+
+#### Top Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        memo = collections.defaultdict(int)
+
+        def dp(curr, remaining):
+            # Base case
+            if curr == len(coins) or remaining < 0:
+                return 0
+            if remaining == 0:
+                return 1
+
+            if (curr, remaining) in memo:
+                return memo[(curr, remaining)]
+                
+            # Recurrence relation
+            # To take the current coin, then update the remaining amount, or not to take the coin and move on to the next coin
+            memo[(curr, remaining)] = dp(curr, remaining - coins[curr]) + dp(curr + 1, remaining)
+
+            return memo[(curr, remaining)]
+
+        return dp(0, amount)
+```
+
+```Python
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        @lru_cache(None)
+        def dp(curr, remaining):
+            # Base case
+            if curr == len(coins) or remaining < 0:
+                return 0
+            if remaining == 0:
+                return 1
+                
+            # Recurrence relation
+            # To take the current coin, then update the remaining amount, or not to take the coin and move on to the next coin
+            ans = dp(curr, remaining - coins[curr]) + dp(curr + 1, remaining)
+
+            return ans
+
+        return dp(0, amount)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+
+```
+
