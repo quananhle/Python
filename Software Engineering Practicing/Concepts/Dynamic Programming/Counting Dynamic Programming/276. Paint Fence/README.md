@@ -44,3 +44,71 @@ __Constraints:__
 - The testcases are generated such that the answer is in the range ```[0, 2^31 - 1]``` for the given ```n``` and ```k```.
 
 ---
+
+A dynamic programming algorithm typically has 3 components. Learning these components is extremely valuable, as most dynamic programming problems can be solved this way.
+
+- First, we need some function or array that represents the answer to the problem for a given state. For this problem, let's say that we have a function ```dp```, where ```dp(i)``` returns the number of ways to paint ```i``` posts. Because we only have one argument, this is a one-dimensional dynamic programming problem.
+
+- Second, we need a way to transition between states, such as ```dp(3)``` and ```dp(4)```. This is called a __recurrence relation__ and figuring it out is usually the hardest part of solving a problem with dynamic programming.
+
+![image](https://user-images.githubusercontent.com/35042430/220188990-179d012d-5083-404c-8369-7753e0a24f03.png)
+
+- The third component is establishing __base cases__. If we have one post, there are ```k``` ways to paint it. If we have two posts, then there are ```k * k``` ways to paint it (since we are allowed to paint two posts in a row be the same color). Therefore, ```dp(1) = k```, ```dp(2) = k * k```.
+
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def numWays(self, n: int, k: int) -> int:
+        # Top-Down DP (Recursion)
+        memo = collections.defaultdict(int)
+
+        def dp(i):
+            # Base case
+            # Check if there is only 1 post, number of ways = number of k
+            if i == 1:
+                return i * k
+            # Check if there are 2 posts, number of ways = k * k
+            if i == 2:
+                return k * k
+            
+            if i in memo:
+                return memo[i]
+
+            # Recurrence relation
+            # Less 1 paint from k to paint every time
+            # Paint the current post different color than the previous post: (k - 1) * dp(i - 1)
+            # Paint the current post same color as the previous post: (k - 1) * dp(i - 2)
+            memo[i] = (k - 1) * (dp(i - 1) + dp(i - 2))
+
+            return memo[i]
+
+        return dp(n)
+```
+
+```Python
+class Solution:
+    def numWays(self, n: int, k: int) -> int:
+        # Top-Down DP (Recursion)
+        @lru_cache(None)
+        def dp(i):
+            # Base case
+            # Check if there is only 1 post, number of ways = number of k
+            if i == 1:
+                return i * k
+            # Check if there are 2 posts, number of ways = k * k
+            if i == 2:
+                return k * k
+
+            # Recurrence relation
+            # Less 1 paint from k to paint every time
+            # Paint the current post different color than the previous post: (k - 1) * dp(i - 1)
+            # Paint the current post same color as the previous post: (k - 1) * dp(i - 2)
+            i = (k - 1) * (dp(i - 1) + dp(i - 2))
+
+            return i
+
+        return dp(n)
+```
