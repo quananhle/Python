@@ -47,6 +47,8 @@ __Constraints:__
 
 3. Base cases
 
+![image](https://user-images.githubusercontent.com/35042430/220002682-268042a2-e14f-4917-8568-eb156f03b0fe.png)
+
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
@@ -54,7 +56,7 @@ class Solution:
     def maxProfit(self, k: int, prices: List[int]) -> int:
         # Top-Down DP (Recursion)
         @lru_cache(None)
-        def dp(curr, have, remaining):
+        def dp(curr, holding, remaining):
             # Base cases
             if curr == len(prices) or remaining <= 0:
                 return 0
@@ -62,21 +64,48 @@ class Solution:
             # Recurrence relation: to make transaction or not to make transaction
             
             # If not making the transaction, move on to the next day
-            do_nothing = dp(curr + 1, have, remaining)
+            do_nothing = dp(curr + 1, holding, remaining)
 
             # If making the transaction, decrement k transaction limit by 1 
             
             # Must buy before selling
-            if not have:
-                # Buy: move on to the next day, update ownership status, pay price
-                have = not have
-                do_something = dp(curr + 1, have, remaining) - prices[curr]
+            if not holding:
+                # Buying: move on to the next day, update ownership status, pay price
+                holding = not holding
+                do_something = dp(curr + 1, holding, remaining) - prices[curr]
             else:
-                # Sell: move on to the next day, update ownership status, complete transaction hence decrement k, take profit
-                have = not have
-                do_something = dp(curr + 1, have, remaining - 1) + prices[curr]
+                # Selling: move on to the next day, update ownership status, complete transaction hence decrement k, take profit
+                holding = not holding
+                do_something = dp(curr + 1, holding, remaining - 1) + prices[curr]
             
             return max(do_nothing, do_something)
 
         return dp(0, False, k)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        # Bottom-Up DP (Tabulation)
+        n = len(prices)
+        dp = [[[0] * 2 for _ in range(k + 1)] for _ in range(n + 1)]
+
+        for i in range(n - 1, -1, -1):
+            for remaining in range(1, k + 1):
+                for holding in range(2):
+                    # If not making the transaction, move on to the next day
+                    do_nothing = dp[i + 1][remaining][holding]
+                    # Must buy before selling
+                    if not holding:
+                        # Buying: move on to the next day, update ownership status, pay price
+                        do_something = dp[i + 1][remaining][1] - prices[i]
+                    else:
+                        # Selling: move on to the next day, update ownership status, complete transaction hence decrement k, take profit
+                        do_something = dp[i + 1][remaining - 1][0] + prices[i]
+                    # Recurrence relation
+                    dp[i][remaining][holding] = max(do_nothing, do_something)
+
+        return dp[0][k][0]
 ```
