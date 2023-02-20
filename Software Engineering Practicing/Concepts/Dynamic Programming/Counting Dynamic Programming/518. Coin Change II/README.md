@@ -99,9 +99,40 @@ class Solution:
         return dp(0, amount)
 ```
 
+```Python
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        @lru_cache(None)
+        def dp(curr, remaining):
+            # Base case
+            if curr == len(coins) or remaining < 0:
+                return 0
+            if remaining == 0:
+                return 1
+                
+            # Recurrence relation
+            
+            # Not taking the current coin and move on to the next coin
+            ans = dp(curr + 1, remaining)
+            # Taking the current coin, then update the remaining amount
+            ans += dp(curr, remaining - coins[curr])
+
+            return ans
+
+        return dp(0, amount)
+```
+
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        dp = collections.defaultdict(int)
+        dp[0] = 1
+        for coin in coins:
+            for remaining in range(coin, amount + 1):
+                dp[remaining] += dp[remaining - coin]
 
+        return dp[amount]
 ```
 
