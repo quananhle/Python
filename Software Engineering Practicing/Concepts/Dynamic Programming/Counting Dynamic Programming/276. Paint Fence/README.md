@@ -112,3 +112,39 @@ class Solution:
 
         return dp(n)
 ```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+class Solution:
+    def numWays(self, n: int, k: int) -> int:
+        # Bottom-Up DP (Tabulation)
+        dp = collections.defaultdict(int)
+
+        dp[1], dp[2] = k, k**2
+
+        for i in range(3, n + 1):
+
+            dp[i] = (k - 1) * (dp[i - 1] + dp[i - 2])
+        
+        return dp[n]
+```
+
+#### Optimized Space Dynamic Programming (Tabulation)
+
+```Python
+class Solution:
+    def numWays(self, n: int, k: int) -> int:
+        if n == 1:
+            return k
+
+        two_posts_back = k
+        one_post_back = k**2
+
+        for i in range(3, n + 1):
+            curr = (k - 1) * (two_posts_back + one_post_back)
+            two_posts_back = one_post_back
+            one_post_back = curr
+
+        return one_post_back
+```
