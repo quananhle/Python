@@ -76,6 +76,40 @@ class Solution:
         return dp(0, False, False)
 ```
 
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        dp = dict() # key = (i, buying), val = max_profit
+
+        def dfs(i, holding):
+            if i >= len(prices):
+                return 0
+
+            # Check if transaction precomputed
+            if (i, holding) in dp:
+                return dp[(i, holding)]
+            
+            # Check if not holding any stock
+            if not holding:
+                # Decide to buy, move on to the next day, update ownership status, pay the price at day ith
+                buy = dfs(i + 1, not holding) - prices[i]
+                # Decide not to buy yet, move on to the next day
+                do_nothing = dfs(i + 1, holding)
+                # Get the maximum profit out of this path of decisions
+                dp[(i, holding)] = max(buy, do_nothing)
+            else:
+                # Decide to sell, move on to the day after the cooldown period ends, reset ownership status, take the profit
+                sell = dfs(i + 2, not holding) + prices[i]
+                # Decide not to buy yet, move on to the next day
+                do_nothing = dfs(i + 1, holding)
+                # Get the maximum profit out of this path of decisions
+                dp[(i, holding)] = max(sell, do_nothing)
+
+            return dp[(i, holding)]
+
+        return dfs(0, False)
+```
+
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
@@ -84,7 +118,7 @@ class Solution:
 
 ---
 
-### Dynamic Programming with State Machine
+### Bottom-Up Dynamic Programming with State Machine
 
 Let us define a state machine to model our agent. The state machine consists of three states, which we define as follows:
 
