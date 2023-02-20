@@ -36,6 +36,31 @@ nums is sorted in ascending order.
 
 ### Binary Search
 
+#### Recursive Approach
+
+```Python
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        lo, hi = 0, len(nums) - 1
+        def binary_search(lo, hi):
+            # Base case
+            if lo > hi:
+                return lo
+
+            mid = lo + (hi - lo) // 2
+
+            if target == nums[mid]:
+                return mid
+            elif target < nums[mid]:
+                return binary_search(lo, mid - 1)
+            else:
+                return binary_search(mid + 1, hi)
+
+        return binary_search(lo, hi)
+```
+
+#### Iterative Approach
+
 ```Python
 class Solution(object):
     def search(self, nums, target):
