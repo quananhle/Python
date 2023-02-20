@@ -46,6 +46,7 @@ State Transition by Inaction
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         # Top-Down DP (Recursion)
+
         @lru_cache(None)
         def dp(i, holding, cooldown):
             # Base case
@@ -61,19 +62,75 @@ class Solution:
             if not holding:
                 # Check if in the cooldown period, move on to the next day, reset cooldown
                 if cooldown:
-                    cooldown = not cooldown
-                    do_nothing = dp(i + 1, holding, cooldown)
+                    do_nothing = dp(i + 1, holding, not cooldown)
                 # Otherwise, not in the cooldown period, move on to the next day, update ownership status, pay price at day ith
                 else:
-                    holding = not holding
-                    do_something = dp(i + 1, holding, cooldown) - prices[i]
-            # Otherwise, currently holding, sell if possible
+                    do_something = dp(i + 1, not holding, cooldown) - prices[i]
+            # Otherwise, currently holding, sell
             else:                
-                cooldown = not cooldown
-                holding = not holding
-                do_something = dp(i + 1, False, True) + prices[i]
+                # Move on to the next day, update ownership status, update cooldown, take profit
+                do_something = dp(i + 1, not holding, not cooldown) + prices[i]
             
             return max(do_nothing, do_something)
 
         return dp(0, False, False)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+
+```
+
+---
+
+### Dynamic Programming with State Machine
+
+Let us define a state machine to model our agent. The state machine consists of three states, which we define as follows:
+
+- state ```held```: in this state, the agent holds a stock that it bought at some point before.
+
+- state ```sold```: in this state, the agent has just sold a stock right before entering this state. And the agent holds no stock at hand.
+
+- state ```reset```: first of all, one can consider this state as the starting point, where the agent holds no stock and did not sell a stock before. More importantly, it is also the transient state before the ```held``` and ```sold```. Due to the cooldown rule, after the ```sold``` state, the agent can not immediately acquire any stock, but is forced into the ```reset``` state. One can consider this state as a "reset" button for the cycles of buy and sell transactions.
+
+At any moment, the agent can only be in one state. The agent would transition to another state by performing some actions, namely:
+
+- action ```sell```: the agent sells a stock at the current moment. After this action, the agent would transition to the ```sold``` state.
+
+- action ```buy```: the agent acquires a stock at the current moment. After this action, the agent would transition to the ```held``` state.
+
+- action ```rest```: this is the action that the agent does no transaction, neither buy or sell. For instance, while holding a stock at the ```held``` state, the agent might simply do nothing, and at the next moment the agent would remain in the ```held``` state.
+
+![image](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/solutions/601810/Figures/309/309_state_machine.png)
+
+Notice that, in all states except the sold state, by doing nothing, we would remain in the same state, which is why there is a self-looped transition on these states.
+
+![image](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/solutions/601810/Figures/309/309_graph.png)
+
+__Time Complexity__: ```O(N^2)```, recurse call while iterating through the input array
+
+__Space Complexity__: ```O(1)```, constant memory space for pointers
+
+```Python
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        sold, held, reset = float('-inf'), float('-inf'), 0
+
+        for price in prices:
+            '''
+            # Alternative: the calculation is done in parallel. Therefore no need to keep temporary variables
+
+            sold, held, reset = held + price, max(held, reset-price), max(reset, sold)
+            '''
+            pre_sold = sold
+            sold = held + price
+            held = max(held, reset - price)
+            reset = max(reset, pre_sold)
+
+        return max(sold, reset)
 ```
