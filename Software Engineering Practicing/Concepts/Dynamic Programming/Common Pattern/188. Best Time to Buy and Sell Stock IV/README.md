@@ -36,6 +36,17 @@ __Constraints:__
 
 ### The Framework
 
+1. A __function__ that answers the problem for a given state
+
+![image](https://user-images.githubusercontent.com/35042430/219968377-58e4aa7a-16e0-40d3-a551-958c2913f9cb.png)
+
+2. A recurrence relation to transition between states
+
+![image](https://user-images.githubusercontent.com/35042430/219968551-f000a269-0eba-4ad6-911b-30867344baa7.png)
+![image](https://user-images.githubusercontent.com/35042430/219968613-97d347a3-42ec-4896-99c7-960575fc4c5c.png)
+
+3. Base cases
+
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
