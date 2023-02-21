@@ -183,6 +183,21 @@ Whenever you notice that values calculated by a DP algorithm are only reused a f
 
 ![image](https://user-images.githubusercontent.com/35042430/220183069-f24b4c0b-e43c-4c15-8efe-309273e3a04c.png)
 
+### Kadane's Algorithm
+
+#### Pseudocode for the algorithm is below:
+
+```
+// Given an input array of numbers "nums",
+1. best = negative infinity
+2. current = 0
+3. for num in nums:
+    3.1. current = Max(current + num, num)
+    3.2. best = Max(best, current)
+
+4. return best
+```
+
 ---
 
 ## Applying Dynamic Programming to a Problem
