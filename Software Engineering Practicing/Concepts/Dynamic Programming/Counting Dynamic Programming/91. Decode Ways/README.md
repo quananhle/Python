@@ -55,3 +55,42 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/decode-ways/solutions/525903/Figures/91/91_Decode_Ways_1.png)
+
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+The problem deals with finding number of ways of decoding a string. What helps to crack the problem is to think why there would be many ways to decode a string. The reason is simple since at any given point we either decode using ```two digits``` or ```single``` digit. This choice while decoding can lead to different combinations.
+
+![image](https://leetcode.com/problems/decode-ways/solutions/525903/Figures/91/91_Decode_Ways_2.png)
+![image](https://leetcode.com/problems/decode-ways/solutions/525903/Figures/91/91_Decode_Ways_3.png)
+![image](https://leetcode.com/problems/decode-ways/solutions/525903/Figures/91/91_Decode_Ways_4.png)
+
+```Python
+class Solution:
+    def numDecodings(self, s: str) -> int:    
+        @lru_cache(None)
+        def dfs(curr):
+            # Base cases
+            # Base case return 1 as this is counting dynamic programming, return 0 would reflect 0 itself instead of counting
+            if curr == len(s):
+                return 1
+            # Check every 2 digits at once, so standalone '0' is invalid for single digit scan or leading '0' is invalid for double digit scan
+            if s[curr] == '0':
+                return 0
+            # If there is only 1 digit left, can only scan single digit, number of way is 1
+            if curr == len(s) - 1:
+                return 1
+            
+            # Increment index by 1 for single digit character
+            ans = dfs(curr + 1)
+
+            # Check if the next two digits are withing 26
+            if int(s[curr:curr + 2]) <= 26:
+                ans += dfs(curr + 2)
+            
+            return ans
+            
+        return dfs(0)
+```
