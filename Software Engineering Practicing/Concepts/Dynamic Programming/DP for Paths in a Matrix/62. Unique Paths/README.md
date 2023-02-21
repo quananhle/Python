@@ -38,6 +38,14 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/unique-paths/solutions/504514/Figures/62/first_row2.png)
+
+![image](https://leetcode.com/problems/unique-paths/solutions/504514/Figures/62/first_col2.png)
+
+![image](https://leetcode.com/problems/unique-paths/solutions/504514/Figures/62/inner_cell2.png)
+
+![image](https://leetcode.com/problems/unique-paths/solutions/504514/Figures/62/bin4.png)
+
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
@@ -76,6 +84,22 @@ class Solution:
         @lru_cache(None)
         def dfs(row, col):
             # Base cases
+            if row == 1 or col == 1:
+                return 1
+
+            ans = dfs(row - 1, col) + dfs(row, col - 1)
+            return ans
+
+        return dfs(m, n)
+```
+
+```Python
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        # Depth-First Search
+        @lru_cache(None)
+        def dfs(row, col):
+            # Base cases
             if row == m - 1 or col == n - 1:
                 return 1
             if not (0 <= row < m or 0 <= col < n):
@@ -95,4 +119,30 @@ class Solution:
             return 1
 
         return self.uniquePaths(m - 1, n) + self.uniquePaths(m, n - 1)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        ROWS, COLS = m, n
+        dp = [[1] * (COLS + 1) for _ in range(ROWS + 1)]
+        for r in range(1, ROWS):
+            for c in range(1, COLS):
+                dp[r][c] = dp[r - 1][c] + dp[r][c - 1]
+        return dp[m - 1][n - 1] 
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming (1D Array)
+
+```Python
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        ROWS, COLS = m, n
+        dp = [1] * (COLS + 1)
+        for _ in range(1, ROWS):
+            for c in range(1, COLS):
+                dp[c] += dp[c - 1]
+        return dp[n - 1]
 ```
