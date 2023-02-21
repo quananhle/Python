@@ -133,5 +133,46 @@ class Solution:
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        if not s or s[0] == '0':
+            return 0
 
+        n = len(s)
+        dp = [0] * (n + 1)
+        # Only add to the final answer if every digit is decoded accurately until the end of the string
+        dp[0] = dp[1] = 1
+
+        for i in range(2, len(dp)):
+            if s[i - 1] != '0':
+                dp[i] = dp[i - 1]
+
+            if 10 <= int(s[i - 2 : i]) <= 26:
+                dp[i] += dp[i - 2]
+        return dp[n]
+```
+
+#### Constant Space Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        # Base case: check if there is a leading zero in the beginning of input array
+        if not s or s[0] == '0':
+            return 0
+        
+        n = len(s)
+        two_back, one_back = 1, 1
+
+        for i in range(1, n):
+            current = 0
+            if s[i] != '0':
+                current = one_back
+            if 10 <= int(s[i-1:i+1]) <= 26:
+                current += two_back
+
+            two_back = one_back
+            one_back = current
+
+        return one_back 
 ```
