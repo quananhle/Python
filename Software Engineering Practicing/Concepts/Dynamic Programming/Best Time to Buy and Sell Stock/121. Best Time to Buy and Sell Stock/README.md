@@ -45,6 +45,36 @@ __Constraints:__
 ```Python
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        @lru_cache(None)
+        def dp(i, holding, remaining):
+            # Base case
+            if i == len(prices) or remaining <= 0:
+                return 0
+
+            # Recurrence relation: to make a transaction or to wait and skip ith day
+
+            # To wait and skip ith day, move on to the (i + 1)th day
+            do_nothing = dp(i + 1, holding, remaining)
+
+            # To make a transaction, check if holding a stock
+            if not holding:
+                # If not holding a stock, Buy, update ownership status, pay price at ith day
+                do_something = dp(i + 1, not holding, remaining) - prices[i]
+            else:
+                # If holding a stock, Sell, update ownership status, take profit from selling at ith day
+                do_something = dp(i + 1, not holding, remaining - 1) + prices[i]
+
+            # Get the maximum profit possible from two paths of decision
+            ans = max(do_nothing, do_something)
+            return ans
+
+        return dp(0, False, 1)
+```
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
         # Top-Down Dynamic Programming
         res = list()
 
