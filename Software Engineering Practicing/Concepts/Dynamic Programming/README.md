@@ -200,6 +200,19 @@ Whenever you notice that values calculated by a DP algorithm are only reused a f
 
 ---
 
+## DP for Paths in a Matrix
+
+### Pathing Problems
+
+These problems have matrices as part of the input and give rules for "moving" through the matrix in the problem description. Typically, DP will be applicable when the allowed movement is constrained in a way that prevents moving "backwards", for example if we are only allowed to move down and right.
+
+![image](https://leetcode.com/explore/learn/card/Figures/1293/1293_next_steps.png)
+If we are allowed to move in all 4 directions, then it might be a graph/BFS problem instead. This pattern is sometimes combined with other patterns we have looked at, such as counting DP.
+
+In terms of difficulty, these problems are usually less difficult than the average DP problem as the recurrence relation is usually directly related to the rules of traversal. Most of these problems are also very similar or are variations of each other, and because of this, knowing a general approach to these problems can go a long way.
+
+---
+
 ## Applying Dynamic Programming to a Problem
 
 While it's _very difficult to be certain_ that there is no greedy algorithm for your interview problem, over time you'll build up an intuition about when to give up. You also don't want to risk spending so long trying to find a greedy algorithm that you run out of time to write a dynamic programming one (and it's also best to make sure you write a working solution!).
