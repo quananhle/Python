@@ -54,3 +54,16 @@ class Solution:
                 
         return profit 
 ```
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        buy = prices[0]
+        best = 0
+        for price in prices[1:]:
+            if buy > price:
+                buy = price
+            if best < price - buy:
+                best = price - buy
+        return best
+```
