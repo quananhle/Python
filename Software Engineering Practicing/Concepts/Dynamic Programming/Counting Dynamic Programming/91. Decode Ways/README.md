@@ -69,6 +69,41 @@ The problem deals with finding number of ways of decoding a string. What helps t
 
 ```Python
 class Solution:
+    def numDecodings(self, s: str) -> int:
+        # Time Limit Exceeded
+        n = len(s)
+
+        memo = collections.defaultdict(int)
+        # Base case return 1 as this is counting dynamic programming, return 0 would reflect 0 itself instead of counting
+        memo[n], memo[n - 1] = 1, 1
+        # Check standalone '0' is invalid for single digit scan and leading '0' is invalid for double digit scan
+        for i in range(len(s)):
+            if s[i] == '0':
+                # Could not count into the final answer
+                memo[i] = 0
+
+        def dfs(curr):
+            # Base cases
+            if curr in memo:
+                return memo.get(curr)
+            
+            # Recurrence relation
+
+            # Scan every digit individually
+            ans = dfs(curr + 1)
+
+            # Check if the next two digits are within 26
+            if int(s[curr:curr + 2]) <= 26:
+                # Add to the final answer
+                ans += dfs(curr + 2)
+
+            return ans
+
+        return dfs(0)
+```
+
+```Python
+class Solution:
     def numDecodings(self, s: str) -> int:    
         @lru_cache(None)
         def dfs(curr):
@@ -86,7 +121,7 @@ class Solution:
             # Increment index by 1 for single digit character
             ans = dfs(curr + 1)
 
-            # Check if the next two digits are withing 26
+            # Check if the next two digits are within 26
             if int(s[curr:curr + 2]) <= 26:
                 ans += dfs(curr + 2)
             
