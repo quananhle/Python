@@ -10,7 +10,7 @@ You want to maximize your profit by choosing a __single day__ to buy one stock a
 
 Return the _maximum profit you can achieve from this transaction_. If you cannot achieve any profit, return ```0```.
 
-![image](https://user-images.githubusercontent.com/35042430/205685808-073c32d4-6d55-4dde-b9ae-793367ad49a4.png)
+![image](https://user-images.githubusercontent.com/35042430/220414974-c0ec4ccc-d5ed-4305-9fab-f9fb79823216.png)
 
 ---
 
