@@ -82,7 +82,7 @@ class Solution:
                 # Could not count into the final answer
                 memo[i] = 0
 
-        def dfs(curr):
+        def dp(curr):
             # Base cases
             if curr in memo:
                 return memo.get(curr)
@@ -90,23 +90,23 @@ class Solution:
             # Recurrence relation
 
             # Scan every digit individually
-            ans = dfs(curr + 1)
+            ans = dp(curr + 1)
 
             # Check if the next two digits are within 26
             if int(s[curr:curr + 2]) <= 26:
                 # Add to the final answer
-                ans += dfs(curr + 2)
+                ans += dp(curr + 2)
 
             return ans
 
-        return dfs(0)
+        return dp(0)
 ```
 
 ```Python
 class Solution:
     def numDecodings(self, s: str) -> int:    
         @lru_cache(None)
-        def dfs(curr):
+        def dp(curr):
             # Base cases
             # Base case return 1 as this is counting dynamic programming, return 0 would reflect 0 itself instead of counting
             if curr == len(s):
@@ -119,7 +119,7 @@ class Solution:
                 return 1
             
             # Increment index by 1 for single digit character
-            ans = dfs(curr + 1)
+            ans = dp(curr + 1)
 
             # Check if the next two digits are within 26
             if int(s[curr:curr + 2]) <= 26:
@@ -127,7 +127,7 @@ class Solution:
             
             return ans
             
-        return dfs(0)
+        return dp(0)
 ```
 
 #### Bottom-Up Dynamic Programming (Tabulation)
