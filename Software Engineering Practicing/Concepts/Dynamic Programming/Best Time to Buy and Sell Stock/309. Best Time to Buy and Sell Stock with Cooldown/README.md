@@ -79,34 +79,34 @@ class Solution:
 ```Python
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        dp = dp = collections.defaultdict() # key = (i, buying), val = max_profit
+        memo = collections.defaultdict() # key = (i, buying), val = max_profit
 
-        def dfs(i, holding):
+        def dp(i, holding):
             if i >= len(prices):
                 return 0
 
             # Check if transaction precomputed
-            if (i, holding) in dp:
-                return dp[(i, holding)]
+            if (i, holding) in memo:
+                return memo[(i, holding)]
 
             # Decide not to buy or sell yet, move on to the next day
-            do_nothing = dfs(i + 1, holding)
+            do_nothing = dp(i + 1, holding)
             
             # Check if not holding any stock
             if not holding:
                 # Decide to buy, move on to the next day, update ownership status, pay the price at day ith
-                buy = dfs(i + 1, not holding) - prices[i]
+                buy = dp(i + 1, not holding) - prices[i]
                 # Get the maximum profit out of this path of decisions
-                dp[(i, holding)] = max(buy, do_nothing)
+                memo[(i, holding)] = max(buy, do_nothing)
             else:
                 # Decide to sell, move on to the day after the cooldown period ends, reset ownership status, take the profit
-                sell = dfs(i + 2, not holding) + prices[i]
+                sell = dp(i + 2, not holding) + prices[i]
                 # Get the maximum profit out of this path of decisions
-                dp[(i, holding)] = max(sell, do_nothing)
+                memo[(i, holding)] = max(sell, do_nothing)
 
-            return dp[(i, holding)]
+            return memo[(i, holding)]
 
-        return dfs(0, False)
+        return dp(0, False)
 ```
 
 #### Bottom-Up Dynamic Programming (Tabulation)
