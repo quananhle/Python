@@ -98,6 +98,33 @@ class Solution:
 ```Python
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        ROWS, COLS = len(obs), len(obs[0])
+        
+        dp = [[0] * COLS for _ in range(ROWS)]
+        
+        # Edge cases: check if the obstacles are at the starting cell or the finished cell
+        if obstacleGrid[0][0] == 1 or obstacleGrid[-1][-1] == 1:
+            return 0
+        # Set up starting point
+        dp[0][0] = 1
+        
+        for row in range(1, ROWS):
+            dp[row][0] = 1 if obstacleGrid[row][0] == 0 and dp[row - 1][0] == 1 else 0
+            
+        for col in range(1, COLS):
+            dp[0][col] = 1 if obstacleGrid[0][col] == 0  and dp[0][col - 1] == 1 else 0
+        
+        for row in range(1, ROWS):
+            for col in range(1, COLS):
+                if obs[row][col] == 0:
+                    dp[row][col] = dp[row - 1][col] + dp[row][col - 1]
+
+        return dp[ROWS - 1][COLS - 1]
+```
+
+```Python
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
         a = [0 if i == 1 else 1 for i in obstacleGrid[0]]
         b = [0] * COLS
