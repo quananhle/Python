@@ -36,3 +36,111 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        memo = collections.defaultdict(int)
+        ROWS, COLS = len(grid), len(grid[0])
+
+        memo[(0, 0)] = grid[0][0]
+
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 0
+
+            if (row, col) in memo or (not row and not col):
+                return memo[(row, col)]
+
+            current = grid[row][col]
+            if not row:
+                return dp(row, col - 1) + current
+            if not col:
+                return dp(row - 1, col) + current
+
+
+            memo[(row, col)] = current + min(dp(row, col - 1), dp(row - 1, col))
+            return memo[(row, col)]
+
+        return dp(ROWS - 1, COLS - 1)
+```
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+
+        @lru_cache(None)
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 0
+
+            if row == 0 and col == 0:
+                return grid[0][0]
+            if row == 0:
+                return grid[row][col] + dp(row, col - 1)
+            if col == 0:
+                return grid[row][col] + dp(row - 1, col)
+                
+            return grid[row][col] + min(dp(row - 1, col), dp(row, col - 1))
+
+        return dp(ROWS - 1, COLS - 1)
+```
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        # Top-Down DP (Recursion)
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1)]
+
+        @lru_cache(None)
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 0
+            if row == ROWS - 1 and col == COLS - 1:
+                return grid[row][col]
+
+            right = down = grid[row][col]
+            if row == ROWS - 1:
+                right += dp(row, col + 1)
+                return right
+            if col == COLS - 1:
+                down += dp(row + 1, col)
+                return down
+    
+            return grid[row][col] + min([dp(row + x, col + y) for x, y in DIRECTIONS])
+
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        # Top-Down DP (Recursion)
+        ROWS, COLS = len(grid), len(grid[0])
+
+        @lru_cache(None)
+        def dp(row, col):
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return float('inf')
+
+            if row == col == 0:
+                return grid[row][col]
+
+            return min(dp(row - 1, col), dp(row, col - 1)) + grid[row][col]
+
+        return dp(ROWS - 1, COLS - 1)
+```
+        
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+
+```
