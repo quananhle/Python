@@ -72,6 +72,29 @@ class Solution:
 ```Python
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
+        # Top-Down DP (Recursion)
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1)]
+        memo = collections.defaultdict(int)
+
+        # Base case
+        memo[(ROWS-1, COLS-1)] = grid[ROWS-1][COLS-1]
+           
+        def dp(row, col):
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 101
+
+            if row == ROWS - 1 and col == COLS - 1 or (row, col) in memo:
+                return memo[(row, col)]
+
+            return min(dp(row + 1, col), dp(row, col + 1)) + grid[row][col]
+
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
 
         @lru_cache(None)
@@ -142,5 +165,38 @@ class Solution:
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
 
+        dp = grid[:]
+
+        for row in range(1, ROWS):
+            dp[row][0] += dp[row - 1][0]
+        for col in range(1, COLS):
+            dp[0][col] += dp[0][col - 1]
+        
+        for row in range(1, ROWS):
+            for col in range(1, COLS):
+                dp[row][col] += min(dp[row - 1][col], dp[row][col - 1])
+        return dp[ROWS - 1][COLS - 1]
+```
+
+#### Space Optimized Bottom-Up Dynamic Programming (1D Array)
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+
+        dp = grid[0][:]
+
+        for col in range(1, COLS):
+            dp[col] += dp[col - 1]
+        
+        for row in range(1, ROWS):
+            dp[0] += grid[row][0]
+            for col in range(1, COLS):
+                dp[col] = grid[row][col] + min(dp[col], dp[col - 1])
+        return dp[COLS - 1]
 ```
