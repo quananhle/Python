@@ -56,11 +56,52 @@ __Constraints:__
 
 ---
 
+- If we cannot ship the packages in the required days with capacity ```A```, we can never ship the packages with capacity less than ```A```. 
+- Also, if we can ship the packages in the required days with capacity ```B```, we can always ship it with capacity greater than ```B```. So, in such a case, the optimal capacity lies between ```[A + 1, B]``` (both inclusive).
+
+A scenario like this where our task is to search for an element ```X``` from a given range ```(L, R)``` where all values smaller than ```X``` do not satisfy a certain condition and all values greater than or equal to ```X``` satisfy it (or vice-versa), can be solved optimally with a binary search algorithm. In binary search, we repeatedly divide the solution space where the answer could be in half until the range contains just one element.
+
+![image](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/solutions/2934252/Figures/1011/1011-1.png)
+
+Following the above discussion, we set the starting of the range to the largest weight in ```weights```, say ```max_weight``` and set the ending of the range to the sum of the elements of ```weights```, say ```total_weight```. We define two variables, ```left = max_weight``` and ```right = total_weight``` to indicate the start and end of the range, respectively. Notice that the end of the range ```right``` is always a way to ship the elements within the required ```days```.
+
+- If we are able to ship the packages with ```mid``` capacity within the required ```days```, we know the answer is at most ```mid```, so we can look for a better answer by moving to the lower half - change ```right = mid```.
+- Otherwise, if we are not able to ship the packages with ```mid``` capacity, we cannot ship the packages with any capacity less than or equal to ```mid```. So, we move to the upper half of the range by moving ```left = mid + 1```.
+
+To check whether we can ship all the packages with a given capacity, ```capacity```, we create a method and define two variables in it, ```days_needed = 1``` and ```current_load = 0``` which store the total number of days needed to ship all the weights with ```capacity``` ship capacity and to keep track of how much weight has been placed in the ship on a day, respectively. We iterate over all the ```weights```, and for each weight, we place the weight in the ship and increase its load to ```current_load = current_load + weight```. We keep on placing the weights until ```current_load > capacity```. 
+
+- If ```current_load``` exceeds ```capacity```, we cannot keep adding ```weight``` and need an additional day. So, we increase the days needed to ship the packages by one, i.e., ```days_needed = days_needed + 1``` we also set ```current_load = weight``` as this is the current load for the next day. Finally, if days_needed <= days, we return ```True```. 
+- Otherwise, we return ```False```.    
 
 ### Binary Search
 
 ```Python
-
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        # Binary Search
+        def feasible(capacity):
+            days_needed = 1
+            current_load = 0
+            for weight in weights:
+                current_load += weight
+                if current_load > capacity:
+                    days_needed += 1
+                    current_load = weight
+            return days_needed <= days
+        
+        max_load = total_load = 0
+        for weight in weights:
+            max_load = max(max_load, weight)
+            total_load += weight
+        
+        left, right = max_load, total_load
+        while left < right:
+            mid = left + (right - left) // 2
+            if feasible(mid):
+                right = mid
+            else:
+                left = mid + 1
+        return left
 ```
 
 ```Python
