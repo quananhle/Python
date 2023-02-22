@@ -45,3 +45,150 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        memo = collections.defaultdict(int)
+        n = len(prices)
+
+        def dp(i, remaining, holding):
+            # Base case
+            if i == len(prices) or remaining <= 0:
+                return 0
+            
+            if (i, holding) in memo:
+                return memo[(i, holding)]
+
+            # Recurrence relation: to make a transaction or to wait
+
+            # To wait and skip ith day, move on to the next day
+            do_nothing = dp(i + 1, remaining, holding)
+
+            # To make a transaction, check ownership status
+            if not holding:
+                # Buy: move on to the next day, update ownership status, pay the price at ith day
+                buy = dp(i + 1, remaining, not holding) - prices[i]
+                memo[(i, holding)] = max(do_nothing, buy)
+            else:
+                # Sell: move on to the next day, update ownership status, take profit
+                sell = dp(i + 1, remaining - 1, not holding) + prices[i]
+                memo[(i, holding)] = max(do_nothing, sell)
+            
+            return memo[(i, holding)]
+        
+        return dp(0, n, False)
+```
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        n = len(prices)
+        @lru_cache(None)
+        def dp(i, remaining, holding):
+            # Base case
+            if i == len(prices) or remaining <= 0:
+                return 0
+            
+            # Recurrence relation: to make a transaction or to wait
+
+            # To wait and skip ith day, move on to the next day
+            do_nothing = dp(i + 1, remaining, holding)
+
+            # To make a transaction, check ownership status
+            if not holding:
+                # Buy: move on to the next day, update ownership status, pay the price at ith day
+                do_something = dp(i + 1, remaining, not holding) - prices[i]
+            else:
+                # Sell: move on to the next day, update ownership status, take profit
+                do_something = dp(i + 1, remaining - 1, not holding) + prices[i]
+            
+            return max(do_nothing, do_something)
+        
+        return dp(0, n, False)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if not prices:
+            return 0
+
+        dp = collections.defaultdict(int)
+        n = len(prices)
+
+        for i in range(n - 1, -1, -1):
+            for holding in range(2):
+                # Decide not to buy or sell yet, move on to the next day
+                do_nothing = dp[(i + 1, holding)]
+                # Decide to buy or sell, sell if holding stock or buy if not holding stock
+                if not holding:
+                    # Buy: move on to the next day, update ownership status, pay price at ith day
+                    do_something = dp[(i + 1, not holding)] - prices[i]
+                else:
+                    # Sell: move on to the next day, update ownership status, take profit
+                    do_something = dp[(i + 1, not holding)] + prices[i]
+                # Recurrence relation
+                dp[(i, holding)] = max(do_nothing, do_something)
+        return dp[(0, 0)]
+```
+
+```Python
+    def maxProfit(self, prices: List[int]) -> int:
+        if not prices:
+            return 0
+            
+        n = len(prices)
+        dp = [[0] * 2 for _ in range(n + 1)]
+
+        for i in range(n - 1, -1, -1):
+            for holding in range(2):            
+                # Decide not to buy or sell yet, move on to the next day
+                do_nothing = dp[i + 1][holding]
+
+                # Decide to buy or sell, sell if holding stock or buy if not holding stock
+                if not holding:
+                    # Buy: move on to the next day, update ownership status, pay price at ith day
+                    do_something = dp[i + 1][1] - prices[i]
+                else:
+                    # Sell: move on to the next day, change ownership status, take profit
+                    do_something = dp[i + 1][0] + prices[i]
+
+                # Recurrence relation
+                dp[i][holding] = max(do_nothing, do_something)
+        
+        return dp[0][0]
+```
+
+---
+
+### Greedy
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i-1]:
+                profit += prices[i] - prices[i-1]
+        return profit
+```
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        buy = prices[0]
+        for price in prices[1:]:
+            if price > buy:
+                profit += price - buy
+            buy = price
+        return profit
+```
