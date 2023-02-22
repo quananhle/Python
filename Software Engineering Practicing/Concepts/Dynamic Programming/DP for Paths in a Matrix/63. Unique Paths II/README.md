@@ -1,6 +1,6 @@
 ## 63. Unique Paths II
 
-```Tag```: ```Dynamic Programming``` ```Depth-First Search```
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -44,3 +44,108 @@ __Constraints:__
 
 ---
 
+```Python
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        # Top-Down DP (Recursion)
+        ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
+
+        @lru_cache
+        def dp(row, col):
+            # Base cases
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 0
+            # Edge case: check if the obstacle in at the bottom right corner
+            if obstacleGrid[row][col]:
+                return 0
+
+            if row == ROWS - 1 and col == COLS - 1:
+                return 1
+
+            # Recurrence relation
+            ans = dp(row + 1, col) + dp(row, col + 1)
+            return ans
+
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
+
+        @lru_cache
+        def dp(row, col):
+            # Base cases
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 0
+            # Edge case: check if the obstacle in at the bottom right corner
+            if obstacleGrid[row][col]:
+                return 0
+
+            if row == 0 and col == 0:
+                return 1
+
+            # Recurrence relation
+            ans = dp(row - 1, col) + dp(row, col - 1)
+            return ans
+
+        return dp(ROWS - 1, COLS - 1)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
+        a = [0 if i == 1 else 1 for i in obstacleGrid[0]]
+        b = [0] * COLS
+
+        for i in range(1, len(a)):
+            if a[i-1] == 0:
+                a[i] = 0
+
+        for row in range(1, ROWS):
+            for col in range(COLS):
+                if col == 0:
+                    b[col] = a[col] if obstacleGrid[row][col] == 0 else 0
+                else:
+                    b[col] = b[col -1 ] + a[col] if obstacleGrid[row][col] == 0 else 0
+            a = b
+            b = [0] * COLS
+        return a[-1]
+```
+
+__Time Complexity:__ ```O(M * N)```, iterate through every cell in grid of M * N size
+
+__Space Complexity:__ ```O(1)```, modified the input grid in-place
+
+```Python
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
+
+        # Edge case: the starting cell is an obstacle
+        if obstacleGrid[0][0]:
+            return 0
+        obstacleGrid[0][0] = 1
+
+        for row in range(1,ROWS):
+            obstacleGrid[row][0] = int(obstacleGrid[row][0] == 0 and obstacleGrid[row-1][0] == 1)
+        for col in range(1, COLS):
+            obstacleGrid[0][col] = int(obstacleGrid[0][col] == 0 and obstacleGrid[0][col-1] == 1)
+        
+        # Starting from cell(1,1) fill up the values
+        # No. of ways of reaching cell[i][j] = cell[i - 1][j] + cell[i][j - 1]
+        # i.e. From above and left.
+        for row in range(1, ROWS):
+            for col in range(1, COLS):
+                if obstacleGrid[row][col] == 0:
+                    obstacleGrid[row][col] = obstacleGrid[row-1][col] + obstacleGrid[row][col-1]
+                else:
+                    obstacleGrid[row][col] = 0
+
+        # Return value stored in rightmost bottommost cell. That is the destination.            
+        return obstacleGrid[ROWS - 1][COLS - 1]
+```
