@@ -129,7 +129,7 @@ class Solution:
 class Solution:
     @lru_cache(None)
     def numberOfWays(self, numPeople: int) -> int:
-        return sum(self.numberOfWays(i) * self.numberOfWays(numPeople - i - 2) for i in range(0, numPeople, 2)) % ((10**9 + 7)) if numPeople else 1
+        return sum(self.numberOfWays(i) * self.numberOfWays(numPeople - i - 2) for i in range(0, numPeople, 2)) % (10**9 + 7) if numPeople else 1
 ```
         
 ### Catalan Numbers
