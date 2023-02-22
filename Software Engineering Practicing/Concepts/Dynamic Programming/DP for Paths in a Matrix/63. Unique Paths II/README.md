@@ -98,7 +98,7 @@ class Solution:
 ```Python
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
-        ROWS, COLS = len(obs), len(obs[0])
+        ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
         
         dp = [[0] * COLS for _ in range(ROWS)]
         
@@ -116,7 +116,7 @@ class Solution:
         
         for row in range(1, ROWS):
             for col in range(1, COLS):
-                if obs[row][col] == 0:
+                if obstacleGrid[row][col] == 0:
                     dp[row][col] = dp[row - 1][col] + dp[row][col - 1]
 
         return dp[ROWS - 1][COLS - 1]
