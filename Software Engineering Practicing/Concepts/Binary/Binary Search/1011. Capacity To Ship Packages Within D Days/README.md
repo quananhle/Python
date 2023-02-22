@@ -56,3 +56,59 @@ __Constraints:__
 
 ---
 
+
+### Binary Search
+
+```Python
+
+```
+
+```Python
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        # Binary Search
+        def calculate_capacity(capacity):
+            count = 1
+            maximum = capacity
+            for weight in weights:
+                if weight > maximum:
+                    maximum = capacity
+                    count += 1
+                maximum -= weight
+            return count <= days
+
+        lo, hi = max(weights), sum(weights)
+        while lo < hi:
+            capacity = lo + (hi - lo) // 2
+            if calculate_capacity(capacity):
+                hi = capacity
+            else:
+                lo = capacity + 1
+        return lo
+```
+
+```Python
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        # Binary Search
+        def calculate_capacity(capacity):
+            count = 1
+            maximum = capacity
+            for weight in weights:
+                if weight > maximum:
+                    maximum = capacity
+                    count += 1
+                maximum -= weight
+            return count <= days
+
+        lo, hi = max(weights), sum(weights)
+        min_capacity = lo
+        while lo <= hi:
+            capacity = lo + (hi - lo) // 2
+            if calculate_capacity(capacity):
+                min_capacity = capacity
+                hi = capacity - 1
+            else:
+                lo = capacity + 1
+        return min_capacity
+```
