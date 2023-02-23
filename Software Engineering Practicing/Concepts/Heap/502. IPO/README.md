@@ -46,13 +46,42 @@ __Constraints:__
 #### Min Heap
     
 ```Python
-    
+class Solution:
+    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+        n = len(profits)
+        projects = list(zip(capital, profits))
+        projects.sort()
+
+        h = list()
+        i = 0
+        for _ in range(k):
+            # Check if there are projects left and enough capital to start the project
+            while i < n and projects[i][0] <= w:
+                # Max heap
+                heapq.heappush(h, -projects[i][1])
+                i += 1
+            if not h:
+                break
+            w += -heapq.heappop(h)
+        return w
 ```
     
 #### Two Heaps
     
 ```Python
-    
+class Solution:
+    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
+        n = len(profits)
+        h1, h2 = list(), list()
+        for i in range(n):
+            heapq.heappush(h1, (capital[i], profits[i]))
+        for i in range(k):
+            while h1 and h1[0][0] <= w:
+                curr_capital, curr_profit = heapq.heappop(h1)
+                heapq.heappush(h2, -curr_profit)
+            if h2:
+                w += -heapq.heappop(h2)
+        return w
 ```
     
 ---
