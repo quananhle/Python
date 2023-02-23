@@ -40,3 +40,34 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int], fee: int) -> int:
+        # Top-Down DP (Recursion)
+        @lru_cache(None)
+        def dp(i, holding):
+            # Base case
+            if i == len(prices):
+                return 0
+            
+            # Recurrence relation: to make a transaction or to not make a transaction
+            
+            # If decided to not make a transaction, move on to the next day
+            do_nothing = dp(i + 1, holding)
+
+            # If decided to make a transaction, check the ownership status
+            if not holding:
+                # Buy: move on to the next day, update ownership status, pay the price at ith day
+                do_something = dp(i + 1, not holding) - prices[i]
+            else:
+                # Sell: move on to the next day, update ownership status, take profit less transaction fee
+                do_something = dp(i + 1, not holding) + prices[i] - fee
+
+            return max(do_nothing, do_something)
+
+        return dp(0, False)
+```
