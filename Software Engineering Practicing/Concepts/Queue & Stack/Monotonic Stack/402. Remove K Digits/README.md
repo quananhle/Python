@@ -51,6 +51,14 @@ Now that we fix on the order of the iteration, it is critical to come up some cr
 
 ![image](https://leetcode.com/problems/remove-k-digits/solutions/377716/Figures/402/402_algorithm.png)
 
+Out of the above main loop, we need to handle some corner cases to make the solution more complete.
+
+- Case 1). when we get out of the main loop, we removed ```m``` digits, which is less than asked, i.e.(```m < k```). In the extreme case, we would not remove any digit for the monotonic increasing sequence in the loop, i.e. ```m == 0```. In this case, we just need to remove the additional ```k - m``` digits from the tail of the sequence.
+
+- Case 2). once we remove all the ```k``` digits from the sequence, there could be some leading zeros left. To format the final number, we need to strip off those leading zeros.
+
+- Case 3). we might end up removing all numbers from the sequence. In this case, we should return zero, instead of empty string.
+
 ```Python
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
@@ -72,7 +80,7 @@ class Solution:
         return ''.join(res) if res else '0'
 
 """
-Case 1: Remove biggest digit from left to right until k = 0
+Case 1: Remove biggest digits from left to right until k = 0
 num = "1432219", k = 3 -> remove from left to right 4, 3, 2 => "1219"
 
 Case 2: Avoid leading zero
@@ -87,8 +95,12 @@ Case 4: Emtpy output
 num = "10", k = 1 => "0" -> monotonic stack = [] => "0"
 
 Case 5: Monotonic stack is formed and k != 0
-num = "112", k = 1 => "11" -> monotonic stack = [1,1,2], k = 1 -> edge case: remove from right to left 2 => "11"
-num = "1432345", k = 3 => "1234" -> remove from left to right 4, 3 -> monotonic stack = [1,2,3,4,5], k = 1
+num = "112", k = 1 -> monotonic stack = [1,1,2], k = 1 -> edge case: remove from right to left 2 => "11"
+num = "1432345", k = 3 -> remove from left to right 4, 3 -> monotonic stack = [1,2,3,4,5], k = 1
                                  -> edge case: remove from right to left 5 => "1234"
 """
+```
+
+```Python
+
 ```
