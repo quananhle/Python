@@ -43,6 +43,20 @@ __Constraints:__
 
 ### Heap
 
+#### Min Heap
+    
+```Python
+    
+```
+    
+#### Two Heaps
+    
+```Python
+    
+```
+    
+---
+
 ### Dynamic Programming
 
 Solving the problem using the Top-Down Dynamic Programming Framework (Time Limit Exceeded)
