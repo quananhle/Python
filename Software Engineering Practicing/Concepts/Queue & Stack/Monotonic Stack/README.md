@@ -1,0 +1,1 @@
+## Pattern for Monotonic Stack
