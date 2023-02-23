@@ -102,5 +102,20 @@ num = "1432345", k = 3 -> remove from left to right 4, 3 -> monotonic stack = [1
 ```
 
 ```Python
+class Solution:
+    def removeKdigits(self, num: str, k: int) -> str:
+        monotonic_stack = list()
 
+        # Construct a monotone increasing sequence of digits
+        for digit in num:
+            while k and monotonic_stack and digit < monotonic_stack[-1]:
+                monotonic_stack.pop()
+                k -= 1
+            monotonic_stack.append(digit)
+
+        # Trunk remaining k digit if k != 0 or get the stack
+        res = monotonic_stack[:-k] if k else monotonic_stack
+        
+        # Trim leading zeroes
+        return "".join(res).lstrip('0') or "0"
 ```
