@@ -1,6 +1,6 @@
 ## 1675. Minimize Deviation in Array
 
-```Tag```:
+```Tag```: ```Heap``` ```Sliding Window```
 
 #### Difficulty: Hard
 
@@ -50,3 +50,65 @@ __Constraints:__
 
 ---
 
+The problem gives two operations:
+
+- If the element is __even__, we can __divide__ it by ```2```.
+- If the element is __odd__, we can __multiply__ it by ```2```.
+
+Consequently, we have two insights:
+
+- If the element is even, we can not increase it.
+- If the element is odd, we can not decrease it.
+
+![image](https://leetcode.com/problems/minimize-deviation-in-array/Documents/5616/5616_1_1.drawio.svg)
+
+According to the problem description:
+
+_deviation = maximum − minimum_
+
+Hence, there are only two ways to decrease _deviation_: decrease _maximum_, or increase _minimum_.
+
+If we have increased all numbers to their maximum, then we can not increase _minimum_. If we want smaller _deviation_, we can only decrease _maximum_.
+
+![image](https://leetcode.com/problems/minimize-deviation-in-array/Documents/5616/5616_1_2.drawio.svg)
+
+### Heap
+
+#### Algorithm
+
+- __Step 1__: Initialize a max-heap ```max_heap```.
+
+  - For an even number in ```nums```, put it directly into ```max_heap```; for the odd number in ```nums```, multiply by ```2``` and put it into ```max_heap```.
+
+- __Step 2__: Maintain an integer ```val``` to keep tracking the smallest element in ```max_heap```.
+
+- __Step 3__: Take out the maximum number in ```max_heap```. Use the maximum and the maintained ```val``` to update the minimum deviation. If the maximum number is even, divide by 2 and push into ```max_heap```.
+
+- __Step 4__: Repeat Step 3 until the maximum number in ```max_heap``` is odd.
+
+- __Step 5__: Return the minimum deviation.
+
+```Python
+class Solution:
+    def minimumDeviation(self, nums: List[int]) -> int:
+        max_heap = list()
+        for num in nums:
+            if num % 2 == 0:
+                num = -num
+            else:
+                num = -num * 2
+            heapq.heappush(max_heap, num)
+            
+        ans = float('inf')
+        val = -max(max_heap)
+        
+        while len(nums) == len(max_heap):
+            curr = -heapq.heappop(max_heap)
+            ans = min(ans, curr - val)
+            if curr % 2 == 0:
+                val = min(val, curr // 2)
+                heapq.heappush(max_heap, -curr // 2)
+            else:
+                break
+        return ans
+```
