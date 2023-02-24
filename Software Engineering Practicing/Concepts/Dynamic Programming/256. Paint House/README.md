@@ -42,3 +42,32 @@ __Constraints:__
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
+
+```Python
+        if not costs:
+            return 0
+
+        HOUSES, PAINTS = len(costs), len(costs[0])
+        @lru_cache(None)
+        def dp(house, paint):
+            # Base case
+            if not (0 <= house < HOUSES and 0 <= paint < PAINTS):
+                return 0
+
+            cost = costs[house][paint]
+
+            # Recurrence relation
+            if paint == 0:
+                cost += min(dp(house + 1, 1), dp(house + 1, 2))
+            elif paint == 1:
+                cost += min(dp(house + 1, 0), dp(house + 1, 2))
+            else:
+                cost += min(dp(house + 1, 0), dp(house + 1, 1))
+        
+            return cost
+
+        ans = float('inf')
+        for paint in range(PAINTS):
+            ans = min(ans, dp(0, paint))
+        return ans
+```
