@@ -1,4 +1,4 @@
-## 265. Paint House II
+## [265. Paint House II](https://leetcode.com/problems/paint-house-ii/)
 
 ```Tag```: ```Dynamic Programming```
 
@@ -41,6 +41,35 @@ __Constraints:__
 
 ---
 
+### The Framework
 
+#### Top-Down Dynamic Programming (Recursion)
+
+![image](https://leetcode.com/problems/paint-house-ii/Figures/256/permutation_tree.png)
+
+```Python
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        # Top-Down DP
+        n, k = len(costs), len(costs[0])
+        
+        @lru_cache(None)
+        def dp(house, paint):
+            # Base case
+            if not (0 <= house < n and 0 <= paint < k):
+                return 0
+            
+            current = float('inf')
+            for next in range(k):
+                if next == paint:
+                    continue
+                current = min(current, dp(house + 1, next)) 
+            return current + costs[house][paint]
+
+        ans = float('inf')
+        for paint in range(k):
+            ans = min(ans, dp(0, paint))
+        return ans
+```
 
 __Follow up__: Could you solve it in ```O(nk)``` runtime?
