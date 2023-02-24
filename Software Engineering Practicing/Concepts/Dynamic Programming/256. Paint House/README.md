@@ -1,4 +1,4 @@
-## 256. Paint House
+## [256. Paint House](https://leetcode.com/problems/paint-house/)
 
 ```Tag```: ```Dynamic Programming```
 
@@ -39,9 +39,25 @@ __Constraints:__
 
 ---
 
+4 houses
+
+```
+[[17, 2, 17], [8, 4, 10], [6, 3, 19], [4, 8, 12]]
+```
+
+![image](https://leetcode.com/problems/paint-house/Figures/256/input_grid.png)
+
+![image](https://leetcode.com/problems/paint-house/Figures/256/brute_force.png)
+
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
+
+![image](https://leetcode.com/problems/paint-house/Figures/256/permutation_tree.png)
+
+![image](https://leetcode.com/problems/paint-house/Figures/256/1_layer_removed.png)
+
+![image](https://leetcode.com/problems/paint-house/Figures/256/2_layers_removed.png)
 
 ```Python
 class Solution:
@@ -106,6 +122,10 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming (Tabulation)
+
+![image](https://leetcode.com/problems/paint-house/Figures/256/dp_func_call_grid.png)
+
+![image](https://leetcode.com/problems/paint-house/Figures/256/dp_calc_example.png)
 
 ```Python
 class Solution:
