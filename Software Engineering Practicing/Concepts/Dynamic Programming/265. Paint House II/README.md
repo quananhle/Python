@@ -47,6 +47,10 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/paint-house-ii/Figures/256/permutation_tree.png)
 
+__Time Complexity__: O(n * k<sup>2</sup>))
+
+__Space Complexity__: O(N * K)
+
 ```Python
 class Solution:
     def minCostII(self, costs: List[List[int]]) -> int:
@@ -72,4 +76,158 @@ class Solution:
         return ans
 ```
 
+```Python
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        n, k = len(costs), len(costs[0])
+        memo = collections.defaultdict(int)
+
+        def dp(house, paint):
+            # Base case
+            if not (0 <= house < n and 0 <= paint < k):
+                return 0
+
+            if (house, paint) in memo:
+                return memo[(house, paint)]
+
+            current = float('inf')
+            for next in range(k):
+                if next == paint:
+                    continue
+                current = min(current, dp(house + 1, next))
+            memo[(house, paint)] = current + costs[house][paint]
+            return memo[(house, paint)]
+
+        ans = float('inf')
+        for paint in range(k):
+            ans = min(ans, dp(0, paint))
+        return ans
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+__Time Complexity__: O(n * k<sup>2</sup>))
+
+__Space Complexity__: O(N * K)
+
+```Python
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        # Bottom-Up DP (Tabulation)
+        n, k = len(costs), len(costs[0])
+        dp = [[0] * (k) for _ in range(n)]
+        dp[-1] = costs[-1]
+
+        for house in range(n - 2, -1, -1):
+            for paint in range(k):
+                current = float('inf')
+                for next in range(k):
+                    if next == paint:
+                        continue
+                    current = min(current, dp[house + 1][next])
+                dp[house][paint] = current + costs[house][paint]
+
+        return min(dp[0])
+```
+
+__Time Complexity__: O(n * k<sup>2</sup>))
+
+__Space Complexity__: O(1), in-place modifications
+
+```Python
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        n, k = len(costs), len(costs[0])
+
+        if n == 0:
+            return 0
+
+        for house in range(1, n):
+            for paint in range(k):
+                best = float('inf')
+                for next_paint in range(k):
+                    if paint == next_paint:
+                        continue
+                    best = min(best, costs[house - 1][next_paint])
+                costs[house][paint] += best
+        return min(costs[-1])
+```
+
+#### Bottom-Up Dynamic Programming (1D Array)
+
+__Time Complexity__: O(n * k<sup>2</sup>))
+
+__Space Complexity__: O(k)
+
+```Python
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        n, k = len(costs), len(costs[0])
+
+        if n == 0:
+            return 0
+
+        prev_house = costs[0]
+
+        for house in range(1, n):
+            curr_house = [0] * k
+            for paint in range(k):
+                best = float('inf')
+                for next_paint in range(k):
+                    if paint == next_paint:
+                        continue
+                    best = min(best, prev_house[next_paint])
+                curr_house[paint] += best + costs[house][paint]
+            prev_house = curr_house
+        return min(prev_house)
+```
+
 __Follow up__: Could you solve it in ```O(nk)``` runtime?
+
+```Python
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        n, k = len(costs), len(costs[0])
+
+        if n == 0:
+            return 0  
+
+        for house in range(1, n):
+            cheapest_paint = second_cheapest_paint = None
+            for paint in range(k):
+                current_cost = costs[house - 1][paint]
+                if cheapest_paint is None or current_cost < costs[house - 1][cheapest_paint]:
+                    second_cheapest_paint = cheapest_paint
+                    cheapest_paint = paint
+                elif second_cheapest_paint is None or current_cost < costs[house - 1][second_cheapest_paint]:
+                    second_cheapest_paint = paint            
+            for paint in range(k):
+                if paint == cheapest_paint:
+                    costs[house][paint] += costs[house - 1][second_cheapest_paint]
+                else:
+                    costs[house][paint] += costs[house - 1][cheapest_paint]
+
+        return min(costs[-1])
+```
+
+
+```Python
+class Solution:
+    def minCostII(self, costs: List[List[int]]) -> int:
+        if not costs: 
+            return 0
+
+        n, k = len(costs), len(costs[0])
+
+        for house in range(1, n):
+            cheapest_paint = min(costs[house - 1])
+            idx = costs[house - 1].index(cheapest_paint)
+            second_cheapest_paint = min(costs[house - 1][:idx] + costs[house - 1][idx + 1:])
+
+            for paint in range(k):
+                if paint == idx:
+                    costs[house][paint] += second_cheapest_paint
+                else:
+                    costs[house][paint] += cheapest_paint
+        return min(costs[-1])
+```
