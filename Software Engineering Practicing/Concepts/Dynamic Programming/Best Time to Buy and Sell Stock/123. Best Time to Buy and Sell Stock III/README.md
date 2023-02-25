@@ -80,3 +80,58 @@ class Solution:
 
         return dp(0, 2, False)
 ```
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        @lru_cache(None)
+        def dp(i, remaining, holding):
+            # Base case
+            if i == len(prices) or remaining == 0:
+                return 0
+
+            # Recurrence relation: to make a move or to rest and skip the current ith day
+
+            # To wait for the better opportunity: move on to the next day, keep current status
+            do_nothing = dp(i + 1, remaining, holding)
+
+            # To make a move, check if holding any stock
+            if not holding:
+                # Buy: move on to the next day, update the ownership status, pay the price at ith day
+                do_something = dp(i + 1, remaining, not holding) - prices[i]
+            else:
+                # Sell: move on to the next day, update the ownership status, decrement transaction by 1, take profit
+                do_something = dp(i + 1, remaining - 1, not holding) + prices[i]
+
+            return max(do_nothing, do_something)
+
+        return dp(0, 2, False)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Bottom-Up DP (Tabulation)
+        n = len(prices)
+        dp = [[[0] * 2 for _ in range(3)] for _ in range(n + 1)]
+
+        for day in range(n - 1, -1, -1):
+            for remaining in range(1, 3):
+                for holding in range(2):
+                    # To wait for the better opportunity: move on to the next day, keep current status
+                    do_nothing = dp[day + 1][remaining][holding]
+
+                    # To make a move, check if holding any stock
+                    if not holding:
+                        # Buy: move on to the next day, update the ownership status, pay the price at ith day
+                        do_something = dp[day + 1][remaining][1] - prices[day]
+                    else:
+                        # Sell: move on to the next day, update the ownership status, decrement transaction by 1, take profit                  
+                        do_something = dp[day + 1][remaining - 1][0] + prices[day]
+
+                    dp[day][remaining][holding] = max(do_nothing, do_something)
+
+        return dp[0][2][0]
+```
