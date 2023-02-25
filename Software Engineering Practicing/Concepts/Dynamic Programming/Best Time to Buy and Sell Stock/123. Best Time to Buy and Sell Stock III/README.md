@@ -1,4 +1,4 @@
-## 123. Best Time to Buy and Sell Stock III
+## [123. Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/)
 
 ```Tag```: ```Dynamic Programming``` ```Recursion```
 
@@ -128,10 +128,34 @@ class Solution:
                         # Buy: move on to the next day, update the ownership status, pay the price at ith day
                         do_something = dp[day + 1][remaining][1] - prices[day]
                     else:
-                        # Sell: move on to the next day, update the ownership status, decrement transaction by 1, take profit                  
+                        # Sell: move on to the next day, update the ownership status, decrement transaction by 1, take profit
                         do_something = dp[day + 1][remaining - 1][0] + prices[day]
 
                     dp[day][remaining][holding] = max(do_nothing, do_something)
 
         return dp[0][2][0]
+```
+
+#### 2D Array
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        dp = [[0 for _ in range(3)]  for _ in range(3)]
+        remaining = 2
+
+        for day in range(n - 1, -1, -1):
+            curr_day = [[0 for _ in range(3)]  for _ in range(3)]
+            for remaining in range(1, 3):
+                for holding in range(2):
+                    if not holding:
+                        curr_day[remaining][holding] = max(dp[remaining][holding], dp[remaining][1] - prices[day])
+                    else:
+                        curr_day[remaining][holding] = max(dp[remaining][holding], dp[remaining - 1][0] + prices[day])
+            dp = curr_day
+
+        return dp[2][0]
+```
+
 ```
