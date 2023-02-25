@@ -1,6 +1,6 @@
 ## 123. Best Time to Buy and Sell Stock III
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Recursion```
 
 #### Difficulty: Hard
 
@@ -47,3 +47,36 @@ __Constraints:__
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        memo = collections.defaultdict(int)
+
+        def dp(i, remaining, holding):
+            # Base case
+            if i == len(prices) or remaining == 0:
+                return 0
+            
+            if (i, remaining, holding) in memo:
+                return memo[(i, remaining, holding)]
+
+            # Recurrence relation: to make a move or to rest and skip the current ith day
+
+            # To wait for the better opportunity: move on to the next day, keep current status
+            do_nothing = dp(i + 1, remaining, holding)
+
+            # To make a move, check if holding any stock
+            if not holding:
+                # Buy: move on to the next day, update the ownership status, pay the price at ith day
+                do_something = dp(i + 1, remaining, not holding) - prices[i]
+            else:
+                # Sell: move on to the next day, update the ownership status, decrement transaction by 1, take profit
+                do_something = dp(i + 1, remaining - 1, not holding) + prices[i]
+
+            memo[(i, remaining, holding)] = max(do_nothing, do_something)
+            return memo[(i, remaining, holding)]
+
+        return dp(0, 2, False)
+```
