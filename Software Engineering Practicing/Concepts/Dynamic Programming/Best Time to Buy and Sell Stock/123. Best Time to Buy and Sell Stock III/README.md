@@ -158,4 +158,36 @@ class Solution:
         return dp[2][0]
 ```
 
+---
+
+### Greedy
+
+The intuition is that we can consider the problem as a game, and we as agent could make at most two transactions in order to gain the maximum points (profits) from the game.
+
+The two transactions be decomposed into 4 actions: "_buy of transaction #1_", "_sell of transaction #1_", "_buy of transaction #2_" and "_sell of transaction #2_".
+
+- ```t1_cost```: the minimal cost of buying the stock in transaction #1. The minimal cost to acquire a stock would be the minimal price value that we have seen so far at each step.
+
+- ```t1_profit```: the maximal profit of selling the stock in transaction #1. Actually, at the end of the iteration, this value would be the answer for the first problem in the series, i.e. __Best Time to Buy and Sell Stock__.
+
+- ```t2_cost```: the minimal cost of buying the stock in transaction #2, while taking into account the profit gained from the previous transaction #1. One can consider this as the cost of reinvestment. Similar with ```t1_cost```, we try to find the lowest price so far, which in addition would be partially compensated by the profits gained from the first transaction.
+
+- ```t2_profit```: the maximal profit of selling the stock in transaction #2. With the help of ```t2_cost``` as we prepared so far, we would find out the maximal profits with at most two transactions at each step.
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        t1_cost, t2_cost = float('inf'), float('inf')
+        t1_profit, t2_profit = 0, 0
+
+        for price in prices:
+            t1_cost = min(t1_cost, price)
+            t1_profit = max(t1_profit, price - t1_cost)
+            # Reinvest the realized gain from the first transaction
+            t2_cost = min(t2_cost, price - t1_profit)
+            # Get the combined profit from profit after the first transaction less the cost for second transaction
+            t2_profit = max(t2_profit, price - t2_cost)
+
+        return t2_profit
+
 ```
