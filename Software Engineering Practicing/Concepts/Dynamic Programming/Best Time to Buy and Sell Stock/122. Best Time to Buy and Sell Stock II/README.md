@@ -1,4 +1,4 @@
-## 122. Best Time to Buy and Sell Stock II
+## [122. Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
 
 ```Tag```: ```Dynamic Programming``` ```Greedy```
 
@@ -165,6 +165,26 @@ class Solution:
                 dp[i][holding] = max(do_nothing, do_something)
         
         return dp[0][0]
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming (1D Array)
+
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        dp = [0 for _ in range(2)]
+
+        for day in range(n - 1, -1, -1):
+            curr_day = [0 for _ in range(2)]
+            for holding in range(2):
+                if not holding:
+                    curr_day[holding] = max(dp[0], dp[1] - prices[day])
+                else:
+                    curr_day[holding] = max(dp[1], dp[0] + prices[day])
+            dp = curr_day
+
+        return dp[0]
 ```
 
 ---
