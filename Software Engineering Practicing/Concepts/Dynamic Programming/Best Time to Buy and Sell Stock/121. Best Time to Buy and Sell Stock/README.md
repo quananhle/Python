@@ -122,6 +122,27 @@ class Solution:
         return ans
 ```
 
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        n = len(prices)
+        dp = [[[0] * 2 for _ in range(2)] for _ in range(n + 1)]
+
+        for day in range(n - 1, -1, -1):
+            for remaining in range(1, 2):
+                for holding in range(2):
+                    do_nothing = dp[day + 1][remaining][holding]
+
+                    if not holding:
+                        do_something = dp[day + 1][remaining][1] - prices[day]
+                    else:
+                        do_something = dp[day + 1][remaining - 1][0] + prices[day]
+
+                    dp[day][remaining][holding] = max(do_nothing, do_something)
+
+        return dp[0][1][0]
+```
+
 #### Space Optimized Bottom-Up Dynamic Programming (1D Array)
 
 ```Python
