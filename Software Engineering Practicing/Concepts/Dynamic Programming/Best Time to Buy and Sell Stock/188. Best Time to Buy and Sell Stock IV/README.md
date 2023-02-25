@@ -1,6 +1,8 @@
-## 188. Best Time to Buy and Sell Stock IV
+## [188. Best Time to Buy and Sell Stock IV](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/)
 
 ```Tag```: ```Dynamic Programming```
+
+#### Difficulty: Hard
 
 You are given an integer array prices where ```prices[i]``` is the price of a given stock on the i<sup>th</sup> day, and an integer ```k```.
 
