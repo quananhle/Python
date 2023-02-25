@@ -58,7 +58,7 @@ class Solution:
         memo = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
         DIRECTIONS = [(1,0), (0,1)]
 
-        def dfs(row, col):
+        def dp(row, col):
             # Base cases
             if row == ROWS - 1 or col == COLS - 1:
                 return 1
@@ -68,13 +68,13 @@ class Solution:
             if (row, col) in memo:
                 return memo[row][col]
 
-            memo[row][col] = sum([dfs(row + x, col + y) for (x, y) in DIRECTIONS])
+            memo[row][col] = sum([dp(row + x, col + y) for (x, y) in DIRECTIONS])
             '''
-            memo[row][col] = dfs(row + 1, col) + dfs(row, col + 1)
+            memo[row][col] = dp(row + 1, col) + dp(row, col + 1)
             '''
             return memo[row][col]
 
-        return dfs(0, 0)
+        return dp(0, 0)
 ```
 
 ```Python
@@ -82,15 +82,15 @@ class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         # Depth-First Search
         @lru_cache(None)
-        def dfs(row, col):
+        def dp(row, col):
             # Base cases
             if row == 1 or col == 1:
                 return 1
 
-            ans = dfs(row - 1, col) + dfs(row, col - 1)
+            ans = dp(row - 1, col) + dp(row, col - 1)
             return ans
 
-        return dfs(m, n)
+        return dp(m, n)
 ```
 
 ```Python
@@ -98,17 +98,17 @@ class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         # Depth-First Search
         @lru_cache(None)
-        def dfs(row, col):
+        def dp(row, col):
             # Base cases
             if row == m - 1 or col == n - 1:
                 return 1
             if not (0 <= row < m or 0 <= col < n):
                 return
 
-            ans = dfs(row + 1, col) + dfs(row, col + 1)
+            ans = dp(row + 1, col) + dp(row, col + 1)
             return ans
 
-        return dfs(0, 0)
+        return dp(0, 0)
 ```
 
 ```Python
