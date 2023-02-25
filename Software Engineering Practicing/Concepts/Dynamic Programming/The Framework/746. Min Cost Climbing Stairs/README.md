@@ -71,6 +71,30 @@ class Solution:
         return dp(n)
 ```
 
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        n = len(cost)
+        if n < 2:
+            return min(cost)
+        memo = [0 for _ in range(n + 1)]
+
+        def dp(i):
+            # Base case
+            # The top can be reached from second to last step
+            if i >= len(cost) - 2:
+                return 0
+            
+            if memo[i]:
+                return memo[i]
+
+            # Recurrence relation
+            memo[i] = min(dp(i + 1) + cost[i + 1], dp(i + 2) + cost[i + 2])
+            return memo[i]
+        
+        return dp(-1)
+```
+
 #### Bottom-Up Tabulation
 
 __Time Complexity__: ```O(N)```, iterate through the entire input array
