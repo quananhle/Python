@@ -118,12 +118,14 @@ class Solution:
 
             key = (house, previous, neighborhood)
             if not key in memo:
+                # Check if the current house is not yet painted
                 if houses[house] == 0:
-                    optimal_cost = sys.maxsize
+                    best = sys.maxsize
                     for j in range(len(cost[house])):
                         current = j + 1
-                        optimal_cost = min(optimal_cost, cost[house][j] + dp(house + 1, current, neighborhood + int(current != previous)))
-                    memo[key] = optimal_cost
+                        best = min(best, cost[house][j] + dp(house + 1, current, neighborhood + int(current != previous)))
+                    memo[key] = best
+                # Otherwise, check the next house as the current house is already painted, update neighborhood
                 else:
                     memo[key] = dp(house + 1, houses[house], neighborhood + int(houses[house] != previous))
             return memo[key]
@@ -144,11 +146,15 @@ class Solution:
             if house == m:
                 return 0
             
+            # Check if the current house is already painted
             if houses[house] != 0:
                 return dp(house + 1, houses[house], neighborhood + int(previous != houses[house]))
+
+            # Otherwise, the current house is not yet painted
             best = float('inf')
-            for current_paint, current_cost in enumerate(cost[house], 1):
-                best = min(best, dp(house + 1, current_paint, neighborhood + int(previous != current_paint)) + current_cost)
+            # Check the cost to paint the current house with color j + 1
+            for j, current_cost in enumerate(cost[house], 1):
+                best = min(best, dp(house + 1, j, neighborhood + int(previous != j)) + current_cost)
             return best
         
         ans = dp(0, 0, 0)
