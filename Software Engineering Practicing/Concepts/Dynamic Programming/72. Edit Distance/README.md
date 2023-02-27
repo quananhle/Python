@@ -122,8 +122,11 @@ __The +1 in the end, is for the current operation.__
 
   **Recurrence Relation**: ```dp(word1, word2, i - 1, j) + 1```
 
+![image](https://user-images.githubusercontent.com/35042430/221479477-e7d25223-3be5-436b-a504-2bf9ecba1be9.png)
+
 3. Base cases, so that our recurrence relation doesn't go on infinitely.
 
+![image](https://user-images.githubusercontent.com/35042430/221479514-4d1e2544-d671-42c5-b2a6-443276743f2b.png)
 
 #### Top-Down Dynamic Programming (Recursion)
 
