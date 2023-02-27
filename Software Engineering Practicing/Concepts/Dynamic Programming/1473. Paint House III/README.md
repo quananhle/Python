@@ -60,6 +60,12 @@ __Constraints:__
 
 ### The Framework
 
+__1. A function or data structure that will compute/contain the answer to the problem for every given state.__
+
+__2. A recurrence relation to transition between states.__
+
+__3. Base cases, so that our recurrence relation doesn't go on infinitely.__
+
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
