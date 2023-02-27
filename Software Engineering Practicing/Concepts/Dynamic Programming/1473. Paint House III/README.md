@@ -160,3 +160,33 @@ class Solution:
         ans = dp(0, 0, 0)
         return ans if ans != math.inf else -1
 ```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+        dp = [[[float('inf') for _ in range(target + 1)] for _ in range(n + 1)] for _ in range(m + 1)]
+        
+        # Base case
+        for j in range(n + 1):
+            dp[0][j][0] = 0
+        
+        for house in range(1, m + 1):
+            for color in range(1, n + 1):
+                # Check if the current house is already painted
+                if houses[house - 1] and houses[house - 1] != color:
+                    continue
+                
+                # Otherwise, the current house has not yet been painted
+                for neighborhood in range(1, target + 1):
+                    current_cost = [dp[house - 1][color][neighborhood]]
+                    best = [dp[house - 1][j][neighborhood - 1] for j in range(1, n + 1) if color != j] + current_cost
+                    dp[house][color][neighborhood] = min(best)
+                    if houses[house - 1] == 0:
+                        dp[house][color][neighborhood] += cost[house - 1][color - 1]
+                        
+        ans = min([dp[m][j][target] for j in range(1, n + 1)])
+
+        return ans if ans != math.inf else -1
+```
