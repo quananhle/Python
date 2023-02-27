@@ -43,6 +43,21 @@ __Constraints:__
 
 ---
 
+__Edit distance__ is a term used in computer science. By definition, __Edit distance__ is a string metric, a way of quantifying how dissimilar two strings (e.g. words) are to one another, measured by counting the minimum number of operations required to transform one string into the other.
+
+![image](https://leetcode.com/problems/edit-distance/Figures/72/transform_example.png)
+
+1. "If the two strings are the same, the edit distance is zero".
+
+```word1 = "abcd"```, ```word2 = "abcd"```
+
+Edit Distance = 0
+word1 is equal to word2; no need to add, remove or replace any character.
+
+2. "The operations (add/delete/replace) are performed if and only if a character at a certain position in ```word1``` is not equal to the corresponding character in ```word2"```.
+
+```word1 = "abc"```, ```word2 = "abe"```
+
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
@@ -72,4 +87,31 @@ class Solution:
             return min(dp(i - 1, j), dp(i, j - 1), dp(i - 1, j - 1)) + 1
 
         return dp(n1, n2)
+```
+
+```Python
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        n1, n2 = len(word1), len(word2)
+        # Top-Down DP (Recursion)
+
+        @lru_cache(None)
+        def dp(i, j):
+            # Base cases
+            # Check if word1 is all checked up, can only insert characters of word2 in word1
+            if i == len(word1):
+                # Return the edit distance is the number of characters in word2
+                return len(word2) - j
+            # Check if word2 is all checked up, can only delete remaining characters of word1
+            if j == len(word2):
+                # Return the edit distance is the number of characters in word1
+                return len(word1) - i
+            # Characters in current positions match
+            if word1[i] == word2[j]:
+                return dp(i + 1, j + 1)
+
+            # Recurrence relation
+            return min(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1)) + 1
+
+        return dp(0, 0)
 ```
