@@ -183,3 +183,41 @@ class Solution:
 
         return dp(0, 0)
 ```
+
+![image](https://leetcode.com/problems/edit-distance/Figures/72/edit_distance_tree.png)
+
+```Python
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        n1, n2 = len(word1), len(word2)
+        memo = collections.defaultdict(int)
+        # Top-Down DP (Recursion)
+        def dp(i, j):
+            # Base cases
+            # Check if word1 is empty, can only insert characters of word2 in word1
+            if i == len(word1):
+                # Return the edit distance is the number of characters in word2
+                return len(word2) - j
+            # Check if word2 is empty, can only delete remaining characters of word1
+            if j == len(word2):
+                # Return the edit distance is the number of characters in word1
+                return len(word1) - i
+            # Characters in current positions match
+            if word1[i] == word2[j]:
+                memo[(i, j)] = dp(i + 1, j + 1)
+
+            if (i, j) in memo:
+                return memo[(i, j)]
+
+            # Recurrence relation
+            memo[(i, j)] = min(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1)) + 1
+            return memo[(i, j)]
+
+        return dp(0, 0)
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+
+```
