@@ -34,3 +34,42 @@ We can construct a __Quad-Tree__ from a two-dimensional area using the following
 Recurse for each of the children with the proper sub-grid.
 
 ![image](https://assets.leetcode.com/uploads/2020/02/11/new_top.png)
+
+![image](https://user-images.githubusercontent.com/35042430/221471894-b303aead-c366-4903-801b-43272bf07fc3.png)
+
+---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2020/02/11/grid1.png)
+```
+Input: grid = [[0,1],[1,0]]
+Output: [[0,1],[1,0],[1,1],[1,1],[1,0]]
+Explanation: The explanation of this example is shown below:
+Notice that 0 represnts False and 1 represents True in the photo representing the Quad-Tree.
+```
+
+![image](https://assets.leetcode.com/uploads/2020/02/12/e1tree.png)
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2020/02/12/e2mat.png)
+```
+Input: grid = [[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0]]
+Output: [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
+Explanation: All values in the grid are not the same. We divide the grid into four sub-grids.
+The topLeft, bottomLeft and bottomRight each has the same value.
+The topRight have different values so we divide it into 4 sub-grids where each has the same value.
+Explanation is shown in the photo below:
+```
+
+![image](https://assets.leetcode.com/uploads/2020/02/12/e2tree.png)
+
+__Constraints:__
+
+- ```n == grid.length == grid[i].length```
+- ```n == 2^x where 0 <= x <= 6```
+
+---
+
+
