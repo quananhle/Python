@@ -14,3 +14,23 @@ A __Quad-Tree__ is a tree data structure in which each internal node has exactly
 
 - ```val```: __True__ if the node represents a ```grid``` of ```1'```s or __False__ if the node represents a grid of ```0'```s.
 - ```isLeaf```: __True__ if the node is leaf node on the tree or __False__ if the node has the four children.
+
+```
+class Node {
+    public boolean val;
+    public boolean isLeaf;
+    public Node topLeft;
+    public Node topRight;
+    public Node bottomLeft;
+    public Node bottomRight;
+}
+```
+
+We can construct a __Quad-Tree__ from a two-dimensional area using the following steps:
+
+- If the current ```grid``` has the same value (i.e all ```1's``` or all ```0's```) set ```isLeaf``` True and set ```val``` to the value of the grid and set the four children to Null and stop.
+- If the current ```grid``` has different values, set ```isLeaf``` to False and set ```val``` to any value and divide the current grid into four sub-grids as shown in the photo.
+
+Recurse for each of the children with the proper sub-grid.
+
+![image](https://assets.leetcode.com/uploads/2020/02/11/new_top.png)
