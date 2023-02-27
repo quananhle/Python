@@ -58,6 +58,28 @@ word1 is equal to word2; no need to add, remove or replace any character.
 
 ```word1 = "abc"```, ```word2 = "abe"```
 
+In this case, we have to perform some operation in ```word1``` to transform it into ```word2```. There are 3 options,
+
+- Option 1 - Delete ```c``` from ```word1```.
+
+- Option 2 - Insert ```e``` into ```word1```.
+
+- Option 3 - Replace ```c``` with ```e``` in word1.
+
+![image](https://leetcode.com/problems/edit-distance/Figures/72/all_illustrations.png)
+
+From the above illustrations, it is clear that Option 1 and Option 2 transform ```word1``` to ```word2``` in 2 operations. Thus, the edit distance is 2. And, Option 3 transforms ```word1``` to ```word2``` in just 1 operation, thus edit distance is 1.
+
+Thus, in this case, we will choose Option 3 and the edit distance would be 1.
+
+From this, we can conclude that,
+
+```
+Edit distance to transform "word1" to "word2" = 1 + Minimum (Number of operations after deleting e from "word1", 
+                                                             Number of operations after inserting c in "word1",
+                                                             Number operations after replacing e with c in "word1")
+```
+
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
