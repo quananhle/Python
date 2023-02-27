@@ -80,7 +80,27 @@ Edit distance to transform "word1" to "word2" = 1 + Minimum (Number of operation
                                                              Number operations after replacing e with c in "word1")
 ```
 
+__The +1 in the end, is for the current operation.__
+
 ### The Framework
+
+1. A function or data structure that will compute/contain the answer to the problem for every given state.
+
+There are two input strings, ```word1``` and ```word2```. Start by comparing every character in ```word1``` and ```word2```. Let's track the current character index as ```i``` and ```j```. Here, we are comparing the last index of both strings.
+
+2. A recurrence relation to transition between states.
+
+For every comparison, there are two possibilities,
+
+1. The characters in the current position match
+
+    `word1[i] = word2[j]`
+   
+Move to the next index. No operation is performed.
+
+3. Base cases, so that our recurrence relation doesn't go on infinitely.
+
+
 
 #### Top-Down Dynamic Programming (Recursion)
 
