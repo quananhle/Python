@@ -123,17 +123,31 @@ Since the i<sup>th</sup> element in each array only depends on the (i - 1)<sup>t
 ```Python
 class Solution:
     def countVowelPermutation(self, n: int) -> int:
-        a_count = e_count = i_count = o_count = u_count = 1
+        a = e = i = o = u = 1
         MOD = 10**9 + 7
 
-        for i in range(1, n):
-            a_count_new = (e_count + i_count + u_count) % MOD
-            e_count_new = (a_count + i_count) % MOD
-            i_count_new = (e_count + o_count) % MOD
-            o_count_new = (i_count) % MOD
-            u_count_new = (i_count + o_count) % MOD
-            a_count, e_count, i_count, o_count, u_count = \
-                a_count_new, e_count_new, i_count_new, o_count_new, u_count_new
+        for _ in range(1, n):
+            a_count = (e + i + u) % MOD
+            e_count = (a + i) % MOD
+            i_count = (e + o) % MOD
+            o_count = (i) % MOD
+            u_count = (i + o) % MOD
+
+            a, e, i, o, u = a_count, e_count, i_count, o_count, u_count
             
-        return (a_count + e_count + i_count + o_count + u_count) % MOD
+        return (a + e + i + o + u) % MOD
+```
+
+```Python
+class Solution:
+    def countVowelPermutation(self, n: int) -> int:
+        a = e = i = o = u = 1
+        
+        MOD = 10**9 + 7
+
+        for _ in range(1, n):
+        
+            a, e, i, o, u = (e + u + i) % MOD, (a + i) % MOD, (e + o) % MOD, i % MOD, (o + i) % MOD
+            
+        return (a + e + i + o + u) % MOD
 ```
