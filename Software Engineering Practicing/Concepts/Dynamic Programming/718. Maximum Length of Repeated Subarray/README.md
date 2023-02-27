@@ -105,3 +105,74 @@ class Solution:
 
         return dp(0, 0, 0)
 ```
+
+```Python
+class Solution:
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        n, m = len(nums1), len(nums2)
+
+        @lru_cache(None)
+        def dp(i, j):
+            # Base case
+            if not (0 <= i < len(nums1) and 0 <= j < len(nums2) and nums1[i] == nums2[j]):
+                return 0
+            
+            return dp(i + 1, j + 1) + 1
+
+        res = 0
+        for i in range(n):
+            for j in range(m):
+                if nums1[i] == nums2[j] and res < min(n - i, m - j):
+                    res = max(res, dp(i, j))
+
+        return res
+```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+class Solution:
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        n, m = len(nums1), len(nums2)
+        dp = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+
+        for i, p1 in enumerate(nums1, start=1):
+            for j, p2 in enumerate(nums2, start=1):
+                if p1 == p2:
+                    dp[i][j] = dp[i - 1][j - 1] + 1
+        '''
+        ans = 0
+        for i in range(len(dp)):
+            ans = max(ans, max(dp[i]))
+        return ans
+        '''
+        return max(map(max, dp))
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        n = max(len(nums1), len(nums2))
+        prev = [0 for _ in range(n + 1)] 
+        curr = [0 for _ in range(n + 1)]
+
+        ans = 0
+
+        for i, p1 in enumerate(nums1, start=1):
+            for j, p2 in enumerate(nums2, start=1):
+                if p1 == p2:
+                    curr[j] = prev[j - 1] + 1
+                    ans = max(ans, curr[j])
+                else:
+                    curr[j] = 0
+            prev, curr = curr, prev
+        return ans
+```
+
+---
+
+```Python
+
+```
