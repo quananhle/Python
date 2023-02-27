@@ -91,18 +91,16 @@ __3. Base cases, so that our recurrence relation doesn't go on infinitely.__
 - ```neighborhood_condition```: If the previous paint ```previous``` is not the same as the current paint ```current``` then it would increase the neighborhood by 1.
 - If the paint of current house is 0 (i.e, already previously painted) then simply move to next house by updating the neighborhood if required:
 
-    - ```dp(house, previous, neighborhood)``` = dp(house + 1, houses[house], neighborhood + neighborhood_condition)
+    - ```dp(house, previous, neighborhood) = dp(house + 1, houses[house], neighborhood + neighborhood_condition)```
 
-- Else paint the current house with the paint which will yield the minimum cost:
+- Else paint the current house with the cheapest paint:
 
-    - ```dp(house, previous, neighborhood)``` = min(cost[current] + dp(house + 1, current, neighborhood + neighborhood_condition)) for all number of paints(i.e, n)
+    - ```dp(house, previous, neighborhood) = min(cost[current] + dp(house + 1, current, neighborhood + neighborhood_condition))``` for all number of paints(i.e, n)
 
-3. Base case: 
+3. Base case: If all the houses have been painted(i.e, ```house == len(houses)```) then return,
 
-If all the houses have been painted(i.e, ```house == len(houses)```) then return,
-
-    - Return ```0``` if ```neighborhood == target```
-    - Else return ```sys.maxsize```
+- Return ```0``` if ```neighborhood == target```
+- Else return ```sys.maxsize```
 
 ```Python
 class Solution:
