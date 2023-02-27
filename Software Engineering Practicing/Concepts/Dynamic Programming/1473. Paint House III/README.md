@@ -108,7 +108,6 @@ class Solution:
         # Top-Down DP (Recursion)
         memo = collections.defaultdict(int)
         
-        @lru_cache(None)
         def dp(house, previous, neighborhood):
             # Base case: check if all houses have been painted
             if house == len(houses):
@@ -131,4 +130,27 @@ class Solution:
 
         ans = dp(0, 0, 0)
         return ans if ans != sys.maxsize else -1 
+```
+
+```Python
+class Solution:
+    def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+        # Top-Down DP (Recursion)
+        @lru_cache(None)
+        def dp(house, previous, neighborhood):
+            # Base case: check if all houses have been painted
+            if neighborhood > target or house == m and neighborhood != target:
+                return float('inf')
+            if house == m:
+                return 0
+            
+            if houses[house] != 0:
+                return dp(house + 1, houses[house], neighborhood + int(previous != houses[house]))
+            best = float('inf')
+            for current_paint, current_cost in enumerate(cost[house], 1):
+                best = min(best, dp(house + 1, current_paint, neighborhood + int(previous != current_paint)) + current_cost)
+            return best
+        
+        ans = dp(0, 0, 0)
+        return ans if ans != math.inf else -1
 ```
