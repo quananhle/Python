@@ -181,7 +181,7 @@ class Solution:
                 return dp(i + 1, j + 1)
 
             # Recurrence relation
-            return min(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1)) + 1
+            return min(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1)) + 1        # Delete, Insert, Replace
 
         return dp(0, 0)
 ```
@@ -210,7 +210,7 @@ class Solution:
                 return memo[(i, j)]
 
             # Recurrence relation
-            memo[(i, j)] = min(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1)) + 1
+            memo[(i, j)] = min(dp(i + 1, j), dp(i, j + 1), dp(i + 1, j + 1)) + 1      # Delete, Insert, Replace
             return memo[(i, j)]
 
         return dp(0, 0)
@@ -241,7 +241,7 @@ class Solution:
                 if word1[i - 1] == word2[j - 1]:
                     dp[i][j] = dp[i - 1][j - 1]
                 else:
-                    dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1
+                    dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1      # Delete, Insert, Replace
                     
         return dp[n][m]
 ```
@@ -261,7 +261,7 @@ class Solution:
                 elif word1[i - 1] == word2[j - 1]:
                     dp[i][j] = dp[i - 1][j - 1]
                 else:
-                    dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1
+                    dp[i][j] = min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1      # Delete, Insert, Replace
                     
         return dp[n][m]
 ```
