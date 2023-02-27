@@ -80,6 +80,30 @@ __3. Base cases, so that our recurrence relation doesn't go on infinitely.__
 
 #### Top-Down Dynamic Programming (Recursion)
 
+1. DP state variables:
+
+- ```house```: current house index
+- ```previous```: paint of previous house
+- ```neighborhood```: total neighbourhood formed till current house.
+
+2. Recurrence relation:
+
+- ```neighborhood_condition```: If the previous paint ```previous``` is not the same as the current paint ```current``` then it would increase the neighborhood by 1.
+- If the paint of current house is 0 (i.e, already previously painted) then simply move to next house by updating the neighborhood if required:
+
+    - ```dp(house, previous, neighborhood)``` = dp(house + 1, houses[house], neighborhood + neighborhood_condition)
+
+- Else paint the current house with the paint which will yield the minimum cost:
+
+    - ```dp(house, previous, neighborhood)``` = min(cost[current] + dp(house + 1, current, neighborhood + neighborhood_condition)) for all number of paints(i.e, n)
+
+3. Base case: 
+
+If all the houses have been painted(i.e, ```house == len(houses)```) then return,
+
+    - Return ```0``` if ```neighborhood == target```
+    - Else return ```sys.maxsize```
+
 ```Python
 class Solution:
     def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
@@ -87,24 +111,24 @@ class Solution:
         memo = collections.defaultdict(int)
         
         @lru_cache(None)
-        def dp(house, previous, remaining):
+        def dp(house, previous, neighborhood):
             # Base case: check if all houses have been painted
             if house == len(houses):
-                if remaining == target:
+                if neighborhood == target:
                     return 0
                 else:
                     return sys.maxsize
 
-            key = (house, previous, remaining)
+            key = (house, previous, neighborhood)
             if not key in memo:
                 if houses[house] == 0:
                     optimal_cost = sys.maxsize
                     for j in range(len(cost[house])):
                         current = j + 1
-                        optimal_cost = min(optimal_cost, cost[house][j] + dp(house + 1, current, remaining + int(current != previous)))
+                        optimal_cost = min(optimal_cost, cost[house][j] + dp(house + 1, current, neighborhood + int(current != previous)))
                     memo[key] = optimal_cost
                 else:
-                    memo[key] = dp(house + 1, houses[house], remaining + int(houses[house] != previous))
+                    memo[key] = dp(house + 1, houses[house], neighborhood + int(houses[house] != previous))
             return memo[key]
 
         ans = dp(0, 0, 0)
