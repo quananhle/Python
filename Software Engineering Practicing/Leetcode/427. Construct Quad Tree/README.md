@@ -110,4 +110,40 @@ class Solution:
         return build(0, 0, len(grid))
 ```
 
+```Python
+"""
+# Definition for a QuadTree node.
+class Node:
+    def __init__(self, val, isLeaf, topLeft, topRight, bottomLeft, bottomRight):
+        self.val = val
+        self.isLeaf = isLeaf
+        self.topLeft = topLeft
+        self.topRight = topRight
+        self.bottomLeft = bottomLeft
+        self.bottomRight = bottomRight
+"""
 
+class Solution:
+    def construct(self, grid: List[List[int]]) -> 'Node':
+        def build(row, col, l):
+            """
+            Construct a node representing the subgrid with
+            top left corner at (top, left) and side length l
+            """
+            if l == 1:
+                return Node(grid[row][col], True)
+
+            topLeft = build(row, col, l // 2)
+            topRight = build(row, col + l // 2, l // 2)
+            botLeft = build(row + l // 2, col, l // 2)
+            botRight = build(row + l // 2, col + l // 2, l // 2)
+
+            children = [topLeft, topRight, botLeft, botRight]
+            # Check if all subgrids have the same value
+            if all(child.isLeaf and child.val == topLeft.val for child in children):
+                return Node(topLeft.val, True)
+            
+            return Node(0, False, topLeft, topRight, botLeft, botRight)
+        
+        return build(0, 0, len(grid))
+```
