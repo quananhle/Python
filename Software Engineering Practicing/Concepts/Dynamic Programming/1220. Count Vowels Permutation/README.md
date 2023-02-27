@@ -44,3 +44,25 @@ __Constraints:__
 - ```1 <= n <= 2 * 10^4```
 
 ---
+
+![image](https://leetcode.com/problems/count-vowels-permutation/Figures/1220/1220-Page-1.png)
+_Figure 1. Visualization of the rules._
+
+![image](https://leetcode.com/problems/count-vowels-permutation/Figures/1220/1220-Page-2.png)
+_Figure 2. Putting the rules together._
+
+```
+aCountNew = eCount + iCount + uCount
+eCountNew = aCount + iCount
+iCountNew = eCount + oCount
+oCountNew = iCount
+uCountNew = iCount + oCount
+```
+
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+
+```
