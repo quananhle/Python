@@ -62,9 +62,21 @@ __Constraints:__
 
 __1. A function or data structure that will compute/contain the answer to the problem for every given state.__
 
+Need to keep track of three things:
+
+- The index of the house that we are currently considering.
+- The color of the previous house.
+- The current number of neighborhoods.
+
 __2. A recurrence relation to transition between states.__
 
+![image](https://leetcode.com/problems/paint-house-iii/Figures/1473/1473A.png)
+
 __3. Base cases, so that our recurrence relation doesn't go on infinitely.__
+
+- If we have traversed over all the houses i.e., ```house == m```, we will return the cost 0 if the ```remaining``` is equal to ```target```, otherwise we return the value ```MAX_COST``` which is the maximum possible cost plus 1.
+
+- If the number of neighborhoods ```remaining``` is more than the ```target``` neighborhoods ```remaining > target```, then the answer is not possible. Hence we return ```MAX_COST```.
 
 #### Top-Down Dynamic Programming (Recursion)
 
