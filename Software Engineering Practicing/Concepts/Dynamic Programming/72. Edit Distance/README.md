@@ -86,20 +86,43 @@ __The +1 in the end, is for the current operation.__
 
 1. A function or data structure that will compute/contain the answer to the problem for every given state.
 
-There are two input strings, ```word1``` and ```word2```. Start by comparing every character in ```word1``` and ```word2```. Let's track the current character index as ```i``` and ```j```. Here, we are comparing the last index of both strings.
+    There are two input strings, ```word1``` and ```word2```. Start by comparing every character in ```word1``` and ```word2```. Let's track the current character index as ```i``` and ```j```. Here, we are comparing the last index of both strings.
 
 2. A recurrence relation to transition between states.
 
-For every comparison, there are two possibilities,
+    For every comparison, there are two possibilities,
 
-1. The characters in the current position match
+    - The characters in the current position match
 
-    `word1[i] = word2[j]`
-   
-Move to the next index. No operation is performed.
+        `word1[i] = word2[j]`
+
+    Move to the next index. No operation is performed.
+    
+    - The characters in their current position do not match
+
+        `word1[word1Index] != word2[word2Index]`
+        
+    In this case, we must delete, insert or replace a character in ```word1```. From intuition, we have deduced that we must try all three operations and find the minimum. One of the intuitive ways to implement such problems is by using recursion.
+    
+        - Replace the character at i in word1 with the character at j in word2.
+
+![image](https://leetcode.com/problems/edit-distance/Figures/72/replace_illustration.png)
+
+  **Recurrence Relation**: ```dp(word1, word2, i - 1, j - 1) + 1```
+  
+        - Inserting the character at word2Index in word2 in word1.
+
+![image](https://leetcode.com/problems/edit-distance/Figures/72/insert_illustration.png)
+
+  **Recurrence Relation**: ```dp(word1, word2, i, j - 1) + 1```
+  
+        - Deleting the character at word1Index in word1.
+        
+![image](https://leetcode.com/problems/edit-distance/Figures/72/delete_illustration.png)
+
+  **Recurrence Relation**: ```dp(word1, word2, i - 1, j) + 1```
 
 3. Base cases, so that our recurrence relation doesn't go on infinitely.
-
 
 
 #### Top-Down Dynamic Programming (Recursion)
