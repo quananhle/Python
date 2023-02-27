@@ -81,5 +81,32 @@ __3. Base cases, so that our recurrence relation doesn't go on infinitely.__
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
+class Solution:
+    def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
+        # Top-Down DP (Recursion)
+        memo = collections.defaultdict(int)
+        
+        @lru_cache(None)
+        def dp(house, previous, remaining):
+            # Base case: check if all houses have been painted
+            if house == len(houses):
+                if remaining == target:
+                    return 0
+                else:
+                    return sys.maxsize
 
+            key = (house, previous, remaining)
+            if not key in memo:
+                if houses[house] == 0:
+                    optimal_cost = sys.maxsize
+                    for j in range(len(cost[house])):
+                        current = j + 1
+                        optimal_cost = min(optimal_cost, cost[house][j] + dp(house + 1, current, remaining + int(current != previous)))
+                    memo[key] = optimal_cost
+                else:
+                    memo[key] = dp(house + 1, houses[house], remaining + int(houses[house] != previous))
+            return memo[key]
+
+        ans = dp(0, 0, 0)
+        return ans if ans != sys.maxsize else -1 
 ```
