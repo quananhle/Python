@@ -72,4 +72,42 @@ __Constraints:__
 
 ---
 
+```Python
+"""
+# Definition for a QuadTree node.
+class Node:
+    def __init__(self, val, isLeaf, topLeft, topRight, bottomLeft, bottomRight):
+        self.val = val
+        self.isLeaf = isLeaf
+        self.topLeft = topLeft
+        self.topRight = topRight
+        self.bottomLeft = bottomLeft
+        self.bottomRight = bottomRight
+"""
+
+class Solution:
+    def construct(self, grid: List[List[int]]) -> 'Node':
+        def compare_value(row, col, side_size):
+            value = grid[row][col]
+            for r in range(row, row + side_size):
+                for c in range(col, col + side_size):
+                    if grid[r][c] != value:
+                        return False
+            return True
+        
+        def build(row, col, side_size):
+            if compare_value(row, col, side_size):
+                return Node(grid[row][col], True)
+
+            root = Node(0, False)
+            side_size = side_size // 2
+            root.topLeft = build(row, col, side_size)
+            root.topRight = build(row, col + side_size, side_size)
+            root.bottomLeft = build(row + side_size, col, side_size)
+            root.bottomRight = build(row + side_size, col + side_size, side_size)
+            return root
+        
+        return build(0, 0, len(grid))
+```
+
 
