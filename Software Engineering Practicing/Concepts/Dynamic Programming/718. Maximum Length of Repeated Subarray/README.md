@@ -173,6 +173,38 @@ class Solution:
 
 ---
 
-```Python
+### Chr()
 
+```Python
+class Solution:
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        strnum2 = ''.join([chr(x) for x in nums2])
+        strmax = ''
+        ans = 0
+        for num in nums1:
+            strmax += chr(num)
+            if strmax in strnum2:
+                ans = max(ans,len(strmax))
+            else:
+                strmax = strmax[1:]
+        return ans
+```
+
+### Binary Search
+
+```Python
+class Solution:
+    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
+        def check(length):
+            seen = set(tuple(nums1[i : i+length]) for i in range(len(nums1) - length + 1))
+            return any(tuple(nums2[j : j+length]) in seen for j in range(len(nums2) - length + 1))
+
+        lo, hi = 0, min(len(nums1), len(nums2)) + 1
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            if check(mi):
+                lo = mi + 1
+            else:
+                hi = mi
+        return lo - 1
 ```
