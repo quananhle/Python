@@ -130,6 +130,8 @@ __The +1 in the end, is for the current operation.__
 
 #### Top-Down Dynamic Programming (Recursion)
 
+![image](https://leetcode.com/problems/edit-distance/Figures/72/edit_distance_tree.png)
+
 ```Python
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
@@ -184,8 +186,6 @@ class Solution:
         return dp(0, 0)
 ```
 
-![image](https://leetcode.com/problems/edit-distance/Figures/72/edit_distance_tree.png)
-
 ```Python
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
@@ -217,6 +217,12 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming (Tabulation)
+
+![image](https://leetcode.com/problems/edit-distance/Figures/72/dp_base_case.png)
+
+![image](https://leetcode.com/problems/edit-distance/Figures/72/dp_equal_characters.png)
+
+![image](https://leetcode.com/problems/edit-distance/Figures/72/dp_all_operations.png)
 
 ```Python
 
