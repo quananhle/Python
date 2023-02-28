@@ -92,6 +92,7 @@ class Solution:
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
         day_set = set(days)
         day_pass = [1, 7, 30]
+        
         memo = collections.defaultdict(int)
 
         def dp(day):
@@ -103,7 +104,7 @@ class Solution:
                 return memo[day]
 
             if day in day_set:
-                memo[day] = min(dp(day + duration) + cost for duration, cost in zip(day_pass, costs))
+                memo[day] = min(dp(day + 1) + costs[0], dp(day + 7) + costs[1], dp(day + 30) + costs[2])
             else:
                 memo[day] = dp(day + 1)
 
@@ -134,11 +135,52 @@ class Solution:
         return dp(1)
 ```
 
+#### Optimized Time Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        n = len(days)
+        passes = [1, 7, 30]
+
+        @lru_cache
+        def dp(day):
+            if day >= len(days):
+                return 0
+            
+            ans = float('inf')
+            i = day
+
+            # Recurrence relation: for today, which pass 1-day, 7-day, 30-day is the most optimal for minimum expense?
+
+            for j in range(len(passes)):
+                while i < len(days) and days[i] < days[day] + passes[j]:
+                    i += 1
+                ans = min(ans, dp(i) + costs[j])
+            
+            return ans
+
+        return dp(0)
+```
+
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        n = len(days)
+        day_set = set(days)
+        passes = [1, 7, 30]
+        last_day = days[-1]
+        dp = [0 for _ in range(max(days) + 1)]
 
+        for i in range(1, len(dp)):        
+            if i in day_set:
+                dp[i] = min(dp[max(i - 1, 0)] + costs[0], dp[max(i - 7, 0)] + costs[1], dp[max(i - 30, 0)] + costs[2])
+            else:
+                dp[i] = dp[i - 1]
 
+        return dp[last_day]
 ```
 
 
