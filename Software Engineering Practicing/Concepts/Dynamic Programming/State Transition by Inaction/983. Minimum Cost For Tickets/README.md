@@ -174,13 +174,18 @@ class Solution:
         last_day = days[-1]
         dp = [0 for _ in range(max(days) + 1)]
 
-        for i in range(1, len(dp)):        
-            if i in day_set:
-                dp[i] = min(dp[max(i - 1, 0)] + costs[0], dp[max(i - 7, 0)] + costs[1], dp[max(i - 30, 0)] + costs[2])
+        for day in range(1, len(dp)):        
+            if day in day_set:
+                dp[day] = min(dp[max(day - 1, 0)] + costs[0], dp[max(day - 7, 0)] + costs[1], dp[max(day - 30, 0)] + costs[2])
             else:
-                dp[i] = dp[i - 1]
+                dp[day] = dp[day - 1]
 
         return dp[last_day]
+```
+
+```Python
+
+
 ```
 
 
