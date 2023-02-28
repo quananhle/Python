@@ -55,14 +55,68 @@ __Constraints:__
 
 ### The Framework
 
-#### Top-Down Dynamic Programming
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        # Top-Down DP (Recursion)
+        ### Time Limit Exceeded
+        
+        day_set = set(days)
+        day_pass = [1, 7, 30]
+        
+        memo = [float('inf') for _ in range(366)]       # Iterate through the entire 365 days
+
+        def dp(day):
+            # Base case
+            if not (0 < day <= 365):
+                return 0
+            
+            if day in memo:
+                return memo[day]
+
+            if day in day_set:
+                for duration, cost in zip(day_pass, costs):
+                    memo[day] = min(memo[day], dp(day + duration) + cost)
+            else:
+                memo[day] = dp(day + 1)
+
+            return memo[day]
+
+        return dp(1)
+```
 
 ```Python
 class Solution:
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
         day_set = set(days)
         day_pass = [1, 7, 30]
-        # Top-Down DP (Recursion)
+        memo = collections.defaultdict(int)
+
+        def dp(day):
+            # Base case
+            if not (0 < day <= 365):
+                return 0
+            
+            if day in memo:
+                return memo[day]
+
+            if day in day_set:
+                memo[day] = min(dp(day + duration) + cost for duration, cost in zip(day_pass, costs))
+            else:
+                memo[day] = dp(day + 1)
+
+            return memo[day]
+
+        return dp(1)
+```
+
+```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        day_set = set(days)
+        day_pass = [1, 7, 30]
 
         @lru_cache(None)
         def dp(day):
@@ -70,12 +124,21 @@ class Solution:
             if not (0 < day <= 365):
                 return 0
             
-            # Recurrence relation: which pass 1-day, 7-day, 30-day is the most optimal?
+            # Recurrence relation: which pass 1-day, 7-day, 30-day is the most optimal for minimum expense?
             if day in day_set:
                 return min(dp(day + duration) + cost for cost, duration in zip(costs, day_pass))
         
-            # If day already covered by the current pass, move on to the next day
+            # If day is not in travel plan, move on to the next day
             return dp(day + 1)
 
         return dp(1)
 ```
+
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+
+
+```
+
+
