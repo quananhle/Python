@@ -38,3 +38,34 @@ __Constraints:__
 
 ---
 
+Why Dynamic Programming?
+
+When a question asks us to minimize, maximize, or find the number of ways to do something, it doesn't always mean that dynamic programming is the best approach, but it is usually a good indicator that we should at least consider using a dynamic programming approach.
+
+The number of ways to reach the current state depends on the number of ways to reach the previous state. This can be seen in the functions ```f(k)``` and ```p(k)``` which depend on previous fully and partially filled boards. When using dynamic programming, these functions are called transition functions.
+
+![image](https://user-images.githubusercontent.com/35042430/221780869-587ad2ef-8c31-42e5-b88e-7508141e3448.png)
+
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def numTilings(self, n: int) -> int:
+        MOD = 10**9 + 7
+        # # Top-Down DP (Recursion)
+        @lru_cache(None)
+        def p(i):
+            if i == 2:
+                return 1
+            return (p(i - 1) + f(i - 2)) % MOD
+        
+        @lru_cache(None)
+        def f(i):
+            if i <= 2:
+                return i
+            return (f(i - 1) + f(i - 2) + 2 * p(i - 1)) % MOD
+
+        return f(n)
+```
