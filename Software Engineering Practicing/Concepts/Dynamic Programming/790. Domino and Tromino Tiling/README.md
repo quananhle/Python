@@ -18,6 +18,8 @@ In a tiling, every square must be covered by a tile. Two tilings are different i
 
 __Example 1__:
 
+
+![image](https://assets.leetcode.com/uploads/2021/07/15/lc-domino1.jpg)
 ```
 Input: n = 3
 Output: 5
