@@ -188,17 +188,6 @@ We use the counting sorting, a special bucket sorting with bucket size as 1, to
 ```Python
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        """
-        counter = collections.Counter(words)
-        words = sorted(list(counter.keys()), key=lambda x: (-counter[x], x))
-        return words[:k]
-        """
-        """
-        counter = collections.Counter(words)
-        h = [(-freq, word) for word, freq in counter.items()]
-        heapq.heapify(h)
-        return [heapq.heappop(h)[1] for _ in range(k)]
-        """
         n = len(words)
         counter = collections.Counter(words)
         bucket = [{} for _ in range(n + 1)]
@@ -211,7 +200,10 @@ class Solution:
                     root[c] = {}
                 root = root[c]
             root['#'] = {}
-        
+
+        for word, freq in counter.items():
+            add_word(bucket[freq], word)
+
         def get_word(trie: Mapping, prefix: str) -> List[str]:
             if self.k == 0:
                 return []
@@ -224,10 +216,7 @@ class Solution:
                 if c in trie:
                     res += get_word(trie[c], prefix + c)
             return res
-        
-        for word, freq in counter.items():
-            add_word(bucket[freq], word)
-        
+
         res = list()
         for i in range(n, 0, -1):
             if self.k == 0:
