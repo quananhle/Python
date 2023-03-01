@@ -110,6 +110,36 @@ class Solution:
         return dfs(0, 0)
 ```
 
+```Python
+class Solution:
+    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
+        n, m = len(s1), len(s2)
+
+        if n + m != len(s3):
+            return False
+
+        memo = collections.defaultdict(int)
+
+        def dp(i, j):
+            # Base case
+            if i == len(s1) and j == len(s2):
+                return True
+            
+            if (i, j) in memo:
+                return memo[(i, j)]
+
+            path1, path2 = False, False
+            if i < len(s1) and s1[i] == s3[i + j]:
+                path1 = dp(i + 1, j)
+            if j < len(s2) and s2[j] == s3[i + j]:
+                path2 = dp(i, j + 1)
+
+            memo[(i, j)] = path1 or path2
+            return path1 or path2
+        
+        return dp(0, 0
+```
+
 #### Bottom-Up Dynamic Programming
 
 ```Python
