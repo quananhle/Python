@@ -59,3 +59,27 @@ __Constraints:__
 
 ---
 
+```Python
+class Solution:
+    def validWordSquare(self, words: List[str]) -> bool:
+        rows = len(words)
+        for row in range(rows):
+            cols = len(words[row])
+            for col in range(cols):
+                if col >= rows or row >= len(words[col]) or words[row][col] != words[col][row]:
+                    return False
+        return True
+```
+
+```Python
+class Solution:
+    def validWordSquare(self, words: List[str]) -> bool:
+        try:
+            for i in range(len(words)):
+                for j in range(len(words[i])):
+                    if words[i][j] != words[j][i]:
+                        return False
+            return True
+        except IndexError:
+            return False
+```
