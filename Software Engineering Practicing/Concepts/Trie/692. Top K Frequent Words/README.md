@@ -164,7 +164,77 @@ class Element:
 ### Trie & Bucket Sort
 
 ```Python
+words = ["ab", "ed", "ed", "ed", "ac"]
+```
 
+```"ab"``` and ```"ac"``` only occur once, but ```"ed"``` occurs three times. We build the following bucket and tries:
+
+![image](https://leetcode.com/problems/top-k-frequent-words/Documents/692/692_bucket_trie.drawio.svg)
+
+```#``` marks the node in a trie as a leaf in the graph above. We build a trie in bucket 1 to store the word ```"ab"``` and ```"ac"```, and another trie in bucket 3 to store the word ```"ed"```. Then we start from ```n = 5``` to ```1```, enumerate every bucket: if there is a non-empty trie in this bucket, we read words in the trie by traversing every path lexicographically. For example, when we traverse the trie in bucket 1, we first go to ```a``` and then go to ```b```, as ```b``` is a leaf node, we now get a complete word along this path as ```"ab"```. Similarly, we will traverse all tries and get the result ```["ed", "ab", "ac"]```.
+
+__Algorithm__
+
+We use the counting sorting, a special bucket sorting with bucket size as 1, to
+
+1. Count the frequency of each word as what we did in all previous approaches, and get a counter ```counter```.
+2. Initialize ```bucket``` of length ```N + 1``` (```N``` is the length of ```words```) with an empty trie in each bucket, that is, the trie in ```bucket[i]``` stores all words with frequency ```i```.
+3. Enumerate words in ```counter```, and add each word to the trie mapping to its frequency.
+4. Enumerate all frequencies ```i``` in from ```N``` to ```1```, traverse every ```bucket[i]``` to get all words within it from lexicographically smaller ones to the larger ones, and add the obtained words to the result until ```k``` words are obtained in the result. Then, this is our final result.
+
+- Time Complexity: ```O(N)```
+- Space Complexity: ```O(N)```
+
+```Python
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        """
+        counter = collections.Counter(words)
+        words = sorted(list(counter.keys()), key=lambda x: (-counter[x], x))
+        return words[:k]
+        """
+        """
+        counter = collections.Counter(words)
+        h = [(-freq, word) for word, freq in counter.items()]
+        heapq.heapify(h)
+        return [heapq.heappop(h)[1] for _ in range(k)]
+        """
+        n = len(words)
+        counter = collections.Counter(words)
+        bucket = [{} for _ in range(n + 1)]
+        self.k = k
+
+        def add_word(trie: Mapping, word: str) -> None:
+            root = trie
+            for c in word:
+                if not c in root:
+                    root[c] = {}
+                root = root[c]
+            root['#'] = {}
+        
+        def get_word(trie: Mapping, prefix: str) -> List[str]:
+            if self.k == 0:
+                return []
+            res = list()
+            if '#' in trie:
+                self.k -= 1
+                res.append(prefix)
+            for i in range(26):
+                c = chr(ord('a') + i)
+                if c in trie:
+                    res += get_word(trie[c], prefix + c)
+            return res
+        
+        for word, freq in counter.items():
+            add_word(bucket[freq], word)
+        
+        res = list()
+        for i in range(n, 0, -1):
+            if self.k == 0:
+                return res
+            if bucket[i]:
+                res += get_word(bucket[i], '')
+        return res
 ```
 
 
