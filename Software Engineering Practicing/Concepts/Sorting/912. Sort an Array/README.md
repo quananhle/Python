@@ -32,3 +32,30 @@ __Constraints:__
 - -5 * 10<sup>4</sup> <= ```nums[i]``` <= 5 * 10<sup>4</sup>
 
 ---
+
+There are a variety of sorting algorithms such as __Bubble Sort, Insertion Sort, Selection Sort, Merge Sort, Heap Sort, Quick Sort, Counting Sort, Radix Sort__, and others.
+
+### Merge Sort
+
+```Python
+
+```
+
+### Heap Sort
+
+```Python
+
+```
+
+### Counting Sort
+
+```Python
+
+```
+
+### Radix Sort
+
+```Python
+
+```
+
