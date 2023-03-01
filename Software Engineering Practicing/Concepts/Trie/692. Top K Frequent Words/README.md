@@ -73,8 +73,15 @@ class Solution:
 ### Max Heap
 
 ```Python
-
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        counter = collections.Counter(words)
+        h = [(-freq, word) for word, freq in counter.items()]
+        heapq.heapify(h)
+        return [heapq.heappop(h)[1] for _ in range(k)]
 ```
+
+---
 
 ### Follow-up: Could you solve it in ```O(n log(k))``` time and ```O(n)``` extra space?
 
@@ -150,6 +157,14 @@ class Element:
     
     def __eq__(self, other):
         return self.count == other.count and self.word == other.word
+```
+
+---
+
+### Trie & Bucket Sort
+
+```Python
+
 ```
 
 
