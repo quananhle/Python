@@ -124,8 +124,31 @@ class Solution:
 
 #### Math Optimization (Fibonacci sequence like)
 
-```Python
+![image](https://leetcode.com/problems/domino-and-tromino-tiling/Documents/790/fibonacci-like-derive.svg)
 
+![image](https://user-images.githubusercontent.com/35042430/222278385-c6224f0e-2a54-4d0d-8574-8a92d43e9eee.png)
+
+```Python
+class Solution:
+    def numTilings(self, n: int) -> int:
+        MOD = 10**9 + 7
+        if n <= 2:
+            return n
+
+        f_curr = 5
+        f_one_prev = 2
+        f_two_prev = 1
+
+        for k in range(4, n + 1):
+            '''
+            tmp = f_one_prev 
+            f_one_prev = f_curr
+            f_curr = (2 * f_curr + f_two_prev) % MOD
+            f_two_prev = tmp
+            '''
+            f_two_prev, f_one_prev, f_curr = f_one_prev, f_curr, (2 * f_curr + f_two_prev) % MOD
+
+        return f_curr
 ```
 
 ---
@@ -157,7 +180,7 @@ This process can be repeated until the base case is reached:
 ```Python
 class Solution:
     def numTilings(self, n: int) -> int:
-        MOD = 1_000_000_007
+        MOD = 10**9 + 7
         SQ_MATRIX = [[1, 1, 2], [1, 0, 0], [0, 1, 1]] # Initialize square matrix
         SIZE = 3 # Width/Length of square matrix
 
@@ -196,7 +219,7 @@ class Solution:
 ```Python
 class Solution:
     def numTilings(self, n: int) -> int:
-        MOD = 1_000_000_007
+        MOD = 10**9 + 7
         SQ_MATRIX = [[1, 1, 2], [1, 0, 0], [0, 1, 1]]  # Initialize square matrix
         SIZE = 3  # Width/Length of square matrix
 
