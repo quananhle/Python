@@ -62,6 +62,20 @@ class Solution(object):
         return sorted(list(counter.keys()), key=lambda x: (-counter[x], x))[:k]
 ```
 
+```Python
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        counter = collections.Counter(words)
+        words = sorted(list(counter.keys()), key=lambda x: (-counter[x], x))
+        return words[:k]
+```
+
+### Max Heap
+
+```Python
+
+```
+
 ### Follow-up: Could you solve it in ```O(n log(k))``` time and ```O(n)``` extra space?
 
 ### Min Heap
