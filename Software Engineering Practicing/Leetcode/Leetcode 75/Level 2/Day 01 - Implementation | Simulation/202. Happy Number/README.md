@@ -1,6 +1,6 @@
 ## [202. Happy Number](https://leetcode.com/problems/happy-number/)
 
-```Tag```:
+```Tag```: ```Hash Set``` ```Floyd's Cycle-Finding Algorithm```
 
 #### Difficulty: Medium
 
@@ -41,3 +41,98 @@ __Constraints:__
 
 ---
 
+### Hash Set
+
+![image](https://leetcode.com/problems/happy-number/Figures/202/image2.png)
+
+#### List Comprehension
+
+```Python
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+        happy_number = 0
+        
+        while True:
+            if n in seen:
+                return False
+            seen.add(n)
+            
+            digits = list(str(n))
+            happy_number = sum([int(digit)**2 for digit in digits])
+            if happy_number == 1:
+                break
+            n = happy_number
+            
+        return True
+```
+
+#### Math
+
+```Python
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+        while n != 1:
+            if n in seen:
+                return False
+            seen.add(n)
+
+            happy_number = 0
+            while n > 0:
+                n, digit = divmod(n, 10)
+                happy_number += digit ** 2
+            
+            n = happy_number
+
+        return True
+```
+
+```Python
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        if n == 1:
+            return True
+
+        seen = set()
+
+        while n != 1 and not n in seen:
+            seen.add(n)
+
+            happy_number = 0
+            while n > 0:
+                digit = n % 10
+                n //= 10
+                happy_number += digit ** 2
+
+            if happy_number == 1:
+                return True
+
+            n = happy_number
+
+        return False
+```
+
+### Turtle and Hare
+
+![image](https://user-images.githubusercontent.com/35042430/222345801-80f9bbd5-8fbc-421d-8d4b-4fc720c3eec2.png)
+
+```Python
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        def get_next(num):
+            happy_number = 0
+            while num > 0:
+                happy_number += (num % 10)**2
+                num //= 10
+            return happy_number
+
+        turtle = n
+        hare = get_next(n)
+
+        while turtle != hare and hare != 1:
+            turtle = get_next(turtle)
+            hare = get_next(get_next(hare))
+        
+        return hare == 1
+```
