@@ -1,6 +1,6 @@
 ## [1706. Where Will the Ball Fall](https://leetcode.com/problems/where-will-the-ball-fall/)
 
-```Tag```:
+```Tag```: ```Matrix``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -55,3 +55,32 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
+
+![image](https://leetcode.com/problems/where-will-the-ball-fall/Figures/1706/6_example_scenarios.png)
+
+![image](https://leetcode.com/problems/where-will-the-ball-fall/Figures/1706/ball_movement_2_scenarios.png)
+
+![image](https://leetcode.com/problems/where-will-the-ball-fall/Figures/1706/adjacent_cells_example.png)
+
+```Python
+class Solution:
+    def findBall(self, grid: List[List[int]]) -> List[int]:
+        n, m = len(grid), len(grid[0])
+        res = list()
+
+        def dfs(row, col):
+            # Base case
+            if row == n:
+                return col
+
+            next_col = col + grid[row][col]
+            if not (0 <= next_col < m) or grid[row][col] != grid[row][next_col]:
+                return -1
+
+            return dfs(row + 1, next_col)
+
+        for col in range(m):
+            res.append(dfs(0, col))
+        return res
+```
