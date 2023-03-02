@@ -40,10 +40,9 @@ numTrees(2) numTrees(0)    numTrees(1) numTrees(1)   numTrees(0) numTrees(2)
          i = 3                      i = 2                     i = 1           
 		 
                       i
-	=>              /   \          
+	=>          /   \          
         numTrees(i-1)	numTrees(n-i)    
 ```
-
 ### Brute Force
 
 ```Python
