@@ -1,6 +1,6 @@
 ## [54. Spiral Matrix](https://leetcode.com/problems/spiral-matrix/)
 
-```Tag```: ```Matrix```
+```Tag```: ```Matrix``` ```Depth-First Search``` ```Breadth-First Search``` ```Recursion``` ```Stack & Queue```
 
 #### Difficulty: Medium
 
@@ -28,10 +28,45 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 
 __Constraints:__
 
-- m == matrix.length
-- n == matrix[i].length
-- 1 <= m, n <= 10
-- -100 <= matrix[i][j] <= 100
+- ```m == matrix.length```
+- ```n == matrix[i].length```
+- ```1 <= m, n <= 10```
+- ```-100 <= matrix[i][j] <= 100```
 
 ---
 
+### Recursive Depth-First Search
+
+```Python
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        # Depth-First Search
+        ROWS, COLS = len(matrix), len(matrix[0])
+        visited = set()
+        res = list()
+
+        left, right, up, down = False, False, False, False
+
+        def dfs(row, col, dir):
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in visited):
+                return
+            visited.add((row, col))
+            res.append(matrix[row][col])
+
+            # Make sure to go all the way up until visited row reached
+            if dir:
+                up = True
+                dfs(row - 1, col, up)
+
+            # Traverse rightward
+            dfs(row, col + 1, right)
+            # Traverse downward
+            dfs(row + 1, col, down)
+            # Traverse leftward
+            dfs(row, col - 1, left)
+            # Traverse upward
+            dfs(row - 1, col, not down)
+        
+        dfs(0, 0, False)
+        return res
+```
