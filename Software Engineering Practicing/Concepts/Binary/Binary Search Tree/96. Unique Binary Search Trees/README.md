@@ -30,6 +30,20 @@ __Constraints:__
 
 ---
 
+The final answer will be summation of answers considering all 1...n as root nodes.
+
+```
+
+           3                          2                         1               
+          / \                        / \                      /   \      
+numTrees(2) numTrees(0)    numTrees(1) numTrees(1)   numTrees(0) numTrees(2)              
+         i = 3                      i = 2                     i = 1           
+		 
+                      i
+	=>              /   \          
+        numTrees(i-1)	numTrees(n-i)    
+```
+
 ### Brute Force
 
 ```Python
@@ -112,6 +126,23 @@ class Solution:
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
+class Solution:
+    def numTrees(self, n: int) -> int:
+        # Bottom-Up dp
+        if n == 1:
+            return 1
+        elif n == 2:
+            return 2
+        elif n == 3:
+            return 5
+        else:
+            dp = [0 for _ in range(n + 1)]
+            dp[0], dp[1], dp[2], dp[3] = 1, 1, 2, 5
 
+            for i in range(4, n + 1):
+                for j in range(1, i + 1):
+                    dp[i] += dp[j - 1] * dp[i - j]
+
+            return dp[n]
 ```
 
