@@ -17,6 +17,8 @@ After you are done __modifying the input array__, return _the new length of the 
 
 You must write an algorithm that uses only constant extra space.
 
+![image](https://user-images.githubusercontent.com/35042430/222332810-b9733c13-063a-4c16-a441-7afaa25b444d.png)
+
 ---
 
 __Example 1:__
