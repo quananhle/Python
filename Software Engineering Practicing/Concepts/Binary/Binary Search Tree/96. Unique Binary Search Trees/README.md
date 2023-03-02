@@ -30,6 +30,23 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    @lru_cache(None)
+    def numTrees(self, n: int) -> int:
+        # Brute Foce
+        if n <= 1:
+            return 1
+        elif n == 2:
+            return 2
+        else:
+            return sum(self.numTrees(i - 1) * self.numTrees(n - i) for i in range(1, n + 1))
+```
+
+---
+
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
@@ -72,6 +89,24 @@ class Solution:
             return memo[(low, high)]
 
         return dp(1, n)
+```
+
+```Python
+class Solution:
+    def numTrees(self, n: int) -> int:
+        @lru_cache(None)
+        def dp(high):
+            # Base case
+            if high == 0:
+                return 1
+            
+            res = 0
+            # Recurrece relation
+            for mid in range(1, high + 1):
+                res += dp(mid - 1) * dp(high - mid)
+            return res
+
+        return dp(n)
 ```
 
 #### Bottom-Up Dynamic Programming (Tabulation)
