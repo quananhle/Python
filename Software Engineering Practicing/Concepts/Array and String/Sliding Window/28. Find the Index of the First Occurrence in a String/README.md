@@ -1,6 +1,6 @@
 ## [28. Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/)
 
-```Tag```: [```Sliding Window```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String) ```Hash Map``` [```Rabin-Karp Algorithm```](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Algorithms/String%20Matching/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String/README.md) [```Knuth–Morris–Pratt Algorithm```](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Algorithms/String%20Matching/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String/README.md)
+```Tag```: [```Sliding Window```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String) ```Hash Map``` ```Math``` [```Rabin-Karp Algorithm```](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Algorithms/String%20Matching/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String/README.md) [```Knuth–Morris–Pratt Algorithm```](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Algorithms/String%20Matching/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String/README.md)
 
 #### Difficulty: Medium
 
@@ -203,6 +203,20 @@ Since ```MAX_WEIGHT``` is MOD 26<sup>m</sup>, therefore, we have calculated it i
 
 The major drawback of previous approach was that even in case of a match, we had to iterate character by character in each window. We can't return true immediately, because of the CHANCE of spurious hits.
 
+What if we can minimize the CHANCE of spurious hits? Before proceeding, let's analyze some spurious hits using the previous approach.
+
+A. Let MOD be 2<sup>31</sup>, and the approach used for mapping is ```a``` to ```1```, ```b``` to ```2```, ```c``` to ```3```, etc.
+Then, both ```gytisyz``` and ```aaaaaab``` will have a hash value of ```321272408```. If we avoid comparing character-by-character, and return ```start``` immediately on matching hash value, then we will have a wrong answer.
+
+B. Let MOD be 10<sup>9</sup> +33, and the approach used for mapping is ```a``` to ```0```, ```b``` to ```1```, ```c``` to ```2```, etc.
+Then, both ```cadbbca``` and ```fghivbt``` will have the hash value of ```1619220817```. If we avoid comparing character-by-character, and return ```start``` immediately on matching hash value, then we will have a wrong answer.
+
+But if we use case A. for ```cadbbca``` and ```fghivbt```, then ```cadbbca``` will map to ```1940493224``` while ```fghivbt``` will map to ```940493191```. And no spurious hits will be there.
+
+Similarly, if we use case B. for ```gytisyz``` and ```aaaaaab```, then ```gytisyz``` will map to ```147483583``` while ```aaaaaab``` will map to ```1```. And no spurious hits will be there.
+
+It turns out that instead of a single hash value, if we compute two (or more) hash values, we can significantly reduce the CHANCE of spurious hits. We need to compare these _hash value pair of ```needle``` with hash value pair of windows of ```haystack```_. Mathematically, we can prove that by using different ```MOD``` and ```RADIX```, we can reduce the CHANCE (i. e. probability) of spurious hits to 10<sup>−10</sup>
+
 - __Time complexity__: ```O(n)```
 - __Space complexity__: ```O(1)```
 
@@ -236,6 +250,8 @@ __Algorithm__
 7. If we reach the end of the ```haystack``` and didn't find the ```needle```, return ```-1```.
 
 ```Python
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
         n = len(haystack)
         m = len(needle)
 
