@@ -80,48 +80,41 @@ __Compute Hash Value__
 ![image](https://user-images.githubusercontent.com/35042430/222805990-6bdbbd8a-524d-40e5-a7fb-047fac8bc4bb.png)
 
 __Algorithm__
-Store the length of needle in m and the length of haystack in n.
 
-If n is less than m, it means that needle cannot be there in haystack. Return -1.
+1. Store the length of ```needle``` in ```m``` and the length of ```haystack``` in ```n```.
 
-Define constants as follows:
+2. If ```n``` is less than ```m```, it means that ```needle``` cannot be there in ```haystack```. Return ```-1```.
 
-RADIX is the base of the number system. In our case, it is 262626.
-MOD is a large prime number to prevent overflow.
-MAX_WEIGHT is the largest value of the weight of any character. In our case, it is 26m26^m26 
-m
- . This value is used in the O(1)O(1)O(1) formula. Hence, it's better to store it.
-Define the hash_value() function which takes a string as input and returns the hash value of the string. The hash value is calculated by
+3. Define constants as follows:
 
-Iterating string from right to left.
-Multiplying the mapping value of each character with its weight factor and adding it to hash value ans.
-The factor gets multiplied by RADIX in each iteration.
-The ans and factor are moduloed by MOD at each iteration.
-Using the hash_value() function, compute the hash value of needle.
+- ```RADIX``` is the base of the number system. In our case, it is 26.
+- ```MOD``` is a large prime number to prevent overflow.
+- ```MAX_WEIGHT``` is the largest value of the weight of any character. In our case, it is 26<sup>m</sup>. This value is used in the O(1) formula. Hence, it's better to store it.
 
-Iterate over haystack from index 0 to n - m using window_start.
+4. Define the ```compute_hash_value()``` function which takes a string as input and returns the hash value of the string. The hash value is calculated by
 
-Compute the hash value of the current window, if it's the first window, then compute using the hash_value() function, otherwise use the O(1)O(1)O(1) formula. Make sure to use the property of modular arithmetic to prevent overflow.
-If the hash value of the current window matches with the hash value of needle, then compare characters in the current window with needle.
-If any character doesn't match, then it's a spurious hit. Move on to the next window.
-If all characters match, then return the index of the current window_start.
-If we reach the end of the haystack and didn't find the needle, return -1.
+- Iterating string from right to left.
+- Multiplying the mapping value of each character with its weight ```factor``` and adding it to hash value ```ans```.
+- The factor gets multiplied by ```RADIX``` in each iteration.
+- The ans and factor are moduloed by ```MOD``` at each iteration.
 
-Example: Let haystack be "ccaccaacdba" and needle be "dba". Let m be the length of needle and n be the length of haystack. Thus, m = 3 and n = 11. Let RADIX be 262626 and MOD be 109+710^9 + 710 
-9
- +7. Therefore, MAX_WEIGHT will be 263=1757626^3 = 1757626 
-3
- =17576.
+5. Using the hash_value() function, compute the hash value of ```needle```.
 
-Let's compute the hash value of needle "dba". Please note that 'a' is mapped to 000, 'b' to 111 and 'c' to 222, and so on. dba=262⋅3+261⋅1+260⋅0=2054\text{dba} = 26^2 \cdot 3 + 26^1 \cdot 1 + 26^0 \cdot 0 = 2054dba=26 
-2
- ⋅3+26 
-1
- ⋅1+26 
-0
- ⋅0=2054. We are interested in finding a substring in haystack which has the same hash value as needle, i.e. 205420542054.
+6. Iterate over ```haystack``` from index ```0``` to ```n - m``` using ```start```.
 
-The slides illustrate the process of computing the hash value of every m-substring of haystack and comparing it with the hash value of needle.
+- Compute the hash value of the current window, if it's the first window, then compute using the ```compute_hash_value()``` function, otherwise use the O(1) formula. Make sure to use the property of modular arithmetic to prevent overflow.
+- If the hash value of the current window matches with the hash value of ```needle```, then compare characters in the current window with ```needle```.
+- If any character doesn't match, then it's a spurious hit. Move on to the next window.
+- If all characters match, then return the index of the current ```start```.
+
+7. If we reach the end of the ```haystack``` and didn't find the ```needle```, return ```-1```.
+
+__Example__: Let ```haystack``` be ```"ccaccaacdba"``` and needle be ```"dba"```. Let ```m``` be the length of ```needle``` and ```n``` be the length of ```haystack```. Thus, ```m = 3``` and ```n = 11```. Let ```RADIX``` be 26 and MOD be 10<sup>9</sup>+7. Therefore, ```MAX_WEIGHT``` will be ```26**3 = 17576```.
+
+Let's compute the hash value of ```needle``` ```"dba"```. Please note that ```'a'``` is mapped to ```0```, ```'b'``` to ```1``` and ```'c'``` to ```2```, and so on. 
+![image](https://user-images.githubusercontent.com/35042430/222812367-47c999af-d517-4d9f-aea5-b244fc326c02.png) We are interested in finding a substring in ```haystack``` which has the same hash value as ```needle```, i.e. 2054.
+
+The slides illustrate the process of computing the hash value of every m-substring of ```haystack``` and comparing it with the hash value of ```needle```.
 
 ![image](https://user-images.githubusercontent.com/35042430/222807120-6f752120-92b4-48ae-9cd5-abbb1f242040.png)
 
