@@ -302,3 +302,142 @@ class Solution:
 
         return -1
 ```
+
+### Knuth–Morris–Pratt Algorithm
+
+The drawback of Brute Force is that after mismatch, we need to set ```start``` to ```start + 1```, and thus, there are a lot of repeated comparisons.
+
+Note: A common pitfall is when we think of setting ```start``` to one step ahead of the index where mismatching occurs. It works fine here.
+
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(m)```
+
+```
+sad#sadbutsad
+[0, 0]
+[0, 0, 0]
+[0, 0, 0, 0]
+[0, 0, 0, 0, 1]
+[0, 0, 0, 0, 1, 2]
+[0, 0, 0, 0, 1, 2, 3]
+[0, 0, 0, 0, 1, 2, 3, 0]
+[0, 0, 0, 0, 1, 2, 3, 0, 0]
+[0, 0, 0, 0, 1, 2, 3, 0, 0, 0]
+[0, 0, 0, 0, 1, 2, 3, 0, 0, 0, 1]
+[0, 0, 0, 0, 1, 2, 3, 0, 0, 0, 1, 2]
+[0, 0, 0, 0, 1, 2, 3, 0, 0, 0, 1, 2, 3]
+
+aaaa#aaa
+[0, 1]
+[0, 1, 2]
+[0, 1, 2, 3]
+[0, 1, 2, 3, 0]
+[0, 1, 2, 3, 0, 1]
+[0, 1, 2, 3, 0, 1, 2]
+[0, 1, 2, 3, 0, 1, 2, 3]
+
+ll#hello
+[0, 1]
+[0, 1, 0]
+[0, 1, 0, 0]
+[0, 1, 0, 0, 0]
+[0, 1, 0, 0, 0, 1]
+[0, 1, 0, 0, 0, 1, 2]
+[0, 1, 0, 0, 0, 1, 2, 0]
+```
+
+```Python
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        def kmp(pattern, text):
+            n = len(text)
+            m = len(pattern)
+            string = needle + '#' + haystack
+
+            longest_prefix_suffix = [0]
+            j = 0
+
+            for i in range(1, len(string)):
+                while j > 0 and string[i] != string[j]:
+                    j = longest_prefix_suffix[j - 1]
+                if string[j] == string[i]:
+                    j += 1
+                else:
+                    j = 0
+                longest_prefix_suffix.append(j)
+            return longest_prefix_suffix
+
+        string = kmp(needle, haystack)
+        for i in range(len(needle) + 1, len(string)):
+            if string[i] == len(needle):
+                return i - 2 * len(needle)
+        
+        return -1
+```
+
+Example: Let ```haystack``` be ```"onionionskys"``` and ```needle``` be ```"onions"```. The length of ```haystack``` is ```n = 12``` and length of the ```needle``` is ```m = 6```.
+
+![image](https://user-images.githubusercontent.com/35042430/222821570-dff9b61c-cfc8-4c92-aeb0-57212f227d10.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222821646-10a26214-18f4-4d91-9601-a19c8f31db4d.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222821724-dc6d4cc8-7efc-47cc-bb83-88742eeecd34.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222823146-808add3c-0945-45d1-b0d9-54d8bc019308.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222823210-64263dde-3c53-489f-94bf-0d9a7775b18e.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222823272-985d406c-81b1-4948-9478-8c133972376c.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222823352-838ca063-d0cd-4fc1-8306-930f5a548d8b.png)
+
+```Python
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        if needle == "":
+            return 0
+            
+        lps = [0] * len(needle)
+        # Initialize 2 pointers: prev_lps to point at the beginning of the prefix, and i to increment to find the longest prefix suffix
+        prev_lps, i = 0, 1
+
+        # Set up longest prefix suffix
+        while i < len(needle):
+            if needle[i] == needle[prev_lps]:
+                lps[i] = prev_lps + 1
+                prev_lps += 1
+                i += 1
+            elif prev_lps == 0:
+                    lps[i] = 0
+                    i += 1
+            else:
+                prev_lps = lps[prev_lps - 1]
+
+        # i pointer for the haystack, j pointer for the needle
+        i, j = 0, 0
+        # Compare the needle and the haystack
+        while i < len(haystack):
+            # If found the matching characterin haystack and needle
+            if haystack[i] == needle[j]:
+                # Increment the pointers
+                i += 1
+                j += 1
+            # Otherwise, if no matching character found
+            else:
+                # Check if pointing at the first character of the needle
+                if j == 0:
+                    # Increment the haystack pointer
+                    i += 1
+                # If not pointing at the first character of the needle
+                else:
+                    # Get the longest prefix suffix count
+                    j = lps[j - 1]
+            if j == len(needle):
+                return i - len(needle)
+        return -1
+```
+
+    Note: Although KMP is fast, still built-in functions of many programming languages use Brute Force. KMP is based on assumption that 
+    there would be many duplicate similar substrings. In real-world strings, this is not the case. So, KMP is not used in real-world applications. 
+    Moreover, it requires linear space. However, it has its application in DNA sequencing. DNA is a long string of characters (A, C, G, T). 
+    There are many similar substrings in DNA. So, KMP is used in DNA sequencing.
