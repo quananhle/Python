@@ -391,6 +391,31 @@ Example: Let ```haystack``` be ```"onionionskys"``` and ```needle``` be ```"onio
 
 ![image](https://user-images.githubusercontent.com/35042430/222823352-838ca063-d0cd-4fc1-8306-930f5a548d8b.png)
 
+__Algorithm__
+
+1. Let ```n``` be the length of ```haystack``` and ```m``` be the length of ```needle```. If ```n < m```, return ```-1```, as ```needle``` cannot be found in ```haystack```.
+
+2. PREPROCESS ```needle``` to generate the ```longest_border``` array.
+
+- Let ```prev``` be ```0``` and ```longest_border``` be an array of size ```m```.
+- Set ```longest_border[0] = 0```.
+- Iterate ```i``` from ```1 to m - 1```.
+    - If ```needle[prev] == needle[i]```, increment ```prev``` and set ```longest_border[i] = prev```. Increment ```i```.
+    - Else if ```needle[prev] != needle[i]```
+        - If ```prev == 0```, set ```longest_border[i] = 0```. Increment ```i```
+        - Else if ```prev != 0```, set ```prev = longest_border[prev - 1]```.
+
+3. SEARCH in ```haystack``` for ```needle```.
+
+Let haystack_pointer be 0.
+Let needle_pointer be 0. It also represents the number of matches in the current window.
+Do this until haystack_pointer < n
+If characters at haystack[haystack_pointer] matches with character at needle[needle_pointer], increment needle_pointer and haystack_pointer, and check for next characters. If needle_pointer == m, return haystack_pointer-m (as needle is found in haystack starting at index haystack_pointer-m).
+If characters don't match,
+If needle_pointer == 0, it means zero matching. In this case, increment haystack_pointer and check for the next m-substring.
+Else if needle_pointer != 0, it means Partial Matching. Set needle_pointer = longest_border[needle_pointer-1]. Don't increment haystack_pointer. We want to examine the mismatched character of haystack with the first character after matched characters of needle.
+If we have reached here, return -1, as needle is not found in haystack.
+
 ```Python
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
@@ -437,7 +462,7 @@ class Solution:
         return -1
 ```
 
-    Note: Although KMP is fast, still built-in functions of many programming languages use Brute Force. KMP is based on assumption that 
-    there would be many duplicate similar substrings. In real-world strings, this is not the case. So, KMP is not used in real-world applications. 
-    Moreover, it requires linear space. However, it has its application in DNA sequencing. DNA is a long string of characters (A, C, G, T). 
-    There are many similar substrings in DNA. So, KMP is used in DNA sequencing.
+    Note: Although KMP is fast, still built-in functions of many programming languages use Brute Force. KMP is based on assumption 
+    that there would be many duplicate similar substrings. In real-world strings, this is not the case. So, KMP is not used in 
+    real-world applications. Moreover, it requires linear space. However, it has its application in DNA sequencing. DNA is 
+    a long string of characters (A, C, G, T). There are many similar substrings in DNA. So, KMP is used in DNA sequencing.
