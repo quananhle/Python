@@ -1,6 +1,6 @@
 ## [14. Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)
 
-```Tag```: ```String & Array``` ```Binary Search``` ```Divide & Conquer``` ```Trie```
+```Tag```: [```String & Array```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2002%20-%20String/14.%20Longest%20Common%20Prefix#vertical-scanning) [```Binary Search```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2002%20-%20String/14.%20Longest%20Common%20Prefix#binary-search) [```Divide & Conquer```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2002%20-%20String/14.%20Longest%20Common%20Prefix#divide-and-conquer) [```Trie```](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Trie/14.%20Longest%20Common%20Prefix/README.md)
 
 #### Difficulty: Easy
 
