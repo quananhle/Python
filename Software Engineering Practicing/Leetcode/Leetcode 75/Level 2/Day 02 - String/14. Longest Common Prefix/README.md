@@ -60,7 +60,7 @@ class Solution:
 
 - __Time complexity__: O(S * log m), where S is the sum of all characters in all strings
 - __Space complexity__: O(1)
-- 
+
 ```Python
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
