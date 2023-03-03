@@ -1,6 +1,6 @@
 ## [14. Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)
 
-```Tag```:
+```Tag```: ```String & Array``` ```Binary Search``` ```Divide & Conquer``` ```Trie```
 
 #### Difficulty: Easy
 
@@ -35,6 +35,9 @@ __Constraints:__
 
 ### Vertical Scanning
 
+- __Time complexity__: O(S), where S is the sum of all characters in all strings
+- __Space complexity__: O(1)
+
 ```Python
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
@@ -49,4 +52,69 @@ class Solution:
             ans.append(string[i])
             i += 1
         return ''.join(ans)
+```
+
+### Binary Search
+
+![image](https://leetcode.com/media/original_images/14_lcp_binary_search.png)
+
+- __Time complexity__: O(S * log m), where S is the sum of all characters in all strings
+- __Space complexity__: O(1)
+- 
+```Python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        # Binary Search
+        def common_prefix(size):
+            string = strs[0][0:size]
+            for i in range(1, len(strs)):
+                if not strs[i].startswith(string):
+                    return False
+            return True
+
+        if len(strs) == 0:
+            return ""
+        
+        min_length = float('inf')
+        for string in strs:
+            min_length = min(min_length, len(string))
+        
+        lo, hi = 1, min_length
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            if common_prefix(mi):
+                lo = mi + 1
+            else:
+                hi = mi - 1
+        
+        return strs[0][0:(lo + (hi - lo) // 2)]
+```
+
+### Divide and Conquer
+
+![image](https://leetcode.com/media/original_images/14_lcp_diviso_et_lmpera.png)
+
+```Python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        # Divide & Conquer
+        if not strs or len(strs) == 0:
+            return ""
+
+        def conquer(left_string, right_string):
+            min_length = min(len(left_string), len(right_string))
+            for i in range(min_length):
+                if left_string[i] != right_string[i]:
+                    return left_string[:i]
+            return left_string[:min_length]
+
+        def divide(left, right):
+            if left == right:
+                return strs[left]
+            mid = left + (right - left) // 2
+            lcp_left = divide(left, mid)
+            lcp_right = divide(mid + 1, right)
+            return conquer(lcp_left, lcp_right)
+
+        return divide(0, len(strs) - 1)
 ```
