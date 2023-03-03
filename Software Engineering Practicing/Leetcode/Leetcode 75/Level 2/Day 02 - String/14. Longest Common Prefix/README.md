@@ -33,3 +33,20 @@ __Constraints:__
 
 ---
 
+### Vertical Scanning
+
+```Python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        # Vertical Scanning
+        ans = []
+        i = 0
+        prefix = strs[0]
+        while i in range(len(prefix)):
+            for string in strs:
+                if i == len(string) or string[i] != prefix[i]:
+                    return ''.join(ans)
+            ans.append(string[i])
+            i += 1
+        return ''.join(ans)
+```
