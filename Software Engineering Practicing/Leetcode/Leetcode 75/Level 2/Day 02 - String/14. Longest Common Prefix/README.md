@@ -94,6 +94,9 @@ class Solution:
 
 ![image](https://leetcode.com/media/original_images/14_lcp_diviso_et_lmpera.png)
 
+- __Time complexity__: ```O(S)```
+- __Space complexity__: ```O(m * log⁡n)```
+
 ```Python
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
