@@ -79,6 +79,11 @@ __Compute Hash Value__
 
 ![image](https://user-images.githubusercontent.com/35042430/222805990-6bdbbd8a-524d-40e5-a7fb-047fac8bc4bb.png)
 
+__Example__: Let ```haystack``` be ```"ccaccaacdba"``` and needle be ```"dba"```. Let ```m``` be the length of ```needle``` and ```n``` be the length of ```haystack```. Thus, ```m = 3``` and ```n = 11```. Let ```RADIX``` be 26 and MOD be 10<sup>9</sup>+7. Therefore, ```MAX_WEIGHT``` will be ```26**3 = 17576```.
+
+Let's compute the hash value of ```needle``` ```"dba"```. Please note that ```'a'``` is mapped to ```0```, ```'b'``` to ```1``` and ```'c'``` to ```2```, and so on. 
+![image](https://user-images.githubusercontent.com/35042430/222812367-47c999af-d517-4d9f-aea5-b244fc326c02.png) We are interested in finding a substring in ```haystack``` which has the same hash value as ```needle```, i.e. 2054.
+
 __Algorithm__
 
 1. Store the length of ```needle``` in ```m``` and the length of ```haystack``` in ```n```.
@@ -107,19 +112,6 @@ __Algorithm__
 - If any character doesn't match, then it's a spurious hit. Move on to the next window.
 - If all characters match, then return the index of the current ```start```.
 
-7. If we reach the end of the ```haystack``` and didn't find the ```needle```, return ```-1```.
-
-__Example__: Let ```haystack``` be ```"ccaccaacdba"``` and needle be ```"dba"```. Let ```m``` be the length of ```needle``` and ```n``` be the length of ```haystack```. Thus, ```m = 3``` and ```n = 11```. Let ```RADIX``` be 26 and MOD be 10<sup>9</sup>+7. Therefore, ```MAX_WEIGHT``` will be ```26**3 = 17576```.
-
-Let's compute the hash value of ```needle``` ```"dba"```. Please note that ```'a'``` is mapped to ```0```, ```'b'``` to ```1``` and ```'c'``` to ```2```, and so on. 
-![image](https://user-images.githubusercontent.com/35042430/222812367-47c999af-d517-4d9f-aea5-b244fc326c02.png) We are interested in finding a substring in ```haystack``` which has the same hash value as ```needle```, i.e. 2054.
-
-The slides illustrate the process of computing the hash value of every m-substring of ```haystack``` and comparing it with the hash value of ```needle```.
-
-![image](https://user-images.githubusercontent.com/35042430/222807120-6f752120-92b4-48ae-9cd5-abbb1f242040.png)
-
-__Check character by character if hash values matched__
-
 ![image](https://user-images.githubusercontent.com/35042430/222807675-93baafbc-2261-4ce2-8496-64214a810865.png)
 
 ![image](https://user-images.githubusercontent.com/35042430/222807778-bd925ebe-5628-4c27-a74c-e6e78f3b60b3.png)
@@ -133,6 +125,8 @@ __Check character by character if hash values matched__
 ![image](https://user-images.githubusercontent.com/35042430/222806737-8652573a-2166-4073-b3c9-db6940da57f2.png)
 
 ![image](https://user-images.githubusercontent.com/35042430/222806666-e4a87efe-ce3a-432c-a838-ced8a0621438.png)
+
+7. If we reach the end of the ```haystack``` and didn't find the ```needle```, return ```-1```.
 
 - __Time complexity__: ```O(n * m)```
 - __Space complexity__: ```O(1)```
@@ -375,6 +369,46 @@ class Solution:
         return -1
 ```
 
+__Algorithm__
+
+1. Let ```n``` be the length of ```haystack``` and ```m``` be the length of ```needle```. If ```n < m```, return ```-1```, as ```needle``` cannot be found in ```haystack```.
+
+2. PREPROCESS ```needle``` to generate the ```longest_border``` array.
+
+- Let ```prev``` be ```0``` and ```longest_border``` be an array of size ```m```.
+- Set ```longest_border[0] = 0```.
+- Iterate ```i``` from ```1 to m - 1```.
+    - If ```needle[prev] == needle[i]```, increment ```prev``` and set ```longest_border[i] = prev```. Increment ```i```.
+    - Else if ```needle[prev] != needle[i]```
+        - If ```prev == 0```, set ```longest_border[i] = 0```. Increment ```i```
+        - Else if ```prev != 0```, set ```prev = longest_border[prev - 1]```.
+
+![image](https://user-images.githubusercontent.com/35042430/222824759-b4c48892-ecd4-42fa-b67a-f7eb6de8a5c2.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222825199-e871b7e6-29f9-4998-932c-b620ce2a8ee9.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222825167-553ed6a7-946c-4bee-9bfc-c9283916c892.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222825255-38b88f67-c6ac-460e-85f6-7242a6cdc119.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222825415-9db8e4e7-616c-4618-a1d2-12771e0f3226.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222825499-9464b2b3-f06e-4987-bddc-3f349e52fe2f.png)
+
+![image](https://user-images.githubusercontent.com/35042430/222825577-d1f9817c-06cf-4572-a02e-1dcbe634a00b.png)
+
+3. SEARCH in ```haystack``` for ```needle```.
+
+- Let ```haystack_pointer``` be ```0```.
+- Let ```needle_pointer``` be ```0```. It also represents the number of matches in the current window.
+- Do this until ```haystack_pointer < n```
+    - If characters at ```haystack[haystack_pointer]``` matches with character at ```needle[needle_pointer]```, increment ```needle_pointer``` and ```haystack_pointer```, and check for next characters. If ```needle_pointer == m```, return ```haystack_pointer - m``` (as ```needle``` is found in ```haystack``` starting at index ```haystack_pointer - m```).
+    - If characters don't match,
+        - If ```needle_pointer == 0```, it means zero matching. In this case, increment ```haystack_pointer``` and check for the next m-substring.
+        - Else if ```needle_pointer != 0```, it means Partial Matching. Set ```needle_pointer = longest_border[needle_pointer - 1]```. Don't increment ```haystack_pointer```. We want to examine the mismatched character of ```haystack``` with the first character after matched characters of ```needle```.
+
+4. If we have reached here, return ```-1```, as ```needle``` is not found in ```haystack```.
+
 Example: Let ```haystack``` be ```"onionionskys"``` and ```needle``` be ```"onions"```. The length of ```haystack``` is ```n = 12``` and length of the ```needle``` is ```m = 6```.
 
 ![image](https://user-images.githubusercontent.com/35042430/222821570-dff9b61c-cfc8-4c92-aeb0-57212f227d10.png)
@@ -391,30 +425,7 @@ Example: Let ```haystack``` be ```"onionionskys"``` and ```needle``` be ```"onio
 
 ![image](https://user-images.githubusercontent.com/35042430/222823352-838ca063-d0cd-4fc1-8306-930f5a548d8b.png)
 
-__Algorithm__
-
-1. Let ```n``` be the length of ```haystack``` and ```m``` be the length of ```needle```. If ```n < m```, return ```-1```, as ```needle``` cannot be found in ```haystack```.
-
-2. PREPROCESS ```needle``` to generate the ```longest_border``` array.
-
-- Let ```prev``` be ```0``` and ```longest_border``` be an array of size ```m```.
-- Set ```longest_border[0] = 0```.
-- Iterate ```i``` from ```1 to m - 1```.
-    - If ```needle[prev] == needle[i]```, increment ```prev``` and set ```longest_border[i] = prev```. Increment ```i```.
-    - Else if ```needle[prev] != needle[i]```
-        - If ```prev == 0```, set ```longest_border[i] = 0```. Increment ```i```
-        - Else if ```prev != 0```, set ```prev = longest_border[prev - 1]```.
-
-3. SEARCH in ```haystack``` for ```needle```.
-
-Let haystack_pointer be 0.
-Let needle_pointer be 0. It also represents the number of matches in the current window.
-Do this until haystack_pointer < n
-If characters at haystack[haystack_pointer] matches with character at needle[needle_pointer], increment needle_pointer and haystack_pointer, and check for next characters. If needle_pointer == m, return haystack_pointer-m (as needle is found in haystack starting at index haystack_pointer-m).
-If characters don't match,
-If needle_pointer == 0, it means zero matching. In this case, increment haystack_pointer and check for the next m-substring.
-Else if needle_pointer != 0, it means Partial Matching. Set needle_pointer = longest_border[needle_pointer-1]. Don't increment haystack_pointer. We want to examine the mismatched character of haystack with the first character after matched characters of needle.
-If we have reached here, return -1, as needle is not found in haystack.
+It turns out that Linear Algorithm for PREPROCESSING is more or less the same as SEARCHING. In PREPROCESSING we compare ```needle``` with itself, trying to find the prefix in the latter part (often called "pre-searching" the ```needle```). In SEARCHING, we compare ```needle``` with ```haystack```, trying to find ```needle``` in ```haystack```.
 
 ```Python
 class Solution:
