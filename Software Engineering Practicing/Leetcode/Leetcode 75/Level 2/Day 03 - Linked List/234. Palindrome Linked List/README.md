@@ -74,6 +74,9 @@ Follow up: Could you do it in ```O(n)``` time and ```O(1)``` space?
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        if not head:
+            return True
+
         def get_middle_node(node):
             slow, fast = node, node
             while fast.next and fast.next.next:
@@ -91,17 +94,16 @@ class Solution:
             return prev
 
         # Find the end of the first half and then reverse the second half
-        sentinel = head
-        first_half_end = get_middle_node(sentinel)
+        first_half_start = head
+        first_half_end = get_middle_node(first_half_start)
         second_half_start = reverse_linked_list(first_half_end.next)
 
-        head = sentinel
+        head = first_half_start
         tail = second_half_start
         while tail:
             if head.val != tail.val:
                 return False
-            head = head.next
-            tail = tail.next
+            head, tail = head.next, tail.next
         
         return True
 ```
