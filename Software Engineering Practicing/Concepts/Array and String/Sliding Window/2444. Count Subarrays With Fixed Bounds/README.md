@@ -64,6 +64,26 @@ __Algorithm__
 - If ```nums[i]``` equals ```minK```, update ```minPosition = i```.
 - If ```nums[i]``` equals ```maxK```, update ```maxPosition = i```.
 
-The number of valid subarrays ending at index i equals min(minPosition, maxPosition) - leftBound. If the result is negative, it means there is no valid subarray ending at i. Increment answer by the number of valid subarrays.
+The number of valid subarrays ending at index ```i``` equals ```min(min_position, max_position) - left_bound```. If the result is negative, it means there is no valid subarray ending at ```i```. Increment ```ans``` by the number of valid subarrays.
 
-Return answer once the iteration stops.
+3. Return ```ans``` once the iteration stops.
+
+```Python
+class Solution:
+    def countSubarrays(self, nums: List[int], minK: int, maxK: int) -> int:
+        ans = 0
+        min_position = max_position = left_bound = -1
+
+        for idx, num in enumerate(nums):
+            if not (minK <= num <= maxK):
+                left_bound = idx
+            
+            if num == minK:
+                min_position = idx
+            if num == maxK:
+                max_position = idx
+            
+            ans += max(0, min(min_position, max_position) - left_bound)
+
+        return ans
+```
