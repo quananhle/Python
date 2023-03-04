@@ -66,3 +66,42 @@ class Solution:
 
 Follow up: Could you do it in ```O(n)``` time and ```O(1)``` space?
 
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        def get_middle_node(node):
+            slow, fast = node, node
+            while fast.next and fast.next.next:
+                slow = slow.next
+                fast = fast.next.next
+            return slow
+        
+        def reverse_linked_list(node):
+            prev, curr = None, node
+            while curr:
+                next_node = curr.next
+                curr.next = prev
+                prev = curr
+                curr = next_node
+            return prev
+
+        # Find the end of the first half and then reverse the second half
+        sentinel = head
+        first_half_end = get_middle_node(sentinel)
+        second_half_start = reverse_linked_list(first_half_end.next)
+
+        head = sentinel
+        tail = second_half_start
+        while tail:
+            if head.val != tail.val:
+                return False
+            head = head.next
+            tail = tail.next
+        
+        return True
+```
