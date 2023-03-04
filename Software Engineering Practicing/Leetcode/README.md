@@ -12,7 +12,7 @@
 
 ### String Calculations
 
-1. [43. Multiply Strings](https://leetcode.com/problems/multiply-strings/)
+:warning::warning: 1. [43. Multiply Strings](https://leetcode.com/problems/multiply-strings/)
 2. [66. Plus One]
 3. [67. Add Binary]
 4. [415. Add Strings]
@@ -23,7 +23,7 @@
 ## Binary Search
 
 [875. Koko eating bananas]()
-[1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
+:warning::warning:[1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
 Minimum number of days to make m bouquets
 Magnetic force between two balls
 Split array largest sum
@@ -53,7 +53,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Backtracking
 
-[37. Sudoku Solver]
+:no_entry::no_entry::no_entry:[37. Sudoku Solver]
 39. Combination Sum
 40. Combination Sum II
 46. Permutations
