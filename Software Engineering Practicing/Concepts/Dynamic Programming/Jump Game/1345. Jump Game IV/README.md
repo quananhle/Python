@@ -146,3 +146,57 @@ class Solution:
             ans += 1
         return -1
 ```
+
+### Bidirectional Breadth-First Search
+
+```Python
+class Solution:
+    def minJumps(self, arr: List[int]) -> int:
+        n = len(arr)
+        if n <= 1:
+            return 0
+
+        graph = collections.defaultdict(list)
+        for i in range(n):
+            graph[arr[i]].append(i)
+
+        curr = set([0])  # store layers from start
+        other = set([n-1]) # store layers from end
+
+        visited = {0, n-1}
+        ans = 0
+
+        while curr:
+            # Search from the side with fewer nodes
+            if len(curr) > len(other):
+                curr, other = other, curr
+            next = set()
+
+            # iterate the layer
+            for node in curr:
+
+                # check same value
+                for neighbor in graph[arr[node]]:
+                    if neighbor in other:
+                        return ans + 1
+                    if not neighbor in visited:
+                        visited.add(neighbor)
+                        next.add(neighbor)
+
+                # clear the list to prevent redundant search
+                graph[arr[node]].clear()
+
+                # check neighbors
+                for neighbor in [node-1, node+1]:
+                    if neighbor in other:
+                        return ans + 1
+                    if not (0 <= neighbor < len(arr) and not neighbor in visited):
+                        continue
+                    visited.add(neighbor)
+                    next.add(neighbor)
+
+            curr = next
+            ans += 1
+
+        return -1
+```
