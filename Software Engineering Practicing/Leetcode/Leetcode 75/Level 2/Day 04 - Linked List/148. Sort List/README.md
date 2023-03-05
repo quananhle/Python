@@ -1,6 +1,6 @@
 ## [148. Sort List](https://leetcode.com/problems/sort-list/)
 
-```Tag```: ```Two Pointers``` ```Stack``` ```Linked List```
+```Tag```: ```Linked List``` ```Divide & Conquer``` ```Merge Sort```
 
 #### Difficulty: Medium
 
