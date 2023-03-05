@@ -41,3 +41,48 @@ __Constraints:__
 
 
 __Follow up__: Can you sort the linked list in ```O(n logn)``` time and ```O(1)``` memory (i.e. constant space)?
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # Merge Sort
+        if not head or not head.next:
+            return head
+        
+        # Slow and fast pointers to get the middle node
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        # Divide the linked list into two separate lists
+        middle = slow.next
+        slow.next = None
+
+        # Recursively sort the left and right halves of the linked list
+        left = self.sortList(head)
+        right = self.sortList(middle)
+        
+        # Merge the two sorted lists
+        sentinel = ListNode(0)
+        curr = sentinel
+        while left and right:
+            if left.val < right.val:
+                curr.next = left
+                left = left.next
+            else:
+                curr.next = right
+                right = right.next
+            curr = curr.next
+        # Merge the remaining list
+        if not left:
+            curr.next = right
+        elif not right:
+            curr.next = left
+
+        return sentinel.next
+```
