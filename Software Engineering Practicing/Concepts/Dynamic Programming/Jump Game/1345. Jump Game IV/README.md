@@ -1,6 +1,6 @@
 ## [1345. Jump Game IV](https://leetcode.com/problems/jump-game-iv/)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Breadth-First Search```
 
 #### Difficulty: Hard
 
@@ -47,3 +47,99 @@ __Constraints:__
 - -10<sup>8</sup> <= ```arr[i]``` <= 10<sup>8</sup>
 
 ---
+
+### Breadth-First Search
+
+```Python
+        n = len(arr)
+        if n <= 1:
+            return 0
+        
+        graph = collections.defaultdict(list)
+        for idx, num in enumerate(arr):
+            graph[num].append(idx)
+        
+        queue = collections.deque([0])
+        visited = {0}
+        ans = 0
+
+        while queue:
+            level_size = len(queue)
+            for _ in range(level_size):
+                i = queue.popleft()
+                
+                if i == n - 1:
+                    return ans
+                
+                j = graph[arr[i]]
+                next, prev = i + 1, i - 1
+                
+                if 0 <= next < len(arr) and not next in visited:
+                    visited.add(next)
+                    queue.append(next)
+
+                if 0 <= prev < len(arr) and not prev in visited:
+                    visited.add(prev)
+                    queue.append(prev)
+
+                if j:
+                    for neighbor in j:
+                        if not neighbor in visited:
+                            visited.add(neighbor)
+                            queue.append(neighbor)
+                    
+                    # Clear cache after finishing exploring the current level to avoid revisit
+                    del graph[arr[i]]
+            
+            ans += 1
+        return -1
+```
+
+```Python
+class Solution:
+    def minJumps(self, arr: List[int]) -> int:
+        # Breadth-First Search
+        n = len(arr)
+        if n <= 1:
+            return 0
+        
+        graph = collections.defaultdict(list)
+        for i in range(n):
+            if arr[i] in graph:
+                graph[arr[i]].append(i)
+            else:
+                graph[arr[i]] = [i]
+            
+        curr = [0]
+        visited = set()
+        visited.add(0)
+        ans = 0
+
+        while curr:
+            next = list()
+
+            for node in curr:
+                # CHeck if strictly reached the last index
+                if node == n - 1:
+                    return ans
+
+                # Check if arr[i] == arr[j]
+                for neighbor in graph[arr[node]]:
+                    if not neighbor in visited:
+                        visited.add(neighbor)
+                        next.append(neighbor)
+                
+                graph[arr[node]].clear()
+
+                # i + 1 where: i + 1 < arr.length.
+                # i - 1 where: i - 1 >= 0.
+                for neighbor in [node - 1, node + 1]:
+                    if not (0 <= neighbor < len(arr) and not neighbor in visited):
+                        continue
+                    visited.add(neighbor)
+                    next.append(neighbor)
+            
+            curr = next
+            ans += 1
+        return -1
+```
