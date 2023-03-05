@@ -1,6 +1,6 @@
-## 95. Unique Binary Search Trees II
+## [95. Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/)
 
-```Tag```: ```Recursion```
+```Tag```: ```Recursion``` ```Binary Search Tree``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -47,26 +47,24 @@ __Space Complexity__: ```O(n * Cn)```, there is total C<sub>n</sub> __BSTs__, ea
 #         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
-
-        def build_tree(first, last):
-            if first > last:
+        @lru_cache(None)
+        def build_tree(start, end):
+            if start > end:
                 return [None]
+            
             res = list()
-            # Iterate through every root node candidate
-            for root in range(first, last + 1):
-                # Generate left subtree of tje root node
-                left_subtree = build_tree(first, root - 1)
-                # Generate right subtree of the root node
-                right_subtree = build_tree(root + 1, last)
-
-                # Connect subtrees to the root node
-                for left in left_subtree:
-                    for right in right_subtree:
+            for root in range(start, end + 1):
+                left_subtree = build_tree(start, root - 1)
+                right_subtree = build_tree(root + 1, end)
+            
+                for left_node in left_subtree:
+                    for right_node in right_subtree:
                         curr = TreeNode(root)
-                        curr.left = left
-                        curr.right = right
+                        curr.left = left_node
+                        curr.right = right_node
                         res.append(curr)
+            
             return res
-
+        
         return build_tree(1, n)
 ```
