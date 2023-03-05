@@ -41,6 +41,8 @@ __Constraints:__
 
 ### Merge Sort
 
+#### Top-Down Merge Sort
+
 Merge sort is a popularly known algorithm that follows the __Divide and Conquer Strategy__. The divide and conquer strategy can be split into 2 phases:
 
 _Divide phase_: Divide the problem into subproblems.
@@ -51,13 +53,14 @@ The Top Down approach for merge sort recursively splits the original list into s
 
 __Algorithm__
 
-- Recursively split the original list into two halves. The split continues until there is only one node in the linked list (Divide phase). To split the list into two halves, we find the middle of the linked list using the Fast and Slow pointer approach as mentioned in [Find Middle Of Linked List](https://leetcode.com/problems/middle-of-the-linked-list/).
+- Recursively split the original list into two halves. The split continues until there is only one node in the linked list (Divide phase). To split the list into two halves, we find the middle of the linked list using the Fast and Slow pointer approach as mentioned in [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/).
 
 - Recursively sort each sublist and combine it into a single sorted list. (Merge Phase). This is similar to the problem [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
 
 ![image](https://leetcode.com/problems/sort-list/Figures/148/topDown_merge_sort.png)
 
-__Follow up__: Can you sort the linked list in ```O(n logn)``` time and ```O(1)``` memory (i.e. constant space)?
+- __Time Complexity__: ```O(nlog⁡n)```
+- __Space Complexity__: ```O(log⁡n)```
 
 ```Python
 # Definition for singly-linked list.
@@ -103,3 +106,7 @@ class Solution:
 
         return sentinel.next
 ```
+
+__Follow up__: Can you sort the linked list in ```O(n logn)``` time and ```O(1)``` memory (i.e. constant space)?
+
+
