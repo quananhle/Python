@@ -38,3 +38,33 @@ __Constraints:__
 - -10<sup>6</sup> <= ```Node.val``` <= 10<sup>6</sup>
 
 ---
+
+![image](https://leetcode.com/problems/odd-even-linked-list/Figures/328_Odd_Even.svg)
+
+- __Time complexity__: ```O(n)```, there are total ```n``` nodes and we visit each node once.
+
+- __Space complexity__: ```O(1)```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return head
+        
+        odd_tail, even_tail = head, head.next
+        odd_head, even_head = odd_tail, even_tail
+
+        while even_tail and even_tail.next:
+            odd_tail.next = odd_tail.next.next
+            odd_tail = odd_tail.next
+            even_tail.next = even_tail.next.next
+            even_tail = even_tail.next
+
+        odd_tail.next = even_head
+        return odd_head
+```
