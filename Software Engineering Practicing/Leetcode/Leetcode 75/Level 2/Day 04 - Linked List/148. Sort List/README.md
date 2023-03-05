@@ -114,69 +114,68 @@ __Follow up__: Can you sort the linked list in ```O(n logn)``` time and ```O(1)`
 ![image](https://leetcode.com/problems/sort-list/Figures/148/bottom_up_merge_sort.png)
 
 ```Python
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
-    def countNodes(self, head:Optional[ListNode]) -> int:
-        cnt = 0
-        while head:
-            cnt += 1
-            head = head.next
-        return cnt
-
-    def split(self, head: Optional[ListNode], size:int) -> tuple[Optional[ListNode], Optional[ListNode]]:
-        # Empty list
-        if not head:
-            return (None, None)      
-        beforeSlow = head
-        beforeFast = head.next if head.next else head
-        i = 1
-        while i < size and (beforeSlow.next or beforeFast.next):
-            if beforeSlow.next:
-                beforeSlow = beforeSlow.next
-            if beforeFast.next:
-                beforeFast = beforeFast.next.next if beforeFast.next.next else beforeFast.next
-            i += 1
-        mid = beforeSlow.next
-        end = beforeFast.next
-        beforeSlow.next = None
-        beforeFast.next = None
-        return (mid, end)
-
-    def merge(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> tuple[Optional[ListNode], Optional[ListNode]]:
-        head = tail = ListNode
-        while list1 and list2:
-            if list1.val <= list2.val:
-                tail.next = list1
-                list1 = list1.next
-            else:
-                tail.next = list2
-                list2 = list2.next
-            tail = tail.next
-        
-        last = tail
-        tail.next = list1 if list1 else list2
-
-        while tail:
-            last = tail
-            tail = tail.next
-        return (head.next, last)
-    
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        n = self.countNodes(head)
-        dummyHead = ListNode(0, head)
+        def count(node):
+            cnt = 0
+            while node:
+                cnt += 1
+                node = node.next
+            return cnt
+
+        def split(node, size):
+            # Empty list
+            if not node:
+                return (None, None)
+
+            prev_slow = node
+            prev_fast = node.next if node.next else node
+            i = 1
+            while i < size and (prev_slow.next or prev_fast.next):
+                if prev_slow.next:
+                    prev_slow = prev_slow.next
+                if prev_fast.next:
+                    prev_fast = prev_fast.next.next if prev_fast.next.next else prev_fast.next
+                i += 1
+
+            midd = prev_slow.next
+            tail = prev_fast.next
+            prev_slow.next = None
+            prev_fast.next = None
+
+            return (midd, tail)
+
+        def merge(list1, list2):
+            head = tail = ListNode
+            while list1 and list2:
+                if list1.val <= list2.val:
+                    tail.next = list1
+                    list1 = list1.next
+                else:
+                    tail.next = list2
+                    list2 = list2.next
+                tail = tail.next
+            
+            last = tail
+            tail.next = list1 if list1 else list2
+
+            while tail:
+                last = tail
+                tail = tail.next
+            return (head.next, last)
+
+
+        n = count(head)
+        sentinel = ListNode(0, head)
         size = 1
         while size < n:
-            start = dummyHead.next
-            tail = dummyHead
+            start = sentinel.next
+            tail = sentinel
             while start:
-                # Split produces two lists: [start,mid) [mid,end)
-                mid, end = self.split(start, size)
-                tail.next, tail = self.merge(start, mid)
+                mid, end = split(start, size)
+                tail.next, tail = merge(start, mid)
                 start = end
             size *= 2
-        return dummyHead.next
+
+        return sentinel.next
 ```
