@@ -51,6 +51,9 @@ __Constraints:__
 ### Breadth-First Search
 
 ```Python
+class Solution:
+    def minJumps(self, arr: List[int]) -> int:
+        # Breadth-First Search
         n = len(arr)
         if n <= 1:
             return 0
