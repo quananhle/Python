@@ -39,5 +39,47 @@ __Constraints:__
  
 ---
 
+### Two Pointers
 
-Follow up: Could you do this in one pass?
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        # Given two nodes, left and right, with a distane between two nodes always maintained at n
+        size = 0
+        node, curr = head, head
+        
+        # Calculate the size
+        while node:
+            node = node.next
+            size += 1
+        
+        # Delete the only node
+        if size == 1:
+            head = None
+            return head
+        
+        # Delte the first node
+        if size == n:
+            head = head.next
+            return head
+
+        # Traverse to (n + 1)th node    
+        k = size - n
+        while k > 1:
+            curr = curr.next
+            k -= 1
+        
+        curr.next = curr.next.next
+        return head
+```
+
+__Follow up__: Could you do this in one pass?
+
+```Python
+
+```
