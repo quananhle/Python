@@ -109,4 +109,6 @@ class Solution:
 
 __Follow up__: Can you sort the linked list in ```O(n logn)``` time and ```O(1)``` memory (i.e. constant space)?
 
+#### Bottom-Up Merge Sort
 
+![image](https://leetcode.com/problems/sort-list/Figures/148/bottom_up_merge_sort.png)
