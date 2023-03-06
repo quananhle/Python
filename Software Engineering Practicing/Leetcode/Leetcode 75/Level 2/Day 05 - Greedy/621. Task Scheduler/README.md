@@ -1,6 +1,6 @@
 ## [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/)
 
-```Tag```: ```Greedy``` ```Hash Map``` ```Math```
+```Tag```: ```Greedy``` ```Hash Map``` ```Math``` ```Heap```
 
 #### Difficulty: Medium
 
@@ -85,6 +85,35 @@ class Solution:
         idle_time = max(0, idle_time)
 
         return idle_time + len(tasks)
+```
+
+### Heap
+
+```Python
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        freq = [0] * 26
+        for task in tasks:
+            freq[ord(task) - ord('A')] += 1
+        h = list()
+        for f in freq:
+            if f:
+                heapq.heappush(h, -f)
+        # Get the most frequent task
+        f_max = -heapq.heappop(h)
+        # Compute the maximum possible idle time needed
+        idle_time = (f_max - 1) * n
+
+        while h and idle_time > 0:
+            curr_freq = -heapq.heappop(h)
+            # Check if the current task has the same frequency as the most frequent task, only need current frequecy - 1 to fill the slots
+            if curr_freq == f_max:
+                idle_time -= (curr_freq - 1)
+            # Otherwise, the current task has lower frequency, fill them all into slots
+            else:
+                idle_time -= curr_freq
+
+        return idle_time + len(tasks) if idle_time > 0 else len(tasks)
 ```
 
 ### Math
