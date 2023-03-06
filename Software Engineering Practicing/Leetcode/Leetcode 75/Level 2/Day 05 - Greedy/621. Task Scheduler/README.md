@@ -101,12 +101,24 @@ The first situation is straightforward because the total number of slots is defi
 
 ![image](https://leetcode.com/problems/task-scheduler/Figures/621/frequent2.png)
 
-The second situation is a bit more tricky and requires to know the number ```n_max``` and the frequency ```freq_max``` of the most frequent tasks.
+The second situation is a bit more tricky and requires to know the number ```n_max``` and the frequency ```f_max``` of the most frequent tasks.
 
 ![image](https://leetcode.com/problems/task-scheduler/Figures/621/f_max.png)
 
 ![image](https://leetcode.com/problems/task-scheduler/Figures/621/compute.png)
 
 ```Python
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        freq = [0] * 26
+        for task in tasks:
+            freq[ord(task) - ord('A')] += 1
+        
+        f_max = max(freq)
+        n_max = 0
+        for f in freq:
+            if f == f_max:
+                n_max += 1
 
+        return max(len(tasks), (f_max - 1) * (n + 1) + n_max) 
 ```
