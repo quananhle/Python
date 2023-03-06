@@ -1,6 +1,6 @@
 ## [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/)
 
-```Tag```: ```Greedy``` ```Hash Map```
+```Tag```: ```Greedy``` ```Hash Map``` ```Math```
 
 #### Difficulty: Medium
 
@@ -63,7 +63,50 @@ __Constraints:__
 ![image](https://user-images.githubusercontent.com/35042430/223217889-4c36b94b-c473-4041-8433-ea13d2f2d3fa.png)
 
 ```Python
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        freq = [0] * 26
+        for task in tasks:
+            freq[ord(task) - ord('A')] += 1
+        freq.sort()
 
+        max_freq = freq.pop()
+        idle_time = (max_freq - 1) * n
+
+        while freq and idle_time > 0:
+            curr_freq = freq.pop()
+            if curr_freq == max_freq:
+                idle_time  -= (max_freq - 1)
+            else:
+                idle_time -= curr_freq
+            '''
+            idle_time -= min(max_freq - 1, freq.pop())
+            '''
+        idle_time = max(0, idle_time)
+
+        return idle_time + len(tasks)
 ```
 
+### Math
 
+There are two possible situations:
+
+- The most frequent task is not frequent enough to force the presence of idle slots.
+
+![image](https://leetcode.com/problems/task-scheduler/Figures/621/all2.png)
+
+The first situation is straightforward because the total number of slots is defined by the number of tasks: ```len(tasks)```.
+
+- The most frequent task is frequent enough to force some idle slots.
+
+![image](https://leetcode.com/problems/task-scheduler/Figures/621/frequent2.png)
+
+The second situation is a bit more tricky and requires to know the number ```n_max``` and the frequency ```freq_max``` of the most frequent tasks.
+
+![image](https://leetcode.com/problems/task-scheduler/Figures/621/f_max.png)
+
+![image](https://leetcode.com/problems/task-scheduler/Figures/621/compute.png)
+
+```Python
+
+```
