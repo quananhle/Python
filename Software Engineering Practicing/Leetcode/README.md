@@ -12,11 +12,11 @@
 
 ### String Calculations
 
-:warning::warning: 1. [43. Multiply Strings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2002%20-%20String/43.%20Multiply%20Strings)
-2. [66. Plus One]
-3. [67. Add Binary]
-4. [415. Add Strings]
-5. [989. Add to Array-Form of Integer]
+:warning::warning: [43. Multiply Strings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2002%20-%20String/43.%20Multiply%20Strings)
+[66. Plus One]
+[67. Add Binary]
+[415. Add Strings]
+[989. Add to Array-Form of Integer]
 
 ---
 
