@@ -30,7 +30,7 @@ Split array largest sum
 Divide chocolate (for premium users only)
 Cutting ribbons (for premium users only)
 
-[1539. Kth Missing Positive Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1539.%20Kth%20Missing%20Positive%20Number)
+:four_leaf_clover:[1539. Kth Missing Positive Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1539.%20Kth%20Missing%20Positive%20Number)
 
 ---
 
@@ -51,6 +51,10 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 
 ---
+
+## Greedy
+
+[2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
 
 ## Recursion
 
