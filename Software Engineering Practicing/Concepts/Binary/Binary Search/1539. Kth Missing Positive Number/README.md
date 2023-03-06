@@ -35,4 +35,42 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+![image](https://leetcode.com/problems/kth-missing-positive-number/Figures/1539/missing.png)
+
+```Python
+
+```
+
+### Hash Set
+
+```Python
+class Solution:
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        nums = set(arr)
+        n = len(arr)
+        for num in range(n + k + 1):
+            if not num in nums:
+                k -= 1
+            if k == -1:
+                return num
+```
+
+
+
+### One Liner
+
+```Python
+class Solution:
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        return [num for num in range(len(arr) + k + 1) if not num in set(arr)][k]
+```
+
 __Follow up__: Could you solve this problem in less than ```O(n)``` complexity?
+
+### Binary Search
+
+```Python
+
+```
