@@ -1,6 +1,6 @@
 ## [621. Task Scheduler](https://leetcode.com/problems/task-scheduler/)
 
-```Tag```: ```Greedy```
+```Tag```: ```Greedy``` ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -51,3 +51,19 @@ __Constraints:__
 - The integer ```n``` is in the range ```[0, 100]```.
 
 ---
+
+### Greedy
+
+![image](https://user-images.githubusercontent.com/35042430/223217500-3439fc4e-f26e-456a-ba18-ce2b69026ecc.png)
+
+![image](https://user-images.githubusercontent.com/35042430/223217660-1ed67d1f-3f11-4d0a-80fa-85105ffe8d8e.png)
+![image](https://user-images.githubusercontent.com/35042430/223217706-2b4c4c41-f35f-44eb-bee1-431a1ebf471c.png)
+![image](https://user-images.githubusercontent.com/35042430/223217789-36d007ec-ddcb-4e3d-a1e6-5fa41382960a.png)
+![image](https://user-images.githubusercontent.com/35042430/223217858-2cd02863-82bd-4508-a5cb-64809fe8a384.png)
+![image](https://user-images.githubusercontent.com/35042430/223217889-4c36b94b-c473-4041-8433-ea13d2f2d3fa.png)
+
+```Python
+
+```
+
+
