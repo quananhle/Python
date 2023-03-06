@@ -37,3 +37,18 @@ __Constraints:__
 - 1 <= ```g[i], s[j]``` <= 2<sup>31</sup> - 1
 
 ---
+
+```Python
+class Solution:
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+        ans = 0
+        i, j = 0, 0
+        n, m = len(g), len(s)
+        g.sort(), s.sort()
+        while i < n and j < m:
+            if g[i] <= s[j]:
+                ans += 1
+                i += 1
+            j += 1
+        return ans
+```
