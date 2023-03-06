@@ -1,6 +1,6 @@
 ## [1539. Kth Missing Positive Number](https://leetcode.com/problems/kth-missing-positive-number/)
 
-```Tag```: Binary Search```
+```Tag```: ```Binary Search```
 
 #### Difficulty: Easy
 
