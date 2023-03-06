@@ -1,6 +1,6 @@
 ## [2131. Longest Palindrome by Concatenating Two Letter Words](https://leetcode.com/problems/longest-palindrome-by-concatenating-two-letter-words/)
 
-```Tag```: ```Greedy```
+```Tag```: ```Greedy``` ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -47,4 +47,30 @@ __Constraints:__
 - ```words[i]``` consists of lowercase English letters.
 
 ---
+
+### Hash Map
+
+```Python
+class Solution:
+    def longestPalindrome(self, words: List[str]) -> int:
+        ans = 0
+        center = False
+        
+        counter = collections.Counter(words)
+        for key, cnt in counter.items():
+            # Check if the word is a palindrome
+            if key[0] == key[1]:
+                if cnt % 2 == 0:
+                    ans += cnt
+                else:
+                    ans += cnt - 1
+                    center = True
+            elif key[0] < key[1]:
+                ans += 2 * min(cnt, counter[key[1] + key[0]])
+        
+        if center:
+            ans += 1
+            
+        return ans*2
+```
 
