@@ -64,6 +64,8 @@ There are 4 occurrences of ```aa```, 2 occurrences of ```pp``` and 6 occurrences
 
 There are 7 occurrences of ```mm```, 4 occurrences of ```nn``` and 5 occurrences of ```qq``` in the input. We can use each word an even number of times (6 ```mm```'s, 4 ```nn```'s and 4 ```qq```'s). The total number of used words is 6 + 4 + 4 = 14. But we haven't used all the words. There is one ```mm``` and one ```qq``` unused. We can use one of these as a central word, and the answer will contain 15 words.
 
+![image](https://user-images.githubusercontent.com/35042430/223023160-af9e0687-a8ec-45d1-a962-10355e17e457.png)
+
 ### Hash Map
 
 ```Python
@@ -123,3 +125,42 @@ class Solution:
         return ans*2
 ```
 
+---
+
+### 2D Matrix
+
+We already know that there are not more than ∣Σ|<sup>2</sup> distinct words. Let's think about which data structure other than a hash map we can use to count the words.
+
+All possible two-letter words can be:
+
+![image](https://leetcode.com/problems/longest-palindrome-by-concatenating-two-letter-words/Documents/2131/2131_matrix.drawio.svg)
+
+![image](https://user-images.githubusercontent.com/35042430/223023187-14d51219-a7f5-4435-bd7f-94c7619911b8.png)
+
+```Python
+class Solution:
+    def longestPalindrome(self, words: List[str]) -> int:
+        alphabet = 26
+        ans = 0
+        center = False
+        combinations = [[0 for _ in range(alphabet)] for _ in range(alphabet)]
+
+        for word in words:
+            combinations[ord(word[0]) - ord('a')][ord(word[1]) - ord('a')] += 1
+
+        for i in range(alphabet):
+            # Check palindrome word
+            if combinations[i][i] % 2 == 0:
+                ans += combinations[i][i]
+            else:
+                ans += combinations[i][i] - 1
+                center = True
+            # Check non-palindrome word
+            for j in range(i + 1, alphabet):
+                ans += 2 * min(combinations[i][j], combinations[j][i])
+
+        if center:
+            ans += 1
+        
+        return ans * 2
+```
