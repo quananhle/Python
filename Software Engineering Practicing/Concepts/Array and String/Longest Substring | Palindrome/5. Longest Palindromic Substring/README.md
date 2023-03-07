@@ -30,12 +30,19 @@ __Constraints:__
 
 ---
 
-### Dynamic Programming
+### The Framework
+
+#### Top-Down Dynamic Programming
 
 ```Python
 
 ```
 
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
 
 ### Expand Around Center
 
@@ -97,7 +104,52 @@ class Solution:
 
 ### Sliding Window
 
-```Python
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(1)```
 
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        if s == s[::-1] or n < 2:
+            return s
+        
+        start, end = 0, 1
+
+        for i in range(1, len(s)):
+            left, right = i - end, i + 1
+            s1, s2 = s[left-1:right], s[left:right]
+            
+            if left - 1 >= 0 and s1 == s1[::-1]:
+                start, end = left - 1, end + 2
+            elif s2 == s2[::-1]:
+                start, end = left, end + 1
+        
+        return s[start:start+end]
+```
+
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        if s == s[::-1] or n < 2:
+            return s
+
+        start, max_len = 0, 1
+
+        for i in range(1, n):
+            # Check odd length palindromic substring
+            start = i - max_len - 1
+            odd = s[start:i+1]
+            if start >= 0 and odd == odd[::-1]:
+                max_len += 2
+            
+            # Check even length palindromic substring
+            start = i - max_len
+            even = s[start:i+1]
+            if start >= 0 and even == even[::-1]:
+                max_len += 1
+
+        return s[start:start+max_len] 
 ```
 
