@@ -70,7 +70,22 @@ class Solution:
                 trips += t // trip_time
                 if trips >= totalTrips:
                     return t
-``
+```
+
+```Python
+class Solution:
+    def minimumTime(self, time: List[int], totalTrips: int) -> int:
+        # Find the smallest valid time to finish total trips
+        n = len(time)
+        t = 0
+        while True:
+            trip = 0
+            for i in range(n):
+                trip += (t // time[i])
+            if trip >= totalTrips:
+                return t
+            t += 1
+```
 
 ### Binary Search
 
