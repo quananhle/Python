@@ -39,3 +39,33 @@ __Constraints:__
 
 ---
 
+### Recursive Breadth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return root
+        
+        tree = root
+        left_child = self.invertTree(tree.left)
+        right_child = self.invertTree(tree.right)
+        
+        tree.left = right_child
+        tree.right = left_child
+        
+        return tree
+```
+
+### Iterative Breadth-First Search
+
+```Python
+
+```
+
