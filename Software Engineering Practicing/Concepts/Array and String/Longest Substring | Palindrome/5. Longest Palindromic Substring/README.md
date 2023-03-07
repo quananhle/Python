@@ -1,6 +1,6 @@
 ## [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
 
-```Tag```: ```Dynamic Programming``` ```Two Pointers```
+```Tag```: ```Dynamic Programming``` ```Two Pointers``` ```Sliding Window```
 
 #### Difficulty: Medium
 
@@ -30,10 +30,17 @@ __Constraints:__
 
 ---
 
+### Dynamic Programming
 
+```Python
+
+```
 
 
 ### Expand Around Center
+
+- __Time complexity__: O(n<sup>2</sup>), since expanding a palindrome around its center could take O(n) time, the overall complexity is O(n<sup>2</sup>)
+- __Space complexity__: O(1)
 
 ```Python
 class Solution:
@@ -86,3 +93,11 @@ class Solution:
         
         return ans
 ```
+
+
+### Sliding Window
+
+```Python
+
+```
+
