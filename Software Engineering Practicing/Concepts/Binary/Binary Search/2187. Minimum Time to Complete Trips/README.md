@@ -43,3 +43,37 @@ __Constraints:__
 - 1 <= ```time[i], totalTrips``` <= 10<sup>7</sup>
 
 ---
+
+![image](https://leetcode.com/problems/minimum-time-to-complete-trips/Figures/2187/1.png)
+
+Assume the time needed is ```given_time```, for bus ```i```, the number of trips it can finish within ```given_time``` is ```given_time / time[i]```. Thus the total number of trips is the sum of ```given_time / time[i]``` for all buses. In the following picture, we can tell that if the given time is ```6```, these buses can finish (at least) ```totalTrips``` in time.
+
+![image](https://leetcode.com/problems/minimum-time-to-complete-trips/Figures/2187/2.png)
+
+### Brute Force
+
+```Python
+class Solution:
+    def minimumTime(self, time: List[int], totalTrips: int) -> int:
+        for t in range(1, totalTrips * min(time) + 1):
+            trips = sum([t // trip_time for trip_time in time])
+            if trips >= totalTrips:
+                return t
+```
+
+```Python
+class Solution:
+    def minimumTime(self, time: List[int], totalTrips: int) -> int:
+        for t in range(1, totalTrips * min(time) + 1):
+            trips = 0
+            for trip_time in time:
+                trips += t // trip_time
+                if trips >= totalTrips:
+                    return t
+``
+
+### Binary Search
+
+```Python
+
+```
