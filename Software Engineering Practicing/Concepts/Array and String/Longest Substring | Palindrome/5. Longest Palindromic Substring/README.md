@@ -34,15 +34,73 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
-```Python
+- __Time complexity__: O(n<sup>2</sup>)
+- __Space complexity__: O(n<sup>2</sup>)
 
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        # Top-Down DP (Recursion)
+        n = len(s)
+        if s == s[::-1] or n < 2:
+            return s
+        
+        memo = collections.defaultdict()
+
+        def dp(start, end):
+            # Base cases
+            if start == end:
+                return True
+            if end - start == 1:
+                return s[start] == s[end]
+            if s[start] != s[end]:
+                return False
+
+            if (start, end) in memo:
+                return memo[(start, end)]
+            
+            # Recurrence relation
+            memo[(start, end)] = dp(start + 1, end - 1)
+            return memo[(start, end)]
+
+        start, end = 0, 1
+        for i in range(n - 1, -1, -1):
+            for j in range(i + 1, n):
+                if j + 1 - i > end - start and dp(i, j):
+                    start, end = i, j + 1
+        
+        return s[start:end]
 ```
 
 #### Bottom-Up Dynamic Programming
 
-```Python
+- __Time complexity__: O(n<sup>2</sup>)
+- __Space complexity__: O(n<sup>2</sup>)
 
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        ans = ""
+        n = len(s)
+        dp = [[0] * n for _ in range(n)]
+
+        for i in range(n):
+            dp[i][i] = True
+            ans = s[i]
+        
+        for start in range(n - 1, -1, -1):
+            for end in range(start + 1, n):
+                if s[start] == s[end]:
+                    if end - start == 1 or dp[start + 1][end - 1]:
+                        dp[start][end] = True
+                        
+                        if len(ans) < len(s[start:end + 1]):
+                            ans = s[start:end + 1]
+        
+        return ans
 ```
+
+---
 
 ### Expand Around Center
 
