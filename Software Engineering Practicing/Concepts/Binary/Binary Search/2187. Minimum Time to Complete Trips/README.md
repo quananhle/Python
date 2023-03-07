@@ -89,6 +89,42 @@ class Solution:
 
 ### Binary Search
 
-```Python
+__To find an element in a sorted array__
 
+```Python
+class Solution:
+    def minimumTime(self, time: List[int], totalTrips: int) -> int:
+        # Binary Search
+        lo, hi = 1, min(time) * totalTrips + 1 
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            trips = sum([mi // trip_time for trip_time in time])
+            if trips >= totalTrips:
+                hi = mi
+            else:
+                lo = mi + 1
+        return lo
+```
+
+```Python
+class Solution:
+    def minimumTime(self, time: List[int], totalTrips: int) -> int:
+        # Binary Search
+        lo, hi = 1, min(time) * totalTrips
+        
+        def is_enough_time(given_time):
+            trips = 0
+            for trip_time in time:
+                trips += given_time // trip_time
+            return trips >= totalTrips
+        
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            # Check if the current time is more than enough, reduce time needed
+            if is_enough_time(mi):
+                hi = mi
+            # Check if the current time is less than enough, increase time needed
+            else:
+                lo = mi + 1
+        return lo
 ```
