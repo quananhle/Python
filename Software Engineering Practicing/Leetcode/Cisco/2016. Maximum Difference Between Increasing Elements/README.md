@@ -1,14 +1,19 @@
-## 2016. Maximum Difference Between Increasing Elements
+## [2016. Maximum Difference Between Increasing Elements](https://leetcode.com/problems/maximum-difference-between-increasing-elements/)
+
+```Tag```: ```Greedy```
 
 #### Difficulty: Easy
 
-```
-Given a 0-indexed integer array nums of size n, find the maximum difference between nums[i] and nums[j] (i.e., nums[j] - nums[i]), such that 0 <= i < j < n and nums[i] < nums[j].
+Given a 0-indexed integer array nums of size ```n```, find the maximum difference between ```nums[i]``` and ```nums[j]``` (i.e., ```nums[j] - nums[i]```), such that ```0 <= i < j < n``` and ```nums[i] < nums[j]```.
 
-Return the maximum difference. If no such i and j exists, return -1.
-```
+Return _the maximum difference_. If no such ```i``` and ```j``` exists, return ```-1```.
+
+![image](https://user-images.githubusercontent.com/35042430/223543435-462ed3aa-41b9-4c82-9a16-88fcd497960b.png)
+
+---
 
 #### Example 1:
+
 ```
 Input: nums = [7,1,5,4]
 Output: 4
@@ -18,6 +23,7 @@ Note that with i = 1 and j = 0, the difference nums[j] - nums[i] = 7 - 1 = 6, bu
 ```
 
 #### Example 2:
+
 ```
 Input: nums = [9,4,3,2]
 Output: -1
@@ -26,6 +32,7 @@ There is no i and j such that i < j and nums[i] < nums[j].
 ```
 
 #### Example 3:
+
 ```
 Input: nums = [1,5,2,10]
 Output: 9
@@ -34,13 +41,15 @@ The maximum difference occurs with i = 0 and j = 3, nums[j] - nums[i] = 10 - 1 =
 ``` 
 
 #### Constraints:
-```
-n == nums.length
-2 <= n <= 1000
-1 <= nums[i] <= 109
-```
+
+- ```n == nums.length```
+- ```2 <= n <= 1000```
+- ```1 <= nums[i] <= 10^9```
 
 ---
+
+### Greedy
+
 ```Python
 class Solution(object):
     def maximumDifference(self, nums):
@@ -48,7 +57,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        # Dynamic Programming
+        # Greedy
         min_number = sys.maxint
         max_difference = -1
         for i in range(len(nums)):
@@ -66,7 +75,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        # Dynamic Programming
+        # Greedy
         min_number = nums[0]
         max_difference = -1
         for i in range(1, len(nums)):
