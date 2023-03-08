@@ -91,6 +91,10 @@ class Solution:
 
 __To find an element in a sorted array__
 
+![image](https://leetcode.com/problems/minimum-time-to-complete-trips/Figures/2187/3.png)
+
+![image](https://leetcode.com/problems/minimum-time-to-complete-trips/Figures/2187/4.png)
+
 ```Python
 class Solution:
     def minimumTime(self, time: List[int], totalTrips: int) -> int:
