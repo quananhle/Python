@@ -103,3 +103,24 @@ class Solution:
                 lo = mi + 1
         return hi
 ```
+
+```Python
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        lo, hi = 1, max(piles)
+        n = len(piles)
+        if n == h:
+            return max(piles)
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            hours = h
+            for pile in piles:
+                hours -= math.ceil(pile / mi)
+            
+            if hours >= 0:
+                hi = mi
+            else:
+                lo = mi + 1
+        return hi
+```
