@@ -39,3 +39,41 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/binary-tree-maximum-path-sum/Figures/124/124_valid_path_examples.png)
+
+![image](https://leetcode.com/problems/binary-tree-maximum-path-sum/Figures/124/124_example.png)
+
+### Post Order Depth-First Search
+
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(n)```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return root
+        
+        def dfs(node):
+            if not node:
+                return 0
+
+            # Add the gain from the childs and ignore if the gain is less than 0
+            left_child = max(dfs(node.left), 0)
+            right_child = max(dfs(node.right), 0)
+
+            # Update the path sum for the maximum gain from the chilren and its parent
+            self.ans = max(self.ans, left_child + right_child + node.val)
+            # Return the max sum for a path starting at the root of subtree
+            return max(left_child, right_child) + node.val
+
+        self.ans = -float('inf')
+        dfs(root)
+        return self.ans
+```
