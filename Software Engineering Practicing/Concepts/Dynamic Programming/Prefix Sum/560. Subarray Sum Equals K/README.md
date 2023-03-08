@@ -1,6 +1,6 @@
 ## [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
 
-```Tag``` ```Prefix Sum```
+```Tag``` ```Prefix Sum``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -32,3 +32,110 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+- __Time complexity__: O(n<sup>3</sup>)
+- __Space complexity__: O(1)
+
+```Python
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        count = 0
+        n = len(nums)
+        for end in range(n + 1):
+            for start in range(end):
+                curr_sum = 0
+                for i in range(start, end):
+                    curr_sum += nums[i]
+                if curr_sum == k:
+                    count += 1
+        return count
+```
+
+```Python
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        count = 0
+        n = len(nums)
+        for start in range(n):
+            for end in range(start + 1, n + 1):
+                curr_sum = 0
+                for i in range(start, end):
+                    curr_sum += nums[i]
+                if curr_sum == k:
+                    count += 1 
+        return count
+```
+
+- __Time complexity__: O(n<sup>2</sup>)
+- __Space complexity__: O(1)
+
+```
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        count = 0
+        n = len(nums)
+        for start in range(n):
+            curr_sum = 0
+            for end in range(start, n):
+                curr_sum += nums[end]
+                if curr_sum == k:
+                    count += 1
+        
+        return count
+```
+
+### Dynamic Programming
+
+```Python
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        count = 0
+        n = len(nums)
+        dp = [0 for _ in range(n + 1)]
+
+        # Pre-calculate cumulative sum
+        for i in range(1, n + 1):
+            dp[i] = dp[i - 1] + nums[i - 1]
+
+        for end in range(1, n + 1):
+            for start in range(end):
+                if dp[end] - dp[start] == k:
+                    count += 1
+                    
+        return count
+```
+
+### Prefix Sum
+
+![image](https://leetcode.com/problems/path-sum-iii/Figures/437/array1.png)
+
+![image](https://leetcode.com/problems/path-sum-iii/Figures/437/situation11.png)
+![image](https://leetcode.com/problems/path-sum-iii/Figures/437/situation24.png)
+
+- __Time complexity__: ```O(n)```, the entire ```nums``` array is traversed only once.
+- __Space complexity__: ```O(n)```, hashmap mapmapmap can contain up to ```n``` distinct entries in the worst case.
+
+```Python
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        count = 0
+        curr_sum = 0
+        freq = collections.defaultdict(int)
+
+        for num in nums:
+            # Get the current running prefix sum
+            curr_sum += num
+
+            # Situation 1: continuous subarray starts from the beginning of the array
+            if curr_sum == k:
+                count += 1
+
+            # Situation 2: the subarray starts somewhere in the middle.
+            count += freq[curr_sum - k]
+
+            freq[curr_sum] += 1
+
+
+        return count
+```
