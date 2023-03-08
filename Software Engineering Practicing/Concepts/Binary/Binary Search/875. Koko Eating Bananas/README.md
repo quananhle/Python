@@ -38,7 +38,12 @@ Output: 23
 
 ---
 
+![image](https://leetcode.com/problems/koko-eating-bananas/Figures/875/875-sol_1.png)
+
 ### Brute Force
+
+- __Time complexity__: ```O(n * m)```
+- __Space complexity__: ```O(1)```
 
 ```Python
 class Solution:
@@ -57,3 +62,19 @@ class Solution:
             if hour >= 0:
                 return speed
 ```
+
+```Python
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        speed = 1
+
+        while True:
+            hours = 0
+            for pile in piles:
+                hours += math.ceil(pile / speed)
+            if hours <= h:
+                return speed
+            speed += 1
+```
+
+### Binary Search
