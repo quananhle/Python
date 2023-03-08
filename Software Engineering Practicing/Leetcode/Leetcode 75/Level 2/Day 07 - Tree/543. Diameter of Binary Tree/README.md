@@ -2,7 +2,7 @@
 
 ```Tag```: ```Binary Tree``` ```Depth-First Search```
 
-#### Difficulty: Medium
+#### Difficulty: Easy
 
 Given the ```root``` of a binary tree, return _the length of the diameter of the tree_.
 
@@ -35,3 +35,68 @@ __Constraints:__
 - ```-100 <= Node.val <= 100```
 
 ---
+
+![image](https://leetcode.com/problems/diameter-of-binary-tree/Figures/543/543.png)
+Two cases of the longest path.
+
+- __Time complexity__: ```O(N)```
+- __Space complexity__: ```O(N)```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return root
+        
+        self.ans = 0
+
+        def dfs(node):
+            if not node:
+                return 0
+
+            # Recursively find the longest path in both left child and right child
+            left_path = dfs(node.left)
+            right_path = dfs(node.right)
+
+            # Update the diameter if left_path plus right_path is larger
+            self.ans = max(self.ans, left_path + right_path)
+
+            # Return the longest one between left_path and right_path and add 1 for the path connecting the node and its parent
+            return max(left_path, right_path) + 1
+        
+        dfs(root)
+        return self.ans
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return root
+
+        def dfs(node):
+            if not node:
+                return 0
+
+            left_height = dfs(node.left) 
+            right_height = dfs(node.right)
+            
+            self.ans = max(self.ans, left_height + right_height)
+            return max(left_height, right_height) + 1 
+                
+        self.ans = 0
+        dfs(root)
+        return self.ans
+```
