@@ -78,3 +78,28 @@ class Solution:
 ```
 
 ### Binary Search
+
+![image](https://leetcode.com/problems/koko-eating-bananas/Figures/875/875-ana.png)
+
+![image](https://leetcode.com/problems/koko-eating-bananas/Figures/875/875-ana_2.png)
+
+```Python
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        lo, hi = 1, max(piles)
+        n = len(piles)
+        if n == h:
+            return max(piles)
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            hours = 0
+            for pile in piles:
+                hours += math.ceil(pile / mi)
+            
+            if hours <= h:
+                hi = mi
+            else:
+                lo = mi + 1
+        return hi
+```
