@@ -1,6 +1,6 @@
 ## [437. Path Sum III](https://leetcode.com/problems/path-sum-iii/)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Prefix Sum```
 
 #### Difficulty: Medium
 
@@ -35,4 +35,96 @@ __Constraints:__
 
 ---
 
+### Brute Force
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        def compute(node, target):
+            # Exit condition
+            if not node:
+                return
+            
+            if target == node.val:
+                self.count += 1
+            
+            compute(node.left, target - node.val)
+            compute(node.right, target - node.val)
+    
+        def traversal(node, target):
+            # Exit condition
+            if not node:
+                return
+            
+            # Calculate the sum from the current node
+            compute(node, target)   # Preorder or Inorder or Postorder
+            traversal(node.left, target)
+            traversal(node.right, target)
+
+        self.count = 0
+        traversal(root, targetSum)
+        return self.count
+```
+
+__Prefix sum__ technique: ```one pass + linear time complexity```
+
+```
+Prefix sum is a sum of the current value with all previous elements starting from the beginning of the structure.
+```
+
+![image](https://leetcode.com/problems/path-sum-iii/Figures/437/prefix_qd.png)
+_Prefix sum for 1D array._
+
+![image](https://leetcode.com/problems/path-sum-iii/Figures/437/2d_prefix.png)
+_Prefix sum for 2D array._
+
+![image](https://leetcode.com/problems/path-sum-iii/Figures/437/tree2.png)
+_Prefix sum for the binary tree._
+
+You might want to use the prefix sum technique for the problems like __"Find a number of continuous subarrays/submatrices/tree paths that sum to target"__.
+
+![image](https://leetcode.com/problems/path-sum-iii/Figures/437/one_vs_two.png)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        prefix_sum = collections.defaultdict(int)
+        if not root:
+            return 0
+
+        def dfs(node, curr_sum):
+            if not node:
+                return
+            
+            curr_sum += node.val
+            if curr_sum == targetSum:
+                self.count += 1
+
+            # number of times the curr_sum − k has has occurred up to the current node
+            self.count += prefix_sum[curr_sum - targetSum]
+
+            # add the current sum into hashmap to use it during the child nodes processing
+            prefix_sum[curr_sum] += 1
+
+            dfs(node.left, curr_sum)
+            dfs(node.right, curr_sum)
+
+            # Backtracking
+            prefix_sum[curr_sum] -= 1
+
+        self.count = 0
+        dfs(root, 0)
+        return self.count
+```
