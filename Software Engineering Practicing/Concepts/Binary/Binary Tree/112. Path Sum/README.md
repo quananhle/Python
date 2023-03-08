@@ -48,7 +48,7 @@ __Constraints:__
 
 ---
  
-### Recursive Top-Down
+### Recursive Depth-First Search
  
 ```Python
 # Definition for a binary tree node.
@@ -96,7 +96,34 @@ class Solution:
         dfs(root, targetSum)
         return ans
 ```
- 
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        if not root:
+            return root
+
+        def dfs(node, total):
+            if not node:
+                return False
+            
+            if not node.left and not node.right:
+                return total + node.val == targetSum
+            
+            left_child = dfs(node.left, total + node.val)
+            right_child = dfs(node.right, total + node.val)
+
+            return left_child or right_child
+
+        return dfs(root, 0)
+```
+
 ### Iterative Top-Down
  
 ```Python
