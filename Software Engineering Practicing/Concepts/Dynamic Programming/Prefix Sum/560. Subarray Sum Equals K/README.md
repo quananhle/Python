@@ -40,6 +40,7 @@ __Constraints:__
 ```Python
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
+        ### Time Limit Exceeded
         count = 0
         n = len(nums)
         for end in range(n + 1):
@@ -55,6 +56,7 @@ class Solution:
 ```Python
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
+        ### Time Limit Exceeded
         count = 0
         n = len(nums)
         for start in range(n):
@@ -70,9 +72,10 @@ class Solution:
 - __Time complexity__: O(n<sup>2</sup>)
 - __Space complexity__: O(1)
 
-```
+```Python
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
+        ### Time Limit Exceeded
         count = 0
         n = len(nums)
         for start in range(n):
@@ -90,6 +93,7 @@ class Solution:
 ```Python
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
+        ### Time Limit Exceeded
         count = 0
         n = len(nums)
         dp = [0 for _ in range(n + 1)]
