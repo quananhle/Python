@@ -38,3 +38,22 @@ Output: 23
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        # Brute Force
+        ### Time Limit Exceeded
+        n = len(piles)
+        most = max(piles)
+        if n == h:
+            return most
+
+        for speed in range(1, most + 1):
+            hour = h
+            for pile in piles:
+                hour -= math.ceil(pile / speed)
+            if hour >= 0:
+                return speed
+```
