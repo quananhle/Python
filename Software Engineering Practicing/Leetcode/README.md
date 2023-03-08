@@ -4,9 +4,11 @@
 
 ## Array & String
 
-### Palindrome/Longest Subtring
+### Longest Common Substring
 
-- [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome/5.%20Longest%20Palindromic%20Substring)
+#### Palindrome
+
+- [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome/5.%20Longest%20Palindromic%20Substring) ```Dynamic Programming``` ```Sliding Window``` ```Two Pointers```
 
 ### Sliding Window
 
@@ -26,7 +28,7 @@
 
 ## Binary Search
 
-- [875. Koko eating bananas]()
+- :warning::warning:[875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 - :warning::warning:[1011. Capacity To Ship Packages Within D Days](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
 - Minimum number of days to make m bouquets
 - Magnetic force between two balls
