@@ -40,3 +40,36 @@ __Constraints:__
 
 ---
 
+### Concatenate until Subsequence
+
+```Python
+class Solution:
+    def shortestWay(self, source: str, target: str) -> int:
+        def is_subsequence(s, t):
+            n, m = len(s), len(t)
+            i, j = 0, 0
+
+            while i < n and j < m:
+                if s[i] == t[j]:
+                    i += 1
+                j += 1
+
+            return i == n
+        
+        char_set = set(source)
+
+        # Check if all of the characters of target are present in source
+        for char in target:
+            # Check if any character is not present
+            if not char in char_set:
+                return -1
+        
+        concatenated_source = source
+        count = 1
+        # Kepp concaneting the subsequence until it becomes a subarray
+        while not is_subsequence(target, concatenated_source):
+            concatenated_source += source
+            count += 1
+        
+        return count
+```
