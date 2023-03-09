@@ -38,13 +38,16 @@ __Constraints__:
 
 - ```1 <= nums.length <= 5000```
 - -10<sup>4</sup> <= ```nums[i]``` <= 10<sup>4</sup>
-- All values of ```nums``` are unique.
+- All values of ```nums``` are __unique__.
 - ```nums``` is an ascending array that is possibly rotated.
 - -10<sup>4</sup> <= ```target``` <= 10<sup>4</sup>
 
 ---
 
 ### Two Binary Searches
+
+- __Time complexity__: ```O(log⁡N)```
+- __Space complexity__: ```O(1)```
 
 ```Python
 class Solution:
@@ -93,4 +96,57 @@ class Solution:
             return binary_search(rotate_index + 1, n - 1)
         # Otherwise, the target belongs to the non-rotated subarray
         return binary_search(0, rotate_index - 1)
+```
+
+### One Pass Binary Search
+
+Instead of going through the input array in two passes, we could achieve the goal in one pass with a revised binary search.
+
+    The idea is that we add some additional condition checks in the normal binary search in order to better narrow down the scope of the search.
+
+There could be two situations:
+
+Pivot element is larger than the first element in the array, i.e. the subarray from the first element to the pivot is non-rotated, as shown in the following graph.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array/Figures/33/33_small_mid.png)
+
+```
+  - If the target is located in the non-rotated subarray:
+  go left: `end = mid - 1`.
+
+  - Otherwise: go right: `start = mid + 1`.
+```
+
+Pivot element is smaller than the first element of the array, i.e. the rotation index is somewhere between ```0``` and ```mid```. It implies that the sub-array from the pivot element to the last one is non-rotated, as shown in the following graph.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array/Figures/33/33_big_mid.png)
+
+```
+  - If the target is located in the non-rotated subarray:
+  go right: `start = mid + 1`.
+
+  - Otherwise: go left: `end = mid - 1`.
+```
+
+```Python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        lo, hi = 0, n - 1
+
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            if nums[mi] == target:
+                return mi
+            elif nums[mi] < nums[lo]:
+                if nums[mi] < target and nums[hi] >= target: 
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+            else:
+                if nums[lo] <= target and nums[mi] > target:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+        return -1
 ```
