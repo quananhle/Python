@@ -16,6 +16,31 @@ You must write an algorithm with ```O(log n)``` runtime complexity.
 
 ---
 
+__Example 1__:
+```
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+```
+
+__Example 2__:
+```
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+```
+
+__Example 3__:
+```
+Input: nums = [1], target = 0
+Output: -1
+```
+
+__Constraints__:
+
+- ```1 <= nums.length <= 5000```
+- -10<sup>4</sup> <= ```nums[i]``` <= 10<sup>4</sup>
+- All values of ```nums``` are unique.
+- ```nums``` is an ascending array that is possibly rotated.
+- -10<sup>4</sup> <= ```target``` <= 10<sup>4</sup>
 
 ---
 
