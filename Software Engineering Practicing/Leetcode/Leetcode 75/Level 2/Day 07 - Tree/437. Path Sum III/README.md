@@ -72,6 +72,8 @@ class Solution:
         return self.count
 ```
 
+### Prefix Sun
+
 __Prefix sum__ technique: ```one pass + linear time complexity```
 
 ```
