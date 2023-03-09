@@ -2,7 +2,7 @@
 
 ## Process Flow
 
-![image](https://gitlab.fii-corp.com/swd-hou/hou_cimsv2/-/blob/quan/Chassis_CR/21.drawio.png)
+![21 drawio](https://user-images.githubusercontent.com/35042430/224184756-f7e524ef-4f8e-43c9-b9e7-43d7fc7015c4.png)
 
 ## Low Level Design:
 
@@ -204,10 +204,6 @@
 					srv_obj.connection.rename(file, path_to_fail + file)			# /CHASISS_FAIL/
 
 		db_conn.commit()
-
-	for file in file_set:
-		# Move files to the CHASSIS_IN directory
-		srv_obj.connection.rename(file, path_to_read + file)						# /CHASSIS_IN/
 	```
 	
 	```SQL
@@ -242,19 +238,78 @@
 	END	
 	```
 	
-
-	
-      v.	Method to process file is called:
+      v. Method to process file is called:
       
-        -	Move file to ```/CHASSIS_IN/```
+	- Move file to ```/CHASSIS_IN/```
 
-        -	Loop until there is no values left in the file:
+	```Python
+	for file in file_set:
+		# Move files to the CHASSIS_IN directory
+		srv_obj.connection.rename(file, path_to_read + file)						# /CHASSIS_IN/
+	```
+	
+		- Loop until there is no values left in the file:
+		- Read file by lines and split instaces by delimiters
+		- Parse the value as the parameter of stored procedure ```chassis_info_upload_sp``` and execute the SP with transtype ```SAVE_CHASSIS```
 
-          -	Read file by lines and split instaces by delimiters
+	```Python
+	# Get files
+	srv_obj.connection.cwd(path_to_read)
+	files = srv_obj.connection.listdir()
 
-          -	Parse the value as the parameter of stored procedure ```chassis_info_upload_sp``` and execute the SP with transtype ```SAVE_CHASSIS```
+	# Read files
+	for file in files:
+		try:
+			with srv_obj.connection.open(file, "r") as remote_file:
+				# Skip the header
+				next(remote_file)
+				for line in remote_file:
+					# Ignore empty spaces
+					if not line.isspace():
+						# Trim leading spaces, trailing spaces
+						data = line.strip()
+						# If not empty line, join all fields into 1 single string
+						value_fields = ''.join(map(str, data))
+						# Remove double quotes in the parameter
+						parameter = value_fields.replace("\"", "")
 
-		    -	If there  is no values to read in the file, move the file to ```/CHASSIS_OUT/```
+
+						save_params = db_obj.setparams(ptype, [save_transtype, file, parameter])
+						sp_result = db_conn.execute( stored_procedure , (save_params) )		# Exec [dbo].[chassis_info_upload_sp] 'SAVE_CHASSIS
+						db_conn.commit()
+
+				remote_file.close()
+	```
+	
+	```SQL
+	IF @transtype = 'SAVE_CHASSIS'
+	BEGIN
+
+		INSERT INTO @Data_Return(data_fields) SELECT data_fields FROM dbo.string_split_fn('CHASSIS_DATA',@chassis_data);
+		SET @status = 'OK'
+
+		SELECT @serial_number = data_fields FROM @Data_Return WHERE rowid = 1;
+		SELECT @part_number   = data_fields FROM @Data_Return WHERE rowid = 2;
+		SELECT @parent_matnr  = data_fields FROM @Data_Return WHERE rowid = 3;
+		SELECT @parent_sernr  = data_fields FROM @Data_Return WHERE rowid = 4;
+
+		EXEC sfcIstpXMLDataDetailEdit 'INSERT', @site , @datatype , @part_number , @serial_number , '' , '' , '' , '' , '' , '' ,
+									  @parent_matnr , @parent_sernr , '' , '' , '' , '' , '' , '' , '' , '' , '' , '' , '' , '' , ''
+
+		INSERT INTO mfwebservicelog WITH (ROWLOCK) VALUES ('sfcIstpXMLDataDetailEdit', @serial_number, @part_number , @file_name ,  @createdt , @last_edit_dt , @createby , '' , 'P' , '' , '');
 
 
+		RETURN 0
+	END
+	```
 
+	- If there  is no values to read in the file, move the file to ```/CHASSIS_OUT/```
+
+	```Python
+	for file in files:
+		# Move files to CHASSIS_OUT directory
+		srv_obj.connection.rename(file, path_to_write + file)
+
+
+	srv_obj.disconnect()
+	```
