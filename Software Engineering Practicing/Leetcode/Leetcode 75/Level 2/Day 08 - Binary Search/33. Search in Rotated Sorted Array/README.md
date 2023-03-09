@@ -128,6 +128,9 @@ Pivot element is smaller than the first element of the array, i.e. the rotation 
   - Otherwise: go left: `end = mid - 1`.
 ```
 
+- __Time complexity__: ```O(log⁡N)```
+- __Space complexity__: ```O(1)```
+
 ```Python
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
@@ -136,17 +139,25 @@ class Solution:
 
         while lo <= hi:
             mi = lo + (hi - lo) // 2
+            # Check if the element at the pivot index mi is the target
             if nums[mi] == target:
                 return mi
+            # Check if the element at the pivot index mi is smaller than the elemnts in its left: mi could be the rotate index or in the rotated array
             elif nums[mi] < nums[lo]:
-                if nums[mi] < target and nums[hi] >= target: 
+                # Check if target is in the right half subarray [mi + 1, hi] 
+                if nums[mi] < target <= nums[hi]: 
                     lo = mi + 1
+                # Otherwise, the target is in the left half subarray [lo, mi + 1]
                 else:
                     hi = mi - 1
+            # Otherwise, the element at pivot index mi is larger than the elements in its left: mi is in the non-rotated array
             else:
-                if nums[lo] <= target and nums[mi] > target:
+                # Check if the target is in the left half subarray [lo, mi + 1]
+                if nums[lo] <= target < nums[mi]:
                     hi = mi - 1
+                # Otherwise, the target is in the right half subarray [mi + 1, hi]
                 else:
                     lo = mi + 1
+                    
         return -1
 ```
