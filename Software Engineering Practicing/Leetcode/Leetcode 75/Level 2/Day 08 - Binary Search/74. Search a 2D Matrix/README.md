@@ -1,4 +1,4 @@
-## 74. Search a 2D Matrix
+## [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
 
 ```Tag```: ```Matrix``` ```Binary Search```
 
@@ -41,3 +41,49 @@ __Constraints:__
 - ```-10^4 <= matrix[i][j], target <= 10^4```
 
 ---
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        # Flatten the 2D matrix into 1D array
+        n, m = len(matrix), len(matrix[0])
+        array = [matrix[row][col] for row in range(n) for col in range(m)]
+
+        if len(array) == 1:
+            return target == array[-1]
+        
+        lo, hi = 0, len(array) - 1
+        
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            
+            if array[mi] < target:
+                lo = mi + 1
+            elif array[mi] > target:
+                hi = mi - 1
+            else:
+                return True
+                
+        return False
+```
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        m, n = len(matrix), len(matrix[0])
+        lo, hi = 0, m * n - 1
+        
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            
+            num = matrix[mi // n][mi % n]
+            
+            if num < target:
+                lo = mi + 1
+            elif num > target:
+                hi = mi - 1
+            else:
+                return True
+                
+        return False
+```
