@@ -1,1 +1,71 @@
+## [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 
+```Tag```: ```Binary Search```
+
+#### Difficulty: Medium
+
+There is an integer array ```nums``` sorted in ascending order (with __distinct__ values).
+
+Prior to being passed to your function, ```nums``` is possibly rotated at an unknown pivot index ```k (1 <= k < nums.length)``` such that the resulting array is ```[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]``` (__0-indexed__). For example, ```[0,1,2,4,5,6,7]``` might be rotated at pivot index ```3``` and become ```[4,5,6,7,0,1,2]```.
+
+Given the array ```nums``` after the possible rotation and an integer ```target```, return _the index of ```target``` if it is in ```nums```, or ```-1``` if it is not in ```nums```_.
+
+You must write an algorithm with ```O(log n)``` runtime complexity.
+
+![image](https://user-images.githubusercontent.com/35042430/224099024-cc87fd38-fc5e-48df-954f-cc50c030266a.png)
+
+---
+
+
+---
+
+### Two Binary Searches
+
+```Python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        def find_rotate_index(lo, hi):
+            if nums[lo] < nums[hi]:
+                return 0
+            
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                if nums[mi] > nums[mi + 1]:
+                    return mi + 1
+                else:
+                    if nums[mi] < nums[lo]:
+                        hi = mi - 1
+                    else:
+                        lo = mi + 1
+        
+        def binary_search(lo, hi):
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] < target:
+                    lo = mi + 1
+                elif nums[mi] > target:
+                    hi = mi - 1
+                else:
+                    return mi
+
+            return -1
+        
+        n = len(nums)
+        if n == 1:
+            return 0 if nums[0] == target else -1
+        
+        rotate_index = find_rotate_index(0, n - 1)
+
+        # Check if the input is rotated, if not rotated, binary search the entire array
+        if rotate_index == 0:
+            return binary_search(0, n - 1)
+        # Check if the target is the rotate index
+        if nums[rotate_index] == target:
+            return rotate_index
+        # Check if the target belongs to the rotation subarray
+        if target < nums[0]:
+            return binary_search(rotate_index + 1, n - 1)
+        # Otherwise, the target belongs to the non-rotated subarray
+        return binary_search(0, rotate_index - 1)
+```
