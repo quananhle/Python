@@ -44,6 +44,8 @@ __Constraints:__
 
 #### Concatenate until Subarray
 
+![Mind_Blowing](https://media.tenor.com/tvFWFDXRrmMAAAAd/blow-mind-mind-blown.gif)
+
 Note : This approach falls under the category of Greedy algorithm paradigm. If the task is possible to achieve, then we will always get the optimal answer, because we are greedily trying to cover as much of the target as possible with each concatenation of source.
 
 We greedily match as many characters of target as possible with each concatenation of ```source```, which leads to minimum usage of source and thus the minimum number of concatenations.
