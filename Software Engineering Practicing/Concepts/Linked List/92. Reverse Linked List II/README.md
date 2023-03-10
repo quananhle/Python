@@ -61,6 +61,35 @@ class Solution:
         return sentinel
 ```
 
+### Recursion
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        self.tail = None
+
+        def reverse(head, n):
+            if n == 1:
+                self.tail = head.next
+                return head
+
+            tail = reverse(head.next, n - 1)
+            head.next.next = head
+            head.next = self.tail
+            return tail
+
+        if left == 1:
+            return reverse(head, right)
+
+        head.next = self.reverseBetween(head.next, left-1, right-1)
+        return head      
+```
+
 __Follow up__: Could you do it in one pass?
 
 ### Recursion
@@ -114,6 +143,49 @@ class Solution:
 
 ### Iteration
 
-```Python
+![image](https://leetcode.com/problems/reverse-linked-list-ii/Figures/92/iterative-1.png)
 
+![image](https://leetcode.com/problems/reverse-linked-list-ii/Figures/92/iterative-2.png)
+
+![image](https://leetcode.com/problems/reverse-linked-list-ii/Figures/92/iterative-3.png)
+
+![image](https://leetcode.com/problems/reverse-linked-list-ii/Figures/92/iterative-4.png)
+
+![image](https://user-images.githubusercontent.com/35042430/224445223-d7f797b1-6e8f-4c38-8081-e20f442f1e53.png)
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        if not head:
+            return None
+        
+        curr, prev = head, None
+        # Move the two pointers until reaching the starting point of the sublist
+        while left > 1:
+            prev = curr
+            curr = curr.next
+            left -= 1
+            right -= 1
+        
+        tail, conn = curr, prev
+        # Reverse the nodes
+        while right:
+            tmp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = tmp
+            right -= 1
+        
+        if conn:
+            conn.next = prev
+        else:
+            head = prev
+        tail.next = curr
+        
+        return head
 ```
