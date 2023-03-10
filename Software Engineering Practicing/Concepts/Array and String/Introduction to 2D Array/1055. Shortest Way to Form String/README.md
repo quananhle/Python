@@ -42,17 +42,136 @@ __Constraints:__
 
 ### The Framework
 
+The problem is an optimization problem. We need to find __minimum__ (number of subsequences of ```source```) that satisfies some constraints (their concatenation equals ```target```). Whenever an optimization problem is given, one often dives into two Algorithm Paradigms.
+
+1. __Greedy Algorithm__: In this approach, we try to find the best solution at every step. We do not look back to see if the solution we have found is the best. We just keep on finding the best solution at every step. This approach is very fast, but it does not always give the best solution.
+
+        However, the greedy algorithm has worked well in this problem. Approach 1 follows the basic greedy template, and all Approaches 2, 3, and 4 are just variations of Approach 1. Thus, all these approaches are also greedy algorithms.
+
+2. __Dynamic Programming__: In this approach, we try to find the best solution for a given problem. We store the best solution for every subproblem. When we need to find the best solution for a problem, we look at the best solution for all the subproblems. It always gives the best solution if it exists.
+
+__Dynamic Programming Problems__ have two important components.
+
+    - Optimal Substructure: The best solution for a problem can be obtained by using the best solution for its subproblems.
+    - Overlapping Subproblems: The problem can be broken down into subproblems, which are reused several times.
+
+In any Dynamic Programming Problem, we need to find the recurrence relation. The recurrence relation is the relation between the best solution for a problem and the best solution for its subproblems.
 
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def shortestWay(self, source: str, target: str) -> int:
 
+        # Check if the Task is possible or not
+        # Set of all characters of source. Can use boolean array too.
+        source_chars = set(source)
+
+        # Check if all characters of target are present in source
+        # If any character is not present, return -1
+        for char in target:
+            if char not in source_chars:
+                return -1
+
+        # Modified is_subsequence function. in_string will always be source
+        # For to_check, passing indices of target, both included
+
+        def is_subsequence(start, end):
+
+            i = start
+            j = 0
+
+            while i <= end and j < len(source):
+                if target[i] == source[j]:
+                    i += 1
+                j += 1
+
+            return i == end + 1
+
+        # Optimal Answer for a given ending index. Memoizing using a dictionary
+        memo = {}
+
+        def optimal_answer(ending_index):
+
+            # Base case
+            if ending_index == 0:
+                return 1
+
+            # If already computed, return the value
+            if ending_index in memo:
+                return memo[ending_index]
+
+            # If is subsequence, return 1
+            if is_subsequence(0, ending_index):
+                memo[ending_index] = 1
+                return 1
+
+            # If not subsequence, partition into two parts and find minimum
+            answer = float('inf')
+
+            for partition_index in range(ending_index):
+
+                # Check for subsequence only if the answer is less
+                # than the current answer. Using AND Short Circuiting
+                if (optimal_answer(partition_index) + 1 < answer and
+                        is_subsequence(partition_index + 1, ending_index)):
+                    answer = min(answer, optimal_answer(partition_index) + 1)
+
+            # Memoize and return
+            memo[ending_index] = answer
+            return answer
+
+        # Want to find the optimal answer for the last index.
+        # Case when the task is not possible is already handled
+        return optimal_answer(len(target) - 1)
 ```
 
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def shortestWay(self, source: str, target: str) -> int:
 
+        # Check if the Task is possible or not
+        # Set of all characters of source. Can use boolean array too.
+        source_chars = set(source)
+
+        # Check if all characters of target are present in source
+        # If any character is not present, return -1
+        for char in target:
+            if char not in source_chars:
+                return -1
+
+        # Modified is_subsequence function. in_string will always be source
+        # For to_check, passing indices of target, both included
+        def is_subsequence(start, end):
+
+            i = start
+            j = 0
+
+            while i <= end and j < len(source):
+                if target[i] == source[j]:
+                    i += 1
+                j += 1
+
+            return i == end + 1
+
+        # Optimal Answer Array for each ending Index
+        opt = [float('inf')] * len(target)
+        opt[0] = 1
+
+        for ending_index in range(1, len(target)):
+            if is_subsequence(0, ending_index):
+                opt[ending_index] = 1
+            else:
+                for partition_index in range(ending_index):
+                    if (opt[partition_index] != float('inf') and
+                            is_subsequence(partition_index + 1, ending_index)):
+                        opt[ending_index] = min(
+                            opt[ending_index], opt[partition_index] + 1)
+
+        # Return Optimal Answer for last index
+        return opt[-1]
 ```
 
 ### Greedy
@@ -181,7 +300,7 @@ class Solution:
                 # Iterate through source again, hence first index of character in source
                 s = char_index[char][0] + 1
             else:
-                # Keep iterating the current index
+                # Keep iterating the current index and start searching from there next
                 s = char_index[char][index] + 1
 
         return count
@@ -190,5 +309,31 @@ class Solution:
 ### 2D Array
 
 ```Python
+class Solution:
+    def shortestWay(self, source: str, target: str) -> int:
+        n = len(source)
+        next_occurrence = [collections.defaultdict(int) for idx in range(n)]
+        
+        # Base case: the index of the last character
+        next_occurrence[n - 1][source[n-1]] = n - 1
 
+        for i in range(n - 2, -1, -1):
+            next_occurrence[i] = next_occurrence[i + 1].copy()
+            next_occurrence[i][source[i]] = i
+
+        s = 0
+        count = 1
+
+        for char in target:
+            if not char in next_occurrence[0]:
+                return -1
+            
+            # Check if source iterator has reached the end of the source, or character not in source after source iterator, loop back to the beginning
+            if s == n or not char in next_occurrence[s]:
+                count += 1
+                s = 0
+            # Move to next character in source after iterating the source iterator
+            s = next_occurrence[s][char] + 1
+
+        return count
 ```
