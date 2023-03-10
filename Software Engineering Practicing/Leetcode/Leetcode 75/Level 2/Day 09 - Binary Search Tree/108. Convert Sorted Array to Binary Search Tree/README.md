@@ -1,6 +1,6 @@
 ## [108. Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree)
 
-```Tag```: ```Binary Search Tree```
+```Tag```: ```Binary Search Tree``` ```Recursion```
 
 #### Difficulty: Easy
 
@@ -37,3 +37,93 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/Figures/108/bfs_dfs.png)
+
+
+![image](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/Figures/108/bst2.png)
+![image](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/Figures/108/height.png)
+
+### Preorder Traversal
+
+#### Recursion
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        if not nums:
+            return None
+
+        lo, hi = 0, len(nums) - 1
+        mi = lo + (hi - lo) // 2
+
+        root = TreeNode(nums[mi])
+        root.left = self.sortedArrayToBST(nums[:mi])
+        root.right = self.sortedArrayToBST(nums[mi+1:])
+
+        return root
+```
+
+#### Left Middle Node as Root
+
+![image](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/Figures/108/left.png)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        def preorder(lo, hi):
+            if lo > hi:
+                return None
+
+            mi = lo + (hi - lo) // 2
+
+            # Preorder traversal: node -> left -> right
+            root = TreeNode(nums[mi])
+            root.left = preorder(lo, mi - 1)
+            root.right = preorder(mi + 1, hi)
+            return root
+        
+        return preorder(0, len(nums) - 1)
+```
+
+#### Right Middle Node as Root
+
+![image](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/Figures/108/right.png)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        def preorder(lo, hi):
+            if lo > hi:
+                return None
+
+            mi = lo + (hi - lo) // 2
+            # Check if array has odd number of elements
+            if (lo + hi) % 2:
+                mi += 1
+
+            # Preorder traversal: node -> left -> right
+            root = TreeNode(nums[mi])
+            root.left = preorder(lo, mi - 1)
+            root.right = preorder(mi + 1, hi)
+            return root
+        
+        return preorder(0, len(nums) - 1)
+```
