@@ -71,7 +71,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ## Linked List
 
 - [142. Linked List Cycle II]
-- 382. Linked List Random Node
+- :warning::warning: [382. Linked List Random Node](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/382.%20Linked%20List%20Random%20Node) ```Linked List``` ```Design``` ```Algorithm R```
 
 
 
