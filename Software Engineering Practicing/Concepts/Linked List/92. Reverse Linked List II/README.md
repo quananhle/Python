@@ -151,7 +151,7 @@ class Solution:
 
 ![image](https://leetcode.com/problems/reverse-linked-list-ii/Figures/92/iterative-4.png)
 
-![image](https://user-images.githubusercontent.com/35042430/224445223-d7f797b1-6e8f-4c38-8081-e20f442f1e53.png)
+![image](https://leetcode.com/problems/reverse-linked-list-ii/Figures/92/iterative-5.png)
 
 ```Python
 # Definition for singly-linked list.
