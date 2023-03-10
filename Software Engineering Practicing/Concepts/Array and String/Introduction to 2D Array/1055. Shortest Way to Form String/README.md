@@ -40,6 +40,21 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
 ### Greedy
 
 #### Concatenate until Subarray
@@ -123,4 +138,57 @@ class Solution:
             s = (s + 1) % n
 
         return count
+```
+
+### Inverted Index and Binary Search
+
+#### Algorithm
+
+1. Create a 2D array ```char_index```. The size of the array will be 26 because there are 26 lowercase English letters. The list at each index will store the indices of the character corresponding to that index in the ```source``` string. This can be done by traversing the ```source``` string once and storing the indices in the ```char_index```
+
+2. Initialize ```s``` to ```0```, and ```count``` to ```1```. The former will be used to iterate over the ```source``` string, and the latter will be used to count the number of times we need to iterate over the ```source``` string.
+
+3. For every character ```char``` in the ```target``` string,
+
+    - if ```char``` is not present in the ```source``` string, return ```-1```.
+    - else, find the index of ```char``` in the ```source``` string, which is just greater than or equal to ```s```. If no such index is found, we can loop around, and thus return the first index of ```char``` in ```source```. Looping around should be marked by incrementing ```count``` by ```1```.
+    - Index can be found using binary search on ```char_index[char]```.
+    - Update ```s``` to the successor index because next time, we will start searching from the successor index.
+
+4. Return ```count```.
+
+```Python
+class Solution:
+    def shortestWay(self, source: str, target: str) -> int:
+        # Size of the dictionary will be 26 because there are 26 lowercase English letters
+        char_index = collections.defaultdict(list)
+        for i, c in enumerate(source):
+            char_index[c].append(i)
+        
+        s = 0
+        count = 1
+
+        for char in target:
+            if not char in char_index:
+                return -1
+
+            # Binary search to find the index of the character in source next to the current source_iterator
+            index = bisect.bisect_left(char_index[char], s)
+
+            # Ensure source iterator reset to the first index after the reached the last index
+            if index == len(char_index[char]):
+                count += 1
+                # Iterate through source again, hence first index of character in source
+                s = char_index[char][0] + 1
+            else:
+                # Keep iterating the current index
+                s = char_index[char][index] + 1
+
+        return count
+```
+
+### 2D Array
+
+```Python
+
 ```
