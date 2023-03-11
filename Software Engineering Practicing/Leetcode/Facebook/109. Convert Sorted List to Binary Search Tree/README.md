@@ -71,3 +71,97 @@ class Solution:
 
         return build_tree(lo, hi)
 ```
+
+### Recursion
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+        if not head:
+            return None
+
+        def find_middle_node(head):
+            if not head:
+                return None
+
+            prev = None
+            slow, fast = head, head
+            while fast and fast.next:
+                prev = slow
+                slow = slow.next
+                fast = fast.next.next
+            
+            if prev:
+                prev.next = None
+
+            return slow
+
+        mid = find_middle_node(head)
+        root = TreeNode(mid.val)
+
+        if head == mid:
+            return root
+        
+        root.left = self.sortedListToBST(head)
+        root.right = self.sortedListToBST(mid.next)
+        return root
+```
+
+### Inorder Traversal
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+        def get_size(head):
+            curr = head
+            count = 0
+            while curr:
+                curr = curr.next
+                count += 1
+            return count
+        
+        size = get_size(head)
+
+        def build_tree(lo, hi):
+            nonlocal head
+
+            if lo > hi:
+                return None
+            
+            mi = lo + (hi - lo) // 2
+
+            left_child = build_tree(lo, mi - 1)
+            
+            root = TreeNode(head.val)
+            root.left = left_child
+
+            # Move head pointer to the right until the middle node
+            head = head.next
+            # Start buiding the right child of the tree
+            root.right = build_tree(mi + 1, hi)
+            return root
+        
+        return build_tree(0, size - 1)
+```
