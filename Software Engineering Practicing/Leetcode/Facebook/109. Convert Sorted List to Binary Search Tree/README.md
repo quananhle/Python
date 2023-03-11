@@ -31,3 +31,43 @@ __Constraints:__
 - -10<sup>5</sup> <= ```Node.val``` <= 10<sup>5</sup>
 
 ---
+
+### Stack
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+        stack = list()
+        while head:
+            stack.append(head.val)
+            head = head.next
+        
+        def build_tree(lo, hi):
+            # Base case
+            if lo > hi:
+                return
+            
+            mi = lo + (hi - lo) // 2
+            
+            root = TreeNode(stack[mi])
+            root.left = build_tree(lo, mi - 1)
+            root.right = build_tree(mi + 1, hi)
+
+            return root
+
+        n = len(stack)
+        lo, hi = 0, n - 1
+
+        return build_tree(lo, hi)
+```
