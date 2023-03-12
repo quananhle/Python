@@ -51,6 +51,9 @@ __Constraints:__
 
 ### Brute Force (Stack & Sort)
 
+- __Time Complexity__: ```O(Nlog⁡N)``` where ```N``` is the total number of nodes.
+- __Space Complexity__: ```O(N)```
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
@@ -72,4 +75,33 @@ class Solution:
             head = head.next
         
         return sentinel.next
+```
+
+### Priority Queue (Heap)
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        head = curr = ListNode(0)
+        queue = list()
+        for ll in lists:
+            while ll:
+                heapq.heappush(queue, ll.val)
+                ll = ll.next
+        
+        while queue:
+            node = heapq.heappop(queue)
+            curr.next = ListNode(node)
+            curr = curr.next
+        
+        return head.next
+```
+
+```Python
+
 ```
