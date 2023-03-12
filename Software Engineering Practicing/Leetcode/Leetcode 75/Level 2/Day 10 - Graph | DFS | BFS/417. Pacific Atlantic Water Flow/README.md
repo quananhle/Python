@@ -126,3 +126,40 @@ class Solution:
 
         return list(pacific & atlantic)
 ```
+
+```Python
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        if not heights or not heights[0]:
+            return list()
+
+        ROWS, COLS = len(heights), len(heights[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+        pacific = set()
+        atlantic = set()
+
+        def dfs(row, col, reachable, prev_height):
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in reachable and heights[row][col] >= prev_height):
+                return
+                
+            reachable.add((row, col))
+            [dfs(row + dx, col + dy, reachable, heights[row][col]) for dx, dy in DIRECTIONS]
+
+        for row in range(ROWS):
+            dfs(row, 0, pacific, heights[row][0])
+            dfs(row, COLS - 1, atlantic, heights[row][COLS - 1])
+
+        for col in range(COLS):
+            dfs(0, col, pacific, heights[0][col])
+            dfs(ROWS - 1, col, atlantic, heights[ROWS - 1][col])
+
+        res = list()
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if (row, col) in pacific and (row, col) in atlantic:
+                    res.append([row, col])
+
+        return res
+```
