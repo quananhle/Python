@@ -44,6 +44,7 @@
 
 - :four_leaf_clover:[1539. Kth Missing Positive Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1539.%20Kth%20Missing%20Positive%20Number)
 - :warning::warning:[2187. Minimum Time to Complete Trips](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/2187.%20Minimum%20Time%20to%20Complete%20Trips)
+
 ---
 
 ## Dynamic Programming
@@ -62,6 +63,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ### Prefix Sum
 
 - :warning::warning: [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) ```Prefix Sum``` ```Dynamic Programming```
+
 ---
 
 ## Graph | Breadth-First Search | Depth-First Search
@@ -78,9 +80,13 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 - :warning::warning: [417. Pacific Atlantic Water Flow](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2010%20-%20Graph%20%7C%20DFS%20%7C%20BFS/417.%20Pacific%20Atlantic%20Water%20Flow)
 
+---
+
 ## Greedy
 
 - [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
+
+---
 
 ## Linked List
 
@@ -90,6 +96,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [382. Linked List Random Node](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/382.%20Linked%20List%20Random%20Node) ```Linked List``` ```Design``` ```Algorithm R```
 
 
+---
 
 ## Recursion
 
@@ -111,6 +118,8 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - [1087. Brace Expansion]
 - [93. Restore IP addresses]
 - [1079 Letter Tile Possibilities]
+
+---
 
 ## Tree
 
