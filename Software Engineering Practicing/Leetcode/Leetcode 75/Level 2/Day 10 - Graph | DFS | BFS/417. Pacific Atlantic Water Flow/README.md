@@ -90,3 +90,39 @@ class Solution:
             
         return list(bfs(PACIFIC) & bfs(ATLANTIC))
 ```
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        if not heights or not heights[0]:
+            return list()
+
+        ROWS, COLS = len(heights), len(heights[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+        pacific = set()
+        atlantic = set()
+
+        def dfs(row, col, reachable):
+            reachable.add((row, col))
+            for new_row, new_col in ([(row + dx, col + dy) for dx, dy in DIRECTIONS]):
+                if not (0 <= new_row < ROWS and 0 <= new_col < COLS and not (new_row, new_col) in reachable):
+                    continue
+                # Check if the water can flow from new cell to old cell to the oceans
+                if heights[new_row][new_col] < heights[row][col]:
+                    continue
+
+                dfs(new_row, new_col, reachable)
+
+        for row in range(ROWS):
+            dfs(row, 0, pacific)
+            dfs(row, COLS - 1, atlantic)
+
+        for col in range(COLS):
+            dfs(0, col, pacific)
+            dfs(ROWS - 1, col, atlantic)
+
+        return list(pacific & atlantic)
+```
