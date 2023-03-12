@@ -79,6 +79,10 @@ class Solution:
 
 ### Priority Queue (Heap)
 
+
+- __Time Complexity__: ```O(Nlog⁡k)``` where ```k``` is the number of linked lists.
+- __Space Complexity__: ```O(N)```
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
@@ -103,5 +107,63 @@ class Solution:
 ```
 
 ```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        h = [(ll.val, idx) for idx, ll in enumerate(lists) if ll]
+        heapq.heapify(h)
+        head = curr = ListNode(None)
 
+        while h:
+            val, idx = heapq.heappop(h)
+            curr.next = ListNode(val)
+            curr = curr.next
+            node = lists[idx] = lists[idx].next
+            if node:
+                heapq.heappush(h, (node.val, idx))
+                
+        return head.next
+```
+
+### Divide and Conquer
+
+![image](https://leetcode.com/problems/merge-k-sorted-lists/Figures/23/23_divide_and_conquer_new.png)
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        # Merge 2 Sorted Lists
+        def conquer(l1, l2):
+            head = curr = ListNode(None)
+            while l1 and l2:
+                if l1.val <= l2.val:
+                    curr.next = l1
+                    l1 = l1.next
+                else:
+                    curr.next = l2
+                    l2 = l2.next
+                curr = curr.next
+            
+            if l1:
+                curr.next = l1
+            else:
+                curr.next = l2
+            return head.next
+
+        size = len(lists)
+        interval = 1
+        # Divide
+        while interval < size:
+            for i in range(0, size - interval, interval * 2):
+                lists[i] = conquer(lists[i], lists[i + interval])
+            interval *= 2
 ```
