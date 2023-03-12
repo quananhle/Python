@@ -91,6 +91,54 @@ class Solution:
         return list(bfs(PACIFIC) & bfs(ATLANTIC))
 ```
 
+```Python
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        if not heights or not heights[0]:
+            return list()
+
+        ROWS, COLS = len(heights), len(heights[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+        pacific = collections.deque()
+        atlantic = collections.deque()
+        pacific_reachable = [[False] * COLS for _ in range(ROWS)]
+        atlantic_reachable = [[False] * COLS for _ in range(ROWS)]
+
+        for row in range(ROWS):
+            pacific.append((row, 0))
+            pacific_reachable[row][0] = True
+            atlantic.append((row, COLS - 1))
+            atlantic_reachable[row][COLS - 1] = True
+
+        for col in range(COLS):
+            pacific.append((0, col))
+            pacific_reachable[0][col] = True
+            atlantic.append((ROWS - 1, col))
+            atlantic_reachable[ROWS - 1][col] = True
+        
+        def bfs(queue, reachable):
+            while queue:
+                row, col = queue.popleft()
+                for new_row, new_col in ([(row + dx, col + dy) for dx, dy in DIRECTIONS]):
+                    if not (0 <= new_row < ROWS and 0 <= new_col < COLS and not reachable[new_row][new_col]):
+                        continue
+                    if heights[new_row][new_col] >= heights[row][col]:
+                        reachable[new_row][new_col] = True
+                        queue.append((new_row, new_col))
+        
+        bfs(pacific, pacific_reachable)
+        bfs(atlantic, atlantic_reachable)
+
+        res = list()
+        for row in range(ROWS):
+            for col in range(COLS):
+                if pacific_reachable[row][col] and atlantic_reachable[row][col]:
+                    res.append([row, col])
+        
+        return res
+```
+
 ### Depth-First Search
 
 ```Python
