@@ -51,6 +51,44 @@ __Constraints:__
 
 ### Breath-First Search
 
-```Python
+Because the process of rotting could be explained perfectly with the BFS procedure, i.e. the rotten oranges will contaminate their neighbors first, before the contamination propagates to other fresh oranges that are farther away.
 
+![image](https://leetcode.com/problems/rotting-oranges/Figures/994/994_grid_graph.png)
+
+```Python
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        m, n = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+
+        queue = collections.deque()
+        fresh = 0
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 2:
+                    queue.append((row, col))
+                elif grid[row][col] == 1:
+                    fresh += 1
+        
+        minutes = 0
+
+        while queue and fresh > 0:
+            minutes += 1
+
+            for _ in range(len(queue)):
+                row, col = queue.popleft()
+                
+                for dx, dy in DIRECTIONS:
+                    new_row, new_col = row + dx, col + dy
+
+                    if not (0 <= new_row < ROWS and 0 <= new_col < COLS) or not (grid[new_row][new_col] == 1):
+                        continue
+
+                    fresh -= 1
+                    grid[new_row][new_col] = 2
+                    queue.append((new_row, new_col))
+
+        return minutes if not fresh else -1
 ```
