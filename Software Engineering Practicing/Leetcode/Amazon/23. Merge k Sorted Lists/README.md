@@ -1,6 +1,6 @@
 ## [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
 
-```Tag```: ```Linked List```
+```Tag```: ```Linked List``` ```Priority Queue``` ```Divide & Conquer```
 
 #### Difficulty: Hard
 
@@ -49,6 +49,27 @@ __Constraints:__
 
 ---
 
-```Python
+### Brute Force (Stack & Sort)
 
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        nodes = list()
+        sentinel = head = ListNode(0)
+        for ll in lists:
+            while ll:
+                nodes.append(ll.val)
+                ll = ll.next
+        
+        nodes.sort()
+        for node in nodes:
+            head.next = ListNode(node)
+            head = head.next
+        
+        return sentinel.next
 ```
