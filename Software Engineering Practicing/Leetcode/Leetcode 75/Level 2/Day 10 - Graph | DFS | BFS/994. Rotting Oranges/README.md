@@ -1,6 +1,6 @@
 ## [994. Rotting Oranges](https://leetcode.com/problems/rotting-oranges/)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Recursion```
+```Tag```: ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -120,4 +120,45 @@ class Solution:
                         queue.append(neighbor)
             
         return minutes if not fresh else -1
+```
+
+### In-place Breath-First Search
+
+The secret in doing BFS traversal without a queue lies in the technique called in-place algorithm, which transforms input to solve the problem without using auxiliary data structure.
+
+The idea is that at each round of the BFS, we mark the cells to be visited in the input grid with a specific ```timestamp```
+
+![image](https://leetcode.com/problems/rotting-oranges/Figures/994/994_timestamp_I.png)
+![image](https://leetcode.com/problems/rotting-oranges/Figures/994/994_timestamp_II.png)
+
+```Python
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+
+        def bfs(timestamp):
+            stop = False
+            for x in range(ROWS):
+                for y in range(COLS):
+                    if grid[x][y] == timestamp:
+                        for dx, dy in DIRECTIONS:
+                            row, col = x + dx, y + dy
+                            if not (0 <= row < ROWS and 0 <= col < COLS):
+                                continue
+                            if grid[row][col] == 1:
+                                grid[row][col] = timestamp + 1
+                                stop = True
+            return stop
+        
+        timestamp = 2
+        while bfs(timestamp):
+            timestamp += 1
+        
+        for row in grid:
+            for orange in row:
+                if orange == 1:
+                    return -1
+        
+        return timestamp - 2
 ```
