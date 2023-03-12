@@ -55,3 +55,38 @@ __Constraints:__
 - 0 <= ```heights[r][c]``` <= 10<sup>5</sup>
   
 ---
+
+### Breadth-First Search
+  
+```Python
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(heights), len(heights[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+        PACIFIC = collections.deque()
+        ATLANTIC = collections.deque()
+
+        for row in range(ROWS):
+            PACIFIC.append((row, 0))
+            ATLANTIC.append((row, COLS - 1))
+        for col in range(COLS):
+            PACIFIC.append((0, col))
+            ATLANTIC.append((ROWS - 1, col))
+
+        def bfs(queue):
+            reachable = set()
+            while queue:
+                row, col = queue.popleft()
+                reachable.add((row, col))
+                for new_row, new_col in ([(row + dx, col + dy) for dx, dy in DIRECTIONS]):
+                    if not (0 <= new_row < ROWS and 0 <= new_col < COLS and not (new_row, new_col) in reachable):
+                        continue
+                    # Check if the water can flow from new cell to old cell to the oceans
+                    if heights[new_row][new_col] < heights[row][col]:
+                        continue
+                    queue.append((new_row, new_col))
+            return reachable
+            
+        return list(bfs(PACIFIC) & bfs(ATLANTIC))
+```
