@@ -80,6 +80,50 @@ class Solution:
 ```Python
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        @lru_cache(None)
+        def dp(i):
+            # Base case
+            if i < 0:
+                return 0
+            
+            # Recurrence relation: 
+            # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
+            # If decide to rob house 1, gain the money from the current house and go to 2 houses down
+            # If decide to rob house 2, gain no money from the current house
+            return max(dp(i - 1), dp(i - 2) + nums[i])
+
+        return dp(n - 1)
+```
+
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        memo = collections.defaultdict(int)
+        
+        def dp(i):
+            # Base case
+            if i >= n:
+                return 0
+            if i in memo:
+                return memo[i]
+
+            # Recurrence relation: 
+            # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
+            # If decide to rob house 1, gain the money from the current house and go to 2 houses down
+            # If decide to rob house 2, gain no money from the current house
+            memo[i] = max(dp(i + 1), dp(i + 2) + nums[i])
+            return memo[i]
+
+        return dp(0)
+```
+
+
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
         # Bottom-Up DP (Tabulation)
         #### Time Complexity: O(N)
         if len(nums) == 1:
