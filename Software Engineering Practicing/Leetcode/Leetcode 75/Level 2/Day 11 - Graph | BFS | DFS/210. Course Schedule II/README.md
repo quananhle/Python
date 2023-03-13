@@ -52,6 +52,9 @@ __Constraints:__
 
 ### Depth-First Search
 
+- __Time Complexity__: ```O(V + E)``` where ```V``` represents the number of vertices and ```E``` represents the number of edges.
+- __Space Complexity__: ```O(V + E)```
+
 ```Python
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
@@ -101,6 +104,9 @@ class Solution:
 ```
 
 ### Kahn's Algorithm
+
+- __Time Complexity__: ```O(V + E)``` where ```V``` represents the number of vertices and ```E``` represents the number of edges.
+- __Space Complexity__: ```O(V + E)```
 
 ```Python
 class Solution:
