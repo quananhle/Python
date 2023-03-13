@@ -39,3 +39,83 @@ __Constraints:__
 - 0 <= ```source, target``` < 10<sup>6</sup>
 
 ---
+
+### Breadth-First Search
+
+Instead of thinking of the stops as nodes (of a graph), think of the buses as nodes. We want to take the least number of buses, which is a __shortest path problem__, conducive to using a breadth-first search.
+
+```Python
+class Solution:
+    def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
+        # In BFS, we need to traverse all positions in each level firstly, and then go to the next level.
+        # Our task is to figure out:
+        # 1. What is the level in this problem?
+        # 2. What is the position we want in this problem?
+        # 3. How to traverse all positions in a level?
+        # 
+        # For this problem:
+        # 1. The level is each time to take bus.
+        # 2. The position is all of the stops you can reach for taking one time of bus.
+        # 3. Using a queue to record all of the stops can be arrived for each time you take buses.
+
+        # Breadth-First Search
+        if source == target:
+            return 0
+        
+        graph = collections.defaultdict(set)
+        for bus, stops in enumerate(routes):
+            for stop in stops:
+                graph[stop].add(bus)
+
+        queue = collections.deque([source])
+        taken = set()
+        ans = 0
+
+        while queue:
+            ans += 1
+            for _ in range(len(queue)):
+                curr_stop = queue.popleft()
+                for bus in graph[curr_stop]:
+                    if bus in taken:
+                        continue
+                    taken.add(bus)
+                    for stop in routes[bus]:
+                        if stop == target:
+                            return ans
+                        queue.append(stop)
+        
+        return -1
+```
+
+
+```Python
+class Solution:
+    def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
+        graph = collections.defaultdict(set)
+        for bus, route in enumerate(routes):
+            for stop in route:
+                graph[stop].add(bus)
+
+        # Start from the source with 0 ticket to buy. Number of tickets to buy is the number of buses to take to reach target from source
+        queue = collections.deque([(source, 0)])
+        visited = set([source])
+
+        while queue:
+            stop, ticket = queue.popleft()
+            if stop == target: 
+                return ticket
+            # Check every bus that goes to the current stop
+            for bus in graph[stop]:
+                # Check every stop in the route of the current bus 
+                for next_stop in routes[bus]:
+                    # Avoid revisiting the same stop
+                    if next_stop in visited:
+                        continue
+                    # Check the next stop and buy 1 bus ticket
+                    queue.append((next_stop, ticket + 1))
+                    visited.add(next_stop)
+                # Clear the route of the taken bus
+                routes[bus] = []
+        return -1
+```
+
