@@ -1,6 +1,6 @@
 ## [210. Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Depth-First Search``` ```Kahn's Algorithm``` ```Topological Sorted Order```
 
 #### Difficulty: Medium
 
@@ -45,3 +45,87 @@ __Constraints:__
 - All the pairs ```[ai, bi]``` are distinct.
 
 ---
+
+![image](https://leetcode.com/problems/course-schedule-ii/Figures/210_Course_Schedule_2/Fig-1.png)
+
+![image](https://leetcode.com/problems/course-schedule-ii/Figures/210_Course_Schedule_2/Fig-2.png)
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        # Depth-First Search
+
+        graph = collections.defaultdict(set)
+
+        # Build the adjacency list
+        for x, y in prerequisites:
+            graph[x].add(y)
+        res = list()
+        
+        # Flag to detect cycle
+        not_cycle = True
+
+        # Base case: all unvisited nodes are marked as white
+        color = ["WHITE" for _ in range(numCourses)]
+
+        def dfs(curr):
+            nonlocal not_cycle
+            # Check if there is a cycle
+            if not not_cycle:
+                return
+
+            # Mark the current node gray as the node is being visited
+            color[curr] = "GRAY"
+
+            
+            if curr in graph:
+                for neighbor in graph[curr]:
+                    # If next node is new, keep searching
+                    if color[neighbor] == "WHITE":
+                        dfs(neighbor)
+                    # If next node was visited, cycle is detected
+                    elif color[neighbor] == "GRAY":
+                        not_cycle = False
+                    
+            # Mark the node black after recursion completed
+            color[curr] = "BLACK"
+            res.append(curr)
+        
+        for vertex in range(numCourses):
+            if color[vertex] == "WHITE":
+                dfs(vertex)
+        
+        return res if not_cycle else list()
+```
+
+### Kahn's Algorithm
+
+```Python
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        # Build the adjacency list
+        graph = collections.defaultdict(set)
+        indegree = dict()
+        for destination, source in prerequisites:
+            graph[source].add(destination)
+            indegree[destination] = 1 + indegree.get(destination, 0)
+
+        queue = collections.deque([k for k in range(numCourses) if not k in indegree])
+
+        res = list()
+
+        while queue:
+            curr = queue.popleft()
+            res.append(curr)
+
+            if curr in graph:
+                for next in graph[curr]:
+                    indegree[next] -= 1
+
+                    if indegree[next] == 0:
+                        queue.append(next)
+
+        return res if len(res) == numCourses else list()
+```
