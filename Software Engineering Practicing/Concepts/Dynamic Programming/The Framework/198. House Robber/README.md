@@ -187,6 +187,22 @@ class Solution(object):
         return memo[-1]
 ```
 
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [0 for _ in range(n + 1)]
+        
+        # Base case
+        dp[n - 1], dp[n - 2] = nums[n - 1], max(nums[n - 1], nums[n - 2])
+
+        # Recurrence relation
+        for i in range(n - 2, -1, -1):
+            dp[i] = max(dp[i + 1], dp[i + 2] + nums[i])
+
+        return dp[0]
+```
+
 ### Iterative Bottom-Up Dynamic Programming
 
 ```Python
