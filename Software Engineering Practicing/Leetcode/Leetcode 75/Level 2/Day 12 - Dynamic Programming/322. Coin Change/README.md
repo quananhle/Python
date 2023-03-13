@@ -76,6 +76,29 @@ class Solution:
 ```Python
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
+        @lru_cache(None)
+        def dp(remaining):
+            # Base case
+            if remaining < 0:
+                return -1
+            if remaining == 0:
+                return 0
+            
+            ans = math.inf
+
+            for coin in coins:
+                total_coins = dp(remaining - coin)
+                if total_coins != -1:
+                    ans = min(ans, total_coins + 1)
+            
+            return ans if ans != math.inf else -1
+            
+        return dp(amount)
+```
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
         n = len(coins)
         memo = collections.defaultdict(int)
         
