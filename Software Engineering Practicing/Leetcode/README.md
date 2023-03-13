@@ -50,9 +50,11 @@
 ## Dynamic Programming
 
 - [139. Word Break]
+- :warning::warning: [152. Maximum Product Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/152.%20Maximum%20Product%20Subarray)
 - :warning::warning: [198. House Robber](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/198.%20House%20Robber)
 - [279. Perfect Squares]
 - :warning::warning: [322. Coin Change](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/322.%20Coin%20Change)
+- :warning::warning: [416. Partition Equal Subset Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/416.%20Partition%20Equal%20Subset%20Sum)
 - [518. Coin Change II]
 - [1155. Number of Dice Rolls With Target Sum]
 
@@ -134,7 +136,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 #### Monotonic Stack
 
-```
+---
 
 ## Tree
 
