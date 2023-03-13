@@ -76,29 +76,6 @@ class Solution:
 ```Python
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        @lru_cache(None)
-        def dp(remaining):
-            # Base case
-            if remaining < 0:
-                return -1
-            if remaining == 0:
-                return 0
-            
-            ans = math.inf
-
-            for coin in coins:
-                total_coins = dp(remaining - coin)
-                if total_coins != -1:
-                    ans = min(ans, total_coins + 1)
-            
-            return ans if ans != math.inf else -1
-            
-        return dp(amount)
-```
-
-```Python
-class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int:
         n = len(coins)
         memo = collections.defaultdict(int)
         
@@ -127,3 +104,49 @@ class Solution:
         return ans if ans != math.inf else -1
 ```
 
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+![image](https://user-images.githubusercontent.com/35042430/219751308-2390dc0c-86bb-4d90-b672-758df2892625.png)
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        n = len(coins)
+        dp = [[math.inf] * (amount + 1) for _ in range(n + 1)]
+
+        for curr in range(n):
+            dp[curr][0] = 0
+            for remaining in range(1, amount + 1):
+                dp[curr][remaining] = dp[curr - 1][remaining]
+                if remaining >= coins[curr]:
+                    dp[curr][remaining] = min(dp[curr][remaining], dp[curr][remaining - coins[curr]] + 1)
+
+        return dp[n - 1][amount] if dp[n - 1][amount] != math.inf else -1
+```
+
+---
+
+### Modified Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        @lru_cache(None)
+        def dp(remaining):
+            # Base case
+            if remaining < 0:
+                return -1
+            if remaining == 0:
+                return 0
+            
+            ans = math.inf
+
+            for coin in coins:
+                total_coins = dp(remaining - coin)
+                if total_coins != -1:
+                    ans = min(ans, total_coins + 1)
+            
+            return ans if ans != math.inf else -1
+            
+        return dp(amount)
+```
