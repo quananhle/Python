@@ -115,13 +115,35 @@ class Solution:
         dp = [[math.inf] * (amount + 1) for _ in range(n + 1)]
 
         for curr in range(n):
+            # Base case
             dp[curr][0] = 0
             for remaining in range(1, amount + 1):
+                # Recurrence relation
                 dp[curr][remaining] = dp[curr - 1][remaining]
                 if remaining >= coins[curr]:
                     dp[curr][remaining] = min(dp[curr][remaining], dp[curr][remaining - coins[curr]] + 1)
 
         return dp[n - 1][amount] if dp[n - 1][amount] != math.inf else -1
+```
+
+#### Optimized Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        n = len(coins)
+        dp = [math.inf] * (amount + 1)
+        
+        # Base case
+        dp[0] = 0
+
+        for coin in coins:
+            for remaining in range(1, amount + 1):
+                if remaining >= coin:
+                    # Recurrence relation
+                    dp[remaining] = min(dp[remaining], dp[remaining - coin] + 1)
+        
+        return dp[amount] if dp[amount] != math.inf else -1
 ```
 
 ---
