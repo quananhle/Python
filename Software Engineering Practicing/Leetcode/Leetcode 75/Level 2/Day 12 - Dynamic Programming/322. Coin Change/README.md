@@ -73,4 +73,34 @@ class Solution:
         return ans if ans != math.inf else -1
 ```
 
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        n = len(coins)
+        memo = collections.defaultdict(int)
+        
+        def dp(curr, remaining):
+            # Base case
+            if remaining == 0:
+                return 0
+            if remaining < 0 or curr < 0:
+                return math.inf
+
+            if (curr, remaining) in memo:
+                return memo[(curr, remaining)]
+
+            # Recurrence relation: is the current coin a possible denomination or next coin?
+            
+            # Check the next coin
+            memo[(curr, remaining)] = dp(curr - 1, remaining)
+
+            # Check the current coin
+            if remaining >= coins[curr]:
+                memo[(curr, remaining)] = min(memo[(curr, remaining)], dp(curr, remaining - coins[curr]) + 1)
+
+            return memo[(curr, remaining)]
+
+        ans = dp(n - 1, amount)
+        return ans if ans != math.inf else -1
+```
 
