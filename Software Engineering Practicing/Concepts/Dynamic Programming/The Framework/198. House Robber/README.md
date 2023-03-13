@@ -194,7 +194,10 @@ class Solution:
         dp = [0 for _ in range(n + 1)]
         
         # Base case
+        '''
         dp[n - 1], dp[n - 2] = nums[n - 1], max(nums[n - 1], nums[n - 2])
+        '''
+        dp[n - 1] = nums[n - 1]
 
         # Recurrence relation
         for i in range(n - 2, -1, -1):
