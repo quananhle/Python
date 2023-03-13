@@ -96,13 +96,15 @@ class Solution:
             for stop in route:
                 graph[stop].add(bus)
 
-        # Start from the source with 0 ticket to buy. Number of tickets to buy is the number of buses to take to reach target from source
+        # Start from the source with 0 ticket to buy. 
         queue = collections.deque([(source, 0)])
         visited = set([source])
 
         while queue:
             stop, ticket = queue.popleft()
-            if stop == target: 
+            # Check if reached the target
+            if stop == target:         
+                # Number of tickets to buy is the number of buses to take to reach target from source        
                 return ticket
             # Check every bus that goes to the current stop
             for bus in graph[stop]:
