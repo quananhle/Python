@@ -217,9 +217,11 @@ class Solution(object):
         """
         # Iterative Dynamic Programming
         house1, house2 = 0, 0
-        for num in nums:
+
+        for gain in nums:
             tmp = house1
-            house1 = max(house2 + num, house1)
+            house1 = max(house1, house2 + gain)
             house2 = tmp
+
         return house1
 ```
