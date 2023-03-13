@@ -44,3 +44,33 @@ __Constraints:__
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        n = len(coins)
+
+        @lru_cache(None)
+        def dp(curr, remaining):
+            # Base case
+            if remaining == 0:
+                return 0
+            if remaining < 0 or curr < 0:
+                return math.inf
+
+            # Recurrence relation: is the current coin a possible denomination or next coin?
+            
+            # Check the next coin
+            ans = dp(curr - 1, remaining)
+
+            # Check the current coin
+            if remaining >= coins[curr]:
+                ans = min(ans, dp(curr, remaining - coins[curr]) + 1)
+
+            return ans
+
+        ans = dp(n - 1, amount)
+        return ans if ans != math.inf else -1
+```
+
+
