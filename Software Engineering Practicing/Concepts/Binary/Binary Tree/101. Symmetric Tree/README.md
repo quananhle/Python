@@ -36,6 +36,8 @@ The number of nodes in the tree is in the range [1, 1000].
 
 ### Top-Down Recursion
 
+![image](https://leetcode.com/media/original_images/101_Symmetric_Mirror.png)
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -45,31 +47,34 @@ The number of nodes in the tree is in the range [1, 1000].
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        stack1 = list()
-        stack2 = list()
-        
-        def left_subtree(stack, node):
-            if not node:
-                stack.append("None")
-                return
-            if node:
-                stack.append(node.val)
-            left_subtree(stack, node.left)
-            left_subtree(stack, node.right)
+        if not root:
+            return None
 
-        def right_subtree(stack, node):
+        left = list()
+        right = list()
+
+        def left_subtree(node):
             if not node:
-                stack.append("None")
+                left.append(None)
                 return
-            if node:
-                stack.append(node.val)
-            right_subtree(stack, node.right)
-            right_subtree(stack, node.left)
-        
-        left_subtree(stack1, root)
-        right_subtree(stack2, root)
-        
-        return stack1 == stack2
+            else:
+                left.append(node.val)
+            left_subtree(node.left)
+            left_subtree(node.right)
+
+        def right_subtree(node):
+            if not node:
+                right.append(None)
+                return
+            else:
+                right.append(node.val)
+            right_subtree(node.right)
+            right_subtree(node.left)
+
+        left_subtree(root.left)
+        right_subtree(root.right)
+
+        return left == right
 ```
 
 ```Python
