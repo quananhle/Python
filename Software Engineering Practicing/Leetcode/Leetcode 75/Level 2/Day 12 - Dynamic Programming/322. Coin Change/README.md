@@ -172,3 +172,47 @@ class Solution:
             
         return dp(amount)
 ```
+
+---
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        ### Time Limit Exceeded
+        if not amount:
+            return amount
+
+        n = len(coins)
+        queue = collections.deque([(0, amount)])
+
+        while queue:
+            current, remaining = queue.popleft()
+            for coin in coins:
+                if remaining == coin:
+                    return current + 1
+                elif remaining > coin:
+                    queue.append((current + 1, remaining - coin))
+        
+        return -1
+```
+
+```Python
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        queue = collections.deque([(0, amount)])
+        seen = set([amount])
+
+        while queue:
+            current, remaining = queue.popleft()
+            if remaining == 0:
+                return current
+
+            for coin in coins:
+                if remaining >= coin and not remaining - coin in seen:
+                    queue.append((current + 1, remaining - coin))
+                    seen.add(remaining - coin)
+
+        return -1
+```
