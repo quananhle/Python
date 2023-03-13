@@ -1,4 +1,4 @@
-## 322. Coin Change
+## [322. Coin Change](https://leetcode.com/problems/coin-change/)
 
 ```Tag```: ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search```
 
