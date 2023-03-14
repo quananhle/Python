@@ -177,5 +177,57 @@ __Follow up__: If you have figured out the O(n) solution, try coding another sol
 ### Divide & Conquer
 
 ```Python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        def maxSubArray(left, right):
+            if left > right: 
+                return -math.inf
 
+            mid = left + (right - left) // 2
+            left_sum, right_sum, curr_sum = 0, 0, 0
+
+            for i in range(mid - 1, left - 1, -1):
+                '''
+                left_sum = max(left_sum, cur_sum := cur_sum + A[i])
+                '''
+                curr_sum += nums[i]
+                left_sum = max(left_sum, curr_sum)
+
+            curr_sum = 0
+
+            for i in range(mid + 1, right + 1):
+                '''
+                right_sum = max(right_sum, cur_sum := cur_sum + A[i])
+                '''
+                curr_sum += nums[i]
+                right_sum = max(right_sum, curr_sum)           
+     
+            return max(maxSubArray(left, mid - 1), maxSubArray(mid + 1, right), left_sum + nums[mid] + right_sum)
+
+        return maxSubArray(0, len(nums)-1)
+```
+
+### Precomputed
+
+```Python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        '''
+        prefix, suffix = [*nums], [*nums]
+        '''
+        prefix, suffix = nums.copy(), nums.copy()
+
+        for i in range(1, len(nums)):       
+            prefix[i] += max(0, prefix[i - 1])
+
+        for i in range(len(nums) - 2, -1, -1):
+            suffix[i] += max(0, suffix[i + 1])
+
+        def maxSubArray(left, right):
+            if left == right: 
+                return nums[left]
+            mid = left + (right - left) // 2
+            return max(maxSubArray(left, mid), maxSubArray(mid + 1, right), prefix[mid] + suffix[mid + 1])
+
+        return maxSubArray(0, len(nums) - 1)
 ```
