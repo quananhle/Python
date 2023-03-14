@@ -67,20 +67,20 @@ __Constraints:__
 #         self.right = right
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        ans = 0
-        stack = [(root, 0)]
+        if not root:
+            return None
 
-        while stack:
-            node, curr = stack.pop()
-            if node:
-                curr = curr * 10 + node.val
-                if not node.left and not node.right:
-                    ans += curr
-                stack.append((node.right, curr))
-                stack.append((node.left, curr))
+        def traverse(node, path):
+            if not node:
+                return 0
+
+            path = path * 10 + node.val
+            if not node.left and not node.right:
+                return path
+            
+            return traverse(node.left, path) + traverse(node.right, path)
         
-        return ans
-```
+        return traverse(root, 0)
 
 #### Iterative
 
@@ -110,7 +110,92 @@ class Solution:
         return ans
 ```
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+        stack = [(root, 0)]
+
+        while stack:
+            node, curr = stack.pop()
+            if node:
+                curr = curr * 10 + node.val
+                if not node.left and not node.right:
+                    ans += curr
+                stack.append((node.right, curr))
+                stack.append((node.left, curr))
+        
+        return ans
+```
+
 ### Backtracking
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
+        self.ans = 0
+
+        def backtrack(curr, path):
+            if not curr:
+                return 0
+
+            path += curr.val
+            if not curr.left and not curr.right:
+                self.ans += path
+
+            backtrack(curr.left, path * 10)
+            backtrack(curr.right, path * 10)
+            
+            # Backtracking
+            path -= curr.val
+        
+        backtrack(root, 0)
+        return self.ans
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        self.ans = 0
+        self.curr = 0
+
+        def dfs(node):
+            if not node:
+                return 0
+
+            self.curr = self.curr * 10 + node.val
+            if not node.left and not node.right:
+                self.ans += self.curr
+
+            dfs(node.left)
+            dfs(node.right)
+
+            # Backtracking
+            self.curr = (self.curr - node.val) // 10
+
+        dfs(root)
+        return self.ans
+```
 
 ### Morris' Algorithm
