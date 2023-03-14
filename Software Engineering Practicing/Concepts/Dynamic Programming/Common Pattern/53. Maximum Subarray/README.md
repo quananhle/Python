@@ -78,7 +78,6 @@ class Solution:
 ```Python
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        # Greedy Algorithm
         maxi_subarray = curr_subarray = nums[0]
         for num in nums[1:]:
             curr_subarray = max(num, curr_subarray + num)
@@ -86,5 +85,61 @@ class Solution:
         return maxi_subarray
 ```
 
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        ans = -float('inf')
+
+        @lru_cache(None)
+        def dp(start):
+            # Base case
+            if start < 0:
+                return 0
+
+            # Recurrence relation
+            return nums[start] + max(0, dp(start - 1))
+
+        for i in range(len(nums) - 1, -1, -1):
+            ans = max(ans, dp(i))
+
+        return ans
+```
+
+
+```Python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        memo = [-float('inf')] * (n + 1)
+
+        def dp(start):
+            # Base case
+            if start < 0:
+                return 0
+
+            if memo[start] != -math.inf:
+                return memo[start]
+
+            # Recurrence relation
+            memo[start] = nums[start] + max(0, dp(start - 1))
+            return memo[start]
+
+        dp(n - 1)
+        return max(memo)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
 
 __Follow up__: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
