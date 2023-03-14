@@ -50,3 +50,14 @@ __Constraints:__
 
 ---
 
+### Preorder Traversal
+
+#### Recursive
+
+#### Iterative
+
+
+### Backtracking
+
+
+### Morris' Algorithm
