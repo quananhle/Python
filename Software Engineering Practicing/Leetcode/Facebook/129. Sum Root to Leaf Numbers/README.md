@@ -50,12 +50,65 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/sum-root-to-leaf-numbers/Figures/129/preorder2.png)
+
 ### Preorder Traversal
+
+![image](https://leetcode.com/problems/sum-root-to-leaf-numbers/Figures/129/ddfs2.png)
 
 #### Recursive
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+        stack = [(root, 0)]
+
+        while stack:
+            node, curr = stack.pop()
+            if node:
+                curr = curr * 10 + node.val
+                if not node.left and not node.right:
+                    ans += curr
+                stack.append((node.right, curr))
+                stack.append((node.left, curr))
+        
+        return ans
+```
+
 #### Iterative
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+        stack = [(root, 0)]
+
+        while stack:
+            node, curr = stack.pop()
+            if not node:
+                continue
+
+            curr = curr * 10 + node.val
+            if not node.left and not node.right:
+                ans += curr
+
+            stack.extend(((node.right, curr), (node.left, curr)))
+        
+        return ans
+```
 
 ### Backtracking
 
