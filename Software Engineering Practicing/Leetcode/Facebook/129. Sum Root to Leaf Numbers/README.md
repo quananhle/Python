@@ -221,5 +221,49 @@ class Solution:
 ![image](https://user-images.githubusercontent.com/35042430/225065780-47d8b982-7503-4abc-9f8e-5a1fda4b09c4.png)
 
 ```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        path = curr = 0
 
+        while root:
+            # Check if there is a left subtree
+            if root.left:
+                # Initialzie a predecessor node
+                pred = root.left
+                step = 1
+                # Traverse from the root of left subtree all the way to the right leaf
+                while pred.right and pred.right != root:
+                    pred = pred.right
+                    step += 1
+                
+                # Once at the rightmost leaf node, set link pred.right = root
+                if not pred.right:
+                    pred.right = root
+                    curr = curr * 10 + root.val
+                    # Traverse the root to the next left subtree
+                    root = root.left
+                # If there is already a link to the predecessor from the leaf node
+                else:
+                    # Check if it is the leaf node
+                    if not pred.left:
+                        path += curr
+                    # Backtrack
+                    for _ in range(step):
+                        curr //= 10
+                    pred.right = None
+                    # Move to the right subtree from the predcessor node
+                    root = root.right
+            # Otherwise, there is no more left child
+            else:
+                curr = curr * 10 + root.val
+                if not root.right:
+                    path += curr
+                root = root.right
+        return path
 ```
