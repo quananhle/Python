@@ -1,6 +1,6 @@
 ## [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Kadane's Algorithm```
 
 #### Difficulty: Medium
 
@@ -72,5 +72,19 @@ class Solution:
         
         return ans
 ```
+
+### Kadane's Algorithm
+
+```Python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        # Greedy Algorithm
+        maxi_subarray = curr_subarray = nums[0]
+        for num in nums[1:]:
+            curr_subarray = max(num, curr_subarray + num)
+            maxi_subarray = max(maxi_subarray, curr_subarray)
+        return maxi_subarray
+```
+
 
 __Follow up__: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
