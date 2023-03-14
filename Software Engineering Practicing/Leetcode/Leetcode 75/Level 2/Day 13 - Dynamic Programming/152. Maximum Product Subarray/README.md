@@ -67,8 +67,39 @@ class Solution:
         return ans
 ```
 
+### Kadane's Algorithm
+
+```Python
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 0:
+            return 0
+        
+        curr_max = curr_min = nums[0]
+        ans = curr_max
+
+        for num in nums[1:]:
+            temp_max = max(num, curr_max * num, curr_min * num)
+            curr_min = min(num, curr_max * num, curr_min * num)
+            curr_max = temp_max
+            ans = max(ans, curr_max)
+        
+        return ans
+```
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
 
 ```Python
 
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
 
 ```
