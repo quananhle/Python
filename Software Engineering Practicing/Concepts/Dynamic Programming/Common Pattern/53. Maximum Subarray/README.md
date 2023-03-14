@@ -1,6 +1,6 @@
 ## [53. Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
 
-```Tag```: ```Dynamic Programming``` ```Kadane's Algorithm```
+```Tag```: ```Dynamic Programming``` ```Kadane's Algorithm``` ```Divide & Conquer```
 
 #### Difficulty: Medium
 
@@ -139,7 +139,43 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [-float('inf')] * (n + 1)
 
+        for start in range(n - 1, -1, -1):
+            dp[start] = nums[start] + max(0, dp[start + 1])
+
+        return max(dp)
+```
+
+```Python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [-float('inf')] * (n + 1)
+
+        for start in range(n):
+            dp[start] = nums[start] + max(0, dp[start - 1])
+
+        return max(dp)
+```
+
+```Python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        dp = [0] * len(nums)
+        dp[0] = nums[0]
+        for i in range(1, len(nums)):
+            dp[i] = max(dp[i-1] + nums[i], nums[i])
+        return max(dp)
 ```
 
 __Follow up__: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+
+### Divide & Conquer
+
+```Python
+
+```
