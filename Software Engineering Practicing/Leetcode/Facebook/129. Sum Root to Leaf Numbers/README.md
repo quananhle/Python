@@ -81,6 +81,7 @@ class Solution:
             return traverse(node.left, path) + traverse(node.right, path)
         
         return traverse(root, 0)
+```
 
 #### Iterative
 
@@ -199,3 +200,26 @@ class Solution:
 ```
 
 ### Morris' Algorithm
+
+- __Time complexity__: ```O(N)```.
+- __Space complexity__: ```O(1)```.
+
+![image](https://user-images.githubusercontent.com/35042430/225063367-615a87c8-4321-494b-9a8e-ac61f9dcbe48.png)
+
+![image](https://user-images.githubusercontent.com/35042430/225063589-d3d70cd8-72dd-44f1-a4bd-d95fdf3a0c57.png)
+
+![image](https://user-images.githubusercontent.com/35042430/225065085-080f08fd-cfb5-49cb-b688-4965a196fa4f.png)
+
+![image](https://user-images.githubusercontent.com/35042430/225065209-95774032-513b-4df9-bb95-6492a8a5a3b0.png)
+
+![image](https://user-images.githubusercontent.com/35042430/225065311-2bd745d6-5509-4bf8-86cf-cdce2595c8f5.png)
+
+![image](https://user-images.githubusercontent.com/35042430/225065436-b314f1f6-7d1c-43a1-9b63-6b5214347c5c.png)
+
+![image](https://user-images.githubusercontent.com/35042430/225065607-18ad67cb-1efb-41dd-90ef-aa5d8da6a49c.png)
+
+![image](https://user-images.githubusercontent.com/35042430/225065780-47d8b982-7503-4abc-9f8e-5a1fda4b09c4.png)
+
+```Python
+
+```
