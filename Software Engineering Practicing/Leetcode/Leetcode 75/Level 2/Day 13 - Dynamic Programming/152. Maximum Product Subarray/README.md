@@ -34,3 +34,41 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        # Brute Force
+        n = len(nums)
+
+        ans = -float('inf')
+
+        for i in range(n):
+            curr = 1
+            for j in range(i, n):
+                curr *= nums[j]
+                ans = max(ans, curr)
+        
+        return ans
+```
+
+```Python
+import numpy 
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        # Brute Force
+        n = len(nums)
+        ans = -float('inf')
+        for start in range(n):
+            for end in range(start + 1, n + 1):
+                ans = max(ans, numpy.prod(nums[start:end]))
+        
+        return ans
+```
+
+
+```Python
+
+
+```
