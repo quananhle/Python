@@ -50,10 +50,10 @@ __Algorithm__
 1. Function: keep track of the current index of ```nums``` and the current _subSetSum_
 2. Recurrence relation:
 
-    Assume, there is an array ```nums``` of size ```n``` and we have to find if there exists a subset with total _sum = subSetSum_. For a given array element ```x```, there could be either of 2 possibilities:
+    Assume, there is an array ```nums``` of size ```n``` and we have to find if there exists a subset with total _sum = subSetSum_. For a given array element ```num```, there could be either of 2 possibilities:
 
-  - Case 1) ```x``` is included in _subset sum_. _subSetSum = subSetSum − x_
-  - Case 2) ```x``` is not included in _subset sum_, so we must take previous sum without ```x```. _subSetSum = subSetSum_
+  - Case 1) ```num``` is included in _subset sum_. _subSetSum = subSetSum − num_
+  - Case 2) ```num``` is not included in _subset sum_, so we must take previous sum without ```num```. _subSetSum = subSetSum_
 
     We can use depth first search and recursively calculate the ```subSetSum``` for each case and check if either of them is true. This can be formulated as
 
@@ -63,7 +63,7 @@ __Algorithm__
 
 3. Base Cases
 
-  - If _subSetSum_ is ```0```, return ```true``` ( Since we found a subset with sum _subSetSum_)
+  - If _subSetSum_ is ```0```, return ```true``` (Since we found a subset with sum _subSetSum_)
   - If _subSetSum_ is less than ```0```, return ```false```
 
 - __Time Complexity__: ```O(2^n)```
@@ -73,20 +73,21 @@ __Algorithm__
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         # Brute Force
+        ### Time Limit Exceeded
         total = sum(nums)
 
         if total % 2 != 0:
             return False
 
-        def dfs(i, curr):
+        def dfs(i, subset):
             # Base cases:
-            if curr == 0:
+            if subset == 0:
                 return True
-            if i == 0 or curr < 0:
+            if i == 0 or subset < 0:
                 return False
 
-            # Recurrece relation
-            return dfs(i - 1, curr - nums[i - 1]) or dfs(i - 1, curr)
+            # Recurrence relation
+            return dfs(i - 1, subset - nums[i - 1]) or dfs(i - 1, subset)
 
         subset = total // 2
         n = len(nums)
@@ -99,6 +100,63 @@ class Solution:
 ### The Framework
 
 #### Top-Down Dynamic Programming (Recursion)
+
+![image](https://leetcode.com/problems/partition-equal-subset-sum/Figures/416/subset_sum_rec_tree.png)
+
+```Python
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        total = sum(nums)
+        subset = total // 2
+        n = len(nums)
+
+        if total % 2 != 0:
+            return False
+
+        @lru_cache(None)
+        def dp(i, subset):
+            # Base cases:
+            if subset == 0:
+                return True
+            if i == 0 or subset < 0:
+                return False
+            
+            # Recurrece relation
+            return dp(i - 1, subset - nums[i - 1]) or dp(i - 1, subset)
+
+        return dp(n - 1, subset)
+```
+
+```Python
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        total = sum(nums)
+        subset = total // 2
+        n = len(nums)
+
+        if total % 2 != 0:
+            return False
+
+        memo = [[None] * (subset + 1) for _ in range(n + 1)]
+
+        def dp(i, subset):
+            # Base cases:
+            if subset == 0:
+                return True
+            if i == 0 or subset < 0:
+                return False
+            
+            if memo[i][subset] is not None:
+                return memo[i][subset]
+
+            # Recurrece relation
+            memo[i][subset] = dp(i - 1, subset - nums[i - 1]) or dp(i - 1, subset)
+            return memo[i][subset]
+
+        return dp(n - 1, subset)
+```
+
+#### Bottom-Up Dynamic Programming
 
 ```Python
 
