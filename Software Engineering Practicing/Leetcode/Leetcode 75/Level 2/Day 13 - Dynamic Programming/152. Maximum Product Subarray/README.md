@@ -88,18 +88,18 @@ class Solution:
         return ans
 ```
 
----
-
-### The Framework
-
-#### Top-Down Dynamic Programming
+### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        n = len(nums)
+        max_subarray = [num for num in nums]
+        min_subarray = [num for num in nums]
 
-```
+        for i in range(1, n):
+            max_subarray[i] = max(nums[i], max_subarray[i - 1] * nums[i], min_subarray[i - 1] * nums[i])           
+            min_subarray[i] = min(nums[i], max_subarray[i - 1] * nums[i], min_subarray[i - 1] * nums[i])  
 
-#### Bottom-Up Dynamic Programming
-
-```Python
-
+        return max(max_subarray)   
 ```
