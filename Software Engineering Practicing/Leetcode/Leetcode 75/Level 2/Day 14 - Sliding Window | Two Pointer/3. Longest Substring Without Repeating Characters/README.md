@@ -1,6 +1,6 @@
 ## [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
-```Tag```: ```Two Pointers``` ```Sliding Window```
+```Tag```: ```Two Pointers``` ```Sliding Window``` ```Hash Map``` ```Hash Set```
 
 #### Difficulty: Medium
 
@@ -39,3 +39,36 @@ __Constraints:__
 
 ---
 
+### Sliding Window + Two Pointers
+
+#### Hash Set
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = set()
+        start = end = 0
+        ans = 0
+
+        while end < len(s):
+            left, right = s[start], s[end]
+
+            if not right in seen:
+                seen.add(right)
+                end += 1
+            else:
+                seen = set()
+                ans = max(ans, end - start)
+                start += 1
+                end = start
+
+        # Ensure to get the longest substring include the last character in s
+        ans = max(ans, end - start)
+        return ans
+```
+
+Commonly used tables are:
+
+- ```int[26]``` for Letters ```'a'``` - ```'z'``` or ```'A'``` - ```'Z'```
+- ```int[128]``` for ASCII
+- ```int[256]``` for Extended ASCII
