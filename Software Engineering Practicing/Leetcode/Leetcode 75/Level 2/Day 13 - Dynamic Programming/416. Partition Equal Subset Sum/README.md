@@ -232,7 +232,7 @@ For any array element ```i```, we need results of the previous iteration ```(i-1
 
 - __Time Complexity__: ```O(m ⋅ n)```
 - __Space Complexity__: ```O(m)```
-- 
+
 ```Python
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
