@@ -66,6 +66,9 @@ __Algorithm__
   - If _subSetSum_ is ```0```, return ```true``` ( Since we found a subset with sum _subSetSum_)
   - If _subSetSum_ is less than ```0```, return ```false```
 
+- __Time Complexity__: ```O(2^n)```
+- __Space Complexity__: ```O(N)```
+
 ```Python
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
@@ -91,3 +94,12 @@ class Solution:
         return dfs(n - 1, subset)
 ```
 
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursion)
+
+```Python
+
+```
