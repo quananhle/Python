@@ -68,6 +68,33 @@ class Solution:
         return True
 ```
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+
+        queue = collections.deque([root])
+        prev = root
+
+        while queue:
+            node = queue.popleft()
+            if node:
+                # Check if there was no left node but there is a right node
+                if not prev:
+                    return False
+                queue.append(node.left)
+                queue.append(node.right)
+            prev = node
+        return True     
+```
+
 ### Depth-First Search
 
 ![image](https://leetcode.com/problems/check-completeness-of-a-binary-tree/Figures/958/958-2.png)
