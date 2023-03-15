@@ -203,8 +203,52 @@ class Solution:
         return dp[n][subset]
 ```
 
+```Python
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        total = sum(nums)
+        subset = total // 2
+        n = len(nums)
+
+        if total % 2 != 0:
+            return False
+
+        dp = [[False] * (subset + 1) for _ in range(n + 1)]
+        dp[n - 1][0] = True
+
+        for i in range(n - 2, -1, -1):
+            for curr in range(subset + 1):
+                if curr < nums[i + 1]:
+                    dp[i][curr] = dp[i + 1][curr]
+                else:
+                    dp[i][curr] = dp[i + 1][curr - nums[i + 1]] or dp[i + 1][curr]
+
+        return dp[0][subset]
+```
+
 #### Optimized Bottom-Up Dynamic Programming (1D Array)
 
-```Python
+For any array element ```i```, we need results of the previous iteration ```(i-1)``` only. Hence, we could achieve the same using a one-dimensional array as well.
 
+- __Time Complexity__: ```O(m ⋅ n)```
+- __Space Complexity__: ```O(m)```
+- 
+```Python
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        total = sum(nums)
+        subset = total // 2
+        n = len(nums)
+
+        if total % 2 != 0:
+            return False
+
+        dp = [False] * (subset + 1)
+        dp[0] = True
+
+        for curr in nums:
+            for j in range(subset, curr - 1, -1):
+                dp[j] = dp[j] or dp[j - curr]
+
+        return dp[subset]
 ```
