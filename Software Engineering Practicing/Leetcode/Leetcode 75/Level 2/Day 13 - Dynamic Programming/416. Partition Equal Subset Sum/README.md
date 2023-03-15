@@ -103,6 +103,9 @@ class Solution:
 
 ![image](https://leetcode.com/problems/partition-equal-subset-sum/Figures/416/subset_sum_rec_tree.png)
 
+- __Time Complexity__: ```O(m ⋅ n)```
+- __Space Complexity__: ```O(m ⋅ n)```
+
 ```Python
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
@@ -157,6 +160,50 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming
+
+We maintain a 2D array , ```dp[n][subSetSum]```. For an array element ```i``` and sum ```j``` in array ```nums```,
+
+```dp[i][j] = True``` if the sum ```j``` can be formed by array elements in subset ```nums[0]..nums[i]```, otherwise ```dp[i][j] = False```
+
+```dp[i][j] = True``` it satisfies one of the following conditions :
+
+- Case 1) sum ```j``` can be formed without including ```ith``` element,
+
+```if dp[i−1][j] == True```
+
+- Case 2) sum ```j``` can be formed including ```ith``` element,
+
+```if dp[i−1][j − nums[i]] == True```
+
+![image](https://user-images.githubusercontent.com/35042430/225387230-8028639e-731a-4890-bbc7-cefab3fd211c.png)
+
+- __Time Complexity__: ```O(m ⋅ n)```
+- __Space Complexity__: ```O(m ⋅ n)```
+
+```Python
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        total = sum(nums)
+        subset = total // 2
+        n = len(nums)
+
+        if total % 2 != 0:
+            return False
+
+        dp = [[False] * (subset + 1) for _ in range(n + 1)]
+        dp[0][0] = True
+
+        for i in range(1, n + 1):
+            for curr in range(subset + 1):
+                if curr < nums[i - 1]:
+                    dp[i][curr] = dp[i - 1][curr]
+                else:
+                    dp[i][curr] = dp[i - 1][curr - nums[i - 1]] or dp[i - 1][curr]
+
+        return dp[n][subset]
+```
+
+#### Optimized Bottom-Up Dynamic Programming (1D Array)
 
 ```Python
 
