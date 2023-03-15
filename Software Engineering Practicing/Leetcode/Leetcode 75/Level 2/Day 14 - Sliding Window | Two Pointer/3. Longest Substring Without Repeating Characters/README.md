@@ -39,9 +39,40 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+- __Time complexity__: ```O(N^3)```
+- __Space complexity__: ```O(min(M, N))```
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        ### Time Limit Exceeded
+        def check(start, end):
+            chars = set()
+            while start < end + 1:
+                c = s[start]
+                if c in chars:
+                    return False
+                chars.add(c)
+                start += 1
+            return True
+        
+        ans = 0
+        for i in range(len(s)):
+            for j in range(i, len(s)):
+                if check(i, j):
+                    ans = max(ans, j - i + 1)
+        
+        return ans
+```
+
 ### Sliding Window + Two Pointers
 
 #### Hash Set
+
+- __Time complexity__: ```O(2N)``` == ```O(N)```
+- __Space complexity__: ```O(min(M, N))```
 
 ```Python
 class Solution:
@@ -67,8 +98,97 @@ class Solution:
         return ans
 ```
 
+#### Hash Map (Counter)
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        chars = collections.Counter()
+        start = end = 0
+        ans = 0
+
+        while end < len(s):
+            right = s[end]
+            chars[right] += 1
+
+            while chars[right] > 1:
+                left = s[start]
+                chars[left] -= 1
+                start += 1
+
+            ans = max(ans, end - start + 1)
+            end += 1
+
+        return ans
+```
+
+#### Optimized Sliding Window
+
+The reason is that if ```s[j]``` have a duplicate in the range ```[i, j]``` with index ```j'```, we don't need to increase ```i``` little by little. We can skip all the elements in the range ```[i, j′]```, and let ```i``` to be ```j′ + 1``` directly.
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        n = len(s)
+        start = end = 0
+        ans = 0
+
+        memo = dict()
+
+        while end < len(s):
+            if s[end] in memo:
+                start = max(start, memo[s[end]])
+
+            ans = max(ans, end - start + 1)
+            memo[s[end]] = end + 1
+            end += 1
+
+        return ans    
+```
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        memo = dict()
+        start = ans = 0
+
+        for end, char in enumerate(s):
+            if char in memo and memo[char] >= start:        # Ensure memo[char] >= start for edge case "abba"
+                start = memo[char] + 1
+            
+            if ans < end - start + 1:
+                ans = end - start + 1
+
+            memo[char] = end
+
+        return ans
+```
+
+### ASCII
+
 Commonly used tables are:
 
 - ```int[26]``` for Letters ```'a'``` - ```'z'``` or ```'A'``` - ```'Z'```
 - ```int[128]``` for ASCII
 - ```int[256]``` for Extended ASCII
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        chars = [None] * 128
+        start = end = 0
+        ans = 0
+
+        while end < len(s):
+            right = s[end]
+
+            index = chars[ord(right)]
+            if index != None and start <= index < end:
+                start = index + 1
+            ans = max(ans, end - start + 1)
+
+            chars[ord(right)] = end
+            end += 1
+        
+        return ans
+```
