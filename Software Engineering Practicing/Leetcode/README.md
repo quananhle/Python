@@ -50,7 +50,6 @@
 ## Dynamic Programming
 
 - [139. Word Break]
-- :warning::warning: [152. Maximum Product Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/152.%20Maximum%20Product%20Subarray)
 - :warning::warning: [198. House Robber](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/198.%20House%20Robber)
 - [279. Perfect Squares]
 - :warning::warning: [322. Coin Change](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/322.%20Coin%20Change)
@@ -62,6 +61,11 @@
 
 - [718. Maximum Length of Repeated Subarray]
 Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
+
+### Maximum Subarray
+
+- :warning::warning: [53. Maximum Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/53.%20Maximum%20Subarray) ```Kadane's Algorithm``` ```Divide & Conquer```
+- :warning::warning: [152. Maximum Product Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/152.%20Maximum%20Product%20Subarray)
 
 ### Prefix Sum
 
@@ -144,6 +148,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 - :four_leaf_clover: [101. Symmetric Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/101.%20Symmetric%20Tree)
 - :warning::warning: [129. Sum Root to Leaf Numbers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/129.%20Sum%20Root%20to%20Leaf%20Numbers) ```Backtracking``` ```Morris Algorithm```
+- :warning::warning: [958. Check Completeness of a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/958.%20Check%20Completeness%20of%20a%20Binary%20Tree) ```Breadth-First Search``` ```Depth-First Search```
 
 #### Path Sum
 
