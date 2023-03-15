@@ -1,6 +1,6 @@
-## 18. 4Sum
+## [18. 4Sum](https://leetcode.com/problems/4sum/)
 
-```Tag```:
+```Tag```: ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -36,8 +36,23 @@ __Constraints:__
 
 ---
 
+### Two Pointers
+
+#### Hash Map
 
 ```Python
-
-
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        seen = set()
+        n = len(nums)
+        res = set()
+        for i in range(n):
+            for j in range(i+1, n):
+                for k in range(j+1, n):
+                    complement = target - nums[i] - nums[j] - nums[k]
+                    if complement in seen:
+                        tmp = sorted([complement, nums[i], nums[j], nums[k]])
+                        res.add((tmp[0], tmp[1], tmp[2], tmp[3]))
+            seen.add(nums[i])
+        return res
 ```
