@@ -31,9 +31,35 @@ Recursive or Iterative
 
 ## Level-order Traversal
 
+![image](https://leetcode.com/problems/binary-tree-right-side-view/Figures/199_rewrite/traversals.png)
+
+![image](https://leetcode.com/problems/binary-tree-right-side-view/Figures/199_rewrite/dfs_bfs2.png)
+
 ### Breadth-First Search
 
 ![image](https://user-images.githubusercontent.com/35042430/214757160-bb9d1eae-769a-4c18-934c-6a1607c232ef.png)
+
+```
+Which approach to choose, BFS or DFS?
+```
+
+The problem is to return a list of last elements from all levels, so it's the way more natural to implement BFS here.
+
+Time complexity is the same ```O(N)``` both for DFS and BFS since one has to visit all nodes.
+
+Space complexity is ```O(H)``` for DFS and ```O(D)``` for BFS, where ```H``` is a tree height, and ```D``` is a tree diameter. They both result in ```O(N)``` space in the worst-case scenarios: skewed tree for DFS and complete tree for BFS.
+
+BFS wins for this problem, so let's use the opportunity to check out three different BFS implementations with the queue.
+
+__BFS implementation:__
+
+All three implementations use the queue in a standard BFS way:
+
+- Push the root into the queue.
+- Pop-out a node from the _left_.
+- Push the _left_ child into the queue, and then push the _right_ child.
+
+![image](https://leetcode.com/problems/binary-tree-right-side-view/Figures/199_rewrite/implem2.png)
 
 ---
 
