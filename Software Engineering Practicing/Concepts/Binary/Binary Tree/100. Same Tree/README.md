@@ -1,6 +1,6 @@
-## 100. Same Tree
+## [100. Same Tree](https://leetcode.com/problems/same-tree/)
 
-```Tag```: ```Depth-First Search``` ```Binary Tree``` [```Recursion```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II)
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` [```Binary Tree```](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree) ```Recursion```
 
 #### Difficulty: Easy
 
@@ -59,11 +59,12 @@ class Solution:
         # Space complexity: O(N), to keep a recursion stack.
         if not p and not q:
             return True
-        if not p or not q:
+        elif not p or not q:
             return False
-        if p.val != q.val:
-            return False            
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        elif p.val != q.val:
+            return False
+        else:
+            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
 
 ### Recursive Depth-First Search
@@ -78,22 +79,48 @@ class Solution:
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         # Recursive Depth-First Search
-        def tree(root, node):
+        def dfs(root, node):
             if root:
                 node.append(root.val)
                 if root.left:
-                    node = tree(root.left, node)
+                    node = dfs(root.left, node)
                 else:
                     node.append(None)
                 if root.right:
-                    node = tree(root.right, node)
+                    node = dfs(root.right, node)
                 else:
                     node.append(None)
             else:
                 node.append(None)
             return node
 
-        return tree(p, []) == tree(q, [])
+        return dfs(p, []) == dfs(q, [])
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        # Rebuild the p and q trees into arrays
+        tree1 = list()
+        tree2 = list()
+
+        def build(node, tree):
+            if not node:
+                tree.append(None)
+                return
+            else:
+                tree.append(node.val)
+            build(node.left, tree)
+            build(node.right, tree)
+            return tree
+
+        return build(p, []) == build(q, [])
 ```
 
 ### Iterative Depth-First Search
@@ -115,5 +142,34 @@ class Solution:
                 stack.extend([(p.left, q.left), (p.right, q.right)])
             elif p or q:
                 return False
+        return True
+```
+
+### Iterative Breadth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        queue = collections.deque([(p, q)])
+
+        while queue:
+            l, r = queue.popleft()
+
+            if not l and not r:
+                continue
+            elif not l or not r or l.val != r.val:
+                return False
+            else:
+                '''
+                queue.append((l.left, r.left))
+                queue.append((l.right, r.right))
+                '''
+                queue.extend(((l.left, r.left), (l.right, r.right)))
         return True
 ```
