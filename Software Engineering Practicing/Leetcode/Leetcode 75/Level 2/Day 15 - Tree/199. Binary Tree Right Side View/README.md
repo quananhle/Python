@@ -127,6 +127,22 @@ class Solution:
 
 ![image](https://leetcode.com/problems/binary-tree-right-side-view/Figures/199_rewrite/sentinel.png)
 
+__Algorithm__
+
+- Initiate the list of the right side view ```rightside```.
+- Initiate the queue by adding a root. Add ```null``` sentinel to mark the end of the first level.
+- Initiate the current node as ```root```.
+- While queue is not empty:
+
+  - Save the previous node ```prev = curr``` and pop the current node from the queue ```curr = queue.poll()```.
+  - While the current node is not ```null```:
+    - Add first left and then right child node into the queue.
+    - Update both previous and current nodes: ```prev = curr```, ```curr = queue.poll()```.
+  - Now the current node is null, i.e. we reached the end of the current level. Hence the previous node is the rightmost one and makes a part of the right side view. Add it into ```rightside```.
+  - If the queue is not empty, push the null node as a sentinel, to mark the end of the next level.
+
+- Return ```rightside```.
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -150,8 +166,7 @@ class Solution:
                     queue.append(curr.left)
                 if curr.right:
                     queue.append(curr.right)
-                
-                # Backtracking
+
                 prev, curr = curr, queue.popleft()
 
             # When the current level is finished, prev is the rightmost node
@@ -159,6 +174,55 @@ class Solution:
             # Add a sentinel to mark the end of the current level
             if queue:
                 queue.append(None)
+        
+        return ans
+```
+
+### BFS: One Queue + Level Size Measurements
+
+![image](https://leetcode.com/problems/binary-tree-right-side-view/Figures/199_rewrite/length.png)
+
+__Algorithm__
+
+- Initiate the list of the right side view ```rightside```.
+- Initiate the queue by adding a root.
+- While the queue is not empty:
+
+  - Write down the length of the current level: ```levelLength = queue.size()```.
+  - Iterate over ```i``` from ```0``` to ```level_length - 1```:
+    - Pop the current node from the queue: ```node = queue.poll()```.
+    - If ```i == levelLength - 1```, then it's the last node in the current level, push it to ```rightsize``` list.
+    - Add first _left_ and then _right_ child node into the queue.
+
+- Return ```rightside```.
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        
+        queue = collections.deque([(root)])
+        ans = list()
+
+        while queue:
+            n = len(queue)
+            for i in range(n):
+                node = queue.popleft()
+                # Check if it is the rightmost node
+                if i == n - 1:
+                    ans.append(node.val)
+                
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
         
         return ans
 ```
