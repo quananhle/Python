@@ -49,31 +49,31 @@ __Constraints:__
 #         self.right = right
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
-        #### Time Complexity: O(N), traverse through every node once
-        #### Space Complexity: O(N), build a tree containing all nodes
-        # Build hash map of index values of element in inorder
-        idx_map = collections.defaultdict(int)
-        for idx, val in enumerate(inorder):
-            idx_map[val] = idx
-            
-        def helper(left, right):
-            if left > right:
-                return None
+        n = len(inorder)
 
-            # Get the root node, last element of postorder
-            root_val = postorder.pop()
-            root = TreeNode(root_val)
-        
-            # Get the index of the root node in inorder
-            root_idx = idx_map[root_val]
-            
-            # Build right subtree
-            root.right = helper(root_idx + 1, right)
-            
-            # Build left subtree
-            root.left = helper(left, root_idx - 1)
-            
+        memo = collections.defaultdict(int)
+        for idx, num in enumerate(inorder):
+            memo[num] = idx
+
+        def build(left, right):
+            if left > right:
+                return 
+
+            val = postorder.pop()
+            root = TreeNode(val)
+
+            '''
+            index = inorder.index(val)
+            '''
+            index = memo[val]
+
+            # Pop from postorder the right nodes before left nodes, hence build right subtree first
+            right_subtree = build(index + 1, right)
+            left_subtree = build(left, index - 1)
+
+            root.left = left_subtree
+            root.right = right_subtree
             return root
 
-        return helper(0, len(inorder) - 1)
+        return build(0, n - 1)
 ```
