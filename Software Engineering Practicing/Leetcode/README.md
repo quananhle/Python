@@ -19,7 +19,6 @@
 - [438. Find All Anagrams in a String]
 - [567. Permutation in String]
 
-
 ### String Calculations
 
 - :warning::warning: [43. Multiply Strings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2002%20-%20String/43.%20Multiply%20Strings)
@@ -27,6 +26,10 @@
 - [67. Add Binary]
 - [415. Add Strings]
 - [989. Add to Array-Form of Integer]
+
+### Two Pointers
+
+- :warning::warning: [16. 3Sum Closest](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/16.%203Sum%20Closest)
 
 ---
 
@@ -90,6 +93,16 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ## Greedy
 
 - [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
+
+---
+
+## Hash Map/Hash Set
+
+### Hash Map
+
+- :warning::warning: [454. 4Sum II](https://github.com/quananhle/Python/tree/050f506dfbd6285e26a384a938142c023a9578ff/Software%20Engineering%20Practicing/Concepts/Hash%20Table/454.%204Sum%20II)
+
+### Hash Set
 
 ---
 
