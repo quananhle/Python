@@ -1,4 +1,4 @@
-## 106. Construct Binary Tree from Inorder and Postorder Traversal
+## [106. Construct Binary Tree from Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
 ```Tag```: ```Binary Tree``` ```Recursion```
 
@@ -6,7 +6,7 @@
 
 Given two integer arrays ```inorder``` and ```postorder``` where ```inorder``` is the inorder traversal of a binary tree and ```postorder``` is the postorder traversal of the same tree, construct and return _the binary tree_.
 
-![image](https://user-images.githubusercontent.com/35042430/215049175-6600b2af-c681-4611-b453-43365f5ce78e.png)
+![image](https://user-images.githubusercontent.com/35042430/225526472-ec047986-2edc-4a4c-83fe-d888ca02be70.png)
 
 ---
 
