@@ -1,4 +1,6 @@
-## Two Sum
+## [1. Two Sum](https://leetcode.com/problems/two-sum/)
+
+```Tag```: ```Two Pointers``` ```Hash Table```
 
 #### Difficult: Easy
 
@@ -59,7 +61,7 @@ class Solution(object):
  
  ### Two Pass Hash Table
 
-```{Python}
+```Python
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -80,7 +82,7 @@ class Solution(object):
  
  ### One Pass Hash Table
 
-```{Python}
+```Python
 class Solution(object):
     def twoSum(self, nums, target):
         """
