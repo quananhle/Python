@@ -159,7 +159,9 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Binary Tree
 
+- :four_leaf_clover: [100. Same Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/100.%20Same%20Tree) ```Breadth-First Search``` ```Depth-First Search```
 - :four_leaf_clover: [101. Symmetric Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/101.%20Symmetric%20Tree)
+- :warning::warning: [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2015%20-%20Tree/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal)
 - :warning::warning: [129. Sum Root to Leaf Numbers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/129.%20Sum%20Root%20to%20Leaf%20Numbers) ```Backtracking``` ```Morris Algorithm```
 - :warning::warning: [958. Check Completeness of a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/958.%20Check%20Completeness%20of%20a%20Binary%20Tree) ```Breadth-First Search``` ```Depth-First Search```
 
