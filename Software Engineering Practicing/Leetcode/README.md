@@ -33,7 +33,7 @@
 
 - :four_leaf_clover: [1. Two Sum](https://github.com/quananhle/Python/tree/1293f8a22f0909843952586db9533b1ee52f429f/Software%20Engineering%20Practicing/Leetcode/Capital%20One/1.%20Two%20Sum) ```Hash Table```
 - :warning::warning: [15. 3Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/15.%203Sum) 
-- :warning::warning: [16. 3Sum Closest](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/16.%203Sum%20Closest)
+- :warning::warning: [16. 3Sum Closest](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/16.%203Sum%20Closest) ```Binary Search```
 - :warning::warning: [18. 4Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/18.%204Sum)
 - :warning::warning: [167. Two Sum II - Input Array Is Sorted](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Two-Pointer%20Technique/167.%20Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted) ```Hash Table```
 - :warning::warning: [454. 4Sum II](https://github.com/quananhle/Python/tree/050f506dfbd6285e26a384a938142c023a9578ff/Software%20Engineering%20Practicing/Concepts/Hash%20Table/454.%204Sum%20II)
@@ -157,6 +157,9 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Stack
 
+- :warning::warning: [155. Min Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2016%20-%20Design/155.%20Min%20Stack) ```Monotonic Stack```
+- :four_leaf_clover: [232. Implement Queue using Stacks](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/232.%20Implement%20Queue%20using%20Stacks)
+
 #### Monotonic Stack
 
 ---
@@ -186,3 +189,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [173. Binary Search Tree Iterator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/173.%20Binary%20Search%20Tree%20Iterator) ```Design```
 - :warning::warning: [230. Kth Smallest Element in a BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
 - :warning::warning:
+
+## Trie
+
+- :warning::warning: [208. Implement Trie (Prefix Tree)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/208.%20Implement%20Trie%20(Prefix%20Tree))
