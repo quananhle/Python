@@ -33,6 +33,40 @@ class Solution:
                 return [lo + 1, hi + 1]
 ```
 
+### [Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
+
+Given an array ```nums``` of integers and integer ```k```, return _the maximum sum such that there exists ```i < j``` with ```nums[i] + nums[j] = sum``` and ```sum < k```._ If no ```i, j``` exist satisfying this equation, return ```-1```.
+
+__Example 1:__
+```
+Input: nums = [34,23,1,24,75,33,54,8], k = 60
+Output: 58
+Explanation: We can use 34 and 24 to sum 58 which is less than 60.
+```
+
+__Sorting__
+
+```Python
+class Solution(object):
+    def twoSumLessThanK(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        nums.sort()
+        ans = -1
+        lo, hi = 0, len(nums) -1
+        while lo < hi:
+            total = nums[lo] + nums[hi]
+            if (total < k):
+                ans = max(ans, total)
+                lo += 1
+            else:
+                hi -= 1
+        return ans
+```
+
 ### [3Sum](https://leetcode.com/problems/3sum/)
 
 
