@@ -1,4 +1,6 @@
-## Two Sum Less Than K
+## [Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
+
+```Tag```: ```Sorting``` ```Two Pointers```
 
 #### Difficulty: Easy
 
@@ -36,7 +38,7 @@ __Constraints:__
             - Track maximum ```nums[i] + nums[j]``` in the result answer.
 2. Return the result ```answer```.
 
-```{Python}
+```Python
 class Solution(object):
     def twoSumLessThanK(self, nums, k):
         """
@@ -56,7 +58,7 @@ class Solution(object):
         # Time complexity: O(N^2), nested loop
         # Space complexity: O(1)
 ```
-```{Python}
+```Python
 class Solution(object):
     def twoSumLessThanK(self, nums, k):
         """
@@ -77,7 +79,7 @@ class Solution(object):
 
 ### Two Pass
 
-```{Python}
+```Python
 class Solution(object):
     def twoSumLessThanK(self, nums, k):
         """
@@ -103,7 +105,7 @@ class Solution(object):
         # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
 ```
 
-```{Python}
+```Python
 class Solution(object):
     def twoSumLessThanK(self, nums, k):
         """
