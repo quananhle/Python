@@ -43,33 +43,47 @@ __Constraints:__
 
 ---
 
-Applications
+__Applications__
+
 Trie (we pronounce "try") or prefix tree is a tree data structure, which is used for retrieval of a key in a dataset of strings. There are various applications of this very efficient data structure such as :
 
 1. Autocomplete
-Google Suggest
+
+![image](https://leetcode.com/media/original_images/208_GoogleSuggest.png)
 
 Figure 1. Google Suggest in action.
 
 2. Spell checker
-Spell Checker
+
+![image](https://leetcode.com/media/original_images/208_SpellCheck.png)
 
 Figure 2. A spell checker used in word processor.
 
 3. IP routing (Longest prefix matching)
-IP Routing
+
+![image](https://leetcode.com/media/original_images/208_IPRouting.gif)
 
 Figure 3. Longest prefix matching algorithm uses Tries in Internet Protocol (IP) routing to select an entry from a forwarding table.
 
 4. T9 predictive text
-T9 Predictive Text
+
+![image](https://leetcode.com/media/original_images/208_T9.jpg)
 
 Figure 4. T9 which stands for Text on 9 keys, was used on phones to input texts during the late 1990s.
 
 5. Solving word games
-Boggle
+
+![image](https://leetcode.com/media/original_images/208_Boggle.png)
 
 Figure 5. Tries is used to solve Boggle efficiently by pruning the search space.
+
+---
+
+![image](https://leetcode.com/media/original_images/208_Node.png)
+
+Figure 6. Representation of a key "leet" in trie.
+
+![image](https://leetcode.com/media/original_images/208_TrieInsert.png)
 
 ```Python
 class TrieNode():
