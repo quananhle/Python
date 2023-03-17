@@ -137,7 +137,7 @@ class Solution:
         return res
 ```
 
-### [3Sum](https://leetcode.com/problems/3sum-closest/)
+### [3Sum Closest](https://leetcode.com/problems/3sum-closest/)
 
 Given an integer array ```nums``` of length ```n``` and an integer ```target```, find three integers in ```nums``` such that the sum is closest to ```target```.
 
