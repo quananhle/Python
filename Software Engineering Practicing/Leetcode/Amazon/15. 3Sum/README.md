@@ -118,7 +118,7 @@ class Solution:
         return res
 ```
 
-```
+```Python
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         seen = set()
