@@ -2,7 +2,7 @@
 
 ```Tag```: ```Two Pointers``` ```Hash Map``` ```Binary Search```
 
-### [1. Two Sum](https://leetcode.com/problems/two-sum/)
+### [Two Sum](https://leetcode.com/problems/two-sum/)
 
 ```Python
 class Solution:
@@ -16,7 +16,7 @@ class Solution:
                 memo[num] = idx
 ```
 
-### [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+### [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
 ```Python
 class Solution:
@@ -52,7 +52,7 @@ The distinct triplets are [-1,0,1] and [-1,-1,2].
 Notice that the order of the output and the order of the triplets does not matter.
 ```
 
-### Two Pointers
+__Two Pointers__
 
 ```Python
 class Solution:
@@ -70,7 +70,7 @@ class Solution:
         return res
 ```
 
-### Sorting
+__Sorting__
 
 ```Python
 class Solution:
@@ -103,7 +103,52 @@ class Solution:
         return res
 ```
 
-### 4Sum
+### [3Sum](https://leetcode.com/problems/3sum-closest/)
+
+Given an integer array ```nums``` of length ```n``` and an integer ```target```, find three integers in ```nums``` such that the sum is closest to ```target```.
+
+Return _the sum of the three integers_.
+
+You may assume that each input would have exactly one solution.
+
+__Example 1:__
+```
+Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+```
+
+#### Sorting
+
+```Python
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        diff = float('inf')
+        nums.sort()
+        for i in range(len(nums)):
+            lo, hi = i + 1, len(nums) - 1
+            while lo < hi:
+                total = nums[i] + nums[lo] + nums[hi]
+                if abs(target - total) < abs(diff):
+                    diff = target - total
+                if total < target:
+                    lo += 1
+                else:
+                    hi -= 1
+                
+            if diff == 0:
+                break
+        return target - diff
+```
+
+### [4Sum](https://leetcode.com/problems/4sum/)
+
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+You may return the answer in any order.
 
 ```Python
 class Solution:
