@@ -51,9 +51,24 @@ __Constraints:__
 
 ### Two Stacks
 
+__Algorithm__
+1. Initialize variables:
+- Two stacks of strings ```history``` and ```future```, to store the URLs.
+- A string variable ```current```, to store the currently visited URL, which is initialized with the given ```homepage``` as it is the first visited URL.
+2. Implementing ```visit(url)``` method:
+- As we will visit a new URL ```url```, we will store ```current``` in the ```history``` stack, and
+- make the given ```url``` as ```current```, and clear the ```future``` stack.
+3. Implementing ```back(steps)``` method:
+- We need to go back by step URLs.
+- While there are elements in the ```history``` stack and we haven't popped step elements from it, we will push ```current``` in the ```future stack``` and pop the most recently visited URL from the ```history``` stack and mark it as ```current```.
+- At the end, we return ```current```.
+4. Implementing ```forward(steps)``` method:
+- We need to go forward by step URLs.
+- While there are elements in the ```future``` stack and we haven't popped step elements from it, we will push ```current``` in the ```history``` stack and pop the most recently visited URL from the ```future``` stack and mark it as ```current```.
+- At the end, we return ```current```.
+
 ```Python
 class BrowserHistory:
-
     def __init__(self, homepage: str):
         self.history = list()
         self.future = list()
@@ -63,7 +78,6 @@ class BrowserHistory:
         self.history.append(self.current)
         self.current = url
         self.future = list()
-        
 
     def back(self, steps: int) -> str:
         while steps and self.history:
@@ -71,8 +85,6 @@ class BrowserHistory:
             self.current = self.history.pop()
             steps -= 1
         return self.current
-
-
 
     def forward(self, steps: int) -> str:
         while steps and self.future:
@@ -87,3 +99,5 @@ class BrowserHistory:
 # param_2 = obj.back(steps)
 # param_3 = obj.forward(steps)
 ```
+
+
