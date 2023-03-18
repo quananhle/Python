@@ -12,10 +12,11 @@
 
 #### Palindrome
 
-- [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome/5.%20Longest%20Palindromic%20Substring) ```Dynamic Programming``` ```Sliding Window``` ```Two Pointers```
+- :warning::warning: [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome/5.%20Longest%20Palindromic%20Substring) ```Dynamic Programming``` ```Sliding Window``` ```Two Pointers```
 
 ### Sliding Window
 
+- :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring)
 - [438. Find All Anagrams in a String]
 - [567. Permutation in String]
 
@@ -37,7 +38,7 @@
 - :warning::warning: [18. 4Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/18.%204Sum)
 - :warning::warning: [167. Two Sum II - Input Array Is Sorted](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Two-Pointer%20Technique/167.%20Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted) ```Hash Table```
 - :warning::warning: [454. 4Sum II](https://github.com/quananhle/Python/tree/050f506dfbd6285e26a384a938142c023a9578ff/Software%20Engineering%20Practicing/Concepts/Hash%20Table/454.%204Sum%20II)
-- [1099. Two Sum Less Than K](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Capital%20One/1099.%20Two%20Sum%20Less%20Than%20K)
+- :four_leaf_clover: [1099. Two Sum Less Than K](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Capital%20One/1099.%20Two%20Sum%20Less%20Than%20K)
 
 ---
 
@@ -55,6 +56,15 @@
 
 - :four_leaf_clover: [1539. Kth Missing Positive Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1539.%20Kth%20Missing%20Positive%20Number)
 - :warning::warning: [2187. Minimum Time to Complete Trips](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/2187.%20Minimum%20Time%20to%20Complete%20Trips)
+
+---
+
+## Design
+
+- :warning::warning: [155. Min Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2016%20-%20Design/155.%20Min%20Stack) ```Monotonic Stack```
+- :four_leaf_clover: [232. Implement Queue using Stacks](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/232.%20Implement%20Queue%20using%20Stacks)
+- :no_entry::no_entry::no_entry: 716. Max Stack
+- :warning::warning: [1472. Design Browser History](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1472.%20Design%20Browser%20History)
 
 ---
 
@@ -100,7 +110,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Greedy
 
-- [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
+- :warning::warning: [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
 
 ---
 
@@ -157,8 +167,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Stack
 
-- :warning::warning: [155. Min Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2016%20-%20Design/155.%20Min%20Stack) ```Monotonic Stack```
-- :four_leaf_clover: [232. Implement Queue using Stacks](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/232.%20Implement%20Queue%20using%20Stacks)
+
 
 #### Monotonic Stack
 
