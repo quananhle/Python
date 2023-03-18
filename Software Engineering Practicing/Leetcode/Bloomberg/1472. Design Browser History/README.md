@@ -100,4 +100,90 @@ class BrowserHistory:
 # param_3 = obj.forward(steps)
 ```
 
+### Linked List
+
+```Python
+class ListNode:
+    def __init__(self, url: str):
+        self.data = url
+        self.prev = None
+        self.next = None
+
+class BrowserHistory:
+
+    def __init__(self, homepage: str):
+        self.head = ListNode(homepage)
+        self.curr = self.head
+
+    def visit(self, url: str) -> None:
+        '''
+        tmp = self.curr
+        self.curr.next = ListNode(url)
+        self.curr = self.curr.next
+        self.curr.prev = tmp
+        '''
+        new_node = ListNode(url)
+        self.curr.next = new_node
+        new_node.prev = self.curr
+        self.curr = new_node
+
+    def back(self, steps: int) -> str:
+        while steps and self.curr.prev:
+            self.curr = self.curr.prev
+            steps -= 1
+        return self.curr.data
+
+    def forward(self, steps: int) -> str:
+        while steps and self.curr.next:
+            self.curr = self.curr.next
+            steps -= 1
+        return self.curr.data
+
+
+# Your BrowserHistory object will be instantiated and called as such:
+# obj = BrowserHistory(homepage)
+# obj.visit(url)
+# param_2 = obj.back(steps)
+# param_3 = obj.forward(steps)
+```
+
+### Dynamic Array
+
+Just like a linked list, a dynamic array can also be used to simulate a stack-like behavior, and just like previous approach we can append elements at end and use pointer to traverse back and forth.
+
+In our dynamic array we can insert as many elements (history links) as we like, we can keep a pointer to point to the current URL and instead of traversing back and forth (incrementing or decrementing pointer index) like on the linked list we can directly return the element at the respective index after making a jump of step elements in the left or right direction, thus implementing the "back" and "forward" operations in more optimized manner.
+
+Whenever we go back we just move our current pointer, and if we visit a new URL we will insert the new element if we are at the end of the array, or overwrite the next element with the new URL if we are not at the end.
+We will also need one additional pointer to mark the right boundary in our array as if we overwrite an element there is the possibility that more elements exist past that overwritten element but while doing forward operations we should not visit those old elements. In reality, we should have deleted those old elements but instead, we will use a pointer to stop iterating forward as this will help us to save the time used in deleting those old elements.
+
+```Python
+class BrowserHistory:
+
+    def __init__(self, homepage: str):
+        self.history = [homepage]
+        self.curr = self.last = 0
+
+    def visit(self, url: str) -> None:
+        self.curr += 1
+        if len(self.history) > self.curr:
+            self.history[self.curr] = url
+        else:
+            self.history.append(url)
+        self.last = self.curr
+
+    def back(self, steps: int) -> str:
+        self.curr = max(0, self.curr - steps)
+        return self.history[self.curr]
+
+    def forward(self, steps: int) -> str:
+        self.curr = min(self.last, self.curr + steps)
+        return self.history[self.curr]
+
+
+# Your BrowserHistory object will be instantiated and called as such:
+# obj = BrowserHistory(homepage)
+# obj.visit(url)
+# param_2 = obj.back(steps)
+# param_3 = obj.forward(steps)
+```
 
