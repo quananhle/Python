@@ -43,7 +43,29 @@ __Constraints:__
  
 ---
 
+![image](https://leetcode.com/problems/minimum-window-substring/Figures/76/76_Minimum_Window_Substring_1.png)
 
+### Sliding Window
+
+__Algorithm__
+
+1. We start with two pointers, ```left``` and ```right``` initially pointing to the first element of the string ```S```.
+
+2. We use the ```right``` pointer to expand the window until we get a desirable window i.e. a window that contains all of the characters of ```T```.
+
+3. Once we have a window with all the characters, we can move the ```left``` pointer ahead one by one. If the window is still a desirable one we keep on updating the minimum window size.
+
+4. If the window is not desirable any more, we repeat step 2 onwards.
+
+![image](https://leetcode.com/problems/minimum-window-substring/Figures/76/76_Minimum_Window_Substring_2.png)
+
+The above steps are repeated until we have looked at all the windows. The smallest window is returned.
+
+![image](https://leetcode.com/problems/minimum-window-substring/Figures/76/76_Minimum_Window_Substring_3.png)
+
+```Pythton
+
+```
 
 
 __Follow up__: Could you find an algorithm that runs in ```O(m + n)``` time?
