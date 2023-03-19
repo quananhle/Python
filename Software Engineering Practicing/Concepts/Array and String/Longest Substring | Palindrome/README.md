@@ -2,6 +2,12 @@
 
 For most substring problem, we are given a string and need to find a substring of it which satisfy some restrictions. A general way is to use a hashmap assisted with two pointers. The template is given below.
 
+```
+1. Use two pointers: start and end to represent a window.
+2. Move end to find a valid window.
+3. When a valid window is found, move start to find a smaller window.
+```
+
 ```Java
 int findSubstring(string s) {
         vector<int> map(128,0);
