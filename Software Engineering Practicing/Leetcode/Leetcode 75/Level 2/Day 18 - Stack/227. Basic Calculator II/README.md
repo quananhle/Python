@@ -1,6 +1,6 @@
 ## [227. Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/)
 
-```Tag```:
+```Tag```: ```Stack``` ```Recursion```
 
 #### Difficulty: Medium
 
@@ -43,3 +43,96 @@ __Constraints:__
 - The answer is guaranteed to fit in a 32-bit integer.
 
 ---
+
+```Python
+class Solution:
+    def calculate(self, s: str) -> int:
+        inner, outer, ans, opt = 0, 0, 0, '+'
+        for i in range(len(s) + 1):
+            if i < len(s):
+                c = s[i]
+            else:
+                c = '+'
+            
+            if c == ' ':
+                continue
+            
+            if c.isdigit():
+                inner = 10 * inner + int(c)
+                continue
+            
+            if opt == '+':
+                ans += outer
+                outer = inner
+            elif opt == '-':
+                ans += outer
+                outer = -inner
+            elif opt == '*':
+                outer = outer * inner
+            elif opt == '/':
+                outer = int(outer / inner)
+            
+            inner, opt = 0, c
+        return ans + outer
+```
+
+### Recursion
+
+```Python
+class Solution:
+    def calculate(self, s: str) -> int:
+        i, num, stack, sign = 0, 0, list(), '+'
+
+        def dfs(operation, num):
+            if operation == '+': stack.append(num)
+            if operation == '-': stack.append(-num)
+            if operation == '*': stack.append(stack.pop() * num)
+            if operation == '/': stack.append(int(stack.pop() / num))
+        
+        while i < len(s):
+            if s[i].isdigit():
+                num = num * 10 + int(s[i])
+            elif s[i] in '+-*/':
+                dfs(sign, num)
+                num, sign = 0, s[i]
+            elif s[i] == '(':
+                num, j = self.calculate(s[i + 1])
+                i = i + j
+            elif s[i] == ')':
+                dfs(sign, num)
+                return sum(stack), i + 1
+            i += 1
+        
+        dfs(sign, num)
+        return sum(stack)
+```
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
