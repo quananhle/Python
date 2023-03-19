@@ -8,6 +8,10 @@
 
 - :warning::warning: [1055. Shortest Way to Form String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Introduction%20to%202D%20Array/1055.%20Shortest%20Way%20to%20Form%20String) ```String & Array``` ```Two Poiners``` ```Binary Search``` ```2D Array``` ```Dynamic Programming```
 
+### Interval
+
+- :warning::warning: [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+
 ### Longest Common Substring
 
 #### Palindrome
@@ -62,6 +66,7 @@
 ## Design
 
 - :warning::warning: [155. Min Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2016%20-%20Design/155.%20Min%20Stack) ```Monotonic Stack```
+- :warning::warning: [211. Design Add and Search Words Data Structure](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/211.%20Design%20Add%20and%20Search%20Words%20Data%20Structure) ```Trie``` ```Hash Map```
 - :four_leaf_clover: [232. Implement Queue using Stacks](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/232.%20Implement%20Queue%20using%20Stacks)
 - :no_entry::no_entry::no_entry: 716. Max Stack
 - :warning::warning: [1472. Design Browser History](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1472.%20Design%20Browser%20History) ```Linked List```
@@ -167,7 +172,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Stack
 
-
+### Union-Find
 
 #### Monotonic Stack
 
