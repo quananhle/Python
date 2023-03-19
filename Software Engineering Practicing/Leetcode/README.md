@@ -12,7 +12,10 @@
 
 - :warning::warning: [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
 
-### Longest Common Substring
+### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
+
+- :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring) ```Sliding Window```
+- 
 
 #### Palindrome
 
@@ -20,7 +23,6 @@
 
 ### Sliding Window
 
-- :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring)
 - [438. Find All Anagrams in a String]
 - [567. Permutation in String]
 
