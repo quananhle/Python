@@ -64,8 +64,91 @@ The above steps are repeated until we have looked at all the windows. The smalle
 ![image](https://leetcode.com/problems/minimum-window-substring/Figures/76/76_Minimum_Window_Substring_3.png)
 
 ```Pythton
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        if not t or not s:
+            return ""
 
+        n, m = len(s), len(t)
+        # Frequency of all unique characters in t
+        memo = collections.Counter(t)
+        # Number of unique characters in t
+        unique = len(memo)
+        # Keep track of how many unique character in t are already presented in the current window
+        remaining = unique
+        start, end = 0, 0
+
+        counter = dict()
+
+        # ans tuple to keep count of (window length, left pointer, right pointer)
+        ans = math.inf, None, None
+
+        while end < n:
+            # Count the frequency of letter as window expands to the right
+            letter = s[end]
+            counter[letter] = 1 + counter.get(letter, 0)
+
+            if letter in memo and counter[letter] == memo[letter]:
+                remaining -= 1
+            
+            while start <= end and remaining == 0:
+                letter = s[start]
+                # Save the smallest window until now
+                if end - start + 1 < ans[0]:
+                    ans = (end - start + 1, start, end)
+                
+                # Update the start pointer counter
+                counter[letter] -= 1
+                if letter in memo and counter[letter] < memo[letter]:
+                    remaining += 1
+
+                start += 1
+            end += 1
+
+        return "" if ans[0] == float("inf") else s[ans[1] : ans[2] + 1]
 ```
 
+```Python
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        # Idea: Two pointers: moving end forward to find a valid window,
+        #                     moving start forward to find a smaller window
+        #                     counter and hash_map to determine if the window is valid or not
+        n, counter = len(s), len(t)
+        begin, end, head = 0, 0, 0 
+        
+        # set minimum length to len(string) + 1. It cannot be greater than that
+        min_len = n + 1        
+        
+        # hashmap to hold character count in T
+        memo = collections.Counter(t)
+            
+        # Iterate throught the loop till we reach end of string S   
+        while end < n:
+            letter = s[end]
+            if letter in memo and memo[letter] > 0:
+                counter -= 1
+            memo[letter] -= 1
+                
+            end += 1            
+
+            # While counter is zero (it means we have all characters between begin and end), calculate the length and min_length
+            while counter == 0:
+                if end - begin < min_len:
+                    min_len = end - begin
+                    head = begin
+
+                start = s[begin]
+                if start in memo:
+                    memo[start] += 1
+                    if memo[start] > 0: 
+                        counter += 1                
+                begin += 1
+        
+        # Calculate the min string
+        if min_len == n+1:
+            return ""
+        return s[head: head+min_len]
+```
 
 __Follow up__: Could you find an algorithm that runs in ```O(m + n)``` time?
