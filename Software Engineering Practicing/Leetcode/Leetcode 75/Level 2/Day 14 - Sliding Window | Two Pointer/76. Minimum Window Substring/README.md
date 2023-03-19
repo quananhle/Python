@@ -63,7 +63,7 @@ The above steps are repeated until we have looked at all the windows. The smalle
 
 ![image](https://leetcode.com/problems/minimum-window-substring/Figures/76/76_Minimum_Window_Substring_3.png)
 
-```Pythton
+```Python
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if not t or not s:
@@ -150,5 +150,3 @@ class Solution:
             return ""
         return s[head: head+min_len]
 ```
-
-__Follow up__: Could you find an algorithm that runs in ```O(m + n)``` time?
