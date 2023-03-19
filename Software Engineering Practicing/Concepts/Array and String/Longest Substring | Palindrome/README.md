@@ -1,4 +1,4 @@
-Here comes the template.
+## Template that can solve most 'substring' problems
 
 For most substring problem, we are given a string and need to find a substring of it which satisfy some restrictions. A general way is to use a hashmap assisted with two pointers. The template is given below.
 
@@ -32,7 +32,7 @@ int findSubstring(string s) {
 
 One thing needs to be mentioned is that when asked to find maximum substring, we should update maximum after the inner while loop to guarantee that the substring is valid. On the other hand, when asked to find minimum substring, we should update minimum inside the inner while loop.
 
-The code to solve __Longest Substring with At Most Two Distinct Characters__ is below:
+The code to solve __[Longest Substring with At Most Two Distinct Characters](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/)__ is below:
 
 ```Java
 int lengthOfLongestSubstringTwoDistinct(string s) {
@@ -47,7 +47,7 @@ int lengthOfLongestSubstringTwoDistinct(string s) {
 }
 ```
 
-The code to solve __Longest Substring Without Repeating Characters__ is below:
+The code to solve __[Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)__ is below:
 
 ```Java
 int lengthOfLongestSubstring(string s) {
