@@ -1,6 +1,6 @@
 ## [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/?envType=study-plan&id=level-2)
 
-```Tag```:
+```Tag```: ```String & Array``` ```Sorting``` ```Union-Find```
 
 #### Difficulty: Medium
 
@@ -32,3 +32,10 @@ __Constraints:__
 
 ---
 
+If we draw a graph (with intervals as nodes) that contains undirected edges between all pairs of intervals that overlap, then all intervals in each connected component of the graph can be merged into a single interval.
+
+![image](https://leetcode.com/problems/merge-intervals/Figures/56/component.png)
+
+### Sorting
+
+### C
