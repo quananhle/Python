@@ -113,7 +113,7 @@ class Solution:
             return memo[node]
         
         return dfs(root)
-```.
+```
 
 ```Python
 # Definition for Node.
