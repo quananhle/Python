@@ -1,6 +1,6 @@
 ## [947. Most Stones Removed with Same Row or Column](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/)
 
-```Tag```:
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Union-Find```
 
 #### Difficulty: Medium
 
@@ -52,3 +52,117 @@ __Constraints:__
 - No two stones are at the same coordinate point.
 
 ---
+
+![image](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/Figures/947/947A.png)
+
+We need to find the number of connected components after building the graph. This is the typical graph problem that can be solved using Depth-First Search or Disjoint-Set Union.
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def removeStones(self, stones: List[List[int]]) -> int:
+        graph_row, graph_col = collections.defaultdict(list), collections.defaultdict(list)
+        visited = set()
+
+        # Build the adjacency graph
+        for stone in stones:
+            x, y = stone
+            graph_row[x].append(y)
+            graph_col[y].append(x)
+        
+        self.ans = 0
+        def dfs(row, col):
+            for next_col in graph_row[row]:
+                # Check if the stone is not in visited
+                if not (row, next_col) in visited:
+                    # Add every stone visited during the DFS to the visited
+                    visited.add((row, next_col))
+                    # Every time a new DFS starts, increment the counter variable by 1
+                    self.ans += 1
+                    # Start a DFS from it
+                    dfs(row, next_col)
+            
+            for next_row in graph_col[col]:
+                # Check if the stone is not in visited
+                if not(next_row, col) in visited:
+                    # Add every stone visited during the DFS to the visited
+                    visited.add((next_row, col))
+                    # Every time a new DFS starts, increment the counter variable by 1
+                    self.ans += 1
+                    # Start a DFS from it
+                    dfs(next_row, col)
+
+        for row, col in stones:
+            # Check if the stone is not in visited
+            if not (row, col) in visited:
+                # Add every stone visited during the DFS to the visited
+                visited.add((row, col))
+                # Start a DFS from it
+                dfs(row, col)
+        
+        return self.ans
+```
+
+### Union-Find
+
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.size = size
+    
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += root_y
+            self.size -= 1
+
+    def get_count(self):
+        return self.size
+
+
+class Solution:
+    def removeStones(self, stones: List[List[int]]) -> int:
+        if not stones:
+            return 0
+
+        n = len(stones)
+        uf = UnionFind(n)
+        row_map = defaultdict(list)
+        col_map = defaultdict(list)
+
+        for idx, stone in enumerate(stones):
+            row, col = stone
+            row_map[row].append(idx)
+            col_map[col].append(idx)
+
+        for row in row_map:
+            same_row = row_map[row]
+            for i in range(len(same_row) - 1):
+                uf.union(same_row[i], same_row[i + 1])
+
+        for col in col_map:
+            same_col = col_map[col]
+            for j in range(len(same_col) - 1):
+                uf.union(same_col[j], same_col[j + 1])
+
+        distinct_region = 0
+        for r in range(len(uf.root)):
+            if uf.find(r) == r: 
+                distinct_region += 1
+
+        return n - distinct_region
+```
