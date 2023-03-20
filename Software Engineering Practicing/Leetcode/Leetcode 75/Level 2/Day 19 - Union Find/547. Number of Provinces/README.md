@@ -182,3 +182,44 @@ class Solution:
         return uf.getCount()
 ```
 
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.size = size
+    
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+            elif self.rank[root_x] > self.rank[root_y]:
+                self.root[root_y] = root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += 1
+            self.size -= 1
+    
+    def get_count(self):
+        return self.size
+
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        if not isConnected or not isConnected[0]:
+            return 0
+        m, n = len(isConnected), len(isConnected[0])
+        uf = UnionFind(m)
+        for row in range(m):
+            for col in range(row + 1, n):
+                if isConnected[row][col] == 1:
+                    uf.union(row, col)
+        
+        return uf.get_count()
+```
