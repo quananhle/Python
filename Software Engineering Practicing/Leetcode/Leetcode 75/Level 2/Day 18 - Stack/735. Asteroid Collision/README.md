@@ -62,11 +62,12 @@ class Solution:
                 if ans[-1] < -asteroid:
                     # Explode the smaller one in the stack
                     ans.pop()
-                    continue
+                    continue                    # [-2,-2,1,-2] -> [-2,-2,-2]
                 # Check if the last asteroid is of the same size with the new asteroid 
                 elif ans[-1] == -asteroid:
                     # Explode the last asteroid of the stack
                     ans.pop()
+                # Break out of the loop
                 break
             else:
                 ans.append(asteroid)
