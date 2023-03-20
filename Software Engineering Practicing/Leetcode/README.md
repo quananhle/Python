@@ -186,8 +186,8 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### [Union-Find](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Tree%20and%20graphs/Disjoint%20Set)
 
-- :warning::warning: 547. Number of Provinces
-- :warning::warning: 947. Most Stones Removed with Same Row or Column
+- :warning::warning: [547. Number of Provinces](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/547.%20Number%20of%20Provinces) ```Breadth-First Search``` ```Depth-First Search```
+- :warning::warning: [947. Most Stones Removed with Same Row or Column](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/947.%20Most%20Stones%20Removed%20with%20Same%20Row%20or%20Column) ```Breadth-First Search``` ```Depth-First Search```
 
 ---
 
