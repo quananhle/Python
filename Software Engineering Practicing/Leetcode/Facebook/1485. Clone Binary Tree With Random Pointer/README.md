@@ -1,6 +1,6 @@
 ## [1485. Clone Binary Tree With Random Pointer](https://leetcode.com/problems/clone-binary-tree-with-random-pointer/)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -55,3 +55,113 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
+
+#### Recursive DFS
+
+```Python
+# Definition for Node.
+# class Node:
+#     def __init__(self, val=0, left=None, right=None, random=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+#         self.random = random
+
+class Solution:
+    def copyRandomBinaryTree(self, root: 'Optional[Node]') -> 'Optional[NodeCopy]':
+        if not root:
+            return
+
+        visited = dict()
+
+        def dfs(node):
+            if not node:
+                return
+
+            if node in visited:
+                return visited[node]
+            
+            new_node = NodeCopy(node.val)
+            visited[node] = new_node
+
+            new_node.left = dfs(node.left)
+            new_node.right = dfs(node.right)
+            new_node.random = dfs(node.random)
+            return new_node
+
+        return dfs(root)
+```
+
+```Python
+# Definition for Node.
+# class Node:
+#     def __init__(self, val=0, left=None, right=None, random=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+#         self.random = random
+
+class Solution:
+    def copyRandomBinaryTree(self, root: 'Optional[Node]') -> 'Optional[NodeCopy]':
+        def dfs(node, memo={None:None}):
+            if not node in memo:
+                memo[node] = NodeCopy(node.val)
+                memo[node].left = dfs(node.left)
+                memo[node].right = dfs(node.right)
+                memo[node].random = dfs(node.random)
+            return memo[node]
+        
+        return dfs(root)
+```.
+
+```Python
+# Definition for Node.
+# class Node:
+#     def __init__(self, val=0, left=None, right=None, random=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+#         self.random = random
+
+class Solution:
+    def copyRandomBinaryTree(self, root: 'Optional[Node]', memo={None:None}) -> 'Optional[NodeCopy]':
+        if not root in memo:
+            memo[root] = new_root = NodeCopy(root.val)        
+            for i in ['left', 'right', 'random']: exec(f'new_root.{i}=self.copyRandomBinaryTree(root.{i})')
+        return memo[root]
+```
+
+#### Iterative DFS
+
+```Python
+# Definition for Node.
+# class Node:
+#     def __init__(self, val=0, left=None, right=None, random=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+#         self.random = random
+
+class Solution:
+    def copyRandomBinaryTree(self, root: 'Optional[Node]') -> 'Optional[NodeCopy]':
+        if not root:
+            return
+
+        visited = collections.defaultdict(lambda: NodeCopy())
+        visited[None] = None
+
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            visited[node].val = node.val
+            visited[node].left = visited[node.left]
+            visited[node].right = visited[node.right]
+            visited[node].random = visited[node.random]
+
+            for child in (node.left, node.right):
+                if child:
+                    stack.append(child)
+        
+        return visited[root]
+```
