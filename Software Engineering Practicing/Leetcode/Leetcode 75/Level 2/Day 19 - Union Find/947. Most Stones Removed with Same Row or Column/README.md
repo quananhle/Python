@@ -104,6 +104,57 @@ class Solution:
         return self.ans
 ```
 
+### Breadth-First Search
+
+```Python
+class Solution:
+    def removeStones(self, stones: List[List[int]]) -> int:
+        graph_row = collections.defaultdict(list)
+        graph_col = collections.defaultdict(list)
+        
+        # Build the adjacency graph
+        for row, col in stones:
+            graph_row[row].append(col)
+            graph_col[col].append(row)
+
+        visited = set()
+
+        ans = 0
+        queue = collections.deque()
+
+        for row, col in stones:
+            if not (row, col) in visited:
+                queue.append((row, col))
+
+                while queue:
+                    r, c = queue.popleft()
+                    if (r, c) in visited:
+                        continue
+
+                    visited.add((r, c))
+                    ans += 1
+
+                    # Append all points which are in same row as (r, c)
+                    for e in graph_row[r]:  
+                        if e != c:
+                            queue.append((r, e))
+
+                    # Append all points which are in same column as (r, c)
+                    for e in graph_col[c]:  
+                        if e != r:
+                            queue.append((e, c))
+
+                    # Here are two line which make code time complexity O(n^2) to O(n)
+                    # Check if any point covers its entire row and column points, then again no need to cover these points again.
+                    graph_row[r].clear()
+                    graph_col[c].clear()
+
+                # Each component can not destroy it self completely, there is only one point always exist,
+                ans -=1    
+
+        return ans
+```
+
 ### Union-Find
 
 ```Python
