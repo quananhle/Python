@@ -155,6 +155,45 @@ class Solution:
         return ans
 ```
 
+### Optimized Breadth-First Search
+
+```Python
+class Solution:
+    def removeStones(self, stones: List[List[int]]) -> int: 
+        graph_row = collections.defaultdict(set)
+        graph_col = collections.defaultdict(set)    
+        
+        for stone in stones:
+            row, col = stone
+            graph_row[row].add((row, col))
+            graph_col[col].add((row, col))
+        
+        def remove_stone(stone):
+            row, col = stone
+            graph_row[row].remove((row, col))
+            graph_col[col].remove((row, col))
+        
+        connected_components = 0
+        visited = set()
+        for stone in stones:
+            if (stone[0], stone[1]) in visited:
+                continue
+            
+            connected_components += 1            
+            queue = collections.deque([stone])
+            visited.add((stone[0], stone[1]))
+            remove_stone(stone)
+            
+            while queue:
+                row, col = queue.popleft()
+                for neighbor in list(graph_row[row]) + list(graph_col[col]):
+                    queue.append(neighbor)
+                    visited.add(neighbor)
+                    remove_stone(neighbor)
+                    
+        return len(stones) - connected_components
+```
+
 ### Union-Find
 
 ```Python
