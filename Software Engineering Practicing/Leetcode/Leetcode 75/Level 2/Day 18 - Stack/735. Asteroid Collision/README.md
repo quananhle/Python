@@ -42,3 +42,46 @@ __Constraints:__
 - ```asteroids[i] != 0```
 
 ---
+
+### Stack
+
+![image](https://assets.leetcode.com/users/images/60a52a77-d4f5-43f3-aa24-615bb4b77525_1620089157.483139.gif)
+
+- __Time Complexity__: ```O(N)```
+- __Space Complexity__: ```O(N)```
+
+```Python
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        ans = list()
+        n = len(asteroids)
+        for asteroid in asteroids:
+            # Check if stack is not empty and the new asteroid is in the opposite direction with the last asteroid of the stack
+            while ans and asteroid < 0 < ans[-1]:
+                # Check if the last asteroid of the stack is smaller than the new asteroid
+                if ans[-1] < -asteroid:
+                    # Explode the smaller one in the stack
+                    ans.pop()
+                    continue
+                # Check if the last asteroid is of the same size with the new asteroid 
+                elif ans[-1] == -asteroid:
+                    # Explode the last asteroid of the stack
+                    ans.pop()
+                break
+            else:
+                ans.append(asteroid)
+        return ans
+```
+
+```Python
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        ans = [-1]
+        for asteroid in asteroids:
+            while asteroid < 0 < ans[-1]:
+                if -asteroid < ans[-1] or -asteroid == ans.pop():
+                    break
+            else:
+                ans.append(asteroid)
+        return ans[1:]
+```
