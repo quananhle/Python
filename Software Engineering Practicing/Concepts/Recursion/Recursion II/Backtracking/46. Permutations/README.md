@@ -70,17 +70,17 @@ class Solution:
 ```Python
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        def helper(nums, permutations, res):
+        def dfs(nums, permutations, res):
             if not nums:
                 res.append(permutations[:])
             
             for i in range(len(nums)):
                 new_nums = nums[:i] + nums[i+1:]
                 new_perm = permutations + [nums[i]]
-                helper(new_nums, new_perm, res)
+                dfs(new_nums, new_perm, res)
             
             return res
-        return helper(nums, [], [])
+        return dfs(nums, [], [])
 ```
 
 #### Iterative Depth-First Search
