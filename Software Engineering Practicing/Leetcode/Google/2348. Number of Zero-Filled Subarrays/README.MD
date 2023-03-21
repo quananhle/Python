@@ -1,6 +1,6 @@
 ## [2348. Number of Zero-Filled Subarrays](https://leetcode.com/problems/number-of-zero-filled-subarrays/)
 
-```Tag```:
+```Tag```: ```Two Pointers``` ```Sliding Window```
 
 #### Difficulty: Medium
 
@@ -68,8 +68,15 @@ class Solution:
         return total_subarray
 ```
 
-### Two Pointers
+### Sliding Window
 
 ```Python
-
+class Solution:
+    def zeroFilledSubarray(self, nums: List[int]) -> int:
+        start = total_subarray = 0
+        for end in range(len(nums)):
+            if nums[end]:
+                start = end + 1
+            total_subarray += end - start + 1
+        return total_subarray
 ```
