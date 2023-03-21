@@ -87,7 +87,39 @@ class LRUCache:
 # obj.put(key,value)
 ```
 
+```Python
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.cache = dict()
+        self.capacity = capacity
+
+    def get(self, key: int) -> int:
+        if not key in self.cache:
+            return -1
+        val = self.cache.pop(key)
+        # Ensure the key is always moved to the end or most recently used cache
+        self.cache[key] = val
+        return val
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            del self.cache[key]
+        else:
+            if len(self.cache) == self.capacity:
+                to_delete = list(self.cache.keys())[0]
+                del self.cache[to_delete]
+        self.cache[key] = value
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+```
+
 ### OrderedDict()
+
+There is a structure called ordered dictionary, it combines behind both hashmap and linked list. In Python this structure is called ```OrderedDict``` and in Java ```LinkedHashMap```.
 
 ```Python
 class LRUCache:
@@ -127,7 +159,83 @@ class LRUCache:
 
 ### Linked List
 
+The problem can be solved with a hashmap that keeps track of the keys and its values in the double linked list. That results in ```O(1)``` time for ```put``` and ```get``` operations and allows to remove the first added node in ```O(1)``` time as well.
+
+![image](https://leetcode.com/problems/lru-cache/Figures/146/structure.png)
+
+One advantage of double linked list is that the node can remove itself without other reference. In addition, it takes constant time to add and remove nodes from the head or tail.
+
+One particularity about the double linked list implemented here is that there are pseudo head and pseudo tail to mark the boundary, so that we don't need to check the null node during the update.
+
+![image](https://leetcode.com/problems/lru-cache/Figures/146/new_node.png)
+
 ```Python
+class ListNode():
+    def __init__(self, key=0, val=0, next=None, prev=None):
+        self.key = key
+        self.val = val
+        self.next = next
+        self.prev = prev
 
+class LRUCache:
 
+    def add_node(self, node):
+        # Add new node after head node
+        node.prev = self.head
+        node.next = self.head.next
+        self.head.next.prev = node
+        self.head.next = node
+
+    def del_node(self, node):
+        # Remove the node from the linked list
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+    def move_to_head(self, node):
+        self.del_node(node)
+        self.add_node(node)
+
+    def pop_tail(self):
+        node = self.tail.prev
+        self.del_node(self.tail.prev)
+        return node
+
+    def __init__(self, capacity: int):
+        self.cache = dict()
+        self.size = 0
+        self.capacity = capacity
+        self.head, self.tail = ListNode(), ListNode()
+
+        # Initialize the links between head and tail nodes
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def get(self, key: int) -> int:
+        node = self.cache.get(key, None)
+        if not node:
+            return -1
+        # Update node to the most recently used
+        self.move_to_head(node)
+        return node.val
+
+    def put(self, key: int, value: int) -> None:
+        node = self.cache.get(key, None)
+        if not node:
+            new_node = ListNode(key=key, val=value)
+            self.cache[key] = new_node
+            self.add_node(new_node)
+            self.size += 1
+            # Remove the least recently used node
+            if self.size > self.capacity:
+                tail = self.pop_tail()
+                del self.cache[tail.key]
+                self.size -= 1
+        else:
+            node.val = value
+            self.move_to_head(node)
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
 ```
