@@ -46,3 +46,30 @@ __Constraints:__
 - -10<sup>9</sup> <= ```nums[i]``` <= 10<sup>9</sup>
 
 ---
+
+![image](https://leetcode.com/problems/number-of-zero-filled-subarrays/Figures/2348/2348-1.png)
+
+### Count Running Subarray
+
+![image](https://leetcode.com/problems/number-of-zero-filled-subarrays/Figures/2348/2348-2.png)
+
+![image](https://leetcode.com/problems/number-of-zero-filled-subarrays/Figures/2348/2348-2_4.png)
+
+```Python
+class Solution:
+    def zeroFilledSubarray(self, nums: List[int]) -> int:
+        total_subarray = curr_subarray = 0
+        for num in nums:
+            if num == 0:
+                curr_subarray += 1
+                total_subarray += curr_subarray
+            else:
+                curr_subarray = 0
+        return total_subarray
+```
+
+### Two Pointers
+
+```Python
+
+```
