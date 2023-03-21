@@ -35,6 +35,10 @@
 - [415. Add Strings]
 - [989. Add to Array-Form of Integer]
 
+### Subarray
+
+- :warning::warning: [2348. Number of Zero-Filled Subarrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2348.%20Number%20of%20Zero-Filled%20Subarrays) ```Sliding Window```
+
 ### Two Pointers
 
 #### [kSum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/kSum)
@@ -151,7 +155,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :no_entry::no_entry::no_entry: [37. Sudoku Solver]
 - :warning::warning: [39. Combination Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II/Backtracking/39.%20Combination%20Sum)
 - [40. Combination Sum II]
-- :warning::warning: [46. Permutations](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II/Backtracking/46.%20Permutations)
+- :warning::warning: [46. Permutations](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II/Backtracking/46.%20Permutations) ```Depth-First Search``` ```Breadth-First Search```
 - [47. Permutations II]
 - [78. Subsets]
 - [90. Subsets II]
