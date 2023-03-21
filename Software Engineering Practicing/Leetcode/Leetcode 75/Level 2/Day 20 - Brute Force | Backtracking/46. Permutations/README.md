@@ -1,6 +1,6 @@
 ## [46. Permutations](https://leetcode.com/problems/permutations/)
 
-```Tag```: ```Backtracking```
+```Tag```: ```Backtracking``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -63,3 +63,90 @@ class Solution:
         backtrack(0)
         return res
 ```
+### Depth-First Search
+
+#### Recursive Depth-First Search
+
+```Python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        def helper(nums, permutations, res):
+            if not nums:
+                res.append(permutations[:])
+            
+            for i in range(len(nums)):
+                new_nums = nums[:i] + nums[i+1:]
+                new_perm = permutations + [nums[i]]
+                helper(new_nums, new_perm, res)
+            
+            return res
+        return helper(nums, [], [])
+```
+
+#### Iterative Depth-First Search
+
+```Python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        # Depth-First Search
+        stack = [(nums, [])]
+        res = list()
+        
+        while stack:
+            nums, path = stack.pop()
+            if not nums:
+                res.append(path)
+            for i in range(len(nums)):
+                new_num = nums[:i] + nums[i+1:]
+                stack.append((new_num, path + [nums[i]]))
+
+        return res
+```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        # Breadth-First Search
+        q = collections.deque([(nums, [])])
+        res = []
+
+        while q:
+            nums, path = q.popleft()
+            if not nums:
+                res.append(path)
+            for i in range(len(nums)):
+                new_num = nums[:i] + nums[i+1:]
+                q.append((new_num, path + [nums[i]]))
+
+        return res
+```
+
+### One Liner
+
+#### Recursive, take any number as first
+
+```Python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        return [[n] + p for i, n in enumerate(nums) for p in self.permute(nums[:i] + nums[i+1:])] or [[]]
+```
+
+#### Recursive, insert first number anywhere
+
+```Python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        return nums and [permutation[:i] + [nums[0]] + permutation[i:] for permutation in self.permute(nums[1:]) for i in range(len(nums))] or [[]]
+```
+
+#### Using the ```itertools``` library
+
+```Python
+class Solution:
+    def permute(self, nums):
+        return map(list, itertools.permutations(nums))
+```
+
+
