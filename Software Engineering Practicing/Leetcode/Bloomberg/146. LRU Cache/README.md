@@ -1,6 +1,6 @@
 ## [146. LRU Cache](https://leetcode.com/problems/lru-cache/)
 
-```Tag```: ```Design``` ```Stack```
+```Tag```: ```Design``` ```Hash Map``` ```Linked List```
 
 #### Difficulty: Medium
 
@@ -48,3 +48,86 @@ __Constraints:__
 
 ---
 
+![image](https://upload.wikimedia.org/wikipedia/commons/8/88/Lruexample.png)
+
+### Hash Map
+
+```Python
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.cache = dict()
+        self.capacity = capacity
+
+    def get(self, key: int) -> int: # O(1)
+        if not key in self.cache:
+            return -1
+        val = self.cache[key]
+        # Ensure the key is always moved to the end or most recently used cache
+        del self.cache[key]
+        self.cache[key] = val
+        return val
+
+    def put(self, key: int, value: int) -> None: # O(1)
+        if not key in self.cache:
+            # Check if the number of key at the limit of the cache capacity
+            if len(self.cache) == self.capacity:
+                # Remove the least recently used key
+                to_del = [key for key in self.cache][0]
+                del self.cache[to_del]
+        else:
+            # Delete the key to update it in the most recently used cache
+            del self.cache[key]
+        # Update order for key to most recently used
+        self.cache[key] = value
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+```
+
+### OrderedDict()
+
+```Python
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.memo = OrderedDict()
+        self.size = capacity
+
+    def get(self, key: int) -> int:
+        if not key in self.memo:
+            return -1
+        # Update the key to the last position or most recently used in the hash map
+        '''
+        val = self.memo.pop(key)
+        self.memo[key] = val
+        return val
+        '''
+        self.memo[key] = self.memo.pop(key)
+        return self.memo[key]
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.memo:
+            self.memo.pop(key)
+        else:
+            if len(self.memo) == self.size:
+                # Remove the first/least recently used key in the hash map
+                self.memo.popitem(last=False)
+        # Update the key=val to most recently used in the hash map
+        self.memo[key] = value
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+```
+
+### Linked List
+
+```Python
+
+
+```
