@@ -63,8 +63,9 @@ class Solution:
         backtrack(0)
         return res
 ```
+### Depth-First Search
 
-### Recursion
+#### Recursive Depth-First Search
 
 ```Python
 class Solution:
@@ -80,6 +81,46 @@ class Solution:
             
             return res
         return helper(nums, [], [])
+```
+
+#### Iterative Depth-First Search
+
+```Python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        # Depth-First Search
+        stack = [(nums, [])]
+        res = list()
+        
+        while stack:
+            nums, path = stack.pop()
+            if not nums:
+                res.append(path)
+            for i in range(len(nums)):
+                new_num = nums[:i] + nums[i+1:]
+                stack.append((new_num, path + [nums[i]]))
+
+        return res
+```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        # Breadth-First Search
+        q = collections.deque([(nums, [])])
+        res = []
+
+        while q:
+            nums, path = q.popleft()
+            if not nums:
+                res.append(path)
+            for i in range(len(nums)):
+                new_num = nums[:i] + nums[i+1:]
+                q.append((new_num, path + [nums[i]]))
+
+        return res
 ```
 
 ### One Liner
@@ -107,3 +148,5 @@ class Solution:
     def permute(self, nums):
         return map(list, itertools.permutations(nums))
 ```
+
+
