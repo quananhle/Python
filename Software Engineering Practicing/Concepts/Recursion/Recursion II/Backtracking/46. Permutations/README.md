@@ -38,6 +38,8 @@ __Constraints:__
 
 ### Backtracking
 
+![image](https://user-images.githubusercontent.com/35042430/226508162-6e3de2b8-cfa9-46b6-9ee7-95e9e8cd0666.png)
+
 ```Python
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
