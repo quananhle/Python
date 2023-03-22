@@ -170,5 +170,67 @@ class MaxStack:
 ### Heap
 
 ```Python
+["MaxStack", "push", "push", "push", "top", "popMax", "top", "peekMax", "pop", "top"]
+[[], [5], [1], [5], [], [], [], [], [], []]
+```
 
+After the first three ```push``` calls, our ```stack``` and ```value``` are sorted as:
+
+```Python
+stack = [(idx: 0, val: 5), (idx: 1, val: 1), (idx: 2, val: 5)]
+heapp = [(val:-5, idx:-2), (val:-5, idx:-0), (val:-1, idx:-1)]
+```
+
+Whenever we are requested to operate on ```stack``` or ```heap``` (i.e., ```top```, ```pop```, ```peekMax``` and ```popMax```), we first check the ```ID``` of its top element, if is turns out to be an ```ID``` in ```removed```, that is, it was removed previously, we need to __remove the current top element until its ID is not in__ ```removed``` to make sure the top still exists. After that,
+
+- For ```top```, return the value of the top element in ```stack```.
+- For ```peekMax```, return the value of the top element in ```heap```.
+- For ```pop```, remove the top element of ```stack```, put its ID into ```removed```, and return _its value_.
+- For ```popMax```, remove the top element of ```heap```, put its ID into ```removed```, and return _its value_.
+
+```Python
+class MaxStack:
+
+    def __init__(self):
+        self.h = list()
+        self.idx = 0
+        self.stack = list()
+        self.removed = set()
+
+    def push(self, x: int) -> None:         # O(logN)
+        heapq.heappush(self.h, (-x, -self.idx))
+        self.stack.append((x, self.idx))
+        self.idx += 1
+
+    def pop(self) -> int:                   # O(logN)
+        while self.stack and self.stack[-1][1] in self.removed:
+            self.stack.pop()
+        num, idx = self.stack.pop()
+        self.removed.add(idx)
+        return num
+
+    def top(self) -> int:                   # O(logN)
+        while self.stack and self.stack[-1][1] in self.removed:
+            self.stack.pop()
+        return self.stack[-1][0]
+
+    def popMax(self) -> int:                # O(logN)
+        while self.h and -self.h[0][1] in self.removed:
+            heapq.heappop(self.h)
+        num, idx = heapq.heappop(self.h)
+        self.removed.add(-idx)
+        return -num
+
+    def peekMax(self) -> int:               # O(logN)
+        while self.h and -self.h[0][1] in self.removed:
+            heapq.heappop(self.h)
+        return -self.h[0][0]
+
+# Your MaxStack object will be instantiated and called as such:
+# obj = MaxStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.peekMax()
+# param_5 = obj.popMax()
 ```
