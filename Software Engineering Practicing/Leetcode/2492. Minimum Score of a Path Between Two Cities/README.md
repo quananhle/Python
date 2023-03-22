@@ -208,8 +208,9 @@ class Solution:
         uf = UnionFind(n + 1)
         ans = float('inf')
 
-        for road in roads:
-            uf.union(road[0], road[1])
+        for edge in roads:
+            a, b = edge[0], edge[1]
+            uf.union(a, b)
         
         for road in roads:
             if uf.find(1) == uf.find(road[0]):
