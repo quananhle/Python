@@ -54,7 +54,63 @@ __Constraints__:
 
 #### Recursive Depth-First Search
 
+```Python
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        # Build the adjacency graph
+        for u, v, w in roads:
+            graph[u].append((v, w))
+            graph[v].append((u, w))
+
+        visited = set()
+
+        def dfs():
+            stack = [1]
+            min_score = float('inf')
+
+            while stack:
+                node = stack.pop()
+                if not node in graph:
+                    continue
+                for edge in graph[node]:
+                    neighbor, score = edge[0], edge[1]
+                    if not neighbor in visited:
+                        visited.add(neighbor)
+                        stack.append(neighbor)
+                    min_score = min(min_score, score)
+            return min_score
+
+        return dfs()
+```
+
 #### Iterative Depth-First Search
+
+```Python
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        # Build the adjacency graph
+        for u, v, w in roads:
+            graph[u].append((v, w))
+            graph[v].append((u, w))
+
+        visited = set()
+        stack = [1]
+        min_score = float('inf')
+
+        while stack:
+            node = stack.pop()
+            if not node in graph:
+                continue
+            for edge in graph[node]:
+                neighbor, score = edge[0], edge[1]
+                if not neighbor in visited:
+                    visited.add(neighbor)
+                    stack.append(neighbor)
+                min_score = min(min_score, score)
+        return min_score
+```
 
 ### Breadth-First Search
 
@@ -91,6 +147,32 @@ class Solution:
 ```
 
 #### Iterative Breadth-First Search
+
+```Python
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        # Build the adjacency graph
+        for u, v, w in roads:
+            graph[u].append((v, w))
+            graph[v].append((u, w))
+
+        visited = set()
+        queue = collections.deque([1])
+        min_score = float('inf')
+
+        while queue:
+            node = queue.popleft()
+            if not node in graph:
+                continue
+            for edge in graph[node]:
+                neighbor, score = edge[0], edge[1]
+                if not neighbor in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+                min_score = min(min_score, score)
+        return min_score
+```
 
 ---
 
