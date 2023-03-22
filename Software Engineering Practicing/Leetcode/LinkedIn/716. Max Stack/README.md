@@ -1,6 +1,6 @@
 ## [716. Max Stack](https://leetcode.com/problems/max-stack/)
 
-```Tag```: ```Stack```
+```Tag```: ```Stack``` ```Linked List``` ```Heap```
 
 #### Difficulty: Hard
 
