@@ -49,3 +49,120 @@ __Constraints:__
 - There will be at least one element in the stack when ```pop```, ```top```, ```peekMax```, or ```popMax``` is called.
 
 ---
+
+### Two Stacks
+
+```Python
+class MaxStack:
+    ### Time Limit Exceeded
+    def __init__(self):
+        self.stack = list()
+        self.value = list()
+        self.count = 0
+
+    def push(self, x: int) -> None:
+        self.stack.append((self.count, x))
+        self.value.append((x, self.count))
+        self.stack.sort(key=lambda x:x[0])
+        self.value.sort(key=lambda x:x[0])
+        self.count += 1
+
+    def pop(self) -> int:
+        idx, val = self.stack.pop()
+        self.value.remove((val, idx))
+        return val
+
+    def top(self) -> int:
+        return self.stack[-1][1]
+
+    def peekMax(self) -> int:
+        return self.value[-1][0]
+
+    def popMax(self) -> int:
+        val, idx = self.value.pop()
+        self.stack.remove((idx, val))
+        return val
+
+
+# Your MaxStack object will be instantiated and called as such:
+# obj = MaxStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.peekMax()
+# param_5 = obj.popMax()
+```
+
+### Sorted List
+
+```Python
+["MaxStack", "push", "push", "push", "top", "popMax", "top", "peekMax", "pop", "top"]
+[[], [5], [1], [5], [], [], [], [], [], []]
+```
+
+After the first three ```push``` calls, our ```stack``` and ```value``` are sorted as:
+
+```Python
+stack = [(id:0, val:5), (id:1, val:1), (id:2, val:5)]
+value = [(id:1, val:1), (id:0, val:5), (id:2, val:5)]
+```
+
+Then, ```top``` returns the last element in ```stack```, whose value is 5;
+
+```popMax``` is about to remove the last element in value, ```(id:2, val:5)```, in both ```stack``` and ```value```. So after ```popMax``` returns ```5```, the two balanced trees are:
+
+```Python
+stack = [(id:0, val:5), (id:1, val:1)]
+values = [(id:1, val:1), (id:0, val:5)]
+```
+
+Then, ```top``` returns the last element in ```stack```, whose value is ```1```; Similar, the following ```peekMax``` returns the last element in ```value```, whose value is ```5```.
+
+After ```pop``` is called, we remove ```(id:1, val:1)``` and return the value ```5```, so:
+
+```Python
+stack = [(id:0, val:5)]
+values = [(id:0, val:5)]
+```
+
+Finally, the last call of ```top``` gives the only element ```(id:0, val:5)```, whose value is ```5```.
+
+```Python
+from sortedcontainers import SortedList
+class MaxStack:
+
+    def __init__(self):
+        self.stack = SortedList()
+        self.value = SortedList()
+        self.count = 0
+
+    def push(self, x: int) -> None:         # O(logN)
+        self.stack.add((self.count, x))
+        self.value.add((x, self.count))
+        self.count += 1
+
+    def pop(self) -> int:                   # O(logN)
+        idx, val = self.stack.pop()
+        self.value.remove((val, idx))
+        return val
+
+    def top(self) -> int:                   # O(1)
+        return self.stack[-1][1]
+
+    def peekMax(self) -> int:               # O(1)
+        return self.value[-1][0]
+
+    def popMax(self) -> int:                # O(logN)
+        val, idx = self.value.pop()
+        self.stack.remove((idx, val))
+        return val
+
+
+# Your MaxStack object will be instantiated and called as such:
+# obj = MaxStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.peekMax()
+# param_5 = obj.popMax()
+```
