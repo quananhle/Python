@@ -109,15 +109,19 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Graph
 
-### Graph
-
-#### Depth-First Search in Graph
+### Depth-First Search in Graph
 
 - :warning::warning: [210. Course Schedule II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2011%20-%20Graph%20%7C%20BFS%20%7C%20DFS/210.%20Course%20Schedule%20II) ```Topological Sorted Order``` ```Kahn's Algorithm```
 
-#### Breadth-First Search in Graph
+### Breadth-First Search in Graph
 
 - :no_entry::no_entry::no_entry: [815. Bus Routes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2011%20-%20Graph%20%7C%20BFS%20%7C%20DFS/815.%20Bus%20Routes)
+
+### [Union-Find](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Tree%20and%20graphs/Disjoint%20Set)
+
+- :warning::warning: [547. Number of Provinces](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/547.%20Number%20of%20Provinces) ```Breadth-First Search``` ```Depth-First Search```
+- :warning::warning: [947. Most Stones Removed with Same Row or Column](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/947.%20Most%20Stones%20Removed%20with%20Same%20Row%20or%20Column) ```Breadth-First Search``` ```Depth-First Search```
+- :warning::warning: [2492. Minimum Score of a Path Between Two Cities](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/2492.%20Minimum%20Score%20of%20a%20Path%20Between%20Two%20Cities)  ```Breadth-First Search``` ```Depth-First Search```
 
 ---
 
@@ -188,11 +192,6 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 - :warning::warning: [227. Basic Calculator II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/227.%20Basic%20Calculator%20II)
 
-### [Union-Find](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Tree%20and%20graphs/Disjoint%20Set)
-
-- :warning::warning: [547. Number of Provinces](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/547.%20Number%20of%20Provinces) ```Breadth-First Search``` ```Depth-First Search```
-- :warning::warning: [947. Most Stones Removed with Same Row or Column](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/947.%20Most%20Stones%20Removed%20with%20Same%20Row%20or%20Column) ```Breadth-First Search``` ```Depth-First Search```
-
 ---
 
 ## Tree
@@ -221,6 +220,8 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [173. Binary Search Tree Iterator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/173.%20Binary%20Search%20Tree%20Iterator) ```Design```
 - :warning::warning: [230. Kth Smallest Element in a BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
 - :warning::warning:
+
+---
 
 ## Trie
 
