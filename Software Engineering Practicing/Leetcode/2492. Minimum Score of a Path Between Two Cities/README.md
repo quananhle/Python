@@ -1,6 +1,6 @@
 ## [2492. Minimum Score of a Path Between Two Cities](https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Depth-First Search``` ```Breadth-First Search``` ```Union-Find```
 
 #### Difficulty: Medium
 
@@ -178,4 +178,42 @@ class Solution:
 
 ### Union-Find
 
+```Python
+class UnionFind:
+    
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.size = size
+    
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += root_y
+            self.size -= 1
 
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        uf = UnionFind(n + 1)
+        ans = float('inf')
+
+        for road in roads:
+            uf.union(road[0], road[1])
+        
+        for road in roads:
+            if uf.find(1) == uf.find(road[0]):
+                ans = min(ans, road[2])
+        
+        return ans
+```
