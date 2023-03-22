@@ -103,29 +103,29 @@ class MaxStack:
 After the first three ```push``` calls, our ```stack``` and ```value``` are sorted as:
 
 ```Python
-stack = [(id:0, val:5), (id:1, val:1), (id:2, val:5)]
-value = [(id:1, val:1), (id:0, val:5), (id:2, val:5)]
+stack = [(idx:0, val:5), (idx:1, val:1), (idx:2, val:5)]
+value = [(val:1, idx:1), (val:5, idx:0), (val:5, idx:2)]
 ```
 
 Then, ```top``` returns the last element in ```stack```, whose value is 5;
 
-```popMax``` is about to remove the last element in value, ```(id:2, val:5)```, in both ```stack``` and ```value```. So after ```popMax``` returns ```5```, the two balanced trees are:
+```popMax``` is about to remove the last element in value, ```(val:5, idx:2)```, in both ```stack``` and ```value```. So after ```popMax``` returns ```5```, the two balanced trees are:
 
 ```Python
-stack = [(id:0, val:5), (id:1, val:1)]
-values = [(id:1, val:1), (id:0, val:5)]
+stack = [(idx:0, val:5), (idx:1, val:1)]
+value = [(val:1, idx:1), (val:5, idx:0)]
 ```
 
 Then, ```top``` returns the last element in ```stack```, whose value is ```1```; Similar, the following ```peekMax``` returns the last element in ```value```, whose value is ```5```.
 
-After ```pop``` is called, we remove ```(id:1, val:1)``` and return the value ```5```, so:
+After ```pop``` is called, we remove ```(idx:1, val:1)``` and return the value ```5```, so:
 
 ```Python
-stack = [(id:0, val:5)]
-values = [(id:0, val:5)]
+stack = [(idx:0, val:5)]
+value = [(val:5, idx:0)]
 ```
 
-Finally, the last call of ```top``` gives the only element ```(id:0, val:5)```, whose value is ```5```.
+Finally, the last call of ```top``` gives the only element ```(idx:0, val:5)```, whose value is ```5```.
 
 ```Python
 from sortedcontainers import SortedList
@@ -165,4 +165,10 @@ class MaxStack:
 # param_3 = obj.top()
 # param_4 = obj.peekMax()
 # param_5 = obj.popMax()
+```
+
+### Heap
+
+```Python
+
 ```
