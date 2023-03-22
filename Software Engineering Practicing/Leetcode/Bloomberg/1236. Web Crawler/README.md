@@ -1,6 +1,6 @@
 [1236. Web Crawler](https://leetcode.com/problems/web-crawler/)
 
-```Tag```: ```Regex``` ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Graph``` ```Regex``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -84,3 +84,94 @@ __Constraints:__
 - You may assume there're no duplicates in url library.
 
 ---
+
+### Depth-First Search
+
+```Python
+# """
+# This is HtmlParser's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class HtmlParser(object):
+#    def getUrls(self, url):
+#        """
+#        :type url: str
+#        :rtype List[str]
+#        """
+
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
+        def get_hostname(url):
+            return url.split('/')[2]
+
+        visited = set()
+        visited.add(startUrl)
+
+        def dfs(curr_url):
+            for next_url in htmlParser.getUrls(curr_url):
+                if get_hostname(next_url) == get_hostname(curr_url) and not next_url in visited:
+                    visited.add(next_url)
+                    dfs(next_url)
+
+        dfs(startUrl)
+        return visited
+```
+
+```Python
+# """
+# This is HtmlParser's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class HtmlParser(object):
+#    def getUrls(self, url):
+#        """
+#        :type url: str
+#        :rtype List[str]
+#        """
+from urllib.parse import urlparse
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
+        visited = set()
+        visited.add(startUrl)
+
+        def dfs(curr_url):
+            for next_url in htmlParser.getUrls(curr_url):
+                if urlparse(next_url).netloc == urlparse(curr_url).netloc and not next_url in visited:
+                    visited.add(next_url)
+                    dfs(next_url)
+
+        dfs(startUrl)
+        return visited
+```
+
+### Breadth-First Search
+
+```Python
+# """
+# This is HtmlParser's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class HtmlParser(object):
+#    def getUrls(self, url):
+#        """
+#        :type url: str
+#        :rtype List[str]
+#        """
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
+        def get_hostname(url):
+            return url.split('/')[2]
+
+        visited = set()
+        visited.add(startUrl)
+        queue = collections.deque([startUrl])
+
+        while queue:
+            curr_url = queue.popleft()
+            for next_url in htmlParser.getUrls(curr_url):
+                if get_hostname(next_url) == get_hostname(curr_url) and not next_url in visited:
+                    visited.add(next_url)
+                    queue.append(next_url)
+
+        return visited
+```
