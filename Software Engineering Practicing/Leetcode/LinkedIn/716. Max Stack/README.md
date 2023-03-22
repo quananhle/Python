@@ -234,3 +234,85 @@ class MaxStack:
 # param_4 = obj.peekMax()
 # param_5 = obj.popMax()
 ```
+
+### Sorted Dict & Linked List
+
+```Python
+from sortedcontainers import SortedDict
+
+class ListNode():
+
+    def __init__(self, val=0, next=None, prev=None):
+        self.val = val
+        self.next = next
+        self.prev = prev
+
+class MaxStack:
+
+    def add_node(self, node):
+        # Add node to the tail of the linked list
+        self.tail.prev.next = node
+        node.next = self.tail
+        node.prev = self.tail.prev
+        self.tail.prev = node
+
+    def del_node(self, node):
+        # Remove the node from linked list
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+    def pop_tail(self):
+        node = self.tail.prev
+        self.del_node(self.tail.prev)
+        return node
+
+    def get_tail(self):
+        return self.tail.prev.val
+
+    def __init__(self):
+        # Linked List to keep track of the ordered of the stack
+        self.head, self.tail = ListNode(-1), ListNode(-1)
+        # Ordered Dict to keep track of the maximum values
+        self.dict = SortedDict()
+
+        # Initialize the links between head and tail nodes
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def push(self, x: int) -> None:
+        new_node = ListNode(x)
+        self.add_node(new_node)
+        
+        if not x in self.dict:
+            self.dict[x] = list()
+        self.dict[x].append(new_node)
+
+    def pop(self) -> int:
+        tail = self.pop_tail()
+        self.dict[tail.val].pop()
+        if len(self.dict[tail.val]) == 0:
+            del self.dict[tail.val]
+        return tail.val
+
+    def top(self) -> int:
+        return self.get_tail()
+
+    def peekMax(self) -> int:
+        return self.dict.peekitem(-1)[0]
+
+    def popMax(self) -> int:
+        val, nodes = self.dict.peekitem(-1)
+        to_del = nodes.pop()
+        if len(self.dict[val]) == 0:
+            del self.dict[val]
+        self.del_node(to_del)
+        return val
+
+# Your MaxStack object will be instantiated and called as such:
+# obj = MaxStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.peekMax()
+# param_5 = obj.popMax()
+```
