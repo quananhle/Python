@@ -49,3 +49,51 @@ __Constraints__:
 - There is at least one path between ```1``` and ```n```.
 
 ---
+
+### Depth-First Search
+
+#### Recursive Depth-First Search
+
+#### Iterative Depth-First Search
+
+### Breadth-First Search
+
+#### Recursive Breadth-First Search
+
+```Python
+class Solution:
+    def minScore(self, n: int, roads: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        # Build the adjacency graph
+        for u, v, w in roads:
+            graph[u].append((v, w))
+            graph[v].append((u, w))
+
+        visited = set()
+
+        def bfs():
+            queue = collections.deque([1])
+            min_score = float('inf')
+
+            while queue:
+                node = queue.popleft()
+                if not node in graph:
+                    continue
+                for edge in graph[node]:
+                    neighbor, score = edge[0], edge[1]
+                    if not neighbor in visited:
+                        visited.add(neighbor)
+                        queue.append(neighbor)
+                    min_score = min(min_score, score)
+            return min_score
+
+        return bfs()
+```
+
+#### Iterative Breadth-First Search
+
+---
+
+### Union-Find
+
+
