@@ -49,3 +49,44 @@ __Constraints:__
 - No two computers are connected by more than one cable.
 
 ---
+
+### Depth-First Search
+
+![image](https://leetcode.com/problems/number-of-operations-to-make-network-connected/Figures/1319/1319-1.png)
+
+```Python
+class Solution:
+    def makeConnected(self, n: int, connections: List[List[int]]) -> int:
+        if len(connections) < n - 1:
+            return -1
+
+        # Build the adjacency graph
+        graph = collections.defaultdict(list)
+        for u, v in connections:
+            graph[u].append(v)
+            graph[v].append(u)
+
+        visited = set()
+
+        def dfs(node):
+            visited.add(node)
+            for neighbor in graph[node]:
+                if not neighbor in visited:
+                    visited.add(neighbor)
+                    dfs(neighbor)
+        
+        ans = 0
+        for node in range(n):
+            if not node in visited:
+                ans += 1
+                dfs(node)
+
+        # If there are at least n - 1 edges, the solution is the number of connected components minus one. Otherwise, we return -1
+        return ans - 1
+```
+
+### Breadth-First Search
+
+```Python
+
+```
