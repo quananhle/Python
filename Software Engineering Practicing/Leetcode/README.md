@@ -196,6 +196,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 #### Basic Calculator 
 
+- :no_entry::no_entry::no_entry: [224. Basic Calculator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/224.%20Basic%20Calculator)
 - :warning::warning: [227. Basic Calculator II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/227.%20Basic%20Calculator%20II)
 
 ---
