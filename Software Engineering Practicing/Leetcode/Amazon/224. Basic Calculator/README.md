@@ -71,5 +71,28 @@ For eg. For expression ```A−(B+C)+(D+E−F), D+E−F``` is evaluated before ``
 We can also cover the original expression with a set of parenthesis to avoid this extra call.
 
 ```Python
+class Solution:
+    def calculate(self, s: str) -> int:
+        i, num, stack, sign = 0, 0, list(), '+'
 
+        def dfs(operation, num):
+            if operation == '+': stack.append(num)
+            if operation == '-': stack.append(-num)
+
+        while i < len(s):
+            if s[i].isdigit():
+                num = num * 10 + int(s[i])
+            elif s[i] in '+-':
+                dfs(sign, num)
+                num, sign = 0, s[i]
+            elif s[i] == '(':
+                num, j = self.calculate(s[i+1:])
+                i += j
+            elif s[i] == ')':
+                dfs(sign, num)
+                return sum(stack), i + 1
+            i += 1
+        
+        dfs(sign, num)
+        return sum(stack)
 ```
