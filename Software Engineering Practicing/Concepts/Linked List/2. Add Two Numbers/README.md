@@ -1,6 +1,6 @@
-## 2. Add Two Numbers
+## [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
 
-```Tag```: ```List```
+```Tag```: ```Linked List```
 
 #### Difficulty: Medium
 
