@@ -54,6 +54,18 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/number-of-operations-to-make-network-connected/Figures/1319/1319-1.png)
 
+__Algorithm__
+
+1. Check the size of ```connections```. If it is less than ```n - 1```, we don't have enough edges to connect the entire graph. We return ```-1``` in this case.
+2. Create an adjacency list using ```connections``` where ```graph[x]``` contains all the neighbors of node ```x```.
+3. Create an integer ```number_connected_components``` which stores the number of connected components in the ```graph```. Initialize it to ```0```.
+4. Create a visit set ```visited``` of length n to keep track of nodes that have been visited.
+5. Iterate through all of the nodes, and for each node ```node``` check if it has been visited or not. If node ```node``` is not visited, we increment ```number_connected_components``` by ```1``` and start a ```DFS``` traversal:
+    - We use the ```dfs``` function to perform the traversal. For each call, pass ```node``` as the parameters. We start with node ```node```.
+    - We mark ```node``` as visited.
+    - We iterate over all the ```neighbors``` of ```node```. If any ```neighbor``` has not yet been visited, we recursively call ```dfs``` with ```neighbor``` as the node.
+6. Return ```number_connected_components``` - 1.
+
 ```Python
 class Solution:
     def makeConnected(self, n: int, connections: List[List[int]]) -> int:
