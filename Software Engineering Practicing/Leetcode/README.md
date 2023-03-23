@@ -109,6 +109,9 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Graph
 
+- :warning::warning: [1319. Number of Operations to Make Network Connected](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1319.%20Number%20of%20Operations%20to%20Make%20Network%20Connected) ```Breadth-First Search``` ```Depth-First Search```
+- :warning::warning: [1236. Web Crawler](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1236.%20Web%20Crawler) ```Breadth-First Search``` ```Depth-First Search```
+
 ### Depth-First Search in Graph
 
 - :warning::warning: [210. Course Schedule II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2011%20-%20Graph%20%7C%20BFS%20%7C%20DFS/210.%20Course%20Schedule%20II) ```Topological Sorted Order``` ```Kahn's Algorithm```
