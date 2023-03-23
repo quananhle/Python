@@ -1,6 +1,6 @@
-## 61. Rotate List
+## [61. Rotate List](https://leetcode.com/problems/rotate-list/)
 
-```Tag```: ```Two Pointers```
+```Tag```: ```Two Pointers``` ```Linked List```
 
 #### Difficulty: Medium
 
