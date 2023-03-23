@@ -100,5 +100,33 @@ class Solution:
 ### Breadth-First Search
 
 ```Python
+class Solution:
+    def makeConnected(self, n: int, connections: List[List[int]]) -> int:
+        if len(connections) < n - 1:
+            return -1
 
+        # Build the adjacency graph
+        graph = collections.defaultdict(list)
+        for u, v in connections:
+            graph[u].append(v)
+            graph[v].append(u)
+
+        visited = set()
+        queue = collections.deque()
+        number_connected_components = 0
+
+        for node in range(n):
+            if not node in visited:
+                queue.append(node)
+                number_connected_components += 1
+
+                while queue:
+                    node = queue.popleft()
+                    visited.add(node)
+                    for neighbor in graph[node]:
+                        if not neighbor in visited:
+                            visited.add(neighbor)
+                            queue.append(neighbor)
+
+        return number_connected_components - 1
 ```
