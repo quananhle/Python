@@ -1,6 +1,6 @@
 ## [1319. Number of Operations to Make Network Connected](https://leetcode.com/problems/number-of-operations-to-make-network-connected/)
 
-```Tag```: ```Breadth-First Search``` ```Depth-First Search```
+```Tag```: ```Breadth-First Search``` ```Depth-First Search``` ```Union-Find```
 
 #### Difficulty: Medium
 
@@ -129,4 +129,59 @@ class Solution:
                             queue.append(neighbor)
 
         return number_connected_components - 1
+```
+
+---
+
+### Union Find
+
+A disjoint-set data structure also called a union–find data structure or merge–find set, is a data structure that stores a collection of disjoint (non-overlapping) sets. Equivalently, it stores a partition of a set into disjoint subsets. It provides operations for adding new sets, merging sets (replacing them by their union), and finding a representative member of a set. It implements two useful operations:
+
+1. ```Find```: Determine which subset a particular element is in. This can be used to determine if two elements are in the same subset.
+2. ```Union```: Join two subsets into a single subset.
+
+```Python
+class UnionFind:
+
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.size = size
+    
+    def find(self, x):
+        if x == self.root[x]:
+            return self.root[x]
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += root_y
+            self.size -= 1
+
+    def get_count(self):
+        return self.size
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
+class Solution:
+    def makeConnected(self, n: int, connections: List[List[int]]) -> int:
+        # Check if the size of connections is less than n - 1, not enough edges to connect the entire graph
+        if len(connections) < n - 1:
+            return -1
+
+        uf = UnionFind(n)
+
+        for u, v in connections:
+            if not uf.connected(u, v):
+                uf.union(u, v)
+        
+        return uf.size - 1
 ```
