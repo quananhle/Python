@@ -179,5 +179,132 @@ class Solution:
 #### Regex
 
 ```Python
+# """
+# This is HtmlParser's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class HtmlParser(object):
+#    def getUrls(self, url):
+#        """
+#        :type url: str
+#        :rtype List[str]
+#        """
+import re
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
+        def get_hostname(url):
+            m = re.search("(http[s]?:\/\/[a-zA-Z-0-9\.]+)[\/]?", startUrl)
+            host = m.group(1)
+            re_host = re.compile(host)
+            return re_host.search(url)
 
+        visited = set()
+        visited.add(startUrl)
+        queue = collections.deque([startUrl])
+
+        while queue:
+            curr_url = queue.popleft()
+            for next_url in htmlParser.getUrls(curr_url):
+                if get_hostname(next_url) and not next_url in visited:
+                    visited.add(next_url)
+                    queue.append(next_url)
+
+        return visited
+```
+
+```Python
+# """
+# This is HtmlParser's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class HtmlParser(object):
+#    def getUrls(self, url):
+#        """
+#        :type url: str
+#        :rtype List[str]
+#        """
+import re
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
+        hostname = lambda url: re.search('^http://([^/]+)', url).group(1)
+
+        visited = set()
+        visited.add(startUrl)
+        queue = collections.deque([startUrl])
+
+        while queue:
+            curr_url = queue.popleft()
+            for next_url in htmlParser.getUrls(curr_url):
+                if hostname(next_url) == hostname(curr_url) and not next_url in visited:
+                    visited.add(next_url)
+                    queue.append(next_url)
+
+        return visited
+```
+
+```Python
+# """
+# This is HtmlParser's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class HtmlParser(object):
+#    def getUrls(self, url):
+#        """
+#        :type url: str
+#        :rtype List[str]
+#        """
+import re
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
+        def get_hostname(url):
+            result = re.match(r'http://[a-zA-Z0-9.-]+', url)
+            if not result: 
+                return
+            end_idx = result.span()[1]
+            return url[7:end_idx]
+
+        visited = set()
+        visited.add(startUrl)
+        queue = collections.deque([startUrl])
+
+        while queue:
+            curr_url = queue.popleft()
+            for next_url in htmlParser.getUrls(curr_url):
+                if get_hostname(next_url) == get_hostname(curr_url) and not next_url in visited:
+                    visited.add(next_url)
+                    queue.append(next_url)
+
+        return visited
+```
+
+```Python
+# """
+# This is HtmlParser's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class HtmlParser(object):
+#    def getUrls(self, url):
+#        """
+#        :type url: str
+#        :rtype List[str]
+#        """
+import re
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
+        def get_hostname(url):
+            f = findall('https?:\/\/(?:[A-z0-9\-]+\.)*[A-z0-9\-]+', url)
+            return f[0] if f else ""
+
+        visited = set()
+        visited.add(startUrl)
+        queue = collections.deque([startUrl])
+
+        while queue:
+            curr_url = queue.popleft()
+            for next_url in htmlParser.getUrls(curr_url):
+                if get_hostname(next_url) == get_hostname(curr_url) and not next_url in visited:
+                    visited.add(next_url)
+                    queue.append(next_url)
+
+        return visited
 ```
