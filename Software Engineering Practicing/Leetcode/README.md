@@ -154,7 +154,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :no_entry::no_entry::no_entry: [23. Merge k Sorted Lists](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/23.%20Merge%20k%20Sorted%20Lists) ```Stack``` ```Priority Queue``` ```Divide & Conquer```
 - :warning::warning: [61. Rotate List](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/61.%20Rotate%20List) ```Two Pointers```
 - :warning::warning: [92. Reverse Linked List II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/92.%20Reverse%20Linked%20List%20II)
-- [142. Linked List Cycle II]
+- :warning::warning: [142. Linked List Cycle II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/Two-Pointer%20in%20Linked%20List/142.%20Linked%20List%20Cycle%20II) ```Hash Map``` ```Floyd's Tortoise and Hare```
 - :warning::warning: [382. Linked List Random Node](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/382.%20Linked%20List%20Random%20Node) ```Design``` ```Algorithm R```
 
 ---
