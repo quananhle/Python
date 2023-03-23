@@ -96,3 +96,33 @@ class Solution:
         dfs(sign, num)
         return sum(stack)
 ```
+
+```Python
+class Solution:
+    def calculate(self, s: str) -> int:
+        ans, operand, stack, sign = 0, 0, list(), 1
+
+        for ch in s:
+            if ch.isdigit():
+                operand = operand * 10 + int(ch)
+            elif ch in '+-':
+                if ch == '+':
+                    ans += sign * operand
+                    sign = 1
+                elif ch == '-':
+                    ans += sign * operand
+                    sign = -1
+                operand = 0
+            elif ch == '(':
+                stack.append(ans)
+                stack.append(sign)
+                sign = 1
+                ans = 0
+            elif ch == ')':
+                ans += sign * operand
+                ans *= stack.pop()
+                ans += stack.pop()
+                operand = 0
+        
+        return ans + sign * operand
+```
