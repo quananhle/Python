@@ -45,7 +45,21 @@ class Solution:
 
 ---
 
-### Basic Calculator II
+### [Basic Calculator II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/227.%20Basic%20Calculator%20II)
+
+```
+Example 1:
+Input: s = "3+2*2"
+Output: 7
+
+Example 2:
+Input: s = " 3/2 "
+Output: 1
+
+Example 3:
+Input: s = " 3+5 / 2 "
+Output: 5
+```
 
 ```Python
 
@@ -56,7 +70,32 @@ class Solution:
 ### [Basic Calculator III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/772.%20Basic%20Calculator%20III)
 
 ```Python
+class Solution:
+    def calculate(self, s: str) -> int:
+        i, operand, stack, sign = 0, 0, list(), '+'
+        n = len(s)
 
+        def dfs(operation, operand):
+            if operation == '+': stack.append(operand)
+            if operation == '-': stack.append(-operand)
+            # Multiplication and Division operations are to be performed before Addition and Subtraction
+            if operation == '*': stack.append(stack.pop() * operand)
+            if operation == '/': stack.append(int(stack.pop() / operand))
+        
+        while i < n:
+            ch = s[i]
+            # Check if ch is a digit number
+            if ch.isdigit():
+                operand = operand * 10 + int(ch)
+            # Check if ch is a sign operation
+            elif ch in '+-*/':
+                dfs(sign, operand)
+                # Reset operand and update the operation
+                sign, operand = ch, 0
+            i += 1
+        
+        dfs(sign, operand)
+        return sum(stack)
 ```
 
 ---
