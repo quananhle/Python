@@ -44,6 +44,30 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/basic-calculator-ii/Figures/227/calculator_overview.png)
+
+- If the current operation is addition ```(+)``` or subtraction ```(-)```, then the expression is evaluated based on the precedence of the next operation.
+- If the current operator is multiplication ```(*)``` or division ```(/)```, then the expression is evaluated irrespective of the next operation. This is because in the given set of operations ```(+,-,*,/)```, the ```*``` and ```/``` operations have the highest precedence and therefore must be evaluated first.
+
+![image](https://user-images.githubusercontent.com/35042430/227580741-93889e71-f41a-41d5-b48c-155de6602119.png)
+
+__Algorithm__
+
+Scan the input string ```s``` from left to right and evaluate the expressions based on the following rules
+
+1. If the current character is a digit ```0-9``` ( operand ), add it to the number ```currentNumber```.
+2. Otherwise, the current character must be an operation ```(+,-,*, /)```. Evaluate the expression based on the type of operation.
+    - Addition ```(+)``` or Subtraction ```(-)```: We must evaluate the expression later based on the next operation. So, we must store the ```currentNumber``` to be used later. Let's push the ```currentNumber``` in the Stack.
+
+            Stack data structure follows Last In First Out (LIFO) principle. Hence, the last pushed number in the stack would be popped out first for 
+            evaluation. In addition, when we pop from the stack and evaluate this expression in the future, we need a way to determine if the operation 
+            was Addition (+) or Subtraction (-). To simplify our evaluation, we can push -currentNumber in a stack if the current operation is subtraction 
+            (-) and assume that the operation for all the values in the stack is addition (+). This works because (a - currentNumber) is equivalent to 
+            (a + (-currentNumber)).
+
+    - Multiplication ```(*)``` or Division ```(/)```: Pop the top values from the stack and evaluate the current expression. Push the evaluated value back to the stack.
+3. Once the string is scanned, pop from the stack and add to the result.
+
 ```Python
 class Solution:
     def calculate(self, s: str) -> int:
