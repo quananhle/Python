@@ -81,8 +81,8 @@ class Solution:
         graph = collections.defaultdict(list)
         for u, v in connections:
             # Pair of neighbors and directions
-            graph[u].append((v, True))
-            graph[v].append((u, False))
+            graph[u].append((v, True))          # Edge from the root node is True or 1
+            graph[v].append((u, False))         # Edge to the root node is False or 0
 
         def dfs(node, parent):
             for neighbor in graph[node]:
@@ -93,11 +93,15 @@ class Solution:
 
         numbers_of_connected_nodes = list()
         dfs(0, -1)
+        # Count the edges with directions from the root node 0 only
         return sum(numbers_of_connected_nodes)
 ```
 
 ### Breadth-First Search
 
+```Python
+
+```
 
 ### Union-Find
 
