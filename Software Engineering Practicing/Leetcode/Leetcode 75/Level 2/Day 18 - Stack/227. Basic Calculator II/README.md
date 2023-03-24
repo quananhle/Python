@@ -115,6 +115,40 @@ class Solution:
         return ans + outer
 ```
 
+```Python
+class Solution:
+    def calculate(self, s: str) -> int:
+        stack, curr, operation, n = list(), 0, '+', len(s)
+        if not s:
+            return 0
+        
+        operators = {'+','-','*','/'}
+        nums = set(str(x) for x in range(0, 10))
+        
+        for i in range(0, n):
+            char = s[i]
+            
+            if char in nums:
+                curr = curr * 10 + int(char)
+                
+            if char in operators or i == n - 1:
+                if operation == '+':
+                    stack.append(curr)
+                
+                elif operation == '-':
+                    stack.append(-curr)m
+                    
+                elif operation == '*':
+                    stack[-1] *= curr
+                    
+                elif operation == '/':
+                    stack[-1] = int(stack[-1] / curr)
+                        
+                curr, operation = 0, char
+                
+        return sum(stack)
+```
+
 ### Recursion
 
 ```Python
@@ -135,7 +169,7 @@ class Solution:
                 dfs(sign, num)
                 num, sign = 0, s[i]
             elif s[i] == '(':
-                num, j = self.calculate(s[i + 1])
+                num, j = self.calculate(s[i + 1:])
                 i = i + j
             elif s[i] == ')':
                 dfs(sign, num)
