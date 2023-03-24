@@ -63,6 +63,8 @@ __Constraints:__
 
 ![image](https://user-images.githubusercontent.com/35042430/227582481-38551839-a88a-4170-beb2-68cdcda4b896.png)
 
+![image](https://user-images.githubusercontent.com/35042430/227582572-f5b500a3-bfb7-448c-b204-5fbdff4b9093.png)
+
 __Algorithm__
 
 Scan the input string ```s``` from left to right and evaluate the expressions based on the following rules
@@ -71,11 +73,12 @@ Scan the input string ```s``` from left to right and evaluate the expressions ba
 2. Otherwise, the current character must be an operation ```(+,-,*, /)```. Evaluate the expression based on the type of operation.
     - Addition ```(+)``` or Subtraction ```(-)```: We must evaluate the expression later based on the next operation. So, we must store the ```currentNumber``` to be used later. Let's push the ```currentNumber``` in the Stack.
 
-            Stack data structure follows Last In First Out (LIFO) principle. Hence, the last pushed number in the stack would be popped out first for 
-            evaluation. In addition, when we pop from the stack and evaluate this expression in the future, we need a way to determine if the operation 
-            was Addition (+) or Subtraction (-). To simplify our evaluation, we can push -currentNumber in a stack if the current operation is subtraction 
-            (-) and assume that the operation for all the values in the stack is addition (+). This works because (a - currentNumber) is equivalent to 
-            (a + (-currentNumber)).
+            Stack data structure follows Last In First Out (LIFO) principle. Hence, the last pushed number in the stack 
+            would be popped out first for evaluation. In addition, when we pop from the stack and evaluate this expression 
+            in the future, we need a way to determine if the operation was Addition (+) or Subtraction (-). To simplify 
+            our evaluation, we can push -currentNumber in a stack if the current operation is subtraction (-) and assume 
+            that the operation for all the values in the stack is addition (+). This works because (a - currentNumber) 
+            is equivalent to (a + (-currentNumber)).
 
     - Multiplication ```(*)``` or Division ```(/)```: Pop the top values from the stack and evaluate the current expression. Push the evaluated value back to the stack.
 3. Once the string is scanned, pop from the stack and add to the result.
