@@ -100,7 +100,27 @@ class Solution:
 ### Breadth-First Search
 
 ```Python
+class Solution:
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        # Breadth-First Search
+        graph = collections.defaultdict(list)
+        for u, v in connections:
+            # Pair of neighbors and directions
+            graph[u].append((v, True))          # Edge from the root node is True or 1
+            graph[v].append((u, False))         # Edge to the root node is False or 0
 
+        queue = collections.deque([(0, -1)])
+        numbers_of_connected_nodes = 0
+
+        while queue:
+            node, parent = queue.popleft()
+            for neighbor in graph[node]:
+                child, sign = neighbor[0], neighbor[1]
+                if child != parent:
+                    numbers_of_connected_nodes += sign
+                    queue.append((child, node))
+
+        return numbers_of_connected_nodes
 ```
 
 ### Union-Find
