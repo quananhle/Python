@@ -122,7 +122,3 @@ class Solution:
 
         return numbers_of_connected_nodes
 ```
-
-### Union-Find
-
-
