@@ -60,6 +60,41 @@ __Constraints:__
 
 ### Depth-First Search
 
+![image](https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/Figures/1466/1466-2.png)
+
+__Algorithm__
+
+1. Create an integer variable ```count``` to count the number of edges that must be flipped. We initialize it with ```0```.
+2. Create an adjacency graph ```graph``` that contains a list of pairs of integers such that ```graph[node]``` contains all the neighbors of ```node``` in the form of ```(neighbor, sign)``` where ```neighbor``` is the neighboring node of ```node``` and ```sign``` denotes the direction of the edge i.e., whether its an "original" or "artificial" edge.
+3. Start a ```DFS``` traversal.
+    - We use a function ```dfs``` to perform the traversal. For each call, pass ```node, parent, adj``` as the parameters. We start with node ```0``` and parent as ```-1```.
+    - Iterate over all the children of the ```node``` (nodes that share an edge) using ```graph[node]```. For every ```child, sign``` in ```graph[node]```, check if ```child``` is equal to ```parent```. If ```child``` is equal to ```parent```, we will not visit it again.
+    - If ```child``` is not equal to ```parent```, we perform ```count += sign``` and recursively call the ```dfs``` with ```node = child``` and ```parent = node```. At the end of the ```dfs``` traversal, we have the total edges that are required to be flipped in ```count```.
+4. Return ```count```.
+
+```Python
+class Solution:
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        # Depth-First Search
+
+        # Build the adjacency graph
+        graph = collections.defaultdict(list)
+        for u, v in connections:
+            # Pair of neighbors and directions
+            graph[u].append((v, True))
+            graph[v].append((u, False))
+
+        def dfs(node, parent):
+            for neighbor in graph[node]:
+                child, sign = neighbor[0], neighbor[1]
+                if child != parent:
+                    numbers_of_connected_nodes.append(sign)
+                    dfs(child, node)
+
+        numbers_of_connected_nodes = list()
+        dfs(0, -1)
+        return sum(numbers_of_connected_nodes)
+```
 
 ### Breadth-First Search
 
