@@ -1,7 +1,5 @@
 # Problems
 
----
-
 ## Array & String
 
 ### 2D Array
