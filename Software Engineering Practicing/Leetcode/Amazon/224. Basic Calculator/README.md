@@ -73,27 +73,47 @@ We can also cover the original expression with a set of parenthesis to avoid thi
 ```Python
 class Solution:
     def calculate(self, s: str) -> int:
-        i, num, stack, sign = 0, 0, list(), '+'
+        i, operand, stack, sign = 0, 0, list(), '+'
+        n = len(s)
 
         def dfs(operation, num):
             if operation == '+': stack.append(num)
             if operation == '-': stack.append(-num)
 
-        while i < len(s):
-            if s[i].isdigit():
-                num = num * 10 + int(s[i])
-            elif s[i] in '+-':
-                dfs(sign, num)
-                num, sign = 0, s[i]
-            elif s[i] == '(':
-                num, j = self.calculate(s[i+1:])
+        while i < n:
+            ch = s[i]
+            # Check if the current character is a digit
+            if ch.isdigit():
+                # Compute the value of the entire number
+                operand = operand * 10 + int(ch)
+            # Check if the current character is a sign 
+            elif ch in '+-':
+                '''
+                dfs(sign, operand)
+                '''
+                # Check the current sign
+                if sign == '+':
+                    # Add the positive value of operand
+                    stack.append(operand)
+                elif sign == '-':
+                    # Add the negative value of operand
+                    stack.append(-operand)
+                # Reset the operand and update the sign
+                operand, sign = 0, ch
+            # Check if the current character is open parenthesis
+            elif ch == '(':
+                # Recursively build the stack inside the parentheses
+                operand, j = self.calculate(s[i+1:])
+                # Move on to the next character after the parentheses
                 i += j
-            elif s[i] == ')':
-                dfs(sign, num)
+            elif ch == ')':
+                # Process the evaluation inside the parenthese
+                dfs(sign, operand)
                 return sum(stack), i + 1
+
             i += 1
         
-        dfs(sign, num)
+        dfs(sign, operand)
         return sum(stack)
 ```
 
