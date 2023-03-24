@@ -24,13 +24,3 @@
 
 ---
 
-### Basic Calculator IV
-
-```Python
-
-```
-
----
-
-
-
