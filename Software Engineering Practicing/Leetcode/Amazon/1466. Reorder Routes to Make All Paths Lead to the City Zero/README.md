@@ -1,6 +1,6 @@
 ## [1466. Reorder Routes to Make All Paths Lead to the City Zero](https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/)
 
-```Tag```:
+```Tag```: ```Graph``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -51,3 +51,19 @@ __Constraints:__
 - a<sub>i</sub> != b<sub>i</sub>
 
 ---
+
+![image](https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/Figures/1466/1466-1.png)
+
+1. __Child__: A node that is one edge further away from a given node in a rooted tree. In the above image, nodes ```3```, ```4``` are children of ```1```, which is called the parent. (When we consider ```0``` as the root)
+2. __Descendants__: Descendants of a node are children, children of children, and so on. In the above image, nodes ```3, 4, 6, 7, 9``` are all descendants of ```1```.
+3. __Subtree__: A subtree of a node ```T``` is a tree ```S``` consisting of a node ```T``` and all of its descendants in ```T```. The subtree corresponding to the root node is the entire tree.
+
+### Depth-First Search
+
+
+### Breadth-First Search
+
+
+### Union-Find
+
+
