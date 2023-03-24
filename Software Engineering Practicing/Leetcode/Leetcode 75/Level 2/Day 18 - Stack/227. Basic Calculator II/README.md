@@ -145,7 +145,36 @@ class Solution:
         dfs(sign, num)
         return sum(stack)
 ```
+
+```Python
+class Solution:
+    def calculate(self, s: str) -> int:
+        i, operand, stack, sign = 0, 0, list(), '+'
+        n = len(s)
+
+        def dfs(operation, operand):
+            if operation == '+': stack.append(operand)
+            if operation == '-': stack.append(-operand)
+            # Multiplication and Division operations have highest precedence and therefore must be evaluated first
+            if operation == '*': stack[-1] = stack[-1] * operand
+            if operation == '/': stack[-1] = int(stack[-1] / operand)
         
+        while i < n:
+            ch = s[i]
+            # Check if ch is a digit number
+            if ch.isdigit():
+                operand = operand * 10 + int(ch)
+            # Check if ch is a sign operation
+            elif ch in '+-*/':
+                dfs(sign, operand)
+                # Reset operand and update the operation
+                sign, operand = ch, 0
+            i += 1
+        
+        dfs(sign, operand)
+        return sum(stack)
+```
+
 ```Python
 class Solution:
     def calculate(self, s):    
