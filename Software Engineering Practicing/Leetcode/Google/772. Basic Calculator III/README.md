@@ -41,3 +41,45 @@ __Constraints:__
 - ```s``` is a valid expression.
 
 ---
+
+```Python
+class Solution:
+    def calculate(self, s: str) -> int:
+        i, operand, stack, operator, n = 0, 0, list(), '+', len(s)
+
+        nums = set(str(num) for num in range(0, 10))
+        
+        def build_stack(operand, operator):
+            if operator == '+': stack.append(operand)
+            if operator == '-': stack.append(-operand)
+            # Process Multiplication and Division with current operand and the last added number in stack
+            if operator == '*': stack[-1] = stack[-1] * operand
+            if operator == '/': stack[-1] = int(stack[-1] / operand)
+        
+        while i < n:
+            char = s[i]
+            # Check if the character is a digit number
+            if char in nums:
+                operand = operand * 10 + int(char)
+            # Check if the character is a sign operation
+            elif char in '+-*/':
+                build_stack(operand, operator)
+                # Reset operand and update the sign
+                operator, operand = char, 0
+            # Check if the character is an open parenthesis
+            elif char == '(':
+                # Recursively process the expression inside the parentheses
+                j, operand = self.calculate(s[i+1:])
+                # Move to the next character after the parenthesis
+                i += j
+            # Check if the character is a closing parenthesis
+            elif char == ')':
+                # Process the operations
+                build_stack(operand, operator)
+                return i + 1, sum(stack)
+            
+            i += 1
+        
+        build_stack(operand, operator)
+        return sum(stack)
+```
