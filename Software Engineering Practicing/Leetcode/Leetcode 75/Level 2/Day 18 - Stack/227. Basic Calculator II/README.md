@@ -51,6 +51,18 @@ __Constraints:__
 
 ![image](https://user-images.githubusercontent.com/35042430/227580741-93889e71-f41a-41d5-b48c-155de6602119.png)
 
+![image](https://user-images.githubusercontent.com/35042430/227582070-6fe32d9b-27aa-4f7c-9b08-746687b93299.png)
+
+![image](https://user-images.githubusercontent.com/35042430/227582161-a38fb271-7728-4b13-a5ec-f222c15b0947.png)
+
+![image](https://user-images.githubusercontent.com/35042430/227582200-feca9418-5549-44b6-8b4f-eda2830cc6f8.png)
+
+![image](https://user-images.githubusercontent.com/35042430/227582285-848d6a85-3381-40fd-9f82-768c7eb8c74c.png)
+
+![image](https://user-images.githubusercontent.com/35042430/227582420-9b0b0b6b-2aae-4802-8a60-ea0db0476bfe.png)
+
+![image](https://user-images.githubusercontent.com/35042430/227582481-38551839-a88a-4170-beb2-68cdcda4b896.png)
+
 __Algorithm__
 
 Scan the input string ```s``` from left to right and evaluate the expressions based on the following rules
