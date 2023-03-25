@@ -130,6 +130,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [547. Number of Provinces](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/547.%20Number%20of%20Provinces) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [947. Most Stones Removed with Same Row or Column](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/947.%20Most%20Stones%20Removed%20with%20Same%20Row%20or%20Column) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1319. Number of Operations to Make Network Connected](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1319.%20Number%20of%20Operations%20to%20Make%20Network%20Connected) ```Breadth-First Search``` ```Depth-First Search```
+- :warning::warning: [2316. Count Unreachable Pairs of Nodes in an Undirected Graph](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2316.%20Count%20Unreachable%20Pairs%20of%20Nodes%20in%20an%20Undirected%20Graph/) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [2492. Minimum Score of a Path Between Two Cities](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/2492.%20Minimum%20Score%20of%20a%20Path%20Between%20Two%20Cities)  ```Breadth-First Search``` ```Depth-First Search```
 
 ---
@@ -196,6 +197,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Stack
 
+- :four_leaf_clover: [20. Valid Parentheses](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/20.%20Valid%20Parentheses)
 - :warning::warning: [735. Asteroid Collision](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/735.%20Asteroid%20Collision)
 
 #### Monotonic Stack
