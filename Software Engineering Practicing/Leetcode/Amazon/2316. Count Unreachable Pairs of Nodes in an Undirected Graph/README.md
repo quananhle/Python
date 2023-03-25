@@ -49,13 +49,36 @@ The first component consists of four nodes. Except for the nodes in their compon
 
 The total number of pairs of nodes with one node in the first component and the other node in any of the remaining components would be equal to the number of nodes in the first component multiplied by the total number of nodes except the first component's nodes, i.e., ```4 * (7 - 4) = 12``` pairs. This means that there are ```12``` pairs of nodes that are unreachable from each other, where one of the two nodes are in the first component.
 
+```[[0,3], [0,1], [0,6], [2,3], [2,1], [2,6], [5,3], [5,1], [5,6], [4,3], [4,1], [4,6]]``` = ```12``` pairs
+
 Let's move on to the second component, which has only one node. So, the number of unreachable pairs of nodes with one node in the second component would be the total number of nodes in the second component multiplied by the total number of nodes except the current component and the first component (we already covered pairs formed using nodes in the first component). It is ```1 * (7 - 4 - 1) = 2``` pairs.
+
+```[[3,1], [3,6]]``` = ```2``` pairs
 
 We have now covered all of the pairs formed with one node in the first component, as well as all of the pairs formed with one node in the second component. Because we only have a third component left, no more pairs of unreachable nodes can be formed. The total number of pairs required is ```12 + 2 = 14```.
 
 So, to find the total number of pairs that are unreachable from each other, we must iterate over the graph and determine the size of each component. Then we multiply the number of nodes in the current component by the total number of nodes in the graph, ignoring nodes in the current component and previously visited components (we already covered pairs of nodes formed with one of the nodes in the previous components). To get the required answer, we add these number of pairs of nodes while iterating over all the components one by one, as calculated in the preceding example.
 
 ### Depth-First Search
+
+__Algorithm__
+
+1. Create an adjacency list where ```graph[x]``` contains all the neighbors of node ```x```.
+2. Create a long variable ```pairs``` to count the number of unreachable node pairs. We initialize it with ```0```.
+3. Create another long variable ```component``` to store the number of nodes in the current component. It is initialized with ```0```.
+4. Create a third long variable ```remaining``` to keep track of the number of unvisited nodes in the graph after each DFS traversal. We initialize it with ```n```.
+5. Create a ```visited``` set to keep track of ```nodes``` that have been visited.
+6. Iterate through all of the nodes and for each node ```node``` check if it is visited or not. If node ```node``` is not visited, begin the DFS traversal:
+    - We use the ```dfs``` function to perform the traversal. For each call, pass ```node``` as the parameters. We start with node ```node```.
+    - Mark the ```node``` as visited and create a variable count to keep track of the number of nodes in this component. We initialize ```count``` to ```1``` to count ```node``` itself.
+    - We iterate over all the neighbors of ```node```. If any ```neighbor``` is unvisited, we recursively call ```dfs``` passing ```neighbor``` as ```node```. We add the number of nodes visited by this ```dfs``` call to ```count```.
+    - We return ```count``` after iterating over all the neighbors and store it in ```component```.
+    - The number of unreachable pairs of nodes with one node in the current component and the other node in any other component except the current component and the previously visited components is ```size_of_component * (remaining_nodes - size_of_component)```. It is added to ```pairs```.
+    - We decrement ```remaining``` by ```component``` because we have added all the required pairs of nodes with one of the nodes being in the current component and we don't want to add them again. As a result, we assume they are no longer present.
+7. Return ```pairs```.
+
+- __Time complexity__: ```O(n + e)```
+- __Space complexity__: ```O(n + e)```
 
 ```Python
 class Solution:
@@ -101,5 +124,58 @@ class Solution:
 ### Union-Find
 
 ```Python
+class UnionFind:
 
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.size = size
+
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += root_y
+            self.size -= 1
+    
+    def get_size(self):
+        return self.size
+    
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
+class Solution:
+    def countPairs(self, n: int, edges: List[List[int]]) -> int:
+        uf = UnionFind(n)
+
+        for u, v in edges:
+            uf.union(u, v)
+        
+        components = collections.defaultdict(int)
+        for node in range(n):
+            '''
+            parent = uf.find(node)
+            if parent in components:
+                components[parent] += 1
+            else:
+                components[parent] = 1
+            '''
+            components[uf.find(node)] += 1
+        
+        number_of_paths, remaining = 0, n
+        for component_size in components.values():
+            number_of_paths += component_size * (remaining - component_size)
+            remaining -= component_size
+        
+        return number_of_paths
 ```
