@@ -1,6 +1,6 @@
 ## [2360. Longest Cycle in a Graph](https://leetcode.com/problems/longest-cycle-in-a-graph/)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Topological Sorted Order``` ```Kahn's Algorithm```
 
 #### Difficulty: Hard
 
@@ -39,3 +39,51 @@ __Constraints:__
 - ```2 <= n <= 10^5```
 - ```-1 <= edges[i] < n```
 - ```edges[i] != i```
+
+---
+
+### Depth-First Search
+
+We would visit all the nodes in the cycle if we started a graph traversal from any node in the cycle. There is no point in revisiting the nodes in the cycle because they cannot be part of any other cycle.
+
+![image](https://user-images.githubusercontent.com/35042430/227801944-3eb68228-b479-4fa5-b496-cb75e7df84c2.png)
+
+__Algorithm__
+
+1. Initialize an integer ```answer = -1```. This would store the length of the longest cycle in the graph.
+2. Initialize another integer ```n = edges.length``` which stores the number of nodes in the graph.
+3. Create a ```visited``` hash set to keep track of nodes that have been visited.
+4. Iterate through all of the nodes and for each node ```node``` check if it is visited or not. If node ```node``` is not visited, create a hash map ```graph``` where ```graph.get(x)``` would store the distance of node ```x``` from starting node ```node```. Begin the DFS traversal:
+    - We use the ```dfs``` function to perform the traversal. For each call, pass node as the parameters. We start with node ```node```.
+    - Mark ```node``` as visited and get its neighbor ```neighbor``` using ```edges[node]```.
+      - If ```neighbor``` exists and is not visited, we update ```graph[neighbor] = graph[node] + 1``` and recursively call ```dfs``` passing ```neighbor``` as the ```node```.
+      - If ```neighbor``` exists and is already visited, we check if it is present in ```graph```. If it is present, it is a formation of cycle. We perform ```answer = max(answer, graph[node] - graph[neighbor] + 1)```. 
+      - Otherwise, if it not present in graph, we ignore it as it was visited in a previous DFS traversal.
+5. Return ```answer```.
+
+```Python
+class Solution:
+    def longestCycle(self, edges: List[int]) -> int:
+        n = len(edges)
+        visited = set()
+        ans = -1
+        
+        def dfs(node):
+            nonlocal ans
+            visited.add(node)
+            neighbor = edges[node]
+            
+            if neighbor != -1 and not neighbor in visited:
+                graph[neighbor] = graph[node] + 1
+                dfs(neighbor)
+            elif neighbor != -1 and neighbor in graph:
+                ans = max(ans, graph[node] - graph[neighbor] + 1)
+
+        for node in range(n):
+            if not node in visited:
+                graph = collections.defaultdict(int)
+                graph[node] = 1
+                dfs(node)
+        
+        return ans
+```
