@@ -91,6 +91,32 @@ class Solution:
         return ans
 ```
 
+```Python
+class Solution:
+    def longestCycle(self, edges: List[int]) -> int:
+        ans = -1
+        curr_time = 1
+        n = len(edges)
+        visited = [0] * n
+
+        for origin in range(n):
+            if visited[origin] > 0:
+                continue
+            start = curr_time
+            curr_node = origin
+        
+            while curr_node != -1 and visited[curr_node] == 0:
+                visited[curr_node] = curr_time
+                curr_time += 1
+                curr_node = edges[curr_node]
+            
+            if curr_node != -1 and visited[curr_node] >= start:
+                length = curr_time - visited[curr_node]
+                ans = max(ans, length)
+            
+        return ans
+```
+
 ### Breadth-First Search (Kahn's Algorithm)
 
 ![image](https://leetcode.com/problems/longest-cycle-in-a-graph/Figures/2360/2360-1.png)
@@ -113,6 +139,9 @@ __Algorithm__
     - Keep moving forward in the cycle until we reach node ```node``` (```neighbor != node```). Mark ```neighbor``` as visited and move to next neighbor ```neighbor = edges[neighbor]```. Also, increment ```count``` by ```1``` for each node that is being visited in the cycle.
     - Update ```answer = max(answer, count)```.
 8. Return ```answer```.
+
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(n)```
 
 ```Python
 class Solution:
@@ -153,5 +182,42 @@ class Solution:
                     neighbor = edges[neighbor]
                 ans = max(ans, count)
         
+        return ans
+```
+
+### Detect Cycle Linked Lists
+
+```Python
+class Solution:
+    def longestCycle(self, edges: List[int]) -> int:
+        n = len(edges)
+        ans = -1
+        visited = [0] * n
+
+        def get_length(head):
+            if head == -1:
+                return -1
+            node = head
+            size = 1
+            while edges[head] != node:
+                  size += 1
+                  head = edges[head]
+            return size
+        
+        def find_cycle(node):
+            if node == -1 or visited[node] == 2:
+                return -1
+            if visited[node] == 1:
+                return node
+            visited[node] += 1
+            cycle = find_cycle(edges[node])
+            visited[node] += 1
+            return cycle
+        
+        for node in range(n):
+            if visited[node] == 0:
+                cycle = find_cycle(node)
+                ans = max(ans, get_length(cycle))
+
         return ans
 ```
