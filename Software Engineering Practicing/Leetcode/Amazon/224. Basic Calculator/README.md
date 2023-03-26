@@ -146,3 +146,40 @@ class Solution:
         
         return ans + sign * operand
 ```
+
+### Without using Splicing
+
+```Python
+class Solution:
+    def calculate(self, s):    
+        def calc(curr):
+            operand, stack, operator = 0, list(), '+'
+
+            digits = set(str(num) for num in range(11))
+
+            def compute(operand, operator):
+                if operator == "+": stack.append(operand)
+                if operator == "-": stack.append(-operand)
+                if operator == "*": stack[-1] = stack[-1] * operand
+                if operator == "/": stack[-1] = int(stack[-1] / operand)
+
+            while curr < len(s):
+                char = s[curr]
+                if char in digits:
+                    operand = operand * 10 + int(char)
+                elif char in '+-*/':
+                    compute(operand, operator)
+                    operand, operator = 0, char
+                elif char == '(':
+                    operand, i = calc(curr + 1)
+                    curr = i - 1
+                elif char == ')':
+                    compute(operand, operator)
+                    return sum(stack), curr + 1
+
+                curr += 1
+            compute(operand, operator)
+            return sum(stack)
+
+        return calc(0)
+```
