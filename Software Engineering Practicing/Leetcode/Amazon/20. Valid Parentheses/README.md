@@ -1,4 +1,4 @@
-## 20. Valid Parentheses
+## [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
 
 #### Difficulty: Easy
 
@@ -80,4 +80,27 @@ class Solution(object):
             else:
                 return False
         return stack == []
+```
+
+```Python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        closing_brackets = {']':'[', '}':'{', ')':'('}
+        stack = list()
+
+        for char in s:
+            # Check if current character is an open bracket
+            if not char in closing_brackets:
+                stack.append(char)
+            # Otherwise, the current character is a close bracket
+            else:
+                # Check if there is a character in the stack and it is the open bracket of the same type as the current character
+                if stack and stack[-1] == closing_brackets[char]:
+                    # Got a valid pair of bracket
+                    stack.pop()
+                # Otherwise, open bracket is closed by the different type of bracket
+                else:
+                    return False
+        
+        return len(stack) == 0
 ```
