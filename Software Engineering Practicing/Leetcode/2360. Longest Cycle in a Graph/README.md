@@ -1,6 +1,6 @@
 ## [2360. Longest Cycle in a Graph](https://leetcode.com/problems/longest-cycle-in-a-graph/)
 
-```Tag```: ```Graph``` ```Topological Sorted Order``` ```Kahn's Algorithm```
+```Tag```: ```Graph``` ```Depth-First Search``` ```Breadth-First Search``` ```Topological Sorted Order``` ```Kahn's Algorithm```
 
 #### Difficulty: Hard
 
@@ -61,6 +61,9 @@ __Algorithm__
       - Otherwise, if it not present in graph, we ignore it as it was visited in a previous DFS traversal.
 5. Return ```answer```.
 
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(n)```
+
 ```Python
 class Solution:
     def longestCycle(self, edges: List[int]) -> int:
@@ -84,6 +87,71 @@ class Solution:
                 graph = collections.defaultdict(int)
                 graph[node] = 1
                 dfs(node)
+        
+        return ans
+```
+
+### Breadth-First Search (Kahn's Algorithm)
+
+![image](https://leetcode.com/problems/longest-cycle-in-a-graph/Figures/2360/2360-1.png)
+
+__Algorithm__
+
+1. Initialize an integer ```n = edges.length``` which stores the number of nodes in the graph.
+2. Create an array ```degree``` of length ```n``` where ```degree[x]``` stores the number of edges with one end at node ```x```.
+3. Create a ```visited``` hash set to keep track of nodes that have been visited.
+4. Initialize a queue of integers ```q``` and start a BFS algorithm moving from the leaf nodes to the parent nodes.
+5. Begin the BFS traversal by pushing all of the leaf nodes (```indegree``` equal to ```0```) in the queue.
+6. While the queue is not empty;
+    - Dequeue the first ```node``` from the queue ```q```.
+    - Mark ```node``` as visited.
+    - Get the neighbor, ```neighbor```, of ```node``` using ```edges[node]```. If ```neighbor != -1```, we decrement ```indegree[neighbor]``` by ```1```.
+    - If ```indegree[neighbor] == 0```, it means that ```neighbor``` behaves as a leaf node, so we push ```neighbor``` in the queue ```q```.
+7. Iterate over unvisited nodes and for an unvisited node ```node```:
+    - Mark node ```node``` as visited.
+    - Fetch neighbor, ```neighbor```, of ```node``` using ```edge[node]``` and create a variable ```count``` to count number of nodes in the cycle. Initialize ```count = 1``` to count node ```node``` itself.
+    - Keep moving forward in the cycle until we reach node ```node``` (```neighbor != node```). Mark ```neighbor``` as visited and move to next neighbor ```neighbor = edges[neighbor]```. Also, increment ```count``` by ```1``` for each node that is being visited in the cycle.
+    - Update ```answer = max(answer, count)```.
+8. Return ```answer```.
+
+```Python
+class Solution:
+    def longestCycle(self, edges: List[int]) -> int:
+        n = len(edges)
+        visited = set()
+        indegree = [0] * n
+
+        for edge in edges:
+            if edge != -1:
+                indegree[edge] += 1
+        
+        # Kahn's Algorithm - begin
+        queue = collections.deque()
+        for node in range(n):
+            if indegree[node] == 0:
+                queue.append(node)
+
+        while queue:
+            node = queue.popleft()
+            visited.add(node)
+            neighbor = edges[node]
+            if neighbor != -1:
+                indegree[neighbor] -= 1
+                if indegree[neighbor] == 0:
+                    queue.append(neighbor) 
+        # Kahn's Algorithm - end
+
+        ans = -1
+        for node in range(n):
+            if not node in visited:
+                neighbor = edges[node]
+                count = 1
+                visited.add(node)
+                while neighbor != node:
+                    visited.add(neighbor)
+                    count += 1
+                    neighbor = edges[neighbor]
+                ans = max(ans, count)
         
         return ans
 ```
