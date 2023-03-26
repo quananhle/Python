@@ -123,6 +123,19 @@ class Solution:
 
 ### Union-Find
 
+__Algorithm__
+
+Create an instance of UnionFind, say dsu(n).
+Iterate over all of the graph's edges, edges, and perform a union of both nodes connected by an edge.
+Create a hash map, componentSize, to map a node that uniquely identifies a component to the size of the component. componentSize[x] returns the number of nodes in the component that contains node x.
+We iterate over all the nodes and for each node, we increment componentSize[find(node)] by 1.
+Create a long variable numberOfPairs to count the number of unreachable node pairs. We initialize it with 0.
+Create another long variable remainingNodes to keep track of the number of nodes that are left after visiting each component. We initialize it with n.
+We iterate over componentSize and for each componentSize in componentSize, we do the following:
+Add all the pairs of nodes where one node is in the current component and the other node is in any other component except the current one and previously visited components. So, we perform numberOfPaths += componentSize * (remainingNodes - componentSize).
+We decrement remainingNodes by sizeOfComponent because we have added all the required pairs of nodes with one of the nodes in the current component and we don't want to add it again. As a result, we assume they are no longer present.
+Return numberOfPairs.
+
 ```Python
 class UnionFind:
 
