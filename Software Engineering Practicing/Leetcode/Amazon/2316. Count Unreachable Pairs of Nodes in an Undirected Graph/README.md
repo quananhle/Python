@@ -125,16 +125,24 @@ class Solution:
 
 __Algorithm__
 
-Create an instance of UnionFind, say dsu(n).
-Iterate over all of the graph's edges, edges, and perform a union of both nodes connected by an edge.
-Create a hash map, componentSize, to map a node that uniquely identifies a component to the size of the component. componentSize[x] returns the number of nodes in the component that contains node x.
-We iterate over all the nodes and for each node, we increment componentSize[find(node)] by 1.
-Create a long variable numberOfPairs to count the number of unreachable node pairs. We initialize it with 0.
-Create another long variable remainingNodes to keep track of the number of nodes that are left after visiting each component. We initialize it with n.
-We iterate over componentSize and for each componentSize in componentSize, we do the following:
-Add all the pairs of nodes where one node is in the current component and the other node is in any other component except the current one and previously visited components. So, we perform numberOfPaths += componentSize * (remainingNodes - componentSize).
-We decrement remainingNodes by sizeOfComponent because we have added all the required pairs of nodes with one of the nodes in the current component and we don't want to add it again. As a result, we assume they are no longer present.
-Return numberOfPairs.
+1. Create an instance of ```UnionFind``` of size ```n```, say ```uf(n)```.
+2. Iterate over all of the graph's edges, ```edges```, and perform a ```union``` of both nodes connected by an edge.
+3. Create a hash map, ```components```, to map a node that uniquely identifies a component to the size of the component. ```components[x]``` returns the number of nodes in the component that contains node x.
+    - We iterate over all the nodes and for each ```node```, we increment ```components[find(node)]``` by ```1```.
+
+![image](https://assets.leetcode.com/users/images/4e11f07f-2149-4d70-a59a-96625155fb8c_1656298312.1886868.png) ![image](https://assets.leetcode.com/users/images/481c5f08-f586-4676-a38d-6009a6c33d2d_1656298330.2230315.png)
+
+4. Create a long variable ```number_of_paths``` to count the number of unreachable node pairs. We initialize it with ```0```.
+5. Create another long variable ```remaining``` to keep track of the number of nodes that are left after visiting each component. We initialize it with ```n```.
+6. We iterate over ```components``` and for each ```component_size``` in ```components```, we do the following:
+    - Add all the pairs of nodes where one node is in the current component and the other node is in any other component except the current one and previously visited components. So, we perform ```number_of_paths += component_size * (remaining - component_size)```.
+    - We decrement ```remaining``` by ```component_size``` because we have added all the required pairs of nodes with one of the nodes in the current component and we don't want to add it again. As a result, we assume they are no longer present.
+
+![image](https://assets.leetcode.com/users/images/ea20dc61-99e2-4fda-9462-fbf1b56a0088_1656298454.765443.png)
+![image](https://assets.leetcode.com/users/images/297a054d-fa26-4991-9973-972ad8e3f48a_1656298480.4827797.png)
+![image](https://assets.leetcode.com/users/images/156554d6-53a3-442a-931b-67c4488c4d48_1656298549.5569212.png)
+
+7. Return ```number_of_paths```.
 
 ```Python
 class UnionFind:
