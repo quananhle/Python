@@ -38,6 +38,9 @@ __Constraints:__
 
 ### Brute Force
 
+- __Time complexity__: O(2<sup>m+n</sup>), for every move, we have at most 2 options.
+- __Space complexity__: ```O(m+n)```, recursive stack of depth m + n
+
 ```Python
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
@@ -66,6 +69,26 @@ class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
         DIRECTIONS = [(1,0), (0,1)]
         ROWS, COLS = len(grid), len(grid[0])
+        memo = [[math.inf] * (COLS + 1) for _ in range(ROWS + 1)]
+        
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS) or memo[row][col] != float('inf'):
+                return memo[row][col]
+            elif row == ROWS - 1 and col == COLS - 1:
+                memo[row][col] = grid[row][col]
+            else:
+                memo[row][col] = grid[row][col] + min([dp(row + dx, col + dy) for dx, dy in DIRECTIONS])
+            return memo[row][col]
+
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        DIRECTIONS = [(1,0), (0,1)]
+        ROWS, COLS = len(grid), len(grid[0])
 
         @lru_cache(None)
         def dp(row, col):
@@ -82,11 +105,53 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        DIRECTIONS = [(1,0), (0,1)]
+        ROWS, COLS = len(grid), len(grid[0])
+        memo = collections.defaultdict(int)
 
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return memo[(row, col)]
+
+            if (row, col) in memo:
+                return memo[(row, col)]
+
+            if row == ROWS - 1:
+                memo[(row, col)] = grid[row][col] + dp(row, col + 1)
+            elif col == COLS - 1:
+                memo[(row, col)] = grid[row][col] + dp(row + 1, col)
+            else:
+                memo[(row, col)] = grid[row][col] + min([dp(row + dx, col + dy) for dx, dy in DIRECTIONS])
+
+            return memo[(row, col)]
+
+        return dp(0, 0)
 ```
 
 ```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        DIRECTIONS = [(1,0), (0,1)]
+        ROWS, COLS = len(grid), len(grid[0])
 
+        @lru_cache(None)
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 0
+
+            if row == ROWS - 1:
+                return grid[row][col] + dp(row, col + 1)
+            
+            if col == COLS - 1:
+                return grid[row][col] + dp(row + 1, col)
+
+            return grid[row][col] + min([dp(row + dx, col + dy) for dx, dy in DIRECTIONS])
+
+        return dp(0, 0)
 ```
 
 #### Bottom-Up Dynamic Programming
