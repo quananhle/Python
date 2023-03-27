@@ -1,6 +1,6 @@
 ## [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/)
 
-```Tag```: ```Graph``` ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Dynamic Programming``` ```Graph``` ```Depth-First Search``` ```Breadth-First Search``` 
 
 #### Difficulty: Medium
 
@@ -36,3 +36,57 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ### Time Limit Exceeded
+        m, n = len(grid), len(grid[0])
+
+        def dfs(row, col):
+            if row == m or col == n:
+                return float('inf')
+            if row == m - 1 and col == n - 1:
+                return grid[row][col]
+            
+            return grid[row][col] + min(dfs(row + 1, col), dfs(row, col + 1))
+        
+        return dfs(0, 0)
+```
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        DIRECTIONS = [(1,0), (0,1)]
+        ROWS, COLS = len(grid), len(grid[0])
+
+        @lru_cache(None)
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return math.inf
+
+            if row == ROWS - 1 and col == COLS - 1:
+                return grid[row][col]
+            
+            return grid[row][col] + min([dp(row + dx, col + dy) for dx, dy in DIRECTIONS])
+
+        return dp(0, 0)
+```
+
+```Python
+
+```
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
