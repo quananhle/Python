@@ -36,3 +36,46 @@ __Constraints:__
 
 ---
 
+### Greedy
+
+The given string is a non-empty palindrome and has an even length
+![image](https://leetcode.com/problems/break-a-palindrome/Figures/1328/1328A.png)
+
+The given string is a non-empty palindrome and has an odd length
+![image](https://leetcode.com/problems/break-a-palindrome/Figures/1328/1328B.png)
+
+__Algorithm__
+
+1. If the length of the string is ```1```, return an empty string since we cannot create a non-palindromic string in this case.
+2. Iterate over the string from left to the middle of the string: if the character is not ```'a'```, change it to ```'a'``` and return the string.
+3. If we traversed over the whole left part of the string and still haven't got a non-palindromic string, it means the string has only ```a```'s. Hence, change the last character to ```'b'``` and return the obtained string.
+
+```Python
+class Solution:
+    def breakPalindrome(self, palindrome: str) -> str:
+        if len(palindrome) == 1:                # 'a' -> ""
+            return ""
+
+        array = [ch for ch in palindrome]
+        
+        for i in range(len(array) // 2):
+            if array[i] != 'a':
+                array[i] = 'a'
+                return "".join(array)
+        
+        array[-1] = 'b'
+        return "".join(array)                   # "aa" -> "ab"
+```
+
+```Python
+class Solution:
+    def breakPalindrome(self, palindrome: str) -> str:
+        if len(palindrome) == 1:                # 'a' -> ""
+            return ""
+        
+        for i in range(len(palindrome) // 2):
+            if palindrome[i] != 'a':
+                return palindrome[:i] + 'a' + palindrome[i+1:]
+        
+        return palindrome[:-1] + 'b'            # "aa" -> "ab"
+```
