@@ -117,8 +117,57 @@ class Solution:
 
 ### Breadth-First Search
 
-```Python
+__Algorithm__
 
+1. Create an adjacency graph where ```graph[x]``` contains all the neighbors of node ```x```.
+2. Create a long variable ```pairs``` to count the number of unreachable node pairs. We initialize it with ```0```.
+3. Create another long variable ```component_size``` to store the number of nodes in the current component. It is initialized with ```0```.
+4. Create a third long variable ```remaining``` to keep track of the number of unvisited nodes in the graph after each BFS traversal. We initialize it with ```n```.
+5. Create a ```visited``` hash set to keep track of nodes that have been visited.
+6. Iterate through all of the nodes and for each node ```node``` check if it is visited or not. If node ```node``` is not visited, begin the BFS traversal:
+    - We use the ```bfs``` function to perform the traversal. For each call, pass ```node``` as the parameters. We start with node ```node```.
+    - We initialize a queue ```queue``` of integers and push ```node``` into it. We also mark the ```node``` as visited and and create a variable ```count``` to keep track of the number of nodes in this component. We initialize ```count``` to ```1``` to count ```node``` itself.
+    - While the queue is not empty, we dequeue the first element ```node``` from the queue and iterate over all its neighbors. If any ```neighbor``` is unvisited, we mark it visited, increment ```count``` by ```1```, and push it into the queue.
+    - After the queue is empty, we return ```count``` and store it in ```component_size```.
+    - The number of unreachable pairs of nodes with one node in the current component and the other node in any other component except the current component and the previously visited components is ```pairs += component_size * (remaining - component_size)```.
+    - We decrement ```remaining``` by ```component_size``` because we have added all the required pairs of nodes with one of the nodes being in the current component and we don't want to add them again. As a result, we assume they are no longer present.
+7. Return ```pairs```.
+
+```Python
+class Solution:
+    def countPairs(self, n: int, edges: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        # Build the adjacency graph
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+
+        visited = set()
+        pairs, component, remaining = 0, 0, n
+
+        def bfs(node):
+            queue = collections.deque([node])
+            count = 1
+            visited.add(node)
+
+            while queue:
+                node = queue.popleft()
+                if not node in graph:
+                    continue
+                for neighbor in graph[node]:
+                    if not neighbor in visited:
+                        visited.add(neighbor)
+                        count += 1
+                        queue.append(neighbor)
+            
+            return count
+
+        for node in range(n):
+            if not node in visited:
+                component_size = bfs(node)
+                pairs += component_size * (remaining - component_size)
+                remaining -= component_size
+        return pairs    
 ```
 
 ### Union-Find
