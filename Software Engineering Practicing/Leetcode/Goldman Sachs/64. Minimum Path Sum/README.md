@@ -152,3 +152,49 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        dp = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
+
+        for row in range(ROWS - 1, -1, -1):
+            for col in range(COLS - 1, -1 , -1):
+                if row == ROWS - 1 and col != COLS - 1:
+                    dp[row][col] = grid[row][col] + dp[row][col + 1]
+                elif row != ROWS - 1 and col == COLS - 1:
+                    dp[row][col] = grid[row][col] + dp[row + 1][col]
+                elif row == ROWS - 1 and col == COLS - 1:
+                    dp[row][col] = grid[row][col]
+                else:
+                    dp[row][col] = grid[row][col] + min(dp[row + 1][col], dp[row][col + 1])
+        
+        return dp[0][0]
+```
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        dp = [[math.inf] * (COLS + 1) for _ in range(ROWS + 1)]
+
+        for row in range(ROWS - 1, -1, -1):
+            for col in range(COLS - 1, -1 , -1):
+                if row == ROWS - 1 and col == COLS - 1:
+                    dp[row][col] = grid[row][col]
+                else:
+                    dp[row][col] = grid[row][col] + min(dp[row + 1][col], dp[row][col + 1])
+        
+        return dp[0][0]
+```
+
+#### Optimized Bottom-Up Dynamic Programming (1D Array)
+
+```Python
+
+```
+
+```Python
+
+```
