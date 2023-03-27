@@ -64,6 +64,8 @@ __Algorithm__
 - __Time complexity__: ```O(n)```
 - __Space complexity__: ```O(n)```
 
+#### Recursive Depth-First Search
+
 ```Python
 class Solution:
     def longestCycle(self, edges: List[int]) -> int:
@@ -91,6 +93,8 @@ class Solution:
         return ans
 ```
 
+#### Iterative Depth-First Search
+
 ```Python
 class Solution:
     def longestCycle(self, edges: List[int]) -> int:
@@ -115,6 +119,35 @@ class Solution:
                 ans = max(ans, length)
             
         return ans
+```
+
+```Python
+class Solution:
+    def longestCycle(self, edges: List[int]) -> int:
+        n = len(edges)
+        visited = set([-1])
+        res = -1
+
+        for node in range(n):
+            if not node in visited:
+                origin = node
+                curr_visited = set()
+                # Detect cycle
+                while not origin in visited:
+                    visited.add(origin)
+                    curr_visited.add(origin)
+                    origin = edges[origin]
+                
+                # Cycle found, get the size of the cycle 
+                if origin in curr_visited:
+                    cycle_length = 1
+                    node = edges[origin]
+                    while node != origin:
+                        node = edges[node]
+                        cycle_length += 1
+                    res = max(res, cycle_length)
+        
+        return res
 ```
 
 ### Breadth-First Search (Kahn's Algorithm)
@@ -221,3 +254,5 @@ class Solution:
 
         return ans
 ```
+
+### Union-Find
