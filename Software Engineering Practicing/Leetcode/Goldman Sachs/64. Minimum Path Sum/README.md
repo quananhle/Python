@@ -189,12 +189,86 @@ class Solution:
         return dp[0][0]
 ```
 
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        dp = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
+        
+        for row in range(1, ROWS + 1):
+            dp[row][1] = grid[row - 1][0] + dp[row - 1][1]
+        for col in range(1, COLS + 1):
+            dp[1][col] = grid[0][col - 1] + dp[1][col - 1]
+
+        for row in range(2, ROWS + 1):
+            for col in range(2, COLS + 1): 
+                dp[row][col] = grid[row - 1][col - 1] + min(dp[row - 1][col], dp[row][col - 1])
+
+        return dp[-1][-1]
+```
+
 #### Optimized Bottom-Up Dynamic Programming (1D Array)
 
 ```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        dp = [math.inf for _ in range(ROWS + 1)]
 
+        for col in range(COLS - 1, -1 , -1):
+            for row in range(ROWS - 1, -1, -1):
+                if row == ROWS - 1 and col == COLS - 1:
+                    dp[row] = grid[row][col]
+                else:
+                    dp[row] = grid[row][col] + min(dp[row + 1], dp[row])
+        
+        return dp[0]
 ```
 
 ```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        dp = [0 for _ in range(ROWS + 1)]
 
+        for col in range(COLS - 1, -1 , -1):
+            for row in range(ROWS - 1, -1, -1):
+                if row == ROWS - 1 and col != COLS - 1:
+                    dp[row] = grid[row][col] + dp[row]
+                elif row != ROWS - 1 and col == COLS - 1:
+                    dp[row] = grid[row][col] + dp[row + 1]
+                elif row == ROWS - 1 and col == COLS - 1:
+                    dp[row] = grid[row][col]
+                else:
+                    dp[row] = grid[row][col] + min(dp[row + 1], dp[row])
+        
+        return dp[0]
+```
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        dp = [math.inf] * (ROWS + 1)
+        dp[1] = 0
+
+        for col in range(COLS):
+            for row in range(ROWS):
+                dp[row + 1] = grid[row][col] + min(dp[row], dp[row + 1])
+        
+        return dp[-1]
+```
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        dp = [math.inf] * (COLS + 1)
+        dp[1] = 0
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                dp[col + 1] = grid[row][col] + min(dp[col], dp[col + 1])
+        
+        return dp[-1]
 ```
