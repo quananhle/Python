@@ -38,6 +38,8 @@ __Constraints:__
 
 ### Brute Force
 
+![image](https://user-images.githubusercontent.com/35042430/227997672-3f785007-43e7-4725-bd8b-40811e9f1e8c.png)
+
 - __Time complexity__: O(2<sup>m+n</sup>), for every move, we have at most 2 options.
 - __Space complexity__: ```O(m+n)```, recursive stack of depth m + n
 
@@ -62,7 +64,12 @@ class Solution:
 
 ### The Framework
 
+![image](https://user-images.githubusercontent.com/35042430/227997727-90149e49-a6cd-475e-bb69-2d1a246f5beb.png)
+
 #### Top-Down Dynamic Programming
+
+- __Time complexity__: ```O(m * n)```, traverse the entire matrix once.
+- __Space complexity__: ```O(m * n)```, another matrix of the same size is used.
 
 ```Python
 class Solution:
@@ -153,6 +160,9 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+- __Time complexity__: ```O(m * n)```, traverse the entire matrix once.
+- __Space complexity__: ```O(m * n)```, another matrix of the same size is used.
+
 ```Python
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
@@ -208,6 +218,11 @@ class Solution:
 ```
 
 #### Optimized Bottom-Up Dynamic Programming (1D Array)
+
+![image](https://user-images.githubusercontent.com/35042430/227997876-24884b22-2327-4c41-8280-f4238c17a2bf.png)
+
+- __Time complexity__: ```O(m * n)```, traverse the entire matrix once.
+- __Space complexity__: ```O(n)```, another array of row size is used.
 
 ```Python
 class Solution:
@@ -271,4 +286,26 @@ class Solution:
                 dp[col + 1] = grid[row][col] + min(dp[col], dp[col + 1])
         
         return dp[-1]
+```
+
+#### Zero Extra Space (Modify Input)
+
+- __Time complexity__: ```O(m * n)```, traverse the entire matrix once.
+- __Space complexity__: ```O(n)```, another array of row size is used.
+
+```Python
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        
+        for row in range(ROWS - 1, -1, -1):
+            for col in range(COLS - 1, -1, -1):
+                if row == ROWS - 1 and col != COLS - 1:
+                    grid[row][col] = grid[row][col] + grid[row][col + 1]
+                elif row != ROWS - 1 and col == COLS - 1:
+                    grid[row][col] = grid[row][col] + grid[row + 1][col]
+                elif row != ROWS - 1 and col != COLS - 1:
+                    grid[row][col] = grid[row][col] + min(grid[row + 1][col], grid[row][col + 1])
+        
+        return grid[0][0]
 ```
