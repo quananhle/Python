@@ -1,6 +1,6 @@
 # Problems
 
-## Array & String
+## Array
 
 ### 2D Array
 
