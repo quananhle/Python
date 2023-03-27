@@ -113,10 +113,7 @@ class Solution:
 
         def dp(row, col):
             # Base case
-            if not (0 <= row < ROWS and 0 <= col < COLS):
-                return memo[(row, col)]
-
-            if (row, col) in memo:
+            if not (0 <= row < ROWS and 0 <= col < COLS) or (row, col) in memo:
                 return memo[(row, col)]
 
             if row == ROWS - 1:
