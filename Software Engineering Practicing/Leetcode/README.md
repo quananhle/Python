@@ -93,13 +93,15 @@
 - [518. Coin Change II]
 - [1155. Number of Dice Rolls With Target Sum]
 
+### State Transition by Inaction
+
+- :warning::warning: [983. Minimum Cost For Tickets](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/983.%20Minimum%20Cost%20For%20Tickets)
+
+#### Best Time to Buy and Sell Stock
 
 
 - [718. Maximum Length of Repeated Subarray]
 Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
-
-### Best Time to Buy and Sell Stock
-
 
 
 ### Maximum Subarray
@@ -141,6 +143,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ## Greedy
 
 - :four_leaf_clover: [605. Can Place Flowers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/605.%20Can%20Place%20Flowers)
+- :warning::warning: [1328. Break a Palindrome](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1328.%20Break%20a%20Palindrome)
 - :warning::warning: [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
 
 ---
@@ -162,6 +165,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [92. Reverse Linked List II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/92.%20Reverse%20Linked%20List%20II)
 - :warning::warning: [142. Linked List Cycle II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/Two-Pointer%20in%20Linked%20List/142.%20Linked%20List%20Cycle%20II) ```Hash Map``` ```Floyd's Tortoise and Hare```
 - :warning::warning: [382. Linked List Random Node](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/382.%20Linked%20List%20Random%20Node) ```Design``` ```Algorithm R```
+- :warning::warning: [1836. Remove Duplicates From an Unsorted Linked List](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1836.%20Remove%20Duplicates%20From%20an%20Unsorted%20Linked%20List/) ```Stack``` ```Hash Map``` ```Two Pointers```
 
 ---
 
