@@ -55,6 +55,10 @@ __Constraints:__
 
 ### The Framework
 
+Recurrence relation:
+
+![image](https://user-images.githubusercontent.com/35042430/228112704-834403ef-5596-4d1e-9d2b-549998e7ca81.png)
+
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
@@ -75,6 +79,53 @@ class Solution:
                 return min([dp(curr + duration) + cost for duration, cost in passes.items()])
             # Otherwise, current day already covered, move to next day
             return dp(curr + 1)
+
+        return dp(1)
+```
+
+```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        passes = {1: costs[0], 7: costs[1], 30: costs[2]}
+        day_set = set(days)
+        memo = collections.defaultdict(int)
+
+        def dp(curr):
+            # Base case
+            if not 0 < curr < 366 or curr in memo:
+                return memo[curr]
+ 
+            # Recurrence relation: to buy or not to buy a pass
+
+            # Check if the current day is covered with current pass, move on to the next day
+            if not curr in day_set:
+                memo[curr] = dp(curr + 1)
+                return memo[curr]
+
+            # Otherwise, if needed to buy a pass for current day, which pass is the most optimal? 1-day, 7-day, 30-day?
+            memo[curr] = min([dp(curr + duration) + cost for duration, cost in passes.items()])
+            return memo[curr]
+
+        return dp(1)
+```
+
+```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        day_set = set(days)
+        memo = collections.defaultdict(int)
+
+        def dp(day):
+            # Base case
+            if not (0 < day < 366) or day in memo:
+                return memo[day]
+
+            if day in day_set:
+                memo[day] = min(dp(day + 1) + costs[0], dp(day + 7) + costs[1], dp(day + 30) + costs[2])
+            else:
+                memo[day] = dp(day + 1)
+
+            return memo[day]
 
         return dp(1)
 ```
