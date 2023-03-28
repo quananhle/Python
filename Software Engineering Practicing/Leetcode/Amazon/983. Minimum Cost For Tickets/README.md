@@ -58,7 +58,25 @@ __Constraints:__
 #### Top-Down Dynamic Programming (Recursion)
 
 ```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        passes = {1: costs[0], 7: costs[1], 30: costs[2]}
+        day_set = set(days)
 
+        @lru_cache(None)
+        def dp(curr):
+            # Base case
+            if not 0 < curr < 366:
+                return 0
+
+            # Recurrence relation: which pass is the most optimal? 1-day, 7-day, 30-day?
+            # Check if need to buy pass for current day
+            if curr in day_set:
+                return min([dp(curr + duration) + cost for duration, cost in passes.items()])
+            # Otherwise, current day already covered, move to next day
+            return dp(curr + 1)
+
+        return dp(1)
 ```
 
 #### Optimized Time Top-Down Dynamic Programming (Recursion)
