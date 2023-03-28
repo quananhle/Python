@@ -183,9 +183,3 @@ class Solution:
         return dp[last_day]
 ```
 
-```Python
-
-
-```
-
-
