@@ -132,6 +132,47 @@ class Solution:
 
 #### Optimized Time Top-Down Dynamic Programming (Recursion)
 
+```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        n = len(days)
+        passes = {1: costs[0], 7: costs[1], 30: costs[2]}
 
-#### Bottom-Up Dynamic Programming (Tabulation)
+        @lru_cache(None)
+        def dp(curr):
+            if curr >= n:
+                return 0
+            
+            ans = math.inf
+            i = curr
+            
+            # Recurrence relation: for today, which pass 1-day, 7-day, 30-day is the most optimal for minimum expense?
+            for duration, cost in passes.items():
+                while i < n and days[i] < days[curr] + duration:
+                    i += 1
+                ans = min(ans, dp(i) + cost)
 
+            return ans
+
+        return dp(0)
+```
+
+#### Bottom-Up Dynamic Programming (1D Array)
+
+```Python
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        n = len(days)
+        day_set = set(days)
+        passes = [1, 7, 30]
+        last_day = days[-1]
+        dp = [0 for _ in range(max(days) + 1)]
+
+        for day in range(1, len(dp)):        
+            if day in day_set:
+                dp[day] = min(dp[max(day - 1, 0)] + costs[0], dp[max(day - 7, 0)] + costs[1], dp[max(day - 30, 0)] + costs[2])
+            else:
+                dp[day] = dp[day - 1]
+
+        return dp[last_day]
+```
