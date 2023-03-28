@@ -254,5 +254,3 @@ class Solution:
 
         return ans
 ```
-
-### Union-Find
