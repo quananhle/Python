@@ -92,6 +92,7 @@
 - :warning::warning: [416. Partition Equal Subset Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/416.%20Partition%20Equal%20Subset%20Sum)
 - [518. Coin Change II]
 - [1155. Number of Dice Rolls With Target Sum]
+- :no_entry::no_entry::no_entry: [1402. Reducing Dishes](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/1402.%20Reducing%20Dishes/) ```Greedy```
 
 ### State Transition by Inaction
 
