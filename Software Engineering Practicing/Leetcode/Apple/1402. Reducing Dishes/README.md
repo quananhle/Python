@@ -45,3 +45,26 @@ __Constraints:__
 - ```-1000 <= satisfaction[i] <= 1000```
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming 
+
+__Algorithm__
+
+1. Sort the array ```satisfaction``` in ascending order.
+
+2. Create a memoization table ```memo``` with size ```N x N```, and initialize all the values with ```-1```, representing that the answer for all the states has not been calculated yet.
+
+3. Implement the following function, to be called with ```index = 0``` and ```time = 1``` to find the answer:
+
+    - a. If we have reached the end of the array, i.e. ```index = satisfaction.length```, we should return ```0``` because there are no more dishes to cook, so we can't gain any more value.
+    - b. If the value in the array ```memo``` for the pair ```{index, time}``` is not ```-1```, then return that value as it implies that we have already encountered this subproblem; thus a recursive call is not needed and we can return the value stored in the table ```memo```.
+    - c. Check the below two options, calculate, memoize, and return the maximum of them:
+
+        - i. Add the coefficient value for this dish as `satisfaction[index] * time` to the recursive result for with `index = index + 1` and `time = time + 1`
+        - ii. Skip the dish and make the recursive call for `index = index + 1` and `time = time`. 
+
+```Python
+
+```
