@@ -1,6 +1,6 @@
 ## [1402. Reducing Dishes](https://leetcode.com/problems/reducing-dishes/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Greedy```
 
 #### Difficulty: Hard
 
