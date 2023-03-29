@@ -129,6 +129,58 @@ class Solution:
         return dp(0, 1)
 ```
 
+```Python
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        satisfaction.sort()
+        n = len(satisfaction)
+        memo = collections.defaultdict(int)
+        
+        def dp(curr, time):
+            # Base case
+            if curr == n:
+                return 0
+
+            if (curr, time) in memo:
+                return memo[(curr, time)]
+
+            # Recurrence relation: do nothing or do something?
+            # If decided to do nothing, move on to the next dish, zero time taken to cook
+            do_nothing = dp(curr + 1, time)
+
+            # If decided to do something, get the like-time coefficient of the current dish, move on to the next dish
+            do_something = satisfaction[curr] * time + dp(curr + 1, time + 1)
+
+            memo[(curr, time)] = max(do_nothing, do_something)
+            return memo[(curr, time)]
+
+        return dp(0, 1)
+```
+
+```Python
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        satisfaction.sort()
+        n = len(satisfaction)
+
+        @lru_cache(None)
+        def dp(curr, time):
+            # Base case
+            if curr == n:
+                return 0
+
+            # Recurrence relation: do nothing or do something?
+            # If decided to do nothing, move on to the next dish, zero time taken to cook
+            do_nothing = dp(curr + 1, time)
+
+            # If decided to do something, get the like-time coefficient of the current dish, move on to the next dish
+            do_something = satisfaction[curr] * time + dp(curr + 1, time + 1)
+
+            return max(do_nothing, do_something)
+
+        return dp(0, 1)
+```
+
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 __Algorithm__
@@ -170,12 +222,26 @@ __Algorithm__
 4. Return ```prev[1]```, this corresponds to ```index = 0```, ```time = 1```.
 
 ```Python
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        satisfaction.sort()
+        n = len(satisfaction)
+        prev = [0] * (n + 2)
 
+        for i in range(n - 1, -1, -1):
+            dp = [0] * (n + 2)
+            for time in range(1, n + 1):
+                dp[time] = max(satisfaction[i] * time + prev[time + 1], prev[time])
+            prev = dp
+        
+        return prev[1]
 ```
 
 ----
 
 ### Greedy
+
+![image](https://leetcode.com/problems/reducing-dishes/Figures/1402/1402C.png)
 
 ```Python
 
