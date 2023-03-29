@@ -1,6 +1,6 @@
 ## Best Time to Buy and Sell Stock
 
-```Tag```: ```Two Pointers``` ```Hash Map``` ```Binary Search```
+```Tag```: ```Dynamic Programming``` ```Greedy```
 
 ### Best Time to Buy and Sell Stock I
 
