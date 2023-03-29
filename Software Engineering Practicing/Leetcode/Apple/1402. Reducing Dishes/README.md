@@ -66,5 +66,35 @@ __Algorithm__
         - ii. Skip the dish and make the recursive call for `index = index + 1` and `time = time`. 
 
 ```Python
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        satisfaction.sort()
+        n = len(satisfaction)
 
+        memo = [[-1] * (n + 1) for _ in range(n + 1)]
+
+        def dp(curr, time):
+            # Base case
+            if curr == n:
+                return 0
+
+            if memo[curr][time] != -1:
+                return memo[curr][time]
+
+            # Recurrence relation: to cook or to skip? To cook or to do nothing?
+            # 1. If cook the current dish with time taken, move on to the next dish and time
+            # 2. Skip the current dish and move on to the next dish
+            '''
+            memo[curr][time] = max(satisfaction[curr] * time + dp(curr + 1, time + 1), dp(curr + 1, time))
+            '''
+
+            skip = dp(curr + 1, time)
+            cook = satisfaction[curr] * time + dp(curr + 1, time + 1)
+
+            memo[curr][time] = max(skip, cook)
+            return memo[curr][time]
+
+        return dp(0, 1)
 ```
+
+
