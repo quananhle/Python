@@ -1,6 +1,6 @@
 ## [651. 4 Keys Keyboard](https://leetcode.com/problems/4-keys-keyboard/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -39,3 +39,10 @@ __Constraints:__
 
 ---
 
+###
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
