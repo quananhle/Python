@@ -109,16 +109,16 @@ We can prove that the operations can be simplified into two types:
 - 1 move: Add one ```A```.
 - k + 1 moves: Multiply the number of ```A```'s by ```k```
 
-Say ```best[k]``` is the maximum number of ```A```'s that can be printed after ```k``` moves. The last (simplified) operation must have been addition or multiplication. Thus, ```best[k] = max(best[k-1] + 1, best[k-2] * 1, best[k-3] * 2, best[k-4] * 3, ...)```.
+Say ```dp[k]``` is the maximum number of ```A```'s that can be printed after ```k``` moves. The last (simplified) operation must have been addition or multiplication. Thus, ```dp[k] = max(dp[k - 1] + 1, dp[k - 2] * 1, dp[k - 3] * 2, dp[k - 4] * 3, ...)```.
 
 ```Python
 class Solution:
     def maxA(self, n: int) -> int:
-        best = [0, 1]
+        dp = [0, 1]
         for i in range(2, n + 1):
-            curr = best[i - 1] + 1
+            curr = dp[i - 1] + 1
             for j in range(i - 1):
-                curr = max(curr, best[j] * (i - j - 1))
+                curr = max(curr, dp[j] * (i - j - 1))
             best.append(curr)
-        return best[n]
+        return dp[n]
 ```
