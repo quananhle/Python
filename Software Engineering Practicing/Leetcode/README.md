@@ -93,11 +93,11 @@
 - [518. Coin Change II]
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
 - [1155. Number of Dice Rolls With Target Sum]
-- :no_entry::no_entry::no_entry: [1402. Reducing Dishes](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/1402.%20Reducing%20Dishes/) ```Greedy```
 
 ### State Transition by Inaction
 
 - :warning::warning: [983. Minimum Cost For Tickets](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/983.%20Minimum%20Cost%20For%20Tickets)
+- :no_entry::no_entry::no_entry: [1402. Reducing Dishes](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/1402.%20Reducing%20Dishes/) ```Greedy```
 
 #### Best Time to Buy and Sell Stock
 
