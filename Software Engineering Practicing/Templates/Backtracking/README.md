@@ -19,7 +19,7 @@ class Solution:
         res = list()
         n = len(candidates)
 
-        def backtracking(curr, combination, remaining):
+        def backtrack(curr, combination, remaining):
             # 1. Target not met: keep looking at the current candidate
             # 2. Target met: add the valid combination into the final output
             # 3. Target exceeded: wrong path, invalid combination, backtrack
@@ -27,20 +27,73 @@ class Solution:
             if remaining == 0:
                 res.append(combination[:])
                 return
-            elif remaining < 0:
+            elif curr >= n or remaining < 0:
                 return
             else:
                 for i in range(curr, n):
                     # Add a candidate into the current combination
                     combination.append(candidates[i])
                     # Stay in the current candidate until base case reached
-                    backtracking(i, combination, remaining - candidates[i])
-                    # Backtrack
+                    backtrack(i, combination, remaining - candidates[i])
+                    # Backtracking
                     combination.pop()
 
-        backtracking(0, list(), target)
+        backtrack(0, list(), target)
 
         return res
 ```
 
 [40. Combination Sum II](https://github.com/quananhle/Python/tree/9be61514143afebc507bb297ec59680010df8087/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II/Backtracking/40.%20Combination%20Sum%20II)
+
+```
+Example 1:
+
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output: [[1,1,6], [1,2,5], [1,7], [2,6]]
+```
+
+```Python
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
+        res = list()
+        n = len(candidates)
+
+        def backtrack(curr, combination, remaining):
+            # 1. Target not met: remaining > 0 => keep looking for the right candidate
+            # 2. Target met: remaining == 0 => record the combination into the final output
+            # 3. Target exceeded: remaining < 0 => wrong path, backtrack
+
+            if remaining == 0:
+                res.append(combination[:])
+                return
+            elif curr >= n or remaining < 0:
+                return
+            else:
+                for next in range(curr, n):
+                    #  Check the next element to avoid same element using twice in a combination
+                    if curr < next and candidates[next] == candidates[next - 1]:
+                        continue
+
+                    # Pick the candidate and check if it is a valid candidate
+                    candidate = candidates[next]
+                    '''
+                    if remaining - candidate >= 0:
+                        combination.append(candidate)
+                    # Otherwise, invalid candidate, break
+                    else:
+                        break
+                    '''
+                    if remaining - candidate < 0:
+                        break
+                    
+                    combination.append(candidate)
+                    # Jump to the next element and update remaining
+                    backtrack(next + 1, combination, remaining - candidate)
+                    # Backtracking
+                    combination.pop()
+
+        backtrack(0, list(), target)
+        
+        return res
+```
