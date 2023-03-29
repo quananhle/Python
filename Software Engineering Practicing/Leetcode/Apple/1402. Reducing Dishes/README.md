@@ -243,6 +243,27 @@ class Solution:
 
 ![image](https://leetcode.com/problems/reducing-dishes/Figures/1402/1402C.png)
 
-```Python
+__Algorithm__
 
+1. Sort the array ```satisfaction``` in ascending order.
+2. Initialize the variables ```maxSatisfaction``` and ```suffixSum``` to ```0```.
+3. Iterate over the dish's ```satisfaction``` from right to left, and add the satisfaction value for the current dish ```satisfaction[i]``` to the sum ```suffixSum```. If the value ```suffixSum``` becomes less than zero, break from the loop and return ```maxSatisfaction```. Add the value ```suffixSum``` to the previously calculated value ```maxSatisfaction```.
+4. Return ```maxSatisfaction```.
+
+```Python
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        satisfaction.sort()
+        n = len(satisfaction)
+
+        max_satisfaction = 0
+        suffix_sum = 0
+        
+        index = n - 1
+        while index >= 0 and suffix_sum + satisfaction[index] > 0:
+            suffix_sum += satisfaction[index]
+            max_satisfaction += suffix_sum
+            index -= 1
+        
+        return max_satisfaction
 ```
