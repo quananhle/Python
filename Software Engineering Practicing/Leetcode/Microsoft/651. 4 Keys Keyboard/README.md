@@ -84,6 +84,9 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming (1D Array)
 
+- __Time complexity__: ```O(n)```.
+- __Space complexity__: ```O(n)```.
+
 __Algorithm__
 
 1. Create an array ```dp``` of length ```n + 1```. Initialize ```dp[i] = i```.
