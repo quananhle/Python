@@ -46,6 +46,14 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+
+```
+
+---
+
 ### The Framework
 
 #### Top-Down Dynamic Programming
@@ -104,6 +112,13 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming (Tabulation)
 
+__Algorithm__
+
+1. Sort the array ```satisfaction``` in ascending order.
+2. Create a table ```dp``` with size ```N x N```, and initialize all the values with ```0```, representing that the sum of all the states is ```0``` initially.
+3. Iterate over the index from the last index in ```satisfaction``` to ```0``` as ```index``` and time from ```1``` to the length of the ```satisfaction``` array as ```time```; for each pair, store the value at ```dp[index][time]``` as: maximum of ```(satisfaction[index] * time + dp[index + 1][time + 1], dp[index + 1][time])```.
+3. Return ```dp[0][1]```; this is the state we started with in our top-down approach and the answer to the original problem (start at the first dish with no dishes cooked yet).
+
 ```Python
 class Solution:
     def maxSatisfaction(self, satisfaction: List[int]) -> int:
@@ -119,3 +134,15 @@ class Solution:
         return dp[0][1]
 ```
 
+
+----
+
+### Greedy
+
+```Python
+
+```
+
+```Python
+
+```
