@@ -39,10 +39,57 @@ __Constraints:__
 
 ---
 
-###
-
-#### Bottom-Up Dynamic Programming
+#### Bottom-Up Dynamic Programming (2D Tabulation)
 
 ```Python
+class Solution:
+    def maxA(self, n: int) -> int:
+        # Bottom-Up Dynamic Programming
+        
+        # 3 scenarios:
+        # 1. Press 1 key to print 'A'
+        # 2. Print Ctrl V to paste whatever in the clipboard
+        # 3. Print Ctrl A + Ctrl C + Ctrl V to double the number of 'A'
 
+        # To store the results of 3 scenarios
+        dp = [[0] * (n + 1) for _ in range(3)]
+        # To store the current number of 'A' in clipboard of scenario 2 and 3
+        clipboard = [[0] * (n + 1) for _ in range(2)]
+
+        for i in range(1, n + 1):
+            # Scenario 1
+            dp[0][i] = max(dp[0][i - 1], dp[1][i - 1], dp[2][i - 1]) + 1
+
+            # Scenario 2
+            if i >= 1:
+                # Paste result of scenario 2
+                scenario_2 = dp[1][i - 1] + clipboard[0][i - 1]
+                # Paste result of scenario 3
+                scenario_3 = dp[2][i - 1] + clipboard[1][i - 1]
+                # Check which scenario yields more 'A'
+                if scenario_2 <= scenario_3:
+                    dp[1][i] = scenario_3
+                    clipboard[0][i] = clipboard[1][i - 1]
+                else:
+                    dp[1][i] = scenario_2
+                    clipboard[0][i] = clipboard[0][i - 1]
+
+            # Scenario 3
+            if i >= 3:
+                clipboard[1][i] = max(dp[0][i - 3], dp[1][i - 3], dp[2][i - 3])
+                dp[2][i] = clipboard[1][i] * 2
+
+        return max(dp[i][-1] for i in range(3))
+```
+
+#### Bottom-Up Dynamic Programming (1D Array)
+
+```Python
+class Solution:
+    def maxA(self, n: int) -> int:
+        dp = list(range(n + 1))
+        for i in range(n - 2):
+            for j in range(i + 3, min(n, i + 6) + 1):
+                dp[j] = max(dp[j], (j - i - 1) * dp[i])
+        return dp[n]
 ```
