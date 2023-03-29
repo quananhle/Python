@@ -48,7 +48,7 @@ class Solution:
         
         # 3 scenarios:
         # 1. Press 1 key to print 'A'
-        # 2. Print Ctrl V to paste whatever in the clipboard
+        # 2. Print Ctrl V to paste the buffer in the clipboard
         # 3. Print Ctrl A + Ctrl C + Ctrl V to double the number of 'A'
 
         # To store the results of 3 scenarios
@@ -83,6 +83,13 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming (1D Array)
+
+__Algorithm__
+
+1. Create an array ```dp``` of length ```n + 1```. Initialize ```dp[i] = i```.
+2. Iterate with a variable ```i``` until ```n − 3```:
+    - For each ```j``` from ```i + 3``` to ```min⁡(n, i + 6)```, update (if greater) ```dp[j]``` with ```(j − i − 1) * dp[i]```.
+3. Return ```dp[n]```.
 
 ```Python
 class Solution:
