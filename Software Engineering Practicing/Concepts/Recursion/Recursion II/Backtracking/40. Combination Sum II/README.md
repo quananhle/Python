@@ -48,6 +48,8 @@ __Constraints:__
 
 #### Sorting
 
+![image](https://leetcode.com/problems/combination-sum-ii/Figures/40/40_index_demo.png)
+
 ```Python
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
@@ -110,7 +112,9 @@ class Solution:
         return res
 ```
 
-### Counter
+#### Counter
+
+![image](https://leetcode.com/problems/combination-sum-ii/Figures/40/40_counter.png)
 
 __Time Complexity__: O(2<sup>N</sup>), The number of combination for an array of size ```N``` would be 2<sup>N</sup>, each number is either included or excluded in a combination
 
