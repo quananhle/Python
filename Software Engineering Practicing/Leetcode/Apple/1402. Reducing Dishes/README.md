@@ -49,7 +49,26 @@ __Constraints:__
 ### Brute Force
 
 ```Python
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        satisfaction.sort()
+        n = len(satisfaction)
 
+        if satisfaction[-1] <= 0:
+            return 0
+
+        ans = -math.inf
+
+        for i in range(n):
+            best = 0
+            for j in range(i, n):
+                best += satisfaction[j] * (j - i + 1)
+            
+            ans = max(ans, best)
+            if satisfaction [i] >= 0:
+                break
+
+        return ans
 ```
 
 ---
@@ -58,7 +77,7 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
-![image](https://user-images.githubusercontent.com/35042430/228454318-00afcbc1-097b-4074-b871-ed32f1b4db4e.png)
+![image](https://leetcode.com/problems/reducing-dishes/Figures/1402/1402A.png)
 
 __Algorithm__
 
@@ -134,14 +153,29 @@ class Solution:
         return dp[0][1]
 ```
 
+#### Bottom-Up Dynamic Programming (1D Array)
 
-----
+__Algorithm__
 
-### Greedy
+1. Sort the array ```satisfaction``` in ascending order.
+
+2. Create a table ```prev``` with size ```N```, and initialize all the values with ```0```, representing that the sum of all the states is ```0``` initially. This table refers to the results for the previous iteration that will be used for calculating the next iteration.
+
+3. Iterate over the index from the last index in ```satisfaction``` to ```0``` as index ```i```:
+
+    - a. Create a table ```dp``` with size ```N```. This table refers to the results for the current iteration.
+    - b. Iterate over time from ```1``` to the length of the ```satisfaction``` array as ```time```, for each ```dp[time]``` store the value as maximum of ```(satisfaction[index] * time + prev[time + 1], prev[time])```.
+    - c. set ```prev = dp```.
+
+4. Return ```prev[1]```, this corresponds to ```index = 0```, ```time = 1```.
 
 ```Python
 
 ```
+
+----
+
+### Greedy
 
 ```Python
 
