@@ -4,13 +4,13 @@
 
 #### Difficulty: Hard
 
-A chef has collected data on the satisfaction level of his n dishes. Chef can cook any dish in 1 unit of time.
+A chef has collected data on the ```satisfaction``` level of his ```n``` dishes. Chef can cook any dish in ```1``` unit of time.
 
-Like-time coefficient of a dish is defined as the time taken to cook that dish including previous dishes multiplied by its satisfaction level i.e. time[i] * satisfaction[i].
+__Like-time coefficient__ of a dish is defined as the time taken to cook that dish including previous dishes multiplied by its satisfaction level i.e. ```time[i] * satisfaction[i]```.
 
-Return the maximum sum of like-time coefficient that the chef can obtain after dishes preparation.
+Return _the maximum sum of __like-time coefficient__ that the chef can obtain after dishes preparation_.
 
-Dishes can be prepared in any order and the chef can discard some dishes to get this maximum value.
+Dishes can be prepared in __any__ order and the chef can discard some dishes to get this maximum value.
 
 ![image](https://user-images.githubusercontent.com/35042430/228406066-b494a9b6-d16d-4a28-924e-4998f05019eb.png)
 
@@ -48,7 +48,9 @@ __Constraints:__
 
 ### The Framework
 
-#### Top-Down Dynamic Programming 
+#### Top-Down Dynamic Programming
+
+![image](https://user-images.githubusercontent.com/35042430/228454318-00afcbc1-097b-4074-b871-ed32f1b4db4e.png)
 
 __Algorithm__
 
@@ -62,9 +64,12 @@ __Algorithm__
     - b. If the value in the array ```memo``` for the pair ```{index, time}``` is not ```-1```, then return that value as it implies that we have already encountered this subproblem; thus a recursive call is not needed and we can return the value stored in the table ```memo```.
     - c. Check the below two options, calculate, memoize, and return the maximum of them:
 
-        - i. Add the coefficient value for this dish as `satisfaction[index] * time` to the recursive result for with `index = index + 1` and `time = time + 1`
-        - ii. Skip the dish and make the recursive call for `index = index + 1` and `time = time`. 
+        - i. Add the coefficient value for this dish as ```satisfaction[index] * time``` to the recursive result for with ```index = index + 1``` and ```time = time + 1```
+        - ii. Skip the dish and make the recursive call for ```index = index + 1``` and ```time = time```. 
 
+- __Time Complexity__: ```O(N^2)```
+- __Space Complexity__: ```O(N)```
+ 
 ```Python
 class Solution:
     def maxSatisfaction(self, satisfaction: List[int]) -> int:
@@ -97,4 +102,20 @@ class Solution:
         return dp(0, 1)
 ```
 
+#### Bottom-Up Dynamic Programming (Tabulation)
+
+```Python
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        satisfaction.sort()
+        n = len(satisfaction)
+
+        dp = [[0] * (n + 2) for _ in range(n + 1)]
+
+        for curr in range(n - 1, -1, -1):
+            for time in range(1, n + 1):
+                dp[curr][time] = max(satisfaction[curr] * time + dp[curr + 1][time + 1], dp[curr + 1][time])
+
+        return dp[0][1]
+```
 
