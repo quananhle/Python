@@ -4,6 +4,10 @@
 
 ### Best Time to Buy and Sell Stock I
 
+```Python
+
+```
+
 ### Best Time to Buy and Sell Stock II
 
 ### Best Time to Buy and Sell Stock III
