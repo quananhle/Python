@@ -53,3 +53,32 @@ __Constraints:__
 - ```s1``` and ```s2``` consist of lowercase English letters.
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def isScramble(self, s1: str, s2: str) -> bool:
+        @lru_cache(None)
+        def dp(s1, s2):
+            # Base cases
+            if not sorted(s1) == sorted(s2):
+                return False
+            if len(s1) == 1:
+                return True
+            
+            for i in range(1, len(s1)):
+                if dp(s1[:i], s2[-i:]) and dp(s1[i:], s2[:-i]) or dp(s1[:i], s2[:i]) and dp(s1[i:], s2[i:]):
+                    return True
+            
+            return False
+
+        return dp(s1, s2)
+```
+
+```Python
+
+
+```
