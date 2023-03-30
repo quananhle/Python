@@ -10,6 +10,7 @@
 
 - :warning::warning: [56. Merge Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval/56.%20Merge%20Intervals) ```Sorting``` ```Graph``` ```Union-Find```
 - :warning::warning: [57. Insert Interval](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval/57.%20Insert%20Interval) ```Binary Search```
+- :warning::warning: [253. Meeting Rooms II](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II/) ```Priority Queue``` ```Chronological Ordering```
 
 ### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
 
@@ -41,6 +42,8 @@
 - :warning::warning: [2348. Number of Zero-Filled Subarrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2348.%20Number%20of%20Zero-Filled%20Subarrays) ```Sliding Window```
 
 ### Two Pointers
+
+- :warning::warning: [1578. Minimum Time to Make Rope Colorful](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/) ```Greedy```
 
 #### [kSum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/kSum)
 
@@ -181,7 +184,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 - :no_entry::no_entry::no_entry: [37. Sudoku Solver]
 - :warning::warning: [39. Combination Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II/Backtracking/39.%20Combination%20Sum)
-- [40. Combination Sum II]
+- :warning::warning: [40. Combination Sum II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II/Backtracking/40.%20Combination%20Sum%20II)
 - :warning::warning: [46. Permutations](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20II/Backtracking/46.%20Permutations) ```Depth-First Search``` ```Breadth-First Search```
 - [47. Permutations II]
 - [78. Subsets]
