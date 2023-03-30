@@ -1,6 +1,6 @@
 ## [87. Scramble String](https://leetcode.com/problems/scramble-string/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Recursion```
 
 #### Difficulty: Hard
 
@@ -58,6 +58,12 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+The ```dp``` function takes in two strings ```s1``` and ```s2```, and returns a boolean value indicating whether they are scrambled versions of each other. The function first checks the length of the strings - if they are both of length ```1```, it simply compares the characters. If the sorted characters in the two strings are not equal, it returns ```False```.
+
+Otherwise, the function loops through all possible partitions of ```s1``` and checks if they are valid scrambles of corresponding partitions in ```s2```. The partitions are formed by looping through the length of s1 from index 1 to the end. If a valid partition is found, the function recursively checks the remaining partitions to see if they are also valid scrambles.
+
+If at least one valid partition is found, the function returns ```True``` and stores the result in the ```memo``` dictionary. If no valid partitions are found, the function returns ```False``` and stores the result in the ```memo``` dictionary.
+
 ```Python
 class Solution:
     def isScramble(self, s1: str, s2: str) -> bool:
@@ -79,6 +85,27 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def isScramble(self, s1: str, s2: str) -> bool:
+        memo = collections.defaultdict(bool)
 
+        def dp(s1, s2):
+            # Base cases
+            if sorted(s1) != sorted(s2):
+                return False
+            elif len(s1) == 1:
+                return True
+            elif (s1, s2) in memo:
+                return memo[(s1, s2)]
+            
+            # Recurrence relation
+            for i in range(1, len(s1)):
+                if dp(s1[i:], s2[:-i]) and dp(s1[:i], s2[-i:]) or dp(s1[i:], s2[i:]) and dp(s1[:i], s2[:i]):
+                    memo[(s1, s2)] = True
+                    return memo[(s1, s2)]
 
+            memo[(s1, s2)] = False
+            return memo[(s1, s2)]
+
+        return dp(s1, s2)
 ```
