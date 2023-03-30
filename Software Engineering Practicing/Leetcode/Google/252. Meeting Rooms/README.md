@@ -89,7 +89,7 @@ class Solution:
         schedule.sort()
         attend = 0
 
-        # Ccheck if have to attend more than 1 meeting at the same time
+        # Check if have to attend more than 1 meeting at the same time
         for meeting in schedule:
             if attend > 1:
                 return False
