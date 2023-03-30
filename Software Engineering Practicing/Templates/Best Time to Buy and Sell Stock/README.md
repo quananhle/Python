@@ -27,7 +27,38 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        memo = collections.defaultdict()
+        n = len(prices)
 
+        def dp(day, holding, transaction):
+            if day == n or transaction == 0:
+                return 0
+
+            if (day, holding, transaction) in memo:
+                return memo[(day, holding, transaction)]
+
+            # Recurrence relation: skip the current day or make the transaction? Do nothing or do something?
+            # Skip: move on to the next day, maintain the holding status, maintain the number of transaction
+            # Make: move on to the next day, update the holding status, decrement the number of transaction once complete buying and selling
+
+            skip = dp(day + 1, holding, transaction)
+
+            # Check the holding status
+            if not holding:
+                # Buy if not holding, pay the cost
+                make = dp(day + 1, not holding, transaction) - prices[day]
+            else:
+                # Sell if holding, take the profit
+                make = dp(day + 1, not holding, transaction - 1) + prices[day]
+            
+            # Get the maximum profit from the decisions
+            memo[(day, holding, transaction)] = max_profit = max(skip, make)
+            return max_profit
+                
+        # Start from day 0, not holding any stock at the beginning, can do at most 1 transaction
+        return dp(0, False, 1)
 ```
 
 ### Best Time to Buy and Sell Stock II
