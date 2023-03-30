@@ -10,8 +10,8 @@
 
 - :warning::warning: [56. Merge Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval/56.%20Merge%20Intervals) ```Sorting``` ```Graph``` ```Union-Find```
 - :warning::warning: [57. Insert Interval](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval/57.%20Insert%20Interval) ```Binary Search```
-- :four_leaf_clover: [252. Meeting Rooms](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Google/252.%20Meeting%20Rooms/)
-- :warning::warning: [253. Meeting Rooms II](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II/) ```Priority Queue``` ```Chronological Ordering```
+- :four_leaf_clover: [252. Meeting Rooms](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Google/252.%20Meeting%20Rooms/) ```Sorting```
+- :warning::warning: [253. Meeting Rooms II](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II/) ```Priority Queue``` ```Chronological Ordering``` ```Sorting```
 
 ### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
 
@@ -106,7 +106,7 @@
 
 #### Best Time to Buy and Sell Stock
 
-
+- :four_leaf_clover: [121. Best Time to Buy and Sell Stock](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock)
 - [718. Maximum Length of Repeated Subarray]
 Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
