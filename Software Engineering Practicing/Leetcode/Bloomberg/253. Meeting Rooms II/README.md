@@ -92,3 +92,38 @@ class Solution:
 ### Chronological Ordering
 
 ![image](https://leetcode.com/problems/meeting-rooms-ii/Figures/253/253_Meeting_Rooms_II_Diag_3.png)
+
+![image](https://leetcode.com/problems/meeting-rooms-ii/Figures/253/253_Meeting_Rooms_II_Diag_4.png)
+
+![image](https://leetcode.com/problems/meeting-rooms-ii/Figures/253/253_Meeting_Rooms_II_Diag_5.png)
+
+
+
+```Python
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        if not intervals:
+            return 0
+
+        ans = 0
+        n = len(intervals)
+
+        start_time = sorted([interval[0] for interval in intervals])
+        finish_time = sorted([interval[1] for interval in intervals])
+
+        s = e = 0
+
+        while s < n:
+            # Check if a meeting ends before the starting time of another meeting
+            if finish_time[e] <= start_time[s]:
+                # Free up the room and check the finishing time of the next meeting
+                ans -= 1
+                e += 1
+
+            # If a room got free, then this rooms needed += 1 wouldn't have any effect, rooms needed remain the same in that case. 
+            # If no room was free, then this would increase rooms needed
+            ans += 1
+            s += 1
+        
+        return ans
+```
