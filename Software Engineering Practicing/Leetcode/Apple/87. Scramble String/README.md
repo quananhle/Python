@@ -79,6 +79,7 @@ class Solution:
             if len(s1) == 1:
                 return True
             
+            # Recurrence relation: 
             for i in range(1, len(s1)):
                 if dp(s1[:i], s2[-i:]) and dp(s1[i:], s2[:-i]) or dp(s1[:i], s2[:i]) and dp(s1[i:], s2[i:]):
                     return True
@@ -117,16 +118,35 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 __Algorithm__
-Iterate i from 0 to n-1.
-Iterate j from 0 to n-1.
-Set dp[1][i][j] to the boolean value of s1[i] == s2[j]. (The base case of the DP).
-Iterate length from 2 to n.
-Iterate i from 0 to n + 1 - length.
-Iterate j from 0 to n + 1 - length.
-Iterate newLength from 1 to length - 1.
-If dp[newLength][i][j] && dp[length-newLength][i+newLength][j+newLength]) || (dp[newLength][i][j+l-newLength] && dp[l-newLength][i+newLength][j] is true, set dp[length][i][j] to true.
-Return dp[n][0][0].
+
+1. Iterate ```i``` from ```0``` to ```n - 1```.
+    - Iterate ```j``` from ```0``` to ```n - 1```.
+        - Set ```dp[1][i][j]``` to the boolean value of ```s1[i] == s2[j]```. (The base case of the DP).
+2. Iterate ```length``` from ```2``` to ```n```.
+    - Iterate ```i``` from ```0``` to ```n + 1``` - length.
+        - Iterate ```j``` from ```0``` to ```n + 1``` - length.
+            - Iterate ```new_length``` from ```1``` to ```length - 1```.
+                - If ```dp[new_length][i][j] && dp[length - new_length][i + new_length][j + new_length]) || (dp[new_length][i][j + l - new_length] && dp[l - new_length][i + new_length][j]``` is true, set ```dp[length][i][j]``` to true.
+3. Return ```dp[n][0][0]```.
 
 ```Python
+class Solution:
+    def isScramble(self, s1: str, s2: str) -> bool:
+        n = len(s1)
+        dp = [[[False] * n for _ in range(n)] for _ in range (n + 1)]
 
+        for i in range(n):
+            for j in range(n):
+                dp[1][i][j] = s1[i] == s2[j]
+
+        for length in range(2, n + 1): 
+            for i in range(n + 1 - length):
+                for j in range(n + 1 - length):
+                    for new_length in range(1, length):
+                        dp1 = dp[new_length][i]
+                        dp2 = dp[length - new_length][i + new_length]
+                        dp[length][i][j] |= dp1[j] and dp2[j + new_length]
+                        dp[length][i][j] |= dp1[j + length - new_length] and dp2[j]
+
+        return dp[n][0][0]
 ```
