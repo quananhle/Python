@@ -104,17 +104,20 @@
 - :warning::warning: [983. Minimum Cost For Tickets](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/983.%20Minimum%20Cost%20For%20Tickets)
 - :no_entry::no_entry::no_entry: [1402. Reducing Dishes](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/1402.%20Reducing%20Dishes/) ```Greedy```
 
-#### Best Time to Buy and Sell Stock
+#### [Best Time to Buy and Sell Stock](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Best%20Time%20to%20Buy%20and%20Sell%20Stock)
 
 - :four_leaf_clover: [121. Best Time to Buy and Sell Stock](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock)
-- [718. Maximum Length of Repeated Subarray]
-Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
-
+- :warning::warning: [122. Best Time to Buy and Sell Stock II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/122.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II) ```Greedy```
+- :no_entry::no_entry::no_entry: [123. Best Time to Buy and Sell Stock III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/123.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III)
+- :no_entry::no_entry::no_entry: [188. Best Time to Buy and Sell Stock IV](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV)
 
 ### Maximum Subarray
 
 - :warning::warning: [53. Maximum Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/53.%20Maximum%20Subarray) ```Kadane's Algorithm``` ```Divide & Conquer```
 - :warning::warning: [152. Maximum Product Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/152.%20Maximum%20Product%20Subarray) ```Kadane's Algorithm```
+
+- [718. Maximum Length of Repeated Subarray]
+Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Prefix Sum
 
