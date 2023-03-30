@@ -1,6 +1,6 @@
 ## [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/)
 
-```Tag```:
+```Tag```: ```Sorting``` ```Priority Queue``` ```Chronological Ordering```
 
 #### Difficulty: Medium
 
@@ -89,3 +89,6 @@ class Solution:
         return len(free_rooms)
 ```
  
+### Chronological Ordering
+
+![image](https://leetcode.com/problems/meeting-rooms-ii/Figures/253/253_Meeting_Rooms_II_Diag_3.png)
