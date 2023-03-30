@@ -88,6 +88,7 @@
 ## Dynamic Programming
 
 - :warning::warning: [64. Minimum Path Sum](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/64.%20Minimum%20Path%20Sum)
+- :no_entry::no_entry::no_entry: [87. Scramble String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/87.%20Scramble%20String/)
 - [139. Word Break]
 - :warning::warning: [198. House Robber](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/198.%20House%20Robber)
 - [279. Perfect Squares]
