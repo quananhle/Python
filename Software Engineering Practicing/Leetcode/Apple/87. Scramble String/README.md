@@ -56,6 +56,10 @@ __Constraints:__
 
 ### The Framework
 
+![image](https://leetcode.com/problems/scramble-string/Figures/87/diagram2.drawio.png)
+
+![image](https://leetcode.com/problems/scramble-string/Figures/87/diagram.drawio.png)
+
 #### Top-Down Dynamic Programming
 
 The ```dp``` function takes in two strings ```s1``` and ```s2```, and returns a boolean value indicating whether they are scrambled versions of each other. The function first checks the length of the strings - if they are both of length ```1```, it simply compares the characters. If the sorted characters in the two strings are not equal, it returns ```False```.
@@ -108,4 +112,21 @@ class Solution:
             return memo[(s1, s2)]
 
         return dp(s1, s2)
+```
+
+#### Bottom-Up Dynamic Programming
+
+__Algorithm__
+Iterate i from 0 to n-1.
+Iterate j from 0 to n-1.
+Set dp[1][i][j] to the boolean value of s1[i] == s2[j]. (The base case of the DP).
+Iterate length from 2 to n.
+Iterate i from 0 to n + 1 - length.
+Iterate j from 0 to n + 1 - length.
+Iterate newLength from 1 to length - 1.
+If dp[newLength][i][j] && dp[length-newLength][i+newLength][j+newLength]) || (dp[newLength][i][j+l-newLength] && dp[l-newLength][i+newLength][j] is true, set dp[length][i][j] to true.
+Return dp[n][0][0].
+
+```Python
+
 ```
