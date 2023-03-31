@@ -2,7 +2,7 @@
 
 ```Tag```: ```Dynamic Programming``` ```Greedy```
 
-### Best Time to Buy and Sell Stock I
+### [Best Time to Buy and Sell Stock I](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock)
 
 ```
 Example 1:
@@ -61,7 +61,7 @@ class Solution:
         return dp(0, False, 1)
 ```
 
-### Best Time to Buy and Sell Stock II
+### [Best Time to Buy and Sell Stock II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/122.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II)
 
 ```
 Example 1:
@@ -206,7 +206,7 @@ class Solution:
         return dp(0, False, k)
 ```
 
-### Best Time to Buy and Sell Stock with Cooldown
+### [Best Time to Buy and Sell Stock with Cooldown](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown)
 
-### Best Time to Buy and Sell Stock with Transaction Fee
+### [Best Time to Buy and Sell Stock with Transaction Fee](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
 
