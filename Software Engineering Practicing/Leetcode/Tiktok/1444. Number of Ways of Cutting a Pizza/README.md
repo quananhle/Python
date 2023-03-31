@@ -44,3 +44,123 @@ __Constraints:__
 - ```pizza``` consists of characters ```'A'``` and ```'.'``` only
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def ways(self, pizza: List[str], k: int) -> int:
+        ROWS, COLS = len(pizza), len(pizza[0])
+
+        apples = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
+        for row in range(ROWS - 1, -1, -1):
+            for col in range(COLS - 1, -1, -1):
+                apples[row][col] = (1 if pizza[row][col] == 'A' else 0) \
+                                    + apples[row + 1][col] + apples[row][col + 1] \
+                                    - apples[row + 1][col + 1]
+
+        memo = collections.defaultdict(int)
+
+        def dp(curr_row, curr_col, remaining):
+            # Base cases
+            if apples[curr_row][curr_col] == 0:
+                return 0
+
+            if remaining == 0:
+                return 1
+
+            if (curr_row, curr_col, remaining) in memo:
+                return memo[(curr_row, curr_col, remaining)]
+
+            ans = 0
+            curr_cut = apples[curr_row][curr_col]
+
+            for next_row in range(curr_row + 1, ROWS):
+                if curr_cut - apples[next_row][curr_col]:
+                    ans += dp(next_row, curr_col, remaining - 1)
+
+            for next_col in range(curr_col + 1, COLS):
+                if curr_cut - apples[curr_row][next_col]:
+                    ans += dp(curr_row, next_col, remaining - 1)
+
+            memo[(curr_row, curr_col, remaining)] = ans
+            return ans
+
+        return dp(0, 0, k - 1) % (10**9 + 7)
+```
+
+```Python
+class Solution:
+    def ways(self, pizza: List[str], k: int) -> int:
+        def check_apple(curr_row, curr_col, last_row, last_col):
+            for row in range(curr_row, last_row + 1):
+                for col in range(curr_col, last_col + 1):
+                    if pizza[row][col] == 'A':
+                        return True
+            return False
+
+        ROWS, COLS = len(pizza), len(pizza[0])
+
+        @lru_cache(None)
+        def dp(curr_row, curr_col, remaining):
+            last_row, last_col = ROWS - 1, COLS - 1
+            # Base case
+            if remaining == 1:
+                if check_apple(curr_row, curr_col, last_row, last_col):
+                    return 1
+
+            ans = 0
+
+            for next_col in range(curr_col + 1, COLS):
+                if check_apple(curr_row, curr_col, last_row, next_col - 1):
+                    ans += dp(curr_row, next_col, remaining - 1)
+
+            for next_row in range(curr_row + 1, ROWS):
+                if check_apple(curr_row, curr_col, next_row - 1, last_col):
+                    ans += dp(next_row, curr_col, remaining - 1)
+
+            return ans
+
+        return dp(0, 0, k) % (10**9 + 7)
+```
+
+```Python
+class Solution:
+    def ways(self, pizza: List[str], k: int) -> int:
+        ROWS, COLS = len(pizza), len(pizza[0])
+
+        apples = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
+        for row in range(ROWS - 1, -1, -1):
+            for col in range(COLS - 1, -1, -1):
+                apples[row][col] = (1 if pizza[row][col] == 'A' else 0) \
+                                    + apples[row + 1][col] + apples[row][col + 1] \
+                                    - apples[row + 1][col + 1]
+
+        @lru_cache(None)
+        def dp(curr_row, curr_col, remaining):
+            # Base cases
+            if apples[curr_row][curr_col] == 0:
+                return 0
+
+            if remaining == 0:
+                return 1
+
+            ans = 0
+            curr_cut = apples[curr_row][curr_col]
+
+            for next_row in range(curr_row + 1, ROWS):
+                if curr_cut - apples[next_row][curr_col]:
+                    ans += dp(next_row, curr_col, remaining - 1)
+
+            for next_col in range(curr_col + 1, COLS):
+                if curr_cut - apples[curr_row][next_col]:
+                    ans += dp(curr_row, next_col, remaining - 1)
+
+            return ans
+
+        return dp(0, 0, k - 1) % (10**9 + 7)
+```
+
+#### Bottom-Up Dynamic Programming
