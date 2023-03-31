@@ -100,7 +100,7 @@
 - [1155. Number of Dice Rolls With Target Sum]
 - :no_entry::no_entry::no_entry: [1444. Number of Ways of Cutting a Pizza](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza)
 
-### State Transition by Inaction
+### State Transition by Inaction | Dynamic Programming State Machine
 
 - :warning::warning: [983. Minimum Cost For Tickets](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/983.%20Minimum%20Cost%20For%20Tickets)
 - :no_entry::no_entry::no_entry: [1402. Reducing Dishes](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/1402.%20Reducing%20Dishes/) ```Greedy```
@@ -112,7 +112,7 @@
 - :no_entry::no_entry::no_entry: [123. Best Time to Buy and Sell Stock III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/123.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III)
 - :no_entry::no_entry::no_entry: [188. Best Time to Buy and Sell Stock IV](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV)
 - :warning::warning: [309. Best Time to Buy and Sell Stock with Cooldown](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown)
-- :warning::warning: [714. Best Time to Buy and Sell Stock with Transaction Fee](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
+- :warning::warning: [714. Best Time to Buy and Sell Stock with Transaction Fee](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee) ```Greedy```
 
 ### Maximum Subarray
 
