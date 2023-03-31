@@ -174,7 +174,7 @@ class Solution:
         return dp(0, 0, k - 1) % (10**9 + 7)
 ```
 
-#### Bottom-Up Dynamic Programming
+#### Bottom-Up Dynamic Programming (3D Matrix)
 
 __Algorithm__
 
@@ -192,6 +192,9 @@ __Algorithm__
             - Consider all vertical cuts. Iterate ```next_col``` from ```col + 1``` to ```cols - 1```.
                 - If the left piece has an apple, i.e. ```apples[row][col] - apples[row][next_col] > 0```, add ```dp[remain-1][row][next_col]``` to ```dp[remain][row][col]```.
 4. Return ```dp[k-1][0][0]```. This represents the original pizza with ```k - 1``` cuts, which is what the original problem is asking for.
+
+- __Time complexity__: ```O(k * n * m * (n + m))```
+- __Space complexity__: ```O(n * m * k)```
 
 ```Python
 class Solution:
@@ -228,4 +231,44 @@ class Solution:
                     dp[remain][row][col] = ans % mod
 
         return dp[k - 1][0][0]
+```
+
+#### Optimized Bottom-Up Dynamic Programming (2D Tabulation)
+
+- __Time complexity__: ```O(k * n * m * (n + m))```
+- __Space complexity__: ```O(n * m)```
+
+```Python
+class Solution:
+    def ways(self, pizza: List[str], k: int) -> int:
+        ROWS, COLS = len(pizza), len(pizza[0])
+        apples = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
+        for row in range(ROWS - 1, -1, -1):
+            for col in range(COLS - 1, -1, -1):
+                apples[row][col] = ((pizza[row][col] == 'A')
+                                    + apples[row + 1][col]
+                                    + apples[row][col + 1]
+                                    - apples[row + 1][col + 1])
+
+        dp = [[int(apples[row][col] > 0) for col in range(COLS)] for row in range(ROWS)]
+        mod = 10**9 + 7
+
+        for remain in range(1, k):
+            curr_cut = [[0] * COLS for _ in range(ROWS)]
+
+            for row in range(ROWS):
+                for col in range(COLS):
+
+                    for next_row in range(row + 1, ROWS):
+                        if apples[row][col] - apples[next_row][col] > 0:
+                            curr_cut[row][col] += dp[next_row][col]
+                        
+                    for next_col in range(col + 1, COLS):
+                        if apples[row][col] - apples[row][next_col] > 0:
+                            curr_cut[row][col] += dp[row][next_col]
+                    
+                    curr_cut[row][col] %= mod
+            dp = curr_cut
+        
+        return dp[0][0]
 ```
