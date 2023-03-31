@@ -132,12 +132,54 @@ class Solution:
         return dp(0, budget)
 ```
 
-#### Bottom-Up Dynamic Programming
+#### Bottom-Up Dynamic Programming (2D Tabulation)
 
 ```Python
+class Solution:
+    def maximumProfit(self, present: List[int], future: List[int], budget: int) -> int:
+        prices = [[cost, sell] for cost, sell in zip(present, future) if sell - cost > 0]
+        n = len(prices)
+        dp = [[0] * (budget + 1) for _ in range(n + 1)]
 
+        for stock in range(n - 1, -1, -1):
+            cost, sell = prices[stock][0], prices[stock][1]
+            for remain in range(budget + 1):
+                skip = dp[stock + 1][remain - cost] + sell - cost if cost <= remain else 0
+                make = dp[stock + 1][remain]
+                dp[stock][remain] = max(skip, make)
+
+        return dp[0][budget]
+```
+
+#### Space Optimized Bottom-Up Dynamic Programming (1D Array)
+
+```Python
+class Solution:
+    def maximumProfit(self, present: List[int], future: List[int], budget: int) -> int:
+        prices = [[cost, sell] for cost, sell in zip(present, future) if sell - cost > 0]
+        n = len(prices)
+        prev = [0] * (budget + 1)
+
+        for stock in range(n - 1, -1, -1):
+            curr = [0] * (budget + 1)
+            cost, sell = prices[stock][0], prices[stock][1]
+
+            for remain in range(budget + 1):
+                skip = prev[remain - cost] + sell - cost if cost <= remain else 0
+                make = prev[remain]
+                curr[remain] = max(skip, make)
+            prev = curr
+
+        return prev[budget]
 ```
 
 ```Python
-
+class Solution:
+    def maximumProfit(self, present: List[int], future: List[int], budget: int) -> int:
+        prices = [[cost, sell] for cost, sell in zip(present, future) if sell - cost > 0]
+        dp = [0] * (budget + 1)
+        for cost, sell in prices:
+            for remain in range(budget, cost - 1, -1): 
+                dp[remain] = max(dp[remain], dp[remain - cost] + sell - cost)
+        return dp[budget]
 ```
