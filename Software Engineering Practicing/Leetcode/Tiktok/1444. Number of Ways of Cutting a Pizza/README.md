@@ -194,5 +194,38 @@ __Algorithm__
 4. Return ```dp[k-1][0][0]```. This represents the original pizza with ```k - 1``` cuts, which is what the original problem is asking for.
 
 ```Python
+class Solution:
+    def ways(self, pizza: List[str], k: int) -> int:
+        ROWS, COLS = len(pizza), len(pizza[0])
 
+        apples = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
+        for row in range(ROWS - 1, -1, -1):
+            for col in range(COLS - 1, -1, -1):
+                apples[row][col] = (1 if pizza[row][col] == 'A' else 0) \
+                                    + apples[row + 1][col] + apples[row][col + 1] \
+                                    - apples[row + 1][col + 1]
+        
+        dp = [[[0] * (COLS) for _ in range(ROWS)] for _ in range(k)]
+        # Base case
+        dp[0] = [[int(apples[row][col] > 0) for col in range(COLS)] for row in range(ROWS)]
+        mod = 10**9 + 7
+
+        for remain in range(1, k):
+            for row in range(ROWS):
+                for col in range(COLS):
+                    ans = 0
+
+                    # Check the horizontal cuts
+                    for next_row in range(row + 1, ROWS):
+                        if apples[row][col] - apples[next_row][col] > 0:
+                            ans += dp[remain - 1][next_row][col]
+
+                    # Check the vertical cuts
+                    for next_col in range(col + 1, COLS):
+                        if apples[row][col] - apples[row][next_col] > 0:
+                            ans += dp[remain -1][row][next_col]
+                    
+                    dp[remain][row][col] = ans % mod
+
+        return dp[k - 1][0][0]
 ```
