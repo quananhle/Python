@@ -47,6 +47,18 @@ __Constraints:__
 
 ### The Framework
 
+1. The state of the DP is the triplet ```(row, col, remain)```.
+
+2. The matrix apples is the cumulative region sum matrix. One can calculate this matrix using the reccurrence relation
+
+```
+apples[row][col] = (pizza[row][col] == 'A') + apples[row + 1][col] + apples[row][col + 1] - apples[row + 1][col + 1]
+```
+
+3. The base case of the DP is ```remain = 0``` when one does not need to make any more cuts. If ```pizza[row..rows-1][col..cols-1]``` contains at least one apple, then ```dp[0][row][col] = 1``` – there is one way to make no cuts and give the piece to the last person. Otherwise, ```pizza[row..rows-1][col..cols-1]``` contains no apples, and there are no ways to give the piece to the person, thus ```dp[0][row][col] = 0```.
+
+![image](https://leetcode.com/problems/number-of-ways-of-cutting-a-pizza/Figures/1444/cuts.drawio.png)
+
 #### Top-Down Dynamic Programming
 
 ```Python
@@ -164,3 +176,19 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming
+
+Algorithm
+Declare the matrices apples[rows+1][cols+1] and dp[k][rows][cols].
+First, calculate apples. Iterate row from rows-1 to 0.
+Iterate col from cols-1 to 0.
+Calculate apples[row][col] as (pizza[row][col] == 'A') + apples[row + 1][col] + apples[row][col + 1] - apples[row + 1][col + 1].
+If apples[row][col] > 0, set dp[0][row][col] = 1, otherwise set dp[0][row][col] = 0 (the base case of the DP).
+Iterate remain from 1 to k - 1.
+Iterate row from 0 to rows-1.
+Iterate col from 0 to cols-1.
+We will now calculate dp[remain][row][col] by considering all cuts.
+Consider all horizontal cuts. Iterate next_row from row+1 to rows-1.
+If the top piece has an apple, i.e. apples[row][col] - apples[next_row][col] > 0, add dp[remain-1][next_row][col] to dp[remain][row][col].
+Consider all vertical cuts. Iterate next_col from col+1 to cols-1.
+If the left piece has an apple, i.e. apples[row][col] - apples[row][next_col] > 0, add dp[remain-1][row][next_col] to dp[remain][row][col].
+Return dp[k-1][0][0]. This represents the original pizza with k - 1 cuts, which is what the original problem is asking for.
