@@ -208,6 +208,47 @@ class Solution:
 
 ### [Best Time to Buy and Sell Stock with Cooldown](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown)
 
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        memo = collections.defaultdict()
+        n = len(prices)
+
+        def dp(day, holding, cooldown):
+            if day == n:
+                return 0
+
+            if (day, holding, cooldown) in memo:
+                return memo[(day, holding, cooldown)]
+
+            # Recurrence relation: skip the current day or make the transaction? Do nothing or do something?
+            # Skip: move on to the next day, maintain the holding status, cooldown process not started
+            # Make: move on to the next day, update the holding status, trigger the cooldown process once trasaction completed
+
+            make = skip = 0
+
+            skip = dp(day + 1, holding, cooldown)
+
+            # Check the holding status
+            if not holding:
+                # Check if in the cooldown period, skip
+                if cooldown:
+                    skip = dp(day + 1, holding, cooldown=False)
+                # Otherwise, not in the cooldown period, pay the cost
+                else:
+                    make = dp(day + 1, holding=True, cooldown=False) - prices[day]
+            else:
+                # Sell if holding, take the profit
+                make = dp(day + 1, holding=False, cooldown=True) + prices[day]
+            
+            # Get the maximum profit from the decisions
+            memo[(day, holding, cooldown)] = max_profit = max(skip, make)
+            return max_profit
+                
+        # Start from day 0, not holding any stock at the beginning, cooldown process not started
+        return dp(0, False, False)
+```
+
 ### [Best Time to Buy and Sell Stock with Transaction Fee](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
 
 ```Python
@@ -225,8 +266,8 @@ class Solution:
                 return memo[(day, holding)]
 
             # Recurrence relation: skip the current day or make the transaction? Do nothing or do something?
-            # Skip: move on to the next day, maintain the holding status, maintain the number of transaction
-            # Make: move on to the next day, update the holding status, decrement the number of transaction once complete
+            # Skip: move on to the next day, maintain the holding status
+            # Make: move on to the next day, update the holding status
 
             skip = dp(day + 1, holding)
 
@@ -241,5 +282,6 @@ class Solution:
             memo[(day, holding)] = max_profit = max(skip, make)
             return max_profit
 
+        # Start from day 0, not holding any stock at the beginning, number of transactions not limited
         return dp(0, False)
 ```
