@@ -48,10 +48,10 @@ class Solution:
             # Check the holding status
             if not holding:
                 # Buy if not holding, pay the cost
-                make = dp(day + 1, not holding, transaction) - prices[day]
+                make = dp(day + 1, holding=True, transaction) - prices[day]
             else:
                 # Sell if holding, take the profit
-                make = dp(day + 1, not holding, transaction - 1) + prices[day]
+                make = dp(day + 1, holding=False, transaction - 1) + prices[day]
             
             # Get the maximum profit from the decisions
             memo[(day, holding, transaction)] = max_profit = max(skip, make)
@@ -110,10 +110,10 @@ class Solution:
             # Check the holding status
             if not holding:
                 # Buy if not holding, pay the cost
-                make = dp(day + 1, not holding) - prices[day]
+                make = dp(day + 1, holding=True) - prices[day]
             else:
                 # Sell if holding, take the profit
-                make = dp(day + 1, not holding) + prices[day]
+                make = dp(day + 1, holding=False) + prices[day]
             
             # Get the maximum profit from the decisions
             memo[(day, holding)] = max_profit = max(skip, make)
@@ -156,10 +156,10 @@ class Solution:
             # Check the holding status
             if not holding:
                 # Buy if not holding, pay the cost
-                make = dp(day + 1, not holding, transaction) - prices[day]
+                make = dp(day + 1, holding=True, transaction) - prices[day]
             else:
                 # Sell if holding, take the profit
-                make = dp(day + 1, not holding, transaction - 1) + prices[day]
+                make = dp(day + 1, holding=False, transaction - 1) + prices[day]
             
             # Get the maximum profit from the decisions
             memo[(day, holding, transaction)] = max_profit = max(skip, make)
@@ -193,10 +193,10 @@ class Solution:
             # Check the holding status
             if not holding:
                 # Buy if not holding, pay the cost
-                make = dp(day + 1, not holding, transaction) - prices[day]
+                make = dp(day + 1, holding=True, transaction) - prices[day]
             else:
                 # Sell if holding, take the profit
-                make = dp(day + 1, not holding, transaction - 1) + prices[day]
+                make = dp(day + 1, holding=False, transaction - 1) + prices[day]
             
             # Get the maximum profit from the decisions
             memo[(day, holding, transaction)] = max_profit = max(skip, make)
@@ -210,3 +210,36 @@ class Solution:
 
 ### [Best Time to Buy and Sell Stock with Transaction Fee](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
 
+```Python
+class Solution:
+    def maxProfit(self, prices: List[int], fee: int) -> int:
+        memo = collections.defaultdict(int)
+        n = len(prices)
+
+        def dp(day, holding):
+            # Base case
+            if day == n:
+                return 0
+            
+            if (day, holding) in memo:
+                return memo[(day, holding)]
+
+            # Recurrence relation: skip the current day or make the transaction? Do nothing or do something?
+            # Skip: move on to the next day, maintain the holding status, maintain the number of transaction
+            # Make: move on to the next day, update the holding status, decrement the number of transaction once complete
+
+            skip = dp(day + 1, holding)
+
+            # Check the holding status
+            if not holding:
+                # Buy if not holding, pay the cost and transaction fee
+                make = dp(day + 1, holding=True) - prices[day] - fee
+            else:
+                # Sell if holding, take the profit
+                make = dp(day + 1, holding=False) + prices[day]
+
+            memo[(day, holding)] = max_profit = max(skip, make)
+            return max_profit
+
+        return dp(0, False)
+```
