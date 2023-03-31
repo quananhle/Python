@@ -47,3 +47,25 @@ __Constraints:__
 - ```0 <= budget <= 1000```
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
