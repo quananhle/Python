@@ -146,7 +146,8 @@ class Solution:
         apples = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
         for row in range(ROWS - 1, -1, -1):
             for col in range(COLS - 1, -1, -1):
-                apples[row][col] = (1 if pizza[row][col] == 'A' else 0) + apples[row + 1][col] + apples[row][col + 1] - apples[row + 1][col + 1]
+                apples[row][col] = (1 if pizza[row][col] == 'A' else 0) + \
+                                   apples[row + 1][col] + apples[row][col + 1] - apples[row + 1][col + 1]
 
         @lru_cache(None)
         def dp(curr_row, curr_col, remaining):
