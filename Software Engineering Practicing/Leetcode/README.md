@@ -62,6 +62,7 @@
 
 - :warning::warning: [33. Search in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/33.%20Search%20in%20Rotated%20Sorted%20Array)
 - :warning::warning: [74. Search a 2D Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/74.%20Search%20a%202D%20Matrix)
+- :four_leaf_clover: [704. Binary Search](https://github.com/quananhle/Python/tree/abb74653d4796a4a84f360ada332716f5df8a2e5/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2007%20-%20Binary%20Search/704.%20Binary%20Search)
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 - :warning::warning:[1011. Capacity To Ship Packages Within D Days](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
 - Minimum number of days to make m bouquets
@@ -81,6 +82,7 @@
 - :warning::warning: [155. Min Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2016%20-%20Design/155.%20Min%20Stack) ```Monotonic Stack```
 - :warning::warning: [211. Design Add and Search Words Data Structure](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/211.%20Design%20Add%20and%20Search%20Words%20Data%20Structure) ```Trie``` ```Hash Map```
 - :four_leaf_clover: [232. Implement Queue using Stacks](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/232.%20Implement%20Queue%20using%20Stacks)
+- :warning::warning: [304. Range Sum Query 2D - Immutable](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/304.%20Range%20Sum%20Query%202D%20-%20Immutable) ```Prefix Sum``` ```Dynamic Programming```
 - :no_entry::no_entry::no_entry: [716. Max Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/716.%20Max%20Stack) ```Linked List``` ```Heap```
 - :warning::warning: [1472. Design Browser History](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1472.%20Design%20Browser%20History) ```Linked List```
 
