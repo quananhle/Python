@@ -71,8 +71,33 @@ class NumMatrix:
 
 #### Caching Row
 
-```Python
+- __Time Complexity__: ```O(M)```
+- __Space Complexity__: ```O(N * M)```
 
+```Python
+class NumMatrix:
+
+    def __init__(self, matrix: List[List[int]]):
+        self.matrix = matrix
+
+        ROWS, COLS = len(matrix), len(matrix[0])
+        self.memo = [[0] * (COLS + 1) for _ in range(ROWS + 1)]
+        if ROWS == 0 or COLS == 0:
+            return
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                self.memo[row][col + 1] = self.memo[row][col] + matrix[row][col]
+
+    def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
+        ans = 0
+        for row in range(row1, row2 + 1):
+            ans += self.memo[row][col2 + 1] - self.memo[row][col1]
+        return ans
+
+# Your NumMatrix object will be instantiated and called as such:
+# obj = NumMatrix(matrix)
+# param_1 = obj.sumRegion(row1,col1,row2,col2)
 ```
 
 #### Caching Block
