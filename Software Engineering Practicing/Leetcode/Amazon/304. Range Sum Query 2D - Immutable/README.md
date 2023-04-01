@@ -1,6 +1,6 @@
 ## [304. Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/)
 
-```Tag```: ```Design``` ```Prefix Sum```
+```Tag```: ```Design``` ```Prefix Sum``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -48,3 +48,35 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+- __Time Complexity__: ```O(N * M)```
+- __Space Complexity__: ```O(1)```
+
+```Python
+class NumMatrix:
+
+    def __init__(self, matrix: List[List[int]]):
+        self.matrix = matrix
+
+    def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
+        ans = 0
+        for row in range(row1, row2 + 1):
+            for col in range(col1, col2 + 1):
+                ans += self.matrix[row][col]
+        return ans
+```
+
+### Caching
+
+#### Caching Row
+
+```Python
+
+```
+
+#### Caching Block
+
+```Python
+
+```
