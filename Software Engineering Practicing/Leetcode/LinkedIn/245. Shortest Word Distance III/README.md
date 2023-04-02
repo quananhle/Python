@@ -1,6 +1,6 @@
 ## [245. Shortest Word Distance III](https://leetcode.com/problems/shortest-word-distance-iii/)
 
-```Tag```:
+```Tag```: ```Two Pointers```
 
 #### Difficulty: Medium
 
@@ -34,3 +34,30 @@ __Constraints:__
 
 ---
 
+### Two Pointers
+
+```Python
+class Solution:
+    def shortestWordDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
+        # Two Pointer
+        n = len(wordsDict)
+        ans = n
+        w1 = w2 = -1
+
+        for i in range(n):
+            # Check if word1 is found
+            if wordsDict[i] == word1:
+                # Get the index position of word1 in wordsDict
+                w1 = i
+                # Check if index position of word2 is already found before
+                if w2 != -1:
+                    ans = min(ans, w1 - w2)
+            # Check if word2 is found
+            if wordsDict[i] == word2:
+                # Get the index position of word2 in wordsDict
+                w2 = i
+                # Check if index position of word1 is already found before and w1 and w2 are not the same element in wordsDict
+                if w1 != -1 and w1 != w2:
+                    ans = min(ans, w2 - w1)
+        return ans
+```
