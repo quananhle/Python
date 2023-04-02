@@ -77,6 +77,7 @@
 
 - :four_leaf_clover: [1539. Kth Missing Positive Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1539.%20Kth%20Missing%20Positive%20Number)
 - :warning::warning: [2187. Minimum Time to Complete Trips](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/2187.%20Minimum%20Time%20to%20Complete%20Trips)
+- :warning::warning: [2300. Successful Pairs of Spells and Potions](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/2300.%20Successful%20Pairs%20of%20Spells%20and%20Potions/) ```Two Pointers```
 
 ---
 
@@ -262,7 +263,6 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [109. Convert Sorted List to Binary Search Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/109.%20Convert%20Sorted%20List%20to%20Binary%20Search%20Tree) ```Linked List```
 - :warning::warning: [173. Binary Search Tree Iterator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/173.%20Binary%20Search%20Tree%20Iterator) ```Design```
 - :warning::warning: [230. Kth Smallest Element in a BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
-- :warning::warning:
 
 ---
 
