@@ -83,6 +83,9 @@ Return the answer array which contains the number of successful pairs for each s
 
 ![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide4.PNG)
 
+- __Time Complexity__: ```O(nlogn + mlogm)```
+- __Space Complexity__: ```O(n + logm)``` or ```O(n + m)```
+
 ```Python
 class Solution:
     def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
@@ -127,6 +130,24 @@ class Solution:
 
 ![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide2.PNG)
 
-```Python
+- __Time Complexity__: ```O((m + n) * log⁡m)```
+- __Space Complexity__: ```O(logm)``` or ```O(m)```
 
+```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        potions.sort()
+        n, m = len(spells), len(potions)
+        res = list()
+
+        for spell in spells:
+            lo, hi = 0, m - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                if potions[mi] * spell < success:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+            res.append(m - lo)
+        return res
 ```
