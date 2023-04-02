@@ -46,6 +46,8 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide1.PNG)
+
 ### Brute Force
 
 - __Time Complexity__: ```O(N^2)```
@@ -64,11 +66,17 @@ class Solution:
 
 ### Sorting & Two Pointers
 
+![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide3.PNG)
+
+![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide4.PNG)
+
 ```Python
 
 ```
 
 ### Sorting & Binary Search
+
+![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide2.PNG)
 
 ```Python
 
