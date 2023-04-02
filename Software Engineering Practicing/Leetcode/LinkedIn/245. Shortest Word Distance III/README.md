@@ -36,6 +36,23 @@ __Constraints:__
 
 ### Two Pointers
 
+__Algorithm__
+
+1. Initialize the answer variable ```ans = wordsDict.length``` as the distance cannot exceed the length of the input array, so this will store the minimum distance possible.
+
+2. Initialize ```prev``` to ```-1```; this variable will be pointing to the previous index where we have an interesting string.
+
+3. Iterate over the list ```wordsDict``` from ```0``` to the last index, and for each index ```i```, if the string at this index is interesting:
+
+    - a. First, check if ```prev != -1```. Then, check if either ```word1``` and ```word2``` are equal, or the index ```prev``` and ```i``` are pointing to different strings in the list. If yes, find the difference between ```prev``` and ```i``` and ```ans``` accordingly.
+    - b. Set ```prev = i```.
+
+4. Return ```ans```.
+
+```Python
+
+```
+
 ```Python
 class Solution:
     def shortestWordDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
