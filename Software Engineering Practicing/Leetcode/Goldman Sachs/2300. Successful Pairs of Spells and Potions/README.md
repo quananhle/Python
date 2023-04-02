@@ -90,6 +90,26 @@ class Solution:
         sorted_spells = [(index, spell) for index, spell in enumerate(spells)]
         
         sorted_spells.sort(key=lambda x:x[1])
+        potions.sort(reverse=True)
+
+        res = [0] * n
+        
+        i = 0
+        for index, spell in sorted_spells:
+            while i < m and spell * potions[i] >= success:
+                i += 1
+            res[index] = i
+        
+        return res
+```
+
+```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        n, m = len(spells), len(potions)
+        sorted_spells = [(index, spell) for index, spell in enumerate(spells)]
+        
+        sorted_spells.sort(key=lambda x:x[1])
         potions.sort()
 
         res = [0] * n
