@@ -48,10 +48,28 @@ __Constraints:__
 
 ### Brute Force
 
-```Python
+- __Time Complexity__: ```O(N^2)```
+- __Space Complexity__: ```O(N)```
 
+```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        res = list()
+        
+        for spell in spells:
+            res.append(len([(spell * potion) for potion in potions if (spell * potion) >= success]))
+
+        return res
 ```
 
 ### Sorting & Two Pointers
 
+```Python
+
+```
+
 ### Sorting & Binary Search
+
+```Python
+
+```
