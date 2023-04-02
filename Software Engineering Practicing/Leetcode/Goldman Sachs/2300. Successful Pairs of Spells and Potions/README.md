@@ -139,6 +139,27 @@ class Solution:
         potions.sort()
         n, m = len(spells), len(potions)
         res = list()
+        max_potion = potions[m - 1]
+
+        for spell in spells:
+            min_potion = (success + spell - 1) // spell
+
+            if min_potion > max_potion:
+                res.append(0)
+                continue
+            
+            lo = bisect.bisect_left(potions, min_potion)
+            res.append(m - lo)
+        
+        return res
+```
+
+```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        potions.sort()
+        n, m = len(spells), len(potions)
+        res = list()
 
         for spell in spells:
             lo, hi = 0, m - 1
@@ -150,4 +171,18 @@ class Solution:
                     hi = mi - 1
             res.append(m - lo)
         return res
+```
+
+```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        potions.sort()
+        return [len(potions) - bisect_right(potions, (success - 1) // x) for x in spells]
+```
+
+```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        potions.sort()
+        return (len(potions) - bisect_left(potions, success, key=lambda p: p * s) for s in spells)
 ```
