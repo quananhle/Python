@@ -66,12 +66,41 @@ class Solution:
 
 ### Sorting & Two Pointers
 
+__Algorithm__
+
+1. Create an array of pairs ```sorted_spells``` with the first element of each pair being a original index in the ```spells``` array and the second element being its spell strength.
+2. Sort the ```sorted_spells``` and the ```potions``` arrays in ascending order.
+3. Initialize variables:
+    - ```res```, an array of size ```spells.size()``` to store the result.
+    - ```m```, length of the ```potions``` array.
+    - ```i```, an integer initialized to ```m - 1``` to keep track of the index of the current potion in the ```potions``` array.
+4. For each ```spell``` and its original ```index``` in the ```sorted_spells`` array:
+    - While we have not run out of potions and the product of the current ```spell``` strength and the strength of the potion at the ```i``` is greater than or equal to ```success```, decrement ```i``` by ```1```. We stop at ```min_potion``` for the current ```spell```.
+    - Calculate the number of successful pairs possible for the current ```spell``` as ```m - i - 1``` and store the result at the ```index``` position in the ```res``` array.
+Return the answer array which contains the number of successful pairs for each spell.
+
 ![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide3.PNG)
 
 ![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide4.PNG)
 
 ```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        n, m = len(spells), len(potions)
+        sorted_spells = [(index, spell) for index, spell in enumerate(spells)]
+        
+        sorted_spells.sort(key=lambda x:x[1])
+        potions.sort()
 
+        res = [0] * n
+        
+        i = m - 1
+        for index, spell in sorted_spells:
+            while i >= 0 and spell * potions[i] >= success:
+                i -= 1
+            res[index] = m - i - 1
+        
+        return res
 ```
 
 ### Sorting & Binary Search
