@@ -102,6 +102,22 @@ class NumMatrix:
 
 #### Caching Block
 
+![image](https://i.imgur.com/tmTpvF5.gif)
+
+![image](https://leetcode.com/static/images/courses/sum_od.png)
+Sum(OD) is the cumulative region sum with respect to the origin at (0, 0).
+
+How do we derive Sum(ABCD) using the pre-computed cumulative region sum?
+
+![image](https://leetcode.com/static/images/courses/sum_ob.png)
+Sum(OB) is the cumulative region sum on top of the rectangle.
+
+![image](https://leetcode.com/static/images/courses/sum_oc.png)
+Sum(OC) is the cumulative region sum to the left of the rectangle.
+
+![image](https://leetcode.com/static/images/courses/sum_oa.png)
+Sum(OA) is the cumulative region sum to the top left corner of the rectangle.
+
 ```Python
 
 ```
