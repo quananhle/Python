@@ -151,7 +151,7 @@ So we first need the sum from each of the following regions:
 Then we calculate the following for required answer:
 
 ```
-Region(Answer) = Region(A) - Region(B).- Region(C) + Region(D)
+Region(Answer) = Region(A) - Region(B) - Region(C) + Region(D)
 ```
 
 ```Python
@@ -166,8 +166,6 @@ class NumMatrix:
         for row in range(n - 1):
             for col in range(m - 1):
                 self.dp[row + 1][col + 1] = matrix[row][col] + self.dp[row][col + 1] + self.dp[row + 1][col] - self.dp[row][col]
-
-
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
         return self.dp[row2 + 1][col2 + 1] - self.dp[row1][col2 + 1] - self.dp[row2 + 1][col1] + self.dp[row1][col1]
