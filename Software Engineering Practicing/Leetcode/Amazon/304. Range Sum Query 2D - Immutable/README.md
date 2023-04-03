@@ -118,6 +118,38 @@ Sum(OC) is the cumulative region sum to the left of the rectangle.
 ![image](https://leetcode.com/static/images/courses/sum_oa.png)
 Sum(OA) is the cumulative region sum to the top left corner of the rectangle.
 
+For this, we first need to calculate the prefix sum array for the matrix.
+
+Something like this :
+
+Prefix Sum of matrix with each cell=1
+![image](https://assets.leetcode.com/users/images/14109f49-e7ae-4e53-bc53-148e5f60877c_1654215908.2260733.png)
+
+Now, let's say we want to find the sum of following region:
+
+Region(Answer)
+![image](https://assets.leetcode.com/users/images/0aea4bfa-0ffc-4f39-9343-c940e2ae1036_1654216134.4848273.png)
+
+So we first need the sum from each of the following regions:
+
+1. Region(A)
+![image](https://assets.leetcode.com/users/images/06bd526d-17e1-4474-886f-cc9b3e6a5eb6_1654216261.9611187.png)
+
+2. Region(B)
+![image](https://assets.leetcode.com/users/images/dd31bd1a-c130-4e17-a5a5-d3e9148c3477_1654216305.3489735.png)
+
+3. Region(C)
+![image](https://assets.leetcode.com/users/images/6dc28313-648f-48fe-a4b7-b73f7d843b80_1654216353.8426402.png)
+
+4. Region(D)
+![image](https://assets.leetcode.com/users/images/9395743f-ab67-4e31-acbf-b153094d3fb4_1654216433.38144.png)
+
+Then we calculate the following for required answer:
+
+```
+Region(Answer) = Region(A) - Region(B).- Region(C) + Region(D)
+```
+
 ```Python
 
 ```
