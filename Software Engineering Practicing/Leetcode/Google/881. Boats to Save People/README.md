@@ -56,6 +56,9 @@ Then, as described above, if the heaviest person can share a boat with the light
 
 ![image](https://assets.leetcode.com/users/images/c131f60c-e66d-4bba-836b-c1074fc4b367_1648093030.3964856.png)
 
+- __Time Complexity__: ```O(Nlog⁡N)```, where ```N``` is the length of people.
+- __Space Complexity__: ```O(log⁡N)```.
+
 ```Python
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
