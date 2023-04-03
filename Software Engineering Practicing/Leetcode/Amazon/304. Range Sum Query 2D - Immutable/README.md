@@ -177,6 +177,11 @@ class NumMatrix:
 # param_1 = obj.sumRegion(row1,col1,row2,col2)
 ```
 
+![image](https://user-images.githubusercontent.com/35042430/229582429-97d8419a-0d7b-482b-9b13-547053d338b2.png)
+
+![image](https://user-images.githubusercontent.com/35042430/229582467-f67bcf9a-940a-4cff-b619-40da9b179b9e.png)
+
+
 ```Python
 class NumMatrix:
 
