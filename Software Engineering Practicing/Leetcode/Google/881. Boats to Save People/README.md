@@ -40,3 +40,54 @@ __Constraints:__
 
 ---
 
+### Greedy & Two Pointers
+
+__Intuition__
+
+If the heaviest person can share a boat with the lightest person, then do so. Otherwise, the heaviest person can't pair with anyone, so they get their own boat.
+
+The reason this works is because if the lightest person can pair with anyone, they might as well pair with the heaviest person.
+
+__Algorithm__
+
+Let ```people[left]``` to the currently lightest person, and ```people[right]``` to the heaviest.
+
+Then, as described above, if the heaviest person can share a boat with the lightest person (```if people[left] + people[right] <= limit```) then do so; otherwise, the heaviest person sits in their own boat.
+
+![image](https://assets.leetcode.com/users/images/c131f60c-e66d-4bba-836b-c1074fc4b367_1648093030.3964856.png)
+
+```Python
+class Solution:
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        people.sort()
+        n = len(people)
+        left, right = 0, n - 1
+        boats = 0
+
+        while left <= right:
+            if people[left] + people[right] <= limit:
+                left += 1
+                right -= 1
+            else:
+                right -= 1
+            boats += 1
+        
+        return boats
+```
+
+```Python
+class Solution:
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        people.sort()
+        n = len(people)
+        left, right = 0, n - 1
+        ans = 0
+
+        while left <= right:
+            ans += 1
+            if people[left] + people[right] <= limit:
+                left += 1
+            right -= 1
+        
+        return ans
+```
