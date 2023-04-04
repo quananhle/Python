@@ -1,6 +1,6 @@
 ## [69. Sqrt(x)](https://leetcode.com/problems/sqrtx/)
 
-```Tag```: ```Binary Search```
+```Tag```: ```Binary Search``` ```Math``` ```Bitwise Manipulation```
 
 #### Difficulty: Easy
 
@@ -34,3 +34,30 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/sqrtx/Figures/69/cop.png)
+
+### Binary Search
+
+![image](https://leetcode.com/problems/sqrtx/Figures/69/binary.png)
+
+```Python
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+        
+        lo, hi = 2, x // 2
+
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            num = mi * mi
+
+            if num < x:
+                lo = mi + 1
+            elif num > x:
+                hi = mi - 1
+            else:
+                return mi
+        
+        return hi
+```
