@@ -75,6 +75,9 @@ class Solution:
 
 #### Iterative Binary Search
 
+- __Time complexity__: O(log(n))
+- __Space complexity__: O(1)
+
 ```Python
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
@@ -89,4 +92,27 @@ class Solution:
                 lo = mi + 1
 
         return lo 
+```
+
+#### Recursive Binary Search
+
+- __Time complexity__: O(log(n))
+- __Space complexity__: O(log(n))
+
+```Python
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        def binary_search(lo, hi):
+            # Base case
+            if lo == hi:
+                return lo
+
+            mi = lo + (hi - lo) // 2
+
+            if nums[mi] < nums[mi + 1]:
+                return binary_search(mi + 1, hi)
+            else:
+                return binary_search(lo, mi)
+
+        return binary_search(0, len(nums) - 1)
 ```
