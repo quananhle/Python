@@ -53,6 +53,9 @@ __Algorithm__
 
 4. Return ```right```
 
+- __Time complexity__: ```O(log N)```.
+- __Space complexity__: ```O(1)```.
+
 ```Python
 class Solution:
     def mySqrt(self, x: int) -> int:
@@ -77,8 +80,21 @@ class Solution:
 
 ### Math
 
-```Python
+![image](https://user-images.githubusercontent.com/35042430/229691490-89f1f66a-0d68-4e98-afbf-fa3915cdd94d.png)
 
+- __Time complexity__: ```O(1)```.
+- __Space complexity__: ```O(1)```.
+
+```Python
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+
+        lo = int(math.e ** (0.5 * math.log(x)))
+        hi = lo + 1
+
+        return hi if hi * hi == x else lo
 ```
 
 ### Bitwise & Shift
