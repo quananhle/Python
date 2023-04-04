@@ -65,6 +65,7 @@
 ## Binary Search
 
 - :warning::warning: [33. Search in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/33.%20Search%20in%20Rotated%20Sorted%20Array)
+- :four_leaf_clover: 69. Sqrt(x)
 - :warning::warning: [74. Search a 2D Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/74.%20Search%20a%202D%20Matrix)
 - :four_leaf_clover: [704. Binary Search](https://github.com/quananhle/Python/tree/abb74653d4796a4a84f360ada332716f5df8a2e5/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2007%20-%20Binary%20Search/704.%20Binary%20Search)
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
@@ -164,9 +165,10 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ## Greedy
 
 - :four_leaf_clover: [605. Can Place Flowers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/605.%20Can%20Place%20Flowers)
-- :warning::warning: [881. Boats to Save People](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/881.%20Boats%20to%20Save%20People/)
+- :warning::warning: [881. Boats to Save People](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/881.%20Boats%20to%20Save%20People/) ```Two Pointers```
 - :warning::warning: [1328. Break a Palindrome](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1328.%20Break%20a%20Palindrome)
 - :warning::warning: [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
+- :warning::warning: [2405. Optimal Partition of String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/2405.%20Optimal%20Partition%20of%20String/) ```Hash Table```
 
 ---
 
