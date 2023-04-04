@@ -19,6 +19,8 @@ When we first learned __Binary Search__, we might struggle. We might study hundr
 
 After many failed attempts and lots of hair-pulling, we found 3 main templates for Binary Search. To prevent hair-pulling and to make it easier for new developers to learn and understand:
 
+---
+
 ### Template 1
 
 ```Python
@@ -65,3 +67,51 @@ __Distinguishing Syntax:__
 #### [Sqrt(x)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/69.%20Sqrt(x))
 #### [Guess Number Higher or Lower](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/374.%20Guess%20Number%20Higher%20or%20Lower)
 #### [Search in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/33.%20Search%20in%20Rotated%20Sorted%20Array)
+
+---
+
+### Template 2
+
+Template #2 is an advanced form of Binary Search.
+
+```Python
+def binarySearch(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    """
+    if len(nums) == 0:
+        return -1
+
+    left, right = 0, len(nums) - 1
+    while left < right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid
+
+    # Post-processing:
+    # End Condition: left == right
+    if nums[left] == target:
+        return left
+    return -1
+```
+
+__Key Attributes:__
+
+- An advanced way to implement Binary Search.
+- Use the element's right neighbor to determine if the condition is met and decide whether to go left or right
+- Guarantees Search Space is at least 2 in size at each step
+- Post-processing required. Loop/Recursion ends when you have 1 element left. Need to assess if the remaining element meets the condition.
+ 
+__Distinguishing Syntax:__
+
+- Initial Condition: ```left = 0```, ```right = length - 1```
+- Termination: ```left == right```
+- Searching Left: ```right = mid```
+- Searching Right: ```left = mid + 1```
+
