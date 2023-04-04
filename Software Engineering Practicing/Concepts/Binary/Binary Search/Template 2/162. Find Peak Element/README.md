@@ -38,3 +38,55 @@ __Constraints:__
 
 ---
 
+### Greedy
+
+```Python
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        peak = ans = -math.inf
+        for idx, num in enumerate(nums):
+            if peak < num:
+                peak = num
+                ans = idx
+        return ans
+```
+
+### Index()
+
+```Python
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        return nums.index(max(nums))
+```
+
+### Binary Search
+
+![image](https://user-images.githubusercontent.com/35042430/229924268-d0b37be2-4279-4590-9db2-205d3daf6525.png)
+
+![image](https://user-images.githubusercontent.com/35042430/229924323-100f1c2b-f23f-4068-8710-1fd221c8b861.png)
+
+![image](https://user-images.githubusercontent.com/35042430/229924363-bf53f301-ce10-4db0-9032-6cc2513beb2a.png)
+
+![image](https://user-images.githubusercontent.com/35042430/229924391-95c80344-6935-411f-8b08-4b58d0980fce.png)
+
+![image](https://user-images.githubusercontent.com/35042430/229924457-ea06db69-4857-4114-8b87-62a18d397ee4.png)
+
+![image](https://user-images.githubusercontent.com/35042430/229924520-577ee98d-5d66-46fe-96fc-6325b82fd8b0.png)
+
+#### Iterative Binary Search
+
+```Python
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        lo, hi = 0, len(nums) - 1
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            if nums[mi] > nums[mi + 1]:
+                hi = mi
+            else:
+                lo = mi + 1
+
+        return lo 
+```
