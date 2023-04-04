@@ -44,6 +44,27 @@ __Constraints:__
 
 ```Python
 # The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
+
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        lo, hi = 0, n
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            
+            if isBadVersion(mi) and not isBadVersion(mi - 1):
+                return mi
+            elif isBadVersion(mi):
+                hi = mi
+            elif not isBadVersion(mi):
+                lo = mi + 1
+
+        return lo
+```
+
+```Python
+# The isBadVersion API is already defined for you.
 # @param version, an integer
 # @return a bool
 # def isBadVersion(version):
