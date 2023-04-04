@@ -44,6 +44,20 @@ __Constraints__:
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        memo = collections.defaultdict(int)
+        for idx, num in enumerate(nums):
+            memo[num] = idx
+            if num == target:
+                break
+        
+        return memo[target] if target in memo else -1
+```
+
 ### Two Binary Searches
 
 - __Time complexity__: ```O(log⁡N)```
