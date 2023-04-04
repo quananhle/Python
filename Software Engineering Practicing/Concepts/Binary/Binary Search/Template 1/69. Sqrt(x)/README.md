@@ -40,6 +40,19 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/sqrtx/Figures/69/binary.png)
 
+__Algorithm__
+
+1. If ```x < 2```, return ```x```.
+2. Set the ```left``` boundary to ```2```, and the ```right``` boundary to ```x // 2```.
+3. While ```left <= right```:
+
+- Take ```num = (left + right) / 2``` as a guess. Compute ```num * num``` and compare it with ```x```:
+    - If ```num * num > x```, move the ```right``` boundary ```right = pivot - 1```
+    - Else, if ```num * num < x```, move the ```left``` boundary ```left = pivot + 1```
+    - Otherwise ```num * num == x```, the integer square root is here, let's return it
+
+4. Return ```right```
+
 ```Python
 class Solution:
     def mySqrt(self, x: int) -> int:
@@ -60,4 +73,22 @@ class Solution:
                 return mi
         
         return hi
+```
+
+### Math
+
+```Python
+
+```
+
+### Bitwise & Shift
+
+```Python
+
+```
+
+### Newton's Method
+
+```Python
+
 ```
