@@ -65,7 +65,7 @@
 ## Binary Search
 
 - :warning::warning: [33. Search in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/33.%20Search%20in%20Rotated%20Sorted%20Array)
-- :four_leaf_clover: 69. Sqrt(x)
+- :four_leaf_clover: [69. Sqrt(x)](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/69.%20Sqrt(x)/) ```Math``` ```Bitwise Manipulation```
 - :warning::warning: [74. Search a 2D Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/74.%20Search%20a%202D%20Matrix)
 - :four_leaf_clover: [704. Binary Search](https://github.com/quananhle/Python/tree/abb74653d4796a4a84f360ada332716f5df8a2e5/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2007%20-%20Binary%20Search/704.%20Binary%20Search)
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
