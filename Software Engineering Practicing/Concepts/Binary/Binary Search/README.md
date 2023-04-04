@@ -62,3 +62,6 @@ __Distinguishing Syntax:__
 - Searching Left: ```right = mid - 1```
 - Searching Right: ```left = mid + 1```
 
+#### [Sqrt(x)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/69.%20Sqrt(x))
+#### [Guess Number Higher or Lower](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/374.%20Guess%20Number%20Higher%20or%20Lower)
+#### [Search in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/33.%20Search%20in%20Rotated%20Sorted%20Array)
