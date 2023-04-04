@@ -94,17 +94,68 @@ class Solution:
         lo = int(math.e ** (0.5 * math.log(x)))
         hi = lo + 1
 
-        return hi if hi * hi == x else lo
+        return hi if hi * hi <= x else lo
 ```
 
-### Bitwise & Shift
+![image](https://user-images.githubusercontent.com/35042430/229694239-d447375d-f76e-490f-81c7-7a2b0ad40829.png)
 
 ```Python
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+        
+        lo = self.mySqrt(x // 2 ** 2) * 2
+        hi = lo + 1
 
+        return hi if hi * hi <= x else lo
+```
+
+### Bitwise & Recursion
+
+![image](https://user-images.githubusercontent.com/35042430/229693066-57ae375c-3f14-459b-8708-2732bb8535ca.png)
+
+- __Time complexity__: ```O(log N)```.
+- __Space complexity__: ```O(log N)```.
+
+```Python
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+        
+        '''
+        lo = self.mySqrt(x // 2 ** 2) * 2
+        '''
+        lo = self.mySqrt(x >> 2) << 1
+        hi = lo + 1
+
+        return hi if hi * hi <= x else lo
 ```
 
 ### Newton's Method
 
-```Python
+![image](https://user-images.githubusercontent.com/35042430/229694792-a650b443-b6e4-4567-8caf-4ac4de2020eb.png)
 
+- __Time complexity__: ```O(log N)```.
+- __Space complexity__: ```O(1)```.
+
+```Python
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 2:
+            return x
+        
+        x0 = x
+        x1 = (x0 + x / x0) / 2
+
+        while abs(x0 - x1) >= 1:
+            x0 = x1
+            x1 = (x0 + x / x0) / 2
+        
+        return int(x1)
 ```
+
+---
+
+![image](https://leetcode.com/problems/sqrtx/Figures/69/cp.png)
