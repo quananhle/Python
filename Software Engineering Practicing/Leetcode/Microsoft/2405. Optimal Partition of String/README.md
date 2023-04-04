@@ -65,3 +65,16 @@ class Solution:
 
         return count
 ```
+
+```Python
+class Solution:
+    def partitionString(self, s: str) -> int:
+        seen = set()
+        ans = 1
+        for c in s:
+            if c in seen:
+                seen.clear()
+                ans += 1
+            seen.add(c)
+        return ans
+```
