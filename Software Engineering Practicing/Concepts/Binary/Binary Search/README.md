@@ -164,6 +164,6 @@ __Distinguishing Syntax:__
 - Searching Left: ```right = mid```
 - Searching Right: ```left = mid```
 
-#### Search for a Range
-#### Find K Closest Elements
+#### [Search for a Range](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array)
+#### [Find K Closest Elements](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/658.%20Find%20K%20Closest%20Elements)
 #### Find Peak Element
