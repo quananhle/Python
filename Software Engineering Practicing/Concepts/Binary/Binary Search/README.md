@@ -118,3 +118,52 @@ __Distinguishing Syntax:__
 #### [First Bad Version](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/278.%20First%20Bad%20Version)
 #### [Find Peak Element](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/162.%20Find%20Peak%20Element)
 #### [Find Minimum in Rotated Sorted Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
+
+---
+
+### Template 3
+
+```Python
+def binarySearch(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    """
+    if len(nums) == 0:
+        return -1
+
+    left, right = 0, len(nums) - 1
+    while left + 1 < right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid
+        else:
+            right = mid
+
+    # Post-processing:
+    # End Condition: left + 1 == right
+    if nums[left] == target: return left
+    if nums[right] == target: return right
+    return -1
+```
+
+__Key Attributes:__
+
+- An alternative way to implement Binary Search
+- Use element's neighbors to determine if condition is met and decide whether to go left or right
+- Gurantees Search Space is at least 3 in size at each step
+- Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
+
+__Distinguishing Syntax:__
+
+- Initial Condition: ```left = 0```, ```right = length - 1```
+- Termination: ```left + 1 == right```
+- Searching Left: ```right = mid```
+- Searching Right: ```left = mid```
+
+#### Search for a Range
+#### Find K Closest Elements
+#### Find Peak Element
