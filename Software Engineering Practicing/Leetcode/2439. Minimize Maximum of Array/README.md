@@ -1,6 +1,6 @@
 ## [2439. Minimize Maximum of Array](https://leetcode.com/problems/minimize-maximum-of-array/)
 
-```Tag```:
+```Tag```: ```Prefix Sum``` ```Greedy``` ```Dynamic Programming``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -44,3 +44,60 @@ __Constraints:__
 - 0 <= ```nums[i]``` <= 10<sup>9</sup>
 
 ---
+
+![image](https://leetcode.com/problems/minimize-maximum-of-array/Figures/2439/1.png)
+
+### Prefix Sum + Greedy
+
+![image](https://leetcode.com/problems/minimize-maximum-of-array/Figures/2439/rain.png)
+
+__Algorithm__
+
+1. Initialize ```answer = 0``` and ```prefix = 0```.
+2. Iterate over ```nums```, for each index ```i```:
+    - Update the prefix sum as ```prefix += nums[i]```.
+    - Check the maximum value we can obtain by averaging ```prefix``` into ```i + 1``` evenly using ceiling division.
+    - Take the larger one from ```answer``` and the result from the previous integer division.
+3. Return ```answer```.
+
+```Python
+class Solution:
+    def minimizeArrayValue(self, nums: List[int]) -> int:
+        answer = prefix = 0
+        n = len(nums)
+
+        for i in range(n):
+            prefix += nums[i]
+            answer = max(answer, math.ceil(prefix / (i + 1)))
+        
+        return answer
+```
+
+### Binary Search
+
+```Python
+class Solution:
+    def minimizeArrayValue(self, nums: List[int]) -> int:
+        def check(k):
+            have = 0
+            for num in nums:
+                if num <= k:
+                    have += k - num
+                else:
+                    if have < num - k:
+                        return False
+                    else:
+                        have -= num - k
+            return True
+
+        lo, hi = 0, max(nums)
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            if check(mi):
+                hi = mi
+            else:
+                lo = mi + 1
+        
+        return lo
+```
