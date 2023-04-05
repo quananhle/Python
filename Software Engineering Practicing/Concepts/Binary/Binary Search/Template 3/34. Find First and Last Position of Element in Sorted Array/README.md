@@ -216,3 +216,18 @@ class Solution:
         return [binary_search_lower(), binary_search_upper()]
 ```
 
+#### Built-in Binary Search
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        if n == 0: return [-1, -1]
+
+        start = bisect_left(nums, target)
+        end = bisect_right(nums, target) - 1
+
+        if start <= end:
+            return [start, end]
+        return [-1, -1]        
+```
