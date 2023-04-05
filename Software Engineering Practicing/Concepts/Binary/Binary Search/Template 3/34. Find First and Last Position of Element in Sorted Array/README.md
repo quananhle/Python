@@ -52,7 +52,7 @@ class Solution:
 
         if n == 0: return res
 
-        def binary_search_lower():
+        def binary_search():
             lo, hi = 0, n - 1
             while lo <= hi:
                 mi = lo + (hi - lo) // 2
@@ -61,6 +61,44 @@ class Solution:
                     lo = mi + 1
                 else:
                     hi = mi - 1
+            
+            if lo < n and nums[lo] == target: 
+                res[0] = lo
+
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] > target:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+
+            if nums[hi] == target: 
+                res[-1] = hi
+
+            return res
+
+        return binary_search()
+```
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        res = [-1, -1]
+
+        if n == 0: return res
+
+        def binary_search_lower():
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] >= target:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
             
             return lo
 
@@ -77,9 +115,8 @@ class Solution:
             return hi
         
         start, end = binary_search_lower(), binary_search_upper()
-        if start < n and start <= end:
+        if start <= end:
             return [start, end]
-
         return res
 ```
 
