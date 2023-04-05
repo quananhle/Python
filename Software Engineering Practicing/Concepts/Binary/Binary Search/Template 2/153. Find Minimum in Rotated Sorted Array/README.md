@@ -80,16 +80,40 @@ __Algorithm__
 In the above example mid element ```6``` is greater than first element ```4```. Hence we continue our search for the inflection point to the right of ```mid```.
 
 4 . We stop our search when we find the inflection point, when either of the two conditions is satisfied:
-    - ```nums[mid] > nums[mid + 1]``` Hence, ```mid + 1``` is the smallest.
-    - ```nums[mid - 1] > nums[mid]``` Hence, ```mid``` is the smallest.
+- ```nums[mid] > nums[mid + 1]``` Hence, ```mid + 1``` is the smallest.
+- ```nums[mid - 1] > nums[mid]``` Hence, ```mid``` is the smallest.
 
 ![image](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/Figures/153/153_Minimum_Rotated_Sorted_Array_5.png)
 
 In the above example. With the marked left and right pointers. The mid element is ```2```. The element just before ```2``` is ```7``` and ```7 > 2``` i.e. ```nums[mid - 1] > nums[mid]```. Thus we have found the point of inflection and ```2``` is the smallest element.
 
 ```Python
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        lo, hi = 0, n - 1
 
+        if n == 1: return nums[-1]
+        if nums[lo] < nums[hi]: return nums[lo]
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            # Check if found the minimum element 
+            if nums[mi] < nums[mi - 1]:
+                return nums[mi]
+            
+            if nums[mi + 1] < nums[mi]:
+                return nums[mi + 1]
+            
+            # Check if the rotated index is in the left of mid
+            if nums[mi] < nums[0]:
+                hi = mi
+            # Otherwise, the rotated index is in the right of mid
+            else:
+                lo = mi + 1
 ```
+
 ```Python
 class Solution:
     def findMin(self, nums: List[int]) -> int:
