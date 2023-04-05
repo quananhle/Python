@@ -138,7 +138,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ### Prefix Sum
 
 - :warning::warning: [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) ```Prefix Sum``` ```Dynamic Programming```
-
+- :warning::warning: [2439. Minimize Maximum of Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/2439.%20Minimize%20Maximum%20of%20Array) ```Prefix Sum``` ```Dynamic Programming```
 ---
 
 ## Graph
