@@ -40,3 +40,49 @@ __Constraints:__
 - ```-10^9 <= target <= 10^9```
 
 ---
+
+### Binary Search
+
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        res = [-1, -1]
+
+        if n == 0: return res
+
+        def binary_search_lower():
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] < target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+            
+            return lo
+
+        def binary_search_upper():
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] <= target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+
+            return hi
+        
+        start, end = binary_search_lower(), binary_search_upper()
+        if start < n and start <= end:
+            return [start, end]
+
+        return res
+```
+
+
+
+
