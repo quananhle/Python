@@ -65,12 +65,14 @@
 ## Binary Search
 
 - :warning::warning: [33. Search in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/33.%20Search%20in%20Rotated%20Sorted%20Array)
+- :warning::warning: [34. Find First and Last Position of Element in Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array)
 - :four_leaf_clover: [69. Sqrt(x)](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/69.%20Sqrt(x)/) ```Math``` ```Bitwise Manipulation```
 - :warning::warning: [74. Search a 2D Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/74.%20Search%20a%202D%20Matrix)
 - :warning::warning: [153. Find Minimum in Rotated Sorted Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
 - :warning::warning: [162. Find Peak Element](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/162.%20Find%20Peak%20Element)
 - :four_leaf_clover: [278. First Bad Version](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/278.%20First%20Bad%20Version)
 - :four_leaf_clover: [374. Guess Number Higher or Lower](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/374.%20Guess%20Number%20Higher%20or%20Lower/)
+- :warning::warning: [658. Find K Closest Elements](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/658.%20Find%20K%20Closest%20Elements) ```Sliding Window```
 - :four_leaf_clover: [704. Binary Search](https://github.com/quananhle/Python/tree/abb74653d4796a4a84f360ada332716f5df8a2e5/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2007%20-%20Binary%20Search/704.%20Binary%20Search)
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 - :warning::warning:[1011. Capacity To Ship Packages Within D Days](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
