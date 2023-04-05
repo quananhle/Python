@@ -87,6 +87,8 @@ In the above example mid element ```6``` is greater than first element ```4```. 
 
 In the above example. With the marked left and right pointers. The mid element is ```2```. The element just before ```2``` is ```7``` and ```7 > 2``` i.e. ```nums[mid - 1] > nums[mid]```. Thus we have found the point of inflection and ```2``` is the smallest element.
 
+#### Template 2
+
 ```Python
 class Solution:
     def findMin(self, nums: List[int]) -> int:
@@ -130,4 +132,33 @@ class Solution:
                 lo = mi + 1
         
         return nums[lo]
+```
+
+#### Template 1
+
+```Python
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        lo, hi = 0, n - 1
+
+        if n == 1: return nums[-1]
+        if nums[lo] < nums[hi]: return nums[lo]
+
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+
+            # Check if found the minimum element 
+            if nums[mi] < nums[mi - 1]:
+                return nums[mi]
+            
+            if nums[mi + 1] < nums[mi]:
+                return nums[mi + 1]
+            
+            # Check if the rotated index is in the left of mid
+            if nums[mi] <= nums[0]:
+                hi = mi + 1
+            # Otherwise, the rotated index is in the right of mid
+            else:
+                lo = mi + 1
 ```
