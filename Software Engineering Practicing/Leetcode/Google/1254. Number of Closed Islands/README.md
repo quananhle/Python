@@ -161,3 +161,38 @@ class Solution:
     
         return count
 ```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        count = 0
+
+        queue = collections.deque()
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 1:
+                    continue
+                
+                queue.append((row, col))
+                is_closed = True
+
+                while queue:
+                    curr_row, curr_col = queue.popleft()
+                    grid[curr_row][curr_col] = 1
+                    for next_row, next_col in [(curr_row + dx, curr_col + dy) for dx, dy in DIRECTIONS]:
+                        if not (0 <= next_row < ROWS and 0 <= next_col < COLS):
+                            is_closed = False
+                        elif grid[next_row][next_col] == 0:
+                            queue.append((next_row, next_col))
+                
+                if is_closed:
+                    count += 1
+        
+        return count
+```
