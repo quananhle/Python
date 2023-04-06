@@ -128,8 +128,10 @@ class Solution:
         while lo + 1 < hi:
             mi = lo + (hi - lo) // 2
 
+            # Found a peak
             if nums[mi] > nums[mi + 1] and nums[mi] > nums[mi - 1]:
                 return mi
+            # Otherwise, if not a peak, climb up to the higher side
             elif nums[mi] < nums[mi + 1]:
                 lo = mi
             else:
