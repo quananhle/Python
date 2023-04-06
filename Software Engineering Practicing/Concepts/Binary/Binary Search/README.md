@@ -166,4 +166,4 @@ __Distinguishing Syntax:__
 
 #### [Search for a Range](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array)
 #### [Find K Closest Elements](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/658.%20Find%20K%20Closest%20Elements)
-#### Find Peak Element
+#### [Find Peak Element](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/162.%20Find%20Peak%20Element)
