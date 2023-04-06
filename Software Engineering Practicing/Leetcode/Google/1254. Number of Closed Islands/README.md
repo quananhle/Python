@@ -164,6 +164,9 @@ class Solution:
 
 ### Breadth-First Search
 
+- __Time complexity:__ ```O(m * n)```
+- __Space complexity:__ ```O(m * n)```
+
 #### Hash Set ```seen/visited```
 
 ```Python
@@ -271,5 +274,72 @@ class Solution:
 ### Union-Find
 
 ```Python
+class UnionFind:
 
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [0] * (size)
+        self.size = size
+
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += root_y
+            
+            self.size -= 1
+
+    def get_count(self):
+        return self.size
+    
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        m, n = len(grid), len(grid[0])
+        uf = UnionFind(m * n)
+
+        def map(row, col):
+            return row * n + col
+        
+        total_islands = 0
+        for row in range(m):
+            for col in range(n):
+                if grid[row][col] == 0:
+                    total_islands += 1
+                    for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                        if not (0 <= next_row < m and 0 <= next_col < n and grid[next_row][next_col] == 0):
+                            continue
+                        if uf.find(map(row, col)) != uf.find(map(next_row, next_col)):
+                            total_islands -= 1
+                            uf.union(map(row, col), map(next_row, next_col))
+
+        # Number of closed islands = total islands - open islands
+        open_islands = set()
+
+        for row in range(m):
+            if grid[row][0] == 0:
+                open_islands.add(uf.find(map(row, 0)))
+            if grid[row][n - 1] == 0:
+                open_islands.add(uf.find(map(row, n - 1)))
+        
+        for col in range(n):
+            if grid[0][col] == 0:
+                open_islands.add(uf.find(map(0, col)))
+            if grid[m - 1][col] == 0:
+                open_islands.add(uf.find(map(m - 1, col)))
+
+        return total_islands - len(open_islands)
 ```
