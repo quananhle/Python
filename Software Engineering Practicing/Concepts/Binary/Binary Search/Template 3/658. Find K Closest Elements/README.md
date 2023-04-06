@@ -90,6 +90,8 @@ class Solution:
 
 ### Binary Search
 
+#### Template 2
+
 __Algorithm__
 
 1. Initalize two variables to perform binary search with, ```lo = 0``` and ```hi = len(arr) - k```.
@@ -97,5 +99,44 @@ __Algorithm__
 3. At the end of the binary search, we have located the leftmost index for the final answer. Return the subarray starting at this index that contains ```k``` elements.
 
 ```Python
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        n = len(arr)
 
+        if n == k: return arr
+
+        lo, hi = 0, n - k
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            if arr[mi + k] - x < x - arr[mi]:
+                lo = mi + 1
+            else:
+                hi = mi
+        
+        return arr[lo:lo + k]
+```
+
+#### Template 3
+
+```Python
+class Solution:
+    def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        n = len(arr)
+
+        if n == k: return arr
+        
+        lo, hi = 0, n - k
+        while lo + 1 < hi:
+            mi = lo + (hi - lo) // 2
+            if x <= (arr[mi] + arr[mi + k]) // 2:
+                hi = mi
+            else:
+                lo = mi
+
+        if x <= (arr[lo] + arr[hi + k - 1]) // 2:
+            return arr[lo:lo + k]
+        else:
+            return arr[hi:hi + k]
 ```
