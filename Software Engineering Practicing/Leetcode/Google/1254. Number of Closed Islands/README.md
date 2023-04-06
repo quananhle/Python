@@ -48,3 +48,41 @@ __Constraints:__
 - ```0 <= grid[i][j] <=1```
  
  ---
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        visited = set()
+        count = 0
+
+        def dfs(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return False
+
+            # Check if current cell is already visited or is water
+            if (row, col) in visited or grid[row][col] == 1:
+                return True
+
+            visited.add((row, col))
+
+            # Check 4-directionally connected neighbors of the current cell
+            left = dfs(row + 1, col)
+            right = dfs(row, col + 1)
+            up = dfs(row - 1, col)
+            down = dfs(row, col - 1)
+
+            # Check if the current cell is totally surrounded by water
+            return left and right and up and down
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                # Check if the land is never been visited before and is surrounded by water 4-directionally
+                if not (row, col) in visited and grid[row][col] == 0 and dfs(row, col):
+                        count += 1
+    
+        return count
+```
