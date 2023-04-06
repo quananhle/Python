@@ -51,6 +51,11 @@ __Constraints:__
 
 ### Depth-First Search
 
+- __Time complexity:__ ```O(m * n)```
+- __Space complexity:__ ```O(m * n)```
+
+#### Hash Set ```seen/visited```
+
 ```Python
 class Solution:
     def closedIsland(self, grid: List[List[int]]) -> int:
@@ -82,6 +87,76 @@ class Solution:
             for col in range(COLS):
                 # Check if the land is never been visited before and is surrounded by water 4-directionally
                 if not (row, col) in visited and grid[row][col] == 0 and dfs(row, col):
+                        count += 1
+    
+        return count
+```
+
+```Python
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        count = 0        
+
+        def dfs(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return False
+
+            if grid[row][col] == 1 or (row, col) in visited:
+                return True
+            
+            visited.add((row, col))
+            is_closed = True
+
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if not dfs(next_row, next_col):
+                    is_closed = False
+            
+            return is_closed
+
+        for row in range(ROWS):
+            for col in range(COLS): 
+                if grid[row][col] == 0 and not (row, col) in visited and dfs(row, col):
+                    count += 1
+        
+        return count
+```
+
+#### Modidy Input
+
+```Python
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        count = 0
+
+        def dfs(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return False
+
+            # Check if current cell is already visited or is water
+            if grid[row][col] == 1:
+                return True
+
+            grid[row][col] = 1
+
+            # Check 4-directionally connected neighbors of the current cell
+            left = dfs(row + 1, col)
+            right = dfs(row, col + 1)
+            up = dfs(row - 1, col)
+            down = dfs(row, col - 1)
+
+            # Check if the current cell is totally surrounded by water
+            return left and right and up and down
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                # Check if the land is never been visited before and is surrounded by water 4-directionally
+                if grid[row][col] == 0 and dfs(row, col):
                         count += 1
     
         return count
