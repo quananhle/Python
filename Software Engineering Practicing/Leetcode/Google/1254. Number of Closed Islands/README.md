@@ -164,12 +164,48 @@ class Solution:
 
 ### Breadth-First Search
 
+#### Hash Set ```seen/visited```
+
 ```Python
 class Solution:
     def closedIsland(self, grid: List[List[int]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
         DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
         visited = set()
+        count = 0
+
+        queue = collections.deque()
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if (row, col) in visited or grid[row][col] == 1:
+                    continue
+
+                queue.append((row, col))
+                is_closed = True
+
+                while queue:
+                    curr_row, curr_col = queue.popleft()
+                    visited.add((curr_row, curr_col))
+                    for next_row, next_col in [(curr_row + dx, curr_col + dy) for dx, dy in DIRECTIONS]:
+                        if not (0 <= next_row < ROWS and 0 <= next_col < COLS):
+                            is_closed = False
+                        elif grid[next_row][next_col] == 0 and not (next_row, next_col) in visited:
+                            queue.append((next_row, next_col))
+                
+                if is_closed:
+                    count += 1
+        
+        return count
+```
+
+#### Modify Input
+
+```Python
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
         count = 0
 
         queue = collections.deque()
@@ -195,4 +231,45 @@ class Solution:
                     count += 1
         
         return count
+```
+
+#### Recursive
+
+```Python
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        count = 0
+
+        def bfs(row, col):
+            queue = collections.deque([(row, col)])
+            is_closed = True
+
+            while queue:
+                curr_row, curr_col = queue.popleft()
+                visited.add((curr_row, curr_col))
+                for next_row, next_col in [(curr_row + dx, curr_col + dy) for dx, dy in DIRECTIONS]:
+                    if not (0 <= next_row < ROWS and 0 <= next_col < COLS):
+                        is_closed = False
+                    elif grid[next_row][next_col] == 0 and not (next_row, next_col) in visited:
+                        queue.append((next_row, next_col))
+            
+            return is_closed
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if not (row, col) in visited and grid[row][col] == 0 and bfs(row, col):
+                    count += 1
+        
+        return count
+```
+
+---
+
+### Union-Find
+
+```Python
+
 ```
