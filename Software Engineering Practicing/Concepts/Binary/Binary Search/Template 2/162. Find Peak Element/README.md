@@ -59,7 +59,7 @@ class Solution:
         return nums.index(max(nums))
 ```
 
-### Binary Search
+### Binary Search (Template II)
 
 ![image](https://user-images.githubusercontent.com/35042430/229924268-d0b37be2-4279-4590-9db2-205d3daf6525.png)
 
@@ -115,4 +115,25 @@ class Solution:
                 return binary_search(lo, mi)
 
         return binary_search(0, len(nums) - 1)
+```
+
+### Binary Search (Template III)
+
+```Python
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        lo, hi = 0, n - 1
+        while lo + 1 < hi:
+            mi = lo + (hi - lo) // 2
+
+            if nums[mi] > nums[mi + 1] and nums[mi] > nums[mi - 1]:
+                return mi
+            elif nums[mi] < nums[mi + 1]:
+                lo = mi
+            else:
+                hi = mi
+        
+        return hi if nums[hi] > nums[lo] else lo
 ```
