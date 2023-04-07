@@ -41,3 +41,34 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
+
+```Python
+class Solution:
+    def numEnclaves(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0, -1)]
+
+        def dfs(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS and not grid[row][col] == 0):
+                return 
+            
+            grid[row][col] = 0
+            
+            [dfs(row + dx, col + dy) for dx, dy in DIRECTIONS]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                # Check all the edges
+                if row * col == 0 or row == ROWS - 1 or col == COLS - 1:
+                    if grid[row][col] == 1:
+                        dfs(row, col)
+        
+        count = 0
+
+        for row in grid:
+            count += sum(row)
+        
+        return count
+```
