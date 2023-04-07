@@ -1,6 +1,6 @@
 ## [1020. Number of Enclaves](https://leetcode.com/problems/number-of-enclaves/)
 
-```Tag```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
