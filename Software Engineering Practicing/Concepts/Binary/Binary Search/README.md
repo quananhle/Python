@@ -209,6 +209,8 @@ Each of these 3 provided templates provides a specific use case:
     - Guarantees Search Space is at least 3 in size at each step
     - Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
 
+---
+
 ### Time and Space Complexity:
 
 __Runtime__: ```O(log n)``` -- Logarithmic Time
@@ -225,6 +227,8 @@ __Why log n?__
 __Space__: ```O(1)``` -- Constant Space
 
 Although Binary Search does require keeping track of 3 indices, the iterative solution does not typically require any other additional space and can be applied directly to the collection itself, therefore warrants ```O(1)``` or constant space.
+
+---
 
 ### Other Types of Binary Search:
 
