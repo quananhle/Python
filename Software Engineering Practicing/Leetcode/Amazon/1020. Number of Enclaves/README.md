@@ -43,6 +43,9 @@ __Constraints:__
 
 ### Depth-First Search
 
+- __Time complexity:__ ```O(m * n)```
+- __Space complexity:__ ```O(m * n)```
+
 #### Hash Set ```visited/seen```
 
 ```Python
@@ -56,6 +59,7 @@ class Solution:
             # Base case
             if not (0 <= row < ROWS and 0 <= col < COLS and not grid[row][col] == 0 and not (row, col) in visited):
                 return 
+            # Only record the land cells in the boundaries
             visited.add((row, col))
             [dfs(row + dx, col + dy) for dx, dy in DIRECTIONS]            
 
@@ -104,5 +108,83 @@ class Solution:
         for row in grid:
             count += sum(row)
         
+        return count
+```
+
+### Breadth-First Search
+
+- __Time complexity:__ ```O(m * n)```
+- __Space complexity:__ ```O(m * n)```
+
+```Python
+class Solution:
+    def numEnclaves(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0, -1)]
+        visited = set()
+
+        queue = collections.deque()
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                # Check first and last columns and first and last rows
+                if row * col == 0 or row == ROWS - 1 or col == COLS - 1:
+                    if not (row, col) in visited and grid[row][col] == 1:
+                        visited.add((row, col))
+                        queue.append((row, col))
+
+        while queue:
+            curr_row, curr_col = queue.popleft()
+            visited.add((curr_row, curr_col))
+            for next_row, next_col in [(curr_row + dx, curr_col + dy) for dx, dy in DIRECTIONS]:
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not grid[next_row][next_col] == 0 and not (next_row, next_col) in visited):
+                    continue
+                if grid[next_row][next_col] == 1 and not (next_row, next_col) in visited:
+                    queue.append((next_row, next_col))
+                    visited.add((next_row, next_col))
+        
+        count = 0
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 1 and not (row, col) in visited:
+                    count += 1
+
+        return count
+```
+
+```Python
+class Solution:
+    def numEnclaves(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0, -1)]
+        visited = set()
+
+        queue = collections.deque()
+
+        def bfs(row, col):
+            while queue:
+                curr_row, curr_col = queue.popleft()
+                visited.add((curr_row, curr_col))
+                for next_row, next_col in [(curr_row + dx, curr_col + dy) for dx, dy in DIRECTIONS]:
+                    if not (0 <= next_row < ROWS and 0 <= next_col < COLS):
+                        continue
+                    elif grid[next_row][next_col] == 1 and not (next_row, next_col) in visited:
+                        queue.append((next_row, next_col))
+                        visited.add((next_row, next_col))
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                # Check first and last columns and first and last rows
+                if row * col == 0 or row == ROWS - 1 or col == COLS - 1:
+                    if not (row, col) in visited and grid[row][col] == 1:
+                        queue.append((row, col))
+                        bfs(row, col)
+
+        count = 0
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 1 and not (row, col) in visited:
+                    count += 1
+
         return count
 ```
