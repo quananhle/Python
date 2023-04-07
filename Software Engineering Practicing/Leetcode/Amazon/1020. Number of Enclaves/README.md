@@ -43,6 +43,40 @@ __Constraints:__
 
 ### Depth-First Search
 
+#### Hash Set ```visited/seen```
+
+```Python
+class Solution:
+    def numEnclaves(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0, -1)]
+        visited = set()
+
+        def dfs(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS and not grid[row][col] == 0 and not (row, col) in visited):
+                return 
+            visited.add((row, col))
+            [dfs(row + dx, col + dy) for dx, dy in DIRECTIONS]            
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                # Check first and last columns and first and last rows
+                if row * col == 0 or row == ROWS - 1 or col == COLS - 1:
+                    if not (row, col) in visited:
+                        dfs(row, col)
+
+        count = 0
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 1 and not (row, col) in visited:
+                    count += 1
+
+        return count
+```
+
+#### Modify Input
+
 ```Python
 class Solution:
     def numEnclaves(self, grid: List[List[int]]) -> int:
