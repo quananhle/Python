@@ -64,6 +64,7 @@
 
 ## Binary Search
 
+- :no_entry::no_entry::no_entry: [4. Median of Two Sorted Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/4.%20Median%20of%20Two%20Sorted%20Arrays)
 - :warning::warning: [33. Search in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/33.%20Search%20in%20Rotated%20Sorted%20Array)
 - :warning::warning: [34. Find First and Last Position of Element in Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array)
 - :four_leaf_clover: [69. Sqrt(x)](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/69.%20Sqrt(x)/) ```Math``` ```Bitwise Manipulation```
