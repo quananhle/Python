@@ -36,3 +36,32 @@ __Constraints:__
 - -10<sup>6</sup> <= ```nums1[i]```, ```nums2[i]``` <= 10<sup>6</sup>
 
 ---
+
+### Brute Force
+
+- __Time Complexity:__ ```O((N + M) * log(N + M))```
+- __Space Complexity:__ ```O(N + M)```
+
+```Python
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        array = list()
+        '''
+        for num in nums1:
+            array.append(num)
+        for num in nums2:
+            array.append(num)
+        '''
+        array.extend(nums1[:])
+        array.extend(nums2[:])
+
+        array = sorted(array)
+        n = len(array)
+
+        lo, hi = 0, n - 1
+        mi = lo + (hi - lo) // 2
+
+        if n % 2 != 0:
+            return float(array[mi])
+        return (array[mi] + array[mi + 1]) / 2
+```
