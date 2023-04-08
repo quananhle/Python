@@ -233,3 +233,5 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 ### Other Types of Binary Search:
 
 #### [Median of Two Sorted Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/4.%20Median%20of%20Two%20Sorted%20Arrays)
+#### [Closest Binary Search Tree Value](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/270.%20Closest%20Binary%20Search%20Tree%20Value)
+Search in a Sorted Array of Unknown Size
