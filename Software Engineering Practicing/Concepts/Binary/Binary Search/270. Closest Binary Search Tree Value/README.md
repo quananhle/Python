@@ -32,6 +32,8 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/closest-binary-search-tree-value/Figures/270/dummy.png)
+
 ### Binary Search Tree Inorder Traversal
 
 #### Iterative Inorder Traversal
@@ -64,4 +66,30 @@ class Solution:
             root = root.right
         
         return ans
+```
+
+#### Recursive Inorder Traversal
+
+- __Time complexity__: ```O(N)```
+- __Space complexity__: ```O(N)```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def closestValue(self, root: Optional[TreeNode], target: float) -> int:
+        if not root:
+            return None
+
+        def inorder(node):
+            if not node:
+                return []
+
+            return inorder(node.left) + [node.val] + inorder(node.right)
+        
+        return min(inorder(root), key=lambda x: abs(target - x))
 ```
