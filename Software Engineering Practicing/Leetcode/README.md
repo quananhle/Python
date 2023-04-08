@@ -183,6 +183,8 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Hash Map
 
+- :four_leaf_clover: [760. Find Anagram Mappings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/760.%20Find%20Anagram%20Mappings)
+
 ### Hash Set
 
 ---
