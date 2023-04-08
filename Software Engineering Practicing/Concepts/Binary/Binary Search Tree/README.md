@@ -120,6 +120,38 @@ class Solution:
         return root
 ```
 
+Question : [270. Closest Binary Search Tree Value](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def closestValue(self, root: Optional[TreeNode], target: float) -> int:
+        if not root:
+            return None
+
+        difference = float("inf")
+        ans = 0
+        
+        stack = list()
+        
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if abs(root.val - target) < difference:
+                difference = abs(root.val - target)
+                ans = root.val
+            root = root.right
+        
+        return ans
+```
+
 Question: [783. Minimum Distance Between BST Nodes](https://leetcode.com/problems/minimum-distance-between-bst-nodes/)
 
 ```Python
@@ -226,7 +258,3 @@ class Solution:
         self.head.left = node
         return self.head
 ```
-
-## Introduction to the Height-Balanced BST
-
-![IMAGE](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/01/25/balanced_bst.png)
