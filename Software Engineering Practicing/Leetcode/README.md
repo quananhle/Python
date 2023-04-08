@@ -74,6 +74,7 @@
 - :four_leaf_clover: [278. First Bad Version](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/278.%20First%20Bad%20Version)
 - :four_leaf_clover: [374. Guess Number Higher or Lower](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/374.%20Guess%20Number%20Higher%20or%20Lower/)
 - :warning::warning: [658. Find K Closest Elements](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/658.%20Find%20K%20Closest%20Elements) ```Sliding Window```
+- :warning::warning: [702. Search in a Sorted Array of Unknown Size](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/702.%20Search%20in%20a%20Sorted%20Array%20of%20Unknown%20Size)
 - :four_leaf_clover: [704. Binary Search](https://github.com/quananhle/Python/tree/abb74653d4796a4a84f360ada332716f5df8a2e5/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2007%20-%20Binary%20Search/704.%20Binary%20Search)
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 - :warning::warning:[1011. Capacity To Ship Packages Within D Days](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
@@ -278,7 +279,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [109. Convert Sorted List to Binary Search Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/109.%20Convert%20Sorted%20List%20to%20Binary%20Search%20Tree) ```Linked List```
 - :warning::warning: [173. Binary Search Tree Iterator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/173.%20Binary%20Search%20Tree%20Iterator) ```Design```
 - :warning::warning: [230. Kth Smallest Element in a BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
-- :four_leaf_clover: [270. Closest Binary Search Tree Value](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/270.%20Closest%20Binary%20Search%20Tree%20Value) ```Binary Search Tree```
+- :four_leaf_clover: [270. Closest Binary Search Tree Value](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/270.%20Closest%20Binary%20Search%20Tree%20Value)\
 
 ---
 
