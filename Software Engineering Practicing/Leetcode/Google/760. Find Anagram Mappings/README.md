@@ -51,7 +51,7 @@ class Solution:
         return res
 ```
 
-### Hash Map
+### ✅ Hash Map
 
 ```Python
 class Solution:
