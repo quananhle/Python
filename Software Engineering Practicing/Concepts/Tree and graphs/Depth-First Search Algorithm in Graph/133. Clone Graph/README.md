@@ -67,7 +67,34 @@ The Graph is connected and all nodes can be visited starting from the given node
 
 ### Depth-First Search
 
+![image](https://leetcode.com/problems/clone-graph/Figures/133/133_Clone_Graph_1.png)
+
+__Algorithm__
+
+1. Start traversing the graph from the given node.
+
+2. We would take a hash map ```visited``` to store the reference of the copy of all the nodes that have already been visited and cloned. The key for the hash map would be the node of the original graph and corresponding value would be the corresponding cloned node of the cloned graph. If the node already exists in the ```visited``` we return corresponding stored reference of the cloned node.
+
+For a given edge ```A - B```, since ```A``` is connected to ```B``` and ```B``` is also connected to ```A``` if we don't use ```visited``` we will get stuck in a cycle.
+
+![image](https://leetcode.com/problems/clone-graph/Figures/133/133_Clone_Graph_2.png)
+
+3. If we don't find the node in the ```visited``` hash map, we create a copy of it and put it in the hash map. Note, how it's important to create a copy of the node and add to the hash map before entering recursion.
+
+```
+   clone_node = Node(node.val, [])
+   visited[node] = clone_node
+```
+
+In the absence of such an ordering, we would be caught in the recursion because on encountering the node again in somewhere down the recursion again, we will be traversing it again thus getting into cycles.
+
 ![image](https://leetcode.com/problems/clone-graph/solutions/421214/Figures/133/133_Clone_Graph_3.png)
+
+4. Now make the recursive call for the neighbors of the ```node```. Pay attention to how many recursion calls we will be making for any given ```node```. For a given ```node``` the number of recursive calls would be equal to the number of its neighbors. Each recursive call made would return the clone of a ```neighbor```. We will prepare the list of these clones returned and put into ```neighbors``` of clone ```node``` which we had created earlier. This way we will have cloned the given ```node``` and it's ```neighbors```.
+
+```
+Tip: Recursion could get a bit cumbersome to grasp, if you try to get into every call yourself and try to see what's happening. And why look at every call when every call does the same thing with different inputs. So, you just worry about ONE such call and let the recursion do the rest. And of course always handle the base case or the termination condition of the recursion. Otherwise how would it end?
+```
 
 ```Python
 """
@@ -105,6 +132,38 @@ class Solution:
             clone_node.neighbors = [self.cloneGraph(node) for node in node.neighbors]
 
         return clone_node
+```
+
+
+```Python
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Solution:
+    
+    def __init__(self):
+        self.visited = dict()
+
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        # Base case
+        if not node:
+            return None
+
+        if node in self.visited:
+            return self.visited[node]
+
+        root = Node(node.val, list())
+        self.visited[node] = root
+
+        if node.neighbors:
+            root.neighbors = [self.cloneGraph(neighbor) for neighbor in node.neighbors]
+        
+        return root
 ```
 
 ### Breadth-First Search
