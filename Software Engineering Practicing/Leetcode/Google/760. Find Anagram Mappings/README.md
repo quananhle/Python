@@ -1,6 +1,6 @@
 ## [760. Find Anagram Mappings](https://leetcode.com/problems/find-anagram-mappings/)
 
-```Tag```:
+```Tag```: ```Hash Map``` ```Bitwise Manipulation```
 
 #### Difficulty: Easy
 
@@ -77,6 +77,31 @@ class Solution:
             memo[num] = idx
 
         return [memo[num] for num in nums1]
+```
+
+### Bitwise Manipulation
+
+![image](https://leetcode.com/problems/find-anagram-mappings/Figures/760/760B.png)
+![image](https://leetcode.com/problems/find-anagram-mappings/Figures/760/760A.png)
+
+```Python
+class Solution:
+    def anagramMappings(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        bits_to_shift = 7
+        num_to_get_last_bits = (1 << bits_to_shift) - 1
+
+        for i in range(len(nums1)):
+            nums1[i] = (nums1[i] << bits_to_shift) + i
+            nums2[i] = (nums2[i] << bits_to_shift) + i
+
+        nums1.sort()
+        nums2.sort()
+
+        res = [None] * len(nums1)
+        for i in range(len(nums1)):
+            res[nums1[i] & num_to_get_last_bits] = (nums2[i] & num_to_get_last_bits)
+        
+        return res
 ```
 
 
