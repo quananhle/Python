@@ -32,3 +32,36 @@ __Constraints:__
 
 ---
 
+### Binary Search Tree Inorder Traversal
+
+#### Iterative Inorder Traversal
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def closestValue(self, root: Optional[TreeNode], target: float) -> int:
+        if not root:
+            return None
+
+        difference = float("inf")
+        ans = 0
+        
+        stack = list()
+        
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if abs(root.val - target) < difference:
+                difference = abs(root.val - target)
+                ans = root.val
+            root = root.right
+        
+        return ans
+```
