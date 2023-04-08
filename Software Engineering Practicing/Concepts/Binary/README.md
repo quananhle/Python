@@ -8,3 +8,9 @@ A ```binary search tree``` (BST), a special form of a binary tree, satisfies the
 - The value in each node must be ```less than``` (or equal to) any values stored in its right subtree.
 
 ![image](https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/140/introduction-to-a-bst/Figures/binary_search_tree/BST_example.png)
+
+---
+
+## Introduction to the Height-Balanced BST
+
+![IMAGE](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/01/25/balanced_bst.png)
