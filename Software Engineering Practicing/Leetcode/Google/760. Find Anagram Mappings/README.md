@@ -1,6 +1,6 @@
 ## [760. Find Anagram Mappings](https://leetcode.com/problems/find-anagram-mappings/)
 
-```Tag````:
+```Tag```:
 
 #### Difficulty: Easy
 
@@ -35,5 +35,48 @@ __Constraints:__
 - ```nums2``` is an anagram of ```nums1```.
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def anagramMappings(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        res = [None] * len(nums1)
+        for i, num1 in enumerate(nums1):
+            for j, num2 in enumerate(nums2):
+                if num1 == num2:
+                    res[i] = j
+                    break
+
+        return res
+```
+
+### Hash Map
+
+```Python
+class Solution:
+    def anagramMappings(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        res = list()
+        memo = collections.defaultdict(int)
+
+        for idx, num in enumerate(nums2):
+            memo[num] = idx
+        
+        for num in nums1:
+            res.append(memo[num])
+        
+        return res
+```
+
+```Python
+class Solution:
+    def anagramMappings(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        memo = collections.defaultdict(int)
+
+        for idx, num in enumerate(nums2):
+            memo[num] = idx
+
+        return [memo[num] for num in nums1]
+```
 
 
