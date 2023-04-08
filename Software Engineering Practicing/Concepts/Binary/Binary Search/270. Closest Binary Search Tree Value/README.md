@@ -1,6 +1,6 @@
 ## [270. Closest Binary Search Tree Value](https://leetcode.com/problems/closest-binary-search-tree-value)
 
-```Tag```: ```Binary Search Tree```
+```Tag```: ```Binary Search Tree``` ```Binary Search```
 
 #### Difficulty: Easy
 
@@ -37,6 +37,14 @@ __Constraints:__
 ### Binary Search Tree Inorder Traversal
 
 #### Iterative Inorder Traversal
+
+![image](https://leetcode.com/problems/closest-binary-search-tree-value/Figures/270/iteration.png)
+
+- __Time complexity__: ```O(k)``` in the average case and ```O(H + k)``` in the worst case, where ```k``` is an index of closest element. It's known that average case is a balanced tree, in that case ```stack``` always contains a few elements, and hence one does ```2k``` operations to go to k<sup>th</sup> element in inorder traversal (```k``` times to push into ```stack``` and then ```k``` times to pop out of stack). That results in ```O(k)``` time complexity. The worst case is a completely unbalanced tree, then you first push ```H``` elements into ```stack``` and then pop out ```k``` elements, that results in ```O(H + k)``` time complexity.
+
+![image](https://leetcode.com/problems/closest-binary-search-tree-value/Figures/270/unbalanced.png)
+
+- __Space complexity__: up to ```O(H)``` to keep the stack in the case of non-balanced tree.
 
 ```Python
 # Definition for a binary tree node.
