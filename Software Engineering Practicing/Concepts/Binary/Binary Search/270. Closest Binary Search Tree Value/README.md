@@ -101,3 +101,32 @@ class Solution:
         
         return min(inorder(root), key=lambda x: abs(target - x))
 ```
+
+### ✅ Binary Search
+
+![image](https://leetcode.com/problems/closest-binary-search-tree-value/Figures/270/binary.png)
+
+- __Time complexity__: ```O(H)``` since here one goes from root down to a leaf.
+- __Space complexity__: ```O(1)```.
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def closestValue(self, root: Optional[TreeNode], target: float) -> int:
+        if not root:
+            return None
+        
+        ans = root.val
+
+        while root:
+            ans = min(ans, root.val, key=lambda x: abs(target - x))
+            # Traverse the tree
+            root = root.left if target < root.val else root.right
+        
+        return ans
+```
