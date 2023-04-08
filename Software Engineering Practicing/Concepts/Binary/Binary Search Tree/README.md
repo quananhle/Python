@@ -1,5 +1,23 @@
 ## Template
 
+__Algorithm__
+
+1. Initiate ```stack``` as an empty array.
+2. While ```root``` is not null:
+
+    - To build an inorder traversal iteratively, go left as far as you can and add all nodes on the way into stack.
+
+    ```
+    stack.append(root)
+    root = root.left
+    ```
+
+3. Pop the last element from stack ```root = stack.pop()```.
+
+4. Add the conditions and get ```root.val```
+
+5. Go one step right: ```root = root.right```.
+
 ### One iterative inorder traversal, apply it to multiple binary search tree questions
 
 #### Question : [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
