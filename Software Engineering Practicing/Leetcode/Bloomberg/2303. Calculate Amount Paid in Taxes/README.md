@@ -51,7 +51,7 @@ __Constraints:__
 
 - ```1 <= brackets.length <= 100```
 - 1 <= upper<sub>i</sub> <= 1000
-- ```0 <= percent<sub>i</sub> <= 100
+- 0 <= percent<sub>i</sub> <= 100
 - ```0 <= income <= 1000```
 - ```upper```<sub>i</sub> is sorted in ascending order.
 - All the values of ```upper```<sub>i</sub> are unique.
