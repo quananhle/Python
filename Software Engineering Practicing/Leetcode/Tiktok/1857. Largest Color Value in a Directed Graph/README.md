@@ -1,6 +1,6 @@
 ## [1857. Largest Color Value in a Directed Graph](https://leetcode.com/problems/largest-color-value-in-a-directed-graph/)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Topological Sort``` ```Kahn's Algorithm``` ```Depth-First Search```
 
 #### Difficulty: Hard
 
