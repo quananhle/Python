@@ -1,6 +1,6 @@
 ## [50. Pow(x, n)](https://leetcode.com/problems/powx-n)
 
-```Tag```: ```Recursion``` ```Binary Search```
+```Tag```: ```Recursion``` ```Binary Search``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -61,22 +61,95 @@ class Solution:
         return ans
 ```
 
+### The Framework
+
+#### Top-Down Dynamic Programming
+
 ```Python
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        if not x:
-            return 0
-        if not n or x == 1:
-            return 1
+        # Top-Down Dynamic Programming
+        memo = collections.defaultdict(int)
+
+        def dp(x, n):
+            # Base cases
+            if x == 0:
+                return 0
+            if n == 0 or x == 1:
+                return 1
+
+            if (x, n) in memo:
+                return memo[(x, n)]
+
+            # Recurrence relation
+            if n % 2 == 0:
+                memo[(x, n)] = dp(x, n // 2) * dp(x, n // 2)
+            else:
+                memo[(x, n)] = x * dp(x, n // 2) * dp(x, n // 2)
+            
+            return memo[(x, n)]
+
+        ans = dp(x, abs(n))
+
         if n < 0:
-            x = 1/x
-            n = -n
-        cache = [0] * (n + 1)
-        cache[0], cache[1] = 1, x
-        for i in range(2, len(cache)):
-            cache[i] = x * cache[i-1]
-        return cache[n]
+            return 1 / ans
+
+        return ans
 ```
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        # Top-Down Dynamic Programming
+        @lru_cache(maxsize=None)
+        def dp(x, n):
+            # Base cases
+            if x == 0:
+                return 0
+            if n == 0 or x == 1:
+                return 1
+
+            # Convert negative power to positive power
+            if n < 0:
+                x = 1 / x
+                n = -n
+
+            # Recurrence relation
+            if n % 2 == 0:
+                return dp(x, n // 2) * dp(x, n // 2)
+
+            return x * dp(x, n // 2) * dp(x, n // 2)
+
+        return dp(x, n)
+```
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        # Top-Down Dynamic Programming
+        @lru_cache(maxsize=None)
+        def dp(x, n):
+            # Base cases
+            if x == 0:
+                return 0
+            if n == 0 or x == 1:
+                return 1
+
+            # Recurrence relation
+            if n % 2 == 0:
+                return dp(x, n // 2) * dp(x, n // 2)
+
+            return x * dp(x, n // 2) * dp(x, n // 2)
+
+        ans = dp(x, abs(n))
+
+        if n < 0:
+            return 1 / ans
+
+        return ans
+```
+
+#### Bottom-Up Dynamic Programming
 
 ```Python
 class Solution:
@@ -88,12 +161,38 @@ class Solution:
         if n < 0:
             x = 1/x
             n = -n
-        cache = collections.defaultdict(int)
+
+        cache = [0] * (n + 1)
         cache[0], cache[1] = 1, x
-        for i in range(2, n + 1):
+
+        for i in range(2, len(cache)):
             cache[i] = x * cache[i-1]
+
         return cache[n]
 ```
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if not x:
+            return 0
+        if not n or x == 1:
+            return 1
+
+        if n < 0:
+            x = 1/x
+            n = -n
+
+        cache = collections.defaultdict(int)
+        cache[0], cache[1] = 1, x
+
+        for i in range(2, n + 1):
+            cache[i] = x * cache[i-1]
+
+        return cache[n]
+```
+
+---
 
 ### Fast Power Algorithm
 
@@ -104,6 +203,9 @@ class Solution:
 #### Algorithm
 
 ![image](https://user-images.githubusercontent.com/35042430/216752885-c966f64e-13b2-41af-8098-eb2c65a9f945.png)
+
+- __Time complexity__: ```O(log⁡n)```
+- __Space complexity__: ```O(log⁡n)```
 
 ```Python
 class Solution:
@@ -131,6 +233,9 @@ class Solution:
 ```
 
 #### Iterative Approach
+
+- __Time complexity__: ```O(log⁡n)```
+- __Space complexity__: ```O(1)```
 
 ```Python
 class Solution:
