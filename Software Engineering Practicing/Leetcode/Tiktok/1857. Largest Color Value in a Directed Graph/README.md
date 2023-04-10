@@ -47,6 +47,25 @@ __Constraints:__
 
 ### Topological Sort (Kahn's Algorithm)
 
+![image](https://leetcode.com/problems/largest-color-value-in-a-directed-graph/Figures/1857/1857-1.png)
+
+Algorithm
+Create an integer variable n = colors.length() which stores the number of nodes in the graph.
+Create an adjacency list adj in which adj[x] contains all nodes with an incoming edge from node x.
+Create an array indegree of length n where indegree[x] stores the number of edges entering node x.
+Create a 2D-array count with n rows and 26 columns where count[x] keeps track of the maximum frequencies of all the colors for paths that end at node x. Note that color a corresponds to column 0, b corresponds to column 1, and so on.
+Initialize a queue of integers q and start a BFS algorithm moving from the leaf nodes to the parent nodes.
+Begin the BFS traversal by pushing all of the leaf nodes (indegree equal to 0) in the queue.
+Create two integer variables answer = 0 to store the answer to the problem and nodesSeen = 0 to count number of visited nodes.
+While the queue is not empty;
+Dequeue the first node from the queue.
+Increment the frequency of the color of node by 1 and also update answer. We perform answer = max(answer, ++count[node][colors[node] - 'a']).
+Increment nodesSeen by 1.
+For each neighbor (nodes that have an incoming edge from node) of node, we try to update the frequencies of all colors stored for neighbor to cover all the paths that use node -> neighbor edge. We perform count[neighbor][i] = max(count[neighbor][i], count[node][i]) for every color i where color a corresponds to 0, b corresponds to 1, and so on.
+We further decrement indegree[neighbor]by 1 to delete the node -> neighbor edge.
+If indegree[neighbor] == 0, it means that neighbor behaves as a leaf node, so we push neighbor in the queue.
+If number of nodes visited is less than total number of nodes, i.e., nodesSeen < n we return -1 as there must be a cycle. Otherwise, we return answer.
+
 ```Python
 
 ```
