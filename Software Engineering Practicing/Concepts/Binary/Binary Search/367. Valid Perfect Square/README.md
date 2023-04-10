@@ -31,3 +31,20 @@ Explanation: We return false because 3.742 * 3.742 = 14 and 3.742 is not an inte
 __Constraints:__
 
 - ```1 <= num <= 2```<sup>```31```</sup>```- 1```
+
+---
+
+### Brute Force
+
+```Python
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        for i in range(num + 1):
+            if i**2 == num:
+                return True
+            if i**2 > num:
+                break
+        return False
+```
+
+### Binary Search
