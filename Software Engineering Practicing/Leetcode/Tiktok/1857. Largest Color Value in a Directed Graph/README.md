@@ -47,6 +47,8 @@ __Constraints:__
 
 ### Topological Sort (Kahn's Algorithm)
 
+Let's perform Kahn's algorithm on directed graph having a cycle. In a directed acyclic graph, we can use Kahn's algorithm to get the topological ordering. Kahn’s algorithm works by keeping track of the number of incoming edges into each node (indegree). It works by repeatedly visiting the nodes with an indegree of zero and deleting all the edges associated with it leading to a decrement of indegree for the nodes whose incoming edges are deleted. This process continues until no elements with zero indegree can be found.
+
 ![image](https://leetcode.com/problems/largest-color-value-in-a-directed-graph/Figures/1857/1857-1.png)
 
 __Algorithm__
@@ -66,6 +68,9 @@ __Algorithm__
     - We further decrement ```indegree[neighbor]``` by ```1``` to delete the ```node -> neighbor``` edge.
     - If ```indegree[neighbor] == 0```, it means that ```neighbor``` behaves as a leaf node, so we push ```neighbor``` in the queue.
 9. If number of nodes visited is less than total number of nodes, i.e., ```seen < n``` we return ```-1``` as there must be a cycle. Otherwise, we return ```ans```.
+
+- __Time complexity__: ```O(26 * m + 26 * n) = O(m + n).```
+- __Space complexity__: ```O(m + 26 * n) = O(m + n).```
 
 ```Python
 class Solution:
@@ -102,6 +107,45 @@ class Solution:
                     queue.append((neighbor))
         
         return ans if seen == n else -1
+```
+
+```Python
+class Solution:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        n, k = len(colors), 26
+
+        # Build the adjacency graph
+        indegrees = [0] * n
+        graph = collections.defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+            indegrees[v] += 1
+        
+        counter = collections.defaultdict(int)
+        
+        queue = collections.deque()
+        for i in range(n):
+            if indegrees[i] == 0:
+                queue.append(i)
+
+        visited = 0
+        ans = 0
+
+        while queue:
+            node = queue.popleft()
+            counter[(node, ord(colors[node]) - ord('a'))] += 1
+            ans = max(ans, counter[(node, ord(colors[node]) - ord('a'))])
+            visited += 1
+
+            for neighbor in graph[node]:
+                for i in range(k):
+                    counter[(neighbor, i)] = max(counter[(neighbor, i)], counter[(node, i)])
+
+                indegrees[neighbor] -= 1
+                if indegrees[neighbor] == 0:
+                    queue.append(neighbor)
+
+        return ans if visited == n else -1
 ```
 
 ### Depth-First Search
