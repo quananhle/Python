@@ -154,6 +154,7 @@ class Solution:
 ```Python
 class Solution:
     def myPow(self, x: float, n: int) -> float:
+        # Memory Limit Exceeded
         if not x:
             return 0
         if not n or x == 1:
@@ -174,6 +175,7 @@ class Solution:
 ```Python
 class Solution:
     def myPow(self, x: float, n: int) -> float:
+        # Memory Limit Exceeded
         if not x:
             return 0
         if not n or x == 1:
