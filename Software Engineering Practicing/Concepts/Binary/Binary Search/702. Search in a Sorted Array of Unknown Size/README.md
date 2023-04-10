@@ -1,6 +1,6 @@
 ## [702. Search in a Sorted Array of Unknown Size](https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size)
 
-```Tag```: ```Binary Search```
+```Tag```: ```Binary Search``` ```Bitwise Manipulations```
 
 #### Difficulty: Medium
 
@@ -42,3 +42,76 @@ __Constraints:__
 - ```secret``` is sorted in a __strictly increasing__ order.
 
 ---
+
+The array is sorted, i.e. one could try to fit into a logarithmic time complexity. That means two subproblems, and both should be done in a logarithmic time:
+
+- Define search limits, i.e. left and right boundaries for the search.
+- Perform binary search in the defined boundaries.
+
+![image](https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/Figures/702/way.png)
+
+__Define Search Boundaries__
+
+![image](https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/Figures/702/limits.png)
+
+If the target now is less than the right element, we're done, the boundaries are set. If not, repeat these two steps till the boundaries are established:
+
+- Move the left boundary to the right: ```left = right```.
+- Extend the right boundary: ```right = right * 2```.
+
+![image](https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/Figures/702/done.png)
+
+__Perform Binary Search__
+
+- If the ```target``` value is equal to the middle element - we're done.
+- If the ```target``` value is smaller - continue to search on the left.
+- If the ```target``` value is larger - continue to search on the right.
+
+![IMAGE](https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/Figures/702/binary2.png)
+
+__Prerequisites__: left and right shifts
+
+To speed up, one could use here [bitwise shifts](https://wiki.python.org/moin/BitwiseOperators):
+
+![image](https://user-images.githubusercontent.com/35042430/230841537-5483d52e-5c1e-4ada-bdfd-0740d49849d9.png)
+
+- Left shift: ```x << 1```. The same as __multiplying__ by ```2```: ```x * 2```.
+- Right shift: ```x >> 1```. The same as __dividing__ by ```2```: ```x / 2```.
+
+```Python
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        if reader.get(0) == target:
+            return 0
+        
+        # Define the boundaries
+        lo, hi = 0, 1
+        while reader.get(hi) < target:
+            lo = hi
+            '''
+            hi = hi * 2
+            '''
+            hi <<= 1
+        
+        # Binary search
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            num = reader.get(mi)
+
+            if num == target:
+                return mi
+            else:
+                if num < target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+        
+        return -1
+```
