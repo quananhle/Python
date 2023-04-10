@@ -171,5 +171,90 @@ __Algorithm__
 - __Space complexity__: ```O(m + 26 * n) = O(m + n).```
 
 ```Python
+class Solution:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        n, k = len(colors), 26
 
+        # Build the adjacency graph
+        graph = collections.defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+
+
+        def dfs(node):
+            if stack[node]:
+                return math.inf
+
+            if seen[node]:
+                return counter[node][ord(colors[node]) - ord('a')]
+
+            seen[node] = True
+            stack[node] = True
+
+            if node in graph:
+                for neighbor in graph[node]:
+                    if dfs(neighbor) == math.inf:
+                        return math.inf
+                    for i in range(k):
+                        counter[node][i] = max(counter[node][i], counter[neighbor][i])
+
+            counter[node][ord(colors[node]) - ord('a')] += 1
+            stack[node] = False
+
+            return counter[node][ord(colors[node]) - ord('a')]
+
+        ans = 0
+        counter = [[0] * k for _ in range(n)]
+        seen = [None for _ in range(n)]
+        stack = [None for _ in range(n)]
+
+        for i in range(n):
+            ans = max(ans, dfs(i))
+
+        return ans if ans != math.inf else -1
+```
+
+```Python
+class Solution:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        n, k = len(colors), 26
+
+        # Build the adjacency graph
+        graph = collections.defaultdict(list)
+        for u, v in edges:
+            graph[u].append(v)
+
+
+        def dfs(node):
+            if node in stack:
+                return math.inf
+
+            if node in seen:
+                return counter[(node, ord(colors[node]) - ord('a'))]
+
+            seen.add(node)
+            stack.add(node)
+
+            if node in graph:
+                for neighbor in graph[node]:
+                    if dfs(neighbor) == math.inf:
+                        return math.inf
+                    for i in range(k):
+                        counter[(node, i)] = max(counter[(node, i)], counter[(neighbor, i)])
+
+            counter[(node, ord(colors[node]) - ord('a'))] += 1
+            stack.remove(node)
+
+            return counter[(node, ord(colors[node]) - ord('a'))]
+
+
+        ans = 0
+        counter = collections.defaultdict(int)
+        seen = set()
+        stack = set()
+
+        for i in range(n):
+            ans = max(ans, dfs(i))
+
+        return ans if ans != math.inf else -1
 ```
