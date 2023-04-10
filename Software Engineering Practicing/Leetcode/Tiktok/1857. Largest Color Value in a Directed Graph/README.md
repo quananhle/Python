@@ -150,6 +150,26 @@ class Solution:
 
 ### Depth-First Search
 
+__Algorithm__
+
+1. Create an integer variable ```n = colors.length()``` which stores the number of nodes in the graph.
+2. Create an adjacency list ```graph``` in which ```graph[x]``` contains all nodes with an incoming edge from node ```x```.
+3. Create a 2D-array ```counter``` with ```n``` rows and ```26``` columns where ```counter[x]``` keeps track of the maximum frequencies of all the colors among all the paths that begin at node ```x```. Note, the definition of ```counter``` is opposite in this case. The color ```a``` corresponds to column ```0```, ```b``` corresponds to column ```1```, and so on.
+4. Create two boolean arrays, ```seen``` and ```stack```, each of size ```n```. The ```seen``` array keeps track of visited nodes and ```stack``` keeps track of nodes that are currently in the ongoing DFS stack. It will help us to detect cycle in the graph.
+5. Create an integer variable ```answer = 0``` to store the answer to the problem.
+6. For each node we begin the DFS traveral. We implement the ```dfs``` method which takes six parameters: an integer ```node``` from which the current traversal begins, ```colors```, ```graph```, ```counter```, ```seen``` and ```stack``. It returns the maximum frequency of the color of ```node``` that we can get across all the paths starting from ```node```. We return infinity if there is a cycle, which we can detect by checking ```stack``. For each node ```i```, we update ```answer``` whenever we can using ```answer = max(answer, dfs(i, colors, graph, counter, seen, stack))```:
+    - If ```node``` is already present in ```stack``, we have a cycle. We return ```infinity```.
+    - If ```node``` is already visited, we return the frequency of ```node```'s color, i.e., ```counter[node][colors[node] - 'a']```.
+    - We mark node as ```seen``` and also set ```stack[node] = true```.
+    - We iterate over all the outgoing edges of ```node``` and for each ```neighbor```, we recursively call ```dfs(neighbor, colors, graph, counter, seen, stack)```. If we get a cycle from ```neighbor```, we return ```infinity```. Otherwise, we try to update the frequencies of all colors stored for ```node``` by including the paths that use the ```node -> neighbor``` edge. We perform ```counter[node][i] = max(counter[neighbor][i], counter[node][i])``` for every color ```i``` where ```a``` corresponds to ```0```, ```b``` corresponds to ```1```, and so on.
+    - After we have processed all the outgoing edges of ```node```, we increment the frequency of ```node```'s color by ```1``` to count ```node``` itself.
+    - Mark ```stack[node] = false``` to mark ```node``` as out of stack.
+    - Similar to the previous approach, it is sufficient to just use the frequency of ```node```'s color. We return ```counter[node][colors[node] - 'a']```.
+7. If ```answer``` is equal to infinity, we return ```-1```, else we return ```answer```.
+
+- __Time complexity__: ```O(26 * m + 26 * n) = O(m + n).```
+- __Space complexity__: ```O(m + 26 * n) = O(m + n).```
+
 ```Python
 
 ```
