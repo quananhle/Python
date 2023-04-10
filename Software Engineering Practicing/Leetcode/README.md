@@ -74,7 +74,7 @@
 - :four_leaf_clover: [278. First Bad Version](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/278.%20First%20Bad%20Version)
 - :four_leaf_clover: [374. Guess Number Higher or Lower](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/374.%20Guess%20Number%20Higher%20or%20Lower/)
 - :warning::warning: [658. Find K Closest Elements](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/658.%20Find%20K%20Closest%20Elements) ```Sliding Window```
-- :warning::warning: [702. Search in a Sorted Array of Unknown Size](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/702.%20Search%20in%20a%20Sorted%20Array%20of%20Unknown%20Size)
+- :warning::warning: [702. Search in a Sorted Array of Unknown Size](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/702.%20Search%20in%20a%20Sorted%20Array%20of%20Unknown%20Size) ```Bitwise Manipulation```
 - :four_leaf_clover: [704. Binary Search](https://github.com/quananhle/Python/tree/abb74653d4796a4a84f360ada332716f5df8a2e5/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2007%20-%20Binary%20Search/704.%20Binary%20Search)
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 - :warning::warning:[1011. Capacity To Ship Packages Within D Days](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
@@ -104,6 +104,7 @@
 
 ## Dynamic Programming
 
+- :warning::warning: [50. Pow(x, n)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/50.%20Pow(x,%20n)) ```Binary Search```
 - :warning::warning: [64. Minimum Path Sum](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/64.%20Minimum%20Path%20Sum)
 - :no_entry::no_entry::no_entry: [87. Scramble String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/87.%20Scramble%20String/)
 - [139. Word Break]
