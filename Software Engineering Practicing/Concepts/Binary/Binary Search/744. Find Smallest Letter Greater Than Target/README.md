@@ -43,3 +43,48 @@ __Constraints:__
 
 ---
 
+### Linear Scan
+
+```Python
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        for letter in letters:
+            if letter > target:
+                return letter
+        return letters[0]
+```
+
+### Binary Search
+
+```Python
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        if not (letters[0] <= target <= letters[-1]):
+            return letters[0]
+
+        lo, hi = 0, len(letters)
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            letter = letters[mi]
+
+            if letter <= target:
+                lo = mi + 1
+            else:
+                hi = mi
+
+        '''
+        return letters[lo] if lo < len(letters) else letters[0]
+        '''
+        return letters[lo % len(letters)]
+```
+
+```Python
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        index = bisect.bisect(letters, target)
+        '''
+        return letters[index % len(letters)]
+        '''
+        return letters[index] if index < len(letters) else letters[0]
+```
