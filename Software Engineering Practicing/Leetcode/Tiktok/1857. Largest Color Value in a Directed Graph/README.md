@@ -68,7 +68,40 @@ __Algorithm__
 9. If number of nodes visited is less than total number of nodes, i.e., ```seen < n``` we return ```-1``` as there must be a cycle. Otherwise, we return ```ans```.
 
 ```Python
+class Solution:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        n, k = len(colors), 26
+        colors = [ord(c) - ord('a') for c in colors]
+        
+        # Build the adjacency graph
+        graph = collections.defaultdict(list)
+        indegree = [0] * n
+        for u, v in edges:
+            graph[u].append(v)
+            indegree[v] += 1
 
+        queue = collections.deque()
+        for node in range(n):
+            if indegree[node] == 0:
+                queue.append((node))
+        
+        counter = [[0] * k for _ in range(n)]
+        
+        ans = 1
+        seen = 0
+        while queue:
+            node = queue.popleft()
+            counter[node][colors[node]] += 1
+            ans = max(ans, counter[node][colors[node]])
+            seen += 1
+            for neighbor in graph[node]:
+                for i in range(k):
+                    counter[neighbor][i] = max(counter[neighbor][i], counter[node][i])
+                indegree[neighbor] -= 1
+                if indegree[neighbor] == 0:
+                    queue.append((neighbor))
+        
+        return ans if seen == n else -1
 ```
 
 ### Depth-First Search
