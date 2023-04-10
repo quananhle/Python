@@ -52,6 +52,10 @@ The array is sorted, i.e. one could try to fit into a logarithmic time complexit
 
 __Define Search Boundaries__
 
+The idea is quite simple. Let's take two first indexes, 0 and 1, as left and right boundaries. If the target value is not among these zeroth and the first element, then it's outside the boundaries, on the right.
+
+That means that the left boundary could moved to the right, and the right boundary should be extended. To keep logarithmic time complexity, let's extend it twice as far: ```right = right * 2```.
+
 ![image](https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/Figures/702/limits.png)
 
 If the target now is less than the right element, we're done, the boundaries are set. If not, repeat these two steps till the boundaries are established:
@@ -113,5 +117,70 @@ class Solution:
                 else:
                     hi = mi - 1
         
+        return -1
+```
+
+```Python
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        def binary_search():
+            lo = 0
+            # Since all elements are unique in the search array as strictly increasing, target must be at the index < target
+            hi = target - reader.get(lo)
+
+            if reader.get(hi) == target:
+                return hi
+            
+            while lo <= hi:
+                mi = lo + ((hi - lo) >> 1)
+                num = reader.get(mi)
+
+                if num == target:
+                    return mi
+                elif num < target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+
+            return -1
+        
+        return binary_search()
+```
+
+```Python
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        lo = 0
+        # Since all elements are unique in the search array as strictly increasing, target must be at the index < target
+        hi = target - reader.get(lo)
+
+        if reader.get(hi) == target:
+            return hi
+        
+        while lo <= hi:
+            mi = lo + ((hi - lo) >> 1)
+            num = reader.get(mi)
+
+            if num == target:
+                return mi
+            elif num < target:
+                lo = mi + 1
+            else:
+                hi = mi - 1
+
         return -1
 ```
