@@ -241,3 +241,11 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 #### [Pow(x, n)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/50.%20Pow(x,%20n))
 #### [Valid Perfect Square](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/367.%20Valid%20Perfect%20Square)
 #### [Find Smallest Letter Greater Than Target](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
+
+### More Practices
+
+#### [Find Minimum in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
+#### Find Minimum in Rotated Sorted Array II
+#### 
+#### 
+#### 
