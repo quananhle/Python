@@ -70,6 +70,7 @@
 - :four_leaf_clover: [69. Sqrt(x)](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/69.%20Sqrt(x)/) ```Math``` ```Bitwise Manipulation```
 - :warning::warning: [74. Search a 2D Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/74.%20Search%20a%202D%20Matrix)
 - :warning::warning: [153. Find Minimum in Rotated Sorted Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
+- :no_entry::no_entry::no_entry: [154. Find Minimum in Rotated Sorted Array II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/154.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II)
 - :warning::warning: [162. Find Peak Element](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/162.%20Find%20Peak%20Element)
 - :four_leaf_clover: [278. First Bad Version](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/278.%20First%20Bad%20Version)
 - :four_leaf_clover: [367. Valid Perfect Square](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/367.%20Valid%20Perfect%20Square) ```Math```
