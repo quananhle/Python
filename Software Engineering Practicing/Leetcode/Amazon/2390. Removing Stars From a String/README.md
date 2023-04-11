@@ -1,6 +1,6 @@
 ## [2390. Removing Stars From a String](https://leetcode.com/problems/removing-stars-from-a-string)
 
-```Tag```: ```Stack```
+```Tag```: ```Stack``` ```Array & String```
 
 #### Difficulty: Medium
 
@@ -63,3 +63,26 @@ class Solution:
         
         return ''.join(stack)
 ```
+
+### Array & String
+
+__Note__: This method is not applicable/optimized in Python as string in Python is immutable and will lead to O(N<sup>2</sup>) time complexity solution to rebuild the entire string every single time a '*' is encountered
+
+```Java
+class Solution {
+    public String removeStars(String s) {
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0; i < s.length(); ++i) {
+            if (s.charAt(i) == '*') {
+                answer.deleteCharAt(answer.length() - 1);
+            }
+            else {
+                answer.append(s.charAt(i));
+            }
+        }
+        return answer.toString();
+    }
+}
+```
+
+
