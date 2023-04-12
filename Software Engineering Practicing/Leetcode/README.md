@@ -247,6 +247,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ### Stack
 
 - :four_leaf_clover: [20. Valid Parentheses](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/20.%20Valid%20Parentheses) ```Hash Map```
+- :warning::warning: [71. Simplify Path](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/71.%20Simplify%20Path) ```Regular Expression```
 - :warning::warning: [735. Asteroid Collision](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/735.%20Asteroid%20Collision)
 - :warning::warning: [2390. Removing Stars From a String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2390.%20Removing%20Stars%20From%20a%20String)
 
