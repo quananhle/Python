@@ -19,3 +19,27 @@ You must decrease the overall operation steps as much as possible.
 
 ---
 
+__Example 1:__
+```
+Input: nums = [1,3,5]
+Output: 1
+```
+
+__Example 2:__
+```
+Input: nums = [2,2,2,0,1]
+Output: 0
+```
+
+__Constraints:__
+
+- ```n == nums.length```
+- ```1 <= n <= 5000```
+- ```-5000 <= nums[i] <= 5000```
+- ```nums``` is sorted and rotated between ```1``` and ```n``` times.
+ 
+
+__Follow up__: This problem is similar to Find Minimum in Rotated Sorted Array, but ```nums``` may contain duplicates. Would this affect the runtime complexity? How and why?
+
+---
+ 
