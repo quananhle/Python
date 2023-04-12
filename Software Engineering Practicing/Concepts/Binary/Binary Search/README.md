@@ -251,3 +251,5 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 #### Two Sum II - Input array is sorted
 
 ### More Practices II
+
+#### Find the Duplicate Number
