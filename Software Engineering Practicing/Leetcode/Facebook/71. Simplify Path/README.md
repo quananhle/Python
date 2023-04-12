@@ -1,6 +1,6 @@
 ## [71. Simplify Path](https://leetcode.com/problems/simplify-path/)
 
-```Tag```:
+```Tag```: ```Stack``` ```Regular Expression```
 
 #### Difficulty: Medium
 
@@ -49,4 +49,26 @@ __Constraints:__
 - ```path``` is a valid absolute Unix path.
 
 ---
+
+### Stack
+
+```Python
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        stack = list()
+        directory = path.split("/")
+
+        for dir in directory:
+            if not dir or dir == ".":
+                continue
+            elif dir == "..":
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(dir)
+        
+        ans = "/" + "/".join(stack)
+
+        return ans
+```
 
