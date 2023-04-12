@@ -254,3 +254,4 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 
 #### Find the Duplicate Number
 #### Median of Two Sorted Arrays
+#### Find K-th Smallest Pair Distance
