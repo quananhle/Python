@@ -110,7 +110,36 @@ class Solution:
 ### Regular Expression
 
 ```Python
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        # solves r2
+        path = re.sub("[/]+", "/", path)
 
+        # solve r4 part I
+        last_path = ""
+        while last_path != path:
+            last_path = path
+            path = re.sub("/[.]/", "/", path)
+            
+        path = re.sub("^[.]/", "/", path)
+        path = re.sub("/[.]$", "/", path)
+
+        # solve r3
+        path = re.sub("/$", "", path)
+
+        # solve r1 part I
+        path = re.sub("^/", "", path)
+
+        # solve r4 part II
+        path_stack = []
+        for dir in path.split("/"):
+            if dir != "..":
+                path_stack.append(dir)
+            elif path_stack:
+                path_stack.pop()
+
+        # solve r1 part II
+        return "/" + "/".join(path_stack)
 ```
 
 
