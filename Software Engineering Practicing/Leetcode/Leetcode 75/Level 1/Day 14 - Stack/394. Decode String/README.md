@@ -1,4 +1,6 @@
-## 394. Decode String
+## [394. Decode String](https://leetcode.com/problems/decode-string/)
+
+```Tag```: ```Stack``` ```Regular Expression``` ```Recursion```
 
 #### Difficulty: Medium
 
