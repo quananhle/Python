@@ -245,7 +245,7 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 ### More Practices
 
 #### [Find Minimum in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
-#### Find Minimum in Rotated Sorted Array II
+#### [Find Minimum in Rotated Sorted Array II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/154.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II)
 #### 
 #### 
 #### 
