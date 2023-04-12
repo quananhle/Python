@@ -87,6 +87,26 @@ class Solution:
         return ans
 ```
 
+```Python
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        res = list()
+        to_go_back = 0
+        path = path.split('/')
+        for dir in path[::-1]:
+            if dir == '' or dir == '.':
+                continue
+            elif dir == '..':
+                to_go_back += 1
+            elif to_go_back:
+                to_go_back -= 1
+            else:
+                res.append(dir)
+
+        ans = '/'.join(res[::-1])
+        return '/' + ans if not ans or ans[0] != '/' else ans
+```
+
 ### Regular Expression
 
 ```Python
