@@ -64,6 +64,9 @@ __Algorithm__
 6. Finally, if the component we are processing right now is not one of the special characters, then we will simply add it to our stack because it's a legitimate directory name.
 7. Once we are done processing all the components, we simply have to connect all the directory names in our stack together using ```/``` as the delimiter and we will have our shortest path that leads us to the same directory as the one provided as an input.
 
+- __Time Complexity__: ```O(N)```
+- __Space Complexity__: ```O(N)```
+
 ```Python
 class Solution:
     def simplifyPath(self, path: str) -> str:
@@ -83,4 +86,11 @@ class Solution:
 
         return ans
 ```
+
+### Regular Expression
+
+```Python
+
+```
+
 
