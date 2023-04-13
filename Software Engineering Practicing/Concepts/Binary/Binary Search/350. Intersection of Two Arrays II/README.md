@@ -1,6 +1,6 @@
 ## [350. Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii)
 
-```Tag```: ```Hash Set``` ```Two Pointers```
+```Tag```: ```Hash Table``` ```Two Pointers```
 
 #### Difficulty: Easy
 
@@ -25,7 +25,7 @@ Explanation: [9,4] is also accepted.
 
 __Constraints:__
 
-- ```1 <= nums1.length, nums2.length <= 1000``
+- ```1 <= nums1.length, nums2.length <= 1000```
 - ```0 <= nums1[i], nums2[i] <= 1000```
  
 __Follow up:__
@@ -36,3 +36,45 @@ __Follow up:__
 
 ---
 
+### Hash Table
+
+```Python
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        counter1 = collections.defaultdict(int)
+        counter2 = collections.defaultdict(int)
+        res = list()
+
+        for num in nums1:
+            counter1[num] = 1 + counter1.get(num, 0)
+        for num in nums2:
+            counter2[num] = 1 + counter2.get(num, 0)
+
+        for key, val in counter1.items():
+            if key in counter2:
+                res.extend([key] * min(val, counter2[key]))
+
+        return res
+```
+
+### Counter
+
+```Python
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        counter1 = collections.Counter(nums1)
+        counter2 = collections.Counter(nums2)
+        res = list()
+
+        for key, val in counter1.items():
+            if key in counter2:
+                res.extend([key] * min(val, counter2[key]))
+
+        return res
+```
+
+### Two Pointers
+
+```Python
+
+```
