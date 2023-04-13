@@ -180,6 +180,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 - :four_leaf_clover: [605. Can Place Flowers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/605.%20Can%20Place%20Flowers)
 - :warning::warning: [881. Boats to Save People](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/881.%20Boats%20to%20Save%20People/) ```Two Pointers```
+- :warning::warning: [946. Validate Stack Sequences](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/946.%20Validate%20Stack%20Sequences)
 - :warning::warning: [1328. Break a Palindrome](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1328.%20Break%20a%20Palindrome)
 - :warning::warning: [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
 - :warning::warning: [2405. Optimal Partition of String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/2405.%20Optimal%20Partition%20of%20String/) ```Hash Table```
