@@ -62,7 +62,7 @@
 
 ---
 
-## Binary Search
+## [Binary Search](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search)
 
 - :no_entry::no_entry::no_entry: [4. Median of Two Sorted Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/4.%20Median%20of%20Two%20Sorted%20Arrays)
 - :warning::warning: [33. Search in Rotated Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/33.%20Search%20in%20Rotated%20Sorted%20Array)
