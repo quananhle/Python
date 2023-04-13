@@ -99,33 +99,77 @@ class Solution:
 ```Python
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        # Binary Search and Two Pointers
-        #### Time Complexity: O(N), iterate through the input size N
-        #### Space Complexity: O(1), constant memory space for pointers
-        left, right = 0, len(numbers) - 1
-        while left <= right:
-            mid = left + (right - left) // 2
-            total = numbers[left] + numbers[right]
+        n = len(numbers)
+        lo, hi = 0, n - 1
 
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+
+            lower, upper = numbers[lo], numbers[hi]
+            pivot = numbers[mi]
+            total = lower + upper
+
+            # Check if total is smaller than target
             if total < target:
-                # Update left pointer: if sum of mid pointer and right pointer still smaller than target, update left pointer
-                if numbers[mid] + numbers[right] < target:
-                    left = mid + 1
-                # Otherwise, complement of target - num lies between left pointer and mid pointer
+                # Check if pivot and right boundary is smaller than target, shrink the left
+                if pivot + upper < target:
+                    lo = mi + 1
+                # Otherwise, target is in the left of pivot, slowly shrink the left
                 else:
-                    # Increment left pointer
-                    left += 1
+                    lo += 1
+            # Check if total is bigger than target
             elif total > target:
-                # Update right pointer: if sum of mid pointer and left pointer still larger than target, update right pointer
-                if numbers[left] + numbers[mid] > target:
-                    right = mid - 1
-                # Otherwise, complement of target - num lies between right pointer and mid pointer
+                # CHeck if target is in the right of pivot, slowly shrink the right
+                if lower + pivot <= target:
+                    hi -= 1
+                # Otherwise, shrink the right
                 else:
-                    # Decrement right pointer
-                    right -= 1
-            # If found the only one solution
+                    hi = mi - 1
             else:
-                return [left + 1, right + 1]
+                return [lo + 1, hi + 1]
+
+'''
+numbers = [1,2,7,9,11,15], target = 9
+           | | | |  |  |
+           0 1 2 3  4  5
+
+- Step 1:
+
+lo, hi = 0, 5
+mi = 0 + (5 - 0) // 2 = 2
+
+lower, upper = 1, 15
+pivot = 7
+total = 16
+
+total > target:
+    lower + pivot <= target:
+        lo += 1
+
+- Step 2:
+
+lo, hi = 1, 5
+mi = 1 + (5 - 1) // 2 = 3
+
+lower, upper = 2, 15
+pivot = 9
+total = 17
+
+total > target:
+    lower + pivot > target:
+        hi = mi - 1
+
+- Step 3:
+
+lo, hi = 1, 2
+mi = 1 + (2 - 1) // 2 = 1
+
+lower, upper = 2, 7
+pivot = 2
+total = 9
+
+return [lo + 1, hi + 1]
+'''
 ```
  
 ### Two Pointers
