@@ -53,4 +53,46 @@ __Algorithm__
 
 In the classical binary search algorithm, we would compare the pivot element (i.e. ```nums[pivot]```) with the value that we would like to locate. In our case, however, we would compare the pivot element to the element pointed by the upper bound pointer (i.e. ```nums[hi]```).
 
+```
+Case 1). nums[mi] < nums[hi]
+```
+
+![image](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/Figures/154/154_case_1.png)
+
+- The pivot element resides in the same half as the upper bound element.
+- Therefore, the desired minimum element should reside to the left-hand side of pivot element. As a result, we then move the upper bound down to the pivot index, i.e. ```hi = mi```.
+
+```
+Case 2). nums[mi] > nums[high]
+```
+
+![image](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/Figures/154/154_case_2.png)
+
+- The pivot element resides in the different half of array as the upper bound element.
+- Therefore, the desired minimum element should reside to the right-hand side of the pivot element. As a result, we then move the lower bound up next to the pivot index, i.e. ```lo = mi + 1```.
+
+```
+Case 3). nums[mi] == nums[high]
+```
+
+![image](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/Figures/154/154_case_3_ii.png)
+
+- In this case, we are not sure which side of the pivot that the desired minimum element would reside.
+- To further reduce the search scope, a safe measure would be to reduce the upper bound by one (i.e. ```hi = hi - 1```), rather than moving aggressively to the pivot point.
+- The above strategy would prevent the algorithm from stagnating (i.e. endless loop). More importantly, it maintains the correctness of the procedure, i.e. we would not end up with skipping the desired element.
+
+To summarize, this algorithm differs to the classical binary search algorithm in two parts:
+
+- We use the upper bound of search scope as the reference for the comparison with the pivot element, while in the classical binary search the reference would be the desired value.
+- When the result of comparison is equal (i.e. Case #3), we further move the upper bound, while in the classical binary search normally we would return the value immediately.
+
+
+
+
+
+
+
+
+
+
 
