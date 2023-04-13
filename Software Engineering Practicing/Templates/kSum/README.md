@@ -21,6 +21,7 @@ class Solution:
 ```Python
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        n = len(numbers)
         lo, hi = 0, n - 1
 
         while lo < hi:
