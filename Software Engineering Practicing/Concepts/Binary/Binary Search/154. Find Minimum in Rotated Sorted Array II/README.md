@@ -86,7 +86,28 @@ To summarize, this algorithm differs to the classical binary search algorithm in
 - We use the upper bound of search scope as the reference for the comparison with the pivot element, while in the classical binary search the reference would be the desired value.
 - When the result of comparison is equal (i.e. Case #3), we further move the upper bound, while in the classical binary search normally we would return the value immediately.
 
+- __Time Complexity__: O(N), when all elements in the array are identical
+- __Space Complexity__: O(1)
 
+```Python
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        lo, hi = 0, n - 1
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            num = nums[mi]
+
+            if num < nums[hi]:
+                hi = mi
+            elif num > nums[hi]:
+                lo = mi + 1
+            else:
+                hi -= 1
+            
+        return nums[lo]
+```
 
 
 
