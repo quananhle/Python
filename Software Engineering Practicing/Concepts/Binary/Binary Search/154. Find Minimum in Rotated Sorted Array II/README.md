@@ -43,3 +43,14 @@ __Follow up__: This problem is similar to Find Minimum in Rotated Sorted Array, 
 
 ---
  
+![image](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/Figures/154/154_axis.png)
+ 
+1. We keep two pointers, i.e. ```lo```, ```hi``` which point to the lowest and highest boundary of our search scope.
+2. We then reduce the search scope by moving either of pointers, according to various situations. Usually we shift one of pointers to the mid point between ```lo``` and ```hi```, (i.e. ```pivot = lo + (hi - lo) // 2)```, which reduces the search scope down to half. This is also where the name of the algorithm comes from.
+3. The reduction of the search scope would stop, either we find the desired element or the two pointers converge (i.e. ```lo == hi```).
+
+__Algorithm__
+
+In the classical binary search algorithm, we would compare the pivot element (i.e. ```nums[pivot]```) with the value that we would like to locate. In our case, however, we would compare the pivot element to the element pointed by the upper bound pointer (i.e. ```nums[hi]```).
+
+
