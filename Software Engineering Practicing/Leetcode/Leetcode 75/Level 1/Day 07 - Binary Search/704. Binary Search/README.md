@@ -1,4 +1,6 @@
-## 704. Binary Search
+## [704. Binary Search](https://leetcode.com/problems/binary-search/description/?envType=study-plan&id=algorithm-i)
+
+```Tag```: ```Binary Search```
 
 #### Difficulty: Easy
 
