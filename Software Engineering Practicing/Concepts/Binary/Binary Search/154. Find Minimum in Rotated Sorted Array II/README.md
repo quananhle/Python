@@ -89,6 +89,31 @@ To summarize, this algorithm differs to the classical binary search algorithm in
 - __Time Complexity__: O(N), when all elements in the array are identical
 - __Space Complexity__: O(1)
 
+### Template 1
+
+```Python
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        lo, hi = 0, n - 1
+
+        while lo <= hi:
+            # To prevent the numeric overflow issue, since the sum of two integers could exceed the limit of the integer number
+            mi = lo + (hi - lo) // 2
+            num = nums[mi]
+
+            if num < nums[hi]:
+                hi = mi
+            elif num > nums[hi]:
+                lo = mi + 1
+            else:
+                hi -= 1
+
+        return nums[mi]
+```
+
+### Template 2
+
 ```Python
 class Solution:
     def findMin(self, nums: List[int]) -> int:
@@ -96,6 +121,7 @@ class Solution:
         lo, hi = 0, n - 1
 
         while lo < hi:
+            # To prevent the numeric overflow issue, since the sum of two integers could exceed the limit of the integer number
             mi = lo + (hi - lo) // 2
             num = nums[mi]
 
@@ -109,7 +135,26 @@ class Solution:
         return nums[lo]
 ```
 
+```Python
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        n = len(nums)
+        lo, hi = 0, n - 1
 
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            num = nums[mi]
+
+            if nums[lo] == num == nums[hi]:
+                lo += 1
+                hi -= 1
+            elif num <= nums[hi]:
+                hi = mi
+            else:
+                lo = mi + 1
+
+        return nums[lo]
+```
 
 
 
