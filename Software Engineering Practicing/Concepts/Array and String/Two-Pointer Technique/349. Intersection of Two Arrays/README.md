@@ -31,6 +31,35 @@ __Constraints:__
 
 ---
 
+### One-Liner
+
+#### List Comprehension
+
+```Python
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        #### Time Complexity : O(N + M)
+        #### Space Complexity: O(N + M)
+        return [num for num in set(nums1 + nums2) if num in nums1 and num in nums2]
+```
+
+#### Bitwise Manipulation
+
+```Python
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        #### Time Complexity : O(N + M)
+        #### Space Complexity: O(N + M)
+        return list(set(nums1) & set(nums2))
+```
+#### Built-In Set Intersection()
+
+```Python
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        return set(nums1).intersection(set(nums2))
+```
+
 ### Hash Set
 
 ```Python
@@ -54,25 +83,9 @@ class Solution:
         return list(set_nums1 & set_nums2)
 ```
 
-### One-Liner
+---
 
-```Python
-class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        #### Time Complexity : O(N + M)
-        #### Space Complexity: O(N + M)
-        return [num for num in set(nums1 + nums2) if num in nums1 and num in nums2]
-```
-
-```Python
-class Solution:
-    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        #### Time Complexity : O(N + M)
-        #### Space Complexity: O(N + M)
-        return list(set(nums1) & set(nums2))
-```
-
-__Follow up__: On-site Facebook interview question: solve the problem in O(N) time complexity and O(1) space complexity. Arrays already sorted and resulting array memory space is not taken into consideration.
+__Follow up__: On-site Facebook interview question: solve the problem in ```O(N)``` time complexity and ```O(1)``` space complexity. Arrays already sorted and resulting array memory space is not taken into consideration.
 
 ### Two Pointers
 
