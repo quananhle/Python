@@ -37,3 +37,25 @@ __Constraints:__
 - ```popped``` is a permutation of ```pushed```.
 
 ---
+
+### Greedy
+
+__Algorithm__
+
+1. For each value, push it to the ```stack```.
+2. Then, greedily pop values from the ```stack``` if they are the next values to pop.
+3. At the end, we check if we have popped all the values successfully.
+
+```Python
+class Solution:
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        j = 0
+        stack = list()
+        for num in pushed:
+            stack.append(num)
+            while stack and stack[-1] == popped[j]:
+                stack.pop()
+                j += 1
+        
+        return j == len(popped)
+```
