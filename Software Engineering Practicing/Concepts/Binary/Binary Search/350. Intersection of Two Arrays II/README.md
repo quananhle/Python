@@ -76,5 +76,26 @@ class Solution:
 ### Two Pointers
 
 ```Python
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        p1 = p2 = 0
+        m, n = len(nums1), len(nums2)
+        res = list()
 
+        nums1.sort(), nums2.sort()
+
+        while p1 < m and p2 < n:
+            num1, num2 = nums1[p1], nums2[p2]
+
+            if num1 < num2:
+                p1 += 1
+            elif num2 < num1:
+                p2 += 1
+            # num1 == num2
+            else:
+                res.append(num1)
+                p1 += 1
+                p2 += 1
+        
+        return res
 ```
