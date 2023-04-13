@@ -86,8 +86,8 @@ To summarize, this algorithm differs to the classical binary search algorithm in
 - We use the upper bound of search scope as the reference for the comparison with the pivot element, while in the classical binary search the reference would be the desired value.
 - When the result of comparison is equal (i.e. Case #3), we further move the upper bound, while in the classical binary search normally we would return the value immediately.
 
-- __Time Complexity__: O(N), when all elements in the array are identical
-- __Space Complexity__: O(1)
+- __Time Complexity__: ```O(N)```, when all elements in the array are identical. ```O(log```<sub>```2```</sub>```N)``` in best and average cases.
+- __Space Complexity__: ```O(1)```
 
 ### Template 1
 
