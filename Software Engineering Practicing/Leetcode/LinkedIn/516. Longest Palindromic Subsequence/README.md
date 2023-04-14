@@ -33,3 +33,40 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        # Brute Force 
+        n = len(s)
+        ans = 0
+
+        def recursion(l, r):
+            nonlocal ans
+            # Base case
+            if l > r:
+                return 0
+            if l == r:
+                return 1
+            
+            # Recurrence relation
+            if s[l] == s[r]:
+                ans = recursion(l + 1, r - 1) + 2
+            else:
+                ans = max(recursion(l, r - 1), recursion(l + 1, r))
+
+            return ans
+
+        return recursion(0, n - 1)
+```
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
