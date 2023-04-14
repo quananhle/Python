@@ -98,6 +98,9 @@ class Solution:
                 return mi
         
         return -1
+        
+'''
+Edge cases: nums = [5], target = 5; nums = [2,5], target = 5
 ```
 
 ---
