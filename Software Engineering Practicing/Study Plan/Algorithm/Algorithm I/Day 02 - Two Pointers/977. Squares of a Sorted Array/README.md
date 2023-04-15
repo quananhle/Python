@@ -37,13 +37,26 @@ __Follow up:__ Squaring each element and sorting the new array is very trivial, 
 ### Sorting
 
 ```Python
-
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        return sorted([num * num for num in nums])
 ```
 
 ### Heap
 
 ```Python
-
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        h = list()
+        res = list()
+        
+        for num in nums:
+            heapq.heappush(h, num * num)
+        
+        while h:
+            res.append(heappop(h))
+        
+        return res
 ```
 
 ### Two Pointers
