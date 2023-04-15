@@ -38,3 +38,50 @@ __Constraints:__
 - -10<sup>4</sup> <= ```target``` <= 10<sup>4</sup>
 
 ---
+
+### Template 1
+
+```Python
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        lo, hi = 0, len(nums) - 1
+        while lo <= hi:
+            mid = lo + (hi - lo) // 2
+
+            if target > nums[mid]:
+                lo = mid + 1
+            elif target < nums[mid]:
+                hi = mid - 1
+            else:
+                return mid
+                
+        return lo
+```
+
+### Template 2
+
+```Python
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        lo, hi = 0, n - 1
+
+        # Corner cases: target is outside of the input range
+        if target < nums[lo]:
+            return 0
+        elif target > nums[hi]:
+            return n
+        # Otherwise, target is inside of the input boundary
+        else:
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                pivot = nums[mi]
+
+                if pivot == target:
+                    return mi
+                elif pivot < target:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            return lo
+```
