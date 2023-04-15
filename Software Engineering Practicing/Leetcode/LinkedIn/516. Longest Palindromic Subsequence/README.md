@@ -1,6 +1,6 @@
 ## [516. Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)
 
-```Tag```: 
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -69,6 +69,14 @@ class Solution:
 
 #### Top-Down Dynamic Programming
 
+__Recurrence relation__:
+
+- If ```s[i] == s[j]```, perform ```answer = 2 + LPS(i + 1, j - 1)```.
+- Else, perform ```answer = max(LPS(i, j - 1), LPS(i + 1, j)```.
+
+- __Time complexity__: ```O(n^2)```
+- __Space complexity__: ```O(n^2)```
+
 ```Python
 class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
@@ -76,7 +84,7 @@ class Solution:
         n = len(s)
         memo = collections.defaultdict(int)
 
-        def recursion(l, r):
+        def lps(l, r):
             # Base case
             if l > r:
                 return 0
@@ -88,13 +96,13 @@ class Solution:
 
             # Recurrence relation
             if s[l] == s[r]:
-                memo[(l, r)] = recursion(l + 1, r - 1) + 2
+                memo[(l, r)] = lps(l + 1, r - 1) + 2
             else:
-                memo[(l, r)] = max(recursion(l, r - 1), recursion(l + 1, r))
+                memo[(l, r)] = max(lps(l, r - 1), lps(l + 1, r))
 
             return memo[(l, r)]
 
-        return recursion(0, n - 1)
+        return lps(0, n - 1)
 ```
 
 ```Python
@@ -104,7 +112,7 @@ class Solution:
         ans = 0
 
         @lru_cache(None)
-        def recursion(l, r):
+        def lps(l, r):
             nonlocal ans
             # Base case
             if l > r:
@@ -114,16 +122,19 @@ class Solution:
             
             # Recurrence relation
             if s[l] == s[r]:
-                ans = recursion(l + 1, r - 1) + 2
+                ans = lps(l + 1, r - 1) + 2
             else:
-                ans = max(recursion(l, r - 1), recursion(l + 1, r))
+                ans = max(lps(l, r - 1), lps(l + 1, r))
 
             return ans
 
-        return recursion(0, n - 1)
+        return lps(0, n - 1)
 ```
 
 #### Bottom-Up Dynamic Programming
+
+- __Time complexity__: ```O(n^2)```
+- __Space complexity__: ```O(n^2)```
 
 ```Python
 class Solution:
@@ -140,4 +151,10 @@ class Solution:
                     dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
         
         return dp[0][n - 1]
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming
+
+```Python
+
 ```
