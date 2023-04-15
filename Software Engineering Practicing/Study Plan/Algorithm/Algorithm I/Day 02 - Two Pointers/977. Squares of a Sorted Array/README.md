@@ -1,6 +1,6 @@
 ## [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array)
 
-```Tag```: ```Two Pointers```
+```Tag```: ```Two Pointers``` ```Sorting``` ```Heap```
 
 #### Difficulty: Easy
 
@@ -33,3 +33,21 @@ __Constraints:__
 __Follow up:__ Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?
 
 ---
+
+### Sorting
+
+```Python
+
+```
+
+### Heap
+
+```Python
+
+```
+
+### Two Pointers
+
+```Python
+
+```
