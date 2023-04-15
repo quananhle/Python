@@ -68,5 +68,55 @@ class Solution:
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        # Brute Force 
+        n = len(s)
+        memo = collections.defaultdict(int)
 
+        def recursion(l, r):
+            # Base case
+            if l > r:
+                return 0
+            if l == r:
+                return 1
+            
+            if (l, r) in memo:
+                return memo[(l, r)]
+
+            # Recurrence relation
+            if s[l] == s[r]:
+                memo[(l, r)] = recursion(l + 1, r - 1) + 2
+            else:
+                memo[(l, r)] = max(recursion(l, r - 1), recursion(l + 1, r))
+
+            return memo[(l, r)]
+
+        return recursion(0, n - 1)
+```
+
+```Python
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+
+        @lru_cache(None)
+        def recursion(l, r):
+            nonlocal ans
+            # Base case
+            if l > r:
+                return 0
+            if l == r:
+                return 1
+            
+            # Recurrence relation
+            if s[l] == s[r]:
+                ans = recursion(l + 1, r - 1) + 2
+            else:
+                ans = max(recursion(l, r - 1), recursion(l + 1, r))
+
+            return ans
+
+        return recursion(0, n - 1)
 ```
