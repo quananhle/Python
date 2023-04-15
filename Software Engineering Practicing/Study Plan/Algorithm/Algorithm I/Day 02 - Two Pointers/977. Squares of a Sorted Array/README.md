@@ -59,6 +59,22 @@ class Solution:
         return res
 ```
 
+```Python
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        min_heap = list()
+        for num in nums:
+            if num < 0:
+                heapq.heappush(min_heap, num)
+            else:
+                heapq.heappush(min_heap, -num)
+        res = list()
+        while min_heap:
+            n = heapq.heappop(min_heap)
+            res.append(n**2)
+        return res[::-1]
+```
+
 ### Two Pointers
 
 ```Python
