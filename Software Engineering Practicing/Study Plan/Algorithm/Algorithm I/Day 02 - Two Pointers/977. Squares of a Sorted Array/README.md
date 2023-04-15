@@ -77,6 +77,8 @@ class Solution:
 
 ### Two Pointers
 
+Append number to the output from the maximum element down to the minimum element. Hence, check the leftmost and rightmost element to find out if its square could be the maximum element in the output array.
+
 ```Python
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
