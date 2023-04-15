@@ -96,3 +96,21 @@ class Solution:
 
         return res
 ```
+
+```Python
+class Solution:
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        queue = collections.deque()
+        l, r = 0, len(nums) - 1
+
+        while l <= r:
+            left, right = abs(nums[l]), abs(nums[r])
+            if left > right:
+                queue.appendleft(left * left)
+                l += 1
+            else:
+                queue.appendleft(right * right)
+                r -= 1
+
+        return queue
+```
