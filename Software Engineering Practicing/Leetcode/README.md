@@ -115,6 +115,7 @@
 - [279. Perfect Squares]
 - :warning::warning: [322. Coin Change](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/322.%20Coin%20Change)
 - :warning::warning: [416. Partition Equal Subset Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/416.%20Partition%20Equal%20Subset%20Sum)
+- :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - [518. Coin Change II]
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
 - [1155. Number of Dice Rolls With Target Sum]
