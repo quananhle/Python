@@ -133,6 +133,11 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+__Recurrence relation__:
+
+- If ```s[i] == s[j]```, perform ```dp[i][j] = 2 + dp[i + 1][j - 1]```.
+- Otherwise, perform ```dp[i][j] = max(dp[i][j - 1], dp[i + 1][j]```.
+
 - __Time complexity__: ```O(n^2)```
 - __Space complexity__: ```O(n^2)```
 
@@ -155,6 +160,29 @@ class Solution:
 
 #### Optimized Space Bottom-Up Dynamic Programming
 
-```Python
+__Recurrence relation__:
 
+- If ```s[i] == s[j]```, perform ```dp[i][j] = 2 + dp[i + 1][j - 1]```.
+- Otherwise, perform ```dp[i][j] = max(dp[i][j - 1], dp[i + 1][j]```.
+
+- __Time complexity__: ```O(n^2)```
+- __Space complexity__: ```O(n)```
+
+```Python
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        n = len(s) 
+        dp, prev = [0] * n, [0] * n
+
+
+        for i in range(n - 1, -1, -1):
+            dp[i] = 1
+            for j in range(i + 1, n):
+                if s[i] == s[j]:
+                    dp[j] = prev[j - 1] + 2
+                else:
+                    dp[j] = max(dp[j - 1], prev[j])
+            prev = dp[:]
+        
+        return dp[n - 1]
 ```
