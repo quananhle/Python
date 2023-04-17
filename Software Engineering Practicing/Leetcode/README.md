@@ -45,6 +45,9 @@
 ### Two Pointers
 
 - :warning::warning: [189. Rotate Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/189.%20Rotate%20Array)
+- :four_leaf_clover: [283. Move Zeroes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2003%20-%20Two%20Pointers/283.%20Move%20Zeroes)
+- :four_leaf_clover: [344. Reverse String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/344.%20Reverse%20String)
+- :four_leaf_clover: [557. Reverse Words in a String III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/557.%20Reverse%20Words%20in%20a%20String%20III)
 - :four_leaf_clover: [977. Squares of a Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/977.%20Squares%20of%20a%20Sorted%20Array) ```Heap``` ```Sorting```
 - :warning::warning: [1578. Minimum Time to Make Rope Colorful](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/) ```Greedy```
 
