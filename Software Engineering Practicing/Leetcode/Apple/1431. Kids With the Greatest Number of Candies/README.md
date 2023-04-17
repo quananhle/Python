@@ -1,6 +1,6 @@
 ## [1431. Kids With the Greatest Number of Candies](https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/)
 
-```Tag```:
+```Tag```: ```String & Array```
 
 #### Difficulty: Easy
 
@@ -48,3 +48,12 @@ __Constraints:__
 - ```1 <= extraCandies <= 50```
 
 ---
+
+
+### One Liner
+
+```Python
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        return [(candy + extraCandies) >= max(candies) for candy in candies]
+```
