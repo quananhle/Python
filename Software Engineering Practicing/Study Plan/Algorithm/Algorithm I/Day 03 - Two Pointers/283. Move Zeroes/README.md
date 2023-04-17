@@ -25,14 +25,14 @@ Output: [0]
 ```
 
 __Constraints:__
-```
-1 <= nums.length <= 104
--231 <= nums[i] <= 231 - 1
-```
+
+- 1 <= ```nums.length``` <= 10<sup>4</sup>
+- -2<sup>31</sup> <= ```nums[i]``` <= 2<sup>31</sup> - 1
 
 ---
 
 ### Two Pointers
+
 #### Fast and Slow Pointers
 
 ```Python
