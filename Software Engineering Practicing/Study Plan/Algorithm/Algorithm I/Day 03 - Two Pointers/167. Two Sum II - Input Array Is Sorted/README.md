@@ -94,7 +94,7 @@ class Solution:
                 return [left + 1, right + 1]
 ```
  
-### Binary Search and Two Pointers
+### Two Pointers
  
 ```Python
 class Solution:
@@ -171,8 +171,6 @@ total = 9
 return [lo + 1, hi + 1]
 '''
 ```
- 
-### Two Pointers
  
 ```Python
  class Solution:
