@@ -41,6 +41,32 @@ class Solution:
         return " ".join([word[::-1] for word in s.split()])
 ```
 
+### In-Place Reverse
+
+```Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        def flip_word(left: int, right: int):
+            while left < right:
+                res[left], res[right] = res[right], res[left]
+                left += 1
+                right -= 1
+        
+        n = len(s)
+        res = list(s)
+        start = 0
+        
+        for end, c in enumerate(s):
+            if c == " ":
+                flip_word(start, end - 1)
+                start = end + 1
+        
+        # Flip the last word in the input
+        flip_word(start, n - 1)
+        
+        return "".join(res)
+```
+
 ### Fast and Slow Pointers
 
 ```Python
