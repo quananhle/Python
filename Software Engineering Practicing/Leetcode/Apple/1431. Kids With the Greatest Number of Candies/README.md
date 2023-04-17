@@ -49,6 +49,19 @@ __Constraints:__
 
 ---
 
+### Ad Hoc
+
+![image](https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/Figures/1431/1431-1.png)
+
+```Python
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        maxCandies = max(candies)
+        res = []
+        for candy in candies:            
+            res.append(candy + extraCandies >= maxCandies)
+        return res
+```
 
 ### One Liner
 
