@@ -78,7 +78,42 @@ class Solution:
         return head
 ```
 
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        size = 1
+        curr = head
+        
+        # Calculate the size
+        while curr.next:
+            curr = curr.next
+            size += 1
+        
+        # Edge cases: head = [1, 2], n = 2, head = [1], n = 1
+        if size == n:
+            # Delte the first node or the only node
+            return head.next
+
+        prev, curr = head, head.next
+        # Walk to the nth node from the end of the list   
+        k = size - n - 1
+        while k:
+            curr = curr.next
+            prev = prev.next
+            k -= 1
+        
+        prev.next = curr.next
+        return head
+```
+
 __Follow up__: Could you do this in one pass?
+
+### ✅ One Pass Two Pointers
 
 ```Python
 # Definition for singly-linked list.
