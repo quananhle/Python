@@ -41,15 +41,16 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        slow , fast = 0, 0
-        while fast < len(nums):
-            if nums[fast] != 0:
+        n = len(nums)
+        slow = fast = 0
+        while fast < n:
+            if nums[fast]:
                 nums[slow], nums[fast] = nums[fast], nums[slow]
                 slow += 1
             fast += 1
 ```
 
-### Snowball
+### ✅ Snowball
 
 ![image](https://assets.leetcode.com/users/olsh/image_1537442610.png)
 
@@ -68,4 +69,18 @@ class Solution:
             elif snow_ball:
                 # Swap to the first index of the snow ball
                 nums[i], nums[i-snow_ball] = nums[i-snow_ball], nums[i]
+```
+
+```Python
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        snow_ball = 0
+        for idx, num in enumerate(nums):
+            if num == 0:
+                snow_ball += 1
+            elif snow_ball:
+                nums[idx], nums[idx - snowball] = nums[idx - snowball], nums[idx]
 ```
