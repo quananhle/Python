@@ -57,3 +57,21 @@ class Solution:
                 res[slow:] = s[slow:][::-1]
         return ''.join(res)
 ```
+
+```Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        res = [c for c in s]
+        n = len(res)
+        start, end = 0, 1
+
+        while end < n:
+            if res[end] == ' ':
+                res[start:end] = res[start:end][::-1]
+                start = end + 1
+            end += 1
+            if end == n:
+                res[start:] = s[start:][::-1]
+
+        return ''.join(res)
+```
