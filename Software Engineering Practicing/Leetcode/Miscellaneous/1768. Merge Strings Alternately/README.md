@@ -1,6 +1,6 @@
 ## [1768. Merge Strings Alternately](https://leetcode.com/problems/merge-strings-alternately/)
 
-```Tag```: ```Two Pointers```
+```Tag```: ```Two Pointers``` ```Stack & Queue```
 
 #### Difficulty: Easy
 
@@ -94,5 +94,35 @@ class Solution:
             if i < len(word2):
                 res.append(word2[i])
         
+        return "".join(res)
+```
+
+### Queue & State Machine
+
+```Python
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        w1, w2 = collections.deque(list(word1)), collections.deque(list(word2))
+        res = list()
+        state = 1
+
+        while True:
+            match state:
+                case 1:
+                    res += w1.popleft()
+                    if w2:
+                        state = 2
+                    else:
+                        res += w1
+                        break
+                
+                case 2:
+                    res += w2.popleft()
+                    if w1:
+                        state = 1
+                    else:
+                        res += w2
+                        break
+
         return "".join(res)
 ```
