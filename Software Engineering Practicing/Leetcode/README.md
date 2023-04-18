@@ -27,7 +27,8 @@
 
 ### Sliding Window
 
-- [438. Find All Anagrams in a String]
+- :warning::warning: [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters) ```Hash Map```
+- 438. Find All Anagrams in a String
 - :warning::warning: [567. Permutation in String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/567.%20Permutation%20in%20String) ```Hash Map``` ```Two Pointers```
 
 ### String Calculations
