@@ -295,6 +295,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :no_entry::no_entry::no_entry: [124. Binary Tree Maximum Path Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/124.%20Binary%20Tree%20Maximum%20Path%20Sum)
 - :warning::warning: [437. Path Sum III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2007%20-%20Tree/437.%20Path%20Sum%20III) ```Prefix Sum```
 - :warning::warning: [543. Diameter of Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2007%20-%20Tree/543.%20Diameter%20of%20Binary%20Tree)
+- :warning::warning: [1372. Longest ZigZag Path in a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree)
 
 ### [Binary Search Tree](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/README.md)
 
