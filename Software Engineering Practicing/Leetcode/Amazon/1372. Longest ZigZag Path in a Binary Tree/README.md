@@ -1,6 +1,6 @@
 ## [1372. Longest ZigZag Path in a Binary Tree](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/)
 
-```Tag```: ```Binary Tree``` ```Breadth-First Search``` ```Depth-First Search```
+```Tag```: ```Binary Tree``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -52,3 +52,6 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
+
+![image](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/Figures/1372/1372-1.png)
