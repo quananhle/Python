@@ -42,8 +42,31 @@ s consists of English letters, digits, symbols and spaces.
 
 ### Brute Force
 
-```Python
+- __Time Complexity__: O(N<sup>3</sup>)
+- __Space Complexity__: O(min(N, M))
 
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        # Time Limit Exceeded
+        def check(start, end):
+            chars = set()
+            while start < end + 1:
+                c = s[start]
+                if c in chars:
+                    return False
+                chars.add(c)
+                start += 1
+            return True
+        
+        ans = 0
+        for i in range(len(s)):
+            for j in range(i, len(s)):
+                if check(i, j):
+                    ans = max(ans, j - i + 1)
+        
+        return ans
+```
 
 ### Hash Map
 
@@ -112,3 +135,21 @@ class Solution:
             right += 1
         return longest
 ```
+
+```Python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = dict()
+        start = ans = 0
+        for end, character in enumerate(s):
+            # Keep track of the start to ensure character is not repeated in the window
+            if character in seen and seen[character] >= start:
+                start = seen[character] + 1
+
+            if ans < end - start + 1:
+                ans = end - start + 1
+
+            # Record the character as seen as the window expanding to the right
+            seen[character] = end
+
+        return ans
