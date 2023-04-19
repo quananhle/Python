@@ -287,6 +287,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [129. Sum Root to Leaf Numbers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/129.%20Sum%20Root%20to%20Leaf%20Numbers) ```Backtracking``` ```Morris Algorithm```
 - :warning::warning: [199. Binary Tree Right Side View](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2015%20-%20Tree/199.%20Binary%20Tree%20Right%20Side%20View) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [958. Check Completeness of a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/958.%20Check%20Completeness%20of%20a%20Binary%20Tree) ```Breadth-First Search``` ```Depth-First Search```
+- :warning::warning: [1372. Longest ZigZag Path in a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1485. Clone Binary Tree With Random Pointer](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1485.%20Clone%20Binary%20Tree%20With%20Random%20Pointer) ```Breadth-First Search``` ```Depth-First Search```
 
 #### Path Sum
@@ -295,7 +296,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :no_entry::no_entry::no_entry: [124. Binary Tree Maximum Path Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/124.%20Binary%20Tree%20Maximum%20Path%20Sum)
 - :warning::warning: [437. Path Sum III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2007%20-%20Tree/437.%20Path%20Sum%20III) ```Prefix Sum```
 - :warning::warning: [543. Diameter of Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2007%20-%20Tree/543.%20Diameter%20of%20Binary%20Tree)
-- :warning::warning: [1372. Longest ZigZag Path in a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree)
+
 
 ### [Binary Search Tree](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/README.md)
 
