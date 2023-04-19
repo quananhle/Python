@@ -1,6 +1,6 @@
 ## [1372. Longest ZigZag Path in a Binary Tree](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/)
 
-```Tag```: ```[Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree)``` ```Depth-First Search```
+```Tag```: ```[Binary Tree]```(https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree) ```Depth-First Search```
 
 #### Difficulty: Medium
 
