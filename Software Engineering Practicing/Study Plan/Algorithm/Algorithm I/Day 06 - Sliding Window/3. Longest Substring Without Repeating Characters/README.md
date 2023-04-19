@@ -97,6 +97,30 @@ class Solution:
 ### Sliding Window
 
 ```Python
+from collections import Counter
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = collections.Counter()
+        start = end = 0
+        ans = 0
+
+        while end < len(s):
+            r = s[end]
+            seen[r] += 1
+
+            while seen[r] > 1:
+                l = s[start]
+                seen[l] -= 1
+                start += 1
+
+            ans = max(ans, end - start + 1)
+
+            end += 1
+
+        return ans
+```
+
+```Python
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         # Hash Map
@@ -135,6 +159,8 @@ class Solution:
             right += 1
         return longest
 ```
+
+### ✅ Optimized Sliding Window
 
 ```Python
 class Solution:
