@@ -1,6 +1,6 @@
 ## [116. Populating Next Right Pointers in Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node)
 
-```Tag```: ```Breadth-First Search``` ```Binary Tree```
+```Tag```: ```Breadth-First Search``` ```Binary Tree``` ```Linked List```
 
 #### Difficulty: Medium
 
@@ -178,7 +178,9 @@ class Solution:
         return root
 ```
 
-### Constant Space ```O(1)``` Using Previously Established Next Pointers
+### ✅ Constant Space ```O(1)``` Using Previously Established Next Pointers
+
+![image](https://media.tenor.com/Oc4nf8N08jIAAAAC/mind-blow-galaxy.gif)
 
 ```Pseudo
  leftmost = root
