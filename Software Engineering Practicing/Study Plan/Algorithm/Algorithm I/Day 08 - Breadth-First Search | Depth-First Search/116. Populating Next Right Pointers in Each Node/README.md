@@ -180,7 +180,7 @@ class Solution:
 
 ### ✅ Constant Space ```O(1)``` Using Previously Established Next Pointers
 
-![image](https://media.tenor.com/Oc4nf8N08jIAAAAC/mind-blow-galaxy.gif)
+![Mind-Blowing](https://media.tenor.com/Oc4nf8N08jIAAAAC/mind-blow-galaxy.gif)
 
 ```Pseudo
  leftmost = root
