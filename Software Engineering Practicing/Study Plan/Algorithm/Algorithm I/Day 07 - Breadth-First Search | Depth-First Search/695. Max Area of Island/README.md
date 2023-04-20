@@ -65,8 +65,7 @@ class Solution:
             for col in range(COLS):
                 if not (row, col) in visited and grid[row][col] == 1:
                     dfs(row, col)
-                if ans < area:
-                    ans = area
+                ans = max(ans, area)
                 area = 0
 
         return ans
@@ -125,10 +124,11 @@ class Solution:
         ROWS, COLS = len(grid), len(grid[0])
         DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
         visited = set()
-        ans = area = 0
+        ans = 0
 
         for row in range(ROWS):
             for col in range(COLS):
+                area = 0
                 if not (row, col) in visited and grid[row][col] == 1:
                     queue = collections.deque([(row, col)])
                     
@@ -140,9 +140,7 @@ class Solution:
                         area += 1
                         queue.extend((row + dx, col + dy) for dx, dy in DIRECTIONS)
 
-                if ans < area:
-                    ans = area
-                area = 0
+                ans = max(ans, area)
         
         return ans
 ```
