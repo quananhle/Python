@@ -67,6 +67,9 @@ Here are a few steps to implement a solution with the BFS traversal.
     - At the end of each level, we use the indices of the first and the last elements on the same level, in order to obtain the width of the level.
 3. At the end of BFS traversal, we then return the maximal width that we've seen over all levels.
 
+- __Time Complexity__: ```O(N)```
+- __Space Complexity__: ```O(N)```
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -99,6 +102,15 @@ class Solution:
 
 ### Depth-First Search
 
+![image](https://leetcode.com/problems/maximum-width-of-binary-tree/Figures/662/662_first_col_index.png)
+
+Preorder DFS
+
+![image](https://leetcode.com/problems/maximum-width-of-binary-tree/Figures/662/662_preorder_dfs_traversal.png)
+
+- __Time Complexity__: ```O(N)```
+- __Space Complexity__: ```O(N)```
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -108,10 +120,11 @@ class Solution:
 #         self.right = right
 class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        # Preorder DFS
         if not root:
             return None
 
-        widths = collections.defaultdict(int)
+        head_indices = collections.defaultdict(int)
         self.max_width = 0
 
         def dfs(node, level, index):
@@ -119,10 +132,11 @@ class Solution:
             if not node:
                 return
             
-            if not level in widths:
-                widths[level] = index
+            # Record the first index of the current level
+            if not level in head_indices:
+                head_indices[level] = index
             
-            self.max_width = max(self.max_width, index - widths[level] + 1)
+            self.max_width = max(self.max_width, index - head_indices[level] + 1)
 
             dfs(node.left, level + 1, index * 2)
             dfs(node.right, level + 1, index * 2 + 1)
