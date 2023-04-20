@@ -99,3 +99,26 @@ class Solution:
         
         return image
 ```
+
+```Python
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        ROWS, COLS = len(image), len(image[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        source = image[sr][sc]
+
+        queue = collections.deque([(sr, sc)])
+
+        while queue:
+            row, col = queue.popleft()
+            if not (0 <= row < ROWS and 0 <= col < COLS and image[row][col] == source and image[row][col] != color):
+                continue
+            image[row][col] = color
+            '''
+            for dx, dy in DIRECTIONS:
+                queue.append((row + dx, col + dy))
+            '''
+            queue.extend((row + dx, col + dy) for dx, dy in DIRECTIONS)
+
+        return image
+```
