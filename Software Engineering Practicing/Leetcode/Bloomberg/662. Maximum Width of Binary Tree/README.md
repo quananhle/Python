@@ -49,3 +49,7 @@ __Constraints:__
 - ```-100 <= Node.val <= 100```
 
 ---
+
+The key to solve the problem though lie on how we index the nodes that are on the same level. Suppose that the indices for the first and the last nodes of one particular level are C<sub>1</sub> and C<sub>n</sub> respectively, we could then calculate the width of this level as C<sub>n</sub> - C<sub>1</sub> + 1. If the index of a parent node is C<sub>i</sub>, accordingly we can define the index of its left child node as 2 * C<sub>i</sub> and the index of its right child node as 2 * C<sub>i</sub> + 1.
+
+![image](https://leetcode.com/problems/maximum-width-of-binary-tree/Figures/662/662_full_binary_tree.png)
