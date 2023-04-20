@@ -37,3 +37,35 @@ __Constraints:__
 - ```grid[i][j]``` is either ```0``` or ```1```.
 
 ---
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        ans = area = 0
+        
+        def dfs(row, col):
+            nonlocal area
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS and grid[row][col] == 1 and not (row, col) in visited):
+                return 0
+            
+            visited.add((row, col))
+            area += 1
+            
+            [dfs(row + dx, col + dy) for dx, dy in DIRECTIONS]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if not (row, col) in visited and grid[row][col] == 1:
+                    dfs(row, col)
+                if ans < area:
+                    ans = area
+                area = 0
+
+        return ans
+```
