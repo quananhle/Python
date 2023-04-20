@@ -1,0 +1,133 @@
+## [662. Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/)
+
+```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Breadth-First Search```
+
+#### Difficulty: Medium
+
+Given the ```root``` of a binary tree, return _the __maximum width__ of the given tree_.
+
+The __maximum width__ of a tree is the maximum __width__ among all levels.
+
+The __width__ of one level is defined as the length between the end-nodes (the leftmost and rightmost non-null nodes), where the null nodes between the end-nodes that would be present in a complete binary tree extending down to that level are also counted into the length calculation.
+
+It is __guaranteed__ that the answer will in the range of a 32-bit signed integer.
+
+![image](https://user-images.githubusercontent.com/35042430/233257925-a988d83a-f456-4ead-ba8a-1876cb19beb4.png)
+
+---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2021/05/03/width1-tree.jpg)
+```
+Input: root = [1,3,2,5,3,null,9]
+Output: 4
+Explanation: The maximum width exists in the third level with length 4 (5,3,null,9).
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2022/03/14/maximum-width-of-binary-tree-v3.jpg)
+```
+Input: root = [1,3,2,5,null,null,9,6,null,7]
+Output: 7
+Explanation: The maximum width exists in the fourth level with length 7 (6,null,null,null,null,null,7).
+```
+
+__Example 3:__
+
+![image](https://assets.leetcode.com/uploads/2021/05/03/width3-tree.jpg)
+```
+Input: root = [1,3,2,5]
+Output: 2
+Explanation: The maximum width exists in the second level with length 2 (3,2).
+```
+
+__Constraints:__
+
+- The number of nodes in the tree is in the range ```[1, 3000]```.
+- ```-100 <= Node.val <= 100```
+
+---
+
+The key to solve the problem though lie on how we index the nodes that are on the same level. Suppose that the indices for the first and the last nodes of one particular level are C<sub>1</sub> and C<sub>n</sub> respectively, we could then calculate the width of this level as C<sub>n</sub> - C<sub>1</sub> + 1. If the index of a parent node is C<sub>i</sub>, accordingly we can define the index of its left child node as 2 * C<sub>i</sub> and the index of its right child node as 2 * C<sub>i</sub> + 1.
+
+![image](https://leetcode.com/problems/maximum-width-of-binary-tree/Figures/662/662_full_binary_tree.png)
+
+### ✅ Breadth-First Search
+
+![image](https://leetcode.com/problems/maximum-width-of-binary-tree/Figures/662/662_bfs_traversal.png)
+
+__Algorithm__
+
+Here are a few steps to implement a solution with the BFS traversal.
+
+1. First of all, we create a ```queue``` data structure, which would be used to hold elements of tuple as ```(node, col_index)```, where the ```node``` is the tree node and the ```col_index```x is the corresponding index that is assigned to the node based on our indexing schema. Also, we define a local variable called ```max_width``` which holds the maximal width that we've seen so far.
+2. The BFS traversal is basically an iteration over the elements of ```queue```. We visit the nodes level by level until there are no more elements in the queue.
+    - At the end of each level, we use the indices of the first and the last elements on the same level, in order to obtain the width of the level.
+3. At the end of BFS traversal, we then return the maximal width that we've seen over all levels.
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return None
+
+        max_width = 0
+        queue = collections.deque([(root, 0)])
+
+        while queue:
+            curr_length = len(queue)
+            _, index = queue[0]
+            for _ in range(curr_length):
+                node, level = queue.popleft()
+                if node.left:
+                    queue.append((node.left, 2 * level))
+                if node.right:
+                    queue.append((node.right, 2 * level + 1))
+            
+            max_width = max(max_width, level - index + 1)
+
+        return max_width 
+```
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return None
+
+        widths = collections.defaultdict(int)
+        self.max_width = 0
+
+        def dfs(node, level, index):
+            # Base case
+            if not node:
+                return
+            
+            if not level in widths:
+                widths[level] = index
+            
+            self.max_width = max(self.max_width, index - widths[level] + 1)
+
+            dfs(node.left, level + 1, index * 2)
+            dfs(node.right, level + 1, index * 2 + 1)
+        
+        dfs(root, 0, 0)        
+
+        return self.max_width
+```
