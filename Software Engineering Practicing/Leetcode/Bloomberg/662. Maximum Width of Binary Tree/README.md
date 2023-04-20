@@ -1,6 +1,6 @@
 ## [662. Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
