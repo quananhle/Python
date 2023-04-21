@@ -1,6 +1,6 @@
 ## [879. Profitable Schemes](https://leetcode.com/problems/profitable-schemes/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -40,4 +40,38 @@ __Constraints:__
 - ```0 <= profit[i] <= 100```
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def profitableSchemes(self, n: int, minProfit: int, group: List[int], profit: List[int]) -> int:
+        m = len(group)
+
+        @lru_cache(None)
+        def dp(curr, total_profit, remaining):
+            # Base case
+            if curr == m:
+                if total_profit >= minProfit:
+                    return 1
+                return 0
+            
+            # Recurrence relation: to commit or to do nothing and skip the current crime
+
+            # To do nothing: simply move to the next crime
+            skip = dp(curr + 1, total_profit, remaining)
+
+            # To commit the crime
+            pick = 0
+            # Check if there are enough members to do the current job
+            if remaining >= group[curr]:
+                # Move on the next crime, gather the profit as long as it is larger than minProfit, reduce the members
+                pick = dp(curr + 1, min(minProfit, total_profit + profit[curr]), remaining - group[curr])
+            
+            return pick + skip
+
+        return dp(0, 0, n) % (10**9 + 7)
+```
 
