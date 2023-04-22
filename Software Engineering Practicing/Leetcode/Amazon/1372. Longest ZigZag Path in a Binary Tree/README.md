@@ -54,6 +54,8 @@ __Constraints:__
 
 ### Depth-First Search
 
+![image](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/Figures/1372/1372-1.png)
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
