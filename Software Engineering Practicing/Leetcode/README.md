@@ -28,7 +28,7 @@
 ### Sliding Window
 
 - :warning::warning: [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters) ```Hash Map```
-- 438. Find All Anagrams in a String
+- [438. Find All Anagrams in a String]
 - :warning::warning: [567. Permutation in String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/567.%20Permutation%20in%20String) ```Hash Map``` ```Two Pointers```
 
 ### String Calculations
@@ -123,7 +123,6 @@
 - [279. Perfect Squares]
 - :warning::warning: [322. Coin Change](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/322.%20Coin%20Change)
 - :warning::warning: [416. Partition Equal Subset Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/416.%20Partition%20Equal%20Subset%20Sum)
-- :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - [518. Coin Change II]
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
 - [1155. Number of Dice Rolls With Target Sum]
@@ -132,6 +131,7 @@
 
 ### Longest Common Subsequence
 
+- :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - :no_entry::no_entry::no_entry: [1312. Minimum Insertion Steps to Make a String Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 
 ### State Transition by Inaction | Dynamic Programming State Machine
