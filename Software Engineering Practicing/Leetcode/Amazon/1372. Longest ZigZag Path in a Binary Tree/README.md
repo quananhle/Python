@@ -84,8 +84,6 @@ class Solution:
         return self.ans
 ```
 
-![image](https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/Figures/1372/1372-1.png)
-
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -112,4 +110,37 @@ class Solution:
 
         dfs(root, True, 0)
         return self.ans
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def longestZigZag(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+
+        def dfs(node):
+            nonlocal ans
+
+            if not node.left:
+                left_path = 0
+            else:
+                _, right_child_path = dfs(node.left)
+                left_path = right_child_path + 1
+            
+            if not node.right:
+                right_path = 0
+            else:
+                left_child_path, _ = dfs(node.right)
+                right_path = left_child_path + 1
+            
+            ans = max(ans, left_path, right_path)
+            return left_path, right_path
+        
+        dfs(root)
+        return ans
 ```
