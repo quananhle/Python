@@ -48,6 +48,33 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/Figures/1312/1312-1.png)
 
+- __Time Complexity__: O(n<sup>2</sup>)
+- __Space Complexity__: O(n<sup>2</sup>)
+
+```Python
+class Solution:
+    def minInsertions(self, s: str) -> int:
+        n = len(s)
+        memo = collections.defaultdict(int)
+        
+        def dp(left, right):
+            # Base case
+            if left >= right:
+                return 0
+
+            if (left, right) in memo:
+                return memo[(left, right)]
+
+            if s[left] == s[right]:
+                memo[(left, right)] = dp(left + 1, right - 1)
+            else:
+                memo[(left, right)] = 1 + min(dp(left + 1, right), dp(left, right - 1))
+
+            return memo[(left, right)]
+
+        return dp(0, n - 1)
+```
+
 ```Python
 class Solution:
     def minInsertions(self, s: str) -> int:
@@ -68,6 +95,9 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+- __Time Complexity__: O(n<sup>2</sup>)
+- __Space Complexity__: O(n<sup>2</sup>)
+
 ```Python
 class Solution:
     def minInsertions(self, s: str) -> int:
@@ -86,6 +116,24 @@ class Solution:
 
 #### Optimized Space Bottom-Up Dynamic Programming
 
-```Python
+- __Time Complexity__: O(n<sup>2</sup>)
+- __Space Complexity__: O(n)
 
+```Python
+class Solution:
+    def minInsertions(self, s: str) -> int:
+        n = len(s)
+        dp = [0] * (n + 1)
+
+        for left in range(n - 1, -1, -1):
+            prev = 0
+            for right in range(left, n):
+                tmp = dp[right]
+                if s[left] == s[right]:
+                    dp[right] = prev
+                else:
+                    dp[right] = 1 + min(dp[right], dp[right - 1])
+                prev = tmp
+        
+        return dp[n - 1]
 ```
