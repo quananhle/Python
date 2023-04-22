@@ -1,6 +1,6 @@
 ## [1312. Minimum Insertion Steps to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -41,3 +41,27 @@ __Constraints:__
 - ```s``` consists of lowercase English letters.
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+![image](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/Figures/1312/1312-1.png)
+
+```Python
+class Solution:
+    def minInsertions(self, s: str) -> int:
+        n = len(s)
+
+        @lru_cache(None)
+        def dp(left, right):
+            # Base case
+            if left >= right:
+                return 0
+            elif s[left] == s[right]:
+                return dp(left + 1, right - 1)
+            else:
+                return 1 + min(dp(left + 1, right), dp(left, right - 1))
+
+        return dp(0, n - 1)
+```
