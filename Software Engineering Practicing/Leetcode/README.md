@@ -126,13 +126,17 @@
 - :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - [518. Coin Change II]
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
-- :warning::warning: [879. Profitable Schemes](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/879.%20Profitable%20Schemes)
 - [1155. Number of Dice Rolls With Target Sum]
 - :no_entry::no_entry::no_entry: [1444. Number of Ways of Cutting a Pizza](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza)
 - :warning::warning: [2291. Maximum Profit From Trading Stocks](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/2291.%20Maximum%20Profit%20From%20Trading%20Stocks/)
 
+### Longest Common Subsequence
+
+- :no_entry::no_entry::no_entry: [1312. Minimum Insertion Steps to Make a String Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
+
 ### State Transition by Inaction | Dynamic Programming State Machine
 
+- :no_entry::no_entry::no_entry: [879. Profitable Schemes](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/879.%20Profitable%20Schemes)
 - :warning::warning: [983. Minimum Cost For Tickets](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/983.%20Minimum%20Cost%20For%20Tickets)
 - :no_entry::no_entry::no_entry: [1402. Reducing Dishes](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/1402.%20Reducing%20Dishes/) ```Greedy```
 
