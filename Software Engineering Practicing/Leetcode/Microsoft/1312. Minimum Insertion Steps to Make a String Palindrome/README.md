@@ -65,3 +65,27 @@ class Solution:
 
         return dp(0, n - 1)
 ```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def minInsertions(self, s: str) -> int:
+        n = len(s)
+        dp = [[0] * (n + 1) for _ in range(n + 1)]
+
+        for left in range(n - 1, -1, -1):
+            for right in range(left, n):
+                if s[left] == s[right]:
+                    dp[left][right] = dp[left + 1][right - 1]
+                else:
+                    dp[left][right] = 1 + min(dp[left + 1][right], dp[left][right - 1])
+
+        return dp[0][n - 1]
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming
+
+```Python
+
+```
