@@ -45,6 +45,8 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/profitable-schemes/Figures/879/879A.png)
+
 ```Python
 class Solution:
     def profitableSchemes(self, n: int, minProfit: int, group: List[int], profit: List[int]) -> int:
