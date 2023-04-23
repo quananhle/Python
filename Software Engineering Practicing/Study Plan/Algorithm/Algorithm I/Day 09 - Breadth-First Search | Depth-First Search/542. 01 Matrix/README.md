@@ -1,4 +1,4 @@
-## 542. 01 Matrix
+## [542. 01 Matrix](https://leetcode.com/problems/01-matrix)
 
 ```Tag```: ```Array``` ```Dynamic Programming``` ```Breadth-First Search``` ```Matrix```
 
