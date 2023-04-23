@@ -55,7 +55,7 @@ __Algorithm__
   - Then we look for every possible ending index ```end``` by iterating over indexes from ```start```. If ```s[start ~ end]``` represents a valid integer, we continue looking for the subproblem ```dp(end + 1)``` and update count as ```count += dp(end + 1)```.
   - Update ```memo[start]``` as ```dp(start)```.
 
-3. Return dp(0).
+3. Return ```dp(0)```.
 
 ```Python
 
