@@ -8,7 +8,7 @@ Given an ```m x n``` binary matrix ```mat```, return _the distance of the neares
 
 The distance between two adjacent cells is ```1```.
 
-![image](https://user-images.githubusercontent.com/35042430/209421046-e30988fa-6d05-4b9e-b61a-4b0386777601.png)
+![image](https://user-images.githubusercontent.com/35042430/233821902-47f32b45-cee5-4206-8b18-64442196506f.png)
 
 ---
 
