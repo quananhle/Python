@@ -1,6 +1,6 @@
 ## [1416. Restore The Array](https://leetcode.com/problems/restore-the-array/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -58,7 +58,37 @@ __Algorithm__
 3. Return ```dp(0)```.
 
 ```Python
+class Solution:
+    def numberOfArrays(self, s: str, k: int) -> int:
+        memo = collections.defaultdict(int)
+        m, n = len(s), len(str(k))
+        mod = 10**9 + 7
 
+        def dp(start):
+            # Base cases
+            # If reached the last character of s, return 1
+            if start == m:
+                return 1
+            
+            # Avoid leading zero's
+            if s[start] == '0':
+                return 0
+            
+            if start in memo:
+                return memo[start]
+
+            # Recurrence relation
+            count = 0
+            for end in range(start, m):
+                curr = s[start:end + 1]
+                if int(curr) > k:
+                    break
+                count += dp(end + 1)
+            
+            memo[start] = count % mod
+            return count
+
+        return dp(0) % mod
 ```
 
 #### Bottom-Up Dynamic Programming
