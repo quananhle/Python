@@ -77,7 +77,7 @@ class Solution:
             if start in memo:
                 return memo[start]
 
-            # Recurrence relation
+            # Recurrence relation: for all possible starting number, add the number of arrays that can be printed as the remaining string to count.
             count = 0
             for end in range(start, m):
                 curr = s[start:end + 1]
@@ -87,6 +87,36 @@ class Solution:
             
             memo[start] = count % mod
             return count
+
+        return dp(0) % mod
+```
+
+```Python
+class Solution:
+    def numberOfArrays(self, s: str, k: int) -> int:
+        m, n = len(s), len(str(k))
+        mod = 10**9 + 7
+
+        @lru_cache(None)
+        def dp(start):
+            # Base cases
+            # If reached the last character of s, return 1
+            if start == m:
+                return 1
+            
+            # Avoid leading zero's
+            if s[start] == '0':
+                return 0
+
+            # Recurrence relation
+            count = 0
+            for end in range(start, m):
+                curr = s[start:end + 1]
+                if int(curr) > k:
+                    break
+                count += dp(end + 1)
+
+            return count % mod
 
         return dp(0) % mod
 ```
