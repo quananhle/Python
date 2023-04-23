@@ -39,3 +39,26 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+__Algorithm__
+
+1. Create an array ```memo``` of size ```m + 1```, to store the value of ```dp(x)```.
+
+2. To get the value of ```dp(start)```, if a non-zero ```dp[start]``` exists, it means we have already got its value, return ```dp[start]```. Otherwise:
+
+  - If ```s[start] == 0```, return ```0```.
+  - If ```start = m```, return ```1```.
+  - Initialize ```count = 0```, the number of valid arrays.
+  - Then we look for every possible ending index ```end``` by iterating over indexes from ```start```. If ```s[start ~ end]``` represents a valid integer, we continue looking for the subproblem ```dp(end + 1)``` and update count as ```count += dp(end + 1)```.
+  - Update ```memo[start]``` as ```dp(start)```.
+
+3. Return dp(0).
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
