@@ -39,6 +39,27 @@ There is at least one 0 in mat.
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        # Time Limit Exceeded
+        ROWS, COLS = len(mat), len(mat[0])
+
+        res = [[math.inf if mat[row][col] != 0 else 0 for col in range(COLS)] for row in range(ROWS)]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if mat[row][col] != 0:
+                    for r in range(ROWS):
+                        for c in range(COLS):
+                            if mat[r][c] == 0:
+                                output[row][col] = min(output[row][col], abs(row - r) + abs(col - c))
+
+        return res
+```
+
 ### Breadth-First Search
 
 ```Python
