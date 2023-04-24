@@ -31,3 +31,63 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        res = [[]]
+
+        for c in s:
+            n = len(res)
+            if c.isalpha():
+                for i in range(n):
+                    res.append(res[i][:])
+                    res[i].append(c.lower())
+                    res[n+i].append(c.upper())
+            else:
+                for i in range(n):
+                    res[i].append(c)
+
+        return map("".join, res)
+```
+
+### ✅ Backtracking
+
+```Python
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        res = list()
+        n = len(s)
+        s = s.lower()
+
+        def backtrack(curr, combination):
+            # Base case
+            if curr == n:
+                res.append("".join(combination))
+                return
+            
+            if s[curr].isdigit():
+                combination.append(s[curr])
+                # Recursion
+                backtrack(curr + 1, combination)
+                # Backtracking
+                combination.pop()
+            else:
+                formats = [s[curr], s[curr].upper()]
+                for letter in formats:
+                    combination.append(letter)
+                    # Recursion
+                    backtrack(curr + 1, combination)
+                    # Backtracking
+                    combination.pop()
+
+        backtrack(0, [])
+        return res
+```
+
+### Bitwise Manipulation
+
+```Python
+
+```
