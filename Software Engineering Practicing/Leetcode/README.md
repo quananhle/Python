@@ -217,7 +217,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Heap/Priority Queue
 
-- :four_leaf_clover: 1046. Last Stone Weight
+- :four_leaf_clover: [1046. Last Stone Weight](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2015%20-%20Heap/1046.%20Last%20Stone%20Weight)
 
 ---
 
