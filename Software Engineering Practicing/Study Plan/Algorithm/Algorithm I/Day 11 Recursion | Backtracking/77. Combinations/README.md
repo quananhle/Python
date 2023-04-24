@@ -34,6 +34,40 @@ __Constraints:__
 
 ---
 
+![image](https://user-images.githubusercontent.com/35042430/234092594-f804abcf-b3ce-4273-9476-ab1d30cd41f1.png)
+
+__Algorithm__:
+
+1. If the current ```combination``` is done - add it to the final output ```res```.
+2. Iterate over the integers from ```start``` to ```n```.
+    - Add integer ```curr``` into the current combination ```combination```.
+    - Proceed to add more integers into the combination: ```backtrack(curr + 1, combination)```.
+    - Backtrack by removing ```curr``` from ```combination```.
+
+```Python
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = list()
+
+        def backtrack(start, combination):
+            # Base case: if combination has k elements
+            if len(combination) == k:
+                # Append the combination to the final result
+                res.append(combination[:])
+                return
+
+            for curr in range(start, n + 1):
+                combination.append(curr)
+
+                backtrack(curr + 1, combination)
+
+                # Backtracking
+                combination.pop()
+
+        backtrack(1, [])
+        return res
+```
+
 ```Python
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
