@@ -254,7 +254,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - [78. Subsets]
 - [90. Subsets II]
 - [131. Palindrome Partitioning]
-- [784. Lettercase Permutation]
+- :warning::warning: [784. Lettercase Permutation](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2011%20Recursion%20%7C%20Backtracking/784.%20Letter%20Case%20Permutation) ```Bitwise Manipulation```
 - [1087. Brace Expansion]
 - [93. Restore IP addresses]
 - [1079 Letter Tile Possibilities]
