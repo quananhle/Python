@@ -74,6 +74,20 @@ class Solution(object):
 
         return dp(n)
         """
+        """
+        @lru_cache(None)
+        def dp(steps):
+            # Base case
+            if steps == 1:
+                return 1
+            elif steps == 2:
+                return 2
+            elif steps == 3:
+                return 3
+            else:
+                return dp(steps - 1) + dp(steps - 2)
+        """
+        return dp(n)
         # Bottom-Up Dynamic Programming using Tabulation
         #### Time Complexity: O(N), calculate each number, starting at 3 up to and including N, is visited, computed and then stored for O(1) access later on.
         #### Space Complexity: O(N), stack keep up to the size of n elements
