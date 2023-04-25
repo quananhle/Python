@@ -1,6 +1,6 @@
 ## [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs)
 
-```Tag```: ```Recursion``` ```Dynamic Programming```
+```Tag```: ```Recursion``` ```Dynamic Programming``` ```Bitwise Manipulations```
 
 #### Difficulty: Easy
 
