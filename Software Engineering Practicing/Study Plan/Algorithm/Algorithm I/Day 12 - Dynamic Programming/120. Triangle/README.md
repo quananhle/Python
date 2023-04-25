@@ -39,7 +39,73 @@ __Constraints:__
 
 ---
 
+### Brute Force
 
- 
+```Python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        ans = 0
+        
+        for row in range(len(triangle)):
+            curr = float('inf')
+            for col in range(len(triangle[row])):
+                curr = min(curr, triangle[row][col])
+            ans += curr
+        
+        return ans
+```
 
-Follow up: Could you do this using only O(n) extra space, where n is the total number of rows in the triangle?
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        m = len(triangle)
+        memo = collections.defaultdict(int)
+
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < m):
+                return 0
+            
+            if (row, col) in memo:
+                return memo[(row, col)]
+
+            memo[(row, col)] = triangle[row][col]
+            # Recurrence relation: find the minimum number in the next row to add to the final output
+            memo[(row, col)] += min(dp(row + 1, col), dp(row + 1, col + 1))
+            return memo[(row, col)]
+
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        m = len(triangle)
+
+        @lru_cache(None)
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < m):
+                return 0
+            
+            # Recurrence relation: find the minimum number in the next row to add to the final output
+            path = triangle[row][col]
+            path += min(dp(row + 1, col), dp(row + 1, col + 1))
+            return path
+
+        return dp(0, 0)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+__Follow up__: Could you do this using only ```O(n)``` extra space, where ```n``` is the total number of rows in the triangle?
+
+
