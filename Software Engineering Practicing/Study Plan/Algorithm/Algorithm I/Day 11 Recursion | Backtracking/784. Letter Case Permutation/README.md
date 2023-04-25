@@ -94,21 +94,42 @@ class Solution:
         res = []
         n = len(s)
 
-        def backtrack(start, combination):
+        def helper(start, combination):
             if len(combination) == n:
                 res.append(combination[:])
                 return
 
             for curr in range(start, n):
                 if s[curr].isdigit():
-                    backtrack(curr + 1, combination + s[curr])
+                    helper(curr + 1, combination + s[curr])
                 else:
                     lower_subset = combination + s[curr].lower()
-                    backtrack(curr + 1, lower_subset)
+                    helper(curr + 1, lower_subset)
                     upper_subset = combination + s[curr].upper()
-                    backtrack(curr + 1, upper_subset)
+                    helper(curr + 1, upper_subset)
 
-        backtrack(0, "")
+        helper(0, "")
+        return res
+```
+
+```Python
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        res = []
+        n = len(s)
+
+        def helper(curr, combination):
+            if curr == n:
+                res.append(combination)
+                return
+
+            if s[curr].isalpha():
+                helper(curr + 1, combination + s[curr].upper())
+                helper(curr + 1, combination + s[curr].lower())
+            else:
+                helper(curr + 1, combination + s[curr])
+
+        helper(0, "")
         return res
 ```
 
