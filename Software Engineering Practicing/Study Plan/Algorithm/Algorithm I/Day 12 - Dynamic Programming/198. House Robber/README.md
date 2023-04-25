@@ -80,6 +80,7 @@ class Solution:
             memo[curr] = max(skip, pick)
             return memo[curr]
 
+        # Start robbing from the first house
         return dp(0)
 ```
 
@@ -102,7 +103,8 @@ class Solution:
             pick = dp(curr + 2) + nums[curr]
 
             return max(skip, pick)
-
+            
+        # Start robbing from the first house
         return dp(0)
 ```
 
@@ -114,21 +116,22 @@ class Solution:
         memo = collections.defaultdict(int)
         n = len(nums)
 
-        def dp(i):
+        def dp(curr):
             # Base cases
-            if i == 0:
+            if curr == 0:
                 return nums[0]
-            if i == 1:
+            if curr == 1:
                 return max(nums[0], nums[1])
             
             # Recurrence relation: 
-            # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
-            # If decide to rob house 1, gain the money from the current house and go to 2 houses down
-            # If decide to rob house 2, gain no money from the current house
-            if not i in memo:
-                memo[i] = max(dp(i - 1), dp(i - 2) + nums[i])
-            return memo[i]
+            # Must always rob at least one house -> which house to rob at the beginning? Current house or next?
+            # If decide to rob current house, gain the money from the current house and go to 2 houses down
+            # If decide to rob next house, gain no money from the current house
+            if not curr in memo:
+                memo[curr] = max(dp(curr - 1), dp(curr - 2) + nums[curr])
+            return memo[curr]
         
+        # Start robbing from the last house
         return dp(n - 1)
 ```
 
@@ -138,17 +141,18 @@ class Solution:
         n = len(nums)
 
         @lru_cache(None)
-        def dp(i):
+        def dp(curr):
             # Base case
-            if i < 0:
+            if curr < 0:
                 return 0
             
             # Recurrence relation: 
-            # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
-            # If decide to rob house 1, gain the money from the current house and go to 2 houses down
-            # If decide to rob house 2, gain no money from the current house
-            return max(dp(i - 1), dp(i - 2) + nums[i])
+            # Must always rob at least one house -> which house to rob at the beginning? Current house or next?
+            # If decide to rob current house, gain the money from the current house and go to 2 houses down
+            # If decide to rob next house, gain no money from the current house
+            return max(dp(curr - 1), dp(curr - 2) + nums[curr])
 
+        # Start robbing from the last house
         return dp(n - 1)
 ```
 
@@ -162,18 +166,96 @@ class Solution:
         if len(nums) == 1:
             return nums[0]
 
-        memo = collections.defaultdict(int)
-        memo[0], memo[1] = nums[0], max(nums[0], nums[1])
+        dp = collections.defaultdict(int)
+        dp[0], dp[1] = nums[0], max(nums[0], nums[1])
 
+        # Start from the first house down to the last
         for i in range(2, len(nums)):
-            memo[i] = max(memo[i-1] , memo[i-2] + nums[i])
+            dp[i] = max(dp[i-1] , dp[i-2] + nums[i])
 
-        return memo[len(nums)-1]
+        return dp[len(nums)-1]
+```
+
+```Python
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # Dynamic Programming with Tabulation
+        ans = 0
+        if len(nums) <= 2:
+            return max(nums)
+
+        dp = [0] * len(nums)
+        dp[0], dp[1] = nums[0], max(nums[0], nums[1])
+        
+        # Start from the first house down to the last
+        for curr in range(2, len(nums)):
+            dp[i] = max(dp[curr - 1], dp[curr - 2] + nums[i])
+        return dp[-1]
+```
+
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [0 for _ in range(n + 1)]
+        
+        # Base case
+        '''
+        dp[n - 1], dp[n - 2] = nums[n - 1], max(nums[n - 1], nums[n - 2])
+        '''
+        dp[n - 1] = nums[n - 1]
+
+        # Start from the last house down to the first
+        for i in range(n - 2, -1, -1):
+            dp[i] = max(dp[i + 1], dp[i + 2] + nums[i])
+
+        return dp[0]
+```
+
+#### Space-Optimized Bottom-Up Dynamic Programming
+
+```Python
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # Iterative Dynamic Programming
+        house1, house2 = 0, 0
+
+        for gain in nums:
+            tmp = house1
+            house1 = max(house1, house2 + gain)
+            house2 = tmp
+
+        return house1
+```
+
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        n = len(nums)
+        house1, house2 = 0, nums[-1]
+
+        for i in range(n - 2, -1, -1):
+            current = max(house2, house1 + nums[i])
+            house1 = house2
+            house2 = current
+        
+        return house2
 ```
 
 ---
 
-### Top-Down Recursive
+### Top-Down Recursion
 
 ```Python
 class Solution(object):
@@ -197,64 +279,4 @@ class Solution(object):
                 return 0
             return max(helper(houses, idx - 2) + houses[idx], helper(houses, idx - 1))
         return helper(nums, len(nums)-1)
-```
-
-### Bottom-Up Dynamic Programming with Tabulation
-
-```Python
-class Solution(object):
-    def rob(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        # Dynamic Programming with Tabulation
-        ans = 0
-        if len(nums) <= 2:
-            return max(nums)
-        memo = [0] * len(nums)
-        memo[0] = nums[0]
-        memo[1] = max(nums[0], nums[1])
-        for i in range(2, len(nums)):
-            memo[i] = max(memo[i-1], memo[i-2] + nums[i])
-        return memo[-1]
-```
-
-```Python
-class Solution:
-    def rob(self, nums: List[int]) -> int:
-        n = len(nums)
-        dp = [0 for _ in range(n + 1)]
-        
-        # Base case
-        '''
-        dp[n - 1], dp[n - 2] = nums[n - 1], max(nums[n - 1], nums[n - 2])
-        '''
-        dp[n - 1] = nums[n - 1]
-
-        # Recurrence relation
-        for i in range(n - 2, -1, -1):
-            dp[i] = max(dp[i + 1], dp[i + 2] + nums[i])
-
-        return dp[0]
-```
-
-### Iterative Bottom-Up Dynamic Programming
-
-```Python
-class Solution(object):
-    def rob(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        # Iterative Dynamic Programming
-        house1, house2 = 0, 0
-
-        for gain in nums:
-            tmp = house1
-            house1 = max(house1, house2 + gain)
-            house2 = tmp
-
-        return house1
 ```
