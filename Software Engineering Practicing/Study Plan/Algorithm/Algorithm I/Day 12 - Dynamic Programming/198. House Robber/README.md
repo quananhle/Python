@@ -59,6 +59,56 @@ _Figure 3. Depicting the failure of a greedy strategy on the same example._
 ```Python
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        memo = collections.defaultdict(int)
+        n = len(nums)
+
+        def dp(curr):
+            # Base case: no more house to rob, get no more money
+            if curr >= n:
+                return 0
+            
+            if curr in memo:
+                return memo[curr]
+
+            # Recurrence relation: pick or skip the current house
+
+            # If skip, move on to the next house
+            skip = dp(curr + 1)
+            # If pick, collecting the money of the current house and move to 2-house over
+            pick = dp(curr + 2) + nums[curr]
+            
+            memo[curr] = max(skip, pick)
+            return memo[curr]
+
+        return dp(0)
+```
+
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        @lru_cache(None)
+        def dp(curr):
+            # Base case: no more house to rob
+            if curr >= n:
+                return 0
+            
+            # Recurrence relation: pick or skip the current house
+
+            # If skip the house, move on to the next house
+            skip = dp(curr + 1)
+            # If pick the house, collecting the money and move to 2 house over
+            pick = dp(curr + 2) + nums[curr]
+
+            return max(skip, pick)
+
+        return dp(0)
+```
+
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
         # Top-Down DP (Recursion)
         #### Time Complexity: O(N)
         memo = collections.defaultdict(int)
@@ -71,9 +121,12 @@ class Solution:
             if i == 1:
                 return max(nums[0], nums[1])
             
+            # Recurrence relation: 
+            # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
+            # If decide to rob house 1, gain the money from the current house and go to 2 houses down
+            # If decide to rob house 2, gain no money from the current house
             if not i in memo:
-                # Recurrence relation
-                memo[i] = max(dp(i-1), dp(i-2) + nums[i])
+                memo[i] = max(dp(i - 1), dp(i - 2) + nums[i])
             return memo[i]
         
         return dp(n - 1)
@@ -97,29 +150,6 @@ class Solution:
             return max(dp(i - 1), dp(i - 2) + nums[i])
 
         return dp(n - 1)
-```
-
-```Python
-class Solution:
-    def rob(self, nums: List[int]) -> int:
-        n = len(nums)
-        memo = collections.defaultdict(int)
-        
-        def dp(i):
-            # Base case
-            if i >= n:
-                return 0
-            if i in memo:
-                return memo[i]
-
-            # Recurrence relation: 
-            # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
-            # If decide to rob house 1, gain the money from the current house and go to 2 houses down
-            # If decide to rob house 2, gain no money from the current house
-            memo[i] = max(dp(i + 1), dp(i + 2) + nums[i])
-            return memo[i]
-
-        return dp(0)
 ```
 
 #### Bottom-Up Dynamic Programming
