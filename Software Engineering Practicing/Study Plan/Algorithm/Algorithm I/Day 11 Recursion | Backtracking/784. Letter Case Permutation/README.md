@@ -1,6 +1,6 @@
 ## [784. Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation)
 
-```Tag```: ```Backtracking```
+```Tag```: ```Backtracking``` ```Recursion``` ```Bitwise Manipulation```
 
 #### Difficulty: Medium
 
@@ -54,8 +54,6 @@ class Solution:
 
 ### ✅ Backtracking
 
-#### ✅ Array
-
 ```Python
 class Solution:
     def letterCasePermutation(self, s: str) -> List[str]:
@@ -88,7 +86,7 @@ class Solution:
         return res
 ```
 
-#### String
+### Recursion
 
 ```Python
 class Solution:
