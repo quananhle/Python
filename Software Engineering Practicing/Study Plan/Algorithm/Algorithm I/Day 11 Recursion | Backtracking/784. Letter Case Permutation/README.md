@@ -54,6 +54,8 @@ class Solution:
 
 ### ✅ Backtracking
 
+#### ✅ Array
+
 ```Python
 class Solution:
     def letterCasePermutation(self, s: str) -> List[str]:
@@ -86,8 +88,63 @@ class Solution:
         return res
 ```
 
+#### String
+
+```Python
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        res = []
+        n = len(s)
+
+        def backtrack(start, combination):
+            if len(combination) == n:
+                res.append(combination[:])
+                return
+
+            for curr in range(start, n):
+                if s[curr].isdigit():
+                    backtrack(curr + 1, combination + s[curr])
+                else:
+                    lower_subset = combination + s[curr].lower()
+                    backtrack(curr + 1, lower_subset)
+                    upper_subset = combination + s[curr].upper()
+                    backtrack(curr + 1, upper_subset)
+
+        backtrack(0, "")
+        return res
+```
+
 ### Bitwise Manipulation
 
 ```Python
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        B = sum(letter.isalpha() for letter in s)
+        res = list()
 
+        for bits in range(1 << B):
+            bit = 0
+            combination = list()
+            for letter in s:
+                if letter.isalpha():
+                    if (bits >> bit) & 1:
+                        combination.append(letter.lower())
+                    else:
+                        combination.append(letter.upper())
+                    bit += 1
+                else:
+                    combination.append(letter)
+            
+            res.append("".join(combination))
+        
+        return res
+```
+
+### Built-in Itertool()
+
+```Python
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        f = lambda x: (x.lower(), x.upper()) if x.isalpha() else x
+        return map("".join, itertools.product(*map(f, s)))
 ```
