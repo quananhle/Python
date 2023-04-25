@@ -39,25 +39,61 @@ __Constraints:__
 
 ---
 
+__Interview Tip: In-place Algorithms__
+
+      In-place algorithms overwrite the input to save space, but sometimes this can cause problems. 
+      Here are a couple of situations where an in-place algorithm might not be suitable.
+
+      - The algorithm needs to run in a multi-threaded environment, without exclusive access to the array. 
+      Other threads might need to read the array too, and might not expect it to be modified.
+      - Even if there is only a single thread, or the algorithm has exclusive access to the array while running, 
+      the array might need to be reused later or by another thread once the lock has been released.
+      
+      In an interview, you should always check whether or not the interviewer minds you overwriting the input. 
+      Be ready to explain the pros and cons of doing so if asked!
+
 ### Brute Force
+
+- __Time Complexity__: ```O(N * M)```.
+- __Time Complexity__: ```O(1)```.
 
 ```Python
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        ans = 0
-        
-        for row in range(len(triangle)):
-            curr = float('inf')
+        for row in range(len(triangle) - 2, -1, -1):
             for col in range(len(triangle[row])):
-                curr = min(curr, triangle[row][col])
-            ans += curr
-        
-        return ans
+                triangle[row][col] += min(triangle[row + 1][col], triangle[row + 1][col + 1])
+                
+        return triangle[0][0]
 ```
 
 ### The Framework
 
+#### Bottom-Up Dynamic Programming
+
+![image](https://leetcode.com/problems/triangle/Figures/120/triangle_coordinates.png)
+
+```Python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        m = len(triangle)
+
+        for row in range(1, m):
+            for col in range(row + 1):
+                curr = math.inf
+                if col > 0:
+                    curr = triangle[row - 1][col - 1]
+                if col < row:
+                    curr = min(curr, triangle[row - 1][col])
+                triangle[row][col] += curr
+        
+        return min(triangle[-1])
+```
+
 #### Top-Down Dynamic Programming
+
+- __Time Complexity__: ```O(N^2)```.
+- __Time Complexity__: ```O(N^2)```.
 
 ```Python
 class Solution:
@@ -100,11 +136,7 @@ class Solution:
         return dp(0, 0)
 ```
 
-#### Bottom-Up Dynamic Programming
 
-```Python
-
-```
 
 __Follow up__: Could you do this using only ```O(n)``` extra space, where ```n``` is the total number of rows in the triangle?
 
