@@ -1,6 +1,6 @@
 ## [2336. Smallest Number in Infinite Set](https://leetcode.com/problems/smallest-number-in-infinite-set/)
 
-```Tag```: ```Design```
+```Tag```: ```Design``` ```Heap``` 
 
 #### Difficulty: Medium
 
@@ -43,4 +43,30 @@ __Constraints:__
 - At most 1000 calls will be made in total to ```popSmallest``` and ```addBack```.
 
 ---
+
+### Heap
+
+```Python
+class SmallestInfiniteSet:
+
+    def __init__(self):
+        self.heap = list()
+        self.min = 1
+
+    def popSmallest(self) -> int:
+        if self.heap:
+            return heapq.heappop(self.heap)
+        self.min += 1
+        return self.min - 1
+
+    def addBack(self, num: int) -> None:
+        if self.min > num and not num in self.heap:
+            heapq.heappush(self.heap, num)
+
+
+# Your SmallestInfiniteSet object will be instantiated and called as such:
+# obj = SmallestInfiniteSet()
+# param_1 = obj.popSmallest()
+# obj.addBack(num)
+```
 
