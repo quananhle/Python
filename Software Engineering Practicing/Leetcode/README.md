@@ -91,6 +91,7 @@
 - :four_leaf_clover: [744. Find Smallest Letter Greater Than Target](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 - :warning::warning:[1011. Capacity To Ship Packages Within D Days](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
+
 - Minimum number of days to make m bouquets
 - Magnetic force between two balls
 - Split array largest sum
@@ -100,6 +101,12 @@
 - :four_leaf_clover: [1539. Kth Missing Positive Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1539.%20Kth%20Missing%20Positive%20Number)
 - :warning::warning: [2187. Minimum Time to Complete Trips](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/2187.%20Minimum%20Time%20to%20Complete%20Trips)
 - :warning::warning: [2300. Successful Pairs of Spells and Potions](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/2300.%20Successful%20Pairs%20of%20Spells%20and%20Potions/) ```Two Pointers```
+
+---
+
+## Bitwise Manipulation
+
+- :four_leaf_clover: [231. Power of Two](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/231.%20Power%20of%20Two)
 
 ---
 
