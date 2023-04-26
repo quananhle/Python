@@ -37,15 +37,35 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+- __Time Complexity__: ```O(N^2)```
+- __Space Complexity__: ```O(N)```
+
+```Python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        single_list = list()
+        for num in nums:
+            if not num in single_list:
+                single_list.append(num)
+            else:
+                single_list.remove(num)
+        return single_list.pop()
+```
+
 ### Hash Table
 
+- __Time Complexity__: ```O(N)```
+- __Space Complexity__: ```O(N)```
+- 
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         # Hash Table
         #### Time complexity : O(n)
         #### Space complexity: O(n)        
-        freq = dict()
+        freq = collections.defaultdict(int)
         for num in nums:
             if num in freq:
                 freq[num] += 1
@@ -57,6 +77,7 @@ class Solution:
 ```
 
 ### Math
+
 ```
 2 * (a + b + c) - (a + a + b + b + c) = c
 ```
