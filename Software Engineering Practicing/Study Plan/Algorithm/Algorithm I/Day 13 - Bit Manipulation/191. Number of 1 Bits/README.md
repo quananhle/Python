@@ -42,4 +42,61 @@ __Constraints:__
  
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        ans = 0
+        while n > 0:
+            if n % 2 == 1:
+                ans += 1
+            n = n // 2
+        return ans
+```
+
+### Bitwise Manipulation
+
+```Python
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        ans = 0
+        while n > 0:
+            '''
+            if n & 1:
+                ans += 1
+            '''
+            ans += n & 1
+            n >>= 1
+        return ans
+```
+
 __Follow up__: If this function is called many times, how would you optimize it?
+
+![image](https://leetcode.com/media/original_images/191_Number_Of_Bits.png)
+
+- __Time Complexity__: ```O(1)```
+- __Space Complexity__: ```O(1)```
+
+```Python
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        ans = 0
+        while n != 0:
+            ans += 1
+            n = n & (n - 1)
+        
+        return ans
+```
+
+```Python
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        bits = 0
+        mask = 1
+        for i in range(32):
+            if n & mask:
+                bits += 1
+            mask <<= 1
+        return bits
+```
