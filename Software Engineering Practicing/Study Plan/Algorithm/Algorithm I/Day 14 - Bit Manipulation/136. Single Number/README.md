@@ -58,7 +58,7 @@ class Solution:
 
 - __Time Complexity__: ```O(N)```
 - __Space Complexity__: ```O(N)```
-- 
+
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
