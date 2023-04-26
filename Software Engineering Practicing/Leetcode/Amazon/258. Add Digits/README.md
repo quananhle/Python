@@ -62,3 +62,27 @@ class Solution:
 ```
 
 __Follow up__: Could you do it without any loop/recursion in ```O(1)``` runtime?
+
+### Math
+
+![image](https://user-images.githubusercontent.com/35042430/234653341-4fe34dec-e75b-4f5b-980f-6deb41aa855b.png)
+
+![image](https://user-images.githubusercontent.com/35042430/234653381-e9354281-8752-4c06-8d97-302034837496.png)
+
+```Python
+class Solution:
+    def addDigits(self, num: int) -> int:
+        if num == 0:
+            return 0
+        if num % 9 == 0:
+            return 9
+        return num % 9
+```
+
+### One Liner
+
+```Python
+class Solution:
+    def addDigits(self, num: int) -> int:
+        return 1 + (num - 1) % 9 if num else 0
+```
