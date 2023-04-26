@@ -46,7 +46,19 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def addDigits(self, num: int) -> int:
+        digital_root = 0
 
+        while num > 0:
+            digital_root += num % 10
+            num //= 10
+
+            if num == 0 and digital_root > 9:
+                num = digital_root
+                digital_root = 0
+        
+        return digital_root
 ```
 
 __Follow up__: Could you do it without any loop/recursion in ```O(1)``` runtime?
