@@ -53,9 +53,14 @@ class Solution:
         return ret
 ```
 
+__Follow up__: If this function is called many times, how would you optimize it?
+
 ### Bitwise Manipulation
 
 #### Bit by Bit
+
+- __Time Complexity__: ```O(1)```. Though we have a loop in the algorithm, the number of iteration is fixed regardless the input, since the integer is of fixed-size (32-bits) in our problem.
+- __Space Complexity__: ```O(1)```
 
 ```Python
 class Solution:
@@ -72,4 +77,57 @@ class Solution:
         return ret
 ```
 
-__Follow up__: If this function is called many times, how would you optimize it?
+#### Byte by Byte with Memoization
+
+- __Time Complexity__: ```O(1)```. Though we have a loop in the algorithm, the number of iteration is fixed regardless the input, since the integer is of fixed-size (32-bits) in our problem.
+- __Space Complexity__: ```O(1)```
+
+```Python
+import functools
+
+class Solution:
+    # @param n, an integer
+    # @return an integer
+    def reverseBits(self, n):
+        ret, power = 0, 24
+        while n:
+            ret += self.reverseByte(n & 0xff) << power
+            n = n >> 8
+            power -= 8
+        return ret
+
+    # memoization with decorator
+    @functools.lru_cache(maxsize=256)
+    def reverseByte(self, byte):
+        return (byte * 0x0202020202 & 0x010884422010) % 1023
+```
+
+#### Mask & Shift
+
+![image](https://leetcode.com/problems/reverse-bits/Figures/190/190_mask_shift.png)
+
+__Algorithm__
+
+We can implement the algorithm in the following steps:
+
+1). First, we break the original 32-bit into 2 blocks of 16 bits, and switch them.
+
+2). We then break the 16-bits block into 2 blocks of 8 bits. Similarly, we switch the position of the 8-bits blocks
+
+3). We then continue to break the blocks into smaller blocks, until we reach the level with the block of 1 bit.
+
+4). At each of the above steps, we merge the intermediate results into a single integer which serves as the input for the next step.
+
+- __Time Complexity__: ```O(1)```. Though we have a loop in the algorithm, the number of iteration is fixed regardless the input, since the integer is of fixed-size (32-bits) in our problem.
+- __Space Complexity__: ```O(1)```
+
+```Python
+class Solution:
+    def reverseBits(self, n):
+        n = (n >> 16) | (n << 16)
+        n = ((n & 0xff00ff00) >> 8) | ((n & 0x00ff00ff) << 8)
+        n = ((n & 0xf0f0f0f0) >> 4) | ((n & 0x0f0f0f0f) << 4)
+        n = ((n & 0xcccccccc) >> 2) | ((n & 0x33333333) << 2)
+        n = ((n & 0xaaaaaaaa) >> 1) | ((n & 0x55555555) << 1)
+        return n
+```
