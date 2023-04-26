@@ -1,6 +1,6 @@
 ## [258. Add Digits](https://leetcode.com/problems/add-digits/)
 
-```Tag```: 
+```Tag```: ```Math```
 
 #### Difficulty: Easy
 
@@ -31,5 +31,22 @@ __Constraints:__
 - 0 <= ```num``` <= 2<sup>31</sup> - 1
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def addDigits(self, num: int) -> int:
+        nums = str(num)
+
+        while len(nums) > 1:
+            nums = str(sum([int(c) for c in nums]))
+
+        return int(nums)
+```
+
+```Python
+
+```
 
 __Follow up__: Could you do it without any loop/recursion in ```O(1)``` runtime?
