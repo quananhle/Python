@@ -88,7 +88,7 @@ class Solution:
         return n & (-n) == n
 ```
 
-#### Get the Rightmost 1-bit
+#### Turn off the Rightmost 1-bit
 
 ![image](https://leetcode.com/problems/power-of-two/Figures/231/turn2.png)
 
