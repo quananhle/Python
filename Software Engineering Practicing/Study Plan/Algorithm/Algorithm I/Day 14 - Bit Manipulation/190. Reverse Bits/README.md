@@ -35,4 +35,41 @@ __Constraints:__
  
 ---
 
+![image](https://leetcode.com/problems/reverse-bits/Figures/190/190_mapping.png)
+
+![image](https://leetcode.com/problems/reverse-bits/Figures/190/190_reverse_bits.png)
+
+### Brute Force
+
+```Python
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        ret, power = 0, 31
+        while n:
+            if n % 2 == 1:
+                ret += 2 ** power
+            n //= 2
+            power -= 1
+        return ret
+```
+
+### Bitwise Manipulation
+
+#### Bit by Bit
+
+```Python
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        ret, power = 0, 31
+        while n:
+            '''
+            if n & 1:
+                ret += 1 << power
+            '''
+            ret += (n & 1) << power
+            n = n >> 1
+            power -= 1
+        return ret
+```
+
 __Follow up__: If this function is called many times, how would you optimize it?
