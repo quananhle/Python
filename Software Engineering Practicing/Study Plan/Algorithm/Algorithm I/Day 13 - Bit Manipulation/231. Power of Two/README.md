@@ -38,4 +38,66 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n <= 0:
+            return False
+
+        power = 0
+        base = 2
+        curr = 1
+        while curr < n:
+            curr = base ** power
+            power += 1
+        
+        return curr == n
+```
+
+```Python
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n == 0:
+            return False
+        while n % 2 == 0:
+            n /= 2
+        return n == 1
+```
+
 __Follow up__: Could you solve it without loops/recursion?
+
+### Bitwise Manipulation 
+
+#### Get the Rightmost 1-bit
+
+![image](https://user-images.githubusercontent.com/35042430/234666139-71e2c7fa-d981-484c-9c06-34a86dbc270b.png)
+
+![image](https://leetcode.com/problems/power-of-two/Figures/231/twos.png)
+
+![image](https://leetcode.com/problems/power-of-two/Figures/231/rightmost.png)
+
+![image](https://leetcode.com/problems/power-of-two/Figures/231/first2.png)
+
+```Python
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n == 0:
+            return False
+        return n & (-n) == n
+```
+
+#### Get the Rightmost 1-bit
+
+![image](https://leetcode.com/problems/power-of-two/Figures/231/turn2.png)
+
+![image](https://leetcode.com/problems/power-of-two/Figures/231/second2.png)
+
+```Python
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n == 0:
+            return False
+        return n & (n - 1) == 0
+```
