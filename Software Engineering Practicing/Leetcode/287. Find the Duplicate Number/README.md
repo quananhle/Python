@@ -1,6 +1,6 @@
 ## [287. Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number)
 
-```Tag```: ```Binary Search``` ```Sorting``` ```Hash Set``` ```Hash Table```
+```Tag```: ```Binary Search``` ```Sorting``` ```Hash Set``` ```Hash Table``` ```Bitwise Manipulation```
 
 #### Difficulty: Medium
 
@@ -71,27 +71,6 @@ class Solution:
             seen.add(num)
 ```
 
-### Negative Marking
-
-- __Time Complexity__: ```O(n)```
-- __Space Complexity__: ```O(1)```
-
-```Python
-class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
-        for num in nums:
-            curr = abs(num)
-            if nums[curr] < 0:
-                duplicate = curr
-                break
-            nums[curr] = -nums[curr]
-        
-        for num in nums:
-            num = abs(num)
-        
-        return duplicate
-```
-
 ### Hash Table
 
 - __Time Complexity__: ```O(n)```
@@ -127,20 +106,40 @@ class Solution:
         return dfs(0)
 ```
 
-### Iterative Depth-First Search
+### Bitwise Manipulation
+
+- __Time Complexity__: ```O(n * logn)```
+- __Space Complexity__: ```O(1)```
 
 ```Python
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        while nums[0] != nums[nums[0]]:
-            nums[nums[0]], nums[0] = nums[0], nums[nums[0]]
-        return nums[0]
+        duplicate = 0
+        n = len(nums) - 1
+        bits = n.bit_length()
+        for bit in range(bits):
+            '''
+            mask = 1 << bit
+            '''
+            mask = 2 ** bit
+            base_count = 0
+            nums_count = 0
+            for i in range(n + 1):
+                # If bit is set in number (i) then add 1 to base_count
+                if i & mask:
+                    base_count += 1
+                    
+                # If bit is set in nums[i] then add 1 to nums_count
+                if nums[i] & mask:
+                    nums_count += 1
+                    
+            # If the current bit is more frequently set in nums than it is in 
+            # the range [1, 2, ..., n] then it must also be set in the duplicate number.
+            if nums_count - base_count > 0:
+                duplicate |= mask
+                
+        return duplicate
 ```
-
-__Follow up:__
-
-- How can we prove that at least one duplicate number must exist in nums?
-- Can you solve the problem in linear runtime complexity?
 
 ### Binary Search
 
@@ -148,6 +147,9 @@ Consider an array that has ```n``` distinct numbers in the range ```[1,n]````. F
 
 Consider an example: ```[4,6,4,2,1,4,3,5]```. This has ```n + 1``` elements where ```n = 7```. Take each number from ```1``` to ```7``` and count how many numbers are less than or equal to it. In our example, ```count(1,2,3,4,5,6,7) = (1,2,3,6,7,8,8)```. If we performed a linear scan, we would find that the number ```4``` is the first number to have its counts exceed the actual number (i.e. 6 > 4) - hence ```4``` is the duplicate. A linear scan based approach would require an overall ```O(n^2)``` time complexity in the worst case, since we'd need to iterate over each of the ```n``` numbers (requiring ```O(n)``` time), and then compare it to every element to generate a count of equal or lower numbers (requiring ```O(n)``` time as well - nested inside the other ```O(n)``` loop). Fortunately, ```count``` is __monotonic__ (it's values are always in non-decreasing order), and hence it is an excellent candidate for binary search.
  
+- __Time Complexity__: ```O(n * logn)```
+- __Space Complexity__: ```O(1)```
+
 ```Python
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
@@ -167,4 +169,69 @@ class Solution:
                 lo = mi + 1
             
         return ans
+```
+
+__Follow up:__
+
+- How can we prove that at least one duplicate number must exist in nums?
+- Can you solve the problem in linear runtime complexity?
+
+### Iterative Depth-First Search
+
+- __Time Complexity__: ```O(n)```
+- __Space Complexity__: ```O(1)```
+
+```Python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        while nums[0] != nums[nums[0]]:
+            nums[nums[0]], nums[0] = nums[0], nums[nums[0]]
+        return nums[0]
+```
+
+### Negative Marking
+
+- __Time Complexity__: ```O(n)```
+- __Space Complexity__: ```O(1)```
+
+```Python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        for num in nums:
+            curr = abs(num)
+            if nums[curr] < 0:
+                duplicate = curr
+                break
+            nums[curr] = -nums[curr]
+        
+        for num in nums:
+            num = abs(num)
+        
+        return duplicate
+```
+
+### Floyd's Tortoise and Hare (Cycle Detection)
+
+![image](https://leetcode.com/problems/find-the-duplicate-number/Figures/287/simple_cycle.png)
+
+![image](https://leetcode.com/problems/find-the-duplicate-number/Figures/287/complex_cycle.png)
+
+![image](https://leetcode.com/problems/find-the-duplicate-number/Figures/287/first_intersection.png)
+
+```Python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        fast = slow = nums[0]
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast:
+                break
+
+        slow = nums[0]
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
+
+        return fast
 ```
