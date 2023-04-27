@@ -56,6 +56,21 @@ For ```i = 0``` and ```j > 0```, we consider an empty string of ```s1``` and a n
 
 __3. DB Transition__
 
+Consider ```i > 0```, ```j > 0```, so the prefixes ```a[i]``` and ```b[j]``` are non-empty. 
+
+By definition of the DP, we need to find the smallest length ```k``` such that the substring of ```s1``` of length ```k``` ending at position ```i - 1``` contains ```b[j]```. Since the substring we're looking for ends at position ```i - 1```, its last character is ```s1[i - 1]```.
+
+Let's consider the target substring as the combination of ```p``` and ```s1[i - 1]```, where ```p``` is the target substring with the final character removed. ```p``` is the substring of ```s1``` with length ```k - 1``` ending at index ```i - 2```.
+
+The last character of the prefix ```b[j]``` (the prefix of ```s2``` of length ```j```) is ```s2[j - 1]```. Similarly, let's split this prefix into ```b[j - 1] + s2[j - 1]```. Again, we just split the string at the last character.
+
+The substring ```p + s1[i - 1]``` must contain ```b[j - 1] + s2[j - 1]``` and we want the length of ```p + s1[i - 1]``` to be as small as possible. Since ```len(p + s1[i - 1]) = len(p) + 1```, we want to minimize ```len(p)```, where ```len``` denotes the length of a string.
+
+For every state ```(i, j)```, we have two possibilities:
+
+- If the last character that we removed from each of the two strings is the same, i.e. ```s1[i - 1] == s2[j - 1]```, the condition "```p + s1[i - 1]``` contains ```b[j - 1] + s2[j - 1]```" is equivalent to the condition "```p``` contains ```b[j - 1]```". Remember that ```p``` is a substring of ```s1``` ending at position ```i-2``` and we want to minimize its length. By definition of DP, the smallest length of a substring ending at position ```i-2``` and containing ```b[j - 1]``` is ```dp[i - 1][j - 1]```. Therefore, we have ```dp[i][j] = dp[i - 1][j - 1] + 1```. The ```+ 1``` comes from using this last character that we removed during the split.
+- If the last character that we removed from each of the two strings is not the same, i.e. ```s1[i - 1] != s2[j - 1]```, the condition "```p + s1[i - 1]``` contains ```b[j - 1] + s2[j - 1]```" is equivalent to the condition "```p``` contains ```b[j - 1] + s2[j - 1]```", since ```s1[i - 1]``` is useless. Note that ```b[j - 1] + s2[j - 1] = b[j]```. Therefore, we have the condition "```p``` contains ```b[j]```". This is the same as in the previous case, but now we are looking at ```b[j]``` instead of ```b[j - 1]```. Therefore, we have ```dp[i][j] = dp[i - 1][j] + 1```.
+
 #### Top-Down Dynamic Programming
 
 ```Python
