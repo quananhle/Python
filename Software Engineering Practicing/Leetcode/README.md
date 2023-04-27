@@ -2,8 +2,6 @@
 
 ## Array & String
 
-- :four_leaf_clover: [258. Add Digits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/258.%20Add%20Digits) ```Math``` 
-
 ### 2D Array
 
 - :warning::warning: [1055. Shortest Way to Form String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Introduction%20to%202D%20Array/1055.%20Shortest%20Way%20to%20Form%20String) ```String & Array``` ```Two Poiners``` ```Binary Search``` ```2D Array``` ```Dynamic Programming```
@@ -38,6 +36,7 @@
 - :warning::warning: [43. Multiply Strings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2002%20-%20String/43.%20Multiply%20Strings)
 - [66. Plus One]
 - [67. Add Binary]
+- :four_leaf_clover: [258. Add Digits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/258.%20Add%20Digits) ```Math``` 
 - [415. Add Strings]
 - [989. Add to Array-Form of Integer]
 
