@@ -2,15 +2,11 @@
 
 ## Array & String
 
-- :four_leaf_clover: [258. Add Digits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/258.%20Add%20Digits) ```Math```
+- :four_leaf_clover: [258. Add Digits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/258.%20Add%20Digits) ```Math``` 
 
 ### 2D Array
 
 - :warning::warning: [1055. Shortest Way to Form String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Introduction%20to%202D%20Array/1055.%20Shortest%20Way%20to%20Form%20String) ```String & Array``` ```Two Poiners``` ```Binary Search``` ```2D Array``` ```Dynamic Programming```
-
-### Brainteaser
-
-
 
 ### [Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval)
 
@@ -114,7 +110,7 @@
 - :four_leaf_clover: [190. Reverse Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/190.%20Reverse%20Bits)
 - :four_leaf_clover: [191. Number of 1 Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/191.%20Number%20of%201%20Bits)
 - :four_leaf_clover: [231. Power of Two](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/231.%20Power%20of%20Two)
-
+- :warning::warning: [319. Bulb Switcher](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/319.%20Bulb%20Switcher) ```Brainteaser``` ```Math```
 ---
 
 ## Design
