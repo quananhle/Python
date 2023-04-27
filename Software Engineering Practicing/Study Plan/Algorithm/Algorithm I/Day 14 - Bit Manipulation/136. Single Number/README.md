@@ -4,36 +4,37 @@
 
 #### Difficulty: Easy
 
-Given an integer array ```nums``` and an integer ```k```, return _```true``` if there are two distinct indices ```i``` and ```j``` in the array such that ```nums[i] == nums[j]``` and ```abs(i - j) <= k```_.
+Given a __non-empty__ array of integers ```nums```, every element appears twice except for one. Find that single one.
 
-![image](https://user-images.githubusercontent.com/35042430/211179629-d2905e99-089a-4e26-93c2-408fb447b325.png)
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+![image](https://user-images.githubusercontent.com/35042430/234985986-34184ccc-3779-4dbf-8250-69e3692414c3.png)
 
 ---
 
 __Example 1:__
 ```
-Input: nums = [1,2,3,1], k = 3
-Output: true
+Input: nums = [2,2,1]
+Output: 1
 ```
 
 __Example 2:__
 ```
-Input: nums = [1,0,1,1], k = 1
-Output: true
+Input: nums = [4,1,2,1,2]
+Output: 4
 ```
 
 __Example 3:__
 ```
-Input: nums = [1,2,3,1,2,3], k = 2
-Output: false
+Input: nums = [1]
+Output: 1
 ```
 
 __Constraints:__
-```
-1 <= nums.length <= 105
--109 <= nums[i] <= 109
-0 <= k <= 105
-```
+
+- ```1 <= nums.length <= 3 * 10^4```
+- ```-3 * 10^4 <= nums[i] <= 3 * 10^4```
+- Each element in the array appears twice except for one element which appears only once.
 
 ---
 
@@ -78,16 +79,15 @@ class Solution:
 
 ### Math
 
-```
-2 * (a + b + c) - (a + a + b + b + c) = c
-```
-
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         # Math
         #### Time complexity : O(n)
         #### Space complexity: O(n)
+        ```
+        2 * (a + b + c) - (a + a + b + b + c) = c
+        ```
         return 2 * sum(set(nums)) - sum(nums)
 ```
 
@@ -100,6 +100,7 @@ a ⊕ b ⊕ a = (a ⊕ a) ⊕ b = 0 ⊕ b = b
 
 ```Python
 class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
         # Bit Manipulation
         #### Time complexity : O(n)
         #### Space complexity: O(1)
