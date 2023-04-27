@@ -1,6 +1,6 @@
 ## [727. Minimum Window Subsequence](https://leetcode.com/problems/minimum-window-subsequence/)
 
-```Tag```: 
+```Tag```: ```Dynamic Programming``` ```Sliding Window``` ```Greedy```
 
 #### Difficulty: Hard
 
@@ -34,3 +34,17 @@ __Constraints:__
 - ```s1``` and ```s2``` consist of lowercase English letters.
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
