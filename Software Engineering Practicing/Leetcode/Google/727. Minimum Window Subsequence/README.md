@@ -40,7 +40,37 @@ __Constraints:__
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def minWindow(self, s1: str, s2: str) -> str:
+        m, n = len(s1), len(s2)
+        k = float('inf')
 
+        @lru_cache(None)
+        def dp(start, end):
+            # Base case
+            if end == 0:
+                return 0
+            
+            if start == 0 and end > 0:
+                return float("inf")
+            
+            if s1[start - 1] == s2[end - 1]:
+                ans = 1 + dp(start - 1, end - 1)
+            else:
+                ans = 1 + dp(start - 1, end)
+            
+            return ans
+
+
+        for start in range(m  + 1):
+            k = min(k, dp(start, n))
+
+        if k == float("inf"):
+            return ""
+
+        for end in range(m + 1):
+            if dp(end, n) == k:
+                return s1[end - k:end]
 ```
 
 #### Bottom-Up Dynamic Programming
