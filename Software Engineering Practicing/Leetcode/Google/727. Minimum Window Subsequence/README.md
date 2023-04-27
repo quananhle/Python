@@ -37,7 +37,49 @@ __Constraints:__
 
 ### The Framework
 
+1. DP Function
+2. DP Base Case
+3. DB Transition
+
 #### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def minWindow(self, s1: str, s2: str) -> str:
+        m, n = len(s1), len(s2)
+        k = float('inf')
+        memo = collections.defaultdict(int)
+
+        def dp(i, j):
+            # Base case
+            if j == 0:
+                return 0
+            
+            if i == 0 and j > 0:
+                return float("inf")
+            
+            if (i, j) in memo:
+                return memo[(i, j)]
+
+            # Recurrence relation
+            if s1[i - 1] == s2[j - 1]:
+                memo[(i, j)] = 1 + dp(i - 1, j - 1)
+            else:
+                memo[(i, j)] = 1 + dp(i - 1, j)
+            
+            return memo[(i, j)]
+
+
+        for i in range(m  + 1):
+            k = min(k, dp(i, n))
+
+        if k == float("inf"):
+            return ""
+
+        for j in range(m + 1):
+            if dp(j, n) == k:
+                return s1[j - k:j]
+```
 
 ```Python
 class Solution:
@@ -46,31 +88,32 @@ class Solution:
         k = float('inf')
 
         @lru_cache(None)
-        def dp(start, end):
-            # Base case
-            if end == 0:
+        def dp(i, j):
+            # Base cases
+            if j == 0:
                 return 0
             
-            if start == 0 and end > 0:
+            if i == 0 and j > 0:
                 return float("inf")
             
-            if s1[start - 1] == s2[end - 1]:
-                ans = 1 + dp(start - 1, end - 1)
+            # Recurrence relation
+            if s1[i - 1] == s2[j - 1]:
+                ans = 1 + dp(i - 1, j - 1)
             else:
-                ans = 1 + dp(start - 1, end)
+                ans = 1 + dp(i - 1, j)
             
             return ans
 
 
-        for start in range(m  + 1):
-            k = min(k, dp(start, n))
+        for i in range(m  + 1):
+            k = min(k, dp(i, n))
 
         if k == float("inf"):
             return ""
 
-        for end in range(m + 1):
-            if dp(end, n) == k:
-                return s1[end - k:end]
+        for j in range(m + 1):
+            if dp(j, n) == k:
+                return s1[j - k:j]
 ```
 
 #### Bottom-Up Dynamic Programming
