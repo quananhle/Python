@@ -163,5 +163,54 @@ __Algorithm__
 6. If ```length > n```, that means that we never updated it with any DP value and we return an empty string, otherwise we return the substring of ```s1``` of length ```length``` ending at position ```end - 1```.
 
 ```Python
+class Solution:
+    def minWindow(self, s1: str, s2: str) -> str:
+        m, n = len(s1), len(s2)
+        dp = [[math.inf] * (n + 1) for _ in range(m + 1)]
+        dp[0][0] = 0
+        end = 0
+        length = m + 1
+
+        for i in range(1, m + 1):
+            dp[i][0] = 0
+            for j in range(1, n + 1):
+                dp[i][j] = 1 + (dp[i - 1][j - 1] if s1[i - 1] == s2[j - 1] else dp[i - 1][j])
+            
+            if dp[i][n] < length:
+                length = dp[i][n]
+                end = i
+        
+        return "" if length > m else s1[end-length:end]
+```
+
+#### Optimized Space Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def minWindow(self, s1: str, s2: str) -> str:
+        m, n = len(s1), len(s2)
+        f = [1000000000] * (n + 1)
+        g = [None] * (n + 1)
+        f[0] = 0
+        end = 0
+        length = m + 1
+
+        for i in range(1, m + 1):
+            g[0] = 0
+            for j in range(1, n + 1):
+                g[j] = 1 + (f[j - 1] if s1[i - 1] == s2[j - 1] else f[j])
+            f = g.copy()
+            if f[n] < length:
+                end = i
+                length = f[n]
+
+        return "" if length > m else s1[end - length:end]
+```
+
+---
+
+### Greedy
+
+```Python
 
 ```
