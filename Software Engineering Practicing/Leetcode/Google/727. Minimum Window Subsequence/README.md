@@ -212,5 +212,31 @@ class Solution:
 ### Greedy
 
 ```Python
+class Solution:
+    def minWindow(self, s1: str, s2: str) -> str:
+        m, n = len(s1), len(s2)
+        ans = ""
+        memo = collections.defaultdict(list)
+        indx = [0] * n
 
+        for i in range(m):
+            memo[s1[i]].append(i)
+
+        for start in range(m):
+            prev = start - 1
+
+            for j in range(n):
+                if not s2[j] in memo:
+                    return ""
+                curr = memo[s2[j]]
+                while indx[j] < len(curr) and curr[indx[j]] <= prev:
+                    indx[j] += 1
+                if indx[j] == len(curr):
+                    return ans
+                prev = curr[indx[j]]
+
+            if ans == "" or prev - start + 1 < len(ans):
+                ans = s1[start:prev + 1]
+
+        return ans 
 ```
