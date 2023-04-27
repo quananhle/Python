@@ -148,6 +148,20 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+__Algorithm__
+
+1. Let ```n``` be the length of ```s1``` and ```m``` be the length of ```s2```.
+2. Declare the DP table ```dp[n + 1][m + 1]``` and initialize it with very large values.
+3. Set ```dp[0][0] = 0```. (The base case of the DP.)
+4. Initialize ```end = 0``` and ```length = n + 1```.
+5. Iterate ```i``` from ```1``` to ```n```.
+    - Set ```dp[i][0] = 0```. (The base case of the DP.)
+    - Iterate ```j``` from ```1``` to ```m```.
+        - If ```s1[i - 1] = s2[j - 1]```, set ```dp[i][j] = dp[i - 1][j - 1] + 1```.
+        - Otherwise, set ```dp[i][j] = dp[i - 1][j] + 1```.
+    - If ```dp[i][m] < length```, set ```length = dp[i][m]``` and ```end = i```.
+6. If ```length > n```, that means that we never updated it with any DP value and we return an empty string, otherwise we return the substring of ```s1``` of length ```length``` ending at position ```end - 1```.
+
 ```Python
 
 ```
