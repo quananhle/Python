@@ -37,9 +37,24 @@ __Constraints:__
 
 ### The Framework
 
-1. DP Function
-2. DP Base Case
-3. DB Transition
+__1. Dynamic Programming Function__
+
+Let's define ```dp[i][j]``` as the minimum length of a substring of ```s1``` ending at index ```i - 1``` that contains ```b[j]``` as a subsequence.
+
+- If ```a[i]``` does not contain ```b[j]```, then ```dp[i][j]``` equals infinity.
+- Otherwise, ```dp[i][j] = k```, where the substring of ```s1``` starting at index ```i - k``` and ending at index ```i - 1``` contains ```b[j]``` as a subsequence, and ```k``` is minimized.
+
+Notice that if ```j = m```, we are looking for the original input ```s2```. Therefore, the answer to the original problem is the minimum value of ```dp[i][m]```. We need to search all values of ```i```, as the answer could end at an arbitrary index.
+
+__2. Dynamic Programming Base Case__
+
+The base case of this Dynamic Programming are ```dp[i][0]``` and ```dp[0][j]```.
+
+For ```j = 0```, we consider an empty prefix of ```s2```. Since an empty string (the string of length ```0```) contains an empty prefix of ```s2```, thus ```dp[i][0] = 0```.
+
+For ```i = 0``` and ```j > 0```, we consider an empty string of ```s1``` and a non-empty prefix of ```s2```. Since an empty string does not contain a non-empty one, ```dp[0][j]``` is infinity for ```j > 0```.
+
+__3. DB Transition__
 
 #### Top-Down Dynamic Programming
 
