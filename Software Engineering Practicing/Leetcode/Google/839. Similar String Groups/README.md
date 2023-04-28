@@ -1,6 +1,6 @@
 ## [839. Similar String Groups](https://leetcode.com/problems/similar-string-groups)
 
-```Tag```: ```Depth-First Search```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Union Find```
 
 #### Difficulty: Hard
 
@@ -40,6 +40,9 @@ __Constraints:__
 ### Depth-First Search
 
 ![image](https://leetcode.com/problems/similar-string-groups/Figures/839/839-1.png)
+
+- __Time complexity__: O(n<sup>2</sup> * m)
+- __Space complexity__: O(n<sup>2</sup>)
 
 ```Python
 class Solution:
@@ -84,6 +87,9 @@ class Solution:
 
 ### Breadth-First Search
 
+- __Time complexity__: O(n<sup>2</sup> * m)
+- __Space complexity__: O(n<sup>2</sup>)
+
 ```Python
 class Solution:
     def numSimilarGroups(self, strs: List[str]) -> int:
@@ -126,6 +132,72 @@ class Solution:
             if not node in visited:
                 bfs(node)
                 count += 1
+
+        return count
+```
+
+### Union Find
+
+__Algorithm__
+
+1. Createa an integer variable ```n``` which stores the number of words in ```strs```.
+2. Create an instance of ```UnionFind``` of size ```n```.
+3. For any two words at index ```i``` and ```j``` that behave as nodes, we check whether the words ```strs[i]``` and ```strs[j]``` are similar or not by iterating over all the letters of the words. The words are similar if they are equal or differ only at two indices.
+    - If the words are similar, we use the ```find``` operation to determine the components of both the nodes.
+    - If both nodes belong to different components, we use the ```union``` operation over both nodes to combine the two different connected components into a single one. We also decrement ```count``` by ```1```.
+6. Return ```count```.
+
+- __Time complexity__: O(n<sup>2</sup> * m)
+- __Space complexity__: O(n)
+
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size 
+        self.size = size
+
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] = root_y
+            self.size -= 1
+
+    def get_count(self):
+        return self.size
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
+class Solution:
+    def numSimilarGroups(self, strs: List[str]) -> int:
+        n = len(strs)
+
+        def similar(s, t):
+            diff = 0
+            for i in range(len(s)):
+                if s[i] != t[i]:
+                    diff += 1
+            return diff == 0 or diff == 2
+
+        uf = UnionFind(n)
+        count = n
+        for i in range(n):
+            for j in range(i + 1, n):
+                if similar(strs[i], strs[j]) and uf.find(i) != uf.find(j):
+                    count -= 1
+                    uf.union(i, j)
 
         return count
 ```
