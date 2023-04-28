@@ -1,6 +1,6 @@
 ## [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance)
 
-```Tag```: ```Binary Search``` ```Heap```
+```Tag```: ```Binary Search``` ```Heap``` ```Prefix Sum``` ```Sliding Window```
 
 #### Difficulty: Hard
 
@@ -46,6 +46,9 @@ __Constraints:__
 
 ### Heap
 
+- __Time Complexity__: ```O((k + N) * log⁡N)```
+- __Space Complexity__: ```O((k + N) * log⁡N)```
+
 ```Python
 class Solution:
     def smallestDistancePair(self, nums: List[int], k: int) -> int:
@@ -61,3 +64,11 @@ class Solution:
         
         return distance
 ```
+
+### Binary Search & Prefix Sum
+
+```Python
+
+```
+
+### Binary Search & Sliding Window
