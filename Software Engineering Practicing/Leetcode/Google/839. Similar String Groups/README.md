@@ -36,3 +36,46 @@ __Constraints:__
 - All words in ```strs``` have the same length and are anagrams of each other.
 
 ---
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def numSimilarGroups(self, strs: List[str]) -> int:
+        n = len(strs)
+
+        def similar(s, t):
+            diff = 0
+            for i in range(len(s)):
+                if s[i] != t[i]:
+                    diff += 1
+            return diff == 0 or diff == 2
+
+        # Build the adjacent graph
+        graph = collections.defaultdict(list)
+        for i in range(n):
+            for j in range(i + 1, n):
+                if similar(strs[i], strs[j]):
+                    graph[i].append(j)
+                    graph[j].append(i)
+
+        visited = set()
+
+        def dfs(node):
+            visited.add(node)
+            if not node in graph:
+                return
+            
+            for neighbor in graph[node]:
+                if not neighbor in visited:
+                    visited.add(neighbor)
+                    dfs(neighbor)
+        
+        count = 0
+        for node in range(n):
+            if not node in visited:
+                dfs(node)
+                count += 1
+
+        return count 
+```
