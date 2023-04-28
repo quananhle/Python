@@ -68,7 +68,7 @@ class Solution:
 
 ### Two Pointers
 
-- __Time Complexity:__ ```O((N + M)```
+- __Time Complexity:__ ```O(N + M)```
 - __Space Complexity:__ ```O(N + M)```
 
 ```Python
@@ -101,6 +101,9 @@ class Solution:
 
 ### Binary Search
 
+- __Time Complexity:__ ```O(log(N + M))```
+- __Space Complexity:__ ```O(1)```
+
 ```Python
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
@@ -124,7 +127,6 @@ class Solution:
             if left1 <= right2 and left2 <= right1:
                 if total % 2:
                     return min(right1, right2)
-                
                 return (max(left1, left2) + min(right1, right2)) / 2
             elif left1 > right2:
                 hi = i - 1
