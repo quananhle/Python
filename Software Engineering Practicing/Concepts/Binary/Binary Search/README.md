@@ -254,5 +254,5 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 
 #### [Find the Duplicate Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/287.%20Find%20the%20Duplicate%20Number)
 #### [Median of Two Sorted Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/4.%20Median%20of%20Two%20Sorted%20Arrays)
-#### Find K-th Smallest Pair Distance
+#### [719. Find K-th Smallest Pair Distance](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/719.%20Find%20K-th%20Smallest%20Pair%20Distance)
 #### Split Array Largest Sum
