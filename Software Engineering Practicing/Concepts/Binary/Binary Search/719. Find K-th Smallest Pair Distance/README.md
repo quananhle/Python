@@ -1,6 +1,6 @@
 ## [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance)
 
-```Tag```: ```Binary Search```
+```Tag```: ```Binary Search``` ```Heap```
 
 #### Difficulty: Hard
 
@@ -43,3 +43,21 @@ __Constraints:__
 - ```1 <= k <= n * (n - 1) / 2```
 
 ---
+
+### Heap
+
+```Python
+class Solution:
+    def smallestDistancePair(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        n = len(nums)
+        h = [(nums[i + 1] - nums[i], i, i + 1) for i in range(n - 1)]
+        heapq.heapify(h)
+
+        for _ in range(k):
+            distance, root, neighbor = heapq.heappop(h)
+            if neighbor + 1 < n:
+                heapq.heappush(h, (nums[neighbor + 1] - nums[root], root, neighbor + 1))
+        
+        return distance
+```
