@@ -39,6 +39,8 @@ __Constraints:__
 
 ### Depth-First Search
 
+![image](https://leetcode.com/problems/similar-string-groups/Figures/839/839-1.png)
+
 ```Python
 class Solution:
     def numSimilarGroups(self, strs: List[str]) -> int:
@@ -78,4 +80,52 @@ class Solution:
                 count += 1
 
         return count 
+```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def numSimilarGroups(self, strs: List[str]) -> int:
+        n = len(strs)
+
+        def similar(s, t):
+            diff = 0
+            for i in range(len(s)):
+                if s[i] != t[i]:
+                    diff += 1
+            return diff == 0 or diff == 2
+
+        # Build the adjacent graph
+        graph = collections.defaultdict(list)
+        for i in range(n):
+            for j in range(i + 1, n):
+                if similar(strs[i], strs[j]):
+                    graph[i].append(j)
+                    graph[j].append(i)
+
+        visited = set()
+
+        def bfs(node):
+            queue = collections.deque()
+            queue.append(node)
+            visited.add(node)
+
+            while queue:
+                node = queue.popleft()
+                if not node in graph:
+                    return
+                
+                for neighbor in graph[node]:
+                    if not neighbor in visited:
+                        visited.add(neighbor)
+                        queue.append(neighbor)
+
+        count = 0
+        for node in range(n):
+            if not node in visited:
+                bfs(node)
+                count += 1
+
+        return count
 ```
