@@ -67,6 +67,9 @@ class Solution:
 
 ### Binary Search & Prefix Sum
 
+- __Time Complexity__: ```O(W + N * log⁡W + N * log⁡N)```
+- __Space Complexity__: ```O(N + W)```
+
 ```Python
 class Solution:
     def smallestDistancePair(self, nums: List[int], k: int) -> int:
@@ -101,6 +104,9 @@ class Solution:
 ```
 
 ### Binary Search & Sliding Window
+
+- __Time Complexity__: ```O(N * log⁡W + N * log⁡N)```
+- __Space Complexity__: ```O(1)```
 
 ```Python
 class Solution:
