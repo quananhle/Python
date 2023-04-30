@@ -58,7 +58,7 @@
 
 #### [kSum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/kSum)
 
-- :four_leaf_clover: [1. Two Sum](https://github.com/quananhle/Python/tree/1293f8a22f0909843952586db9533b1ee52f429f/Software%20Engineering%20Practicing/Leetcode/Capital%20One/1.%20Two%20Sum) ```Hash Table```
+- :four_leaf_clover: [1. Two Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Capital%20One/1.%20Two%20Sum) ```Hash Table```
 - :warning::warning: [15. 3Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/15.%203Sum) 
 - :warning::warning: [16. 3Sum Closest](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/16.%203Sum%20Closest) ```Binary Search```
 - :warning::warning: [18. 4Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/18.%204Sum)
