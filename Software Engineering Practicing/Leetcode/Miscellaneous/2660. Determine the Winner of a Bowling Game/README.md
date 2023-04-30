@@ -57,3 +57,49 @@ __Constraints:__
 - ```0 <= player1[i], player2[i] <= 10```
 
 ---
+
+```Python
+class Solution:
+    def isWinner(self, player1: List[int], player2: List[int]) -> int:
+        def calculate_score(player): 
+            ans = 0
+            for i, x in enumerate(player): 
+                ans += x
+                if i and player[i-1] == 10 or i >= 2 and player[i-2] == 10: ans += x
+            return ans
+        
+        diff = calculate_score(player1) - calculate_score(player2)
+        return 1 if diff > 0 else 2 if diff < 0 else 0
+```
+
+```Python
+class Solution:
+    def isWinner(self, player1: List[int], player2: List[int]) -> int:
+        player1_scored_10 = player2_scored_10 = 0
+        score1 = score2 = 0
+        
+        for score in player1:
+            if player1_scored_10 > 0:
+                score1 += 2 * score
+            else:
+                score1 += score
+            player1_scored_10 -= 1
+            if score == 10:
+                player1_scored_10 = 2
+                
+        for score in player2:
+            if player2_scored_10 > 0:
+                score2 += 2 * score
+            else:
+                score2 += score
+            player2_scored_10 -= 1
+            if score == 10:
+                player2_scored_10 = 2
+
+        if score1 == score2:
+            return 0
+        elif score1 > score2:
+            return 1
+        else:
+            return 2
+```
