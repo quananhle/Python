@@ -201,3 +201,53 @@ class Solution:
 
         return count
 ```
+
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size 
+        self.size = size
+
+    def find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
+
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] = root_y
+            self.size -= 1
+
+    def get_count(self):
+        return self.size
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
+class Solution:
+    def numSimilarGroups(self, strs: List[str]) -> int:
+        n = len(strs)
+
+        def similar(s, t):
+            diff = 0
+            for i in range(len(s)):
+                if s[i] != t[i]:
+                    diff += 1
+            return diff == 0 or diff == 2
+
+        uf = UnionFind(n)
+        for i in range(n):
+            for j in range(i + 1, n):
+                if similar(strs[i], strs[j]) and uf.find(i) != uf.find(j):
+                    uf.union(i, j)
+
+        return uf.get_count()
+```
