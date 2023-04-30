@@ -2,6 +2,8 @@
 
 ## Array & String
 
+- :four_leaf_clover: [2660. Determine the Winner of a Bowling Game](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2660.%20Determine%20the%20Winner%20of%20a%20Bowling%20Game) ```Array``` ```Brainteasing```
+
 ### 2D Array
 
 - :warning::warning: [1055. Shortest Way to Form String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Introduction%20to%202D%20Array/1055.%20Shortest%20Way%20to%20Form%20String) ```String & Array``` ```Two Poiners``` ```Binary Search``` ```2D Array``` ```Dynamic Programming```
