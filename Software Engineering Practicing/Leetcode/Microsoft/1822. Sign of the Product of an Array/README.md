@@ -46,6 +46,18 @@ __Constraints:__
 
 ---
 
+### One Pass
+
+```Python
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        prod = 1
+        for num in nums:
+            prod = prod * num
+        
+        return 1 if prod > 0 else -1 if prod < 0 else 0 
+```
+
 ### One Liner
 
 ```Python
