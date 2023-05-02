@@ -58,6 +58,36 @@ class Solution:
         return 1 if prod > 0 else -1 if prod < 0 else 0 
 ```
 
+### Counting
+
+```Python
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        count = 0
+        for num in nums:
+            if num == 0:
+                return 0
+            elif num < 0:
+                count += 1
+        
+        return 1 if count % 2 == 0 else -1
+```
+
+### Flag
+
+```Python
+class Solution:
+    def arraySign(self, nums: List[int]) -> int:
+        positive = True
+        for num in nums:
+            if num == 0:
+                return 0
+            elif num < 0:
+                positive = not positive
+        
+        return 1 if positive else -1
+```
+
 ### One Liner
 
 ```Python
