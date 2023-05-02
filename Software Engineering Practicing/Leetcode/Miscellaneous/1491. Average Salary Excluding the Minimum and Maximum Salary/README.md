@@ -53,3 +53,11 @@ class Solution:
         
         return (avg_salary - min_salary - max_salary) / (n - 2)
 ```
+
+### One Liner
+
+```Python
+class Solution:
+    def average(self, salary: List[int]) -> float:
+        return (sum(salary) - max(salary) - min(salary)) / (len(salary) - 2)
+```
