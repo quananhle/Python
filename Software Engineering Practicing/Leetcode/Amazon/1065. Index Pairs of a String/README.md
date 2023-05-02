@@ -55,6 +55,8 @@ class Solution:
 
 ### Hash Set
 
+![image](https://user-images.githubusercontent.com/35042430/235575118-1bed904c-99f7-40ed-858e-7f03dc0815f2.png)
+
 ```Python
 class Solution:
     def indexPairs(self, text: str, words: List[str]) -> List[List[int]]:
@@ -71,6 +73,18 @@ class Solution:
 ```
 
 ### Trie
+
+![image](https://leetcode.com/problems/index-pairs-of-a-string/Figures/1065/1065_trie.png)
+
+__Algorithm__
+
+1. Maintain the ```trie```. Insert all elements from ```words``` into it. Each trie node contains (possibly zero) outgoing edges to other nodes and a flag that indicates whether the string corresponding to the node belongs to the words set (whether it is marked).
+2. Iterate ```i``` from ```0``` to ```text.length - 1```.
+- Let ```p``` be the trie node corresponding to the current substring, which is empty now. ```p``` is the trie root initially.
+- Iterate ```j``` from ```i``` to ```text.length - 1```
+    - If an outgoing edge from ```p``` labeled with ```text[j]``` does not exist, we cannot add characters to the current substring anymore, so break from the loop. Otherwise, traverse this edge and set ```p``` to its child. If the node is marked, it means ```text[i...j]``` belongs to the set of ```words```, so add the pair ```[i, j]``` to the answer.
+    - __Note__: this optimization is what makes this approach much more efficient because we break from the loop once we know there cannot be any more answers.
+3. Return the answer.
 
 ```Python
 
