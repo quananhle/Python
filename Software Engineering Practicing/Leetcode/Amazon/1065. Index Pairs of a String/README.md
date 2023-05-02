@@ -87,6 +87,40 @@ __Algorithm__
 3. Return the answer.
 
 ```Python
+class TrieNode:
+    def __init__(self):
+        self.flag = False
+        self.next = collections.defaultdict()
 
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+    
+    def insert(self, word):
+        p = self.root
+        for c in word:
+            if not c in p.next:
+                p.next[c] = TrieNode()
+            p = p.next[c]
+        p.flag = True
+
+class Solution:
+    def indexPairs(self, text: str, words: List[str]) -> List[List[int]]:
+        trie = Trie()
+        for word in words:
+            trie.insert(word)
+
+        n = len(text)
+        res = list()
+        for i in range(n):
+            p = trie.root
+            for j in range(i, n):
+                if not text[j] in p.next:
+                    break
+                p = p.next[text[j]]
+                if p.flag:
+                    res.append([i, j])
+
+        return res   
 ```
  
