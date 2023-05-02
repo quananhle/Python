@@ -34,3 +34,22 @@ __Constraints:__
 
 ---
 
+### One Pass
+
+```Python
+class Solution:
+    def average(self, salary: List[int]) -> float:
+        min_salary = float("inf")
+        max_salary = float("-inf")
+        avg_salary = 0
+        n = len(salary)
+
+        for salary in salary:
+            if min_salary > salary:
+                min_salary = salary
+            if max_salary < salary:
+                max_salary = salary
+            avg_salary += salary
+        
+        return (avg_salary - min_salary - max_salary) / (n - 2)
+```
