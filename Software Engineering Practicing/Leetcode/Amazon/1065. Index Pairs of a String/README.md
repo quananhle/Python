@@ -86,6 +86,8 @@ __Algorithm__
     - __Note__: this optimization is what makes this approach much more efficient because we break from the loop once we know there cannot be any more answers.
 3. Return the answer.
 
+![image](https://user-images.githubusercontent.com/35042430/235579726-124571ec-6425-46a2-b249-9f79dec9579b.png)
+
 ```Python
 class TrieNode:
     def __init__(self):
