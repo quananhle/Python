@@ -1,6 +1,6 @@
 ## [1065. Index Pairs of a String](https://leetcode.com/problems/index-pairs-of-a-string/)
 
-```Tag```: 
+```Tag```: ```Sliding Window``` ```Hash Set``` ```Trie```
 
 #### Difficulty: Easy
 
@@ -35,5 +35,44 @@ __Constraints:__
 
 ---
 
+### ✅ Sliding Window
 
+```Python
+class Solution:
+    def indexPairs(self, text: str, words: List[str]) -> List[List[int]]:
+        n = len(text)
+        words = set(words)
+        lengths = set(len(word) for word in words)
+        res = []
+
+        for window in lengths:
+            for start in range(n - window + 1):
+                if text[start:start + window] in words:
+                    res.append([start, start + window - 1])
+
+        return sorted(res)
+```
+
+### Hash Set
+
+```Python
+class Solution:
+    def indexPairs(self, text: str, words: List[str]) -> List[List[int]]:
+        words = set(words)
+        res = list()
+        n = len(text)
+
+        for start in range(n):
+            for end in range(start, n):
+                if text[start:end + 1] in words:
+                    res.append([start, end])
+        
+        return res
+```
+
+### Trie
+
+```Python
+
+```
  
