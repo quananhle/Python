@@ -47,3 +47,35 @@ __Constraints:__
 - There may be multiple edges between two nodes.
 
 ---
+
+### Union Find
+
+__Algorithm__
+
+1. Create a ```UnionFind``` class:
+
+- It has two arrays: ```group``` and ```rank``` which store the ```group``` and ```rank``` of the tree of index ```i``` respectively.
+- And three methods:
+  - ```find(node)``` to find the group of ```node```,
+  - ```join(node1, node2)``` to include both nodes in the same component, and
+  - ```areConnected(node1, node2)``` to check if both nodes belong to the same component.
+
+2. Initialize variables:
+
+- ```uf```, a ```UnionFind``` class's object with ```n``` size:
+- ```queriesCount```, an integer variable denoting the size of the ```queries``` array.
+- ```answer```, an array with ```queriesCount``` size.
+- ```queriesWithIndex```, an array storing all the queries of the ```queries``` array with their original indices.
+- ```edgesIndex```, integer variable with initial value ```0```.
+
+3. Sort all edges in the ```edgeList``` array in increasing order of their edge weights.
+
+4. Sort all queries in the ```queriesWithIndex``` array in increasing order of the limit of edge allowed.
+
+5. Iterate on ```queriesWithIndex``` array, for each query:
+
+- Get the nodes ```p``` and ```q```, the limit ```limit``` and the original index ```queryOriginalIndex``` of the current query.
+- While ```edgesIndex``` is less than the number of edges and its edge weight is less than ```limit```, join the nodes in the edge using ```UnionFind```'s ```join``` method ```uf.join(node1, node2)``` and increment ```edgesIndex``` by ```1```.
+- Check if both nodes ```p```, and ```q``` belong to the same component using ```UnionFind```'s ```uf.areConnected(p, q)``` method. If yes, set ```ans[queryOriginalIndex]``` to ```true```, otherwise to ```false```.
+
+6. Return ```ans```.
