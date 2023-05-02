@@ -83,44 +83,44 @@ __Algorithm__
 ```Python
 class UnionFind:
     def __init__(self, size: int):
-        self.group = [0] * size
+        self.root = [i for i in range(size)]
         self.rank = [0] * size
-        for i in range(size):
-            self.group[i] = i
+        self.size = size
 
-    def find(self, node: int) -> int:
-        if self.group[node] != node:
-            self.group[node] = self.find(self.group[node])
-        return self.group[node]
+    def find(self, x: int) -> int:
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.find(self.root[x])
+        return self.root[x]
 
-    def join(self, node1: int, node2: int):
-        group1 = self.find(node1)
-        group2 = self.find(node2)
+    def union(self, x: int, y: int):
+        root_x = self.find(x)
+        root_y = self.find(y)
         
         # node1 and node2 already belong to same group.
-        if group1 == group2:
+        if root_x == root_y:
             return
 
-        if self.rank[group1] > self.rank[group2]:
-            self.group[group2] = group1
-        elif self.rank[group1] < self.rank[group2]:
-            self.group[group1] = group2
+        if self.rank[root_x] < self.rank[root_y]:
+            self.root[root_x] = root_y
+            self.rank[root_y] += root_x
         else:
-            self.group[group1] = group2
-            self.rank[group2] += 1
+            self.root[root_y] = root_x
+            self.rank[root_x] += root_y
+        self.size -= 1
     
-    def are_connected(self, node1: int, node2: int) -> bool:
-        return self.find(node1) == self.find(node2)
+    def connected(self, x: int, y: int) -> bool:
+        return self.find(x) == self.find(y)
 
 class Solution:
     def distanceLimitedPathsExist(self, n: int, edge_list: List[List[int]], queries: List[List[int]]) -> List[bool]:
         uf = UnionFind(n)
-        queries_count = len(queries)
-        answer = [False] * queries_count
+        n = len(queries)
+        answer = [False] * n
         
         # Store original indices with all queries.
-        queries_with_index = [[] for _ in range(queries_count)]
-        for i in range(queries_count):
+        queries_with_index = [[] for _ in range(n)]
+        for i in range(n):
             queries_with_index[i] = queries[i]
             queries_with_index[i].append(i)
         
@@ -135,13 +135,13 @@ class Solution:
         for [p, q, limit, query_original_index] in queries_with_index:
             # We can attach all edges which satisfy the limit given by the query.
             while edges_index < len(edge_list) and edge_list[edges_index][2] < limit:
-                node1 = edge_list[edges_index][0]
-                node2 = edge_list[edges_index][1]
-                uf.join(node1, node2)
+                x = edge_list[edges_index][0]
+                y = edge_list[edges_index][1]
+                uf.union(x, y)
                 edges_index += 1
             
             # If both nodes belong to the same component, it means we can reach them. 
-            answer[query_original_index] = uf.are_connected(p, q)
+            answer[query_original_index] = uf.connected(p, q)
 
         return answer
 ```
