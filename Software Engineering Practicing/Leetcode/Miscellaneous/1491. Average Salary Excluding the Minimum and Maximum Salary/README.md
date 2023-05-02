@@ -34,6 +34,8 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/Figures/1491/1491A.png)
+
 ### One Pass
 
 ```Python
