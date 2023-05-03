@@ -4,7 +4,6 @@
 
 - :four_leaf_clover: [1491. Average Salary Excluding the Minimum and Maximum Salary](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
 - :four_leaf_clover: [1822. Sign of the Product of an Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1822.%20Sign%20of%20the%20Product%20of%20an%20Array)
-- :four_leaf_clover: [2215. Find the Difference of Two Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2215.%20Find%20the%20Difference%20of%20Two%20Arrays)
 - :four_leaf_clover: [2660. Determine the Winner of a Bowling Game](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2660.%20Determine%20the%20Winner%20of%20a%20Bowling%20Game) ```Array``` ```Brainteasing```
 
 ### 2D Array
@@ -238,6 +237,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ### Hash Set
 
 - :four_leaf_clover: [349. Intersection of Two Arrays](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Two-Pointer%20Technique/349.%20Intersection%20of%20Two%20Arrays) ```Binary Search``` ```Two Pointers```
+- :four_leaf_clover: [2215. Find the Difference of Two Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2215.%20Find%20the%20Difference%20of%20Two%20Arrays) ```Array & String```
 
 ---
 
