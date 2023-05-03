@@ -43,10 +43,53 @@ __Constraints:__
 ### Brute Force
 
 ```Python
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        res = [[], []]
 
+        def helper(nums1, nums2):
+            nums1_set = set()
+
+            for num1 in nums1:
+                exist_in_nums2 = False
+                for num2 in nums2:
+                    if num1 == num2:
+                        exist_in_nums2 = True
+                        break
+
+                if not exist_in_nums2:
+                    nums1_set.add(num1)
+            
+            return list(nums1_set)
+        
+        return [helper(nums1, nums2), helper(nums2, nums1)]
 ```
 
 ### Hash Set
+
+```Python
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        nums1_set = set(nums1)
+        nums2_set = set(nums2)
+        res = [[],[]]
+
+        for num in nums1 + nums2:
+            if num not in nums2_set and num in nums1_set:
+                res[0].append(num)
+                nums1_set.remove(num)
+            elif num not in nums1_set and num in nums2_set:
+                res[1].append(num)
+                nums2_set.remove(num)
+
+        return res
+```
+
+#### One Liner
+
+```Python
+
+```
 
 ```Python
 
