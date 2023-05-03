@@ -1,6 +1,6 @@
 ## [2215. Find the Difference of Two Arrays](https://leetcode.com/problems/find-the-difference-of-two-arrays)
 
-```Tag```: ```String & Array``` ```Hash Set```
+```Tag```: ```String & Array``` ```Hash Set``` ```Hash Table```
 
 #### Difficulty: Easy
 
@@ -50,4 +50,36 @@ __Constraints:__
 
 ```Python
 
+```
+
+### Hash Table
+
+```Python
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        nums1_dict = collections.defaultdict(int)
+        nums2_dict = collections.defaultdict(int)
+
+        for num in nums1:
+            if not num in nums1_dict:
+                nums1_dict[num] += 1
+        for num in nums2:
+            if not num in nums2_dict:
+                nums2_dict[num] += 1
+
+        res = [[], []]
+
+        for num in nums1 + nums2:
+            if num in nums1_dict and not num in nums2_dict:
+                res[0].append(num)
+                nums1_dict[num] -= 1
+                if not nums1_dict[num]:
+                    del nums1_dict[num]
+            elif num in nums2_dict and not num in nums1_dict:
+                res[1].append(num)
+                nums2_dict[num] -= 1
+                if not nums2_dict[num]:
+                    del nums2_dict[num]
+
+        return res
 ```
