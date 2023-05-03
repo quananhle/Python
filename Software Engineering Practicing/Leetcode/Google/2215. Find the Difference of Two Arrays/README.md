@@ -1,6 +1,6 @@
 ## [2215. Find the Difference of Two Arrays](https://leetcode.com/problems/find-the-difference-of-two-arrays)
 
-```Tag```:
+```Tag```: ```String & Array``` ```Hash Set```
 
 #### Difficulty: Easy
 
@@ -40,3 +40,14 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+
+```
+
+### Hash Set
+
+```Python
+
+```
