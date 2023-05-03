@@ -65,7 +65,7 @@ class Solution:
         return [helper(nums1, nums2), helper(nums2, nums1)]
 ```
 
-### Hash Set
+### ✅ Hash Set
 
 ```Python
 class Solution:
@@ -88,11 +88,15 @@ class Solution:
 #### One Liner
 
 ```Python
-
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        return [list(set(nums1).difference(set(nums2))), list(set(nums2).difference(set(nums1)))]
 ```
 
 ```Python
-
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        return [set(nums1) - set(nums2), set(nums2) - set(nums1)]
 ```
 
 ### Hash Table
