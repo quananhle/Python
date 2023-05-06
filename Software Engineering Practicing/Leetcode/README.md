@@ -57,6 +57,7 @@
 - :four_leaf_clover: [344. Reverse String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/344.%20Reverse%20String)
 - :four_leaf_clover: [557. Reverse Words in a String III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/557.%20Reverse%20Words%20in%20a%20String%20III)
 - :four_leaf_clover: [977. Squares of a Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/977.%20Squares%20of%20a%20Sorted%20Array) ```Heap``` ```Sorting```
+- :warning::warning: [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1498.%20Number%20of%20Subsequences%20That%20Satisfy%20the%20Given%20Sum%20Condition) ```Binary Search```
 - :warning::warning: [1578. Minimum Time to Make Rope Colorful](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/) ```Greedy```
 - :four_leaf_clover: [1768. Merge Strings Alternately](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1768.%20Merge%20Strings%20Alternately)
 
