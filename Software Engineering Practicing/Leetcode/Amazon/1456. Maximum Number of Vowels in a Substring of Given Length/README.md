@@ -69,17 +69,15 @@ class Solution:
 
 ![image](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/Figures/1456/2.png)
 
-Algorithm
-Build a hash set vowels that contains all 5 vowel letters, initialize answer as 0.
+__Algorithm__
 
-Record the number of vowel letters in the first k letters as count.
-
-Now we move the "window" to the right, let i be the index of its right boundary:
-
-If s[i] is in vowels, increment count by 1.
-If s[i - k] is in vowels, reduce count by 1.
-Update answer as the maximum count we have encountered.
-Return answer after the iteration ends.
+1. Build a hash set __vowels__ that contains all 5 vowel letters, initialize __answer__ as 0.
+2. Record the number of vowel letters in the first __k__ letters as __count__.
+3. Now we move the "window" to the right, let ```i``` be the index of its right boundary:
+    - If ```s[i]``` is in vowels, increment count by ```1```.
+    - If ```s[i - k]``` is in vowels, reduce count by ```1```.
+    - Update ```answer``` as the maximum count we have encountered.
+4. Return answer after the iteration ends.
 
 ```Python
 class Solution:
