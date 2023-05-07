@@ -55,9 +55,89 @@ Explanation: The longest valid obstacle course at each position is:
 
 __Constraints:__
 
-- ```n == obstacles.length``
+- ```n == obstacles.length```
 - ```1 <= n <= 10^5```
 - ```1 <= obstacles[i] <= 10^7```
 
 ---
 
+__Overview__
+
+As shown in the picture, we have ```4``` obstacles.
+
+- The longest course ending at ```obstacles[0]``` contains ```1``` obstacle, ```obstacles[0]``` itself.
+- The longest course ending at ```obstacles[1]``` contains ```2``` obstacles, ```obstacles[0]``` and ```[1]```.
+- The longest course ending at ```obstacles[2]``` contains ```3``` obstacles, ```obstacles[0]```, ```[1]```, and ```[2]```.
+- The longest course ending at ```obstacles[3]``` contains ```3``` obstacles, ```obstacles[0]```, ```[1]```, and ```[3]```. Note that the course must be non-decreasing so it can't contain ```obstacles[2]``` as it is taller than ```obstacles[3]```.
+
+![image](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/Figures/1964/1.png)
+
+We need to find ```answer```, where ```answer[i]``` represents the length of the longest course that ends with ```obstacles[i]```. In our case, ```answer = [1, 2, 3, 3]```.
+
+### Greedy & Binary Search
+
+![image](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/Figures/1964/3.png)
+
+![image](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/Figures/1964/4.png)
+
+![image](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/Figures/1964/5.png)
+
+![image](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/Figures/1964/2.png)
+
+![image](https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/Figures/1964/2_1.png)
+
+__Algorithm__
+
+1. Initialize an empty array ```lis```, an array ```answer``` of the same length as ```obstacles```.
+2. Iterate over ```obstacles```. At each step ```i```, we find ```idx```, the __rightmost insertion position__ of ```obstacles[i]``` to ```lis```.
+- If ```idx``` equals the length of ```lis```, append ```obstacles[i]``` to ```lis```.
+- Otherwise, update ```lis[idx] = obstacles[i]```.
+- Update ```answer[i] = idx + 1```.
+3. Return ```answer``` once the iteration ends.
+
+```Python
+class Solution:
+    def longestObstacleCourseAtEachPosition(self, obstacles: List[int]) -> List[int]:
+        n = len(obstacles)
+        answer = [1] * n
+
+        lis = list()
+
+        for i, height in enumerate(obstacles):
+            lo, hi = 0, len(lis)
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if lis[mi] <= height:
+                    lo = mi + 1
+                else:
+                    hi = mi                
+            idx = lo
+            if idx == len(lis):
+                lis.append(height)
+            else:
+                lis[idx] = height
+
+            answer[i] = idx + 1
+        
+        return answer
+```
+
+```Python
+class Solution:
+    def longestObstacleCourseAtEachPosition(self, obstacles: List[int]) -> List[int]:
+        n = len(obstacles)
+        answer = [1] * n
+
+        lis = list()
+
+        for i, height in enumerate(obstacles):
+            idx = bisect.bisect_right(lis, height)
+            if idx == len(lis):
+                lis.append(height)
+            else:
+                lis[idx] = height
+
+            answer[i] = idx + 1
+        
+        return answer
+```
