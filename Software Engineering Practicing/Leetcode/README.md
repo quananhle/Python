@@ -172,6 +172,8 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - :no_entry::no_entry::no_entry: [1312. Minimum Insertion Steps to Make a String Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 
+### Longest Increasing Subsequence
+
 ### State Transition by Inaction | Dynamic Programming State Machine
 
 - :no_entry::no_entry::no_entry: [879. Profitable Schemes](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/879.%20Profitable%20Schemes)
