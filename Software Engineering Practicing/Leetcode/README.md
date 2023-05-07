@@ -169,12 +169,13 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 ### Longest Common Subsequence
 
 - :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
-- :no_entry::no_entry::no_entry: [727. Minimum Window Subsequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/727.%20Minimum%20Window%20Subsequence) ```Sliding Window``` ```Greedy```
+- :no_entry::no_entry::no_entry: [727. Minimum Window Subsequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/727.%20Minimum%20Window%20Subsequence) ```Greedy``` ```Sliding Window``` 
 - :no_entry::no_entry::no_entry: [1312. Minimum Insertion Steps to Make a String Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 
 ### Longest Increasing Subsequence
 
-300. :warning::warning: Longest Increasing Subsequence
+-  :warning::warning: 300.Longest Increasing Subsequence ```Binary Search```
+-  :no_entry::no_entry::no_entry: 1964.Find the Longest Valid Obstacle Course at Each Position ```Binary Search``` ```Greedy```
 
 ### State Transition by Inaction | Dynamic Programming State Machine
 
