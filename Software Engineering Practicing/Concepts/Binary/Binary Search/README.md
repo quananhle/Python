@@ -256,3 +256,19 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 #### [Median of Two Sorted Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/4.%20Median%20of%20Two%20Sorted%20Arrays)
 #### [719. Find K-th Smallest Pair Distance](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/719.%20Find%20K-th%20Smallest%20Pair%20Distance)
 #### [Split Array Largest Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/410.%20Split%20Array%20Largest%20Sum)
+
+---
+
+### ```bisect```
+
+#### ```bisect_left```
+
+```Python
+
+```
+
+#### ```bisect_right```
+
+```Python
+
+```
