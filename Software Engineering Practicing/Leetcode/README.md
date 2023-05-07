@@ -174,8 +174,8 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 ### Longest Increasing Subsequence
 
--  :warning::warning: [300.Longest Increasing Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/300.%20Longest%20Increasing%20Subsequence) ```Binary Search```
--  :no_entry::no_entry::no_entry: 1964.Find the Longest Valid Obstacle Course at Each Position ```Binary Search``` ```Greedy```
+-  :warning::warning: [300. Longest Increasing Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/300.%20Longest%20Increasing%20Subsequence) ```Binary Search```
+-  :no_entry::no_entry::no_entry: [1964. Find the Longest Valid Obstacle Course at Each Position](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1964.%20Find%20the%20Longest%20Valid%20Obstacle%20Course%20at%20Each%20Position) ```Binary Search``` ```Greedy```
 
 ### State Transition by Inaction | Dynamic Programming State Machine
 
