@@ -211,6 +211,16 @@ class Solution:
 
 ### Binary Search
 
+In the previous approach, when we have an element ```num``` that is not greater than all the elements in ```lis```, we perform a linear scan to find the first element in ```lis``` that is greater than or equal to ```num```. Since ```lis``` is in sorted order, we can use binary search instead to greatly improve the efficiency of our algorithm.
+
+__Algorithm__
+
+1. Initialize an array ```lis``` which contains the first element of ```nums```.
+2. Iterate through the input, starting from the second element. For each element ```num```:
+- If ```num``` is greater than any element in ```lis```, then add ```num``` to ```lis```.
+- Otherwise, perform a binary search in ```lis``` to find the smallest element that is greater than or equal to ```num```. Replace that element with ```num```.
+3. Return the length of ```lis```.
+
 ```Python
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
