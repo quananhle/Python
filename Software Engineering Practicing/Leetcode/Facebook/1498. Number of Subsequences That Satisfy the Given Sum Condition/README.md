@@ -49,6 +49,18 @@ __Constraints:__
 
 ### Two Pointers
 
+__Algorithm__
+
+1. Initialize ```ans = 0``` and the length of ```nums``` as ```n```. Set two pointers ```left = 0``` and ```right = n - 1```.
+
+2. Iterate over ```left``` while ```left <= right```, for each index ```left```:
+
+- If ```nums[left] + nums[right] > target```, it means ```nums[right]``` is too large for the right boundary, we shall move it to the ```left``` by setting ```right = right - 1```.
+- Otherwise, ```right``` is the rightmost index which ```nums[right] <= target - nums[left]```, we can count the total number of valid subsequences as ![image](https://user-images.githubusercontent.com/35042430/236658938-ca9c2ef6-271f-4cf2-8928-03ef72ce6869.png) and increment ```ans``` by this number.
+Repeat step 2.
+
+3. Return ```ans``` once the iteration ends.
+
 ```Python
 class Solution:
     def numSubseq(self, nums: List[int], target: int) -> int:
