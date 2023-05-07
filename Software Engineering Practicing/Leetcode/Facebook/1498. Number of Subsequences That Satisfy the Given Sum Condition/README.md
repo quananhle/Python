@@ -1,6 +1,6 @@
 ## [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)
 
-```Tag```:
+```Tag```: ```Binary Search``` ```Two Pointers```
 
 #### Difficulty: Medium
 
@@ -47,3 +47,25 @@ __Constraints:__
 
 ---
 
+### Two Pointers
+
+```Python
+class Solution:
+    def numSubseq(self, nums: List[int], target: int) -> int:
+        ans = 0
+        n = len(nums)
+        mod = 10**9 + 7
+
+        nums.sort()
+
+        left, right = 0, n - 1
+
+        while left <= right:
+            if nums[left] + nums[right] <= target:
+                ans = (ans + pow(2, right - left, mod)) % mod
+                left += 1
+            else:
+                right -= 1
+        
+        return ans
+```
