@@ -259,16 +259,40 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 
 ---
 
-### ```bisect```
+### Implmentation of ```bisect``` Python built-in functions
 
 #### ```bisect_left```
 
 ```Python
-
+class bisect:
+    def bisect_left(self, a, x):
+		'''
+        Returns i where all a[:i] is less than x
+        '''
+        lo, hi = 0, len(a)
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            if a[mi] < x: 
+                lo = mi + 1
+            else: 
+                hi = mi
+        return lo
 ```
 
 #### ```bisect_right```
 
 ```Python
-
+class bisect:
+    def bisect_right(self, a, x):
+		'''
+        Returns i where all a[i:] is less than or equal to x
+        '''
+        lo, hi = 0, len(a)
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            if a[mi] <= x:
+                lo = mi + 1
+            else:
+                hi = mi
+        return lo
 ```
