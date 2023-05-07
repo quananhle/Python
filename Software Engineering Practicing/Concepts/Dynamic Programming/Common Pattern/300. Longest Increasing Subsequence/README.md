@@ -90,6 +90,37 @@ class Solution:
         return dp(-1, 0)
 ```
 
+```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        lis = 0
+        n = len(nums)
+        memo = [-1] * (n + 1)
+
+        def dp(curr, prev):
+            # Base case
+            if curr == n:
+                return 0
+
+            if memo[prev + 1] != -1:
+                return memo[prev + 1]
+            
+            # Recurrence relation: to take or to skip the next element?
+            # To skip: move on to the next number
+            skip = dp(curr + 1, prev)
+
+            # To take: update previous value in the with current value, move on to the next number
+            take = 0
+            # Check if subsequence is empty or the previous value in the subsequence is strictly smaller than current number
+            if prev == -1 or nums[prev] < nums[curr]:
+                take = 1 + dp(curr + 1, curr)
+
+            memo[prev + 1] = max(take, skip)
+            return memo[prev + 1]
+
+        return dp(0, -1)
+```
+
 #### Bottom-Up Dynamic Programming (1D Array)
 
 1. Initialize an array ```dp``` with length ```nums.length``` and all elements equal to 1. ```dp[i]``` represents the length of the longest increasing subsequence that ends with the element at index ```i```.
@@ -120,10 +151,10 @@ class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         n = len(nums)
         dp = [1 for _ in range(n)]
-        for i in range(n) : 
+        for i in range(1, n) : 
             for j in range(i) : 
                 if nums[j] < nums[i] and dp[i] < dp[j] + 1 : 
-                    dp[i] = dp[j] + 1 
+                    dp[i] = dp[j] + 1
         return max(dp)
 ```
 
@@ -181,5 +212,34 @@ class Solution:
 ### Binary Search
 
 ```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        lis = list()
+        for num in nums:
+            lo, hi = 0, len(lis)
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if lis[mi] < num:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            i = lo
+            if i == len(lis):
+                lis.append(num)
+            else:
+                lis[i] = num
+        return len(lis)
+```
 
+```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        lis = list()
+        for num in nums:
+            i = bisect.bisect_left(lis, num)
+            if i == len(lis):
+                lis.append(num)
+            else:
+                lis[i] = num
+        return len(lis)
 ```
