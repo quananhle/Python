@@ -209,6 +209,8 @@ class Solution:
         return len(lis)
 ```
 
+---
+
 ### Binary Search
 
 In the previous approach, when we have an element ```num``` that is not greater than all the elements in ```lis```, we perform a linear scan to find the first element in ```lis``` that is greater than or equal to ```num```. Since ```lis``` is in sorted order, we can use binary search instead to greatly improve the efficiency of our algorithm.
