@@ -159,3 +159,27 @@ class Solution:
                 longest_increasing_subsequence.append(num)
         return len(longest_increasing_subsequence)
 ```
+
+```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int: 
+        lis = list()
+        lis.append(nums[0])
+
+        for num in nums[1:]:
+            i = 0
+            if lis[-1] < num:
+                lis.append(num)
+            else:
+                while lis[i] < num:
+                    i += 1
+                lis[i] = num
+
+        return len(lis)
+```
+
+### Binary Search
+
+```Python
+
+```
