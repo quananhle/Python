@@ -52,6 +52,17 @@
 
 ### Two Pointers
 
+696. Count Binary Substrings
+713. Subarray Product Less Than K
+930. Binary Subarrays With Sum
+parent problem for 3 pointers -> 992. Subarrays with K Different Integers
+1358. Number of Substrings Containing All Three Characters
+1513. Number of Substrings With Only 1s
+1839. Longest Substring Of All Vowels in Order
+2062. Count Vowel Substrings of a String
+2063. Vowels of All Substrings
+2302. Count Subarrays With Score Less Than K
+
 - :warning::warning: [189. Rotate Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/189.%20Rotate%20Array)
 - :four_leaf_clover: [283. Move Zeroes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2003%20-%20Two%20Pointers/283.%20Move%20Zeroes)
 - :four_leaf_clover: [344. Reverse String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/344.%20Reverse%20String)
