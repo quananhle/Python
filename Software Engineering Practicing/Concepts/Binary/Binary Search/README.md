@@ -266,7 +266,7 @@ Although Binary Search does require keeping track of 3 indices, the iterative so
 ```Python
 class bisect:
     def bisect_left(self, a, x):
-		'''
+	'''
         Returns i where all a[:i] is less than x
         '''
         lo, hi = 0, len(a)
@@ -284,7 +284,7 @@ class bisect:
 ```Python
 class bisect:
     def bisect_right(self, a, x):
-		'''
+	'''
         Returns i where all a[i:] is less than or equal to x
         '''
         lo, hi = 0, len(a)
