@@ -1,5 +1,11 @@
 # Problems
 
+- [Array & String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#array--string-1)
+  - [2D Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#2d-array-1)
+  - [Intervals](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#intervals)
+  - [Substring](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#substring)
+    - [Palindrome](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#palindrome)
+
 ## Array & String
 
 - :four_leaf_clover: [1491. Average Salary Excluding the Minimum and Maximum Salary](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
