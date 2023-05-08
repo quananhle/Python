@@ -1,10 +1,10 @@
 # Problems
 
-- [Array & String](https://github.com/quananhle/Python/main/Software%20Engineering%20Practicing/Leetcode/README.md#array--string-1)
-  - [2D Array](https://github.com/quananhle/Python/main/Software%20Engineering%20Practicing/Leetcode/README.md#2d-array-1)
-  - [Intervals](https://github.com/quananhle/Python/main/Software%20Engineering%20Practicing/Leetcode/README.md#intervals)
-  - [Substring](https://github.com/quananhle/Python/main/Software%20Engineering%20Practicing/Leetcode/README.md#substring)
-    - [Palindrome](https://github.com/quananhle/Python/main/Software%20Engineering%20Practicing/Leetcode/README.md#palindrome)
+- [Array & String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#array--string-1)
+  - [2D Array](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#2d-array-1)
+  - [Intervals](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#intervals)
+  - [Substring](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#substring)
+    - [Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#palindrome)
 
 ## Array & String
 
