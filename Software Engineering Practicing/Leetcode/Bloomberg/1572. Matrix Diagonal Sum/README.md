@@ -47,3 +47,33 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
+
+```Python
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        ROWS, COLS = len(mat), len(mat[0])
+        visited = set()
+        ans = 0
+
+        def dfs(row, col, is_right):
+            nonlocal ans
+            # Base cases
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return
+            if (row, col) in visited:
+                ans -= mat[row][col]
+
+            ans += mat[row][col]
+            visited.add((row, col))
+            if is_right:
+                dfs(row + 1, col + 1, is_right)
+            else:
+                dfs(row + 1, col - 1, is_right)
+
+            return ans
+        
+        dfs(0, 0, True)
+        dfs(0, COLS - 1, False)
+        return ans
+```
