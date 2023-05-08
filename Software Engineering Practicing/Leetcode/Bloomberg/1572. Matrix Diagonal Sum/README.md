@@ -109,6 +109,8 @@ class Solution:
         return ans
 ```
 
+---
+
 ### Breadth-First Search
 
 ```Python
@@ -139,4 +141,53 @@ class Solution:
                 queue.append((next_row, next_col, is_right))
 
         return ans
+```
+
+---
+
+### Matrix
+
+```Python
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        n = len(mat)
+        ans = 0
+
+        for i in range(n):
+            ans += mat[i][i]
+            ans += mat[n - 1 - i][i]
+
+        if n % 2 != 0:
+            ans -= mat[n // 2][n // 2]
+
+        return ans
+```
+
+```Python
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        n = len(mat)
+        ans = 0
+
+        for i in range(n):
+            ans += mat[i][i]
+            if i == n - 1 - i:
+                continue
+            ans += mat[n - 1 - i][i]
+
+        return ans
+```
+
+#### One Liner
+
+```Python
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        return sum(mat[i][i] + (mat[i][len(mat) - i - 1] if i != len(mat) - i - 1 else 0) for i in range(len(mat)))
+```
+
+```Python
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        return sum(row[i] + row[len(mat) - i - 1] for i, row in enumerate(mat)) - mat[len(mat) // 2][len(mat) // 2] * (len(mat) % 2)
 ```
