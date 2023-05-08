@@ -1,6 +1,6 @@
 ## [1572. Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/)
 
-```Tag```: ```Depth-First Search```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Matrix```
 
 #### Difficulty: Easy
 
@@ -75,5 +75,68 @@ class Solution:
         
         dfs(0, 0, True)
         dfs(0, COLS - 1, False)
+        return ans
+```
+
+```Python
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        ROWS, COLS = len(mat), len(mat[0])
+        rightward, leftward = [(1, 1)], [(1, -1)]
+        visited = set()
+        ans = 0
+
+        def dfs(row, col, is_right):
+            nonlocal ans
+            # Base cases
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 0
+            if (row, col) in visited:
+                ans -= mat[row][col]
+
+            ans += mat[row][col]
+            visited.add((row, col))
+            if is_right:
+                direction = rightward
+            else:
+                direction = leftward
+
+            [dfs(row + dx, col + dy, is_right) for dx, dy in direction]
+            return ans
+        
+        dfs(0, 0, True)
+        dfs(0, COLS - 1, False)
+        return ans
+```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        ROWS, COLS = len(mat), len(mat[0])
+        rightward, leftward = [(1, 1)], [(1, -1)]
+        visited = set()
+        ans = 0
+
+        queue = collections.deque([(0, 0, True), (0, COLS - 1, False)])
+
+        while queue:
+            row, col, is_right = queue.popleft()
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                continue
+            if (row, col) in visited:
+                ans -= mat[row][col]
+
+            ans += mat[row][col]
+            visited.add((row, col))
+            if is_right:
+                direction = rightward
+            else:
+                direction = leftward
+
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in direction]:
+                queue.append((next_row, next_col, is_right))
+
         return ans
 ```
