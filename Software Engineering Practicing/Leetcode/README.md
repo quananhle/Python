@@ -12,8 +12,9 @@
 - :four_leaf_clover: [1822. Sign of the Product of an Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1822.%20Sign%20of%20the%20Product%20of%20an%20Array)
 - :four_leaf_clover: [2660. Determine the Winner of a Bowling Game](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2660.%20Determine%20the%20Winner%20of%20a%20Bowling%20Game) ```Array``` ```Brainteasing```
 
-### 2D Array
+### 2D Array/Matrix
 
+- :warning::warning: [311. Sparse Matrix Multiplication](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/311.%20Sparse%20Matrix%20Multiplication)
 - :warning::warning: [1055. Shortest Way to Form String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Introduction%20to%202D%20Array/1055.%20Shortest%20Way%20to%20Form%20String) ```String & Array``` ```Two Poiners``` ```Binary Search``` ```2D Array``` ```Dynamic Programming```
 
 ### [Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval)
