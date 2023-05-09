@@ -80,7 +80,7 @@ class Solution:
         return [[student, sum(grades[student][-5:])//5] for student in sorted(grades.keys())]
 ```
 
-### Priority Queue
+### ✅ Priority Queue
 
 #### ✅ Heapify
 
