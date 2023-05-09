@@ -39,3 +39,29 @@ __Constraints:__
 
 ---
 
+### Sorting
+
+```Python
+class Solution:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        res = list()
+        scores = collections.defaultdict(list)
+        for student, grade in items:
+            scores[student].append(grade)
+
+        for student, grades in scores.items():
+            res.append([student, sorted(grades, reverse=True)])
+        for i in range(len(res)):
+            res[i][1] = sum(res[i][1][:5]) // 5
+
+        return sorted(res)
+```
+
+```Python
+class Solution:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        scores = collections.defaultdict(list)
+        for student, grade in items:
+            scores[student].append(grade)
+        return([[key, int(sum(sorted(scores[key], reverse=True)[:5])/5)] for key in sorted(scores.keys())])
+```
