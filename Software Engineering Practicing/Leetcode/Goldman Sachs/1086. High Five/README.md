@@ -13,3 +13,29 @@ A student's __top five average__ is calculated by taking the sum of their top fi
 ![image](https://github.com/quananhle/Python/assets/35042430/07fa9efe-b0a2-41b7-a5be-8bec48f6e7e4)
 
 ---
+
+__Example 1:__
+```
+Input: items = [[1,91],[1,92],[2,93],[2,97],[1,60],[2,77],[1,65],[1,87],[1,100],[2,100],[2,76]]
+Output: [[1,87],[2,88]]
+Explanation: 
+The student with ID = 1 got scores 91, 92, 60, 65, 87, and 100. Their top five average is (100 + 92 + 91 + 87 + 65) / 5 = 87.
+The student with ID = 2 got scores 93, 97, 77, 100, and 76. Their top five average is (100 + 97 + 93 + 77 + 76) / 5 = 88.6, but with integer division their average converts to 88.
+```
+
+__Example 2:__
+```
+Input: items = [[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100]]
+Output: [[1,100],[7,100]]
+```
+
+__Constraints:__
+
+- ```1 <= items.length <= 1000```
+- ```items[i].length == 2```
+- 1 <= ID<sub>i</sub> <= 1000
+- 0 <= score<sub>i</sub> <= 100
+- For each ```ID```<sub>i</sub>, there will be at least five scores.
+
+---
+
