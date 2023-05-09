@@ -41,7 +41,7 @@ __Constraints:__
 
 ### Built-in Functions
 
-#### Sorting
+#### Sort()
 
 ```Python
 class Solution:
@@ -68,7 +68,7 @@ class Solution:
         return([[key, int(sum(sorted(scores[key], reverse=True)[:5])/5)] for key in sorted(scores.keys())])
 ```
 
-#### ```Bisect``` ```Insort```
+#### ```Bisect``` ```Insort()```
 
 ```Python
 class Solution:
@@ -78,4 +78,18 @@ class Solution:
             # Insert in a list in increasing order
             bisect.insort(grades[student], score)
         return [[student, sum(grades[student][-5:])//5] for student in sorted(grades.keys())]
+```
+
+### Heap
+
+#### ```nlargest()```
+
+```Python
+class Solution:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        students = collections.defaultdict(list)
+        [students[id].append(score) for id, score in items]
+
+        for i in sorted(students):
+            yield i, sum(heapq.nlargest(5, students[i])) // 5
 ```
