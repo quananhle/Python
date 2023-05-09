@@ -82,7 +82,7 @@ class Solution:
 
 ### Priority Queue
 
-#### ✅ Heapify()
+#### ✅ Heapify
 
 ```Python
 class Solution:
