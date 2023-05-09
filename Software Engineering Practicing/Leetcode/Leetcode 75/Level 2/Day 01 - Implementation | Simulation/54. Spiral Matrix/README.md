@@ -99,6 +99,31 @@ class Solution:
         return res
 ```
 
+```Python
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        ROWS, COLS = len(matrix), len(matrix[0])
+        res = list()
+        visited = set()
+
+        def dfs(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in visited):
+                return
+            res.append(matrix[row][col])
+            visited.add((row, col))
+
+            if row <= col + 1:
+                dfs(row, col + 1)
+            
+            dfs(row + 1, col)
+            dfs(row, col - 1)
+            dfs(row - 1, col)      
+        
+        dfs(0, 0)
+        return res
+```
+
 #### Iterative Breath-First Search
 
 ```Python
