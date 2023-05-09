@@ -80,7 +80,28 @@ class Solution:
         return [[student, sum(grades[student][-5:])//5] for student in sorted(grades.keys())]
 ```
 
-### Heap
+### Priority Queue
+
+#### ✅ Heapify()
+
+```Python
+class Solution:
+    def highFive(self, items: List[List[int]]) -> List[List[int]]:
+        students = collections.defaultdict(list)
+        for idx, grade in items:
+            heapq.heappush(students[idx], grade)
+            if len(students[idx]) > 5:
+                heapq.heappop(students[idx])
+
+        '''
+        res = [[idx, sum(students[idx]) // len(students[idx])] for idx in sorted(students)]
+        '''
+        res = list()
+        for student, grades in sorted(students.items()):
+            res.append([student, sum(grades) // len(grades)])
+
+        return res
+```
 
 #### ```nlargest()```
 
