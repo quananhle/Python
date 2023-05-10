@@ -30,3 +30,33 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
+
+```Python
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        matrix = [[None] * n for _ in range(n)]
+        ROWS, COLS = n, n
+
+        def dfs(row, col, curr):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS and not matrix[row][col]):
+                return
+
+            matrix[row][col] = curr
+
+            # Ensure to traverse rightward whenever possible
+            if row <= col + 1:
+                dfs(row, col + 1, curr + 1)
+            
+            # Traverse downward
+            dfs(row + 1, col, curr + 1)
+            # Traverse leftward
+            dfs(row, col - 1, curr + 1)
+            # Traverse upward
+            dfs(row - 1, col, curr + 1)
+        
+        dfs(0, 0, 1)
+
+        return matrix
+```
