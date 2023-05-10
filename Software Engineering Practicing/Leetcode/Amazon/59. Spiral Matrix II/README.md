@@ -1,6 +1,6 @@
 ## [59. Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii/)
 
-```Tag```: ```Depth-First Search```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Matrix```
 
 #### Difficulty: Medium
 
@@ -60,3 +60,75 @@ class Solution:
 
         return matrix
 ```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        matrix = [[0] * n for _ in range(n)]
+        # Leftward, Downward, Rightward, Upward
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        row, col, dir, val = 0, 0, 0, 1
+
+        for _ in range(n * n):
+            matrix[row][col] = val
+            val += 1
+            dx, dy = directions[dir]
+            next_row, next_col = row + dx, col + dy
+
+            if (next_row < 0 or next_row >= n or next_col < 0 or next_col >= n or matrix[next_row][next_col] != 0):
+                dir = (dir + 1) % 4
+                dx, dy = directions[dir]
+                next_row, next_col = row + dx, col + dy
+
+            row, col = next_row, next_col
+
+        return matrix
+```
+
+### Matrix
+
+```Python
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        matrix = [[0] * n for _ in range(n)]  # Initialize the matrix with zeros
+        num = 1  # Starting number
+        
+        # Define boundaries
+        top = 0
+        bottom = n - 1
+        left = 0
+        right = n - 1
+        
+        while top <= bottom and left <= right:
+            # Traverse from left to right
+            for col in range(left, right + 1):
+                matrix[top][col] = num
+                num += 1
+            top += 1
+            
+            # Traverse from top to bottom
+            for row in range(top, bottom + 1):
+                matrix[row][right] = num
+                num += 1
+            right -= 1
+            
+            # Traverse from right to left
+            if top <= bottom:
+                for col in range(right, left - 1, -1):
+                    matrix[bottom][col] = num
+                    num += 1
+                bottom -= 1
+            
+            # Traverse from bottom to top
+            if left <= right:
+                for row in range(bottom, top - 1, -1):
+                    matrix[row][left] = num
+                    num += 1
+                left += 1
+        
+        return matrix
+```
+
+
