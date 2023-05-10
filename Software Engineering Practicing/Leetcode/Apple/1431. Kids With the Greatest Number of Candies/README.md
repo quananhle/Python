@@ -63,6 +63,17 @@ class Solution:
         return res
 ```
 
+### In-Place Modification
+
+```Python
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        greatest = max(candies)
+        for kid, candy in enumerate(candies):
+            candies[kid] = candy + extraCandies >= greatest
+        return candies
+```
+
 ### One Liner
 
 ```Python
