@@ -11,7 +11,9 @@
 
 ## Array & String
 
-- :four_leaf_clover: [1491. Average Salary Excluding the Minimum and Maximum Salary](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
+- - :four_leaf_clover: [1071. Greatest Common Divisor of Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
+- :four_leaf_clover: [1431. Kids With the Greatest Number of Candies](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/1431.%20Kids%20With%20the%20Greatest%20Number%20of%20Candies)
+-:four_leaf_clover: [1491. Average Salary Excluding the Minimum and Maximum Salary](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
 - :four_leaf_clover: [1822. Sign of the Product of an Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1822.%20Sign%20of%20the%20Product%20of%20an%20Array)
 - :four_leaf_clover: [2660. Determine the Winner of a Bowling Game](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2660.%20Determine%20the%20Winner%20of%20a%20Bowling%20Game) ```Array``` ```Brainteasing```
 
@@ -76,10 +78,9 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [189. Rotate Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/189.%20Rotate%20Array)
 - :four_leaf_clover: [283. Move Zeroes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2003%20-%20Two%20Pointers/283.%20Move%20Zeroes)
 - :four_leaf_clover: [344. Reverse String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/344.%20Reverse%20String)
+- :four_leaf_clover: [345. Reverse Vowels of a String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/345.%20Reverse%20Vowels%20of%20a%20String)
 - :four_leaf_clover: [557. Reverse Words in a String III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/557.%20Reverse%20Words%20in%20a%20String%20III)
 - :four_leaf_clover: [977. Squares of a Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/977.%20Squares%20of%20a%20Sorted%20Array) ```Heap``` ```Sorting```
-- :four_leaf_clover: [1071. Greatest Common Divisor of Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
-- :four_leaf_clover: [1431. Kids With the Greatest Number of Candies](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/1431.%20Kids%20With%20the%20Greatest%20Number%20of%20Candies)
 - :warning::warning: [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1498.%20Number%20of%20Subsequences%20That%20Satisfy%20the%20Given%20Sum%20Condition) ```Binary Search```
 - :warning::warning: [1578. Minimum Time to Make Rope Colorful](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/) ```Greedy```
 - :four_leaf_clover: [1768. Merge Strings Alternately](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1768.%20Merge%20Strings%20Alternately)
