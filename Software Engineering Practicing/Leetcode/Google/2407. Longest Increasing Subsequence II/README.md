@@ -1,6 +1,6 @@
 ## [2407. Longest Increasing Subsequence II](https://leetcode.com/problems/longest-increasing-subsequence-ii/)
 
-```Tag```:
+```Tag```: ```Segment Tree```
 
 #### Difficulty: Hard
 
@@ -49,7 +49,7 @@ The subsequence has a length of 1, so we return 1.
 
 __Constraints:__
 
-1 <= ```nums.length``` <= 10<sup>5</sup>
-1 <= ```nums[i]```, ```k``` <= 10<sup>5</sup>
+- 1 <= ```nums.length``` <= 10<sup>5</sup>
+- 1 <= ```nums[i]```, ```k``` <= 10<sup>5</sup>
 
 ---
