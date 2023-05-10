@@ -337,8 +337,8 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 #### Spiral Matrix
 
-- :warning::warning: [54. Spiral Matrix](https://github.com/quananhle/Python/blob/743e30df8d2f1ae04539d77f6c22080a9370c828/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2001%20-%20Implementation%20%7C%20Simulation/54.%20Spiral%20Matrix) ```Breadth-First Search```
-- :warning::warning: [59. Spiral Matrix II](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/59.%20Spiral%20Matrix%20II)
+- :warning::warning: [54. Spiral Matrix](https://github.com/quananhle/Python/blob/743e30df8d2f1ae04539d77f6c22080a9370c828/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2001%20-%20Implementation%20%7C%20Simulation/54.%20Spiral%20Matrix) ```Breadth-First Search``` ```Matrix```
+- :warning::warning: [59. Spiral Matrix II](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/59.%20Spiral%20Matrix%20II) ```Breadth-First Search``` ```Matrix```
 
 ### Stack
 
