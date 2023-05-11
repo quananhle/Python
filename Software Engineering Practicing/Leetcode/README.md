@@ -179,6 +179,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [416. Partition Equal Subset Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/416.%20Partition%20Equal%20Subset%20Sum)
 - [518. Coin Change II]
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
+- :four_leaf_clover: [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
 - :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
 - [1155. Number of Dice Rolls With Target Sum]
 - :no_entry::no_entry::no_entry: [1416. Restore The Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1416.%20Restore%20The%20Array)
@@ -189,13 +190,13 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 - :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - :no_entry::no_entry::no_entry: [727. Minimum Window Subsequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/727.%20Minimum%20Window%20Subsequence) ```Greedy``` ```Sliding Window``` 
+- :warning::warning: [1035. Uncrossed Lines](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1035.%20Uncrossed%20Lines)
 - :no_entry::no_entry::no_entry: [1312. Minimum Insertion Steps to Make a String Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 
 ### Longest Increasing Subsequence
 
 - :warning::warning: [300. Longest Increasing Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/300.%20Longest%20Increasing%20Subsequence) ```Binary Search```
 - 673. Number of Longest Increasing Subsequence
-- :warning::warning: [1035. Uncrossed Lines](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1035.%20Uncrossed%20Lines)
 - :no_entry::no_entry::no_entry: [1964. Find the Longest Valid Obstacle Course at Each Position](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1964.%20Find%20the%20Longest%20Valid%20Obstacle%20Course%20at%20Each%20Position) ```Binary Search``` ```Greedy```
 - :no_entry::no_entry::no_entry: [2407. Longest Increasing Subsequence II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2407.%20Longest%20Increasing%20Subsequence%20II) ```Segment Tree```
 
