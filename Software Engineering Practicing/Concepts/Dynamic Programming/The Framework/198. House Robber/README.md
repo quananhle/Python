@@ -54,6 +54,8 @@ _Figure 3. Depicting the failure of a greedy strategy on the same example._
 
 ![image](https://user-images.githubusercontent.com/35042430/218662708-29b4e063-8113-4de5-9eb0-c04db1eb0990.png)
 
+#### Top-Down Dynamic Programming
+
 ```Python
 class Solution:
     def rob(self, nums: List[int]) -> int:
@@ -77,24 +79,30 @@ class Solution:
         return dp(n - 1)
 ```
 
-```Python
+```
 class Solution:
     def rob(self, nums: List[int]) -> int:
         n = len(nums)
+        memo = collections.defaultdict(int)
 
-        @lru_cache(None)
-        def dp(i):
+        def dp(curr):
             # Base case
-            if i < 0:
+            if curr >= n:
                 return 0
             
-            # Recurrence relation: 
-            # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
-            # If decide to rob house 1, gain the money from the current house and go to 2 houses down
-            # If decide to rob house 2, gain no money from the current house
-            return max(dp(i - 1), dp(i - 2) + nums[i])
+            if curr in memo:
+                return memo[curr]
+            
+            # Recurrence relation: to skip or to rob the current house?
+            # Skip, move on to the next house, not gaining any money from the current house
+            skip = dp(curr + 1)
+            # Take, mvoe on down to 2 houses over, take the money off the current house
+            take = nums[curr] + dp(curr + 2)
+            # What is the best decision though?
+            memo[curr] = max(skip, take)
+            return memo[curr]
 
-        return dp(n - 1)
+        return dp(0)
 ```
 
 ```Python
@@ -112,8 +120,8 @@ class Solution:
 
             # Recurrence relation: 
             # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
-            # If decide to rob house 1, gain the money from the current house and go to 2 houses down
-            # If decide to rob house 2, gain no money from the current house
+            # If decide to rob current house, gain the money from the current house and go to 2 houses down
+            # If decide to skip current house, gain no money from the current house, move to the next house
             memo[i] = max(dp(i + 1), dp(i + 2) + nums[i])
             return memo[i]
 
@@ -138,35 +146,51 @@ class Solution:
         return memo[len(nums)-1]
 ```
 
----
-
-### Top-Down Recursive
-
 ```Python
-class Solution(object):
-    def rob(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        """
-        This particular problem and most of others can be approached using the following sequence:
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
 
-        1. Find recursive relation
-        2. Recursive (top-down)
-        3. Recursive + memo (top-down)
-        4. Iterative + memo (bottom-up)
-        5. Iterative + N variables (bottom-up)        
-        """
-        # Top-Down Dynamic Programming
-        def helper(houses, idx):
-            if idx < 0:
+        @lru_cache(None)
+        def dp(i):
+            # Base case
+            if i < 0:
                 return 0
-            return max(helper(houses, idx - 2) + houses[idx], helper(houses, idx - 1))
-        return helper(nums, len(nums)-1)
+            
+            # Recurrence relation: to skip or to rob the current house?
+            # Must always rob at least one house -> which house to rob at the beginning? 1 or 2?
+            # If decide to rob current house, gain the money from the current house and go to 2 houses down
+            # If decide to skip current house, gain no money from the current house, move to the next house
+            return max(dp(i - 1), dp(i - 2) + nums[i])
+
+        return dp(n - 1)
 ```
 
-### Bottom-Up Dynamic Programming with Tabulation
+```Python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        @lru_cache(None)
+        def dp(curr):
+            # Base case
+            if curr >= n:
+                return 0
+            
+            # Recurrence relation: to skip or to rob the current house?
+            # Skip, move on to the next house, not gaining any money from the current house
+            skip = dp(curr + 1)
+            # Take, mvoe on down to 2 houses over, take the money off the current house
+            take = nums[curr] + dp(curr + 2)
+            # What is the best decision?
+            return max(skip, take)
+        
+        return dp(0)
+```
+
+---
+
+#### Bottom-Up Dynamic Programming with Tabulation
 
 ```Python
 class Solution(object):
@@ -206,7 +230,7 @@ class Solution:
         return dp[0]
 ```
 
-### Iterative Bottom-Up Dynamic Programming
+#### Iterative Bottom-Up Dynamic Programming
 
 ```Python
 class Solution(object):
@@ -224,4 +248,32 @@ class Solution(object):
             house2 = tmp
 
         return house1
+```
+
+---
+
+### Top-Down Recursive
+
+```Python
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        """
+        This particular problem and most of others can be approached using the following sequence:
+
+        1. Find recursive relation
+        2. Recursive (top-down)
+        3. Recursive + memo (top-down)
+        4. Iterative + memo (bottom-up)
+        5. Iterative + N variables (bottom-up)        
+        """
+        # Top-Down Dynamic Programming
+        def helper(houses, idx):
+            if idx < 0:
+                return 0
+            return max(helper(houses, idx - 2) + houses[idx], helper(houses, idx - 1))
+        return helper(nums, len(nums)-1)
 ```
