@@ -52,8 +52,27 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
-```Python
+![image](https://leetcode.com/problems/uncrossed-lines/Figures/1035/1035-1.png)
 
+```Python
+class Solution:
+    def maxUncrossedLines(self, nums1: List[int], nums2: List[int]) -> int:
+        m, n = len(nums1), len(nums2)
+
+        @lru_cache(None)
+        def dp(i, j):
+            # Base case
+            if i == m or j == n:
+                return 0
+            
+            # Recurrence relation
+            if nums1[i] == nums2[j]:
+                ans = 1 + dp(i + 1, j + 1)
+            else:
+                ans = max(dp(i + 1, j), dp(i, j + 1))
+            return ans
+
+        return dp(0, 0)
 ```
 
 #### Bottom-Up Dynamic Programming
