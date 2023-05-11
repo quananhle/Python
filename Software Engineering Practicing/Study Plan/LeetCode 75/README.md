@@ -8,3 +8,7 @@
 - :four_leaf_clover: [605. Can Place Flowers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/605.%20Can%20Place%20Flowers)
 - :four_leaf_clover: [345. Reverse Vowels of a String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/345.%20Reverse%20Vowels%20of%20a%20String)
 - :warning::warning: [151. Reverse Words in a String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Apple/151.%20Reverse%20Words%20in%20a%20String)
+
+### Dynamic Programming - 1D
+
+- :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
