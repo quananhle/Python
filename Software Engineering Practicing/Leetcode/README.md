@@ -179,6 +179,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [416. Partition Equal Subset Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/416.%20Partition%20Equal%20Subset%20Sum)
 - [518. Coin Change II]
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
+- :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
 - [1155. Number of Dice Rolls With Target Sum]
 - :no_entry::no_entry::no_entry: [1416. Restore The Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1416.%20Restore%20The%20Array)
 - :no_entry::no_entry::no_entry: [1444. Number of Ways of Cutting a Pizza](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza)
