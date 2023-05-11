@@ -75,24 +75,57 @@ class Solution:
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         n = len(cost)
-        if n < 2:
-            return min(cost)
-        memo = [0 for _ in range(n + 1)]
+        memo = collections.defaultdict(int)
 
-        def dp(i):
+        def dp(curr):
             # Base case
-            # The top can be reached from second to last step
-            if i >= len(cost) - 2:
+            if curr >= n - 2:
+                return 0
+
+            if curr in memo:
+                return memo[curr]
+
+            # Recurrence relation: take 1 step or 2 steps from the current position 
+            memo[curr] = min(dp(curr + 1) + cost[curr + 1], dp(curr + 2) + cost[curr + 2])
+            return memo[curr]            
+
+        return dp(-1)
+```
+
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        n = len(cost)
+
+        @lru_cache(None)
+        def dp(curr):
+            # Base case: the top can be reached from second to last step
+            if curr >= n - 2:
                 return 0
             
-            if memo[i]:
-                return memo[i]
+            # Recurrence relation: take 1 step or 2 steps from the current position
+            ans = min(dp(curr + 1) + cost[curr + 1], dp(curr + 2) + cost[curr + 2])
+            return ans
 
-            # Recurrence relation
-            memo[i] = min(dp(i + 1) + cost[i + 1], dp(i + 2) + cost[i + 2])
-            return memo[i]
-        
         return dp(-1)
+```
+
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        n = len(cost)
+
+        @lru_cache(None)
+        def dp(curr):
+            # Base case
+            if curr <= 1:
+                return 0
+            
+            # Recurrence relation: take 1 step or 2 steps from the current position
+            ans = min(dp(curr - 1) + cost[curr - 1], dp(curr - 2) + cost[curr - 2])
+            return ans
+
+        return dp(n)
 ```
 
 #### Bottom-Up Tabulation
@@ -107,9 +140,23 @@ class Solution:
         # Bottom-Up DP (Tabulation)
         memo = collections.defaultdict(int)
         n = len(cost)
-        for i in range(2, len(cost)+1):
-            memo[i] = min(memo[i-1] + cost[i-1], memo[i-2] + cost[i-2])
+
+        for i in range(2, len(cost) + 1):
+            dp[i] = min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2])
+
         return memo[n]
+```
+
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        dp = collections.defaultdict(int)
+        n = len(cost)
+        
+        for curr in range(n - 3, -2, -1):
+            dp[curr] = min(dp[curr + 1] + cost[curr + 1], dp[curr + 2] + cost[curr + 2])
+
+        return dp[-1]
 ```
 
 #### Bottom-Up Iteration
@@ -133,4 +180,18 @@ class Solution:
             climb1 = min(climb1 + cost[i-1], climb2 + cost[i-2])
             climb2 = tmp
         return climb1
+```
+
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        one = two = 0
+        n = len(cost)
+
+        for curr in range(n - 3, -2, -1):
+            tmp = one
+            one = min(one + cost[curr + 1], two + cost[curr + 2])
+            two = tmp
+        
+        return one
 ```
