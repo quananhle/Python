@@ -32,6 +32,27 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        elif n == 2:
+            return 1
+        elif n == 3:
+            return 2
+        elif n == 4:
+            return 4
+        else:
+            return self.tribonacci(n - 1) + self.tribonacci(n - 2) + self.tribonacci(n - 3)
+```
+
+---
+
 ### The Framework
 
 #### Top-Down DP (Recursion)
@@ -54,12 +75,69 @@ class Solution:
         return dp(n)
 ```
 
+```Python
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        memo = collections.defaultdict(int)
+
+        def dp(curr):
+            # Base case
+            if curr == 0:
+                memo[curr] = 0
+            elif curr == 1:
+                memo[curr] = 1
+            elif curr == 2:
+                memo[curr] = 1
+            elif curr in memo:
+                return memo[curr]
+            else:
+                # Recurrence relation
+                memo[curr] = dp(curr - 1) + dp(curr - 2) + dp(curr - 3)
+
+            return memo[curr]
+        
+        return dp(n)
+```
+
+```Python
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        @lru_cache(None)
+        def dp(curr):
+            # Base case
+            if curr == 0:
+                return 0
+            elif curr == 1:
+                return 1
+            elif curr == 2:
+                return 1
+            elif curr == 3:
+                return 2
+            elif curr == 4:
+                return 4
+            else:
+                return dp(curr - 1) + dp(curr - 2) + dp(curr - 3)
+            
+        return dp(n)
+```
 
 #### Bottom-Up DP (Tabulation)
 
 __Time Complexity__: ```O(N)```, iterate through the entire input array
 
 __Space Complexity__: ```O(N)```, hash map memo size
+
+```Python
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        dp = collections.defaultdict(int)
+        dp[0], dp[1], dp[2] = 0, 1, 1
+
+        for curr in range(3, n + 1):
+            dp[curr] = dp[curr - 1] + dp[curr - 2] + dp[curr - 3]            
+
+        return dp[n]
+```
 
 ```Python
 class Solution:
@@ -75,9 +153,9 @@ class Solution:
 
 #### Space Optimized Bottom-Up DP (Tabulation)
 
-__Time Complexity__: ```O(N)```, iterate through the entire input array
+__Time Complexity__: ```O(N)```, iterate to n
 
-__Space Complexity__: ```O(1)```, pointers
+__Space Complexity__: ```O(1)```, fixed memory usage of only 3
 
 ```Python
 class Solution:
