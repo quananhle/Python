@@ -1,4 +1,4 @@
-## 1137. N-th Tribonacci Number
+## [1137. N-th Tribonacci Number](https://leetcode.com/problems/n-th-tribonacci-number)
 
 ```Tag```: ```Dynamic Programming``` ```Recursion```
 
