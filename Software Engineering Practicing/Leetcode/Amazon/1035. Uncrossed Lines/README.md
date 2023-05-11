@@ -47,3 +47,23 @@ __Constraints:__
 - ```1 <= nums1[i], nums2[j] <= 2000```
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+#### Space Optimized Bottom-Up Dynamic Programming
+
+```Python
+
+```
