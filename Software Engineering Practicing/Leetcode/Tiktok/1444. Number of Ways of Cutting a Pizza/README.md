@@ -1,4 +1,4 @@
-## [1444. Number of Ways of Cutting a Pizza](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza/)
+## [1444. Number of Ways of Cutting a Pizza](https://leetcode.com/problems/number-of-ways-of-cutting-a-pizza/)
 
 ```Tag```: ```Dynamic Programming```
 
