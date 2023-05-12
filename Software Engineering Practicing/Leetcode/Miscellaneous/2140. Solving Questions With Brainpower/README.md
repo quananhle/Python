@@ -47,6 +47,8 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/solving-questions-with-brainpower/Figures/2140/intro.png)
+
 ### The Framework
 
 #### Top-Down Dynamic Programming
@@ -76,15 +78,49 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def mostPoints(self, questions: List[List[int]]) -> int:
+        n = len(questions)
+        memo = collections.defaultdict(int)
 
-```
+        def dp(curr):
+            # Base case
+            if curr >= n:
+                return 0
+            
+            points, brainpower = questions[curr][0], questions[curr][1]
 
-```Python
+            if curr in memo:
+                return memo[curr]
 
+            # Recurrence relation: to solve or to skip the current question?
+            # Skip: move on to the next question
+            skip = dp(curr + 1)
+            # Solve: collect the point of current question, move on to the next possible question from brainpower
+            solve = dp(curr + brainpower + 1) + points
+            # What is the best decision though?
+            memo[curr] = max(skip, solve)
+            return memo[curr]
+
+        return dp(0)
 ```
 
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def mostPoints(self, questions: List[List[int]]) -> int:
+        n = len(questions)
+        dp = [0] * (n + 1)
 
+        for curr in range(n - 1, -1, -1):
+            points, brainpowers = questions[curr][0], questions[curr][1]
+            skip, pick = 0, points
+            if curr + brainpowers + 1 < n:
+                pick += dp[curr + brainpowers + 1]
+            if curr + 1 < n:
+                skip += dp[curr + 1]
+            dp[curr] = max(skip, pick)
+        
+        return dp[0]
 ```
