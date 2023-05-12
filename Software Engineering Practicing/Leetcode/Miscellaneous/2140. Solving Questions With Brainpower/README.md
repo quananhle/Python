@@ -46,3 +46,31 @@ __Constraints:__
 - ```1 <= ```points```<sub>i</sub>, ```brainpower```<sub>i</sub> <= 10^5```
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def mostPoints(self, questions: List[List[int]]) -> int:
+        n = len(questions)
+
+        @lru_cache(None)
+        def dp(curr):
+            # Base case
+            if curr >= n:
+                return 0
+            
+            points, brainpower = questions[curr][0], questions[curr][1]
+
+            # Recurrence relation: to solve or to skip the current question?
+            # Skip: move on to the next question
+            skip = dp(curr + 1)
+            # Solve: collect the point of current question, move on to the next possible question from brainpower
+            solve = dp(curr + brainpower + 1) + points
+            # What is the best decision though?
+            return max(skip, solve)
+
+        return dp(0)
+```
