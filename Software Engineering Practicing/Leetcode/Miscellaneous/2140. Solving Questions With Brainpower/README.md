@@ -124,3 +124,34 @@ class Solution:
         
         return dp[0]
 ```
+
+__Algorithm__
+
+1. Initialize an array ```dp``` of size ```n```, set ```dp[n - 1] = questions[n - 1][0]```.
+
+2. Iterate backward over index ```i``` from ```n - 2```:
+
+- If we skip question ```i```, we have ```dp[i] = dp[i + 1]```.
+- If we solve question ```i```, we have ```dp[i] = questions[i][0] + dp[i + questions[i][1] + 1]```.
+
+3. Update ```dp[i]``` as the larger one.
+
+4. Return ```dp[0]``` once we finish the iteration.
+
+```Python
+class Solution:
+    def mostPoints(self, questions: List[List[int]]) -> int:
+        n = len(questions)
+        dp = [0] * n
+        dp[-1] = questions[-1][0]
+        
+        for curr in range(n - 2, -1, -1):
+            dp[curr], skip = questions[curr][0], questions[curr][1]
+            
+            if curr + skip + 1 < n:
+                dp[curr] += dp[curr + skip + 1]
+            
+            dp[curr] = max(dp[curr], dp[curr + 1])
+        
+        return dp[0]
+```
