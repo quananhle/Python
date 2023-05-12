@@ -75,6 +75,32 @@ class Solution:
         return dp(0, 0)
 ```
 
+```Python
+class Solution:
+    def maxUncrossedLines(self, nums1: List[int], nums2: List[int]) -> int:
+        m, n = len(nums1), len(nums2)
+        memo = collections.defaultdict(int)
+
+        def dp(i, j):
+            # Base case
+            if i >= m or j >= n:
+                return 0
+
+            if (i, j) in memo:
+                return memo[(i, j)]
+
+            # Recurrence relation: matched or unmatched?
+            # Matched: iterate both pointers if matching elements found, and increment the count
+            if nums1[i] == nums2[j]: 
+                memo[(i, j)] = dp(i + 1, j + 1) + 1
+            # Not matched: iterate either pointer, what will be the best outcome?
+            else:
+                memo[(i, j)] = max(dp(i + 1, j), dp(i, j + 1))
+            return memo[(i, j)]
+
+        return dp(0, 0)
+```
+
 #### Bottom-Up Dynamic Programming
 
 ```Python
