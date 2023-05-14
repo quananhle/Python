@@ -134,9 +134,47 @@ class Solution(object):
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        m, n = len(s), len(t)
 
+        @lru_cache(None)
+        def dp(i, j):
+            # Base case
+            if i < 0:
+                return True
+            if j < 0:
+                return False
+
+            if s[i] == t[j]:
+                ans = dp(i - 1, j - 1)
+            else:
+                ans = dp(i, j - 1)
+            
+            return ans
+        
+        return dp(m - 1, n - 1)
 ```
 
 ```Python
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        m, n = len(s), len(t)
 
+        @lru_cache(None)
+        def dp(i, j):
+            # Base case
+            if i == m:
+                return True
+            if j == n:
+                return False
+
+            if s[i] == t[j]:
+                ans = dp(i + 1, j + 1)
+            else:
+                ans = dp(i, j + 1)
+            
+            return ans
+        
+        return dp(0, 0)
 ```
