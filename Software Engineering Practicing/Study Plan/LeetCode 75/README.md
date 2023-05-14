@@ -11,7 +11,8 @@
 
 ### Two Pointers
 
-- :four_leaf_clover: [283. Move Zeroes](https://leetcode.com/problems/move-zeroes)
+- :four_leaf_clover: [283. Move Zeroes](https://github.com/quananhle/Python/blob/ca1c5cc6d4ce2a8a1cccffb8d1a0d45cece72d1b/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/In-Place%20Operations/283.%20Move%20Zeroes)
+- :four_leaf_clover: [392. Is Subsequence](https://github.com/quananhle/Python/blob/ca1c5cc6d4ce2a8a1cccffb8d1a0d45cece72d1b/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2002%20-%20String/392.%20Is%20Subsequence)
 
 ### Dynamic Programming - 1D
 
