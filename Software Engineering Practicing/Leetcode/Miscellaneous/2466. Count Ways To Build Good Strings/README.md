@@ -40,3 +40,29 @@ __Constraints:__
 - ```1 <= zero, one <= low```
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:
+        MOD = 10 ** 9 + 7
+        ans = 0
+
+        @lru_cache(None)
+        def dp(length):
+            count = 0
+            # Base case
+            if length > high:
+                return 0
+            if low <= length <= high:
+                count = 1
+
+            count += dp(length + zero)
+            count += dp(length + one)
+            return count % MOD
+
+        return dp(0) % MOD
+```
