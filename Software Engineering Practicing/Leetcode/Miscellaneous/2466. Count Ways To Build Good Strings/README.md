@@ -41,6 +41,8 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/count-ways-to-build-good-strings/Figures/2466/1.png)
+
 ### The Framework
 
 #### Top-Down Dynamic Programming
@@ -65,4 +67,34 @@ class Solution:
             return count % MOD
 
         return dp(0) % MOD
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:
+        MOD = 10 ** 9 + 7
+        dp = [0] * (high + 2)
+        for length in reversed(range(high + 1)):
+            count = 0
+            if low <= length:
+                count = 1
+            count += dp[min(high + 1, length + zero)]
+            count += dp[min(high + 1, length + one)]
+            dp[length] = count % MOD
+        
+        return dp[0]
+```
+
+#### Space Optimized Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def countGoodStrings(self, low: int, high: int, zero: int, one: int) -> int:
+        MOD = 10 ** 9 + 7
+        dp = collections.defaultdict(int)
+        for length in reversed(range(high + 1)):
+            dp[length] = ((low <= length) + dp[length + zero] + dp[length + one]) % MOD
+        return dp[0]
 ```
