@@ -186,6 +186,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :no_entry::no_entry::no_entry: [1444. Number of Ways of Cutting a Pizza](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza)
 - :warning::warning: [2140. Solving Questions With Brainpower](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2140.%20Solving%20Questions%20With%20Brainpower)
 - :warning::warning: [2291. Maximum Profit From Trading Stocks](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/2291.%20Maximum%20Profit%20From%20Trading%20Stocks/)
+- :warning::warning: [2466. Count Ways To Build Good Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2466.%20Count%20Ways%20To%20Build%20Good%20Strings)
 
 ### Longest Common Subsequence
 
