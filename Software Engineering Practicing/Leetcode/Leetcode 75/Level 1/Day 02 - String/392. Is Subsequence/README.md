@@ -1,4 +1,6 @@
-## 392. Is Subsequence
+## [392. Is Subsequence](https://leetcode.com/problems/is-subsequence)
+
+```Tag```: ```Two Pointers``` ```Greedy Algorithm``` ```Divide & Conquer``` ```Dynamic Programming```
 
 #### Difficulty: Easy
 
@@ -123,4 +125,18 @@ class Solution(object):
             t_idx += 1
             return helper(s_idx, t_idx)
         return helper(0, 0)
+```
+
+--- 
+
+### Dynamic Programming
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
 ```
