@@ -34,7 +34,7 @@ __Constraints:__
 
 ---
 
-### Approach 1: Three Pass Approach
+### Approach 1: Three Pass
 
 ![image](https://leetcode.com/problems/swapping-nodes-in-a-linked-list/Documents/5652/3PassApproach.svg)
 
@@ -70,6 +70,44 @@ class Solution:
             right += 1
             rprev = rprev.next
 
+        lprev.val, rprev.val = rprev.val, lprev.val
+        return head
+```
+
+### Approach 2: Two Pass
+
+- __Time Complexity__: ```O(n)```, where ```n``` is the length of the Linked List. We are iterating over the Linked List twice.
+- __Space Complexity__: ```O(1)```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        def get_size(node):
+            if not node:
+                return 0
+            size = 0
+            while node:
+                size += 1
+                node = node.next
+            return size
+        
+        size = get_size(head)
+        left = right = 0
+        lprev = rprev = head
+
+        while left < k - 1 or right < size - k:
+            if left < k - 1:
+                left += 1
+                lprev = lprev.next
+            if right < size - k:
+                right += 1
+                rprev = rprev.next
+        
         lprev.val, rprev.val = rprev.val, lprev.val
         return head
 ```
