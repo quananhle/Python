@@ -23,6 +23,9 @@
   - [Maximum Subarray](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#maximum-subarray)
   - [Prefix Sum](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#prefix-sum)
 - [Graph](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#graph)
+  - [Depth-First Search in Graph](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#depth-first-search-in-graph)
+  - [Breadth-First Search in Graph](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#breadth-first-search-in-graph)
+  - [Union Find](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#union-find)
 
 ## Array & String
 
