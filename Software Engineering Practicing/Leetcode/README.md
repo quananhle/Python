@@ -26,6 +26,13 @@
   - [Depth-First Search in Graph](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#depth-first-search-in-graph)
   - [Breadth-First Search in Graph](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#breadth-first-search-in-graph)
   - [Union Find](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#union-find)
+- [Greedy](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#greedy)
+- [Hash Map/Hash Set](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#hash-maphash-set)
+  - [Hash Map](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#hash-map)
+  - [Hash Set](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#hash-set)
+
+
+
 
 ## Array & String
 
