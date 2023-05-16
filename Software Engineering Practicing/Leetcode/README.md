@@ -12,10 +12,14 @@
   - [Two Pointers](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#two-pointers)
     - [kSum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#kSum)
     - [Shortest Word Distance](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#shortest-word-distance)
-  - [Binary Search](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#binary-search)
-  - [Bitwise Manipulation](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#bitwise-manipulation-1)
-  - [Design](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#design)
-
+- [Binary Search](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#binary-search)
+- [Bitwise Manipulation](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#bitwise-manipulation-1)
+- [Design](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#design)
+- [Dynamic Programming](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#dynamic-programming)
+  - [Longest Common Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-common-subsequence)
+  - [Longest Increasing Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-increasing-subsequence)
+  - [State Transition by Inaction | Dynamic Programming State Machine](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#state-transition-by-inaction--dynamic-programming-state-machine)
+    - [Best Time to Buy and Sell Stock](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#best-time-to-buy-and-sell-stock)
 
 
 
