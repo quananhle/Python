@@ -20,8 +20,9 @@
   - [Longest Increasing Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-increasing-subsequence)
   - [State Transition by Inaction | Dynamic Programming State Machine](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#state-transition-by-inaction--dynamic-programming-state-machine)
     - [Best Time to Buy and Sell Stock](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#best-time-to-buy-and-sell-stock)
-
-
+  - [Maximum Subarray](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#maximum-subarray)
+  - [Prefix Sum](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#prefix-sum)
+- [Graph](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#graph)
 
 ## Array & String
 
