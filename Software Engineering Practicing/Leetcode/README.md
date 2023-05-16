@@ -12,7 +12,7 @@
   - [Two Pointers](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#two-pointers)
     - [kSum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#kSum)
     - [Shortest Word Distance](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#shortest-word-distance)
-
+  - [Binary Search](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#binary-search)
 ## Array & String
 
 - :four_leaf_clover: [1071. Greatest Common Divisor of Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
