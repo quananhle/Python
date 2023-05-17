@@ -42,7 +42,11 @@
   - [Stack](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#stack)
     - [Monotonic Stack](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#monotonic-stack)
     - [Basic Calculator](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#basic-calculator)
-
+- Tree
+  - Binary Tree
+    - Path Sum
+  - Binary Search Tree
+- Trie
 
 
 
