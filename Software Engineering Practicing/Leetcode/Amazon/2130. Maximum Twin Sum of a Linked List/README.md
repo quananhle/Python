@@ -54,3 +54,30 @@ __Constraints:__
 - ```1 <= Node.val <= 10^5```
 
 ---
+
+### List
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def pairSum(self, head: Optional[ListNode]) -> int:
+        nodes = list()
+
+        curr = head
+        while curr:
+            nodes.append(curr.val)
+            curr = curr.next
+        
+        ans = float('-inf')
+        i, j = 0, len(nodes) - 1
+        while i < j:
+            ans = max(ans, nodes[i] + nodes[j])
+            i += 1
+            j -= 1
+        
+        return ans
+```
