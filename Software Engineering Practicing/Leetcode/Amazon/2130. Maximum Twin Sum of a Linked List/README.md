@@ -172,10 +172,13 @@ class Solution:
 
         # Reverse the right half of the linked list
         while slow:
+            '''
             tmp = slow.next
             slow.next = tail
             tail = slow
             slow = tmp
+            '''
+            slow.next, tail, slow = tail, slow, slow.next
 
         # Calculate the twin node values
         ans = float('-inf')
