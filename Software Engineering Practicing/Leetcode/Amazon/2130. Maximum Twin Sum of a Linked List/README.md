@@ -88,7 +88,30 @@ class Solution:
 ### Stack
 
 ```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def pairSum(self, head: Optional[ListNode]) -> int:
+        ans = float('-inf')
 
+        curr = head
+        stack = list()
+        while curr:
+            stack.append(curr.val)
+            curr = curr.next
+        
+        curr = head
+        k = len(stack)
+        count = 1
+        while count <= k // 2:
+            ans = max(ans, curr.val + stack.pop())
+            curr = curr.next
+            count += 1
+        
+        return ans
 ```
 
 ### Linked List
