@@ -16,8 +16,9 @@
 - [Bitwise Manipulation](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#bitwise-manipulation-1)
 - [Design](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#design)
 - [Dynamic Programming](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#dynamic-programming)
-  - [Longest Common Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-common-subsequence)
-  - [Longest Increasing Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-increasing-subsequence)
+  - Subsequence
+    - [Longest Common Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-common-subsequence)
+    - [Longest Increasing Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-increasing-subsequence)
   - [State Transition by Inaction | Dynamic Programming State Machine](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#state-transition-by-inaction--dynamic-programming-state-machine)
     - [Best Time to Buy and Sell Stock](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#best-time-to-buy-and-sell-stock)
   - [Maximum Subarray](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#maximum-subarray)
@@ -42,11 +43,11 @@
   - [Stack](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#stack)
     - [Monotonic Stack](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#monotonic-stack)
     - [Basic Calculator](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#basic-calculator)
-- Tree
-  - Binary Tree
-    - Path Sum
-  - Binary Search Tree
-- Trie
+- [Tree](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#tree)
+  - [Binary Tree](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#binary-tree)
+    - [Path Sum](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#path-sum)
+  - [Binary Search Tree](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#binary-search-tree)
+- [Trie](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#trie)
 
 
 
