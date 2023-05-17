@@ -39,3 +39,19 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        # Brute Force
+        ans = float('-inf')
+        n = len(height)
+        for i in range(1, n):
+            for j in range(i):
+                y = min(height[i], height[j])
+                x = i - j
+                ans = max(ans, x * y)
+        
+        return ans
+```
