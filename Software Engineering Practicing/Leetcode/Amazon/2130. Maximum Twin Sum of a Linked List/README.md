@@ -57,6 +57,9 @@ __Constraints:__
 
 ### List
 
+- __Time Complexity__: ```O(n)```
+- __Space Complexity__: ```O(n)```
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
@@ -80,4 +83,10 @@ class Solution:
             j -= 1
         
         return ans
+```
+
+### Stack
+
+```Python
+
 ```
