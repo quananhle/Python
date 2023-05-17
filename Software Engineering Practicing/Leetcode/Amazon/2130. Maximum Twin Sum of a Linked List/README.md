@@ -90,3 +90,75 @@ class Solution:
 ```Python
 
 ```
+
+### Linked List
+
+#### Brute Force
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def pairSum(self, head: Optional[ListNode]) -> int:
+        mid = curr = head
+        k = 0
+
+        while curr:
+            k += 1
+            curr = curr.next
+
+        m = k - (k // 2)
+        while m:
+            m -= 1
+            mid = mid.next
+
+        tail = None
+        curr = mid
+        while curr:
+            tmp = curr.next
+            curr.next = tail
+            tail = curr
+            curr = tmp
+
+        while head and tail:
+            ans = max(ans, head.val + tail.val)
+            head, tail = head.next, tail.next
+
+        return ans
+```
+
+#### Slow & Fast Pointers
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def pairSum(self, head: Optional[ListNode]) -> int:
+        slow = fast = head
+        tail = None
+        # Get the middle node
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # Reverse the right half of the linked list
+        while slow:
+            tmp = slow.next
+            slow.next = tail
+            tail = slow
+            slow = tmp
+
+        # Calculate the twin node values
+        ans = float('-inf')
+        while head and tail:
+            ans = max(ans, head.val + tail.val)
+            head, tail = head.next, tail.next
+
+        return ans
+```
