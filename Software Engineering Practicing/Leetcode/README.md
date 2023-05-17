@@ -33,6 +33,17 @@
 - [Heap/Priority Queue](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#heappriority-queue)
 - [Linked List](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#linked-list)
 - [Recursion](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#recursion)
+  - Catalan Number
+  - Backtracking
+- Stack & Queue
+  - Breadth-First Search (BFS)
+  - Depth-First Search (DFS)
+    - Spiral Matrix
+  - Stack
+    - Monotonic Stack
+    - Basic Calculator
+
+
 
 
 ## Array & String
