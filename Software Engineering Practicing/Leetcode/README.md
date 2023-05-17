@@ -37,11 +37,11 @@
   - [Backtracking](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#backtracking)
 - [Stack & Queue](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#stack--queue)
   - [Breadth-First Search (BFS)](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#breadth-first-search-bfs)
-  - Depth-First Search (DFS)
-    - Spiral Matrix
-  - Stack
-    - Monotonic Stack
-    - Basic Calculator
+  - [Depth-First Search (DFS)](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#depth-first-search-dfs)
+    - [Spiral Matrix](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#spiral-matrix)
+  - [Stack](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#stack)
+    - [Monotonic Stack](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#monotonic-stack)
+    - [Basic Calculator](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#basic-calculator)
 
 
 
