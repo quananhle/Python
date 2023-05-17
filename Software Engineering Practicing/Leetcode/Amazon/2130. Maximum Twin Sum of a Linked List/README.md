@@ -11,6 +11,8 @@ The __twin sum__ is defined as the sum of a node and its twin.
 
 Given the ```head``` of a linked list with even length, return _the maximum twin sum of the linked list_.
 
+![image](https://github.com/quananhle/Python/assets/35042430/7220588b-9c45-4a00-985a-9ef8f3466c78)
+
 ---
 
 __Example 1:__
@@ -167,8 +169,7 @@ class Solution:
         tail = None
         # Get the middle node
         while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+            slow, fast = slow.next, fast.next.next
 
         # Reverse the right half of the linked list
         while slow:
