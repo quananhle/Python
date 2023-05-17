@@ -16,7 +16,7 @@
 - [Bitwise Manipulation](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#bitwise-manipulation-1)
 - [Design](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#design)
 - [Dynamic Programming](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#dynamic-programming)
-  - Subsequence
+  - [Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#subsequence)
     - [Longest Common Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-common-subsequence)
     - [Longest Increasing Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-increasing-subsequence)
   - [State Transition by Inaction | Dynamic Programming State Machine](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#state-transition-by-inaction--dynamic-programming-state-machine)
@@ -228,14 +228,16 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [2291. Maximum Profit From Trading Stocks](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/2291.%20Maximum%20Profit%20From%20Trading%20Stocks/)
 - :warning::warning: [2466. Count Ways To Build Good Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2466.%20Count%20Ways%20To%20Build%20Good%20Strings)
 
-### Longest Common Subsequence
+### Subsequence
+
+#### Longest Common Subsequence
 
 - :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - :no_entry::no_entry::no_entry: [727. Minimum Window Subsequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/727.%20Minimum%20Window%20Subsequence) ```Greedy``` ```Sliding Window``` 
 - :warning::warning: [1035. Uncrossed Lines](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1035.%20Uncrossed%20Lines)
 - :no_entry::no_entry::no_entry: [1312. Minimum Insertion Steps to Make a String Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 
-### Longest Increasing Subsequence
+#### Longest Increasing Subsequence
 
 - :warning::warning: [300. Longest Increasing Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/300.%20Longest%20Increasing%20Subsequence) ```Binary Search```
 - 673. Number of Longest Increasing Subsequence
