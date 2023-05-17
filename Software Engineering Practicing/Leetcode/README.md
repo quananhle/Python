@@ -30,8 +30,9 @@
 - [Hash Map/Hash Set](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#hash-maphash-set)
   - [Hash Map](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#hash-map)
   - [Hash Set](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#hash-set)
-
-
+- [Heap/Priority Queue](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#heappriority-queue)
+- [Linked List](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#linked-list)
+- [Recursion](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#recursion)
 
 
 ## Array & String
