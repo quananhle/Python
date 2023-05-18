@@ -1,6 +1,6 @@
 ## [1557. Minimum Number of Vertices to Reach All Nodes](https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/)
 
-```Tag```:
+```Tag```: ```Graph``` ```Hash Map``` ```Hash Set```
 
 #### Difficulty: Medium
 
@@ -41,3 +41,15 @@ __Constraints:__
 - ```All pairs (from<sub>i</sub>, to<sub>i</sub>) are distinct.
 
 ---
+
+### Hash Map
+
+```Python
+
+```
+
+### Hash Set
+
+```Python
+
+```
