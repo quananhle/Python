@@ -104,6 +104,22 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def maxUncrossedLines(self, nums1: List[int], nums2: List[int]) -> int:
+        m, n = len(nums1), len(nums2)
+        dp = collections.defaultdict(int)
+
+        for i in range(m - 2, -2, -1):
+            for j in range(n - 2, -2, -1):
+                if nums1[i + 1] == nums2[j + 1]:
+                    dp[(i, j)] = 1 + dp[(i + 1, j + 1)]
+                else:
+                    dp[(i, j)] = max(dp[(i + 1, j)], dp[(i, j + 1)])
+        
+        return dp[(-1, -1)]
+```
+
+```Python
 
 ```
 
