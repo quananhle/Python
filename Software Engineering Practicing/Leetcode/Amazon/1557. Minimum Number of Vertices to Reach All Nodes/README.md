@@ -42,14 +42,48 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/Figures/1557/1557A.png)
+
+From this discussion, one thing is clear: any vertex that has an edge in-coming from some other vertex should not be part of the answer.
+
+- __Time complexity__: ```O(N + E)```
+- __Space complexity__: ```O(N)```
+
 ### Hash Map
 
 ```Python
-
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        graph = collections.defaultdict(int)
+        for u, v in edges:
+            graph[v] += 1
+        return [node for node in range(n) if not node in graph]
 ```
 
 ### Hash Set
 
 ```Python
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        graph = set()
+        for _, v in edges:
+            graph.add(v)
+        return [node for node in range(n) if not node in graph]
+```
 
+### One Liner
+
+```Python
+
+```
+
+### Boolean List
+
+```Python
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        graph = [False for _ in range(n)]
+        for _, v in edges:
+            graph[v] = True
+        return [node for node in range(n) if not graph[node]]
 ```
