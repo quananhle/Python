@@ -54,6 +54,9 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/uncrossed-lines/Figures/1035/1035-1.png)
 
+- __Time complexity__: ```O(m * n)```
+- __Space complexity__: ```O(m * n)```
+
 ```Python
 class Solution:
     def maxUncrossedLines(self, nums1: List[int], nums2: List[int]) -> int:
@@ -102,6 +105,9 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming
+
+- __Time complexity__: ```O(m * n)```
+- __Space complexity__: ```O(m * n)```
 
 ```Python
 class Solution:
@@ -152,6 +158,9 @@ class Solution:
 ```
 
 #### Space Optimized Bottom-Up Dynamic Programming
+
+- __Time complexity__: ```O(m * n)```
+- __Space complexity__: ```O(n)```
 
 ```Python
 class Solution:
