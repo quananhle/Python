@@ -39,7 +39,9 @@ __Constraints:__
 
 ---
 
-### Brute Force
+### Brute Force (Time Limit Exceeded)
+
+![image](https://github.com/quananhle/Python/assets/35042430/d6ef26be-213a-4af8-812b-4c913f157889)
 
 ```Python
 class Solution:
@@ -49,9 +51,54 @@ class Solution:
         n = len(height)
         for i in range(1, n):
             for j in range(i):
-                y = min(height[i], height[j])
-                x = i - j
-                ans = max(ans, x * y)
+                dy = min(height[i], height[j])
+                dx = i - j
+                ans = max(ans, dx * dy)
+        
+        return ans
+```
+
+### Two Pointers
+
+![image](https://github.com/quananhle/Python/assets/35042430/453acda9-6353-4e93-8a16-9e4b26e382b6)
+
+```Python
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        left, right = 0, len(height) - 1
+        ans = float('-inf')
+
+        while left < right:
+            dy = min(height[left], height[right])
+            dx = right - left
+            ans = max(ans, dx * dy)
+
+            if height[left] > height[right]:
+                right -= 1
+            elif height[left] < height[right]:
+                left += 1
+            else:
+                left += 1
+                right -= 1
+        
+        return ans
+```
+
+```Python
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        left, right = 0, len(height) - 1
+        ans = float('-inf')
+
+        while left < right:
+            dy = min(height[left], height[right])
+            dx = right - left
+            ans = max(ans, dx * dy)
+
+            if height[left] <= height[right]:
+                left += 1
+            else:
+                right -= 1
         
         return ans
 ```
