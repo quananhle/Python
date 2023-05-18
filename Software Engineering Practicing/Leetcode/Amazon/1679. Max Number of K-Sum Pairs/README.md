@@ -43,11 +43,31 @@ __Constraints__:
 
 ### Brute Force
 
-```Python
+- __Time Complexity__: ```O(n^2)```
+- __Space Complexity__: ```O(1)```
 
+```Python
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        count = 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                continue
+            for j in range(i + 1, len(nums)):
+                if nums[j] == 0:
+                    continue
+                if nums[i] + nums[j] == k:
+                    nums[i] = nums[j] = 0
+                    count += 1
+                    break
+        
+        return count
 ```
 
 ### Counter
+
+- __Time Complexity__: ```O(n)```
+- __Space Complexity__: ```O(n)```
 
 ```Python
 class Solution:
@@ -100,10 +120,28 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        count = 0
+        complements = collections.defaultdict(int)
+        for num in nums:
+            curr = num
+            comp = k - curr
+            if comp in complements:
+                complements[comp] -= 1
+                if complements[comp] == 0:
+                    del complements[comp]
+                count += 1
+            else:
+                complements[curr] = 1 + complements.get(curr, 0)
 
+        return count
 ```
 
 ### Two Pointers + Sorting
+
+- __Time Complexity__: ```O(n * logn)```
+- __Space Complexity__: ```O(1)```
 
 ```Python
 class Solution:
