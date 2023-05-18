@@ -47,10 +47,56 @@ __Constraints__:
 
 ```
 
-### Hash Map
+### Counter
 
 ```Python
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        count = 0
+        complements = collections.defaultdict(int)
 
+        for num in nums:
+            complements[num] = 1 + complements.get(num, 0)
+
+        for num in nums:
+            curr = num
+            comp = k - curr
+            if complements[curr] > 0 and complements[comp] > 0:
+                if curr == comp and complements[curr] < 2:
+                    continue
+                complements[curr] -= 1
+                complements[comp] -= 1
+                count += 1
+
+        return count
+```
+
+```Python
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        count = 0
+        complements = collections.defaultdict(int)
+
+        for num in nums:
+            complements[num] = 1 + complements.get(num, 0)
+
+        for num in nums:
+            curr = num
+            comp = k - curr
+            if curr in complements and comp in complements:
+                if curr == comp and complements[curr] < 2:
+                    continue
+
+                complements[curr] -= 1
+                complements[comp] -= 1
+                if complements[curr] == 0:
+                    del complements[curr]
+                if complements[comp] == 0:
+                    del complements[comp]
+
+                count += 1
+
+        return count
 ```
 
 ```Python
