@@ -128,6 +128,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [977. Squares of a Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/977.%20Squares%20of%20a%20Sorted%20Array) ```Heap``` ```Sorting```
 - :warning::warning: [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1498.%20Number%20of%20Subsequences%20That%20Satisfy%20the%20Given%20Sum%20Condition) ```Binary Search```
 - :warning::warning: [1578. Minimum Time to Make Rope Colorful](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/) ```Greedy```
+- :warning::warning: [1679. Max Number of K-Sum Pairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1679.%20Max%20Number%20of%20K-Sum%20Pairs) ```Hash Map``` ```Sorting```
 - :four_leaf_clover: [1768. Merge Strings Alternately](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1768.%20Merge%20Strings%20Alternately)
 
 #### [kSum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/kSum)
