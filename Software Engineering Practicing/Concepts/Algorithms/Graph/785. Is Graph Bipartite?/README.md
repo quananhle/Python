@@ -1,6 +1,6 @@
 ## [785. Is Graph Bipartite?](https://leetcode.com/problems/is-graph-bipartite/)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Hungarian Algorithm```
 
 #### Difficulty: Medium
 
@@ -49,3 +49,50 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
+
+```Python
+
+```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        color = collections.defaultdict(bool)
+        for node in range(len(graph)):
+            if not node in color:
+                stack = [node]
+                color[node] = 0
+                while stack:
+                    node = stack.pop()
+                    for neighbor in graph[node]:
+                        if not neighbor in color:
+                            stack.append(neighbor)
+                            color[neighbor] = color[node] ^ 1
+                        elif color[neighbor] == color[node]:
+                            return False
+
+        return True
+```
+
+```Python
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        color = collections.defaultdict(bool)
+        for node in range(len(graph)):
+            if not node in color:
+                stack = [node]
+                color[node] = False
+                while stack:
+                    node = stack.pop()
+                    for neighbor in graph[node]:
+                        if not neighbor in color:
+                            stack.append(neighbor)
+                            color[neighbor] = not color[node]
+                        elif color[neighbor] == color[node]:
+                            return False
+
+        return True
+```
