@@ -49,10 +49,61 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/is-graph-bipartite/Figures/785/color.png)
+
 ### Depth-First Search
 
 ```Python
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        n = len(graph)
+        colors = collections.defaultdict(int)
 
+        def dfs(curr):
+            for neighbor in graph[curr]:
+                if not neighbor in colors:
+                    colors[neighbor] = colors[curr] ^ 1
+                    if not dfs(neighbor):
+                        return False
+                elif colors[neighbor] == colors[curr]:
+                    return False
+
+            return True
+
+
+        for node in range(n):
+            if not node in colors:
+                colors[node] = 0
+                if not dfs(node):
+                    return False
+        
+        return True
+```
+
+```Python
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        n = len(graph)
+        colors = [0] * n
+
+        def dfs(node, color):
+            # Base case
+            if colors[node] != 0:
+                return colors[node] == color
+            
+            colors[node] = color
+            for neighbor in graph[node]:
+                if not dfs(neighbor, -color):
+                    return False
+            
+            return True
+
+        for curr in range(n):
+            if colors[curr] == 0:
+                if not dfs(curr, 1):
+                    return False
+        
+        return True
 ```
 
 ### Breadth-First Search
@@ -94,5 +145,31 @@ class Solution:
                         elif color[neighbor] == color[node]:
                             return False
 
+        return True
+```
+
+```Python
+class Solution:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        n = len(graph)
+        colors = [0] * n
+
+        for node in range(n):
+            if colors[node]:
+                continue
+            
+            queue = collections.deque()
+            queue.append(node)
+            colors[node] = 1
+
+            while queue:
+                curr = queue.popleft()
+                for neighbor in graph[curr]:
+                    if colors[neighbor] == 0:
+                        colors[neighbor] = -colors[curr]
+                        queue.append(neighbor)
+                    elif colors[neighbor] != -colors[curr]:
+                        return False
+  
         return True
 ```
