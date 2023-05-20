@@ -53,6 +53,8 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/evaluate-division/Figures/399/399_graph_example.png)
+
 ### Depth-First Search
 #### Time Complexity : ```O(M⋅N)```, traverse through the graph of size while traversing through the queries
 #### Space Complexity: ```O(N)```, extra memory space to build graph
@@ -168,6 +170,56 @@ class Solution:
                     res.append(-1.0)
                 else:
                     res.append(dividend_weight / divisor_weight)
+        return res
+```
+
+```Python
+class UnionFind:
+    def __init__(self, size):
+        self.root = collections.defaultdict(int)
+        self.rank = collections.defaultdict(lambda: 1)
+        self.size = size
+    
+    def find(self, x):
+        if not x in self.root:
+            self.root[x] = x
+        if x != self.root[x]:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x, y, val):
+        root_x = self.find(x)
+        root_y = self.find(y)
+        ratio = self.rank[y] * val / self.rank[x]
+        for node, root in self.root.items():
+            if root_x == root:
+                self.root[node] = root_y
+                self.rank[node] *= ratio
+            self.size -= 1
+        
+    def get_size(self):
+        return self.size
+    
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+    
+
+class Solution:
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        res = list()
+        n = len(equations)
+        uf = UnionFind(n)
+        
+        graph = collections.defaultdict(set)
+        for (u, v), val in zip(equations, values):
+            uf.union(u, v, val)
+        
+        for x, y in queries:
+            if not x in uf.rank or not y in uf.rank or not uf.connected(x, y):
+                res.append(-1.0)
+            else:
+                res.append(uf.rank[x] / uf.rank[y])
+        
         return res
 ```
  
