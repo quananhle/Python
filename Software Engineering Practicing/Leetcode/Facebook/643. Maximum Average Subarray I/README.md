@@ -32,3 +32,22 @@ __Constraints:__
 - -10<sup>4</sup> <= ```nums[i]``` <= 10<sup>4</sup>
 
 ---
+
+### Sliding Window
+
+```Python
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        # Time Limit Exceeded
+        ans = float('-inf')
+        n = len(nums)
+
+        if n <= k:
+            return sum(nums) / k
+
+        for end in range(k, n + 1):
+            start = end - k
+            ans = max(ans, sum(nums[start:end]) / k)
+
+        return ans
+```
