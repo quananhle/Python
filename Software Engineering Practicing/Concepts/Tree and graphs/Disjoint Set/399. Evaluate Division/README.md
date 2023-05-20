@@ -39,17 +39,17 @@ Output: [0.50000,2.00000,-1.00000,-1.00000]
 ```
 
 __Constraints:__
-```
-1 <= equations.length <= 20
-equations[i].length == 2
-1 <= Ai.length, Bi.length <= 5
-values.length == equations.length
-0.0 < values[i] <= 20.0
-1 <= queries.length <= 20
-queries[i].length == 2
-1 <= Cj.length, Dj.length <= 5
-Ai, Bi, Cj, Dj consist of lower case English letters and digits.
-```
+
+- ```1 <= equations.length <= 20```
+- ```equations[i].length == 2```
+- ```1 <= Ai.length, Bi.length <= 5```
+- ```values.length == equations.length```
+- ```0.0 < values[i] <= 20.0```
+- ```1 <= queries.length <= 20```
+- ```queries[i].length == 2```
+- ```1 <= Cj.length, Dj.length <= 5```
+- ```Ai```, ```Bi```, ```Cj```, ```Dj``` consist of lower case English letters and digits.
+
 
 ---
 
