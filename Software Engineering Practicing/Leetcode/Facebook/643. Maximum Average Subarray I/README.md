@@ -103,3 +103,23 @@ class Solution:
 
         return ans / k
 ```
+
+```Python
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        n = len(nums)
+        cumulative_sum = 0
+
+        if n <= k:
+            return sum(nums) / k
+
+        for num in nums[:k]:
+            cumulative_sum += num
+
+        ans = cumulative_sum
+        for i in range(k, n):
+            cumulative_sum += nums[i] - nums[i - k]
+            ans = max(ans, cumulative_sum) 
+
+        return ans / k
+```
