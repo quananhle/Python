@@ -1,6 +1,6 @@
 ## [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i)
 
-```Tag```: ```Sliding Window```
+```Tag```: ```Sliding Window``` ```Cumulative Sum``` ```Math```
 
 #### Difficulty: Easy
 
@@ -33,6 +33,28 @@ __Constraints:__
 
 ---
 
+### Cumulative Sum
+
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(n)```9
+
+```Python
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        n = len(nums)
+        cumulative_sum = [0] * n
+        cumulative_sum[0] = nums[0]
+
+        for i in range(1, n):
+            cumulative_sum[i] = cumulative_sum[i - 1] + nums[i]
+
+        ans = cumulative_sum[k - 1] / k
+        for i in range(k, n):
+            ans = max(ans, (cumulative_sum[i] - cumulative_sum[i - k]) / k)
+
+        return ans
+```
+
 ### Sliding Window
 
 ```Python
@@ -50,4 +72,34 @@ class Solution:
             ans = max(ans, sum(nums[start:end]) / k)
 
         return ans
+```
+
+```Python
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        n = len(nums)
+        ans = curr_sum = sum(nums[:k])
+
+        for i in range(k, n):
+            curr_sum += nums[i] - nums[i - k]
+            ans = max(ans, curr_sum)
+        
+        return ans / k
+```
+
+```Python
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        ans = curr = sum(nums[:k])
+        n = len(nums)
+
+        if n <= k:
+            return sum(nums) / k
+
+        for end in range(k, n):
+            start = end - k
+            curr += nums[end] - nums[start]
+            ans = max(ans, curr)
+
+        return ans / k
 ```
