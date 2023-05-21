@@ -14,7 +14,20 @@ Explanation: Maximum average is (12 - 5 - 6 + 50) / 4 = 51 / 4 = 12.75
 ```
 
 ```Python
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        ans = curr = sum(nums[:k])
+        n = len(nums)
 
+        if n <= k:
+            return sum(nums) / k
+
+        for end in range(k, n):
+            start = end - k
+            curr += nums[end] - nums[start]
+            ans = max(ans, curr)
+
+        return ans / k
 ```
 
 ### [1456. Maximum Number of Vowels in a Substring of Given Length](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
@@ -31,5 +44,22 @@ Explanation: The substring "iii" contains 3 vowel letters.
 ```
 
 ```Python
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        vowels = {'a' , 'e' , 'i' , 'o' , 'u'}
+        substring = s[:k]
+        curr = sum([1 for c in substring if c in vowels])
+        n = len(s)
+        ans = curr
 
+        for end in range(k + 1, n + 1):
+            start = end - k
+            if substring[0] in vowels:
+                curr -= 1
+            substring = s[start:end]
+            if substring[-1] in vowels:
+                curr += 1
+            ans = max(ans, curr)
+        
+        return ans
 ```
