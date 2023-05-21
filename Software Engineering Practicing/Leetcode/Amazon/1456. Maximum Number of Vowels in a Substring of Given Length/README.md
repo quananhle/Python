@@ -41,11 +41,9 @@ __Constraints:__
 
 ---
 
-### Sliding Window
+### Two Pointers (Time Limit Exceeded)
 
 ![image](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/Figures/1456/intro.png)
-
-#### Naive Approach (Time Limit Exceeded)
 
 ```Python
 class Solution:
@@ -65,7 +63,28 @@ class Solution:
         return ans 
 ```
 
-#### Dynamic Sliding Window
+#### Sliding Window
+
+```Python
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        vowels = {'a' , 'e' , 'i' , 'o' , 'u'}
+        substring = s[:k]
+        curr = sum([1 for c in substring if c in vowels])
+        n = len(s)
+        ans = curr
+
+        for end in range(k + 1, n + 1):
+            start = end - k
+            if substring[0] in vowels:
+                curr -= 1
+            substring = s[start:end]
+            if substring[-1] in vowels:
+                curr += 1
+            ans = max(ans, curr)
+        
+        return ans
+```
 
 ![image](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/Figures/1456/2.png)
 
