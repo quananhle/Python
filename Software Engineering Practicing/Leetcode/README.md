@@ -72,10 +72,6 @@
 - :four_leaf_clover: [252. Meeting Rooms](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Google/252.%20Meeting%20Rooms/) ```Sorting```
 - :warning::warning: [253. Meeting Rooms II](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II/) ```Priority Queue``` ```Chronological Ordering``` ```Sorting```
 
-### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
-
-- :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring)
-
 #### Palindrome
 
 - :warning::warning: [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome/5.%20Longest%20Palindromic%20Substring) ```Dynamic Programming``` ```Sliding Window``` ```Two Pointers```
@@ -86,15 +82,19 @@
 
 ### [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Sliding%20Window)
 
-- :warning::warning: [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters) ```Hash Map```
 - :warning::warning: [438. Find All Anagrams in a String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/438.%20Find%20All%20Anagrams%20in%20a%20String)
 - :warning::warning: [567. Permutation in String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/567.%20Permutation%20in%20String) ```Hash Map``` ```Two Pointers```
 - :four_leaf_clover: [1065. Index Pairs of a String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1065.%20Index%20Pairs%20of%20a%20String) ```Trie``` ```Hash Set```
-- :warning::warning: [1456. Maximum Number of Vowels in a Substring of Given Length](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
 
 #### Cumulative Sum
 
 - :four_leaf_clover: [643. Maximum Average Subarray I](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/643.%20Maximum%20Average%20Subarray%20I) ```Math```
+
+#### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
+
+- :warning::warning: [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters) ```Hash Map```
+- :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring)
+- :warning::warning: [1456. Maximum Number of Vowels in a Substring of Given Length](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
 
 ### String Calculations
 
