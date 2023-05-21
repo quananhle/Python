@@ -113,7 +113,7 @@ __Algorithm__
 - a queue ```first_island``` and add ```grid[start_row][start_col]``` on island A to it.
 - an empty list ```new_bfs``` for the next round's search.
 - an empty queue ```second_bfs_queue``` for searching the distance between two islands later.
-3. Iterate over ```first_island```, for each cell ```grid[row][col], if grid[row][col] = 1 or if the cell is land:
+3. Iterate over ```first_island```, for each cell ```grid[row][col]```, if ```grid[row][col] = 1``` or if the cell is land:
 - set ```grid[row][col] = 2```
 - add ```(row, col)``` to ```new_bfs``` for the next round's search.
 - add ```(row, col)``` to ```second_bfs_queue``` for searching over water cells later.
