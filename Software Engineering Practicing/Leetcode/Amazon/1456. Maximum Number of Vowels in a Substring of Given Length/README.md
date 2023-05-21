@@ -65,6 +65,8 @@ class Solution:
 
 #### Sliding Window
 
+![image](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/Figures/1456/2.png)
+
 ```Python
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
@@ -85,8 +87,6 @@ class Solution:
         
         return ans
 ```
-
-![image](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/Figures/1456/2.png)
 
 __Algorithm__
 
