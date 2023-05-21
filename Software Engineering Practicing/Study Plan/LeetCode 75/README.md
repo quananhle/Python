@@ -16,6 +16,10 @@
 - :warning::warning: [11. Container With Most Water](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/11.%20Container%20With%20Most%20Water)
 - :warning::warning: [1679. Max Number of K-Sum Pairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1679.%20Max%20Number%20of%20K-Sum%20Pairs)
 
+### Sliding Window
+
+- :four_leaf_clover: [643. Maximum Average Subarray I](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/643.%20Maximum%20Average%20Subarray%20I)
+
 ### Dynamic Programming - 1D
 
 - :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
