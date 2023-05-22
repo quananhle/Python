@@ -37,7 +37,7 @@ class Solution:
         return res
 ```
 
-### [253. Meeting Rooms II](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II)
+### [253. Meeting Rooms II](https://github.com/quananhle/Python/blob/66c7b6505d2cce8287892fe803ccd2469ec10668/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II)
 
 Given an array of meeting time intervals ```intervals``` where ```intervals[i]``` = [```start```<sub>i</sub>, ```end```<sub>i</sub>], return _the minimum number of conference rooms __required___. 
 
