@@ -8,8 +8,7 @@ class Solution:
         intervals.sort(key=lambda x:x[0])
         res = list()
 
-        for interval in intervals:
-            curr_lower, curr_upper = interval[0], interval[1]
+        for curr_lower, curr_upper in intervals:
             if not res or res[-1][1] < curr_lower:
                 res.append(interval)
             else:
@@ -29,12 +28,38 @@ class Solution:
         res = list()
 
         # Merge intervals
-        for interval in intervals:
-            curr_lower, curr_upper = interval[0], interval[1]
+        for curr_lower, curr_upper in intervals:
             if not res or res[-1][1] < curr_lower:
                 res.append(interval)
             else:
                 res[-1][1] = max(res[-1][1], curr_upper)
 
         return res
+```
+
+### 253. Meeting Rooms II
+
+Given an array of meeting time intervals ```intervals``` where ```intervals[i]``` = [```start```<sub>i</sub>, ```end```<sub>i</sub>], return _the minimum number of conference rooms __required___. 
+
+__Example__:
+```
+Input: intervals = [[0,30],[5,10],[15,20]]
+Output: 2
+```
+
+```Python
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        schedule = list()
+        ans = curr = 0
+        for start, end in intervals:
+            schedule.append((start, "Start", 1))
+            schedule.append((end, "Finish", -1))
+            
+        schedule.sort()
+        for meeting in schedule:
+            curr += meeting[2]
+            ans = max(ans, curr)
+
+        return ans
 ```
