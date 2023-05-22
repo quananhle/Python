@@ -54,3 +54,25 @@ start = 0, end = 0, window_size = 0
 ![image](https://leetcode.com/problems/max-consecutive-ones-iii/Figures/1004/1004_Max_Consecutive_Ones_3.png)
 
 Observe we don't contract the window if it's not needed and thus save on some computation.
+
+```Python
+class Solution:
+    def longestOnes(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        start = 0
+        for end in range(n):
+            '''
+            if nums[end] == 0:
+                k -= 1
+            '''
+            k -= 1 - nums[end]
+            if k < 0:
+                '''
+                if nums[start] == 0:
+                    k += 1
+                '''
+                k += 1 - nums[start]
+                start += 1
+        
+        return end - start + 1
+```
