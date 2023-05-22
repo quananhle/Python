@@ -40,16 +40,15 @@ class Solution:
         # Sort
         #### Time Complexity: O(NlogN), sort operations take NlogN time
         #### Space Complexity: O(N), frequency hash map might be as big as the input array if all elements are unique
-        freq = collections.defaultdict(int)
+        counter = collections.defaultdict(int)
         for num in nums:
-            freq[num] = 1 + freq.get(num, 0)
-        sorted_frequency = sorted(freq.items(), key=lambda x:x[1])[::-1]
+            counter[num] = 1 + counter.get(num, 0)
+        
+        sorted_frequency = sorted(counter.items(), key=lambda x:x[1])[::-1]
         res = list()
-        i = 0
-        while k:
+        for i in range(k):
             res.append(sorted_frequency[i][0])
-            i += 1
-            k -= 1
+
         return res
 ```
 
@@ -69,19 +68,16 @@ class Solution:
         #### Space Complexity: O(N + k), to store the hash map and heap
         if k == len(nums):
             return nums
-        counter = collections.defaultdict(int)
-        for num in nums:
-            counter[num] = 1 + counter.get(num, 0)
+
+        counter = collections.Counter(nums)
         h = list()
-        for num, cnt in counter.items():
+        for key, val in counter.items():
             # Build priority queue based on frequency of elements
-            heapq.heappush(h, (cnt, num))
+            heapq.heappush(h, (val, key))
             if len(h) > k:
                 heapq.heappop(h)
-        res = list()
-        for cnt, num in h:
-            res.append(num)
-        return res
+    
+        return [num[1] for num in h]
 ```
 
 #### ```nlargest()```
