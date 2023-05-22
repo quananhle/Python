@@ -52,9 +52,9 @@ class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         schedule = list()
         ans = curr = 0
-        for start, end in intervals:
-            schedule.append((start, "Start", 1))
-            schedule.append((end, "Finish", -1))
+        for curr_lower, curr_upper in intervals:
+            schedule.append((curr_lower, "Start", 1))
+            schedule.append((curr_upper, "Finish", -1))
             
         schedule.sort()
         for meeting in schedule:
