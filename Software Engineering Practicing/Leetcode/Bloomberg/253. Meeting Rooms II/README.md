@@ -29,6 +29,8 @@ __Constraints:__
 
 ---
 
+### Sorting
+
 - __Time Complexity__: ```O(Nlog⁡N)```
 - __Space Complexity__: ```O(N)```
 
@@ -51,6 +53,25 @@ class Solution:
             # Record the most meetings happening at the same time 
             ans = max(ans, curr)
         
+        return ans
+```
+
+### ```SortedList()```
+
+```Python
+from sortedcontainers import SortedList
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        schedule = SortedList()
+        ans = curr = 0
+        for start, end in intervals:
+            schedule.add((start, "Start", 1))
+            schedule.add((end, "Finish", -1))
+            
+        for meeting in schedule:
+            curr += meeting[2]
+            ans = max(ans, curr)
+
         return ans
 ```
 
