@@ -32,6 +32,14 @@ It is guaranteed that the answer is unique.
 
 ---
 
+### One Liner
+
+```Python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        return [num for num, freq in collections.Counter(nums).most_common(k)]
+```
+
 ### Sort
 
 ```Python
