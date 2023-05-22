@@ -1,6 +1,6 @@
-## 347. Top K Frequent Elements
+## [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements)
 
-```Tag```: ```Sort``` ```Hash Table```
+```Tag```: ```Sort``` ```Hash Table``` ```Quickselect (Hoare's Selection Algorithm)```
 
 #### Difficulty: Medium
 
