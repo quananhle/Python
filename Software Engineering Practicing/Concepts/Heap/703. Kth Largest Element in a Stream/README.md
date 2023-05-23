@@ -1,6 +1,6 @@
-## 703. K<sup>th</sup> Largest Element in a Stream
+## [703. K<sup>th</sup> Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
 
-```Tag```: ```Heap```
+```Tag```: ```Heap``` ```Design```
 
 #### Difficulty: Easy
 
