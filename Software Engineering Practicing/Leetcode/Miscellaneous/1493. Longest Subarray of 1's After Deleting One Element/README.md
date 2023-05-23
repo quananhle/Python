@@ -39,3 +39,27 @@ __Constraints:__
 - ```nums[i]``` is either ```0``` or ```1```.
 
 ---
+
+### Sliding Window
+
+```Python
+class Solution:
+    def longestSubarray(self, nums: List[int]) -> int:
+        n = len(nums)
+        start = 0
+        k = 1
+        for end in range(n):
+            k -= 1 - nums[end]
+            '''
+            if nums[end] == 0:
+                k -= 1
+            '''
+            if k < 0:
+                k += 1 - nums[start]
+                '''
+                if nums[start] == 0:
+                    k += 1
+                '''
+                start += 1
+        return end - start
+```
