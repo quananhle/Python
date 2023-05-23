@@ -63,3 +63,31 @@ class Solution:
         
         return ans
 ```
+
+### [1004. Max Consecutive Ones III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1004.%20Max%20Consecutive%20Ones%20III)
+
+Given a binary array ```nums``` and an integer ```k```, return _the maximum number of consecutive ```1```'s in the array if you can flip at most ```k``` ```0```'s_.
+
+__Example 1:__
+```
+Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+Output: 6
+Explanation: [1,1,1,0,0,1,1,1,1,1,1]
+Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
+```
+
+```Python
+class Solution:
+    def longestOnes(self, nums: List[int], k: int) -> int:
+        start = 0 
+        n = len(nums)
+
+        for end in range(n):
+            k -= 1 if not nums[end] else 0
+            if k < 0:
+                k += 1 if not nums[start] else 0
+                start += 1
+        
+        return end - start + 1
+```
+
