@@ -40,7 +40,30 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/Figures/1493/1493A.png)
+
 ### Sliding Window
+
+- Time Complexity: ```O(N)```
+- Space Complexity: ```O(1)```
+
+```Python
+class Solution:
+    def longestSubarray(self, nums: List[int]) -> int:
+        ans = 0
+        n = len(nums)
+        start = 0
+        k = 1
+        for end in range(n):
+            if nums[end] == 0:
+                k -= 1
+            if k < 0:
+                if nums[start] == 0:
+                    k += 1 
+                start += 1
+        
+        return end - start
+```
 
 ```Python
 class Solution:
