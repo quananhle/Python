@@ -91,3 +91,31 @@ class Solution:
         return end - start + 1
 ```
 
+### [1493. Longest Subarray of 1's After Deleting One Element](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1493.%20Longest%20Subarray%20of%201's%20After%20Deleting%20One%20Element)
+
+Given a binary array ```nums```, you should delete __one__ element from it.
+
+Return _the size of the longest non-empty subarray containing only ```1```'s in the resulting array_. Return _```0``` if there is no such subarray_.
+
+__Example 1:__
+```
+Input: nums = [1,1,0,1]
+Output: 3
+Explanation: After deleting the number in position 2, [1,1,1] contains 3 numbers with value of 1's.
+```
+
+```Python
+class Solution:
+    def longestSubarray(self, nums: List[int]) -> int:
+        n = len(nums)
+        start = 0
+        k = 1
+        for end in range(n):
+            if nums[end] == 0:
+                k -= 1
+            if k < 0:
+                if nums[start] == 0:
+                    k += 1
+                start += 1
+        return end - start
+```
