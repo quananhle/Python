@@ -74,3 +74,23 @@ __Constraints:__
 
         return ans
 ```
+
+```Python
+class Solution:
+    def maxScore(self, nums1: List[int], nums2: List[int], k: int) -> int:
+        n = len(nums1)
+        pairs = sorted(list(zip(nums1, nums2)), key=lambda x:-x[1])
+        ans = 0
+        heap = list()
+        running_sum = 0
+
+        for num1, min_val in pairs:
+            running_sum += num1
+            heapq.heappush(heap, num1)
+            if len(heap) > k:
+                running_sum -= heapq.heappop(heap)
+            if len(heap) == k:
+                ans = max(ans, running_sum * min_val)
+        
+        return ans
+```
