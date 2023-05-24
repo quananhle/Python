@@ -342,6 +342,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Heap/Priority Queue
 
+- :no_entry::no_entry::no_entry: [502. IPO](https://github.com/quananhle/Python/blob/853074bf3861cd6db668733f91859e2fb5261d48/Software%20Engineering%20Practicing/Concepts/Heap/502.%20IPO) ```Sorting```
 - :four_leaf_clover: [1046. Last Stone Weight](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2015%20-%20Heap/1046.%20Last%20Stone%20Weight)
 - :four_leaf_clover: [1086. High Five](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1086.%20High%20Five) ```Sorted List``` ```Sorting```
 - :warning::warning: [2542. Maximum Subsequence Score](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2542.%20Maximum%20Subsequence%20Score) ```Sorting```
