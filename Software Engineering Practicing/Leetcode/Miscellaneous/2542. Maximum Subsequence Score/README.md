@@ -1,6 +1,6 @@
 ## [2542. Maximum Subsequence Score](https://leetcode.com/problems/maximum-subsequence-score/)
 
-```Tag```: ``````
+```Tag```: ```Priority Queue``` ```Sorting```
 
 #### Difficulty: Medium
 
@@ -49,4 +49,28 @@ __Constraints:__
 
 ---
 
+ ### Priority Queue
  
+ ```Python
+ class Solution:
+    def maxScore(self, nums1: List[int], nums2: List[int], k: int) -> int:
+        pairs = [(a, b) for a, b in zip(nums1, nums2)]
+        pairs.sort(key=lambda x:-x[1])
+
+        top_k_heap = [x[0] for x in pairs[:k]]
+        top_k_sum = sum(top_k_heap)
+        heapq.heapify(top_k_heap)
+
+        print (pairs)
+        print (top_k_heap)
+        ans = top_k_sum * pairs[k - 1][1]
+        
+        for i in range(k, len(nums1)):
+            top_k_sum -= heapq.heappop(top_k_heap)
+            heapq.heappush(top_k_heap, pairs[i][0])
+            top_k_sum += pairs[i][0]
+
+            ans = max(ans, top_k_sum * pairs[i][1])
+
+        return ans
+```
