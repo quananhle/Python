@@ -1,4 +1,4 @@
-## 206. Reverse Linked List
+## [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list)
 
 ```Tag```: ```Two Pointers``` ```Linked List``` ```Recusion```
 
@@ -90,13 +90,30 @@ class Solution:
     #### Time Complexity: O(N), traverse through the entire linked list
     #### Space Complexity: O(1), contanst memory space for pointers
         curr = head
-        prev = None
+        tail = None
         while curr:
             tmp = curr.next
-            curr.next = prev
-            prev = curr
+            curr.next = tail
+            tail = curr
             curr = tmp
-        return prev
+        return tail
+```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        curr = head
+        tail = None
+
+        while curr:
+            curr.next, tail, curr = tail, curr, curr.next
+        
+        return tail
 ```
 
 ### Recursive
