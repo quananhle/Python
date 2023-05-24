@@ -45,12 +45,18 @@ __Constraints:__
 
 #### Min Heap
     
+__Complexity Analysis__
+
+Let ```n``` be the number of projects.
+
+- __Time complexity__: ```O(n * log⁡n)```. Sorting the projects by increasing capital takes ```O(n * log⁡n)``` time. Also, we perform ```O(n)``` operations with the priority queue, each in ```O(log⁡n)```.
+- __Space complexity__: ```O(n)```. The sorted array of projects and the priority queue take linear space.
+    
 ```Python
 class Solution:
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
         n = len(profits)
-        projects = list(zip(capital, profits))
-        projects.sort()
+        projects = sorted(list(zip(capital, profits)))
 
         h = list()
         i = 0
