@@ -55,3 +55,32 @@ __Constraints:__
 - ```1 <= Node.val <= 10^5```
 
 ---
+
+### One Pass & Slow and Fast Pointers
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return None
+
+        prev = head
+        slow, fast = head, head
+        count = 0
+
+        while fast and fast.next:
+
+            slow, fast = slow.next, fast.next.next
+            count += 1
+            if count > 1:
+                prev = prev.next
+                count -= 1
+
+        prev.next = slow.next
+        return head
+```
