@@ -1,4 +1,4 @@
-## 502. IPO
+## [502. IPO](https://leetcode.com/problems/ipo/)
 
 ```Tag```: ```Greedy``` ```Heap``` ```Dynamic Programming```
 
