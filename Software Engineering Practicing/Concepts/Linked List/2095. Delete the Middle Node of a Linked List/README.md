@@ -56,7 +56,42 @@ __Constraints:__
 
 ---
 
+### Two Pass
+
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(1)```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return None
+
+        count = 0
+        prev = curr = head
+
+        while curr:
+            count += 1
+            curr = curr.next
+
+        mid = count // 2
+
+        for _ in range(mid - 1):
+            prev = prev.next
+        
+        prev.next = prev.next.next
+        return head
+```
+
 ### One Pass & Slow and Fast Pointers
+
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(1)```
 
 ```Python
 # Definition for singly-linked list.
@@ -82,5 +117,27 @@ class Solution:
                 count -= 1
 
         prev.next = slow.next
+        return head
+```
+
+### Slow and Fast Pointers
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return None
+        
+        slow, fast = head, head.next.next
+
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+        
+        slow.next = slow.next.next
         return head
 ```
