@@ -56,6 +56,43 @@ __Constraints:__
 
 ---
 
+### Build New Linked List from List
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return None
+
+        curr = head
+        linked_list = list()
+        new_list = list()
+
+        while curr:
+            linked_list.append(curr.val)
+            curr = curr.next
+        
+        n = len(linked_list)
+        prev_nodes = linked_list[:n // 2]
+        next_nodes = linked_list[n // 2 + 1:]
+        for node in (prev_nodes):
+            new_list.append(node)
+        for node in (next_nodes):
+            new_list.append(node)
+
+        new_head = curr = ListNode()
+        for node in new_list:
+            curr.next = ListNode(node)
+            curr = curr.next
+
+        return new_head.next
+```
+
 ### Two Pass
 
 - __Time complexity__: ```O(n)```
@@ -120,7 +157,7 @@ class Solution:
         return head
 ```
 
-### Slow and Fast Pointers
+### ✅ Slow and Fast Pointers
 
 ```Python
 # Definition for singly-linked list.
