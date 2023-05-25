@@ -35,3 +35,4 @@
 - :warning::warning: [2095. Delete the Middle Node of a Linked List](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/2095.%20Delete%20the%20Middle%20Node%20of%20a%20Linked%20List)
 
 - :four_leaf_clover: [206. Reverse Linked List](https://github.com/quananhle/Python/blob/5a29ffee2f0c37964931776bac5de4932866e04e/Software%20Engineering%20Practicing/Concepts/Linked%20List/Classic%20Problems/206.%20Reverse%20Linked%20List)
+- :warning::warning: [2130. Maximum Twin Sum of a Linked List](https://github.com/quananhle/Python/blob/5a29ffee2f0c37964931776bac5de4932866e04e/Software%20Engineering%20Practicing/Leetcode/Amazon/2130.%20Maximum%20Twin%20Sum%20of%20a%20Linked%20List)
