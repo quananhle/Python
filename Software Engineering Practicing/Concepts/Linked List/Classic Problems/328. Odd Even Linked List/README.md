@@ -1,4 +1,4 @@
-## 328. Odd Even Linked List
+## [328. Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list)
 
 ```Tag```: ```Two Pointers```
 
@@ -74,18 +74,17 @@ class Solution:
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head:
-            return None
-        # First node is odd, second node is even, and so on
-        odd_tail, even_tail = head, head.next
-        odd_head, even_head = odd_tail, even_tail
-        while even_tail and even_tail.next:
-            # odd_tail.next = even_tail.next
-            odd_tail.next = odd_tail.next.next
-            odd_tail = odd_tail.next
-            # even_tail.next = odd_tail.next
-            even_tail.next = even_tail.next.next
-            even_tail = even_tail.next
-        # Odd nodes list followed by even nodes list
-        odd_tail.next = even_head
-        return odd_head 
+            return head
+
+        odd, even = head, head.next
+        even_head = even
+
+        while even and even.next:
+            odd.next = odd.next.next
+            odd = odd.next
+            even.next = even.next.next
+            even = even.next
+
+        odd.next = even_head
+        return head
 ```
