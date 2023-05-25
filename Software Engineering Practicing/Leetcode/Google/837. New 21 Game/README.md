@@ -110,9 +110,51 @@ class Solution:
         return dp(0, 0)
 ```
 
-#### Bottom-Up Dynamic Programming
+#### Bottom-Up Dynamic Programming (Time Limit Exceeded)
+
+__Complexity Analysis__
+
+- __Time complexity__: O($n^2$)
+- __Space complexity__: ```O(n)```
 
 ```Python
+class Solution:
+    def new21Game(self, n: int, k: int, maxPts: int) -> float:
+        
+        dp = [0] * (n + 1)
+        dp[0] = 1
 
+        for points in range(1, n + 1):
+            for drawn in range(1, maxPts + 1):
+                # Check if points drawn are less than points ma
+                if points - drawn >= 0 and points - drawn < k:
+                    dp[points] += dp[points - drawn] / maxPts
+        
+        return sum(dp[k:])
 ```
  
+#### Time Optimized Bottom-Up Dynamic Programming
+
+__Complexity Analysis__
+
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(n)```
+
+```Python
+class Solution:
+    def new21Game(self, n: int, k: int, maxPts: int) -> float:
+        dp = [0] * (n + 1)
+        dp[0] = 1
+
+        s = 1 if k > 0 else 0
+
+        for i in range(1, n + 1):
+            dp[i] = s / maxPts
+            if i < k:
+                s += dp[i]
+            if i - maxPts >= 0 and i - maxPts < k:
+                s -= dp[i - maxPts]
+        
+        return sum(dp[k:])
+```
+
