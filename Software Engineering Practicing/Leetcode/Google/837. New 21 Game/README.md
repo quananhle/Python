@@ -1,6 +1,6 @@
 ## [837. New 21 Game](https://leetcode.com/problems/new-21-game/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -46,5 +46,41 @@ __Constraints:__
 
 ---
 
+### The Framwork
 
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def new21Game(self, n: int, k: int, maxPts: int) -> float:
+        memo = {}
+
+        def dp(points, drawn):
+            # Base case: Alice has reached k or more points
+            if points >= k:
+                return 1.0
+            
+            # Base case: All cards have been drawn
+            if drawn >= n:
+                return 0.0
+            
+            # Check if the result is already memoized
+            if (points, drawn) in memo:
+                return memo[(points, drawn)]
+            
+            # Initialize the probability
+            prob = 0.0
+            
+            # Try drawing each possible number of points
+            for p in range(1, min(maxPts + 1, n - points + 1)):
+                prob += dp(points + p, drawn + 1) / maxPts
+            
+            # Memoize the result
+            memo[(points, drawn)] = prob
+            
+            return prob
+
+
+        return dp(0, 0)
+```
  
