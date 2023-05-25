@@ -55,7 +55,7 @@ class Solution:
     def new21Game(self, n: int, k: int, maxPts: int) -> float:
         memo = {}
 
-        def dp(points, drawn):
+        def dp(drawn, points):
             # Base case: Alice has reached k or more points
             if points >= k:
                 return 1
@@ -65,18 +65,18 @@ class Solution:
                 return 0
             
             # Check if the result is already memoized
-            if (points, drawn) in memo:
-                return memo[(points, drawn)]
+            if (drawn, points) in memo:
+                return memo[(drawn, points)]
             
             # Initialize the probability
             prob = 0
             
             # Try drawing each possible number of points
             for p in range(1, min(maxPts + 1, n - points + 1)):
-                prob += dp(points + p, drawn + 1) / maxPts
+                prob += dp(drawn + 1, points + p) / maxPts
             
             # Memoize the result
-            memo[(points, drawn)] = prob
+            memo[(drawn, points)] = prob
             
             return prob
 
@@ -88,7 +88,7 @@ class Solution:
 class Solution:
     def new21Game(self, n: int, k: int, maxPts: int) -> float:
         @lru_cache(None)
-        def dp(points, drawn):
+        def dp(drawn, points):
             # Base case: Alice has reached k or more points
             if points >= k:
                 return 1
@@ -102,7 +102,7 @@ class Solution:
             
             # Try drawing each possible number of points
             for p in range(1, min(maxPts + 1, n - points + 1)):
-                prob += dp(points + p, drawn + 1) / maxPts
+                prob += dp(drawn + 1, points + p) / maxPts
 
             return prob
 
