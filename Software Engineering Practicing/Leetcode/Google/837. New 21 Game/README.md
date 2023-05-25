@@ -58,18 +58,18 @@ class Solution:
         def dp(points, drawn):
             # Base case: Alice has reached k or more points
             if points >= k:
-                return 1.0
+                return 1
             
             # Base case: All cards have been drawn
             if drawn >= n:
-                return 0.0
+                return 0
             
             # Check if the result is already memoized
             if (points, drawn) in memo:
                 return memo[(points, drawn)]
             
             # Initialize the probability
-            prob = 0.0
+            prob = 0
             
             # Try drawing each possible number of points
             for p in range(1, min(maxPts + 1, n - points + 1)):
@@ -91,14 +91,14 @@ class Solution:
         def dp(points, drawn):
             # Base case: Alice has reached k or more points
             if points >= k:
-                return 1.0
+                return 1
             
             # Base case: All cards have been drawn
             if drawn >= n:
-                return 0.0
+                return 0
             
             # Initialize the probability
-            prob = 0.0
+            prob = 0
             
             # Try drawing each possible number of points
             for p in range(1, min(maxPts + 1, n - points + 1)):
@@ -108,5 +108,11 @@ class Solution:
 
 
         return dp(0, 0)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
 ```
  
