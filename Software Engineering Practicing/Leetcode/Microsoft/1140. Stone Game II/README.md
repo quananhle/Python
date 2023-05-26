@@ -69,3 +69,35 @@ class Solution:
         return dp(0, 1, sum(piles))
 ```
 
+```Python
+class Solution:
+    def stoneGameII(self, piles: List[int]) -> int:
+        n = len(piles)
+
+        @lru_cache(None)
+        def dp(turn, curr, m):
+            # Base case: no more stones to get
+            if curr == n:
+                return 0
+            
+            # turn = 0, Alice moves; turn = 1, Bob moves. Maximum for Alice means minimum for Bob
+            ans = 1000000 if turn == 1 else -1
+            taken = 0
+            # Recurrence relation: take 1 stone or more than 1 stone but no more than 2*M from the current position
+            # However, 2 * M from the current position may exceed the size of piles; hence, use min() to get max limit
+            for x in range(1, min(2 * m, n - curr) + 1):
+                # Take this current pile of stones
+                taken += piles[curr + x - 1]
+                # If Alice's turn
+                if turn == 0:
+                    # Move on to the next position from the curent position, and get maximum stones
+                    ans = max(ans, taken + dp(1, curr + x, max(x, m)))
+                # Or else, Bob's turn
+                else:
+                    # Move on the next position, not getting any stones for Alice, and get minimum stones
+                    ans = min(ans, dp(0, curr + x, max(x, m)))
+            
+            return ans
+
+        return dp(0, 0, 1)
+```
