@@ -232,6 +232,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
 - :warning::warning: [837. New 21 Game](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/837.%20New%2021%20Game)
 - :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
+- :warning::warning: [1140. Stone Game II](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1140.%20Stone%20Game%20II)
 - [1155. Number of Dice Rolls With Target Sum]
 - :no_entry::no_entry::no_entry: [1416. Restore The Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1416.%20Restore%20The%20Array)
 - :no_entry::no_entry::no_entry: [1444. Number of Ways of Cutting a Pizza](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza)
