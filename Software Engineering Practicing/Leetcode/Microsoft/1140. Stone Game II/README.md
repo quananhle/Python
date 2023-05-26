@@ -38,3 +38,34 @@ __Constraints:__
 
 ---
 
+### The Framwork
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def stoneGameII(self, piles: List[int]) -> int:
+        n = len(piles)
+
+        @lru_cache(None)
+        def dp(curr, turn, total):
+            # Base case: no more stones to get
+            if curr == n:
+                return 0
+            
+            ans = 0
+            taken = 0
+
+            # Recurrence relation: take 1 stone or more than 1 stone but no more than 2*M from the current position
+            # However, 2 * M from the current position may exceed the size of piles; hence, use min() to get max limit
+            for i in range(curr, min(curr + 2 * turn, n)):
+                # Take this pile of stones
+                taken += piles[i]
+                # Move on to the next position, with new M = max(X, M), where X is the current position + 1
+                ans = max(ans, total - dp(i + 1, max(turn, i - curr + 1), total - taken))
+
+            return ans
+
+        return dp(0, 1, sum(piles))
+```
+
