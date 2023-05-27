@@ -51,4 +51,39 @@ __Constraints:__
 
 ---
 
+### The Framework
 
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def stoneGameIII(self, stoneValue: List[int]) -> str:
+        n = len(stoneValue)
+        if n <= 3 and sum(stoneValue) > 0:
+            return "Alice"
+
+        @lru_cache(None)
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return 0
+            
+            if curr + 1 <= n:
+                ans = stoneValue[curr] - dp(curr + 1)
+
+            if curr + 2 <= n:
+                ans = max(ans, stoneValue[curr] + stoneValue[curr + 1] - dp(curr + 2))
+
+            if curr + 3 <= n:
+                ans = max(ans, stoneValue[curr] + stoneValue[curr + 1] + stoneValue[curr + 2] - dp(curr + 3))
+            
+            return ans
+
+        ans = dp(0)
+        if ans > 0:
+            return "Alice"
+        elif ans < 0:
+            return "Bob"
+        else:
+            return "Tie"
+```
