@@ -77,6 +77,9 @@ Hence, the minimum cost of all the cuts required on the original stick can be de
 
 ![image](https://github.com/quananhle/Python/assets/35042430/6c44c997-1205-44d2-8ee4-7eddb0c6f601)
 
+- __Time complexity__: $O(m^3)$
+- __Space complexity__: $O(m^2)$
+
 ```Python
 class Solution:
     def minCost(self, n: int, cuts: List[int]) -> int:
@@ -121,6 +124,16 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming
+
+![image](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/Figures/1547/bu.png)
+
+![image](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/Figures/1547/bu1.png)
+
+![image](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/Figures/1547/bu2.png)
+
+
+- __Time complexity__: $O(m^3)$
+- __Space complexity__: $O(m^2)$
 
 ```Python
 class Solution:
