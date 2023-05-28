@@ -4,7 +4,7 @@
   - [2D Array](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#2d-array-1)
   - [Intervals](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#intervals)
   - [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#sliding-window)
-    - [Cumulative Sum](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/README.md#cumulative-sum)
+    - [Cumulative Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#cumulative-sum)
     - [Substring](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#substring)
       - [Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#palindrome)
       - [String Matching](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#string-matching)
@@ -69,15 +69,15 @@
 
 - :warning::warning: [56. Merge Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval/56.%20Merge%20Intervals) ```Sorting``` ```Graph``` ```Union-Find```
 - :warning::warning: [57. Insert Interval](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval/57.%20Insert%20Interval) ```Binary Search```
-- :four_leaf_clover: [252. Meeting Rooms](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Google/252.%20Meeting%20Rooms/) ```Sorting```
+- :four_leaf_clover: [252. Meeting Rooms](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/252.%20Meeting%20Rooms/) ```Sorting```
 - :warning::warning: [253. Meeting Rooms II](https://github.com/quananhle/Python/blob/66c7b6505d2cce8287892fe803ccd2469ec10668/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II) ```Priority Queue``` ```Chronological Ordering``` ```Sorting```
 
 ### [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Sliding%20Window)
 
-- :warning::warning: [438. Find All Anagrams in a String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/438.%20Find%20All%20Anagrams%20in%20a%20String)
+- :warning::warning: [438. Find All Anagrams in a String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/438.%20Find%20All%20Anagrams%20in%20a%20String)
 - :warning::warning: [567. Permutation in String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/567.%20Permutation%20in%20String) ```Hash Map``` ```Two Pointers```
 - :warning::warning: [1004. Max Consecutive Ones III](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/1004.%20Max%20Consecutive%20Ones%20III)
-- :four_leaf_clover: [1065. Index Pairs of a String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1065.%20Index%20Pairs%20of%20a%20String) ```Trie``` ```Hash Set```
+- :four_leaf_clover: [1065. Index Pairs of a String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1065.%20Index%20Pairs%20of%20a%20String) ```Trie``` ```Hash Set```
 - :warning::warning: [1493. Longest Subarray of 1's After Deleting One Element](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1493.%20Longest%20Subarray%20of%201's%20After%20Deleting%20One%20Element) ```Two Pointers```
 
 #### Cumulative Sum
@@ -126,15 +126,15 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 - :warning::warning: [11. Container With Most Water](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/11.%20Container%20With%20Most%20Water)
 - :warning::warning: [151. Reverse Words in a String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Apple/151.%20Reverse%20Words%20in%20a%20String)
-- :warning::warning: [189. Rotate Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/189.%20Rotate%20Array)
+- :warning::warning: [189. Rotate Array](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/189.%20Rotate%20Array)
 - :four_leaf_clover: [283. Move Zeroes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2003%20-%20Two%20Pointers/283.%20Move%20Zeroes)
 - :four_leaf_clover: [344. Reverse String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/344.%20Reverse%20String)
-- :four_leaf_clover: [345. Reverse Vowels of a String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/345.%20Reverse%20Vowels%20of%20a%20String)
+- :four_leaf_clover: [345. Reverse Vowels of a String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/345.%20Reverse%20Vowels%20of%20a%20String)
 - :four_leaf_clover: [392. Is Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2002%20-%20String/392.%20Is%20Subsequence) ```Greedy Algorithm``` ```Divide & Conquer``` ```Dynamic Programming```
 - :four_leaf_clover: [557. Reverse Words in a String III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2004%20-%20Two%20Pointers/557.%20Reverse%20Words%20in%20a%20String%20III)
 - :four_leaf_clover: [977. Squares of a Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2002%20-%20Two%20Pointers/977.%20Squares%20of%20a%20Sorted%20Array) ```Heap``` ```Sorting```
-- :warning::warning: [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1498.%20Number%20of%20Subsequences%20That%20Satisfy%20the%20Given%20Sum%20Condition) ```Binary Search```
-- :warning::warning: [1578. Minimum Time to Make Rope Colorful](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/) ```Greedy```
+- :warning::warning: [1498. Number of Subsequences That Satisfy the Given Sum Condition](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1498.%20Number%20of%20Subsequences%20That%20Satisfy%20the%20Given%20Sum%20Condition) ```Binary Search```
+- :warning::warning: [1578. Minimum Time to Make Rope Colorful](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/) ```Greedy```
 - :warning::warning: [1679. Max Number of K-Sum Pairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1679.%20Max%20Number%20of%20K-Sum%20Pairs) ```Hash Map``` ```Sorting```
 - :four_leaf_clover: [1768. Merge Strings Alternately](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1768.%20Merge%20Strings%20Alternately)
 
@@ -150,7 +150,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 #### Shortest Word Distance
 
-- :warning::warning: [245. Shortest Word Distance III](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/245.%20Shortest%20Word%20Distance%20III/)
+- :warning::warning: [245. Shortest Word Distance III](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/245.%20Shortest%20Word%20Distance%20III/)
 
 ---
 
@@ -162,12 +162,12 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [35. Search Insert Position](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2001%20-%20Binary%20Search/35.%20Search%20Insert%20Position)
 - :four_leaf_clover: [69. Sqrt(x)](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/69.%20Sqrt(x)/) ```Math``` ```Bitwise Manipulation```
 - :warning::warning: [74. Search a 2D Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2008%20-%20Binary%20Search/74.%20Search%20a%202D%20Matrix)
-- :warning::warning: [153. Find Minimum in Rotated Sorted Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
+- :warning::warning: [153. Find Minimum in Rotated Sorted Array](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/153.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array)
 - :no_entry::no_entry::no_entry: [154. Find Minimum in Rotated Sorted Array II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/154.%20Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II)
-- :warning::warning: [162. Find Peak Element](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/162.%20Find%20Peak%20Element)
+- :warning::warning: [162. Find Peak Element](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/162.%20Find%20Peak%20Element)
 - :four_leaf_clover: [278. First Bad Version](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/278.%20First%20Bad%20Version)
 - :warning::warning: [287. Find the Duplicate Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/287.%20Find%20the%20Duplicate%20Number)
-- :four_leaf_clover: [367. Valid Perfect Square](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/367.%20Valid%20Perfect%20Square) ```Math```
+- :four_leaf_clover: [367. Valid Perfect Square](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/367.%20Valid%20Perfect%20Square) ```Math```
 - :four_leaf_clover: [374. Guess Number Higher or Lower](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/374.%20Guess%20Number%20Higher%20or%20Lower/)
 - :warning::warning: [658. Find K Closest Elements](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%203/658.%20Find%20K%20Closest%20Elements) ```Sliding Window```
 - :warning::warning: [702. Search in a Sorted Array of Unknown Size](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/702.%20Search%20in%20a%20Sorted%20Array%20of%20Unknown%20Size) ```Bitwise Manipulation```
@@ -185,7 +185,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 - :four_leaf_clover: [1539. Kth Missing Positive Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1539.%20Kth%20Missing%20Positive%20Number)
 - :warning::warning: [2187. Minimum Time to Complete Trips](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/2187.%20Minimum%20Time%20to%20Complete%20Trips)
-- :warning::warning: [2300. Successful Pairs of Spells and Potions](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/2300.%20Successful%20Pairs%20of%20Spells%20and%20Potions/) ```Two Pointers```
+- :warning::warning: [2300. Successful Pairs of Spells and Potions](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/2300.%20Successful%20Pairs%20of%20Spells%20and%20Potions/) ```Two Pointers```
 
 ---
 
@@ -205,18 +205,18 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [211. Design Add and Search Words Data Structure](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/211.%20Design%20Add%20and%20Search%20Words%20Data%20Structure) ```Trie``` ```Hash Map```
 - :four_leaf_clover: [232. Implement Queue using Stacks](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/232.%20Implement%20Queue%20using%20Stacks)
 - :warning::warning: [304. Range Sum Query 2D - Immutable](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/304.%20Range%20Sum%20Query%202D%20-%20Immutable) ```Prefix Sum``` ```Dynamic Programming```
-- :four_leaf_clover: [703. K<sup>th</sup> Largest Element in a Stream](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Heap/703.%20Kth%20Largest%20Element%20in%20a%20Stream) ```Heap```
+- :four_leaf_clover: [703. K<sup>th</sup> Largest Element in a Stream](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Heap/703.%20Kth%20Largest%20Element%20in%20a%20Stream) ```Heap```
 - :no_entry::no_entry::no_entry: [716. Max Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/716.%20Max%20Stack) ```Linked List``` ```Heap```
 - :warning::warning: [1472. Design Browser History](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1472.%20Design%20Browser%20History) ```Linked List```
 - :warning::warning: [1538. Guess the Majority in a Hidden Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1538.%20Guess%20the%20Majority%20in%20a%20Hidden%20Array)
-- :warning::warning: [2336. Smallest Number in Infinite Set](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Google/2336.%20Smallest%20Number%20in%20Infinite%20Set) ```Heap```
+- :warning::warning: [2336. Smallest Number in Infinite Set](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/2336.%20Smallest%20Number%20in%20Infinite%20Set) ```Heap```
 - 
 ---
 
 ## Dynamic Programming
 
 - :warning::warning: [50. Pow(x, n)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/50.%20Pow(x,%20n)) ```Binary Search```
-- :warning::warning: [64. Minimum Path Sum](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/64.%20Minimum%20Path%20Sum)
+- :warning::warning: [64. Minimum Path Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/64.%20Minimum%20Path%20Sum)
 - :four_leaf_clover: [70. Climbing Stairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/70.%20Climbing%20Stairs) ```Recursion``` ```Bitwise Manipulations```
 - :no_entry::no_entry::no_entry: [87. Scramble String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/87.%20Scramble%20String/)
 - :warning::warning: [120. Triangle](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/120.%20Triangle)
@@ -229,15 +229,16 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [416. Partition Equal Subset Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/416.%20Partition%20Equal%20Subset%20Sum)
 - [518. Coin Change II]
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
-- :four_leaf_clover: [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
+- :four_leaf_clover: [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
 - :warning::warning: [837. New 21 Game](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/837.%20New%2021%20Game)
 - :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
 - :warning::warning: [1140. Stone Game II](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1140.%20Stone%20Game%20II)
 - [1155. Number of Dice Rolls With Target Sum]
-- :no_entry::no_entry::no_entry: [1406. Stone Game III](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Google/1406.%20Stone%20Game%20III)
-- :no_entry::no_entry::no_entry: [1416. Restore The Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1416.%20Restore%20The%20Array)
+- :no_entry::no_entry::no_entry: [1406. Stone Game III](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/1406.%20Stone%20Game%20III)
+- :no_entry::no_entry::no_entry: [1416. Restore The Array](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1416.%20Restore%20The%20Array)
 - :no_entry::no_entry::no_entry: [1444. Number of Ways of Cutting a Pizza](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/1444.%20Number%20of%20Ways%20of%20Cutting%20a%20Pizza)
-- :warning::warning: [2140. Solving Questions With Brainpower](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2140.%20Solving%20Questions%20With%20Brainpower)
+- :no_entry::no_entry::no_entry: [1547. Minimum Cost to Cut a Stick](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1547.%20Minimum%20Cost%20to%20Cut%20a%20Stick)
+- :warning::warning: [2140. Solving Questions With Brainpower](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2140.%20Solving%20Questions%20With%20Brainpower)
 - :warning::warning: [2291. Maximum Profit From Trading Stocks](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/2291.%20Maximum%20Profit%20From%20Trading%20Stocks/)
 - :warning::warning: [2466. Count Ways To Build Good Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2466.%20Count%20Ways%20To%20Build%20Good%20Strings)
 
@@ -245,23 +246,23 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 #### Longest Common Subsequence
 
-- :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
+- :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - :no_entry::no_entry::no_entry: [727. Minimum Window Subsequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/727.%20Minimum%20Window%20Subsequence) ```Greedy``` ```Sliding Window``` 
-- :warning::warning: [1035. Uncrossed Lines](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1035.%20Uncrossed%20Lines)
+- :warning::warning: [1035. Uncrossed Lines](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1035.%20Uncrossed%20Lines)
 - :no_entry::no_entry::no_entry: [1312. Minimum Insertion Steps to Make a String Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 
 #### Longest Increasing Subsequence
 
 - :warning::warning: [300. Longest Increasing Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/300.%20Longest%20Increasing%20Subsequence) ```Binary Search```
 - 673. Number of Longest Increasing Subsequence
-- :no_entry::no_entry::no_entry: [1964. Find the Longest Valid Obstacle Course at Each Position](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1964.%20Find%20the%20Longest%20Valid%20Obstacle%20Course%20at%20Each%20Position) ```Binary Search``` ```Greedy```
+- :no_entry::no_entry::no_entry: [1964. Find the Longest Valid Obstacle Course at Each Position](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1964.%20Find%20the%20Longest%20Valid%20Obstacle%20Course%20at%20Each%20Position) ```Binary Search``` ```Greedy```
 - :no_entry::no_entry::no_entry: [2407. Longest Increasing Subsequence II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2407.%20Longest%20Increasing%20Subsequence%20II) ```Segment Tree```
 
 ### State Transition by Inaction | Dynamic Programming State Machine
 
 - :no_entry::no_entry::no_entry: [879. Profitable Schemes](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/879.%20Profitable%20Schemes)
 - :warning::warning: [983. Minimum Cost For Tickets](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/983.%20Minimum%20Cost%20For%20Tickets)
-- :no_entry::no_entry::no_entry: [1402. Reducing Dishes](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/1402.%20Reducing%20Dishes/) ```Greedy```
+- :no_entry::no_entry::no_entry: [1402. Reducing Dishes](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/1402.%20Reducing%20Dishes/) ```Greedy```
 
 #### [Best Time to Buy and Sell Stock](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Best%20Time%20to%20Buy%20and%20Sell%20Stock)
 
@@ -283,14 +284,14 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ### Prefix Sum
 
 - :warning::warning: [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) ```Prefix Sum``` ```Dynamic Programming```
-- :warning::warning: [2439. Minimize Maximum of Array](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/2439.%20Minimize%20Maximum%20of%20Array) ```Prefix Sum``` ```Dynamic Programming```
+- :warning::warning: [2439. Minimize Maximum of Array](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/2439.%20Minimize%20Maximum%20of%20Array) ```Prefix Sum``` ```Dynamic Programming```
 ---
 
 ## Graph
 
 - :warning::warning: [1236. Web Crawler](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1236.%20Web%20Crawler) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1466. Reorder Routes to Make All Paths Lead to the City Zero](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1466.%20Reorder%20Routes%20to%20Make%20All%20Paths%20Lead%20to%20the%20City%20Zero) ```Breadth-First Search``` ```Depth-First Search```
-- :warning::warning: [1557. Minimum Number of Vertices to Reach All Nodes](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1557.%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes) ```Hash Map``` ```Hash Set```
+- :warning::warning: [1557. Minimum Number of Vertices to Reach All Nodes](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1557.%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes) ```Hash Map``` ```Hash Set```
 
 ### Depth-First Search in Graph
 
@@ -312,7 +313,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [1319. Number of Operations to Make Network Connected](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1319.%20Number%20of%20Operations%20to%20Make%20Network%20Connected) ```Breadth-First Search``` ```Depth-First Search```
 - :no_entry::no_entry::no_entry: [1579. Remove Max Number of Edges to Keep Graph Fully Traversable](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1579.%20Remove%20Max%20Number%20of%20Edges%20to%20Keep%20Graph%20Fully%20Traversable)
 - :no_entry::no_entry::no_entry: [1697. Checking Existence of Edge Length Limited Paths](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/1697.%20Checking%20Existence%20of%20Edge%20Length%20Limited%20Paths)
-- :warning::warning: [2316. Count Unreachable Pairs of Nodes in an Undirected Graph](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2316.%20Count%20Unreachable%20Pairs%20of%20Nodes%20in%20an%20Undirected%20Graph/) ```Breadth-First Search``` ```Depth-First Search```
+- :warning::warning: [2316. Count Unreachable Pairs of Nodes in an Undirected Graph](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2316.%20Count%20Unreachable%20Pairs%20of%20Nodes%20in%20an%20Undirected%20Graph/) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [2492. Minimum Score of a Path Between Two Cities](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/2492.%20Minimum%20Score%20of%20a%20Path%20Between%20Two%20Cities)  ```Breadth-First Search``` ```Depth-First Search```
 
 ---
@@ -324,7 +325,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [946. Validate Stack Sequences](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/946.%20Validate%20Stack%20Sequences) ```Stack```
 - :warning::warning: [1328. Break a Palindrome](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1328.%20Break%20a%20Palindrome)
 - :warning::warning: [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
-- :warning::warning: [2405. Optimal Partition of String](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/2405.%20Optimal%20Partition%20of%20String/) ```Hash Table```
+- :warning::warning: [2405. Optimal Partition of String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/2405.%20Optimal%20Partition%20of%20String/) ```Hash Table```
 
 ---
 
@@ -338,7 +339,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ### Hash Set
 
-- :four_leaf_clover: [349. Intersection of Two Arrays](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Two-Pointer%20Technique/349.%20Intersection%20of%20Two%20Arrays) ```Binary Search``` ```Two Pointers```
+- :four_leaf_clover: [349. Intersection of Two Arrays](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Two-Pointer%20Technique/349.%20Intersection%20of%20Two%20Arrays) ```Binary Search``` ```Two Pointers```
 - :four_leaf_clover: [2215. Find the Difference of Two Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2215.%20Find%20the%20Difference%20of%20Two%20Arrays) ```Array & String```
 
 ---
@@ -405,16 +406,16 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 1765. Map of Highest Peak
 
 - :warning::warning: [542. 01 Matrix](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2009%20-%20Breadth-First%20Search%20%7C%20Depth-First%20Search/542.%2001%20Matrix) ```Dynamic Programming```
-- :warning::warning: [934. Shortest Bridge](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Google/934.%20Shortest%20Bridge) ```Depth-First Search```
+- :warning::warning: [934. Shortest Bridge](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/934.%20Shortest%20Bridge) ```Depth-First Search```
 - :warning::warning: [994. Rotting Oranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2010%20-%20Graph%20%7C%20DFS%20%7C%20BFS/994.%20Rotting%20Oranges)
 - :four_leaf_clover: [1572. Matrix Diagonal Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1572.%20Matrix%20Diagonal%20Sum) ```Depth-First Search``` ```Matrix```
 
 ### Depth-First Search (DFS)
 
 - :warning::warning: [417. Pacific Atlantic Water Flow](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2010%20-%20Graph%20%7C%20DFS%20%7C%20BFS/417.%20Pacific%20Atlantic%20Water%20Flow)
-- :warning::warning: [695. Max Area of Island](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2007%20-%20Breadth-First%20Search%20%7C%20Depth-First%20Search/695.%20Max%20Area%20of%20Island) ```Breadth-First Search```
+- :warning::warning: [695. Max Area of Island](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2007%20-%20Breadth-First%20Search%20%7C%20Depth-First%20Search/695.%20Max%20Area%20of%20Island) ```Breadth-First Search```
 - :warning::warning: [1020. Number of Enclaves](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1020.%20Number%20of%20Enclaves) ```Breadth-First Search```
-- :warning::warning: [1254. Number of Closed Islands](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Google/1254.%20Number%20of%20Closed%20Islands) ```Breadth-First Search``` ```Graph``` ```Union-Find```
+- :warning::warning: [1254. Number of Closed Islands](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/1254.%20Number%20of%20Closed%20Islands) ```Breadth-First Search``` ```Graph``` ```Union-Find```
 
 #### [Spiral Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/Spiral%20Matrix)
 
@@ -446,10 +447,10 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :four_leaf_clover: [100. Same Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/100.%20Same%20Tree) ```Breadth-First Search``` ```Depth-First Search```
 - :four_leaf_clover: [101. Symmetric Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/101.%20Symmetric%20Tree)
 - :warning::warning: [106. Construct Binary Tree from Inorder and Postorder Traversal](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2015%20-%20Tree/106.%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal)
-- :warning::warning: [116. Populating Next Right Pointers in Each Node](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2008%20-%20Breadth-First%20Search%20%7C%20Depth-First%20Search/116.%20Populating%20Next%20Right%20Pointers%20in%20Each%20Node) ```Breadth-First Search``` ```Linked List```
+- :warning::warning: [116. Populating Next Right Pointers in Each Node](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2008%20-%20Breadth-First%20Search%20%7C%20Depth-First%20Search/116.%20Populating%20Next%20Right%20Pointers%20in%20Each%20Node) ```Breadth-First Search``` ```Linked List```
 - :warning::warning: [129. Sum Root to Leaf Numbers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/129.%20Sum%20Root%20to%20Leaf%20Numbers) ```Backtracking``` ```Morris Algorithm```
 - :warning::warning: [199. Binary Tree Right Side View](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2015%20-%20Tree/199.%20Binary%20Tree%20Right%20Side%20View) ```Breadth-First Search``` ```Depth-First Search```
-- :four_leaf_clover: [617. Merge Two Binary Trees](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2008%20-%20Breadth-First%20Search%20%7C%20Depth-First%20Search/617.%20Merge%20Two%20Binary%20Trees) ```Recursion```
+- :four_leaf_clover: [617. Merge Two Binary Trees](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2008%20-%20Breadth-First%20Search%20%7C%20Depth-First%20Search/617.%20Merge%20Two%20Binary%20Trees) ```Recursion```
 - :warning::warning: [662. Maximum Width of Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/662.%20Maximum%20Width%20of%20Binary%20Tree) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [958. Check Completeness of a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/958.%20Check%20Completeness%20of%20a%20Binary%20Tree) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1372. Longest ZigZag Path in a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree) ```Breadth-First Search``` ```Depth-First Search```
