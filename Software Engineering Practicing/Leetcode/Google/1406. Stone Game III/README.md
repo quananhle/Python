@@ -55,6 +55,9 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(n)```
+
 ```Python
 class Solution:
     def stoneGameIII(self, stoneValue: List[int]) -> str:
@@ -167,6 +170,36 @@ class Solution:
         if ans > 0:
             return "Alice"
         elif ans < 0:
+            return "Bob"
+        else:
+            return "Tie"
+```
+
+#### Bottom-Up Dynamic Programming
+
+- __Time complexity__: ```O(n)```
+- __Space complexity__: ```O(n)```
+
+```Python
+class Solution:
+    def stoneGameIII(self, stoneValue: List[int]) -> str:
+        n = len(stoneValue)
+        if n <= 3 and sum(stoneValue) > 0:
+            return "Alice"
+
+        dp = collections.defaultdict(int)
+
+        for curr in range(n - 1, -1, -1):
+            if curr + 1 <= n:
+                dp[curr] = stoneValue[curr] - dp[curr + 1]
+            if curr + 2 <= n:
+                dp[curr] = max(dp[curr], sum(stoneValue[curr:curr+2]) - dp[curr + 2])
+            if curr + 3 <= n:
+                dp[curr] = max(dp[curr], sum(stoneValue[curr:curr+3]) - dp[curr + 3])
+
+        if dp[0] > 0:
+            return "Alice"
+        elif dp[0] < 0:
             return "Bob"
         else:
             return "Tie"
