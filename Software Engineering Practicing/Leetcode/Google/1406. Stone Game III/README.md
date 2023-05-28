@@ -204,3 +204,32 @@ class Solution:
         else:
             return "Tie"
 ```
+
+#### Space Complexity Optimized Bottom-Up Dynamic Programming
+
+To solve the problem with ```O(1)``` space complexity, we can use the observation that we only ever need the values $dp[i+1]$, $dp[i+2]$, and $dp[i+3]$ to calculate $dp[i]$. Therefore, we only need to keep track of the current and the next three values of $dp$.
+
+```Python
+class Solution:
+    def stoneGameIII(self, stoneValue: List[int]) -> str:
+        n = len(stoneValue)
+        if n <= 3 and sum(stoneValue) > 0:
+            return "Alice"
+
+        dp = collections.defaultdict(int)
+
+        for curr in range(n - 1, -1, -1):
+            if curr + 1 <= n:
+                dp[curr % 4] = stoneValue[curr] - dp[(curr + 1) % 4]
+            if curr + 2 <= n:
+                dp[curr % 4] = max(dp[curr % 4], sum(stoneValue[curr:curr+2]) - dp[(curr + 2) % 4])
+            if curr + 3 <= n:
+                dp[curr % 4] = max(dp[curr % 4], sum(stoneValue[curr:curr+3]) - dp[(curr + 3) % 4])
+
+        if dp[0] > 0:
+            return "Alice"
+        elif dp[0] < 0:
+            return "Bob"
+        else:
+            return "Tie"
+```
