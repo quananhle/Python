@@ -140,3 +140,22 @@ class Solution:
 
         return dp[0][m + 1]
 ```
+
+```Python
+class Solution:
+    def minCost(self, n: int, cuts: List[int]) -> int:
+        m = len(cuts)
+        cuts = [0] + sorted(cuts) + [n]
+        
+        dp = collections.defaultdict(int)
+
+        for diff in range(2, m + 2):
+            for left in range(m + 2 - diff):
+                right = left + diff
+                ans = float('inf')
+                for mid in range(left + 1, right):
+                    ans = min(ans, dp[(left, mid)] + dp[(mid, right)] + cuts[right] - cuts[left])
+                dp[(left, right)] = ans
+
+        return dp[(0, m + 1)]
+```
