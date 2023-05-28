@@ -92,10 +92,30 @@ class Solution:
                 return memo[(left, right)]
             
             # Recurrence relation
-            for mid in range(left + 1, right):
-                memo[(left, right)] = min(dp(left, mid) + dp(mid, right) + cuts[right] - cuts[left])
+            memo[(left, right)] = min(dp(left, mid) + dp(mid, right) + cuts[right] - cuts[left] for mid in range(left + 1, right)) 
 
             return memo[(left, right)]
+
+        return dp(0, len(cuts) - 1)
+```
+
+```Python
+class Solution:
+    def minCost(self, n: int, cuts: List[int]) -> int:
+        cuts = [0] + sorted(cuts) + [n]
+
+        @lru_cache(None)
+        def dp(left, right):
+            # Base case
+            if right - left == 1:
+                return 0
+            
+            ans = float('inf')
+            # Recurrence relation
+            for mid in range(left + 1, right):
+                ans = min(ans, dp(left, mid) + dp(mid, right) + cuts[right] - cuts[left])
+
+            return ans
 
         return dp(0, len(cuts) - 1)
 ```
