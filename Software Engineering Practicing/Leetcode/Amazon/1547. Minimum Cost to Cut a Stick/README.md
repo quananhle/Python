@@ -1,6 +1,6 @@
 ## [1547. Minimum Cost to Cut a Stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/)
 
-```Tag```: ```
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -51,3 +51,51 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+If we select ```cuts[p1]``` as the first cutting position, it would result in a cost of ```n``` and split the stick into two pieces of length ```cuts[p1]``` and ```n - cuts[p1]```, respectively.
+
+![image](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/Figures/1547/1.png)
+
+Choosing another first cutting position, say ```cuts[p2]``` would also bring a cost of ```n``` and split the stick into two pieces of length ```cuts[p2]``` and ```n - cuts[p2]```.
+
+![image](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/Figures/1547/2.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/4fefd299-b2de-46e4-b4f3-facf83315207)
+
+Hence, the minimum cost of all the cuts required on the original stick can be denoted as ```cost(0, m + 1)```.
+
+![image](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/Figures/1547/3.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/1b929983-10a7-4e55-9a17-f48151d010f1)
+
+![image](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/Figures/1547/4.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/0d38e6b5-ffcb-492a-b2bd-77d3d35083ab)
+
+![image](https://github.com/quananhle/Python/assets/35042430/6c44c997-1205-44d2-8ee4-7eddb0c6f601)
+
+```Python
+class Solution:
+    def minCost(self, n: int, cuts: List[int]) -> int:
+        memo = collections.defaultdict(int)
+        cuts = [0] + sorted(cuts) + [n]
+
+        def dp(left, right):
+            # Base case
+            if right - left == 1:
+                return 0
+            
+            if (left, right) in memo:
+                return memo[(left, right)]
+            
+            # Recurrence relation
+            for mid in range(left + 1, right):
+                memo[(left, right)] = min(dp(left, mid) + dp(mid, right) + cuts[right] - cuts[left])
+
+            return memo[(left, right)]
+
+        return dp(0, len(cuts) - 1)
+```
