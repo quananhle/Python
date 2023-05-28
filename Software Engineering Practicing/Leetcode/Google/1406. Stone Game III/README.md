@@ -62,6 +62,90 @@ class Solution:
         if n <= 3 and sum(stoneValue) > 0:
             return "Alice"
 
+        memo = collections.defaultdict(default=sys.maxsize)
+
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return 0
+
+            if curr in memo:
+                return memo[curr]
+            
+            # Recurrence relation: take 1 or 2 or 3 stones?
+
+            # Check if taking 1 stone is possible
+            if curr + 1 <= n:
+                memo[curr] = stoneValue[curr] - dp(curr + 1)
+
+            # Check if taking 2 stones is possible 
+            if curr + 2 <= n:
+                memo[curr] = max(memo[curr], stoneValue[curr] + stoneValue[curr + 1] - dp(curr + 2))
+
+            # Check if taking 3 stones is possble
+            if curr + 3 <= n:
+                memo[curr] = max(memo[curr], stoneValue[curr] + stoneValue[curr + 1] + stoneValue[curr + 2] - dp(curr + 3))
+            
+            return memo[curr]
+
+        ans = dp(0)
+        if ans > 0:
+            return "Alice"
+        elif ans < 0:
+            return "Bob"
+        else:
+            return "Tie"
+```
+
+```Python
+class Solution:
+    def stoneGameIII(self, stoneValue: List[int]) -> str:
+        n = len(stoneValue)
+        if n <= 3 and sum(stoneValue) > 0:
+            return "Alice"
+
+        memo = [float('inf')] * (n + 1)
+
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return 0
+            if memo[curr] != float('inf'):
+                return memo[curr]
+
+            
+            # Recurrence relation: take 1 or 2 or 3 stones?
+
+            # Check if taking 1 stone is possible
+            if curr + 1 <= n:
+                memo[curr] = stoneValue[curr] - dp(curr + 1)
+
+            # Check if taking 2 stones is possible 
+            if curr + 2 <= n:
+                memo[curr] = max(memo[curr], stoneValue[curr] + stoneValue[curr + 1] - dp(curr + 2))
+
+            # Check if taking 3 stones is possble
+            if curr + 3 <= n:
+                memo[curr] = max(memo[curr], stoneValue[curr] + stoneValue[curr + 1] + stoneValue[curr + 2] - dp(curr + 3))
+            
+            return memo[curr]
+
+        ans = dp(0)
+        if ans > 0:
+            return "Alice"
+        elif ans < 0:
+            return "Bob"
+        else:
+            return "Tie"
+```
+
+```Python
+class Solution:
+    def stoneGameIII(self, stoneValue: List[int]) -> str:
+        n = len(stoneValue)
+        if n <= 3 and sum(stoneValue) > 0:
+            return "Alice"
+
         @lru_cache(None)
         def dp(curr):
             # Base case
