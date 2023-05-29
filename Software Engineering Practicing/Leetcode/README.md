@@ -211,7 +211,10 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [1538. Guess the Majority in a Hidden Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1538.%20Guess%20the%20Majority%20in%20a%20Hidden%20Array)
 - :four_leaf_clover: [1603. Design Parking System](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1603.%20Design%20Parking%20System) ```Hash Table```
 - :warning::warning: [2336. Smallest Number in Infinite Set](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/2336.%20Smallest%20Number%20in%20Infinite%20Set) ```Heap```
-- 
+
+- Implement Stack using Queues
+- Design Linked List
+
 ---
 
 ## Dynamic Programming
