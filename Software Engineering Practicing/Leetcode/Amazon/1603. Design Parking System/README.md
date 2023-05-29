@@ -132,7 +132,7 @@ class ParkingSystem:
         self.parking_lot = [None, big, medium, small]
 
     def addCar(self, carType: int) -> bool:
-        if self.parking_lot[carType] > 0:
+        if self.parking_lot[carType]:
             self.parking_lot[carType] -= 1
             return True
 
