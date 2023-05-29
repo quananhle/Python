@@ -1,6 +1,6 @@
 ## [1603. Design Parking System](https://leetcode.com/problems/design-parking-system/)
 
-```Tag```: ```Design```
+```Tag```: ```Design``` ```Hash Table```
 
 #### Difficulty: Easy
 
@@ -38,3 +38,29 @@ __Constraints:__
 - At most ```1000``` calls will be made to ```addCar```
 
 ---
+
+### Hash Table
+
+```Python
+class ParkingSystem:
+
+    def __init__(self, big: int, medium: int, small: int):
+        self.memo = collections.defaultdict(int)
+        self.memo[1] = big
+        self.memo[2] = medium
+        self.memo[3] = small
+
+    def addCar(self, carType: int) -> bool:
+        if self.memo[carType]:
+            self.memo[carType] -= 1
+            if self.memo[carType] == 0:
+                del self.memo[carType]
+            return True
+        return False
+
+
+
+# Your ParkingSystem object will be instantiated and called as such:
+# obj = ParkingSystem(big, medium, small)
+# param_1 = obj.addCar(carType)
+```
