@@ -64,3 +64,68 @@ class ParkingSystem:
 # obj = ParkingSystem(big, medium, small)
 # param_1 = obj.addCar(carType)
 ```
+
+### Array
+
+```Python
+class ParkingSystem:
+
+    def __init__(self, big: int, medium: int, small: int):
+        self.parking_lot = [None] * (big + medium + small)
+        self.big = big
+        self.medium = medium
+        self.small = small
+
+    def addCar(self, carType: int) -> bool:
+        if carType == 1:
+            limit = self.big
+        elif carType == 2:
+            limit = self.medium
+        else:
+            limit = self.small
+
+        count = 0
+        for slot, size in enumerate(self.parking_lot):
+            if size == carType:
+                count += 1
+            if count == limit:
+                return False
+            if not self.parking_lot[slot]:
+                self.parking_lot[slot] = carType
+                return True
+
+        return False
+
+
+# Your ParkingSystem object will be instantiated and called as such:
+# obj = ParkingSystem(big, medium, small)
+# param_1 = obj.addCar(carType)
+```
+
+#### Two Arrays & Count
+
+```Python
+class ParkingSystem:
+
+    def __init__(self, big: int, medium: int, small: int):
+        self.parking_lot = [None, big, medium, small]
+        self.count = [None, 0, 0, 0]
+
+    def addCar(self, carType: int) -> bool:
+        if self.count[carType] < self.parking_lot[carType]:
+            self.count[carType] += 1
+            return True
+
+        return False
+
+
+# Your ParkingSystem object will be instantiated and called as such:
+# obj = ParkingSystem(big, medium, small)
+# param_1 = obj.addCar(carType)
+```
+
+#### One Array
+
+```Python
+
+```
