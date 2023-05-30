@@ -79,3 +79,60 @@ __Constraints:__
 __Follow-up__: Could you do better than ```O(n^2)``` per ```move()``` operation?
 
 ---
+
+![image](https://leetcode.com/problems/design-tic-tac-toe/Figures/348/basicIdea.png)
+
+![image](https://leetcode.com/problems/design-tic-tac-toe/Figures/348/identifyDiag.png)
+
+### Brute Force
+
+```Python
+class TicTacToe:
+
+    def __init__(self, n: int):
+        self.board = [[None] * n for _ in range(n)]
+        self.ROWS, self.COLS = n, n
+
+
+    def move(self, row: int, col: int, player: int) -> int:
+        if player == 1:
+            self.board[row][col] = 'O'
+        else:
+            self.board[row][col] = 'X'
+
+        def check_row(row, col):
+            for c in range(self.COLS):
+                if self.board[row][c] != self.board[row][col]:
+                    return False
+            return True 
+
+        def check_col(row, col):
+            for r in range(self.ROWS):
+                if self.board[r][col] != self.board[row][col]:
+                    return False
+            return True
+
+        def check_diagonal(row, col):
+            for r in range(self.ROWS):
+                if self.board[r][r] != self.board[row][col]:
+                    return False
+            return True
+
+        def check_anti_diagonal(row, col):
+            for r in range(self.ROWS):
+                if self.board[r][self.ROWS - r - 1] != self.board[row][col]:
+                    return False
+            return True
+
+        if check_row(row, col) or check_col(row, col) or check_diagonal(row, col) or check_anti_diagonal(row, col):
+            return player
+
+        return 0
+        
+        
+
+
+# Your TicTacToe object will be instantiated and called as such:
+# obj = TicTacToe(n)
+# param_1 = obj.move(row,col,player)
+```
