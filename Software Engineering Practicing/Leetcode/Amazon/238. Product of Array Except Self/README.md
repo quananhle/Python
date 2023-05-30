@@ -36,6 +36,23 @@ __Follow up__: Can you solve the problem in ```O(1)``` extra space complexity? (
 
 ---
 
+### Brute Force
+
+- __Time complexity__: $O(N^2)$
+- __Space complexity__: $O(N)$
+
+```Python
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        res = [0] * n
+
+        for i, num in enumerate(nums):
+            res[i] = math.prod([e for j, e in enumerate(nums) if i != j])
+        
+        return res
+```
+
 ### Left & Right Product Lists
 
 ![image](https://leetcode.com/problems/product-of-array-except-self/Figures/238/diag-1.png)
