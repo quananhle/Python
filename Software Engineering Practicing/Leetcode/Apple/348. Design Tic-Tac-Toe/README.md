@@ -1,6 +1,6 @@
 ## [348. Design Tic-Tac-Toe](https://leetcode.com/problems/design-tic-tac-toe/)
 
-```Tag```: ```Design```
+```Tag```: ```Design``` ```Matrix```
 
 #### Difficulty: Medium
 
@@ -130,6 +130,51 @@ class TicTacToe:
         return 0
         
         
+
+
+# Your TicTacToe object will be instantiated and called as such:
+# obj = TicTacToe(n)
+# param_1 = obj.move(row,col,player)
+```
+
+```Python
+class TicTacToe:
+
+    def __init__(self, n: int):
+        self.board = [[None] * n for _ in range(n)]
+        self.ROWS, self.COLS = n, n
+
+    def move(self, row: int, col: int, player: int) -> int:
+        self.board[row][col] = player
+
+        def check_row(row, player):
+            for c in range(self.COLS):
+                if self.board[row][c] != player:
+                    return False
+            return True 
+
+        def check_col(col, player):
+            for r in range(self.ROWS):
+                if self.board[r][col] != player:
+                    return False
+            return True
+
+        def check_diagonal(player):
+            for r in range(self.ROWS):
+                if self.board[r][r] != player:
+                    return False
+            return True
+
+        def check_anti_diagonal(player):
+            for r in range(self.ROWS):
+                if self.board[r][self.ROWS - r - 1] != player:
+                    return False
+            return True
+
+        if check_row(row, player) or check_col(col, player) or check_diagonal(player) or check_anti_diagonal(player):
+            return player
+
+        return 0
 
 
 # Your TicTacToe object will be instantiated and called as such:
