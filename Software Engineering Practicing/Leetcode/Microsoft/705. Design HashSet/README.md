@@ -1,6 +1,6 @@
 ## [705. Design HashSet](https://leetcode.com/problems/design-hashset)
 
-```Tag```: ```Design``` ```Bucket Sort``` ```Binary Search Tree```
+```Tag```: ```Design``` ```Linked List``` ```Binary Search Tree```
 
 #### Difficulty: Easy
 
@@ -42,3 +42,77 @@ __Constraints:__
 - At most $10^4$ calls will be made to ```add```, ```remove```, and ```contains```.
 
 ---
+
+### Linked List
+
+![image](https://github.com/quananhle/Python/assets/35042430/b56a7c2c-cf9b-4909-a8d5-8b2518c69fef)
+
+![image](https://github.com/quananhle/Python/assets/35042430/f1146a59-0908-4190-b499-3bd1d43261bc)
+
+```Python
+class Node:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+class LinkedList():
+    def __init__(self):
+        self.head = Node(0)
+    
+    def insert(self, val):
+        if not self.existed(val):
+            new_node = Node(val, self.head.next)
+            self.head.next = new_node
+    
+    def delete(self, val):
+        prev = self.head
+        curr = self.head.next
+        while curr:
+            if curr.val == val:
+                prev.next = curr.next
+                return
+            prev = curr
+            curr = curr.next
+    
+    def existed(self, val):
+        curr = self.head.next
+        while curr:
+            if curr.val == val:
+                return True
+            curr = curr.next
+        return False
+
+class MyHashSet:
+
+    def __init__(self):
+        self.key_range = 769    # prime number and big enough to pass the test cases
+        self.bucket = [LinkedList() for _ in range(self.key_range)]
+
+    def hash(self, key):
+        return key % self.key_range
+
+    def add(self, key: int) -> None:
+        index = self.hash(key)
+        self.bucket[index].insert(key)
+
+    def remove(self, key: int) -> None:
+        index = self.hash(key)
+        self.bucket[index].delete(key)        
+
+    def contains(self, key: int) -> bool:
+        index = self.hash(key)
+        return self.bucket[index].existed(key)
+
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
+```
+
+### Binary Search Tree
+
+```Python
+
+```
