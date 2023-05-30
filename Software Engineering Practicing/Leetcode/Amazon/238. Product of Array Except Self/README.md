@@ -36,9 +36,14 @@ __Follow up__: Can you solve the problem in ```O(1)``` extra space complexity? (
 
 ---
 
+### Left & Right Product Lists
+
 ![image](https://leetcode.com/problems/product-of-array-except-self/Figures/238/diag-1.png)
 
 ![image](https://leetcode.com/problems/product-of-array-except-self/Figures/238/products.png)
+
+- __Time complexity__: ```O(N)```
+- __Space complexity__: ```O(N)```
 
 ```Python
 class Solution:
@@ -59,5 +64,29 @@ class Solution:
         for i in range(n):
             res[i] = left[i] * right[i]
         
+        return res
+```
+
+### Optimized Space Left and Right
+
+- __Time complexity__: ```O(N)```
+- __Space complexity__: ```O(1)```
+
+```Python
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        res = [0] * n
+        
+        # For the element at index '0', there are no elements to the left, so the res[0] = 1
+        res[0] = 1
+        for i in range(1, n):
+            res[i] = res[i - 1] * nums[i - 1]
+
+        right = 1
+        for i in range(n - 1, -1, -1):
+            res[i] = right * res[i]
+            right = right * nums[i]
+
         return res
 ```
