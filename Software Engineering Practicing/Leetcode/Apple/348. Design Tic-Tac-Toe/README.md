@@ -86,6 +86,9 @@ __Follow-up__: Could you do better than ```O(n^2)``` per ```move()``` operation?
 
 ### Brute Force
 
+- __Time Complexity__: $O(n)$
+- __Space Complexity__: $O(n^2)$
+
 ```Python
 class TicTacToe:
 
@@ -174,6 +177,50 @@ class TicTacToe:
         if check_row(row, player) or check_col(col, player) or check_diagonal(player) or check_anti_diagonal(player):
             return player
 
+        return 0
+
+
+# Your TicTacToe object will be instantiated and called as such:
+# obj = TicTacToe(n)
+# param_1 = obj.move(row,col,player)
+```
+
+### Optimized Brute Force
+
+![image](https://github.com/quananhle/Python/assets/35042430/7de2742c-9ad2-44e4-8f67-bba54795c871)
+
+![image](https://leetcode.com/problems/design-tic-tac-toe/Figures/348/countRowsAndCols.png)
+
+![image](https://leetcode.com/problems/design-tic-tac-toe/Figures/348/countDiag.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/6b6e3e99-6c73-495e-a2f4-10f9b6898d98)
+
+```Python
+class TicTacToe:
+
+    def __init__(self, n: int):
+        self.player1 = {'row': collections.defaultdict(int), 'col':collections.defaultdict(int), 'diagonal':0, 'anti_diagonal':0}
+        self.player2 = {'row': collections.defaultdict(int), 'col':collections.defaultdict(int), 'diagonal':0, 'anti_diagonal':0}
+        self.size = n
+
+
+    def move(self, row: int, col: int, player: int) -> int:
+        if player == 1:
+            current = self.player1
+        else:
+            current = self.player2
+        
+        current['row'][row] += 1
+        current['col'][col] += 1
+
+        if row == col:
+            current['diagonal'] += 1
+        if row + col == self.size - 1:
+            current['anti_diagonal'] += 1
+        
+        if current['row'][row] == self.size or current['col'][col] == self.size or current['diagonal'] == self.size or current['anti_diagonal'] == self.size:
+            return player
+        
         return 0
 
 
