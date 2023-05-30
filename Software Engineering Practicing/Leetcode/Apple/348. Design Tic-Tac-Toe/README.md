@@ -195,6 +195,9 @@ class TicTacToe:
 
 ![image](https://github.com/quananhle/Python/assets/35042430/6b6e3e99-6c73-495e-a2f4-10f9b6898d98)
 
+- __Time Complexity__: $O(1)$
+- __Space Complexity__: $O(n)$
+
 ```Python
 class TicTacToe:
 
@@ -219,6 +222,41 @@ class TicTacToe:
             current['anti_diagonal'] += 1
         
         if current['row'][row] == self.size or current['col'][col] == self.size or current['diagonal'] == self.size or current['anti_diagonal'] == self.size:
+            return player
+        
+        return 0
+
+
+# Your TicTacToe object will be instantiated and called as such:
+# obj = TicTacToe(n)
+# param_1 = obj.move(row,col,player)
+```
+
+```Python
+class TicTacToe:
+
+    def __init__(self, n: int):
+        self.size = n
+        self.horizontal = [0] * n
+        self.vertical = [0] * n
+        self.diagonal = 0
+        self.anti_diagonal = 0
+
+    def move(self, row: int, col: int, player: int) -> int:
+        if player == 1:
+            move = 1
+        else:
+            move = -1
+        
+        self.horizontal[col] += move
+        self.vertical[row] += move
+
+        if row == col:
+            self.diagonal += move
+        if row + col == self.size - 1:
+            self.anti_diagonal += move
+        
+        if abs(self.horizontal[col]) == self.size or abs(self.vertical[row]) == self.size or abs(self.diagonal) == self.size or abs(self.anti_diagonal) == self.size:
             return player
         
         return 0
