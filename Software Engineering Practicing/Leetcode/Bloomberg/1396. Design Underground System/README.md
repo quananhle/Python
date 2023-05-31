@@ -82,9 +82,13 @@ __Constraints:__
 
 ---
 
+![image](https://github.com/quananhle/Python/assets/35042430/1046a3e6-dd84-4c4d-aedd-233693d857c1)
+
 ### Hash Map
 
 #### Two Hash Maps
+
+![image](https://github.com/quananhle/Python/assets/35042430/6a5765ec-f3bf-42e6-9c7c-c614dab0168d)
 
 ```Python
 class UndergroundSystem:
