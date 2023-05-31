@@ -40,7 +40,9 @@ __Follow up__: Could you implement a solution that runs in ```O(n)``` time compl
 
 ---
 
-### Pseudocode
+### Linear Scan
+
+#### Pseudocode
 
 ```
 first_num = second_num = some very big number
