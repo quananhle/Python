@@ -55,7 +55,7 @@
 ## Array & String
 
 - :warning::warning: [238. Product of Array Except Self](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/238.%20Product%20of%20Array%20Except%20Self) ```Prefix Sum``` ```Two Pointers```
-- :warning::warning: [334. Increasing Triplet Subsequence](https://leetcode.com/problems/increasing-triplet-subsequence)
+- :warning::warning: [334. Increasing Triplet Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/334.%20Increasing%20Triplet%20Subsequence)
 - :four_leaf_clover: [1071. Greatest Common Divisor of Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
 - :four_leaf_clover: [1431. Kids With the Greatest Number of Candies](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/1431.%20Kids%20With%20the%20Greatest%20Number%20of%20Candies)
 - :four_leaf_clover: [1491. Average Salary Excluding the Minimum and Maximum Salary](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
