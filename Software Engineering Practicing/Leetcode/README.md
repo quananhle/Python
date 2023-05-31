@@ -211,6 +211,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [703. K<sup>th</sup> Largest Element in a Stream](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Heap/703.%20Kth%20Largest%20Element%20in%20a%20Stream) ```Heap```
 - :four_leaf_clover: [705. Design HashSet](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/705.%20Design%20HashSet) ```Linked List``` ```Binary Search Tree```
 - :no_entry::no_entry::no_entry: [716. Max Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/716.%20Max%20Stack) ```Linked List``` ```Heap```
+- :warning::warning: [1396. Design Underground System](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1396.%20Design%20Underground%20System) ```Hash Map```
 - :warning::warning: [1472. Design Browser History](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1472.%20Design%20Browser%20History) ```Linked List```
 - :warning::warning: [1538. Guess the Majority in a Hidden Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1538.%20Guess%20the%20Majority%20in%20a%20Hidden%20Array)
 - :four_leaf_clover: [1603. Design Parking System](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1603.%20Design%20Parking%20System) ```Hash Table```
