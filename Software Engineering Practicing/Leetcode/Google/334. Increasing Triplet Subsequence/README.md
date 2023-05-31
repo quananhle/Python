@@ -40,7 +40,40 @@ __Follow up__: Could you implement a solution that runs in ```O(n)``` time compl
 
 ---
 
+### Pseudocode
 
+```
+first_num = second_num = some very big number
+for n in nums:
+    if n is smallest number:
+        first_num = n
+    else if n is second smallest number:
+        second_num = n
+    else n is bigger than both first_num and second_num:
+        # We have found our triplet, return True
+
+# After loop has terminated
+# If we have reached this point, there is no increasing triplet, return False
+```
+
+- __Time complexity__: ```O(N)```
+- __Space complexity__: ```O(1)```
+
+```Python
+class Solution:
+    def increasingTriplet(self, nums: List[int]) -> bool:
+        first = second = float("inf")
+
+        for num in nums:
+            if num <= first:
+                first = num
+            elif num <= second:
+                second = num
+            else:
+                return True
+
+        return False
+```
 
 
  
