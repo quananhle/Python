@@ -1,6 +1,6 @@
 ## [1396. Design Underground System](https://leetcode.com/problems/design-underground-system/)
 
-```Tag```: ```Design```
+```Tag```: ```Design``` ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -81,3 +81,36 @@ __Constraints:__
 - Answers within ```10^-5``` of the actual value will be accepted.
 
 ---
+
+### Hash Map
+
+#### Two Hash Maps
+
+```Python
+class UndergroundSystem:
+
+    def __init__(self):
+        self.memo = collections.defaultdict(list)
+        self.check_in = collections.defaultdict(list)
+
+    def checkIn(self, id: int, stationName: str, t: int) -> None:
+        if not id in self.check_in:
+            self.check_in[id] = [stationName, t]
+
+    def checkOut(self, id: int, stationName: str, t: int) -> None:
+        if id in self.check_in:
+            trip = self.check_in[id][0] + ' => ' + stationName
+            self.memo[trip].append((t - self.check_in[id][1]))
+            del self.check_in[id]
+
+    def getAverageTime(self, startStation: str, endStation: str) -> float:
+        trip = startStation + ' => ' + endStation
+        return sum(self.memo[trip]) / len(self.memo[trip])
+        
+
+# Your UndergroundSystem object will be instantiated and called as such:
+# obj = UndergroundSystem()
+# obj.checkIn(id,stationName,t)
+# obj.checkOut(id,stationName,t)
+# param_3 = obj.getAverageTime(startStation,endStation)
+```
