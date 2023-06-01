@@ -50,6 +50,16 @@ __Constraints:__
 
 ### Breadth-First Search
 
+![image](https://leetcode.com/problems/shortest-path-in-binary-matrix/Figures/1091/example_3_solution.png)
+
+![image](https://leetcode.com/problems/shortest-path-in-binary-matrix/Figures/1091/example_4_solution.png)
+
+![image](https://leetcode.com/problems/shortest-path-in-binary-matrix/Figures/1091/cell_options.png)
+
+![image](https://leetcode.com/problems/shortest-path-in-binary-matrix/Figures/1091/implicit_graph.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/75c3ef81-180a-4ced-aa44-067343c2df41)
+
 ```Python
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
