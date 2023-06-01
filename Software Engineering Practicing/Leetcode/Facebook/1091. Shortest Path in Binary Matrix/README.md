@@ -48,3 +48,35 @@ __Constraints:__
 
 ---
 
+### Breadth-First Search
+
+```Python
+class Solution:
+    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+        ROWS, COLS = len(grid), len(grid[0])
+        ans = 1
+
+        if grid[0][0] == 1 or grid[ROWS - 1][COLS - 1] == 1:
+            return -1
+
+        queue = collections.deque([(0, 0)])
+        visited = set((0, 0))
+
+        while queue:
+            for _ in range(len(queue)):
+                row, col = queue.popleft()
+                if row == ROWS - 1 and col == COLS - 1:
+                    return ans
+
+                for dx, dy in DIRECTIONS:
+                    next_row, next_col = row + dx, col + dy
+                    if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not (next_row, next_col) in visited and grid[next_row][next_col] == 0):
+                        continue
+                    queue.append((next_row, next_col))
+                    visited.add((next_row, next_col))
+            ans += 1
+
+        return -1
+```
+
