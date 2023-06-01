@@ -60,6 +60,8 @@ __Constraints:__
 
 ![image](https://github.com/quananhle/Python/assets/35042430/75c3ef81-180a-4ced-aa44-067343c2df41)
 
+#### Hash Set Marked as Visited
+
 ```Python
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
@@ -87,6 +89,96 @@ class Solution:
                     visited.add((next_row, next_col))
             ans += 1
 
+        return -1
+```
+
+#### Overwriting Input
+
+Here is some pseudocode.
+
+```Python
+while queue is not empty:
+
+    cell = dequeue a cell
+    look up distance at grid[cell row][cell col]
+
+    for each open neighbour:
+        if this neighbour is the bottom right cell (target):
+            return distance + 1
+        set grid[neighbour row][neighbour col] = distance + 1
+        enqueue neighbour
+        
+return -1
+```
+
+```Python
+directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+
+define function get_neighbors(row, col):
+neighbors = a container to put the neighbors of (row, col) in
+    for each (row_direction, col_direction) pair in directions:
+        neighbor_row = row + row_direction
+        neighbor_col = col + col_direction
+        if (neighbor_row, neighbor_col) is NOT over the edge of the grid AND is 0:
+            add (neighbor_row, neighbor_col) to neighbors
+    return neighbors
+```
+
+```Python
+class Solution:
+    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+        DESTINATION_ROW, DESTIONATION_COL = len(grid) - 1, len(grid[0]) - 1
+
+        def get_neighbor(row, col):
+            for dx, dy in DIRECTIONS:
+                next_row, next_col = row + dx, col + dy
+                if not (0 <= next_row <= DESTINATION_ROW and 0 <= next_col <= DESTIONATION_COL and not grid[next_row][next_col]):
+                    continue
+                yield (next_row, next_col)
+        
+        if grid[0][0] == 1 or grid[DESTINATION_ROW][DESTIONATION_COL] == 1:
+            return -1
+        
+        queue = collections.deque([(0, 0)])
+        grid[0][0] = 1
+
+        while queue:
+            row, col = queue.popleft()
+            distance = grid[row][col]
+            if (row, col) == (DESTINATION_ROW, DESTIONATION_COL):
+                return distance
+            for next_row, next_col in get_neighbor(row, col):
+                grid[next_row][next_col] = distance + 1
+                queue.append((next_row, next_col))
+            
+        return -1
+```
+
+```Python
+class Solution:
+    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+        ROWS, COLS = len(grid), len(grid[0])
+        
+        if grid[0][0] == 1 or grid[ROWS - 1][COLS - 1] == 1:
+            return -1
+        
+        queue = collections.deque([(0, 0)])
+        grid[0][0] = 1
+
+        while queue:
+            row, col = queue.popleft()
+            distance = grid[row][col]
+            if (row, col) == (ROWS - 1, COLS - 1):
+                return distance
+            for dx, dy in DIRECTIONS:
+                next_row, next_col = row + dx, col + dy
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not grid[next_row][next_col]):
+                    continue
+                grid[next_row][next_col] = distance + 1
+                queue.append((next_row, next_col))
+            
         return -1
 ```
 
