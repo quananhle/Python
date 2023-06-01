@@ -1,6 +1,6 @@
 ## [1230. Toss Strange Coins](https://leetcode.com/problems/toss-strange-coins/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -32,3 +32,39 @@ __Constraints:__
 - Answers will be accepted as correct if they are within ```10^-5``` of the correct answer.
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def probabilityOfHeads(self, prob: List[float], target: int) -> float:
+        n = len(prob)
+
+        @lru_cache(None)
+        def dp(curr, head):
+            # Base case
+            if head > target:
+                return 0
+
+            if curr == n:
+                if head == target:
+                    return 1
+                return 0
+
+            probability = prob[curr]
+            # Recurrence relation: coin facing heads or coin not facing heads
+            heads = dp(curr + 1, head + 1) * probability 
+            tails = dp(curr + 1, head) * (1 - probability)
+            ans = heads + tails
+            return ans
+
+        return dp(0, 0)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
