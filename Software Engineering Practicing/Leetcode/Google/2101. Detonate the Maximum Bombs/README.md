@@ -152,3 +152,46 @@ class Solution:
 
         return ans
 ```
+
+### Breadth-First Search
+
+![image](https://leetcode.com/problems/detonate-the-maximum-bombs/Figures/2101/b1.png)
+
+```Python
+class Solution:
+    def maximumDetonation(self, bombs: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        n = len(bombs)
+
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    continue
+                
+                x1, y1, r1 = bombs[i]
+                x2, y2, r2 = bombs[j]
+
+                # Create a path from bomb i to bomb j if bomb i detonates bomb j
+                if r1 ** 2 >= (x1 - x2) ** 2 + (y1 - y2) ** 2:
+                    graph[i].append(j)
+
+        ans = 0
+
+        def bfs(i):
+            queue = collections.deque([i])
+            visited = set([i])
+
+            while queue:
+                curr = queue.popleft()
+                for next in graph[curr]:
+                    if not next in visited:
+                        visited.add(next)
+                        queue.append(next)
+            
+            return len(visited)
+        
+        for i in range(n):
+            ans = max(ans, bfs(i))
+        
+        return ans
+```
