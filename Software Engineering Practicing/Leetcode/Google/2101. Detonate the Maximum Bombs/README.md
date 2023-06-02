@@ -110,3 +110,45 @@ class Solution:
         return ans
 ```
 
+### Depth-First Search with Stack
+
+![image](https://leetcode.com/problems/detonate-the-maximum-bombs/Figures/2101/d2.png)
+
+```Python
+class Solution:
+    def maximumDetonation(self, bombs: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        n = len(bombs)
+
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    continue
+                
+                x1, y1, r1 = bombs[i]
+                x2, y2, r2 = bombs[j]
+
+                # Create a path from bomb i to bomb j if bomb i detonates bomb j
+                if r1 ** 2 >= (x1 - x2) ** 2 + (y1 - y2) ** 2:
+                    graph[i].append(j)
+
+        def dfs(i):
+            stack = [i]
+            visited = set([i])
+
+            while stack:
+                curr = stack.pop()
+                for next in graph[curr]:
+                    if not next in visited:
+                        visited.add(next)
+                        stack.append(next)
+                
+            return len(visited)
+
+        
+        ans = 0
+        for i in range(n):
+            ans = max(ans, dfs(i))
+
+        return ans
+```
