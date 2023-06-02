@@ -33,9 +33,42 @@ __Constraints:__
 
 ---
 
+![image](https://github.com/quananhle/Python/assets/35042430/5228e59b-2dbf-4722-9e28-d392f33ae5df)
+
 ### The Framework
 
 #### Top-Down Dynamic Programming
+
+![image](https://github.com/quananhle/Python/assets/35042430/de4e9dcd-76cd-4ea3-beaf-ca1d2fe2caca)
+
+```Python
+class Solution:
+    def probabilityOfHeads(self, prob: List[float], target: int) -> float:
+        n = len(prob)
+        memo = collections.defaultdict(int)
+
+        def dp(curr, head):
+            # Base case
+            if head > target:
+                return 0
+
+            if curr == n:
+                if head == target:
+                    return 1
+                return 0
+
+            if (curr, head) in memo:
+                return memo[(curr, head)]
+
+            probability = prob[curr]
+            # Recurrence relation: coin facing heads or coin not facing heads
+            heads = dp(curr + 1, head + 1) * probability 
+            tails = dp(curr + 1, head) * (1 - probability)
+            memo[(curr, head)] = heads + tails
+            return memo[(curr, head)]
+
+        return dp(0, 0)
+```
 
 ```Python
 class Solution:
