@@ -1,6 +1,6 @@
 ## [1376. Time Needed to Inform All Employees](https://leetcode.com/problems/time-needed-to-inform-all-employees)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Tree```
 
 #### Difficulty: Medium
 
@@ -73,5 +73,28 @@ class Solution:
                 dfs(next, time + informTime[curr])
 
         dfs(headID, 0)
+        return ans
+```
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
+        ans = float('-inf')
+        adjacent_graph = collections.defaultdict(list)
+
+        for i in range(n):
+            if manager[i] != -1:
+                adjacent_graph[manager[i]].append(i)
+
+        queue = collections.deque([(headID, 0)])
+
+        while queue:
+            curr, time = queue.popleft()
+            ans = max(ans, time)
+            for next in adjacent_graph[curr]:
+                queue.append((next, time + informTime[curr]))
+            
         return ans
 ```
