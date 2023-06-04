@@ -454,6 +454,8 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Tree
 
+- :warning::warning: [1376. Time Needed to Inform All Employees](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1376.%20Time%20Needed%20to%20Inform%20All%20Employees) ```Depth-First Search``` ```Breadth-First Search``` ```Path Compression```
+
 ### Binary Tree
 
 - :four_leaf_clover: [100. Same Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/100.%20Same%20Tree) ```Breadth-First Search``` ```Depth-First Search```
