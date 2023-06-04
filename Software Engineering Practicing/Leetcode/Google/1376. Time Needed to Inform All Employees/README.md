@@ -1,6 +1,6 @@
 ## [1376. Time Needed to Inform All Employees](https://leetcode.com/problems/time-needed-to-inform-all-employees)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Tree```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Tree``` ```Path Compression```
 
 #### Difficulty: Medium
 
@@ -113,4 +113,20 @@ class Solution:
                 return 0
 
         return max(helper(i) for i in range(n))
+```
+
+### Path Compression
+
+```Python
+class Solution:
+    def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
+        def dfs(curr):
+            if manager[curr] == -1:
+                return informTime[curr]
+            
+            informTime[curr] += dfs(manager[curr])
+            manager[curr] = -1
+            return informTime[curr]
+        
+        return max(dfs(i) for i in range(n))
 ```
