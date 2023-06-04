@@ -2,4 +2,4 @@
 
 ```Tag```:
 
-#### Difficulty: 
+#### Difficulty: Medium
