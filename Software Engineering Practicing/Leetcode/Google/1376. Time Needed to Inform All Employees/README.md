@@ -48,3 +48,30 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/time-needed-to-inform-all-employees/Figures/1376/1376A.png)
+
+### Depth-First Search (DFS)
+
+```Python
+class Solution:
+    def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
+        ans = float('-inf')
+        adjacent_graph = collections.defaultdict(list)
+
+        for i in range(n):
+            if manager[i] != -1:
+                adjacent_graph[manager[i]].append(i)
+        
+        print (adjacent_graph)
+
+        def dfs(curr, time):
+            nonlocal ans
+
+            ans = max(ans, time)
+
+            for next in adjacent_graph[curr]:
+                dfs(next, time + informTime[curr])
+
+        dfs(headID, 0)
+        return ans
+```
