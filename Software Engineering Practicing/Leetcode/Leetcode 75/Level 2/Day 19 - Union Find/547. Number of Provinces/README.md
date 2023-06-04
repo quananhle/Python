@@ -74,6 +74,27 @@ class Solution:
 ```
 
 ```Python
+        n = len(isConnected)
+        visited = set()
+        ans = 0
+
+        def dfs(curr):
+            visited.add(curr)
+            paths = isConnected[curr]
+            # Traverse all connected paths from the current node
+            for neighbor in range(len(paths)):
+                if not neighbor in visited and paths[neighbor]:
+                    dfs(neighbor)
+
+        for node in range(n):
+            if not node in visited:
+                ans += 1
+                dfs(node)
+
+        return ans
+```
+
+```Python
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
