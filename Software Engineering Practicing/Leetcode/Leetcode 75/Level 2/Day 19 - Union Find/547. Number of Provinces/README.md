@@ -73,6 +73,36 @@ class Solution:
         return count
 ```
 
+```Python
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        n = len(isConnected)
+        graph = collections.defaultdict(list)
+
+        # Build the adjacent graph
+        for i in range(n):
+            for j in range(n):
+                if isConnected[i][j] == 1:
+                    graph[i].append(j)
+        
+        visited = set()
+        ans = 0
+
+        def dfs(curr):
+            visited.add(curr)
+            # Traverse all connected paths from the current node
+            for neighbor in graph[curr]:
+                if not neighbor in visited:
+                    dfs(neighbor)
+
+        for i in range(n):
+            if not i in visited:
+                ans += 1
+                dfs(i)
+
+        return ans
+```
+
 ### Breadth-First Search
 
 ```Python
