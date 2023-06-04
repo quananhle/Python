@@ -98,3 +98,19 @@ class Solution:
             
         return ans
 ```
+
+### Tree Traversal
+
+```Python
+class Solution:
+    def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
+        @lru_cache(None)
+        def helper(i):
+            # Check if the current employee is not a manager
+            if (manager_id := manager[i]) != -1:
+                return informTime[manager_id] + helper(manager_id)
+            else:
+                return 0
+
+        return max(helper(i) for i in range(n))
+```
