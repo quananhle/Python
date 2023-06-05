@@ -168,8 +168,10 @@ class Solution:
         # Build the adjacent graph
         for i in range(n):
             for j in range(n):
+                # Ignore path of the same node
                 if i == j:
                     continue
+                # Check if there is a path between two different nodes
                 if isConnected[i][j] == 1:
                     graph[i].append(j)
 
@@ -277,13 +279,14 @@ class Solution:
 
 ```Python
 class UnionFind:
+
     def __init__(self, size):
         self.root = [node for node in range(size)]
         self.rank = [1] * size
-        self.count = size
-
+        self.size = size
+    
     def find(self, x):
-        if self.root[x] == x:
+        if x == self.root[x]:
             return x
         self.root[x] = self.find(self.root[x])
         return self.root[x]
@@ -298,17 +301,24 @@ class UnionFind:
             else:
                 self.root[root_y] = root_x
                 self.rank[root_x] += root_y
-            self.count -= 1
-    
+            self.size -= 1
+
     def get_count(self):
-        return self.count
+        return self.size
+    
+    def compare(self, x, y):
+        return self.find(x) == self.find(y)
 
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        union_find = UnionFind(len(isConnected))
-        for row in range(len(isConnected)):
-            for col in range(len(isConnected[0])):
-                if isConnected[row][col] == 1:
-                    union_find.union(row, col)
-        return union_find.get_count()
+        n = len(isConnected)
+        uf = UnionFind(n)
+        
+        for node in range(n):
+            for neighbor in range(n):
+                # Check if there is a path between the current node and its neighbor
+                if isConnected[node][neighbor]:
+                    uf.union(node, neighbor)
+
+        return uf.get_count()
 ```
