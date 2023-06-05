@@ -74,6 +74,9 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        # Depth-First Search
         n = len(isConnected)
         visited = set()
         ans = 0
@@ -97,6 +100,7 @@ class Solution:
 ```Python
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        # Depth-First Search
         n = len(isConnected)
         graph = collections.defaultdict(list)
 
