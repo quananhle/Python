@@ -35,6 +35,8 @@ __Constraints:__
 
 ---
 
+### Math
+
 ![image](https://github.com/quananhle/Python/assets/35042430/3fb70d93-001d-4a9c-97ab-283184d2cd9c)
 
 ![image](https://leetcode.com/problems/check-if-it-is-a-straight-line/Figures/1232/1232A.png)
@@ -59,4 +61,14 @@ class Solution:
                 return False
 
         return True
+```
+
+### ```numpy```
+
+```Python
+import numpy as np
+class Solution:
+    def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
+        c = np.array(coordinates)
+        return np.linalg.matrix_rank(c[1:] - c[0]) == 1
 ```
