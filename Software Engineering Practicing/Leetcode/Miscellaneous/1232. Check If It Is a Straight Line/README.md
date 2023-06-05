@@ -1,6 +1,6 @@
 ## [1232. Check If It Is a Straight Line](https://leetcode.com/problems/check-if-it-is-a-straight-line/)
 
-```Tag```: 
+```Tag```: ```Array & String``` ```Math```
 
 #### Difficulty: Easy
 
@@ -40,3 +40,23 @@ __Constraints:__
 ![image](https://leetcode.com/problems/check-if-it-is-a-straight-line/Figures/1232/1232A.png)
 
 ![image](https://github.com/quananhle/Python/assets/35042430/51ebf320-28d5-43b7-a200-1bc587bd745f)
+
+```Python
+class Solution:
+    def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
+        def get_x_diff(x0, x1):
+            return x0 - x1
+        
+        def get_y_diff(y0, y1):
+            return y0 - y1
+        
+        start_x, start_y = coordinates[0][0], coordinates[0][1]
+        delta_x = get_x_diff(start_x, coordinates[1][0])
+        delta_y = get_y_diff(start_y, coordinates[1][1])
+        
+        for next_x, next_y in coordinates[2:]:
+            if delta_y * get_x_diff(start_x, next_x) != delta_x * get_y_diff(start_y, next_y):
+                return False
+
+        return True
+```
