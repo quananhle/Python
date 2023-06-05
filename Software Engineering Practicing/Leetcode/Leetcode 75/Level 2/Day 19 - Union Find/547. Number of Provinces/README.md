@@ -139,21 +139,56 @@ class Solution:
         # Breath-First Search
         #### Time Complexity: O(N^2), traverse through the entire 2D array
         #### Space Complexity: O(N), extra memory space required to build visited  
-        ROWS, COLS = len(isConnected), len(isConnected[0])
-        visited = [0] * ROWS
+        n = len(isConnected)
+        visited = set()
+        ans = 0
+
         queue = collections.deque()
-        count = 0
-        for row in range(ROWS):
-            if visited[row] == 0:
-                queue.append(row)
+
+        for node in range(n):
+            if not node in visited:
+                ans += 1
+                queue.append(node)
                 while queue:
-                    row = queue.pop()
-                    visited[row] = 1
-                    for col in range(COLS):
-                        if isConnected[row][col] == 1 and visited[col] == 0:
-                            queue.append(col)
-                count += 1
-        return count
+                    curr = queue.popleft()
+                    visited.add(curr)
+                    for neighbor in range(n):
+                        if not neighbor in visited and isConnected[curr][neighbor] == 1:
+                            queue.append(neighbor)
+
+        return ans
+```
+
+```Python
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        n = len(isConnected)
+        graph = collections.defaultdict(list)
+
+        # Build the adjacent graph
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    continue
+                if isConnected[i][j] == 1:
+                    graph[i].append(j)
+
+        visited = set()
+        ans = 0
+        queue = collections.deque()
+
+        for node in range(n):
+            if not node in visited:
+                ans += 1
+                queue.append(node)
+                while queue:
+                    curr = queue.popleft()
+                    visited.add(curr)
+                    for neighbor in graph[curr]:
+                        if not neighbor in visited:
+                            queue.append(neighbor)
+
+        return ans
 ```
 
 ### Union-Find
