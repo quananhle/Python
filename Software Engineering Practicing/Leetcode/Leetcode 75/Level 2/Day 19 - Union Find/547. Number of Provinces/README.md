@@ -100,13 +100,16 @@ class Solution:
 ```Python
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        # Depth-First Search
         n = len(isConnected)
         graph = collections.defaultdict(list)
 
         # Build the adjacent graph
         for i in range(n):
             for j in range(n):
+                # Ignore path of the same node
+                if i == j:
+                    continue
+                # Check if there is a path between two different nodes
                 if isConnected[i][j] == 1:
                     graph[i].append(j)
         
@@ -120,10 +123,10 @@ class Solution:
                 if not neighbor in visited:
                     dfs(neighbor)
 
-        for i in range(n):
-            if not i in visited:
+        for node in range(n):
+            if not node in visited:
                 ans += 1
-                dfs(i)
+                dfs(node)
 
         return ans
 ```
