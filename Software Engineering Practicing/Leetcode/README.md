@@ -58,6 +58,7 @@
 - :warning::warning: [334. Increasing Triplet Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/334.%20Increasing%20Triplet%20Subsequence)
 - :warning::warning: [443. String Compression](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/443.%20String%20Compression)
 - :four_leaf_clover: [1071. Greatest Common Divisor of Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
+- :four_leaf_clover: [1232. Check If It Is a Straight Line](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line) ```Math```
 - :four_leaf_clover: [1431. Kids With the Greatest Number of Candies](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/1431.%20Kids%20With%20the%20Greatest%20Number%20of%20Candies)
 - :four_leaf_clover: [1491. Average Salary Excluding the Minimum and Maximum Salary](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
 - :four_leaf_clover: [1822. Sign of the Product of an Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1822.%20Sign%20of%20the%20Product%20of%20an%20Array)
