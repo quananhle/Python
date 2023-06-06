@@ -1,4 +1,6 @@
-## 409. Longest Palindrome
+## [409. Longest Palindrome](https://leetcode.com/problems/longest-palindrome)
+
+```Tag```: ```Greedy``` ```Hash Set``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -32,7 +34,7 @@ s consists of lowercase and/or uppercase English letters only.
 
 ---
 
-### Counter
+### Hash Map
 
 ```Python
 class Solution(object):
