@@ -33,4 +33,26 @@ __Constraints:__
 
 ---
 
- 
+### Sorting
+
+![image](https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence/Figures/1502/1.png)
+
+```Python
+class Solution:
+    def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
+        sorted_arr = sorted(arr)
+        '''
+        reverse_arr = sorted(arr, reverse=True)
+        reverse_arr = sorted_arr[::-1][:]
+        '''
+        n = len(arr)
+        if n == 2:
+            return True
+
+        diff = sorted_arr[1] - sorted_arr[0]
+        for i in range(2, n):
+            if sorted_arr[i] - sorted_arr[i-1] != diff:
+                return False
+        
+        return True
+```
