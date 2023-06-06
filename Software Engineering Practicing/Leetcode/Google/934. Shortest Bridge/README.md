@@ -62,8 +62,7 @@ class Solution:
         def dfs(row, col):
             grid[row][col] = 2
             queue.append((row, col))
-            for dx, dy in DIRECTIONS:
-                next_row, next_col = row + dx, col + dy
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
                 if not (0 <= next_row < ROWS and 0 <= next_col < COLS and grid[next_row][next_col] == 1):
                     continue
                 dfs(next_row, next_col)
@@ -80,8 +79,7 @@ class Solution:
         while queue:
             curr = collections.deque()
             for row, col in queue:
-                for dx, dy in DIRECTIONS:
-                    next_row, next_col = row + dx, col + dy
+                for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
                     if not (0 <= next_row < ROWS and 0 <= next_col < COLS):
                         continue
                     if grid[next_row][next_col] == 1:
