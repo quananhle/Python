@@ -50,10 +50,75 @@ __Constraints:__
 ![image](https://leetcode.com/problems/shortest-bridge/Figures/934/4.png)
 
 ```Python
+class Solution:
+    def shortestBridge(self, grid: List[List[int]]) -> int:
+        # Depth-First Search (DFS) to find the 2 islands
+        # Breadth-First Search (BFS) to find the shortest path between 2 islands
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
 
+        queue = collections.deque()
+
+        def dfs(row, col):
+            grid[row][col] = 2
+            queue.append((row, col))
+            for dx, dy in DIRECTIONS:
+                next_row, next_col = row + dx, col + dy
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and grid[next_row][next_col] == 1):
+                    continue
+                dfs(next_row, next_col)
+        
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col] == 1:
+                    start_row, start_col = row, col
+                    break
+        
+        dfs(start_row, start_col)
+
+        ans = 0
+        while queue:
+            curr = collections.deque()
+            for row, col in queue:
+                for dx, dy in DIRECTIONS:
+                    next_row, next_col = row + dx, col + dy
+                    if not (0 <= next_row < ROWS and 0 <= next_col < COLS):
+                        continue
+                    if grid[next_row][next_col] == 1:
+                        return ans
+                    elif grid[next_row][next_col] == 0:
+                        curr.append((next_row, next_col))
+                        grid[next_row][next_col] = -1
+            
+            queue = curr
+            ans += 1
+
+        return ans
 ```
 
 ### Breadth-First Search
+
+In this approach, we will use the same strategy as in the previous approach, but we will use BFS instead of DFS to search for all cells of island ```A```. Again, we will first traverse ```grid```, take the first land found (assume it is ```grid[start_row][start_col]```) and treat it as a land cell of island ```A```. Then, we BFS over all cells of island ```A``` and set their values to ```2``` to distinguish them from the other island.
+
+![image](https://leetcode.com/problems/shortest-bridge/Figures/934/3.png)
+
+__Algorithm__
+
+1. Iterate over the ```grid``` until we find the first land cell, suppose it is ```grid[start_row][start_col]```.
+2. Create:
+- a queue ```first_island``` and add ```grid[start_row][start_col]``` on island A to it.
+- an empty list ```new_bfs``` for the next round's search.
+- an empty queue ```second_bfs_queue``` for searching the distance between two islands later.
+3. Iterate over ```first_island```, for each cell ```grid[row][col]```, if ```grid[row][col] = 1``` or if the cell is land:
+- set ```grid[row][col] = 2```
+- add ```(row, col)``` to ```new_bfs``` for the next round's search.
+- add ```(row, col)``` to ```second_bfs_queue``` for searching over water cells later.
+4. If ```new_bfs``` is not empty, we set ```first_island = new_bfs``` and repeat step 3. Otherwise, move on to step 5.
+5.Set ```distance = 0```.
+6. Now we start BFS on water cells. While ```second_bfs_queue``` is not empty, we create an empty list ```new_bfs``` to collect the cells we need to visit in the next round. Iterate over cells in ```second_bfs_queue```, for each cell ```(row, col)```:
+- if ```grid[row][col] = 1```, it means we have reached the second island, return ```distance```.
+- Otherwise, we look for its unvisited water neighbors (cells with value of ```0```), mark them as ```-1``` and add them to ```new_bfs```.
+7. Once the iteration ends, set ```second_bfs_queue = new_bfs```, increment distance by ```1```, and repeat the step 4.
 
 ```Python
 class Solution:
@@ -102,24 +167,3 @@ class Solution:
         return ans
 ```
 
-In this approach, we will use the same strategy as in the previous approach, but we will use BFS instead of DFS to search for all cells of island ```A```. Again, we will first traverse ```grid```, take the first land found (assume it is ```grid[start_row][start_col]```) and treat it as a land cell of island ```A```. Then, we BFS over all cells of island ```A``` and set their values to ```2``` to distinguish them from the other island.
-
-![image](https://leetcode.com/problems/shortest-bridge/Figures/934/3.png)
-
-__Algorithm__
-
-1. Iterate over the ```grid``` until we find the first land cell, suppose it is ```grid[start_row][start_col]```.
-2. Create:
-- a queue ```first_island``` and add ```grid[start_row][start_col]``` on island A to it.
-- an empty list ```new_bfs``` for the next round's search.
-- an empty queue ```second_bfs_queue``` for searching the distance between two islands later.
-3. Iterate over ```first_island```, for each cell ```grid[row][col]```, if ```grid[row][col] = 1``` or if the cell is land:
-- set ```grid[row][col] = 2```
-- add ```(row, col)``` to ```new_bfs``` for the next round's search.
-- add ```(row, col)``` to ```second_bfs_queue``` for searching over water cells later.
-4. If ```new_bfs``` is not empty, we set ```first_island = new_bfs``` and repeat step 3. Otherwise, move on to step 5.
-5.Set ```distance = 0```.
-6. Now we start BFS on water cells. While ```second_bfs_queue``` is not empty, we create an empty list ```new_bfs``` to collect the cells we need to visit in the next round. Iterate over cells in ```second_bfs_queue```, for each cell ```(row, col)```:
-- if ```grid[row][col] = 1```, it means we have reached the second island, return ```distance```.
-- Otherwise, we look for its unvisited water neighbors (cells with value of ```0```), mark them as ```-1``` and add them to ```new_bfs```.
-7. Once the iteration ends, set ```second_bfs_queue = new_bfs```, increment distance by ```1```, and repeat the step 4.
