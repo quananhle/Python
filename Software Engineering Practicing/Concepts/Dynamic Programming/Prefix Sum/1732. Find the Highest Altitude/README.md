@@ -51,3 +51,18 @@ class Solution:
 
         return ans
 ```
+
+- __Time Complexity__: ```O(N)```
+- __Space Complexity__: ```O(N)```
+
+```Python
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        n = len(gain)
+        res = [0] * (n + 1)
+
+        for i in range(n):
+            res[i + 1] = gain[i] + res[i]
+
+        return max(res)
+```
