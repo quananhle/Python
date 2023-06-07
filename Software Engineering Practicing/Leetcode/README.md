@@ -194,7 +194,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 ---
 
-## Bitwise Manipulation
+## [Bitwise Manipulation](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation)
 
 - :four_leaf_clover: [136. Single Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/136.%20Single%20Number)
 - :four_leaf_clover: [190. Reverse Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/190.%20Reverse%20Bits)
