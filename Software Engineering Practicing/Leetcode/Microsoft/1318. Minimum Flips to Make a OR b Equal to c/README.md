@@ -80,3 +80,26 @@ A >> 3 = 100 >> 3 = 000 = 0 (in decimal)
 
 B = 5 = 00101 (in binary)
 B >> 1 = 00101 >> 1 = 00010 = 2 (in decimal)
+
+### Bitwise Manipulations
+
+```Python
+
+```
+
+```Python
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        ans = 0
+
+        while a or b or c:
+            if c % 2 == 1:
+                ans += 0 if ((a % 2 == 1) or (b % 2 == 1)) else 1
+            else:
+                ans += (a % 2 == 1) + (b % 2 == 1)
+            a //= 2
+            b //= 2
+            c //= 2
+
+        return ans
+```
