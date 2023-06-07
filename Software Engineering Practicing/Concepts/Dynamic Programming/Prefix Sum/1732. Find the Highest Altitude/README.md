@@ -33,3 +33,21 @@ __Constraints:__
 - ```-100 <= gain[i] <= 100```
 
 ---
+
+### Prefix Sum
+
+- __Time Complexity__: ```O(N)```
+- __Space Complexity__: ```O(1)```
+
+```Python
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        n = len(gain)
+        ans = curr = 0
+
+        for num in gain:
+            curr += num
+            ans = max(ans, curr)
+
+        return ans
+```
