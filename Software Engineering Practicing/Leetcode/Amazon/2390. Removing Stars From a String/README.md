@@ -64,6 +64,44 @@ class Solution:
         return ''.join(stack)
 ```
 
+```Python
+class Solution:
+    def removeStars(self, s: str) -> str:
+        res = list()
+        stack = list()
+        stars = 0
+
+        for c in s[::-1]:
+            if c != '*':
+                if not stars:
+                    res.append(c)
+                else:
+                    stars -= 1
+            else:
+                stars += 1
+
+        return "".join(res[::-1])
+```
+
+```Python
+class Solution:
+    def removeStars(self, s: str) -> str:
+        alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'}
+        res = list()
+        stack = list()
+
+        for c in s[::-1]:
+            if c in alphabet:
+                if not stack:
+                    res.append(c)
+                else:
+                    stack.pop()
+            else:
+                stack.append(c)
+
+        return "".join(res[::-1])
+```
+
 ### Array & String
 
 __Note__: This method is not applicable/optimized in Python as string in Python is immutable and will lead to O(N<sup>2</sup>) time complexity solution to rebuild the entire string every single time a '*' is encountered
