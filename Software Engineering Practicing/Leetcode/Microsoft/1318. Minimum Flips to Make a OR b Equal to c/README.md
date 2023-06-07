@@ -100,6 +100,12 @@ B >> 1 = 00101 >> 1 = 00010 = 2 (in decimal)
 
 ### Bitwise Manipulations
 
+![image](https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/Figures/1318/2.png)
+
+![image](https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/Figures/1318/3.png)
+
+![image](https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/Figures/1318/4.png)
+
 ```Python
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
