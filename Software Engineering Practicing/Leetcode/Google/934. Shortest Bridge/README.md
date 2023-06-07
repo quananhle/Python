@@ -1,6 +1,6 @@
 ## [934. Shortest Bridge](https://leetcode.com/problems/shortest-bridge/)
 
-```Tag```: ```Depth-First-Search``` ```Breadth-First-Search```
+```Tag```: ```Depth-First-Search``` ```Breadth-First-Search``` ```Manhattan Distance```
 
 #### Difficulty: Medium
 
@@ -165,3 +165,44 @@ class Solution:
         return ans
 ```
 
+### Manhattan Distance
+
+```Python
+class Solution:
+    def shortestBridge(self, grid: List[List[int]]) -> int:
+        # Time Limit Exceeded
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+
+        island_1, island_2 = set(), set()
+        visited = set()
+        second = False
+
+        def dfs(row, col, land):
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return
+            visited.add((row, col))
+            land.add((row, col))
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not (next_row, next_col) in visited and grid[next_row][next_col] == 1):
+                    continue
+                dfs(next_row, next_col, land)
+        
+        for row in range(ROWS):
+            for col in range(COLS):
+                if not (row, col) in visited and grid[row][col] == 1:
+                    if not second:
+                        dfs(row, col, island_1)
+                        second = True
+                    else:
+                        dfs(row, col, island_2)
+
+        ans = float("inf")
+        for p1 in island_1:
+            for p2 in island_2:
+                # Calculate Manhattan distance
+                distance = abs(p2[0] - p1[0]) + abs(p2[1] - p1[1])
+                ans = min(distance, ans)
+        
+        return ans - 1
+```
