@@ -43,10 +43,13 @@ __Constraints:__
 Bit manipulation is the act of manipulating bits, like changing bits of an integer.
 At the heart of bit manipulation are the bit-wise operators:
 
-NOT (~): Bitwise NOT is a unary operator that flips the bits of the number i.e., if the current bit is 000, it will change it to 111 and vice versa.
+__NOT (~)__: Bitwise NOT is a unary operator that flips the bits of the number i.e., if the current bit is 000, it will change it to 111 and vice versa.
 
+```
 N = 5 = 101 (in binary)
 ~N = ~(101) = 010 = 2 (in decimal)
+```
+
 AND (&): In bitwise AND if both bits in the compared position of the bit patterns are 111, the bit in the resulting bit pattern is 111, otherwise 000.
 
 A = 5 = 101 (in binary) 
