@@ -201,6 +201,8 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [191. Number of 1 Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/191.%20Number%20of%201%20Bits)
 - :four_leaf_clover: [231. Power of Two](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/231.%20Power%20of%20Two)
 - :warning::warning: [319. Bulb Switcher](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/319.%20Bulb%20Switcher) ```Brainteaser``` ```Math```
+- :warning::warning: [1318. Minimum Flips to Make a OR b Equal to c](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1318.%20Minimum%20Flips%20to%20Make%20a%20OR%20b%20Equal%20to%20c)
+
 ---
 
 ## Design
