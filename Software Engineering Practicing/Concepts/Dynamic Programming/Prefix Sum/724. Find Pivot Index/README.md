@@ -1,4 +1,4 @@
-## 724. Find Pivot Index
+## [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index)
 
 ```Tag```: ```Array``` ```Prefix Sum```
 
@@ -61,10 +61,11 @@ class Solution:
         # Prefix Sum
         total = sum(nums)
         left_sum = 0
+
         for i, e in enumerate(nums):
             if left_sum == total - left_sum - e:
                 return i
-            else:
-                left_sum += e
+            left_sum += e
+
         return -1
 ```
