@@ -121,6 +121,19 @@ class Solution:
         ans = 0
 
         while a or b or c:
+            total = (a & 1) + (b & 1) + (c & 1)
+            ans += (total == 1) or (total == 2 and (c & 1) == 0) << 1
+            a, b, c = a >> 1, b >> 1, c >> 1
+
+        return ans
+```
+
+```Python
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        ans = 0
+
+        while a or b or c:
             total = (a % 2 == 1) + (b % 2 == 1) + (c % 2 == 1)
             ans += (total == 1) or (total == 2 and (c % 2 == 1) == 0) * 2
             a, b, c = a // 2, b // 2, c // 2
