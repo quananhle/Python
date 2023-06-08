@@ -66,6 +66,13 @@ class Solution:
 
 ### Binary Search
 
+__Complexity Analysis__
+
+Here, ```N``` is the size of the list nums.
+
+- __Time complexity__: $O(log⁡N)$.
+- __Space complexity__: $O(1)$.
+
 #### Template 1
 
 ```Python
