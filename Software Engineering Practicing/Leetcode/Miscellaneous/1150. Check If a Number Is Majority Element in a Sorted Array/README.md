@@ -1,6 +1,6 @@
 ## [1150. Check If a Number Is Majority Element in a Sorted Array](https://leetcode.com/problems/check-if-a-number-is-majority-element-in-a-sorted-array/)
 
-```Tag```:
+```Tag```: ```Counter``` ```Hash Map``` ```Binary Search``` ```Array & String```
 
 #### Difficulty: Easy
 
@@ -35,3 +35,15 @@ __Constraints:__
 - ```nums``` is sorted in non-decreasing order.
 
 ---
+
+### Counter
+
+```Python
+
+```
+
+#### One-Liner
+
+```Python
+
+```
