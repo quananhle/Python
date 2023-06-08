@@ -65,3 +65,40 @@ class Solution:
 ```
 
 ### Binary Search
+
+#### Template 1
+
+```Python
+class Solution:
+    def isMajorityElement(self, nums: List[int], target: int) -> bool:
+        n = len(nums)
+        lo, hi = 0, n - 1
+
+        def lower_bound(lo, hi):
+            lower_boundary = len(nums)
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] >= target:
+                    hi = mi - 1
+                    lower_boundary = mi
+                else:
+                    lo = mi + 1
+
+            return lower_boundary
+        
+        def upper_bound(lo, hi):
+            upper_boundary = len(nums)
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] <= target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+                    upper_boundary = mi
+
+            return upper_boundary
+
+        return upper_bound(0, n - 1) - lower_bound(0, n - 1) > n // 2
+```
