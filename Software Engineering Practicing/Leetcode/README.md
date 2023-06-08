@@ -307,6 +307,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ## Graph
 
 - :warning::warning: [1236. Web Crawler](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1236.%20Web%20Crawler) ```Breadth-First Search``` ```Depth-First Search```
+- :four_leaf_clover: [1351. Count Negative Numbers in a Sorted Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1351.%20Count%20Negative%20Numbers%20in%20a%20Sorted%20Matrix) ```Binary Search``` ```Linear Traversal```
 - :warning::warning: [1466. Reorder Routes to Make All Paths Lead to the City Zero](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1466.%20Reorder%20Routes%20to%20Make%20All%20Paths%20Lead%20to%20the%20City%20Zero) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1557. Minimum Number of Vertices to Reach All Nodes](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1557.%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes) ```Hash Map``` ```Hash Set```
 
