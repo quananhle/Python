@@ -1,6 +1,6 @@
 ## [1351. Count Negative Numbers in a Sorted Matrix](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/)
 
-```Tag```: 
+```Tag```: ```Binary Search``` ```Linear Search```
 
 #### Difficulty: Easy
 
@@ -31,5 +31,24 @@ __Constraints:__
 - ```-100 <= grid[i][j] <= 100```
  
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        ans = 0
+
+        for row in range(ROWS):
+            total = sum(grid[row])
+            for num in grid[row]:
+                curr = total
+                total -= num
+                if curr < total:
+                    ans += 1
+                
+        return ans
+```
 
 __Follow up__: Could you find an ```O(n + m)``` solution?
