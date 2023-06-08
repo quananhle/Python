@@ -71,4 +71,37 @@ class Solution:
         return ans
 ```
 
+### Binary Search
+
+__Complexity Analysis__
+
+Here, $m×n$ is the size of the input matrix.
+
+- __Time complexity__: $O(mlogn)$.
+- __Space complexity__: $O(1)$
+
+```Python
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        ans = 0
+        n = len(grid[0])
+
+        for row in grid:
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                if row[mi] < 0:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+                
+            ans += (n - lo)
+        
+        return ans
+```
+
 __Follow up__: Could you find an ```O(n + m)``` solution?
+
+### Linear Traversal
+
+![image](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/Figures/1351/Slide2.PNG)
