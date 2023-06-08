@@ -73,6 +73,9 @@ class Solution:
 
 ### Binary Search
 
+![image](https://github.com/quananhle/Python/assets/35042430/17cfb597-a0ef-4b99-bfa9-3af933c09798)
+
+
 __Complexity Analysis__
 
 Here, $m×n$ is the size of the input matrix.
@@ -104,4 +107,28 @@ __Follow up__: Could you find an ```O(n + m)``` solution?
 
 ### Linear Traversal
 
-![image](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/Figures/1351/Slide2.PNG)
+![image](https://github.com/quananhle/Python/assets/35042430/3745da04-d1ea-4cb7-ab92-bbabe6005622)
+
+__Complexity Analysis__
+
+Here, $m×n$ is the size of the input matrix.
+
+- __Time complexity__: $O(m+n)$.
+We will iterate on one row and one column i.e. $(m+n)$ elements of the matrix.
+An easier way to think about this: we start in the top right square. We can only move left and down, and we cannot move more than $m+n$ times without exiting the grid.
+- __Space complexity__: $O(1)$
+
+```Python
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        ans = 0
+        n = len(grid[0])
+        curr_negative = n - 1
+
+        for row in grid:
+            while curr_negative >= 0 and row[curr_negative] < 0:
+                curr_negative -= 1
+            ans += n - curr_negative - 1
+        
+        return ans
+```
