@@ -1,6 +1,6 @@
 ## [1351. Count Negative Numbers in a Sorted Matrix](https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/)
 
-```Tag```: ```Binary Search``` ```Linear Search```
+```Tag```: ```Matrix``` ```Binary Search``` ```Linear Search```
 
 #### Difficulty: Easy
 
