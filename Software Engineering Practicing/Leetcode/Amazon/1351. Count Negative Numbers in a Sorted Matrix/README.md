@@ -44,6 +44,19 @@ Here, $m×n$ is the size of the input matrix.
 ```Python
 class Solution:
     def countNegatives(self, grid: List[List[int]]) -> int:
+        ans = 0
+
+        for row in grid:
+            for num in row:
+                if num < 0:
+                    ans += 1
+                
+        return ans
+```
+
+```Python
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
         ans = 0
 
