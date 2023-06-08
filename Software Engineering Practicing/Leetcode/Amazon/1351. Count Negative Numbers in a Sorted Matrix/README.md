@@ -34,6 +34,13 @@ __Constraints:__
 
 ### Brute Force
 
+__Complexity Analysis__
+
+Here, $m×n$ is the size of the input matrix.
+
+- __Time complexity__: $O(m⋅n)$, we iterate on each element of the matrix once, and the total number of the elements in the matrix is $m⋅n$.
+- __Space complexity__: $O(1)$
+
 ```Python
 class Solution:
     def countNegatives(self, grid: List[List[int]]) -> int:
