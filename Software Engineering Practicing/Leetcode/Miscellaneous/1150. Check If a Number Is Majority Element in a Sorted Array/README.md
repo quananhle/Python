@@ -39,11 +39,29 @@ __Constraints:__
 ### Counter
 
 ```Python
-
+class Solution:
+    def isMajorityElement(self, nums: List[int], target: int) -> bool:
+        n = len(nums)
+        counter = collections.Counter(nums)
+        return counter[target] > n // 2
 ```
 
 #### One-Liner
 
 ```Python
-
+class Solution:
+    def isMajorityElement(self, nums: List[int], target: int) -> bool:
+        return collections.Counter(nums)[target] > len(nums) // 2
 ```
+
+### ```count()```
+
+#### One Liner
+
+```Python
+class Solution:
+    def isMajorityElement(self, nums: List[int], target: int) -> bool:
+        return nums.count(target) > len(nums) // 2
+```
+
+### Binary Search
