@@ -74,6 +74,8 @@ class Solution:
         n = len(nums)
         lo, hi = 0, n - 1
 
+        # Returns the index of the first element equal to or greater than the target.
+        # If there is no instance of the target in the list, it returns the length of the list.
         def lower_bound(lo, hi):
             lower_boundary = len(nums)
             while lo <= hi:
@@ -87,6 +89,8 @@ class Solution:
 
             return lower_boundary
         
+        # Returns the index of the first element greater than the target.
+        # If there is no instance of the target in the list, it returns the length of the list.
         def upper_bound(lo, hi):
             upper_boundary = len(nums)
             while lo <= hi:
@@ -101,4 +105,32 @@ class Solution:
             return upper_boundary
 
         return upper_bound(0, n - 1) - lower_bound(0, n - 1) > n // 2
+```
+
+```Python
+class Solution:
+    def isMajorityElement(self, nums: List[int], target: int) -> bool:
+        n = len(nums)
+        lo, hi = 0, n - 1
+        start = n
+
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            
+            if nums[mi] < target:
+                lo = mi + 1
+            else:
+                hi = mi - 1
+                start = mi
+            
+        return start + n // 2 < n and nums[start + n // 2] == target
+```
+
+#### ```bisect_left()```
+
+```Python
+class Solution:
+    def isMajorityElement(self, nums: List[int], target: int) -> bool:
+        start = bisect_left(nums, target)
+        return start + len(nums) // 2 < len(nums) and  nums[start + len(nums) // 2] == target
 ```
