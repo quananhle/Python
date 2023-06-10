@@ -1,6 +1,6 @@
 ## [1802. Maximum Value at a Given Index in a Bounded Array](https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/)
 
-```Tag```:
+```Tag```: ```Greedy``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -39,4 +39,34 @@ __Constraints:__
 
 ---
 
+### Greedy & Binary Search
 
+```Python
+class Solution:
+    def maxValue(self, n: int, index: int, maxSum: int) -> int:
+        lo, hi = 1, maxSum
+
+        def get_sum(value):
+            count = 0
+
+            if value > index:
+                count += (value + value - index) * (index + 1) // 2
+            else:
+                count += (value + 1) * value // 2 + index - value + 1
+            
+            if value >= n - index:
+                count += (value + value - n + 1 + index) * (n - index) // 2
+            else:
+                count += (value + 1) * value // 2 + n - index - value
+            
+            return count - value
+
+        while lo < hi:
+            mi = (lo + hi + 1) // 2
+            if get_sum(mi) <= maxSum:
+                lo = mi
+            else:
+                hi = mi - 1
+
+        return lo
+```
