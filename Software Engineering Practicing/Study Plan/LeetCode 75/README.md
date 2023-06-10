@@ -10,6 +10,7 @@
 - :warning::warning: [151. Reverse Words in a String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Apple/151.%20Reverse%20Words%20in%20a%20String)
 - :warning::warning: [238. Product of Array Except Self](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/238.%20Product%20of%20Array%20Except%20Self)
 - :warning::warning: [334. Increasing Triplet Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/334.%20Increasing%20Triplet%20Subsequence)
+- :warning::warning: [443. String Compression](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Apple/443.%20String%20Compression)
 
 ### Two Pointers
 
