@@ -1,6 +1,6 @@
 ## [2352. Equal Row and Column Pairs](https://leetcode.com/problems/equal-row-and-column-pairs)
 
-```Tag```: ```Stack``` ```Trie``` ```Hash Map```
+```Tag```: ```Trie``` ```Hash Map``` ```Matrix```
 
 #### Difficulty: Medium
 
@@ -40,4 +40,42 @@ __Constraints:__
 
 ---
 
+### Hash Map
 
+```Python
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        count = 0
+        n = len(grid)
+        rows = collections.defaultdict(int)
+
+        # Traverse the rows
+        for row in grid:
+            rows[tuple(row)] = 1 + rows.get(tuple(row), 0)
+
+        # Traverse the columns
+        for c in range(n):
+            col = [grid[r][c] for r in range(n)]
+            count += rows[tuple(col)]
+
+        return count
+```
+
+#### ```Counter()```
+
+```Python
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        count = 0
+        n = len(grid)
+
+        # Traverse the rows
+        rows = collections.Counter(tuple(row) for row in grid)
+
+        # Traverse the columns
+        for c in range(n):
+            col = [grid[r][c] for r in range(n)]
+            count += rows[tuple(col)]
+
+        return count
+```
