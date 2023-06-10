@@ -45,6 +45,10 @@ __Constraints:__
 
 ![image](https://github.com/quananhle/Python/assets/35042430/61ee5de6-6ef2-4eb2-95e8-86993d631870)
 
+![image](https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/Figures/1802/2.png)
+
+![image](https://leetcode.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/Figures/1802/3.png)
+
 ```Python
 class Solution:
     def maxValue(self, n: int, index: int, maxSum: int) -> int:
