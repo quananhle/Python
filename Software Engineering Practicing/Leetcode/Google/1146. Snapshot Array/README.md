@@ -38,7 +38,15 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/snapshot-array/Figures/1146/1.png)
+
 ### Binary Search
+
+![image](https://leetcode.com/problems/snapshot-array/Figures/1146/2.png)
+
+![image](https://leetcode.com/problems/snapshot-array/Figures/1146/5.png)
+
+![image](https://leetcode.com/problems/snapshot-array/Figures/1146/3.png)
 
 ```Python
 class SnapshotArray:
