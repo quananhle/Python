@@ -34,6 +34,7 @@
 
 ### Stack
 
+- :warning::warning: [2390. Removing Stars From a String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2390.%20Removing%20Stars%20From%20a%20String)
 - :warning::warning: [735. Asteroid Collision](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/735.%20Asteroid%20Collision)
 
 ### Dynamic Programming - 1D
