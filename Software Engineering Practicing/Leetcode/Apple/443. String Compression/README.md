@@ -73,3 +73,24 @@ class Solution:
 
         return start
 ```
+
+```Python
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        start = end = 0
+        n = len(chars)
+
+        while end < n:
+            curr_size = 1
+            while end + curr_size < n and chars[end + curr_size] == chars[end]:
+                curr_size += 1
+            chars[start] = chars[end]
+            start += 1
+            if curr_size > 1:
+                num_char = str(curr_size)
+                chars[start:start+len(num_char)] = list(num_char)
+                start += len(num_char)
+            end += curr_size
+        
+        return start
+```
