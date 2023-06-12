@@ -69,6 +69,22 @@ class Solution:
 
 ### Hash Map
 
+![image](https://leetcode.com/problems/equal-row-and-column-pairs/Figures/2352/1.png)
+
+![image](https://leetcode.com/problems/equal-row-and-column-pairs/Figures/2352/2.png)
+
+![image](https://leetcode.com/problems/equal-row-and-column-pairs/Figures/2352/3.png)
+
+__Algorithm__
+
+1. Create an empty hash map ```rows``` and set ```count``` to ```0```.
+
+2. For each row ```row``` in the ```grid```, convert it into an equivalent hashable object and use it as a key to the ```rows```. Increment the value of the corresponding key by ```1```.
+
+3. For each ```column``` in the ```grid```, convert it into the same type of hashable object and check if it appears in the ```rows```. If it does, increment ```count``` by the frequency.
+
+4. Return the answer ```count```.
+
 - __Time Complexity__: $O(n^2)$
 - __Space Complexity__: $O(n^2)$
 
