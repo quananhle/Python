@@ -40,7 +40,37 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+![image](https://leetcode.com/problems/equal-row-and-column-pairs/Figures/2352/b1.png)
+
+- __Time Complexity__: $O(n^3)$
+- __Space Complexity__: $O(1)$
+
+```Python
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        ans = 0
+        n = len(grid)
+
+        for row in range(n):
+            for col in range(n):
+                match = True
+
+                for i in range(n):
+                    if grid[row][i] != grid[i][col]:
+                        match = False
+                        break
+                
+                ans += int(match)
+            
+        return ans
+```
+
 ### Hash Map
+
+- __Time Complexity__: $O(n^2)$
+- __Space Complexity__: $O(n^2)$
 
 ```Python
 class Solution:
