@@ -48,6 +48,19 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/snapshot-array/Figures/1146/3.png)
 
+__Algorithm__
+
+1. For each element ```nums[i]``` in the array, create an empty list to store its historical values, in the format of ```[snap_id, value]```. Initialize each list by adding the first record ```[0, 0]```.
+
+2. Implement the ```set(index, val)``` method: add the historical record ```[snap_id, value]``` to the record list ```history_records[index]```.
+
+3. Implement the ```snap``` method: return ```snap_id and increment it by ```1```.
+
+4. Implement the ```get(index, snap_id)``` method to retrieve the value of ```nums[index]``` in the array with snapshot id as ```snap_id```:
+
+- Use binary search to find the rightmost insertion index of snapshot ID in the given version ```snap_index``` (so the target index is ```snap_idnex - 1```).
+- Return ```history_records[index][snap_index - 1][1]```.
+
 ```Python
 class SnapshotArray:
 
