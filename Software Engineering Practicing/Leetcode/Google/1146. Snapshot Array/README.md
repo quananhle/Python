@@ -2,7 +2,7 @@
 
 ```Tag```: ```Design``` ```Binary Search```
 
-#### Difficulty: Medium 
+#### Difficulty: Medium
 
 Implement a ```SnapshotArray``` that supports the following interface:
 
