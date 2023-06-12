@@ -1,6 +1,6 @@
 ## [1146. Snapshot Array](https://leetcode.com/problems/snapshot-array/)
 
-```Tag```: ```Design```
+```Tag```: ```Design``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -37,3 +37,30 @@ __Constraints:__
 - At most ```5 * 10^4``` calls will be made to ```set```, ```snap```, and ```get```.
 
 ---
+
+### Binary Search
+
+```Python
+class SnapshotArray:
+
+    def __init__(self, length: int):
+        self.id = 0
+        self.memo = [[[0,0]] for _ in range(length)]
+
+    def set(self, index: int, val: int) -> None:
+        self.memo[index].append([self.id, val])
+
+    def snap(self) -> int:
+        self.id += 1
+        return self.id - 1
+
+    def get(self, index: int, snap_id: int) -> int:
+        snap_idx = bisect.bisect_right(self.memo[index], [snap_id, 10**9])
+        return self.memo[index][snap_idx - 1][1]
+
+# Your SnapshotArray object will be instantiated and called as such:
+# obj = SnapshotArray(length)
+# obj.set(index,val)
+# param_2 = obj.snap()
+# param_3 = obj.get(index,snap_id)
+```
