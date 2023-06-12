@@ -54,7 +54,7 @@ __Algorithm__
 
 2. Implement the ```set(index, val)``` method: add the historical record ```[snap_id, value]``` to the record list ```history_records[index]```.
 
-3. Implement the ```snap``` method: return ```snap_id and increment it by ```1```.
+3. Implement the ```snap``` method: return ```snap_id``` and increment it by ```1```.
 
 4. Implement the ```get(index, snap_id)``` method to retrieve the value of ```nums[index]``` in the array with snapshot id as ```snap_id```:
 
