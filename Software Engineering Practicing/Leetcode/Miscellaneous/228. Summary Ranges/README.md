@@ -1,6 +1,6 @@
 ## [228. Summary Ranges](https://leetcode.com/problems/summary-ranges/)
 
-```Tag```:
+```Tag```: ```Array & String```
 
 #### Difficulty: Easy
 
