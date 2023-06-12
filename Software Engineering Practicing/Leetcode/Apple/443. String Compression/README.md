@@ -1,6 +1,6 @@
 ## [443. String Compression](https://leetcode.com/problems/string-compression)
 
-```Tag```: ```String & Array```
+```Tag```: ```String & Array``` ```Two Pointers```
 
 #### Difficulty: Medium
 
@@ -48,3 +48,28 @@ __Constraints:__
 - ```chars[i]``` is a lowercase English letter, uppercase English letter, digit, or symbol.
 
 ---
+
+### Three Pointers
+
+```Python
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        n = len(chars)
+        start = 0
+        end = count = 1
+
+        while end < n + 1:
+            if end < n and chars[end] == chars[end - 1]:
+                count += 1
+            else:
+                chars[start] = chars[end - 1]
+                start += 1
+                if count > 1:
+                    for c in str(count):
+                        chars[start] = c
+                        start += 1
+                count = 1
+            end += 1
+
+        return start
+```
