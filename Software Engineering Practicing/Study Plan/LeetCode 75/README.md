@@ -32,6 +32,10 @@
 
 - :warning::warning: [2352. Equal Row and Column Pairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2352.%20Equal%20Row%20and%20Column%20Pairs)
 
+### Stack
+
+- :warning::warning: [735. Asteroid Collision](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/735.%20Asteroid%20Collision)
+
 ### Dynamic Programming - 1D
 
 - :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
