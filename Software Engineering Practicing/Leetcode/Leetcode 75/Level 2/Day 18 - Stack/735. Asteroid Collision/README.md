@@ -86,3 +86,23 @@ class Solution:
                 ans.append(asteroid)
         return ans[1:]
 ```
+
+```Python
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        res = list()
+
+        for asteroid in asteroids:
+            while res and res[-1] > 0 and asteroid < 0:
+                if res[-1] + asteroid < 0:
+                    res.pop()
+                elif res[-1] + asteroid > 0:
+                    break
+                else:
+                    res.pop()
+                    break
+            else:
+                res.append(asteroid)
+                
+        return res
+```
