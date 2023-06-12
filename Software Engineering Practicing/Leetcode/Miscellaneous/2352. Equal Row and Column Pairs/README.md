@@ -125,3 +125,60 @@ class Solution:
 
         return count
 ```
+
+### Trie
+
+Trie, also known as prefix tree, is a tree-like data structure which is often used to store strings (In this problem, we store arrays of integers instead of strings). The key advantage of trie is its efficient search time, which can be achieved in $O(n)$ time where $n$ is the length of the array. Trie works by storing each element of the array in a separate node, and each node has an array of children representing the possible characters that can follow the current element.
+
+![image](https://leetcode.com/problems/equal-row-and-column-pairs/Figures/2352/t1.png)
+
+![image](https://leetcode.com/problems/equal-row-and-column-pairs/Figures/2352/t2.png)
+
+![image](https://leetcode.com/problems/equal-row-and-column-pairs/Figures/2352/t3.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/b7045e6d-cd74-4143-b493-26902ee5b843)
+
+```Python
+class TrieNode:
+
+    def __init__(self):
+        self.count = 0
+        self.children = collections.defaultdict()
+
+class Trie:
+
+    def __init__(self):
+        self.trie = TrieNode()
+
+    def insert(self, array):
+        trie = self.trie
+        for e in array:
+            if not e in trie.children:
+                trie.children[e] = TrieNode()
+            trie = trie.children[e]
+        trie.count += 1
+
+    def search(self, array):
+        trie = self.trie
+        for e in array:
+            if e in trie.children:
+                trie = trie.children[e]
+            else:
+                return 0
+        return trie.count
+
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        trie = Trie()
+        count = 0
+        n = len(grid)
+
+        for row in grid:
+            trie.insert(row)
+        
+        for c in range(n):
+            col = [grid[r][c] for r in range(n)]
+            count += trie.search(col)
+        
+        return count
+```
