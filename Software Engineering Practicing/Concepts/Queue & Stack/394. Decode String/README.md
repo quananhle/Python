@@ -1,4 +1,4 @@
-## 394. Decode String
+## [394. Decode String](https://leetcode.com/problems/decode-string)
 
 ```Tag```: ```String``` ```Stack``` ```Recursion```
 
