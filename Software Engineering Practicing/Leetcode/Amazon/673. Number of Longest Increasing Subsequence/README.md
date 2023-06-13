@@ -109,3 +109,43 @@ class Solution:
 ```
 
 #### Bottom-up Dynamic Programming (Memorization)
+
+```Python
+class Solution:
+    def findNumberOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        dp = [[1, 1] for _ in range(n)]
+
+        for curr in range(n):
+            for prev in range(curr):
+                if nums[prev] < nums[curr]:
+                    if dp[curr][0] < dp[prev][0] + 1:
+                        dp[curr][0], dp[curr][1] = dp[prev][0] + 1, dp[prev][1]
+                    elif dp[curr][0] == dp[prev][0] + 1:
+                        dp[curr][1] += dp[prev][1]
+            ans = max(ans, dp[curr][0])
+
+        return sum(count for length, count in dp if length == ans)
+```
+
+```Python
+class Solution:
+    def findNumberOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        dp = [[1, 1] for _ in range(n)]
+
+        for curr, num in enumerate(nums):
+            length, count = 1, 0
+            for prev in range(curr):
+                if nums[prev] < num:
+                    length = max(length, dp[prev][0] + 1)
+            for prev in range(curr):
+                if dp[prev][0] == length - 1 and nums[prev] < num:
+                    count += dp[prev][1]
+            dp[curr] = [length, max(count, dp[curr][1])]
+            ans = max(ans, length)
+        
+        return sum(count for length, count in dp if length == ans)
+```
