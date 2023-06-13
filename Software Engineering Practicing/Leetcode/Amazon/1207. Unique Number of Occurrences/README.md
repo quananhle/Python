@@ -1,6 +1,6 @@
 ## [1207. Unique Number of Occurrences](https://leetcode.com/problems/unique-number-of-occurrences)
 
-```Tag```: ```Hash Map```
+```Tag```: ```Hash Map``` ```Hash Set```
 
 #### Difficulty: Easy
 
@@ -76,6 +76,17 @@ class Solution(object):
         for elem,freq in counter.items():
             freq_set.add(freq)
         return len(freq_set) == len(counter.values())
+```
+
+#### ```Counter()```
+
+```Python
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        counter = collections.Counter(arr)
+        values = set(counter.values())
+
+        return len(values) == len(counter.values())
 ```
 
 #### One Liner
