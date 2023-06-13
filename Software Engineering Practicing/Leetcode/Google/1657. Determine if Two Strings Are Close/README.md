@@ -1,4 +1,6 @@
-## 1657. Determine if Two Strings Are Close
+## [1657. Determine if Two Strings Are Close](https://leetcode.com/problems/determine-if-two-strings-are-close)
+
+```Tag```: ```Counter``` ```Sorting```
 
 #### Difficulty: Medium
 
