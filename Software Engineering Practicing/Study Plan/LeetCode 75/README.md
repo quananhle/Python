@@ -28,7 +28,7 @@
 
 ### Prefix Sum
 
-- :four_leaf_clover: 1732. Find the Highest Altitude
+- :four_leaf_clover: [1732. Find the Highest Altitude](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Prefix%20Sum/1732.%20Find%20the%20Highest%20Altitude)
 - :four_leaf_clover: 724. Find Pivot Index
 
 ### Hash Map / Set
