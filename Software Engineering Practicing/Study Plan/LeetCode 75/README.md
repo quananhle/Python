@@ -28,6 +28,9 @@
 
 ### Prefix Sum
 
+1732. Find the Highest Altitude
+724. Find Pivot Index
+
 ### Hash Map / Set
 
 - :warning::warning: [2352. Equal Row and Column Pairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2352.%20Equal%20Row%20and%20Column%20Pairs)
