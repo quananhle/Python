@@ -78,7 +78,7 @@
 - :warning::warning: [57. Insert Interval](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval/57.%20Insert%20Interval) ```Binary Search```
 - :four_leaf_clover: [252. Meeting Rooms](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/252.%20Meeting%20Rooms/) ```Sorting```
 - :warning::warning: [253. Meeting Rooms II](https://github.com/quananhle/Python/blob/66c7b6505d2cce8287892fe803ccd2469ec10668/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II) ```Priority Queue``` ```Chronological Ordering``` ```Sorting```
-- :warning::warning: [452. Minimum Number of Arrows to Burst Balloons](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/452.%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons)
+- :warning::warning: [452. Minimum Number of Arrows to Burst Balloons](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/452.%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons) ```Greedy```
 
 ### [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Sliding%20Window)
 
