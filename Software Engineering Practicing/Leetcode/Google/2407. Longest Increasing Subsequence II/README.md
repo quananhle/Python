@@ -53,3 +53,65 @@ __Constraints:__
 - 1 <= ```nums[i]```, ```k``` <= 10<sup>5</sup>
 
 ---
+
+### Segment Tree
+
+```Python
+class SegmentTree:
+    def __init__(self, size):
+        self.size = size
+        self.tree = [0] * 2 * self.size
+
+    def query(self, left, right):
+        left += self.size
+        right += self.size
+        ans = 0
+
+        while left < right:
+            if left & 1:
+                ans = max(ans, self.tree[left])
+                left += 1
+            if right & 1:
+                right -= 1
+                ans = max(ans, self.tree[right])
+            left >>= 1
+            right >>= 1
+        
+        return ans
+    
+    def update(self, i, val):
+        i += self.size
+        self.tree[i] = val
+        while i > 1:
+            i >>= 1
+            self.tree[i] = max(self.tree[i * 2], self.tree[i * 2 + 1])
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int], k: int) -> int:
+        n, ans = max(nums), 1
+        tree = SegmentTree(n)
+        for num in nums:
+            num -= 1
+            prev = tree.query(max(0, num - k), num)
+            ans = max(ans, prev + 1)
+            tree.update(num, prev + 1)
+        
+        return ans
+```
+
+### ```Numpy()```
+
+```Python
+import numpy as np
+class Solution:
+    def lengthOfLIS(self, nums: List[int], k: int) -> int:
+        memo = np.array([0] * (max(nums) + 1))
+        ans = 0
+
+        for i in nums:
+            start_idx = max(i - k, 0)
+            memo[i] = memo[start_idx:i].max() + 1
+            ans = max(ans, memo[i])
+
+        return ans
+```
