@@ -28,8 +28,8 @@
 
 ### Prefix Sum
 
-1732. Find the Highest Altitude
-724. Find Pivot Index
+- 1732. Find the Highest Altitude
+- 724. Find Pivot Index
 
 ### Hash Map / Set
 
