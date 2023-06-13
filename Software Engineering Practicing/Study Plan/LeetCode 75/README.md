@@ -28,8 +28,8 @@
 
 ### Prefix Sum
 
-- 1732. Find the Highest Altitude
-- 724. Find Pivot Index
+- :four_leaf_clover: 1732. Find the Highest Altitude
+- :four_leaf_clover: 724. Find Pivot Index
 
 ### Hash Map / Set
 
