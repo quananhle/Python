@@ -63,3 +63,48 @@ class Solution:
 
         return ans
 ```
+
+### [435. Non-overlapping Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/435.%20Non-overlapping%20Intervals)
+
+Given an array of intervals ```intervals``` where ```intervals[i]``` = [start<sub>i</sub >, end<sub>i</sub>], return _the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping_.
+
+__Example__:
+```
+Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
+Output: 1
+Explanation: [1,3] can be removed and the rest of the intervals are non-overlapping.
+```
+
+```Python
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        intervals.sort(key=lambda x:x[1])
+        count = 0
+        first_start, first_end = intervals[0][0], intervals[0][1]
+
+        for next_start, next_end in intervals[1:]:
+            if next_start < first_end:      # Overlapping
+                count += 1
+            else:                           # Non-overlapping
+                first_end = next_end
+
+        return count
+```
+
+### [452. Minimum Number of Arrows to Burst Balloons](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/452.%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons)
+
+```Python
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        # Sort by the end coordinates of the balloons
+        points.sort(key=lambda x:x[1])
+        first_end = points[0][1]
+        count = 1
+
+        for next_start, next_end in points[1:]:
+            if first_end < next_start:      # Non-overlapping
+                first_end = next_end
+                count += 1
+
+        return count
+```
