@@ -1,4 +1,4 @@
-## 1207. Unique Number of Occurrences
+## [1207. Unique Number of Occurrences](https://leetcode.com/problems/unique-number-of-occurrences)
 
 ```Tag```: ```Hash Map```
 
@@ -53,7 +53,22 @@ class Solution(object):
         # Hash Map and Hash Set
         #### Time Complexity: O(N), traverse through the size of input arr
         #### Space Complexity: O(N), extra space required to build hash map
-        '''
+        counter = dict()
+        for num in arr:
+            counter[num] = 1 + counter.get(num, 0)
+        return len(set(arr)) == len(set(counter.values()))
+```
+
+```Python
+class Solution(object):
+    def uniqueOccurrences(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: bool
+        """
+        # Hash Map and Hash Set
+        #### Time Complexity: O(N), traverse through the size of input arr
+        #### Space Complexity: O(N), extra space required to build hash map
         counter = dict()
         for num in arr:
             counter[num] = 1 + counter.get(num, 0)
@@ -61,9 +76,12 @@ class Solution(object):
         for elem,freq in counter.items():
             freq_set.add(freq)
         return len(freq_set) == len(counter.values())
-        '''
-        counter = dict()
-        for num in arr:
-            counter[num] = 1 + counter.get(num, 0)
-        return len(set(arr)) == len(set(counter.values()))
+```
+
+#### One Liner
+
+```Python
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        return len(set(collections.Counter(arr).values())) == len(collections.Counter(arr).values())
 ```
