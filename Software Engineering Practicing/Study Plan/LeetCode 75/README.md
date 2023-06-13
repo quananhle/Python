@@ -34,6 +34,7 @@
 ### Hash Map / Set
 
 - :four_leaf_clover: [1207. Unique Number of Occurrences](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1207.%20Unique%20Number%20of%20Occurrences)
+- :four_leaf_clover: [2215. Find the Difference of Two Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2215.%20Find%20the%20Difference%20of%20Two%20Arrays)
 - :warning::warning: [2352. Equal Row and Column Pairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2352.%20Equal%20Row%20and%20Column%20Pairs)
 
 ### Stack
