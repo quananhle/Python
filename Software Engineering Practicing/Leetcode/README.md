@@ -460,6 +460,8 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 #### Monotonic Stack
 
+- :warning::warning: [739. Daily Temperatures](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Stack/739.%20Daily%20Temperatures)
+
 #### [Basic Calculator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/Basic%20Calculator) 
 
 - :no_entry::no_entry::no_entry: [224. Basic Calculator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/224.%20Basic%20Calculator)
