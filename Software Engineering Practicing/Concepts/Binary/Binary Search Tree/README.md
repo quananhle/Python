@@ -298,7 +298,7 @@ Output: 1
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         stack = list()
-        left_child_found = True
+        left_child_found = False
         ans = float('inf')
 
         while stack or root:
@@ -308,11 +308,10 @@ class Solution:
             root = stack.pop()
 
             if left_child_found:
-                left_child_found = not left_child_found
-            else:
                 ans = min(ans, abs(root.val - child))
-
+            left_child_found = True
             child = root.val
+
             root = root.right
         
         return ans
