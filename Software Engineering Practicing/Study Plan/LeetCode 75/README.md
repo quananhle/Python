@@ -66,4 +66,4 @@
 ### Monotonic Stack
 
 - :warning::warning: [739. Daily Temperatures](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Stack/739.%20Daily%20Temperatures)
-- :warning::warning: 901. Online Stock Span
+- :warning::warning: [901. Online Stock Span](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/901.%20Online%20Stock%20Span)
