@@ -277,7 +277,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [300. Longest Increasing Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/300.%20Longest%20Increasing%20Subsequence) ```Binary Search```
 - 673. Number of Longest Increasing Subsequence
 - :no_entry::no_entry::no_entry: [1964. Find the Longest Valid Obstacle Course at Each Position](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1964.%20Find%20the%20Longest%20Valid%20Obstacle%20Course%20at%20Each%20Position) ```Binary Search``` ```Greedy```
-- :no_entry::no_entry::no_entry: [2407. Longest Increasing Subsequence II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2407.%20Longest%20Increasing%20Subsequence%20II) ```Segment Tree```
+- :no_entry::no_entry::no_entry: [2407. Longest Increasing Subsequence II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2407.%20Longest%20Increasing%20Subsequence%20II) ```Segment Tree``` ```Numpy```
 
 ### State Transition by Inaction | Dynamic Programming State Machine
 
