@@ -501,6 +501,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [173. Binary Search Tree Iterator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/173.%20Binary%20Search%20Tree%20Iterator) ```Design```
 - :warning::warning: [230. Kth Smallest Element in a BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
 - :four_leaf_clover: [270. Closest Binary Search Tree Value](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/270.%20Closest%20Binary%20Search%20Tree%20Value)
+- :four_leaf_clover: [530. Minimum Absolute Difference in BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/530.%20Minimum%20Absolute%20Difference%20in%20BST) ```Depth-First Search```
 
 ---
 
