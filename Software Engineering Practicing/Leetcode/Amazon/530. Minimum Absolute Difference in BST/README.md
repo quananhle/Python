@@ -1,6 +1,6 @@
 ## [530. Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst)
 
-```Tag```: ```Binary Search Tree``` ```Stack```
+```Tag```: ```Binary Search Tree``` ```Stack``` ```Depth-First Search```
 
 #### Difficulty: Easy
 
@@ -47,7 +47,7 @@ Note: This question is the same as [783](https://leetcode.com/problems/minimum-d
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         stack = list()
-        left_child_found = True
+        left_child_found = False
         ans = float('inf')
 
         while stack or root:
@@ -57,12 +57,40 @@ class Solution:
             root = stack.pop()
 
             if left_child_found:
-                left_child_found = not left_child_found
-            else:
                 ans = min(ans, abs(root.val - child))
-
+            left_child_found = True
             child = root.val
+
             root = root.right
         
+        return ans
+```
+
+### Recursive Inorder Traversal
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        stack = []
+        
+        def dfs(node):
+            if not node:
+                return None
+            dfs(node.left)
+            stack.append(node.val)
+            dfs(node.right)
+
+        dfs(root)
+        
+        ans = float('inf')
+        for i in range(1, len(stack)):
+            ans = min(ans, abs(stack[i] - stack[i - 1]))
+
         return ans
 ```
