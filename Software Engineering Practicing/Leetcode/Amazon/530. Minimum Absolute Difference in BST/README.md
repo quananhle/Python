@@ -37,6 +37,11 @@ Note: This question is the same as [783](https://leetcode.com/problems/minimum-d
 
 ### Iterative Inorder Traversal (Template)
 
+![image](https://leetcode.com/problems/minimum-absolute-difference-in-bst/Figures/530/530-1.png)
+
+- __Time complexity__: $O(n)$
+- __Space complexity__: $O(n)$
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -68,6 +73,67 @@ class Solution:
 
 ### Recursive Inorder Traversal
 
+- __Time complexity__: $O(n)$
+- __Space complexity__: $O(n)$
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        self.ans = float('inf')        
+        self.prev = None
+
+        def inorder(node):
+            if not node:
+                return None
+            
+            inorder(node.left)
+            if self.prev is not None:
+                self.ans = min(self.ans, abs(node.val - self.prev))
+            self.prev = node.val
+            inorder(node.right)
+        
+        inorder(root)
+        return self.ans
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        stack = []
+        
+        def inorder(node):
+            if not node:
+                return None
+            inorder(node.left)
+            stack.append(node.val)
+            inorder(node.right)
+
+        inorder(root)
+        
+        ans = float('inf')
+        for i in range(1, len(stack)):
+            ans = min(ans, abs(stack[i] - stack[i - 1]))
+
+        return ans
+```
+
+### Depth-First Search
+
+- __Time complexity__: $O(n * logn)$
+- __Space complexity__: $O(n)$
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -82,15 +148,17 @@ class Solution:
         def dfs(node):
             if not node:
                 return None
+            stack.append(node.val) 
             dfs(node.left)
-            stack.append(node.val)
             dfs(node.right)
 
         dfs(root)
         
+        stack.sort()
         ans = float('inf')
         for i in range(1, len(stack)):
             ans = min(ans, abs(stack[i] - stack[i - 1]))
 
         return ans
 ```
+
