@@ -34,3 +34,35 @@ __Constraints:__
 Note: This question is the same as [783](https://leetcode.com/problems/minimum-distance-between-bst-nodes/)
 
 ---
+
+### Iterative Inorder Traversal (Template)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        stack = list()
+        left_child_found = True
+        ans = float('inf')
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+
+            if left_child_found:
+                left_child_found = not left_child_found
+            else:
+                ans = min(ans, abs(root.val - child))
+
+            child = root.val
+            root = root.right
+        
+        return ans
+```
