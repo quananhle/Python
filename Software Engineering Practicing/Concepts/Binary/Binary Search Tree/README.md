@@ -276,3 +276,44 @@ class Solution:
         self.head.left = node
         return self.head
 ```
+
+Question: [Minimum Absolute Difference in BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/530.%20Minimum%20Absolute%20Difference%20in%20BST)
+
+Given the ```root``` of a Binary Search Tree (BST), return _the minimum absolute difference between the values of any two different nodes in the tree_.
+
+__Example__:
+![image](https://assets.leetcode.com/uploads/2021/02/05/bst1.jpg)
+```
+Input: root = [4,2,6,1,3]
+Output: 1
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        stack = list()
+        left_child_found = True
+        ans = float('inf')
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+
+            if left_child_found:
+                left_child_found = not left_child_found
+            else:
+                ans = min(ans, abs(root.val - child))
+
+            child = root.val
+            root = root.right
+        
+        return ans
+```
