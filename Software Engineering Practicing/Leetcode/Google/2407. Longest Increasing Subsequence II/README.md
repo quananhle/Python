@@ -1,6 +1,6 @@
 ## [2407. Longest Increasing Subsequence II](https://leetcode.com/problems/longest-increasing-subsequence-ii/)
 
-```Tag```: ```Segment Tree```
+```Tag```: ```Segment Tree``` ```Numpy```
 
 #### Difficulty: Hard
 
@@ -99,7 +99,37 @@ class Solution:
         return ans
 ```
 
-### ```Numpy()```
+### Memorization
+
+```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int], k: int) -> int:
+        # Time Limit Exceeded
+        memo = {}
+        ans = 0
+        for i in nums:
+            memo[i] = max([c + 1 for v, c in memo.items() if (i - v) >= 0 and (i - v) <= k], default=1)
+            ans = m
+        return ans
+```
+
+```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int], k: int) -> int:
+        # Time Limit Exceeded
+        memo = [0] * (max(nums) + 1)
+        ans = 0
+
+        for i in nums:
+            start_idx = max(i - k, 0)
+            curr = max(memo[start_idx:i])
+            memo[i] = curr + 1
+            ans = max(ans, memo[i])
+
+        return ans
+```
+
+#### ```Numpy()```
 
 ```Python
 import numpy as np
