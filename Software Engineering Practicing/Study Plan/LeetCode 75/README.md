@@ -62,3 +62,7 @@
 
 - :warning::warning: [435. Non-overlapping Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/435.%20Non-overlapping%20Intervals)
 - :warning::warning: [452. Minimum Number of Arrows to Burst Balloons](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/452.%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons)
+
+#### Monotonic Stack
+
+- :warning::warning: [739. Daily Temperatures](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Stack/739.%20Daily%20Temperatures)
