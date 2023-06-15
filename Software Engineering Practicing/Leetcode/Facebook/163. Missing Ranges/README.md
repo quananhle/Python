@@ -96,3 +96,18 @@ class Solution:
             
         return res + [[value, upper]] if value <= upper else res
 ```
+
+```Python
+class Solution:
+    def findMissingRanges(self, nums: List[int], lower: int, upper: int) -> List[List[int]]:
+        res = list()
+        queue = [0, lower - 1]
+        nums.append(upper + 1)
+
+        for num in nums:
+            queue[0], queue[1] = queue[1], num
+            if queue[0] + 1 <= queue[1] - 1:
+                res.append([queue[0] + 1, queue[1] - 1])
+        
+        return res
+```
