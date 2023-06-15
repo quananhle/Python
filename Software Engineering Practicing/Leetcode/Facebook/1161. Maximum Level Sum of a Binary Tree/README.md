@@ -38,7 +38,7 @@ __Constraints:__
 
 ---
 
-### Stack & Level Order Traversal
+### Depth-First Search
 
 ```Python
 # Definition for a binary tree node.
@@ -72,4 +72,70 @@ class Solution:
                 ans, total = i, sum(nodes)
         
         return ans + 1
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        stack = list()
+
+        def dfs(node, level):
+            # Base case
+            if not node:
+                return None
+            
+            if len(stack) == level:
+                stack.append(node.val)
+            else:
+                stack[level] += node.val
+            
+            dfs(node.left, level + 1)
+            dfs(node.right, level + 1)
+        
+        dfs(root, 0)
+        return 1 + stack.index(max(stack))
+```
+
+### Breadth-First Search
+
+![image](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/Figures/1161/1161-bfs1.png)
+
+![image](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/Figures/1161/1161-bfs2.png)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        stack = list()
+        ans, level, total = 0, 0, float('-inf')
+        queue = collections.deque([root])
+        
+        while queue:
+            curr = 0
+
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                curr += node.val
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            
+            level += 1
+            if total < curr:
+                total, ans = curr, level
+
+        return ans
 ```
