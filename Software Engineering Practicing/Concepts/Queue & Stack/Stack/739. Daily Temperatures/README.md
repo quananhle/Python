@@ -39,7 +39,7 @@ __Constraints:__
 
 ---
  
- ### Brute Force
+ ### Brute Force (Time Limit Exceeded)
  
  ```Python
  class Solution:
@@ -53,6 +53,28 @@ __Constraints:__
                 if temperatures[future_day] > temperatures[day]:
                     res[day] = future_day - day
                     break
+        return res
+```
+
+```Python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        n = len(temperatures)
+        res = [0] * n
+        hottest = 0
+
+        for today in range(n - 1, -1, -1):
+            temp = temperatures[today]
+            if hottest <= temp:
+                hottest = temp
+                continue
+            
+            days = 1
+            while temperatures[today + days] <= temp:
+                days += 1
+            
+            res[today] = days
+        
         return res
 ```
 
@@ -77,6 +99,8 @@ __Constraints:__
         return res
 ```
 
+#### Space Optimized
+
 ```Python
  class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
@@ -96,6 +120,7 @@ __Constraints:__
                 continue
             days = 1
             while temperatures[curr_day + days] <= curr_temp:
+                # Use information from output to search for the next warmer day
                 days += res[curr_day + days]
             res[curr_day] = days
         return res
