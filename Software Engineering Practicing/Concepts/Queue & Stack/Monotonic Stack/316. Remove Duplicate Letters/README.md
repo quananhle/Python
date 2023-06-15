@@ -1,6 +1,6 @@
 ## [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)
 
-```Tag```: ```Greedy```
+```Tag```: ```Greedy``` ```Monotonic Stack```
 
 #### Difficulty: Medium
 
@@ -30,3 +30,22 @@ __Constraints:__
 __Note__: This question is the same as [1081](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/)
 
 ---
+
+### Monotonic Stack
+
+```Python
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
+        stack = list()
+        seen = set()
+        memo = {c:i for i, c in enumerate(s)}
+
+        for i, c in enumerate(s):
+            if not c in seen:
+                while stack and c < stack[-1] and i < memo[stack[-1]]:
+                    seen.discard(stack.pop())
+                seen.add(c)
+                stack.append(c)
+            
+        return "".join(stack)
+```
