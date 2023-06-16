@@ -55,7 +55,13 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/Figures/1569/1.png)
+
 ### Recursion
+
+![image](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/Figures/1569/6.png)
+
+![image](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/Figures/1569/40.png)
 
 ```Python
 class Solution:
