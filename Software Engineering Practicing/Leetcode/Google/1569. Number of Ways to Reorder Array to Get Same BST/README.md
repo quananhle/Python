@@ -1,6 +1,6 @@
 ## [1569. Number of Ways to Reorder Array to Get Same BST](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/)
 
-```Tag```: ```Binary Search Tree```
+```Tag```: ```Binary Search Tree``` ```Recursion```
 
 #### Difficulty: Hard
 
@@ -54,3 +54,23 @@ __Constraints:__
 - All integers in ```nums``` are distinct.
 
 ---
+
+### Recursion
+
+```Python
+class Solution:
+    def numOfWays(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+
+        def dfs(nums):
+            n = len(nums)
+            # Base case
+            if n < 3:
+                return 1
+            
+            left_nodes = [node for node in nums if node < nums[0]]
+            right_nodes = [node for node in nums if node > nums[0]]
+            return dfs(left_nodes) * dfs(right_nodes) * comb(n - 1, len(left_nodes)) % mod
+
+        return (dfs(nums) - 1) % mod
+```
