@@ -46,6 +46,8 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/make-array-strictly-increasing/Figures/1187/3.png)
 
+![image](https://leetcode.com/problems/make-array-strictly-increasing/Figures/1187/4.png)
+
 - __Time Complexity__: $O(m \cdot n \cdot\log n)$
 - __Space Complexity__: $O(m \cdot n)$
 
@@ -113,6 +115,29 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
-```Python
+![image](https://leetcode.com/problems/make-array-strictly-increasing/Figures/1187/9.png)
 
+![image](https://leetcode.com/problems/make-array-strictly-increasing/Figures/1187/13.png)
+
+- __Time Complexity__: $O(m \cdot n \cdot\log n)$
+- __Space Complexity__: $O(n)$
+
+```Python
+class Solution:
+    def makeArrayIncreasing(self, arr1: List[int], arr2: List[int]) -> int:
+        dp = {-1: 0}
+        arr2.sort()
+        m, n = len(arr1), len(arr2)
+
+        for i in range(m):
+            new_dp = collections.defaultdict(lambda: float('inf'))
+            for prev in dp:
+                if arr1[i] > prev:
+                    new_dp[arr1[i]] = min(new_dp[arr1[i]], dp[prev])
+                curr = bisect.bisect_right(arr2, prev)
+                if curr < n:
+                    new_dp[arr2[curr]] = min(new_dp[arr2[curr]], 1 + dp[prev])
+            dp = new_dp
+        
+        return min(dp.values()) if dp else -1
 ```
