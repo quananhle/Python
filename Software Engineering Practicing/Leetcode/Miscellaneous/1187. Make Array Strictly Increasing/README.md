@@ -44,8 +44,42 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
-```Python
+![image](https://leetcode.com/problems/make-array-strictly-increasing/Figures/1187/3.png)
 
+- __Time Complexity__: $O(m \cdot n \cdot\log n)$
+- __Space Complexity__: $O(m \cdot n)$
+
+```Python
+class Solution:
+    def makeArrayIncreasing(self, arr1: List[int], arr2: List[int]) -> int:
+        n, m = len(arr1), len(arr2)
+        arr2.sort()
+        memo = collections.defaultdict(int)
+
+        def dp(i, prev):
+            # Base case
+            if i == n:
+                return 0
+            
+            if (i, prev) in memo:
+                return memo[(i, prev)]
+
+            ans = float('inf')
+
+            # Recurrence relation: to replace or to skip
+            if arr1[i] > prev:
+                ans = dp(i + 1, arr1[i])
+            
+            curr = bisect.bisect_right(arr2, prev)
+
+            if curr < m:
+                ans = min(ans, dp(i + 1, arr2[curr]) + 1)
+
+            memo[(i, prev)] = ans
+            return ans
+        
+        ans = dp(0, -1)
+        return ans if ans != float('inf') else -1
 ```
 
 ```Python
@@ -75,4 +109,10 @@ class Solution:
         
         ans = dp(0, -1)
         return ans if ans != float('inf') else -1
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
 ```
