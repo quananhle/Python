@@ -254,6 +254,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
 - :warning::warning: [837. New 21 Game](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/837.%20New%2021%20Game)
 - :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
+- :no_entry::no_entry::no_entry: [1187. Make Array Strictly Increasing](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1187.%20Make%20Array%20Strictly%20Increasing) ```Binary Search```
 - :warning::warning: [1140. Stone Game II](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1140.%20Stone%20Game%20II)
 - [1155. Number of Dice Rolls With Target Sum]
 - :warning::warning: [1230. Toss Strange Coins](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1230.%20Toss%20Strange%20Coins)
@@ -507,6 +508,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [173. Binary Search Tree Iterator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/173.%20Binary%20Search%20Tree%20Iterator) ```Design```
 - :warning::warning: [230. Kth Smallest Element in a BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2009%20-%20Binary%20Search%20Tree/230.%20Kth%20Smallest%20Element%20in%20a%20BST)
 - :four_leaf_clover: [270. Closest Binary Search Tree Value](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/270.%20Closest%20Binary%20Search%20Tree%20Value)
+- :warning::warning: [450. Delete Node in a BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/450.%20Delete%20Node%20in%20a%20BST)
 - :four_leaf_clover: [530. Minimum Absolute Difference in BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/530.%20Minimum%20Absolute%20Difference%20in%20BST) ```Depth-First Search```
 - :four_leaf_clover: [700. Search in a Binary Search Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/700.%20Search%20in%20a%20Binary%20Search%20Tree)
 
