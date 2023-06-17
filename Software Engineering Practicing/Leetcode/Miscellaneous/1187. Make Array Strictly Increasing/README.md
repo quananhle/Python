@@ -1,6 +1,6 @@
 ## [1187. Make Array Strictly Increasing](https://leetcode.com/problems/make-array-strictly-increasing/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Binary Search```
 
 #### Difficulty: Hard
 
@@ -39,3 +39,40 @@ __Constraints:__
 - ```0 <= arr1[i], arr2[i] <= 10^9```
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+class Solution:
+    def makeArrayIncreasing(self, arr1: List[int], arr2: List[int]) -> int:
+        n, m = len(arr1), len(arr2)
+        arr2.sort()
+
+        @lru_cache(None)
+        def dp(i, prev):
+            # Base case
+            if i == n:
+                return 0
+            
+            ans = float('inf')
+
+            # Recurrence relation: to replace or to skip
+            if arr1[i] > prev:
+                ans = dp(i + 1, arr1[i])
+            
+            curr = bisect.bisect_right(arr2, prev)
+
+            if curr < m:
+                ans = min(ans, dp(i + 1, arr2[curr]) + 1)
+            
+            return ans
+        
+        ans = dp(0, -1)
+        return ans if ans != float('inf') else -1
+```
