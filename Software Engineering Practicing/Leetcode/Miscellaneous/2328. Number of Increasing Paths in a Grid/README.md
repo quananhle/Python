@@ -1,6 +1,6 @@
 ## [2328. Number of Increasing Paths in a Grid](https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Topological Sort``` ```Depth-First Search```
 
 #### Difficulty: Hard
 
@@ -46,3 +46,30 @@ __Constraints:__
 - ```1 <= grid[i][j] <= 10^5```
 
 ---
+
+```Python
+class Solution:
+    def countPaths(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        MOD = 10**9 + 7
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        
+        memo = [[0] * COLS for _ in range(ROWS)]
+
+        def dfs(row, col):
+            # Base case
+            if memo[row][col]:
+                return memo[row][col]
+
+            ans = 1
+            
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and grid[next_row][next_col] < grid[row][col]):
+                    continue
+                ans += dfs(next_row, next_col) % MOD
+
+            memo[row][col] = ans
+            return ans
+        
+        return sum(dfs(row, col) for row in range(ROWS) for col in range(COLS)) % MOD
+```
