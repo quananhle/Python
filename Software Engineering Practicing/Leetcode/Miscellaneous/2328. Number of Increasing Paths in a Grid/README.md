@@ -51,6 +51,13 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/Figures/2328/3.png)
+
+![image](https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/Figures/2328/4.png)
+
+- __Time Complexity__: $O(m\cdot n)$
+- __Space Complexity__: $O(m\cdot n)$
+
 ```Python
 class Solution:
     def countPaths(self, grid: List[List[int]]) -> int:
