@@ -6,7 +6,9 @@
 
 Given a __0-indexed__ ```n x n``` integer matrix ```grid```, return _the number of pairs (r<sub>i</sub>, c<sub>j</sub>) such that row r<sub>i</sub> and column c<sub>j</sub> are equal_.
 
-A row and column pair is considered equal if they contain the same elements in the same order (i.e., an equal array).
+A row and column pair is considered equal if they contain the same elements in the same order (i.e., an equal array).y
+
+![image](https://github.com/quananhle/Python/assets/35042430/c41404be-40f1-4c9c-96a6-a085441eaf8f)
 
 ---
 
