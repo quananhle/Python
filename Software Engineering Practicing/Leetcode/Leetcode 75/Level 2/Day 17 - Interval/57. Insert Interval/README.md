@@ -1,6 +1,6 @@
-## [57. Insert Interval](https://leetcode.com/problems/merge-intervals/?envType=study-plan&id=level-2)
+## [57. Insert Interval](https://leetcode.com/problems/insert-interval/)
 
-```Tag```: ```Binary Search```
+```Tag```: ```Binary Search``` ```Array & String```
 
 #### Difficulty: Medium
 
