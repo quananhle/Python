@@ -134,6 +134,12 @@ class Solution:
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         # Search for position to insert new interval
+        '''
+        position = bisect.bisect_left(intervals, newInterval)
+        '''
+        '''
+        position = bisect.bisect_right(intervals, newInterval)
+        '''
         position = bisect.bisect(intervals, newInterval)
         intervals.insert(position, newInterval)
         res = list()
