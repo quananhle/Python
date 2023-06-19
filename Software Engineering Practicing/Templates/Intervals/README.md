@@ -12,5 +12,19 @@ Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
 ```
 
 ```Python
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort(key=lambda x:x[0])
+        res = [[intervals[0][0], intervals[0][1]]]
 
+        for next_start, next_end in intervals[1:]:
+
+            prev_start, prev_end = res[-1][0], res[-1][1]
+
+            if prev_end < next_start:
+                res.append([next_start, next_end])
+            else:
+                res[-1] = [min(prev_start, next_start), max(prev_end, next_end)]
+
+        return res
 ```
