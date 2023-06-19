@@ -67,7 +67,7 @@ class Solution:
         
         memo = [[0] * COLS for _ in range(ROWS)]
 
-        def dfs(row, col):
+        def dp(row, col):
             # Base case
             if memo[row][col]:
                 return memo[row][col]
@@ -77,12 +77,12 @@ class Solution:
             for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
                 if not (0 <= next_row < ROWS and 0 <= next_col < COLS and grid[next_row][next_col] < grid[row][col]):
                     continue
-                ans += dfs(next_row, next_col) % MOD
+                ans += dp(next_row, next_col) % MOD
 
             memo[row][col] = ans
             return ans
         
-        return sum(dfs(row, col) for row in range(ROWS) for col in range(COLS)) % MOD
+        return sum(dp(row, col) for row in range(ROWS) for col in range(COLS)) % MOD
 ```
 
 ```Python
@@ -94,7 +94,7 @@ class Solution:
         
         memo = collections.defaultdict(int)
 
-        def dfs(row, col):
+        def dp(row, col):
             # Base case
             if (row, col) in memo:
                 return memo[(row, col)]
@@ -104,12 +104,12 @@ class Solution:
             for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
                 if not (0 <= next_row < ROWS and 0 <= next_col < COLS and grid[next_row][next_col] < grid[row][col]):
                     continue
-                ans += dfs(next_row, next_col) % MOD
+                ans += dp(next_row, next_col) % MOD
             
             memo[(row, col)] = ans
             return ans
         
-        return sum(dfs(row, col) for row in range(ROWS) for col in range(COLS)) % MOD
+        return sum(dp(row, col) for row in range(ROWS) for col in range(COLS)) % MOD
 ```
 
 ```Python
@@ -120,15 +120,42 @@ class Solution:
         DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
         
         @lru_cache(None)
-        def dfs(row, col):
+        def dp(row, col):
             ans = 1
             
             for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
                 if not (0 <= next_row < ROWS and 0 <= next_col < COLS and grid[next_row][next_col] < grid[row][col]):
                     continue
-                ans += dfs(next_row, next_col) % MOD
+                ans += dp(next_row, next_col) % MOD
 
             return ans
         
-        return sum(dfs(row, col) for row in range(ROWS) for col in range(COLS)) % MOD
+        return sum(dp(row, col) for row in range(ROWS) for col in range(COLS)) % MOD
+```
+
+```Python
+class Solution:
+    def countPaths(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        MOD = 10**9 + 7
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+
+        @lru_cache(None)
+        def dp(row, col):
+            count = 1
+
+            # Recurrence relation:
+            for next_row, next_col in ([(row + dx, col + dy) for dx, dy in DIRECTIONS]):
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and grid[next_row][next_col] < grid[row][col]):
+                    continue
+                count += dp(next_row, next_col) % MOD
+            
+            return count
+        
+        ans = 0
+        for row in range(ROWS):
+            for col in range(COLS):
+                ans += dp(row, col)
+            
+        return ans % MOD
 ```
