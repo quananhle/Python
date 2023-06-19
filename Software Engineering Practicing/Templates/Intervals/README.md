@@ -44,5 +44,20 @@ Output: [[1,5],[6,9]]
 ```
 
 ```Python
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        position = bisect.bisect(intervals, newInterval)
+        intervals.insert(position, newInterval)
+        res = list([intervals[0]])
 
+        for next_start, next_end in intervals[1:]:
+
+            prev_start, prev_end = res[-1][0], res[-1][1]
+
+            if prev_end < next_start:
+                res.append([next_start, next_end])
+            else:
+                res[-1] = [min(prev_start, next_start), max(prev_end, next_end)]
+
+        return res
 ```
