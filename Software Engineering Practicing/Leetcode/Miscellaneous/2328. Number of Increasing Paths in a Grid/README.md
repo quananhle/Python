@@ -159,3 +159,27 @@ class Solution:
             
         return ans % MOD
 ```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def countPaths(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        MOD = 10**9 + 7
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+
+        dp = [[1] * COLS for _ in range(ROWS)]
+
+        cell_list = [[row, col] for row in range(ROWS) for col in range(COLS)]
+        cell_list.sort(key = lambda x: grid[x[0]][x[1]])
+
+        for row, col in cell_list:
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and grid[next_row][next_col] > grid[row][col]):
+                    continue
+                dp[next_row][next_col] += dp[row][col]
+                dp[next_row][next_col] %= MOD
+
+        return sum(sum(row) % MOD for row in dp) % MOD
+```
