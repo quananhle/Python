@@ -8,6 +8,8 @@ Given a __0-indexed__ ```n x n``` integer matrix ```grid```, return _the number 
 
 A row and column pair is considered equal if they contain the same elements in the same order (i.e., an equal array).
 
+![image](https://github.com/quananhle/Python/assets/35042430/79aaa830-93f6-4005-8cc3-c2f4cdf0bfc1)
+
 ---
 
 __Example 1:__
