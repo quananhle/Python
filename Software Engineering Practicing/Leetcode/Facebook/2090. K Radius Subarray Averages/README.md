@@ -55,3 +55,5 @@ __Constraints:__
 - ```0 <= nums[i], k <= 10^5```
 
 ---
+
+![image](https://leetcode.com/problems/k-radius-subarray-averages/Figures/2090/Slide1a.PNG)
