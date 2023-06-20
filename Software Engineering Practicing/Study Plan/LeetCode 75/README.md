@@ -72,6 +72,8 @@
 
 ### Graph - BFS
 
+- :warning::warning: [1926. Nearest Exit from Entrance in Maze](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1926.%20Nearest%20Exit%20from%20Entrance%20in%20Maze)
+
 ### Intervals
 
 - :warning::warning: [435. Non-overlapping Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/435.%20Non-overlapping%20Intervals)
