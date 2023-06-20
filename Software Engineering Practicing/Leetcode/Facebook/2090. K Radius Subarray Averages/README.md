@@ -63,3 +63,28 @@ __Constraints:__
 ![image](https://leetcode.com/problems/k-radius-subarray-averages/Figures/2090/Slide1b.PNG)
 
 ![image](https://leetcode.com/problems/k-radius-subarray-averages/Figures/2090/Slide1c.PNG)
+
+```Python
+class Solution:
+    def getAverages(self, nums: List[int], k: int) -> List[int]:
+        if k == 0:
+            return nums
+
+        n = len(nums)
+        res = [-1] * n
+
+        if 2 * k + 1 > n:
+            return res
+        
+        prefix = [0] * (n + 1)
+        for i in range(n):
+            prefix[i + 1] = prefix[i] + nums[i]
+        
+        for i in range(k, n - k):
+            lower, upper = i - k, i + k
+            total = prefix[upper + 1] - prefix[lower]
+            average = total // (2 * k + 1)
+            res[i] = average
+
+        return res
+```
