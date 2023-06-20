@@ -56,35 +56,44 @@ __Constraints:__
 ![image](https://leetcode.com/problems/evaluate-division/Figures/399/399_graph_example.png)
 
 ### Depth-First Search
-#### Time Complexity : ```O(M⋅N)```, traverse through the graph of size while traversing through the queries
-#### Space Complexity: ```O(N)```, extra memory space to build graph
+
+#### Time Complexity : $O(M⋅N)$, traverse through the graph of size while traversing through the queries
+#### Space Complexity: $O(N)$, extra memory space to build graph
 
 ```Python
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        # Build the adjacency graph
         graph = collections.defaultdict(set)
         for (u, v), val in zip(equations, values):
             graph[u].add((v, val))
-            graph[v].add((u, 1/val))
-            
-        def dfs(x, y, visited):
-            if not x in graph:
+            graph[v].add((u, 1 / val))
+        
+        def dfs(numerator, denominator):
+            # Base cases
+            if not numerator in graph:
                 return -1.0
-            elif x == y:
+            elif numerator == denominator:
                 return 1.0
-            visited.add(x)
-            for key, val in graph[x]:
-                if key == y:
+
+            visited.add(numerator)
+
+            for path, val in graph[numerator]:
+                # Check if equation and value is already given
+                if path == denominator:
                     return val
-                elif not key in visited:
-                    output = dfs(key, y, visited)
-                    if output != -1:
-                        return val * output
+                else:
+                    if not path in visited:
+                        output = dfs(path, denominator)
+                        if output != -1.0:
+                            return val * output
             return -1.0
-            
+
         res = list()
-        for c, d in queries:
-            res.append(dfs(c, d, set()))
+        for numerator, denominator in queries:
+            visited = set()
+            ans = dfs(numerator, denominator)
+            res.append(ans)
         return res
 ```
 
