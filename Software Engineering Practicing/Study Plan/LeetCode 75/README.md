@@ -67,6 +67,7 @@
 
 - :warning::warning: [841. Keys and Rooms](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/841.%20Keys%20and%20Rooms)
 - :warning::warning: [547. Number of Provinces](https://github.com/quananhle/Python/tree/9c669afbb72b26a81bea96638b8b06c0e222903f/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2019%20-%20Union%20Find/547.%20Number%20of%20Provinces)
+- :warning::warning: [1466. Reorder Routes to Make All Paths Lead to the City Zero Breadth-First Search Depth-First Search](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1466.%20Reorder%20Routes%20to%20Make%20All%20Paths%20Lead%20to%20the%20City%20Zero)
 
 ### Intervals
 
