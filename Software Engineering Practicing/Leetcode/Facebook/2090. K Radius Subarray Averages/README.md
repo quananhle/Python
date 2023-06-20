@@ -60,3 +60,6 @@ __Constraints:__
 
 ### Prefix Sum
 
+![image](https://leetcode.com/problems/k-radius-subarray-averages/Figures/2090/Slide1b.PNG)
+
+![image](https://leetcode.com/problems/k-radius-subarray-averages/Figures/2090/Slide1c.PNG)
