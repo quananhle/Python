@@ -64,6 +64,9 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/k-radius-subarray-averages/Figures/2090/Slide1c.PNG)
 
+- __Time complexity__: $O(n)$
+- __Space complexity__: $O(n)$
+
 ```Python
 class Solution:
     def getAverages(self, nums: List[int], k: int) -> List[int]:
@@ -88,3 +91,8 @@ class Solution:
 
         return res
 ```
+
+### Sliding Window
+
+- __Time complexity__: $O(n)$
+- __Space complexity__: $O(n)$
