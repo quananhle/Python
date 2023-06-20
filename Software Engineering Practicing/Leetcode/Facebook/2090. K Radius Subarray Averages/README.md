@@ -94,5 +94,30 @@ class Solution:
 
 ### Sliding Window
 
+![image](https://leetcode.com/problems/k-radius-subarray-averages/Figures/2090/Slide2a.PNG)
+
 - __Time complexity__: $O(n)$
 - __Space complexity__: $O(n)$
+
+```Python
+class Solution:
+    def getAverages(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        res = [-1] * n
+        if k == 0:
+            return nums
+        if 2 * k + 1 > n:
+            return res
+        
+        # Compute sum of values in leftmost window
+        window = sum(nums[:2 * k + 1])
+        # Compute k-radius average of leftmost window 
+        res[k] = window // (2 * k + 1)
+        
+        for end in range(2 * k + 1, n):
+            start = end - (2 * k + 1)
+            window = window - nums[start] + nums[end]
+            res[end - k] = window // (2 * k + 1)
+        
+        return res
+```
