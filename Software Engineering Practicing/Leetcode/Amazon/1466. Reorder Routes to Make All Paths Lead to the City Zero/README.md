@@ -98,7 +98,27 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        connections = set((u, v) for u, v in connections)
+        for u, v in connections:
+            graph[u].append(v)
+            graph[v].append(u)
 
+        def dfs(node):
+            nonlocal ans
+            for neighbor in graph[node]:
+                if not neighbor in visited:
+                    if (node, neighbor) in connections:
+                        ans += 1
+                    visited.add(neighbor)
+                    dfs(neighbor)
+        
+        ans = 0
+        visited = set([0])
+        dfs(0)
+        return ans
 ```
 
 ### Breadth-First Search
