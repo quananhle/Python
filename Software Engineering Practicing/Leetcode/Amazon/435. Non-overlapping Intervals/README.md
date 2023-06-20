@@ -61,3 +61,19 @@ class Solution:
                 count += 1
         return count
 ```
+
+```Python
+class Solution:
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+        # Count overalapping intervals
+        n = len(intervals)
+        intervals.sort(key = lambda x:x[1])
+        res = list([intervals[0]])
+
+        for next_start, next_end in intervals[1:]:
+            prev_start, prev_end = res[-1][0], res[-1][1]
+            if prev_end <= next_start:
+                res.append([next_start, next_end])
+
+        return len(intervals) - len(res)
+```
