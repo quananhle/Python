@@ -1,4 +1,6 @@
-## 1926. Nearest Exit from Entrance in Maze
+## [1926. Nearest Exit from Entrance in Maze](https://leetcode.com/problems/nearest-exit-from-entrance-in-maze)
+
+```Tag```: ```Graph``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
