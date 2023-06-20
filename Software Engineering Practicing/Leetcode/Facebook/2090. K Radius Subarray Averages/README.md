@@ -57,3 +57,6 @@ __Constraints:__
 ---
 
 ![image](https://leetcode.com/problems/k-radius-subarray-averages/Figures/2090/Slide1a.PNG)
+
+### Prefix Sum
+
