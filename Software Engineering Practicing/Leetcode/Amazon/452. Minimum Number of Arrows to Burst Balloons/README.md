@@ -91,23 +91,6 @@ class Solution:
 ```Python
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
-        # Sort by the start coordinates of the balloons, but keep track of the end coordinates
-        points.sort(key=lambda x:x[0])
-        first_end = points[0][1]
-        count = 1
-
-        for next_start, next_end in points[1:]:
-            if first_end < next_start:
-                first_end = next_end
-                count += 1
-            else:
-                first_end = min(first_end, next_end)
-        return count
-```
-
-```Python
-class Solution:
-    def findMinArrowShots(self, points: List[List[int]]) -> int:
         # Sort by the end coordinates of the balloons
         points.sort(key=lambda x:x[1])
         first_end = points[0][1]
