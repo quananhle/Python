@@ -97,6 +97,10 @@ class Solution:
         return sum(numbers_of_connected_nodes)
 ```
 
+```Python
+
+```
+
 ### Breadth-First Search
 
 ```Python
@@ -121,4 +125,30 @@ class Solution:
                     queue.append((child, node))
 
         return numbers_of_connected_nodes
+```
+
+```Python
+class Solution:
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        # Build the adjacency graph
+        graph = collections.defaultdict(list)
+        connections = set((u, v) for u, v in connections)
+        for u, v in connections:
+            graph[u].append(v)
+            graph[v].append(u)
+
+        queue = collections.deque([0])
+        visited = set([0])
+        ans = 0
+
+        while queue:
+            node = queue.popleft()
+            for neighbor in graph[node]:
+                if not neighbor in visited:
+                    if (node, neighbor) in connections:
+                        ans += 1
+                    queue.append(neighbor)
+                    visited.add(neighbor)
+        
+        return ans
 ```
