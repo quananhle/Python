@@ -65,3 +65,11 @@ class Solution:
 ### [435. Non-overlapping Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/435.%20Non-overlapping%20Intervals)
 
 Given an array of intervals ```intervals``` where ```intervals[i]``` = [start<sub>i</sub >, end<sub>i</sub>], return _the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping_.
+
+
+__Example:__
+```
+Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
+Output: 1
+Explanation: [1,3] can be removed and the rest of the intervals are non-overlapping.
+```
