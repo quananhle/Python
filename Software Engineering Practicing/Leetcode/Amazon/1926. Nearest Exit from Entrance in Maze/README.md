@@ -10,6 +10,8 @@ In one step, you can move one cell __up__, __down__, __left__, or __right__. You
 
 Return the __number of steps__ in the _shortest path_ from the ```entrance``` to the nearest __exit__, or __-1__ if no such path exists.
 
+![image](https://github.com/quananhle/Python/assets/35042430/d90e759c-58bb-47f0-b9bf-cd21f33552c0)
+
 #### Example 1:
 
 ![image](https://assets.leetcode.com/uploads/2021/06/04/nearest1-grid.jpg)
