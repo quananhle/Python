@@ -59,14 +59,14 @@ __Constraints:__
 
 __Algorithm__:
 
-- Collect every pair of ```nums[i]``` and ```cost[i]``` in the array ```num_and_cost``` and sort it according to ```nums[i]```.
-- Build a prefix sum array ```prefix``` to record the prefix sum of the cost in the sorted ```num_and_cost```.
-- Start with ```nums[0]```, calculate the cost of making every element equal ```nums[0]``` as ```total```.
-- Iterate over nums starting from ```nums[1]```, for every base ```nums[i]```:
+1. Collect every pair of ```nums[i]``` and ```cost[i]``` in the array ```num_and_cost``` and sort it according to ```nums[i]```.
+2. Build a prefix sum array ```prefix``` to record the prefix sum of the cost in the sorted ```num_and_cost```.
+3. Start with ```nums[0]```, calculate the cost of making every element equal ```nums[0]``` as ```total```.
+4. Iterate over nums starting from ```nums[1]```, for every base ```nums[i]```:
     - Calculate the different between the current base and the previous base as ```gap = nums[i] - nums[i - 1]```.
     - The current ```total``` made by ```nums[i]```, compared with the previous cost made by ```nums[i - 1]```, is increased by ```gap``` times the prefix sum of costs ```prefix[i - 1]``` and decreased by ```gap``` times the suffix sum of costs ```prefix[n - 1] - prefix[i - 1]```.
     - Record and update the smallest ```total``` we have met so far as ```ans```.
-- Once the iteration ends, return ```ans```.
+5. Once the iteration ends, return ```ans```.
 
 - __Time Complexity__: $O(n⋅log⁡n)$
 - __Space Complexity__: $O(n)$
@@ -102,14 +102,14 @@ class Solution:
 
 ![image](https://leetcode.com/problems/minimum-cost-to-make-array-equal/Figures/2448/c2.png)
 
-Algorithm
-Initialize the searching space by setting its boundaries left = min(nums) and right = max(nums).
-2）While left < right:
+__Algorithm__
 
-Get the middle value mid using integer division mid = (left + right) / 2.
-Calculate the cost of two adjacent bases, F(mid) and F(mid + 1).
-If F(mid) > F(mid + 1), cut the left half by setting left = mid + 1. Otherwise, cut the right half by setting right = mid. Then repeat step 2.
-Return left once the search ends.
+1. Initialize the searching space by setting its boundaries ```lo = min(nums)``` and ```hi = max(nums)```.
+2. While ```lo < hi```:
+- Get the middle value mid using integer division ```mi = lo + (hi - lo) // 2```.
+- Calculate the cost of two adjacent bases, ```F(mid)``` and ```F(mid + 1)```.
+- If ```F(mid) > F(mid + 1)```, cut the left half by setting ```lo = mi + 1```. Otherwise, cut the right half by setting ```hi = mi```. Then repeat step 2.
+3. Return ```lo``` once the search ends.
 
 - __Time Complexity__: $O(n⋅log⁡k)$
 - __Space Complexity__: $O(1)$
