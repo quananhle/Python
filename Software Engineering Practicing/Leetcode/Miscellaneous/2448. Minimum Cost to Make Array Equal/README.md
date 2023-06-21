@@ -45,9 +45,32 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/minimum-cost-to-make-array-equal/Figures/2448/intro.png)
+
 ### Prefix Sum
 
 ```Python
+class Solution:
+    def minCost(self, nums: List[int], cost: List[int]) -> int:
+        num_and_cost = sorted([num, c] for num, c in zip(nums, cost))
+        n = len(cost)
 
+        prefix = [0] * n
+        prefix[0] = num_and_cost[0][1]
+        for i in range(1, n):
+            prefix[i] = num_and_cost[i][1] + prefix[i - 1]
+
+        total = 0
+        for i in range(1, n):
+            total += num_and_cost[i][1] * (num_and_cost[i][0] - num_and_cost[0][0])
+        ans = total
+
+        for i in range(1, n):
+            gap = num_and_cost[i][0] - num_and_cost[i - 1][0]
+            total += prefix[i - 1] * gap
+            total -= gap * (prefix[n - 1] - prefix[i - 1])
+            ans = min(ans, total)
+
+        return ans
 ```
 
