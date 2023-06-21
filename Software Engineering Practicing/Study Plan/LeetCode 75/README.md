@@ -73,6 +73,7 @@
 ### Graph - BFS
 
 - :warning::warning: [1926. Nearest Exit from Entrance in Maze](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1926.%20Nearest%20Exit%20from%20Entrance%20in%20Maze)
+- :warning::warning: [994. Rotting Oranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2010%20-%20Graph%20%7C%20DFS%20%7C%20BFS/994.%20Rotting%20Oranges)
 
 ### Intervals
 
