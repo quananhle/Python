@@ -68,6 +68,9 @@ __Algorithm__:
     - Record and update the smallest ```total``` we have met so far as ```ans```.
 - Once the iteration ends, return ```ans```.
 
+- __Time Complexity__: $O(n⋅log⁡n)$
+- __Space Complexity__: $O(n)$
+
 ```Python
 class Solution:
     def minCost(self, nums: List[int], cost: List[int]) -> int:
@@ -93,3 +96,43 @@ class Solution:
         return ans
 ```
 
+### Binary Search
+
+![image](https://leetcode.com/problems/minimum-cost-to-make-array-equal/Figures/2448/c1.png)
+
+![image](https://leetcode.com/problems/minimum-cost-to-make-array-equal/Figures/2448/c2.png)
+
+Algorithm
+Initialize the searching space by setting its boundaries left = min(nums) and right = max(nums).
+2）While left < right:
+
+Get the middle value mid using integer division mid = (left + right) / 2.
+Calculate the cost of two adjacent bases, F(mid) and F(mid + 1).
+If F(mid) > F(mid + 1), cut the left half by setting left = mid + 1. Otherwise, cut the right half by setting right = mid. Then repeat step 2.
+Return left once the search ends.
+
+- __Time Complexity__: $O(n⋅log⁡k)$
+- __Space Complexity__: $O(1)$
+
+```Python
+class Solution:
+    def minCost(self, nums: List[int], cost: List[int]) -> int:
+        def get_cost(base):
+            return sum(abs(base - num) * c for num, c in zip(nums, cost))
+        
+        lo, hi = min(nums), max(nums)
+        ans = get_cost(nums[0])
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            cost_1 = get_cost(mi)
+            cost_2 = get_cost(mi + 1)
+            ans = min(cost_1, cost_2)
+
+            if cost_1 > cost_2:
+                lo = mi + 1
+            else:
+                hi = mi
+            
+        return ans
+```
