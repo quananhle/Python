@@ -57,22 +57,16 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/minimum-cost-to-make-array-equal/Figures/2448/5.png)
 
-Algorithm
-Collect every pair of nums[i] and cost[i] in the array numsAndCost and sort it according to nums[i].
+__Algorithm__:
 
-Build a prefix sum array prefixCost to record the prefix sum of the cost in the sorted numsAndCost.
-
-Start with nums[0], calculate the cost of making every element equal nums[0] as totalCost.
-
-Iterate over nums starting from nums[1], for every base nums[i]:
-
-Calculate the different between the current base and the previous base as gap = nums[i] - nums[i - 1].
-
-The current totalCost made by nums[i], compared with the previous cost made by nums[i - 1], is increased by gap times the prefix sum of costs prefixCost[i - 1] and decreased by gap times the suffix sum of costs prefixCost[n - 1] - prefixCost[i - 1].
-
-Record and update the smallest totalCost we have met so far as answer.
-
-Once the iteration ends, return answer.
+- Collect every pair of ```nums[i]``` and ```cost[i]``` in the array ```num_and_cost``` and sort it according to ```nums[i]```.
+- Build a prefix sum array ```prefix``` to record the prefix sum of the cost in the sorted ```num_and_cost```.
+- Start with ```nums[0]```, calculate the cost of making every element equal ```nums[0]``` as ```total```.
+- Iterate over nums starting from ```nums[1]```, for every base ```nums[i]```:
+    - Calculate the different between the current base and the previous base as ```gap = nums[i] - nums[i - 1]```.
+    - The current ```total``` made by ```nums[i]```, compared with the previous cost made by ```nums[i - 1]```, is increased by ```gap``` times the prefix sum of costs ```prefix[i - 1]``` and decreased by ```gap``` times the suffix sum of costs ```prefix[n - 1] - prefix[i - 1]```.
+    - Record and update the smallest ```total``` we have met so far as ```ans```.
+- Once the iteration ends, return ```ans```.
 
 ```Python
 class Solution:
