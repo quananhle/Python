@@ -117,17 +117,42 @@ class Solution(object):
                         queue.append((next_row, next_col, cell+1))
         return -1
 ```
-Let m, nm,n be the size of the input matrix maze.
+Let $m,n$ be the size of the input matrix maze.
 
-Time complexity: ```O(M⋅N)```
+- __Time Complexity__: $O(M⋅N)$
 
 - For each visited cell, we add it to queue and pop it from queue once, which takes constant time as the operation on queue requires O(1) time.
 - For each cell in queue, we mark it as visited in maze, and check if it has any unvisited neighbors in all four directions. This also takes constant time.
 - In the worst-case scenario, we may have to visit ```O(M⋅N)``` cells before the iteration stops.
 - To sum up, the overall time complexity is ```O(M⋅N)```.
 
-Space complexity: ```O(max(M,N))```
+- __Space Complexity__: $O(max(M,N))$
 
 - We use a tuple to keep track of the visited cell, there may be ```O(M)``` visited cells
 - We use a queue to store the cells to be visited. In the worst-case scenario, there may be ```O(M+N)``` cells stored in queue.
-The space complexity is ```O(M+N)+O(max(M,N))```.
+The space complexity is $O(M+N)+O(max(M,N))$.
+
+```Python
+class Solution:
+    def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
+        ROWS, COLS = len(maze), len(maze[0])
+        visited = set()
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        row, col = entrance
+
+        queue = collections.deque([(row, col, 0)])
+        visited.add((row, col))
+
+        while queue:
+            row, col, curr = queue.popleft()
+            if curr != 0 and (row + 1 == ROWS or row - 1 == -1 or col + 1 == COLS or col - 1 == -1):
+                # Breadth-First Search => found the shortest path
+                return curr
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not (next_row, next_col) in visited and maze[next_row][next_col] == "."):
+                    continue
+                visited.add((next_row, next_col))
+                queue.append((next_row, next_col, curr + 1))
+
+        return -1
+```
