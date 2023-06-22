@@ -1,6 +1,6 @@
 ## [1214. Two Sum BSTs](https://leetcode.com/problems/two-sum-bsts/)
 
-```Tag```: ```Binary Search Tree``` ```Hash Map```
+```Tag```: ```Binary Search Tree``` ```Hash Map``` ```Depth-First Search``` ```Two Pointers``` ```Morris Traversal```
 
 #### Difficulty: Medium
 
@@ -77,15 +77,39 @@ Suppose we perform a preorder traversal of ```root1```.
 
 ![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/1.png)
 
-Similarly, we can store the value of each node of ```root2``` in ```node_list2```.
+Similarly, we can store the value of each node of ```root2``` in ```stack2```.
 
 ![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/2.png)
 
-Now we need to try every pair of values from ```node_list1``` and ```node_list2```. It requires a nested iteration.
+Now we need to try every pair of values from ```stack1``` and ```stack2```. It requires a nested iteration.
 
 ```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
+        def dfs(node, stack):
+            if not node:
+                return None
+            
+            stack.append(node.val)
+            dfs(node.left, stack)
+            dfs(node.right, stack)
 
+        stack1, stack2 = list(), list()
+        dfs(root1, stack1)
+        dfs(root2, stack2)
 
+        for n1 in stack1:
+            for n2 in stack2:
+                if n1 + n2 == target:
+                    return True
+                
+        return False
 ```
 
 
