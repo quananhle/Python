@@ -316,3 +316,16 @@ class Solution:
         
         return ans
 ```
+
+Question: [Two Sum BSTs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/1214.%20Two%20Sum%20BSTs)
+
+Given the roots of two binary search trees, ```root1``` and ```root2```, return _```true``` if and only if there is a node in the first tree and a node in the second tree whose values sum up to a given integer ```target```_.
+
+__Example:__
+
+```
+Input: root1 = [2,1,4], root2 = [1,0,3], target = 5
+Output: true
+Explanation: 2 and 3 sum up to 5.
+```
+
