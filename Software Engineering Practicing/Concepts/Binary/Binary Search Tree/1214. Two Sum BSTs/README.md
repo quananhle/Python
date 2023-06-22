@@ -68,3 +68,24 @@ class Solution:
         
         return False
 ```
+
+---
+
+### Approach 1: Brute Force
+
+Suppose we perform a preorder traversal of ```root1```.
+
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/1.png)
+
+Similarly, we can store the value of each node of ```root2``` in ```node_list2```.
+
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/2.png)
+
+Now we need to try every pair of values from ```node_list1``` and ```node_list2```. It requires a nested iteration.
+
+```Python
+
+
+```
+
+
