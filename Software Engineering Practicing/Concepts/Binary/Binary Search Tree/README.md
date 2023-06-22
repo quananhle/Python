@@ -322,6 +322,7 @@ Question: [Two Sum BSTs](https://github.com/quananhle/Python/tree/main/Software%
 Given the roots of two binary search trees, ```root1``` and ```root2```, return _```true``` if and only if there is a node in the first tree and a node in the second tree whose values sum up to a given integer ```target```_.
 
 __Example:__
+![image](https://assets.leetcode.com/uploads/2021/02/10/ex1.png)
 
 ```
 Input: root1 = [2,1,4], root2 = [1,0,3], target = 5
@@ -329,3 +330,35 @@ Output: true
 Explanation: 2 and 3 sum up to 5.
 ```
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
+        stack1, stack2 = list(), list()
+        memo = collections.defaultdict(int)
+
+        while stack1 or root1:
+            while root1:
+                stack1.append(root1)
+                root1 = root1.left
+            root1 = stack1.pop()
+            if not root1.val in memo:
+                memo[target - root1.val] = root1.val
+            root1 = root1.right
+        
+        while stack2 or root2:
+            while root2:
+                stack2.append(root2)
+                root2 = root2.left
+            root2 = stack2.pop()
+            if root2.val in memo:
+                return True
+            root2 = root2.right
+        
+        return False
+```
