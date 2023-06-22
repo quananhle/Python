@@ -112,4 +112,40 @@ class Solution:
         return False
 ```
 
+### Approach 2: Binary Search
 
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/b1.png)
+
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/b2.png)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
+        def binary_search(node, target):
+            if not node:
+                return False
+            
+            if node.val == target:
+                return True
+            elif node.val < target:
+                return binary_search(node.right, target)
+            else:
+                return binary_search(node.left, target)
+
+        def dfs(node, target):
+            if not node:
+                return False
+            
+            if binary_search(root2, target - node.val):
+                return True
+            
+            return dfs(node.left, target) or dfs(node.right, target)
+
+        return dfs(root1, target)
+```
