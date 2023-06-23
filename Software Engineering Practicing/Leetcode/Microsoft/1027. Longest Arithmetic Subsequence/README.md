@@ -1,6 +1,6 @@
 ## [1027. Longest Arithmetic Subsequence](https://leetcode.com/problems/longest-arithmetic-subsequence/)
 
-```Tag```: 
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -43,4 +43,29 @@ __Constraints:__
 
 ---
 
+### The Template
 
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def longestArithSeqLength(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        @lru_cache(None)
+        def dp(i, step):
+            length = 1
+
+            for j in range(i + 1, n):
+                if step is None or step == nums[j] - nums[i]:
+                    length = max(length, 1 + dp(j, nums[j] - nums[i]))
+            
+            return length
+        
+
+        ans = float('-inf')
+        for curr in range(n):
+            ans = max(ans, dp(curr, None))
+        
+        return ans
+```
