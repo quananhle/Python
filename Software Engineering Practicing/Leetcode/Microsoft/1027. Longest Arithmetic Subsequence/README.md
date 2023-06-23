@@ -50,15 +50,16 @@ __Constraints:__
 ```Python
 class Solution:
     def longestArithSeqLength(self, nums: List[int]) -> int:
+        # Time Limit Exceeded
         n = len(nums)
 
         @lru_cache(None)
-        def dp(i, step):
+        def dp(curr, step):
             length = 1
 
-            for j in range(i + 1, n):
-                if step is None or step == nums[j] - nums[i]:
-                    length = max(length, 1 + dp(j, nums[j] - nums[i]))
+            for next in range(curr + 1, n):
+                if step is None or step == nums[next] - nums[curr]:
+                    length = max(length, 1 + dp(next, nums[next] - nums[curr]))
             
             return length
         
@@ -68,4 +69,23 @@ class Solution:
             ans = max(ans, dp(curr, None))
         
         return ans
+```
+
+#### Bottom-Up Dynamic Programming
+
+![image](https://leetcode.com/problems/longest-arithmetic-subsequence/Figures/1027/1.png)
+
+![image](https://leetcode.com/problems/longest-arithmetic-subsequence/Figures/1027/4.png)
+
+```Python
+class Solution:
+    def longestArithSeqLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = collections.defaultdict(int)
+        
+        for right in range(n):
+            for left in range(0, right):
+                dp[(right, nums[right] - nums[left])] = dp.get((left, nums[right] - nums[left]), 1) + 1
+            
+        return max(dp.values())
 ```
