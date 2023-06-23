@@ -1,4 +1,4 @@
-## [1214. Two Sum BSTs](https://leetcode.com/problems/two-sum-bsts/)
+ ## [1214. Two Sum BSTs](https://leetcode.com/problems/two-sum-bsts/)
 
 ```Tag```: ```Binary Search Tree``` ```Hash Map``` ```Hash Set``` ```Depth-First Search``` ```Two Pointers``` ```Morris Traversal```
 
@@ -193,6 +193,34 @@ class Solution:
 
 #### Approach 3: Hash Set
 
-```Python
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/3.png)
 
+- __Time Complexity__: $O(m + ⁡n)$
+- __Space Complexity__: $O(⁡m + n)$
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def twoSumBSTs(self, root1: Optional[TreeNode], root2: Optional[TreeNode], target: int) -> bool:
+        def dfs(node, seen):
+            if not node:
+                return None
+            dfs(node.left, seen)
+            seen.add(node.val)
+            dfs(node.right, seen)
+
+        seen1, seen2 = set(), set()
+        dfs(root1, seen1)
+        dfs(root2, seen2)
+    
+        for val1 in seen1:
+            if target - val1 in seen2:
+                return True
+        
+        return False
 ```
