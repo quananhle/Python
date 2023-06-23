@@ -15,3 +15,32 @@ Note that:
 
 ---
 
+__Example 1:__
+```
+Input: nums = [3,6,9,12]
+Output: 4
+Explanation:  The whole array is an arithmetic sequence with steps of length = 3.
+```
+
+__Example 2:__
+```
+Input: nums = [9,4,7,2,10]
+Output: 3
+Explanation:  The longest arithmetic subsequence is [4,7,10].
+```
+
+__Example 3:__
+```
+Input: nums = [20,1,15,3,10,5,8]
+Output: 4
+Explanation:  The longest arithmetic subsequence is [20,15,10,5].
+```
+
+__Constraints:__
+
+- ```2 <= nums.length <= 1000```
+- ```0 <= nums[i] <= 500```
+
+---
+
+
