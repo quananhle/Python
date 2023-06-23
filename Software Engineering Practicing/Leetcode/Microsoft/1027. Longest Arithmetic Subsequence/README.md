@@ -43,6 +43,8 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/longest-arithmetic-subsequence/Figures/1027/intro.png)
+
 ### The Template
 
 #### Top-Down Dynamic Programming
