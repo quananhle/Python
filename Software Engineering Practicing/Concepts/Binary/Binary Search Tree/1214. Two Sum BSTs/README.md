@@ -281,6 +281,20 @@ class Solution:
 
 ![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/mor5.png)
 
+__Algorithm__
+
+1. Build two iterators ```iterator1``` and ```iterator2``` that perform inorder Morris traversal over ```root1``` and backward inorder Morris traversal over ```root2```, respectively.
+
+2. Start with the smallest element of ```root1``` and the largest element of ```root2```.
+
+3. While both iterators have non-empty values, we compare ```value1 + value2``` with ```target```:
+
+ - If ```value1 + value2 = target```, return ```True```.
+ - If ```value1 + value2 < target```, move on to the next node of ```iterator1```.
+ - If ```value1 + value2 > target```, move on to the next node of ```iterator2```.
+
+4. If we can't find a valid pair after the iteration, return ```False```.
+
 ```Python
 
 ```
