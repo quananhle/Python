@@ -516,7 +516,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [450. Delete Node in a BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/450.%20Delete%20Node%20in%20a%20BST)
 - :four_leaf_clover: [530. Minimum Absolute Difference in BST](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/530.%20Minimum%20Absolute%20Difference%20in%20BST) ```Depth-First Search```
 - :four_leaf_clover: [700. Search in a Binary Search Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/700.%20Search%20in%20a%20Binary%20Search%20Tree)
-- :warning::warning: [1214. Two Sum BSTs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/1214.%20Two%20Sum%20BSTs) ```Hash Map``` ```Two Pointers``` ```Morris Traversal```
+- :warning::warning: [1214. Two Sum BSTs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/1214.%20Two%20Sum%20BSTs) ```Hash Map``` ```Hash Set``` ```Depth-First Search``` ```Two Pointers``` ```Morris Traversal```
 
 ---
 
