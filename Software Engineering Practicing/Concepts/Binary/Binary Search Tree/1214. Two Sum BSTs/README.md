@@ -268,3 +268,19 @@ class Solution:
             
         return False
 ```
+
+##### Approach 5: Morris Traversal
+
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/mor1.png)
+
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/mor2.png)
+
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/mor3.png)
+
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/mor4.png)
+
+![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/mor5.png)
+
+```Python
+
+```
