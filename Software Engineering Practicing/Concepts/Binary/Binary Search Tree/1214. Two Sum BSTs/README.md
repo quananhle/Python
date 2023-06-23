@@ -107,7 +107,9 @@ class Solution:
 
 ---
 
-### Approach 1: Brute Force
+### Depth-First Search
+
+#### Approach 1: Brute Force
 
 Suppose we perform a preorder traversal of ```root1```.
 
@@ -148,11 +150,14 @@ class Solution:
         return False
 ```
 
-### Approach 2: Binary Search
+#### Approach 2: Binary Search
 
 ![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/b1.png)
 
 ![image](https://leetcode.com/problems/two-sum-bsts/Figures/1214/b2.png)
+
+- __Time Complexity__: $O(m⋅log⁡n)$
+- __Space Complexity__: $O(log⁡m+log⁡n)$
 
 ```Python
 # Definition for a binary tree node.
@@ -184,4 +189,10 @@ class Solution:
             return dfs(node.left, target) or dfs(node.right, target)
 
         return dfs(root1, target)
+```
+
+#### Approach 3: Hash Set
+
+```Python
+
 ```
