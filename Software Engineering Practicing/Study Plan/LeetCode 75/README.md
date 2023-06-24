@@ -78,6 +78,7 @@
 ### Binary Search
 
 - :four_leaf_clover: [374. Guess Number Higher or Lower](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/374.%20Guess%20Number%20Higher%20or%20Lower)
+- :warning::warning: [2300. Successful Pairs of Spells and Potions](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/2300.%20Successful%20Pairs%20of%20Spells%20and%20Potions)
 
 ### Intervals
 
