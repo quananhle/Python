@@ -136,7 +136,24 @@ class Solution:
 #### Template 1
 
 ```Python
+```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        potions.sort()
+        n, m = len(spells), len(potions)
+        res = list()
 
+        for spell in spells:
+            lo, hi = 0, m - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                if potions[mi] * spell < success:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+            res.append(m - lo)
+        return res
+```
 ```
 
 #### Template 2
