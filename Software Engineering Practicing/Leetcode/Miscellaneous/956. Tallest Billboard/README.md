@@ -1,6 +1,6 @@
 ## [956. Tallest Billboard](https://leetcode.com/problems/tallest-billboard/)
 
-```Tag```:
+```Tag```: ```String & Array``` ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -40,3 +40,5 @@ __Constraints:__
 - ```sum(rods[i]) <= 5000```
 
 ---
+
+![image](https://leetcode.com/problems/tallest-billboard/Figures/956/1.png)
