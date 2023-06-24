@@ -159,7 +159,27 @@ class Solution:
 #### Template 2
 
 ```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        n = len(potions)
+        potions.sort()
 
+        def bisect_left(spell):
+            lo, hi = 0, n
+
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if potions[mi] * spell < success: 
+                    lo = mi + 1
+                else: 
+                    hi = mi
+
+            return lo
+        
+        for i, spell in enumerate(spells):
+            spells[i] = n - bisect_left(spell)
+
+        return spells
 ```
 
 ```Python
