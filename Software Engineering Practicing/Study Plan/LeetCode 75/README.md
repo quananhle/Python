@@ -80,6 +80,7 @@
 - :four_leaf_clover: [374. Guess Number Higher or Lower](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%201/374.%20Guess%20Number%20Higher%20or%20Lower)
 - :warning::warning: [2300. Successful Pairs of Spells and Potions](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/2300.%20Successful%20Pairs%20of%20Spells%20and%20Potions)
 - :warning::warning: [162. Find Peak Element](https://github.com/quananhle/Python/blob/afc24973b13c8cc3609981f08a036e505aa9ba6d/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/Template%202/162.%20Find%20Peak%20Element/README.md)
+- :warning::warning: [875. Koko Eating Bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 
 ### Intervals
 
