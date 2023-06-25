@@ -45,6 +45,35 @@ __Constraints:__
 
 ### Meet in the Middle
 
-```Python
+![image](https://leetcode.com/problems/tallest-billboard/Figures/956/9.png)
 
+```Python
+class Solution:
+    def tallestBillboard(self, rods: List[int]) -> int:
+        n = len(rods)
+
+        def helper(half):
+            states = set()
+            states.add((0, 0))
+            for rod in half:
+                new_states = set()
+                for left, right in states:
+                    new_states.add((left + rod, right))
+                    new_states.add((left, right + rod))
+                states |= new_states
+            
+            memo = collections.defaultdict(int)
+            for left, right in states:
+                memo[left - right] = max(memo.get(left - right, 0), left)
+            
+            return memo
+
+        first, second = helper(rods[:n//2]), helper(rods[n//2:])
+
+        ans = 0
+        for diff in first:
+            if -diff in second:
+                ans = max(ans, first[diff] + second[-diff])
+            
+        return ans
 ```
