@@ -98,6 +98,8 @@ class Solution:
 
 ![image](https://leetcode.com/problems/tallest-billboard/Figures/956/8.png)
 
+![image](https://github.com/quananhle/Python/assets/35042430/0f3c1e39-9522-4f7e-8c68-10de00ed768a)
+
 ```Python
 class Solution:
     def tallestBillboard(self, rods: List[int]) -> int:
