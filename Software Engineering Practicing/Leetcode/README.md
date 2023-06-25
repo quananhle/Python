@@ -59,6 +59,7 @@
 - :warning::warning: [238. Product of Array Except Self](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/238.%20Product%20of%20Array%20Except%20Self) ```Prefix Sum``` ```Two Pointers```
 - :warning::warning: [334. Increasing Triplet Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/334.%20Increasing%20Triplet%20Subsequence)
 - :warning::warning: [443. String Compression](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/443.%20String%20Compression)
+-  :no_entry::no_entry::no_entry: [956. Tallest Billboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/956.%20Tallest%20Billboard) ```Dynamic Programming```
 - :four_leaf_clover: [1071. Greatest Common Divisor of Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1071.%20Greatest%20Common%20Divisor%20of%20Strings)
 - :four_leaf_clover: [1232. Check If It Is a Straight Line](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1232.%20Check%20If%20It%20Is%20a%20Straight%20Line) ```Math```
 - :four_leaf_clover: [1431. Kids With the Greatest Number of Candies](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/1431.%20Kids%20With%20the%20Greatest%20Number%20of%20Candies)
