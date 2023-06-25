@@ -87,3 +87,11 @@ class Solution:
             
         return ans
 ```
+
+### Dynamic Programming
+
+![image](https://leetcode.com/problems/tallest-billboard/Figures/956/2.png)
+
+```Python
+
+```
