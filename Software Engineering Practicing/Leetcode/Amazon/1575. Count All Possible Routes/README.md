@@ -15,3 +15,43 @@ Return _the count of all possible routes from ```start``` to ```finish```_. Sinc
 ![image](https://github.com/quananhle/Python/assets/35042430/2293ac2c-39c1-4e24-9f26-a6891259e01f)
 
 ---
+
+__Example 1:__
+```
+Input: locations = [2,3,6,8,4], start = 1, finish = 3, fuel = 5
+Output: 4
+Explanation: The following are all possible routes, each uses 5 units of fuel:
+1 -> 3
+1 -> 2 -> 3
+1 -> 4 -> 3
+1 -> 4 -> 2 -> 3
+```
+
+__Example 2:__
+```
+Input: locations = [4,3,1], start = 1, finish = 0, fuel = 6
+Output: 5
+Explanation: The following are all possible routes:
+1 -> 0, used fuel = 1
+1 -> 2 -> 0, used fuel = 5
+1 -> 2 -> 1 -> 0, used fuel = 5
+1 -> 0 -> 1 -> 0, used fuel = 3
+1 -> 0 -> 1 -> 0 -> 1 -> 0, used fuel = 5
+```
+
+__Example 3:__
+```
+Input: locations = [5,2,1], start = 0, finish = 2, fuel = 3
+Output: 0
+Explanation: It is impossible to get from 0 to 2 using only 3 units of fuel since the shortest route needs 4 units of fuel.
+```
+
+__Constraints:__
+
+- ```2 <= locations.length <= 100```
+- ```1 <= locations[i] <= 10^9```
+- All integers in ```locations``` are distinct.
+- ```0 <= start, finish < locations.length```
+- ```1 <= fuel <= 200```
+
+---
