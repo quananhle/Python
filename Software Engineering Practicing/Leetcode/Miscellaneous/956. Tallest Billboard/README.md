@@ -96,6 +96,8 @@ class Solution:
 
 ![image](https://leetcode.com/problems/tallest-billboard/Figures/956/4.png)
 
+![image](https://leetcode.com/problems/tallest-billboard/Figures/956/8.png)
+
 ```Python
 class Solution:
     def tallestBillboard(self, rods: List[int]) -> int:
