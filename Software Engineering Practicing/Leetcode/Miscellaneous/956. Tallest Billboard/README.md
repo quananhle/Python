@@ -121,3 +121,29 @@ class Solution:
 
         return dp.get(0, 0)
 ```
+
+```Python
+class Solution:
+    def tallestBillboard(self, rods: List[int]) -> int:
+        m, n = len(rods), sum(rods) + 1
+        dp = [[-1] * n for _ in range(m)]
+        dp[0][0] = 0
+        dp[0][rods[0]] = rods[0]
+        
+        for i in range(1, m):
+            for diff in range(n):
+                rod_len = rods[i]
+                # Skip
+                tallest = dp[i-1][diff]
+                # Subtract from the taller
+                if diff >= rod_len and dp[i-1][diff-rod_len] != -1:
+                    tallest = max(tallest, dp[i-1][diff - rod_len] + rod_len)
+                if diff < rod_len and dp[i-1][rod_len - diff] != -1:
+                    tallest = max(tallest, dp[i-1][rod_len - diff] + diff)
+                # Subtract from the shorter
+                if diff + rod_len < n and dp[i-1][diff + rod_len] != -1:
+                    tallest = max(tallest, dp[i-1][diff + rod_len])
+                dp[i][diff] = tallest
+        
+        return max([l[0] for l in dp])
+```
