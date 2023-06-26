@@ -60,6 +60,11 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/count-all-possible-routes/Figures/1575/1575-1.png)
+
+- __Time Complexity__: $O(n^2⋅fuel)$
+- __Space Complexity__: $O(n⋅fuel)$
+
 ```Python
 class Solution:
     def countRoutes(self, locations: List[int], start: int, finish: int, fuel: int) -> int:
@@ -118,6 +123,9 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming
+
+- __Time Complexity__: $O(n^2⋅fuel)$
+- __Space Complexity__: $O(n⋅fuel)$
 
 ```Python
 class Solution:
