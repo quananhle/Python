@@ -67,7 +67,7 @@ __Constraints__:
 
 __Algorithm__
 
-Initialize two priority queues head_workers and tail_workers that store the first m workers and the last m workers, where the worker with the lowest cost has the highest priority.
+1. Initialize two priority queues ```heads``` and ```tails``` that store the first ```m``` workers and the last ```m``` workers, where the worker with the lowest cost has the highest priority.
 
 Set up two pointers next_head = m, next_tail = n - m - 1 indicating the next worker to be added to two queues.
 
