@@ -116,3 +116,26 @@ class Solution:
 
         return dp(start, fuel)
 ```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def countRoutes(self, locations: List[int], start: int, finish: int, fuel: int) -> int:
+        n = len(locations)
+        dp = [[0] * (fuel + 1) for _ in range(n + 1)]
+        MOD = 1000000007
+
+        for i in range(fuel + 1):
+            dp[finish][i] = 1
+        
+        for remaining in range(fuel + 1):
+            for curr in range(n):
+                for next in range(n):
+                    if next == curr:
+                        continue
+                    if abs(locations[curr] - locations[next]) <= remaining:
+                        dp[curr][remaining] += dp[next][remaining - abs(locations[curr] - locations[next])] % MOD
+        
+        return dp[start][fuel] % MOD
+```
