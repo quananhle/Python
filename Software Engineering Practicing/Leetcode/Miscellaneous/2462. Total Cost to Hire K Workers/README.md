@@ -1,6 +1,6 @@
 ## [2462. Total Cost to Hire K Workers](https://leetcode.com/problems/total-cost-to-hire-k-workers/)
 
-```Tag```:
+```Tag```: ```Priority Queue```
 
 #### Difficulty: Medium
 
@@ -49,3 +49,12 @@ __Constraints__:
 
 ---
 
+### Priority Queue
+
+#### 2 Priority Queues
+
+![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/1.png)
+
+```Python
+
+```
