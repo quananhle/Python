@@ -55,6 +55,60 @@ __Constraints__:
 
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/1.png)
 
-```Python
+![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/2.png)
 
+![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/3.png)
+
+![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/4.png)
+
+![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/5.png)
+
+![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/6.png)
+
+__Algorithm__
+
+Initialize two priority queues head_workers and tail_workers that store the first m workers and the last m workers, where the worker with the lowest cost has the highest priority.
+
+Set up two pointers next_head = m, next_tail = n - m - 1 indicating the next worker to be added to two queues.
+
+Compare the top workers in both queues, and hire the one with the lowest cost, if both workers have the same cost, hire the worker from head_workers. Add the cost of this worker to the total cost.
+
+If next_head <= next_tail, we need to fill the queue with one worker:
+
+If the hired worker is from head_workers, we add the worker costs[next_head] to it and increment next_head by 1.
+If the hired worker is from tail_workers, we add the worker costs[tail_head] to it and decrement tail_head by 1.
+Otherwise, skip this step.
+
+Repeat steps 3 and 4 k times.
+
+Return the total cost of all the hired workers.
+
+```Python
+class Solution:
+    def totalCost(self, costs: List[int], k: int, candidates: int) -> int:
+        heads = costs[:candidates]
+        tails = costs[max(candidates, len(costs) - candidates):]
+
+        heapify(heads)
+        heapify(tails)
+
+        ans = 0
+        next_head, next_tail = candidates, len(costs) - 1 - candidates
+
+        for _ in range(k):
+            if not tails or heads and heads[0] <= tails[0]:
+                ans += heappop(heads)
+
+                if next_head <= next_tail:
+                    heappush(heads, costs[next_head])
+                    next_head += 1
+            
+            else:
+                ans += heappop(tails)
+
+                if next_head <= next_tail:
+                    heappush(tails, costs[next_tail])
+                    next_tail -= 1
+                
+        return ans
 ```
