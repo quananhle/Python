@@ -77,6 +77,9 @@ __Algorithm__
 6. Repeat steps 3 and 4 ```k``` times.
 7. Return the total cost of all the hired workers.
 
+- __Time Complexity__: $O((k+m)⋅log⁡m)$
+- __Space Complexity__: $O(m)$
+
 ```Python
 class Solution:
     def totalCost(self, costs: List[int], k: int, candidates: int) -> int:
