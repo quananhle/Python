@@ -55,3 +55,33 @@ __Constraints:__
 - ```1 <= fuel <= 200```
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def countRoutes(self, locations: List[int], start: int, finish: int, fuel: int) -> int:
+        n = len(locations)
+        MOD = 1000000007
+
+        @lru_cache(None)
+        def dp(curr, remaining):
+            # Base case
+            if curr >= n or remaining < 0:
+                return 0
+            
+            ans = 0
+            # Recurrence relation
+            if curr == finish:
+                ans = 1
+            
+            for next in range(n):
+                if next != curr:
+                    ans += dp(next, remaining - abs(locations[curr] - locations[next])) % MOD
+
+            return ans % MOD
+
+        return dp(start, fuel)
+```
