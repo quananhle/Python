@@ -74,10 +74,8 @@ __Algorithm__
 - If the hired worker is from ```heads``` workers, we add the worker ```costs[next_head]``` to it and increment ```next_head``` by ```1```.
 - If the hired worker is from ```tails``` workers, we add the worker ```costs[tail_head]``` to it and decrement ```tail_head``` by ```1```.
 5. Otherwise, skip this step.
-
-Repeat steps 3 and 4 k times.
-
-Return the total cost of all the hired workers.
+6. Repeat steps 3 and 4 ```k``` times.
+7. Return the total cost of all the hired workers.
 
 ```Python
 class Solution:
