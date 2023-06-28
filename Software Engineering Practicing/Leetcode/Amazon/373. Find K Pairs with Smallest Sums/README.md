@@ -55,7 +55,7 @@ __Algorithm__
 3. Create a hash set ```visited``` to keep track of pairs that are seen
 4. Initialize a min heap ```min_heap``` that takes a triplet of integers: the sum of the pair, the index in ```nums1``` of the first element of the pair, and the index in ```nums2``` of the second element of the pair.
 5. Push the first element from the both the arrays in ```min_heap```, i.e., we push ```nums1[0] + nums2[0]```, ```0```, ```0```. We also insert pair ```(0, 0)``` in ```visited```.
-Iterate till we get k pairs and minHeap is not empty:
+6. Iterate till we get ```k``` pairs and ```min_heap``` is not empty:
 Pop the top of minHeap and set i = top[1] and j = top[2].
 Push pair (nums1[i], nums2[j]) in ans.
 If i + 1 < m and pair (i + 1, j) is not in visited, we push a new pair nums1[i + 1] + nums2[j], i + 1, j into the heap.
