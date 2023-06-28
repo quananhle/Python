@@ -59,8 +59,8 @@ __Algorithm__
     - Pop the top of ```min_heap``` and set ```i = top[1]``` and ```j = top[2]```.
     - Push pair ```(nums1[i], nums2[j])``` in ```res```.
     - If ```i + 1 < m``` and pair ```(i + 1, j)``` is not in ```visited```, we push a new pair ```nums1[i + 1] + nums2[j]```, ```i + 1```, ```j``` into the heap.
-If j + 1 < n and pair (i, j + 1) is not in visited, we push a new pair nums1[i] + nums2[j + 1], i, j + 1 into the heap.
-Return ans.
+    - If ```j + 1 < n``` and pair ```(i, j + 1)``` is not in ```visited```, we push a new pair ```nums1[i] + nums2[j + 1]```, ```i```, ```j + 1``` into the heap.
+7. Return ```res```.
 
 ```Python
 class Solution:
