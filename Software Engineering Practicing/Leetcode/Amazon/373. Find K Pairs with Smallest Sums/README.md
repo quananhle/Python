@@ -62,5 +62,28 @@ If j + 1 < n and pair (i, j + 1) is not in visited, we push a new pair nums1[i] 
 Return ans.
 
 ```Python
+class Solution:
+    def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
+        m, n = len(nums1), len(nums2)
+        res = list()
+        visited = set()
 
+        min_heap = [(nums1[0] + nums2[0], (0, 0))]
+        visited.add((0, 0))
+
+        while k > 0 and min_heap:
+            val, (i, j) = heapq.heappop(min_heap)
+            res.append([nums1[i], nums2[j]])
+
+            if i + 1 < m and not (i + 1, j) in visited:
+                heapq.heappush(min_heap, (nums1[i + 1] + nums2[j], (i + 1, j)))
+                visited.add((i + 1, j))
+
+            if j + 1 < n and not (i, j + 1) in visited:
+                heapq.heappush(min_heap, (nums1[i] + nums2[j + 1],(i, j + 1)))
+                visited.add((i, j + 1))
+
+            k -= 1
+
+        return res 
 ```
