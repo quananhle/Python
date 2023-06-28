@@ -1,6 +1,6 @@
 ## [373. Find K Pairs with Smallest Sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/)
 
-```Tag```: 
+```Tag```: ```Priority Queue```
 
 #### Difficulty: Medium
 
@@ -43,3 +43,9 @@ __Constraints:__
 - ```1 <= k <= 10^4```
 
 ---
+
+### Priority Queue
+
+```Python
+
+```
