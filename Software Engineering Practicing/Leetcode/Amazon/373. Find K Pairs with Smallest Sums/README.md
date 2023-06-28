@@ -48,8 +48,9 @@ __Constraints:__
 
 This method is very similar to the Dijkstra algorithm in that we find the shortest distance between any two nodes. To find the edge with the smallest weight, we heap all of the edge weights. Then we move on to the next node (using minimum weight edge selected). We add all of the edge weights for the edges connected with the node back to the heap from the current node and choose the edge with the lowest weight from the available edges. We use the edge to move to another unvisited node and continue popping nodes and adding edge weights to the heap until all of the nodes are covered.
 
-Algorithm
-Create two integer variables m and n. Initialize them to size of nums1 and nums2 respectively.
+__Algorithm__
+
+1. Create two integer variables ```m``` and ```n```. Initialize them to size of ```nums1``` and ```nums2``` respectively.
 Create a list ans to store the pairs with smallest sums that are to be returned as the answer.
 Create a hash set visited to keep track of pairs that are seen. Please note that we used ordered_set in C++ in place of unordered_set because the unordered_set uses hash template to compute hashes for its entries and there is no hash specialization for pairs. Either we define the hash function of pairs or use ordered_set which is a little expensive as it adds log factor. We are using ordered_set here.
 Initialize a min heap minHeap that takes a triplet of integers: the sum of the pair, the index in nums1 of the first element of the pair, and the index in nums2 of the second element of the pair.
