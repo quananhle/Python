@@ -1,6 +1,6 @@
 ## [1514. Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Bellman-Ford Algorithm``` ```Shortest Path Faster Algorithm``` ```Dijkstra's Algorithm```
 
 #### Difficulty: Medium
 
