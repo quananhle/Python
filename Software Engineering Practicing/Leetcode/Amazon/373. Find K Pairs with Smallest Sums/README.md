@@ -53,8 +53,8 @@ __Algorithm__
 1. Create two integer variables ```m``` and ```n```. Initialize them to size of ```nums1``` and ```nums2``` respectively.
 2. Create a list ```res``` to store the pairs with smallest sums that are to be returned as the answer.
 3. Create a hash set ```visited``` to keep track of pairs that are seen
-Initialize a min heap minHeap that takes a triplet of integers: the sum of the pair, the index in nums1 of the first element of the pair, and the index in nums2 of the second element of the pair.
-Push the first element from the both the arrays in minHeap, i.e., we push nums1[0] + nums2[0], 0, 0. We also insert pair (0, 0) in visited.
+4. Initialize a min heap ```min_heap``` that takes a triplet of integers: the sum of the pair, the index in ```nums1``` of the first element of the pair, and the index in ```nums2``` of the second element of the pair.
+5. Push the first element from the both the arrays in ```min_heap```, i.e., we push ```nums1[0] + nums2[0]```, ```0```, ```0```. We also insert pair ```(0, 0)``` in ```visited```.
 Iterate till we get k pairs and minHeap is not empty:
 Pop the top of minHeap and set i = top[1] and j = top[2].
 Push pair (nums1[i], nums2[j]) in ans.
