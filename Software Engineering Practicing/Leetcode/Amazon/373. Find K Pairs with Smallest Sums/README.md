@@ -51,7 +51,7 @@ This method is very similar to the Dijkstra algorithm in that we find the shorte
 __Algorithm__
 
 1. Create two integer variables ```m``` and ```n```. Initialize them to size of ```nums1``` and ```nums2``` respectively.
-Create a list ans to store the pairs with smallest sums that are to be returned as the answer.
+2. Create a list ```res``` to store the pairs with smallest sums that are to be returned as the answer.
 Create a hash set visited to keep track of pairs that are seen. Please note that we used ordered_set in C++ in place of unordered_set because the unordered_set uses hash template to compute hashes for its entries and there is no hash specialization for pairs. Either we define the hash function of pairs or use ordered_set which is a little expensive as it adds log factor. We are using ordered_set here.
 Initialize a min heap minHeap that takes a triplet of integers: the sum of the pair, the index in nums1 of the first element of the pair, and the index in nums2 of the second element of the pair.
 Push the first element from the both the arrays in minHeap, i.e., we push nums1[0] + nums2[0], 0, 0. We also insert pair (0, 0) in visited.
