@@ -23,3 +23,40 @@ Return _the lowest number of moves to acquire all keys_. If it is impossible, re
 ![image](https://github.com/quananhle/Python/assets/35042430/09c2dc95-b874-4a8f-bc9c-01fd83b0ce0c)
 
 ---
+
+Example 1:
+
+![image](https://assets.leetcode.com/uploads/2021/07/23/lc-keys2.jpg)
+```
+Input: grid = ["@.a..","###.#","b.A.B"]
+Output: 8
+Explanation: Note that the goal is to obtain all the keys not to open all the locks.
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2021/07/23/lc-key2.jpg)
+```
+Input: grid = ["@..aA","..B#.","....b"]
+Output: 6
+```
+
+__Example 3:__
+
+![image](https://assets.leetcode.com/uploads/2021/07/23/lc-keys3.jpg)
+```
+Input: grid = ["@Aa"]
+Output: -1
+```
+
+__Constraints:__
+
+- ```m == grid.length```
+- ```n == grid[i].length```
+- ```1 <= m, n <= 30```
+- ```grid[i][j]``` is either an English letter, ```'.'```, ```'#'```, or ```'@'```.
+- The number of keys in the grid is in the range ```[1, 6]```.
+- Each key in the grid is unique.
+Each key in the grid has a matching lock.
+
+---
