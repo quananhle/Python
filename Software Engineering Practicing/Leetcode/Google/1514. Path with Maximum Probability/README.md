@@ -102,3 +102,30 @@ class Solution:
         
         return res[end]
 ```
+
+### Dijkstra's Algorithm
+
+```Python
+class Solution:
+    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+        graph = collections.defaultdict(list)
+        for i, (u, v) in enumerate(edges):
+            graph[u].append([v, succProb[i]])
+            graph[v].append([u, succProb[i]])
+        
+        res = [0.0] * n
+        res[start] = 1.0
+
+        queue = [(-1.0, start)]
+        while queue:
+            prob, curr = heapq.heappop(queue)
+            if curr == end:
+                return -prob
+
+            for next, path_prob in graph[curr]:
+                if -prob * path_prob > res[next]:
+                    res[next] = -prob * path_prob
+                    heapq.heappush(queue, (-res[next], next))    
+
+        return 0.0
+```
