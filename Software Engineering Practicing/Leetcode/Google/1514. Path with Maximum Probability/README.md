@@ -81,6 +81,8 @@ class Solution:
 
 ### Shortest Path Faster Algorithm
 
+![image](https://leetcode.com/problems/path-with-maximum-probability/Figures/1514/c.png)
+
 ```Python
 class Solution:
     def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
@@ -104,6 +106,8 @@ class Solution:
 ```
 
 ### Dijkstra's Algorithm
+
+![image](https://leetcode.com/problems/path-with-maximum-probability/Figures/1514/d2.png)
 
 ```Python
 class Solution:
