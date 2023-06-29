@@ -78,3 +78,27 @@ class Solution:
         
         return res[end]
 ```
+
+### Shortest Path Faster Algorithm
+
+```Python
+class Solution:
+    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+        graph = collections.defaultdict(list)
+        for i, (u, v) in enumerate(edges):
+            graph[u].append([v, succProb[i]])
+            graph[v].append([u, succProb[i]])
+        
+        res = [0.0] * n
+        res[start] = 1
+
+        queue = collections.deque([start])
+        while queue:
+            curr = queue.popleft()
+            for next, path_prob in graph[curr]:
+                if res[curr] * path_prob > res[next]:
+                    res[next] = res[curr] * path_prob
+                    queue.append(next)
+        
+        return res[end]
+```
