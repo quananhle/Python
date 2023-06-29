@@ -1,6 +1,6 @@
 ## [250. Count Univalue Subtrees](https://leetcode.com/problems/count-univalue-subtrees/)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -36,3 +36,39 @@ __Constraints:__
 - ```-1000 <= Node.val <= 1000```
 
 ---
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def countUnivalSubtrees(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+
+        def dfs(node):
+            # Base case
+            if not node:
+                return True
+
+            nonlocal ans
+            left_uni, right_uni = dfs(node.left), dfs(node.right)
+
+            if left_uni and right_uni:
+                if node.left and node.val != node.left.val:
+                    return False
+                if node.right and node.val != node.right.val:
+                    return False
+                
+                ans += 1
+                return True
+            
+            return False
+
+        dfs(root)
+        return ans
+```
