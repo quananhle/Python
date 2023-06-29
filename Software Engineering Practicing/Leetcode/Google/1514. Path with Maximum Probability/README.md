@@ -56,5 +56,25 @@ __Constraints:__
 ### Bellman-Ford Algorithm
 
 ```Python
+class Solution:
+    def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+        res = [0] * n
+        res[start] = 1
 
+        for i in range(n - 1):
+            has_update = False
+            m = len(edges)
+            for j in range(m):
+                u, v = edges[j]
+                path_prob = succProb[j]
+                if res[u] * path_prob > res[v]:
+                    res[v] = res[u] * path_prob
+                    has_update = True
+                if res[v] * path_prob > res[u]:
+                    res[u] = res[v] * path_prob
+                    has_update = True
+            if not has_update:
+                break
+        
+        return res[end]
 ```
