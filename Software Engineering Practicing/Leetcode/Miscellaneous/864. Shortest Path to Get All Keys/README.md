@@ -1,6 +1,6 @@
 ## [864. Shortest Path to Get All Keys](https://leetcode.com/problems/shortest-path-to-get-all-keys)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Breadth-First Search```
 
 #### Difficulty: Hard
 
@@ -60,3 +60,9 @@ __Constraints:__
 Each key in the grid has a matching lock.
 
 ---
+
+### Breadth-First Search
+
+![image](https://leetcode.com/problems/shortest-path-to-get-all-keys/Figures/864/1.png)
+
+![image](https://leetcode.com/problems/shortest-path-to-get-all-keys/Figures/864/2.png)
