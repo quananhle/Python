@@ -84,7 +84,7 @@ __Algorithm__
         - If we finish the BFS without reaching the bottom row, return ```False```.
 3. While ```lo < hi```:
     - Find the middle day ```mi = hi - (hi - lo) / 2```.
-    - Use ```bfs(row, col, mid)``` to check if there is a pathway.
+    - Check if there is a pathway after mid days.
     - If there is a pathway, set ```lo = mi```, otherwise, set ```hi = mi - 1```.
 4. Return ```lo``` as the last day when we can still cross.
 
@@ -95,7 +95,8 @@ __Algorithm__
 class Solution:
     def latestDayToCross(self, row: int, col: int, cells: List[List[int]]) -> int:
         DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
-        def bfs(row, col, day):
+
+        def can_cross(row, col, day):
             grid = [[0] * col for _ in range(row)]
             queue = collections.deque()
 
@@ -123,7 +124,7 @@ class Solution:
 
         while lo < hi:
             mi = hi - (hi - lo) // 2
-            if bfs(row, col, mi):
+            if can_cross(row, col, mi):
                 lo = mi
             else:
                 hi = mi - 1
@@ -135,24 +136,59 @@ class Solution:
 
 __Algorithm__
 
-Initialize the search space by setting the left boundary to left = 1 and the right boundary to right = n.
-
-Define canCross(row, col, cells, day) to check if we can still cross after day days.
-
-Create an all-zero grid of size row * col.
-Set all cells in cells[:day] to 1.
-Iterate over the first row, for any land cell (0, c), start DFS from this cell to explore its unvisited land neighbors recursively. If we reach any cell in the last row, then return true.
-If we can't reach the last row, return false.
-While the left < right:
-
-Find the middle day mid = right - (right - left) / 2.
-Check if there is a pathway after mid days.
-If there is a pathway, set left = mid, otherwise, set right = mid - 1.
-Return left as the last day when we can still cross.
+1. Initialize the search space by setting the left boundary to ```lo = 1``` and the right boundary to ```hi = n```.
+2. Define ```can_cross(row, col, day)``` to check if we can still cross after ```day``` days.
+    - Create an all-zero ```grid``` of size ```row * col```.
+    - Set all cells in ```cells[:day]``` to ```1```.
+    - Iterate over the first row, for any land cell ```(0, c)```, start ```DFS``` from this cell to explore its unvisited land neighbors recursively. If we reach any cell in the last row, then return ```True```.
+    - If we can't reach the last row, return ```False```.
+3. While ```lo < hi```:
+    - Find the middle day ```mi = hi - (hi - lo) / 2```.
+    - Check if there is a pathway after mid days.
+    - If there is a pathway, set ```lo = mi```, otherwise, set ```hi = mi - 1```.
+4. Return ```lo``` as the last day when we can still cross.
 
 - __Time Complexity__: $O(row⋅col⋅log⁡(row⋅col))$
 - __Space Complexity__: $O(row⋅col)$
 
 ```Python
+class Solution:
+    def latestDayToCross(self, row: int, col: int, cells: List[List[int]]) -> int:
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
 
+        def can_cross(row, col, day):
+            grid = [[0] * col for _ in range(row)]
+
+            for r, c in cells[:day]:
+                grid[r - 1][c - 1] = 1
+
+            def dfs(r, c):
+                if not (0 <= r < row and 0 <= c < col and grid[r][c] == 0):
+                    return False
+                if r == row - 1:
+                    return True
+                
+                grid[r][c] = -1
+                for dx, dy in DIRECTIONS:
+                    if dfs(r + dx, c + dy):
+                        return True
+
+                return False
+            
+            for i in range(col):
+                if grid[0][i] == 0 and dfs(0, i):
+                    return True
+                
+            return False
+        
+        lo, hi = 1, row * col
+
+        while lo < hi:
+            mi = hi - (hi - lo) // 2
+            if can_cross(row, col, mi):
+                lo = mi
+            else:
+                hi = mi - 1
+        
+        return lo
 ```
