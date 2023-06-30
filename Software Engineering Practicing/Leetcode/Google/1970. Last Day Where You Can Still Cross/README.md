@@ -1,6 +1,6 @@
 ## [1970. Last Day Where You Can Still Cross](https://leetcode.com/problems/last-day-where-you-can-still-cross)
 
-```Tag```:
+```Tag```: ```Binary Search``` ```Breadth-First Search``` ```Depth-First Search```
 
 #### Difficulty: Hard
 
@@ -54,3 +54,13 @@ __Constraints:__
 - All the values of ```cells``` are unique.
 
 ---
+
+![image](https://leetcode.com/problems/last-day-where-you-can-still-cross/Figures/1970/intro.png)
+
+### Binary Search + Breadth-First Search
+
+![image](https://leetcode.com/problems/last-day-where-you-can-still-cross/Figures/1970/b1.png)
+
+```Python
+
+```
