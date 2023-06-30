@@ -74,21 +74,19 @@ We split the problem into two parts:
 __Algorithm__
 
 1. Initialize the search space by setting the left boundary to ```lo = 1``` and the right boundary to ```hi = n```.
-2. Define ```can_cross(row, col, day)``` to check if we can still cross after ```day``` days.
-
-Create an all-zero grid of size row * col.
-Set all cells in cells[:day] to 1.
-Add all land cells in the first row to an queue queue.
-While queue is not empty, deque the first cell (cur_row, cur_col).
-If cur_row == row - 1, it means we have reached the bottom row, return True.
-Otherwise, we will check if it has unvisited land neighbors, then set their value to -1, and add them into queue.
-If we finish the BFS without reaching the bottom row, return False.
-While left < right:
-
-Find the middle day mid = right - (right - left) / 2.
-Use canCross(row, col, cells, mid) to check if there is a pathway.
-If there is a pathway, set left = mid, otherwise, set right = mid - 1.
-Return left as the last day when we can still cross.
+2. Define ```bfs(row, col, day)``` to check if we can still cross after ```day``` days:
+    - Create an all-zero ```grid``` of size ```row * col```.
+    - Set all cells in ```cells[:day]``` to ```1```.
+    - Add all land cells in the first row to an queue ```queue```.
+    - While queue is not empty, deque the first cell ```(cur_row, cur_col)```.
+        - If ```curr_row == row - 1```, it means we have reached the bottom row, return ```True```.
+        - Otherwise, we will check if it has unvisited land neighbors, then set their value to ```-1```, and add them into ```queue```.
+        - If we finish the BFS without reaching the bottom row, return ```False```.
+3. While ```lo < hi```:
+    - Find the middle day ```mi = hi - (hi - lo) / 2```.
+    - Use ```bfs(row, col, mid)``` to check if there is a pathway.
+    - If there is a pathway, set ```lo = mi```, otherwise, set ```hi = mi - 1```.
+4. Return ```lo``` as the last day when we can still cross.
 
 ```Python
 class Solution:
