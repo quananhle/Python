@@ -88,6 +88,9 @@ __Algorithm__
     - If there is a pathway, set ```lo = mi```, otherwise, set ```hi = mi - 1```.
 4. Return ```lo``` as the last day when we can still cross.
 
+- __Time Complexity__: $O(row⋅col⋅log⁡(row⋅col))$
+- __Space Complexity__: $O(row⋅col)$
+
 ```Python
 class Solution:
     def latestDayToCross(self, row: int, col: int, cells: List[List[int]]) -> int:
@@ -126,4 +129,30 @@ class Solution:
                 hi = mi - 1
         
         return lo
+```
+
+### Binary Search + Depth-First Search
+
+__Algorithm__
+
+Initialize the search space by setting the left boundary to left = 1 and the right boundary to right = n.
+
+Define canCross(row, col, cells, day) to check if we can still cross after day days.
+
+Create an all-zero grid of size row * col.
+Set all cells in cells[:day] to 1.
+Iterate over the first row, for any land cell (0, c), start DFS from this cell to explore its unvisited land neighbors recursively. If we reach any cell in the last row, then return true.
+If we can't reach the last row, return false.
+While the left < right:
+
+Find the middle day mid = right - (right - left) / 2.
+Check if there is a pathway after mid days.
+If there is a pathway, set left = mid, otherwise, set right = mid - 1.
+Return left as the last day when we can still cross.
+
+- __Time Complexity__: $O(row⋅col⋅log⁡(row⋅col))$
+- __Space Complexity__: $O(row⋅col)$
+
+```Python
+
 ```
