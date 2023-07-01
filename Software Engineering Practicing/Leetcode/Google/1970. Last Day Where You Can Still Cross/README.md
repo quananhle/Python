@@ -219,6 +219,9 @@ If r = row - 1, connect it with bottom.
 
 Check if top and bottom are connected, and return i if they are.
 
+- __Time Complexity__: $O(row⋅col)$
+- __Space Complexity__: $O(row⋅col)$
+
 ```Python
 class UnionFind:
 
