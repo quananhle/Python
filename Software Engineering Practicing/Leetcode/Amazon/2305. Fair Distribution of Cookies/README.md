@@ -73,12 +73,46 @@ __Algorithm__
 
 1. Create an array ```children``` of length ```k``` initialized with all zeros, which represents the unfairness of each child.
 2. Define the recursive function ```dfs(curr, remaining_children)``` to distribute the i<sup>th</sup> cookie:
-  - If the number of undistributed cookies is less than ```remaining_children```, which is ```n - curr < remaining_children```, return a large integer like ```float('inf')```, implying that the current distribution is invalid.
-  - If ```curr = n```, return the maximum value of ```children``` which is the unfairness of this distribution.
-  - Otherwise, set ```ans``` as ```float('inf')``` and continue with step 3.
+    - If the number of undistributed cookies is less than ```remaining_children```, which is ```n - curr < remaining_children```, return a large integer like ```float('inf')```, implying that the current distribution is invalid.
+    - If ```curr = n```, return the maximum value of ```children``` which is the unfairness of this distribution.
+    - Otherwise, set ```ans``` as ```float('inf')``` and continue with step 3.
 3. Iterate through ```children``` and for each child ```i```:
-  - Increment ```children[i]``` by ```cookie[curr]```, if ```children[curr]``` is ```0``` before the distribution, decrement ```remaining_children``` by ```1```.
-  - Recursively call ```dfs(curr + 1, remaining_children)``` and update ```ans``` as the minimum unfairness encountered, ```ans = min(ans, dfs(curr + 1, remaining_children))```.
-  - Decrement ```children[i]``` by ```cookie[curr]```, if ```children[curr]``` is ```0``` after the process, increment ```remaining_children``` by ```1```. (This is the backtrack step)
-  - Return ```ans``` after the iteration is complete.
+    - Increment ```children[i]``` by ```cookie[curr]```, if ```children[curr]``` is ```0``` before the distribution, decrement ```remaining_children``` by ```1```.
+    - Recursively call ```dfs(curr + 1, remaining_children)``` and update ```ans``` as the minimum unfairness encountered, ```ans = min(ans, dfs(curr + 1, remaining_children))```.
+    - Decrement ```children[i]``` by ```cookie[curr]```, if ```children[curr]``` is ```0``` after the process, increment ```remaining_children``` by ```1```. (This is the backtrack step)
+    - Return ```ans``` after the iteration is complete.
 5. Return ```dfs(0, k)```.
+
+![image](https://github.com/quananhle/Python/assets/35042430/262014d2-e358-416e-8a71-2051e1f99f2d)
+
+```Python
+class Solution:
+    def distributeCookies(self, cookies: List[int], k: int) -> int:
+        n = len(cookies)
+        children = [0] * k
+
+        def dfs(curr, remaining_children):
+            # Base cases: if not enough cookies remaining, return "float('inf')" for it's an unfair distribution, break out early
+            if n - curr < remaining_children:
+                return float('inf')
+            
+            if curr == n:
+                return max(children)
+
+            # Distribute i-th cookie to each child and update answer
+            ans = float('inf')
+            for i in range(k):
+                remaining_children -= int(children[i] == 0)
+                children[i] += cookies[curr]
+                
+                # Move on to the next child, and compare with the current result 
+                ans = min(ans, dfs(curr + 1, remaining_children))
+
+                # Backtracking
+                children[i] -= cookies[curr]
+                remaining_children += int(children[i] == 0)
+            
+            return ans
+        
+        return dfs(0, k)
+```
