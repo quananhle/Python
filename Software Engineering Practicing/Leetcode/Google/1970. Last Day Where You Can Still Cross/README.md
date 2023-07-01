@@ -204,6 +204,73 @@ class Solution:
 
 ![image](https://leetcode.com/problems/last-day-where-you-can-still-cross/Figures/1970/uf3_1.png)
 
-```Python
+Algorithm
+Create a disjoint set data structure dsu with a size of row * col + 2.
 
+Create an all-one grid of size row * col representing the water cells after the last day.
+
+Iterate over reversed cells, for each cell cells[i] = (r, c):
+
+Check its neighbors in all four directions, and if there is a land cell (new_r, new_c), we connect the root of cells[i] to the root of this neighbor in dsu.
+
+If r = 0, connect it with top.
+
+If r = row - 1, connect it with bottom.
+
+Check if top and bottom are connected, and return i if they are.
+
+```Python
+class UnionFind:
+
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.size = size
+    
+    def find(self, x):
+        if x != self.root[x]:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += root_y
+            self.size -= 1
+        
+    def get_count(self):
+        return self.size
+    
+    def compare(self, x, y):
+        return self.find(x) == self.find(y)
+
+
+class Solution:
+    def latestDayToCross(self, row: int, col: int, cells: List[List[int]]) -> int:
+        uf = UnionFind(row * col + 2)
+        grid = [[1] * col for _ in range(row)]
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+
+        for i in range(len(cells) - 1, -1, -1):
+            r, c = cells[i][0] - 1, cells[i][1] - 1
+            grid[r][c] = 0
+            index_1 = r * col + c + 1
+
+            for new_row, new_col in [(r + dx, c + dy) for dx, dy in DIRECTIONS]:
+                index_2 = new_row * col + new_col + 1
+                if not (0 <= new_row < row and 0 <= new_col < col and grid[new_row][new_col] == 0):
+                    continue
+                uf.union(index_1, index_2)
+                
+        if r == 0:
+            uf.union(0, index_1)
+        if r == row - 1:
+            uf.union(row * col + 1, index_1)
+        if uf.find(0) == uf.find(row * col + 1):
+            return i
 ```
