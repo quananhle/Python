@@ -68,3 +68,17 @@ To implement the early stop technique, we will introduce a parameter named ```ze
 ![image](https://leetcode.com/problems/fair-distribution-of-cookies/Figures/2305/6.png)
 
 Therefore, the algorithm only tracks the paths that lead to valid distributions and updates the global minimum by the maximum unfairness of each valid distribution.
+
+__Algorithm__
+
+1. Create an array ```children``` of length ```k``` initialized with all zeros, which represents the unfairness of each child.
+2. Define the recursive function ```dfs(curr, remaining_children)``` to distribute the i<sup>th</sup> cookie:
+  - If the number of undistributed cookies is less than ```remaining_children```, which is ```n - curr < remaining_children```, return a large integer like ```float('inf')```, implying that the current distribution is invalid.
+  - If ```curr = n```, return the maximum value of ```children``` which is the unfairness of this distribution.
+  - Otherwise, set ```ans``` as ```float('inf')``` and continue with step 3.
+3. Iterate through ```children``` and for each child ```i```:
+  - Increment ```children[i]``` by ```cookie[curr]```, if ```children[curr]``` is ```0``` before the distribution, decrement ```remaining_children``` by ```1```.
+  - Recursively call ```dfs(curr + 1, remaining_children)``` and update ```ans``` as the minimum unfairness encountered, ```ans = min(ans, dfs(curr + 1, remaining_children))```.
+  - Decrement ```children[i]``` by ```cookie[curr]```, if ```children[curr]``` is ```0``` after the process, increment ```remaining_children``` by ```1```. (This is the backtrack step)
+  - Return ```ans``` after the iteration is complete.
+5. Return ```dfs(0, k)```.
