@@ -47,4 +47,24 @@ __Constraints:__
 
 ### Backtracking
 
+Let’s take a look at a scenario with 3 cookies and 3 children that serves as a great example of this.
+
+Initially, we move along the path in yellow by distributing all 3 cookies to child 0, but it is not a valid distribution as child 1 and child 2 receive no cookies.
+
 ![image](https://leetcode.com/problems/fair-distribution-of-cookies/Figures/2305/3.png)
+
+As a result, we backtrack to the next possible distribution (by distributing the last cookie to child 1) and repeat this process.
+
+![image](https://leetcode.com/problems/fair-distribution-of-cookies/Figures/2305/4.png)
+
+To optimize the backtracking approach, we can use an early stop technique. Consider the same example in the image below: suppose that we have already distributed the first 2 cookies to child 0. When we come to the last cookie, should we continue the recursion process by distributing it to any child?
+
+The answer is NO, because child 1 and child 2 require at least two cookies, and at this point, we only have one cookie remaining. Consequently, no matter how we distribute this last cookie, it will inevitably lead to an invalid distribution. Therefore, we can discard this path and not proceed further with it.
+
+![image](https://leetcode.com/problems/fair-distribution-of-cookies/Figures/2305/5.png)
+
+To implement the early stop technique, we will introduce a parameter named ```zero_count``` that represents the number of children without a cookie. During the backtracking process, if we have fewer undistributed cookies than zero_count, it means that some children will always end up with no cookie. At this point, we can terminate the recursion because it becomes impossible to obtain a valid distribution. The image below illustrates this concept, where the red states are not computed thanks to the early stop, significantly reducing unnecessary recursion steps.
+
+![image](https://leetcode.com/problems/fair-distribution-of-cookies/Figures/2305/6.png)
+
+Therefore, the algorithm only tracks the paths that lead to valid distributions and updates the global minimum by the maximum unfairness of each valid distribution.
