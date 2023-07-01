@@ -192,3 +192,18 @@ class Solution:
         
         return lo
 ```
+
+### Disjoint Set Union (on land cells)
+
+- __Find__: Determine which subset a particular element is in. This can be used to determine if two elements are in the same subset.
+- __Union__: Join two subsets into a single subset.
+
+![image](https://leetcode.com/problems/last-day-where-you-can-still-cross/Figures/1970/uf1.png)
+
+![image](https://leetcode.com/problems/last-day-where-you-can-still-cross/Figures/1970/uf2.png)
+
+![image](https://leetcode.com/problems/last-day-where-you-can-still-cross/Figures/1970/uf3_1.png)
+
+```Python
+
+```
