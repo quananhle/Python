@@ -272,3 +272,65 @@ class Solution:
         if uf.find(0) == uf.find(row * col + 1):
             return i
 ```
+
+### Disjoint Set Union (on water cells)
+
+![image](https://leetcode.com/problems/last-day-where-you-can-still-cross/Figures/1970/uf4.png)
+
+- __Time Complexity__: $O(row⋅col⋅α(row⋅col))$
+- __Space Complexity__: $O(row⋅col)$
+
+```Python
+class UnionFind:
+
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.size = size
+    
+    def find(self, x):
+        if x != self.root[x]:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] < self.rank[root_y]:
+                self.root[root_x] = root_y
+                self.rank[root_y] += root_x
+            else:
+                self.root[root_y] = root_x
+                self.rank[root_x] += root_y
+            self.size -= 1
+        
+    def get_count(self):
+        return self.size
+    
+    def compare(self, x, y):
+        return self.find(x) == self.find(y)
+
+
+class Solution:
+    def latestDayToCross(self, row: int, col: int, cells: List[List[int]]) -> int:
+        uf = UnionFind(row * col + 2)
+        grid = [[0] * col for _ in range(row)]
+        DIRECTIONS = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+
+        for i in range(row * col):
+            r, c = cells[i][0] - 1, cells[i][1] - 1
+            grid[r][c] = 1
+            index_1 = r * col + c + 1
+            for new_row, new_col in [(r + dx, c + dy) for dx, dy in DIRECTIONS]:
+                index_2 = new_row * col + new_col + 1
+                if not (0 <= new_row < row and 0 <= new_col < col and grid[new_row][new_col] == 1):
+                    continue
+                uf.union(index_1, index_2)
+                    
+            if c == 0:
+                uf.union(0, index_1)
+            if c == col - 1:
+                uf.union(row * col + 1, index_1)
+            if uf.find(0) == uf.find(row * col + 1):
+                return i
+```
