@@ -204,20 +204,15 @@ class Solution:
 
 ![image](https://leetcode.com/problems/last-day-where-you-can-still-cross/Figures/1970/uf3_1.png)
 
-Algorithm
-Create a disjoint set data structure dsu with a size of row * col + 2.
+__Algorithm__
 
-Create an all-one grid of size row * col representing the water cells after the last day.
-
-Iterate over reversed cells, for each cell cells[i] = (r, c):
-
-Check its neighbors in all four directions, and if there is a land cell (new_r, new_c), we connect the root of cells[i] to the root of this neighbor in dsu.
-
-If r = 0, connect it with top.
-
-If r = row - 1, connect it with bottom.
-
-Check if top and bottom are connected, and return i if they are.
+1. Create a disjoint set data structure dsu with a size of ```row * col + 2```.
+2. Create an all-one ```grid``` of size ```row * col``` representing the water cells after the last day.
+3. Iterate over reversed ```cells```, for each cell ```cells[i] = (r, c)```:
+    - Check its neighbors in all four directions, and if there is a land cell ```(new_row, new_col)```, we connect the root of ```cells[i]``` to the root of this neighbor in ```uf```.
+    - If ```r = 0```, connect it with ```top```.
+    - If ```r = row - 1```, connect it with ```bottom```.
+    - Check if ```top``` and ```bottom``` are connected, and return ```i``` if they are.
 
 - __Time Complexity__: $O(row⋅col)$
 - __Space Complexity__: $O(row⋅col)$
