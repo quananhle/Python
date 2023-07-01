@@ -1,6 +1,6 @@
 ## [2305. Fair Distribution of Cookies](https://leetcode.com/problems/fair-distribution-of-cookies/)
 
-```Tag```:
+```Tag```: ```Backtracking```
 
 #### Difficulty: Medium
 
@@ -44,3 +44,7 @@ __Constraints:__
 - ```2 <= k <= cookies.length```
 
 ---
+
+### Backtracking
+
+![image](https://leetcode.com/problems/fair-distribution-of-cookies/Figures/2305/3.png)
