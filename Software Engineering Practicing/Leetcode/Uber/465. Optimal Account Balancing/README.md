@@ -68,14 +68,25 @@ __Algorithm__
 
 1. Create a hash map ```balance_sheet``` to store the net balance of each person.
 2. Collect all non-zero net balance in an array ```net_balances```.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/6.png)
+
 3. Define a recursive function ```dfs(curr)``` to clear all balances in the range ```net_balances[0 ~ curr]```:
 4. Ignore ```curr``` if the balance is already ```0```. While ```net_balances[curr] = 0```, proceed to the next person by incrementing ```curr``` by ```1```.
     - If ```curr = n```, return ```0```.
     - Otherwise, set ```ans``` to a large integer like ```inf```.
+  
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/7.png)
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/8.png)
+
 5. Traverse through the index of ```next``` from ```curr + 1```, if ```net_balances[next] * net_balances[curr] < 0```,
     - Add the balance of ```net_balances[curr]``` to ```net_balances[next]```: ```net_balances[next] += balance_list[curr]```.
     - Recursively call ```dfs(curr + 1)``` as ```dfs(curr) = 1 + dfs(curr + 1)```.
     - Remove the previous transferred balance from ```curr: net_balances[next] -= net_balances[curr]``` (backtracking).
+  
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/9.png)
+
 6. Repeat from step 5 and keep tracking of the minimum number of operations of ```ans = min(ans, 1 + dfs(curr + 1))``` encountered in the iteration. Return ans when the iteration is complete.
 7. Return ```dfs(0)```.
 
