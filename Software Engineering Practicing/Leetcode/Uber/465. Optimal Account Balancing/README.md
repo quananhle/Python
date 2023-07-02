@@ -61,3 +61,63 @@ Consequently, our initial step involves calculating the net balance of each pers
 ![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/5.png)
 
 If the list is empty, it implies that all persons have zero debt, and the problem can be solved with 0 transactions. Otherwise, we will proceed with working on the list of net balances.
+
+### Backtracking
+
+Algorithm
+Create a hash map to store the net balance of each person.
+
+Collect all non-zero net balance in an array balance_list.
+
+Define a recursive function dfs(cur) to clear all balances in the range balance_list[0 ~ cur]:
+
+Ignore cur if the balance is already 0. While balance_list[cur] = 0, proceed to the next person by incrementing cur by 1.
+
+If cur = n, return 0.
+Otherwise, set cost to a large integer like inf.
+Traverse through the index of nxt from cur + 1, if balance_list[nxt] * balance_list[cur] < 0,
+
+add the balance of balance_list[cur] to balance_list[nxt]: balance_list[nxt] += balance_list[cur].
+
+recursively call dfs(cur + 1) as dfs(cur) = 1 + dfs(cur + 1).
+
+remove the previous transferred balance from cur: balance_list[nxt] -= balance_list[cur] (backtrack).
+
+Repeat from step 5 and keep tracking of the minimum number of operations of cost = min(cost, 1 + dfs(cur + 1)) encountered in the iteration. Return cost when the iteration is complete.
+
+Return dfs(0).
+
+```Python
+class Solution:
+    def minTransfers(self, transactions: List[List[int]]) -> int:
+        balance_sheet = collections.defaultdict(int)
+        for u, v, amount in transactions:
+            balance_sheet[u] += amount
+            balance_sheet[v] -= amount
+        
+        net_balances = [amount for amount in balance_sheet.values() if amount]
+        n = len(net_balances)
+
+        print (net_balances)
+        print (balance_sheet)
+
+        def dfs(curr):
+            # Base case
+            while curr < n and not net_balances[curr]:
+                curr += 1
+            
+            if curr == n:
+                return 0
+            
+            ans = float('inf')
+            for next in range(curr + 1, n):
+                # Check if current person and next person has debt to settle
+                if net_balances[curr] * net_balances[next] < 0:
+                    net_balances[next] += net_balances[curr]
+                    ans = min(ans, 1 + dfs(curr + 1))
+                    net_balances[next] -= net_balances[curr]
+                
+            return ans
+
+        return dfs(0)
+```
