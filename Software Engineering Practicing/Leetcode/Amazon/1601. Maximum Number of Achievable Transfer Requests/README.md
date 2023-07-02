@@ -1,6 +1,6 @@
 ## [1601. Maximum Number of Achievable Transfer Requests](https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/)
 
-```Tag```:
+```Tag```: ```Backtracking``` ```Bitmasking``` ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -18,6 +18,8 @@ Return _the maximum number of achievable requests_.
 
 __Example 1:__
 
+![image](https://assets.leetcode.com/uploads/2020/09/10/move1.jpg)
+
 ```
 Input: n = 5, requests = [[0,1],[1,0],[0,1],[1,2],[2,0],[3,4]]
 Output: 5
@@ -33,6 +35,7 @@ We can achieve the requests of users y, a and z by swapping the places in the 3 
 
 __Example 2:__
 
+![image](https://assets.leetcode.com/uploads/2020/09/10/move2.jpg)
 ```
 Input: n = 3, requests = [[0,0],[1,2],[2,1]]
 Output: 3
@@ -57,3 +60,20 @@ __Constraints:__
 - ```0 <= fromi, toi < n```
 
 ---
+
+### Backtracking
+
+__Algorithm__
+
+1. Initialize ```ans``` to ```0```; this will store the maximum requests we can consider.
+2. Initialize an array ```indegree``` of size ```N``` with all values as ```0```. This array will store the employee change ```count``` for each building.
+3. Start the recursion with ```curr``` and ```count``` as ```0```. The ```count``` here is the number of requests we have considered in the current combination, for each building:
+  - i. If we have iterated over all the requests, check if all values in ```indegree``` are zero. If yes, update the variable ```ans``` by comparing it to ```count```. If all values aren't zero, return.
+  - ii. For the first option, when we consider this request, update the ```indegree``` for both the buildings the current request involves. And move on to the next request with count as ```count + 1```.
+  - iii Revert the changes in ```indegree``` for the request at ```curr```; this is the backtracking step.
+  - iv. For the second option, where we ignore the request, make the recursion call with the following index without changing the ```count```.
+4. Return ```ans```.
+
+```Python
+
+```
