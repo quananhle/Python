@@ -64,28 +64,20 @@ If the list is empty, it implies that all persons have zero debt, and the proble
 
 ### Backtracking
 
-Algorithm
-Create a hash map to store the net balance of each person.
+__Algorithm__
 
-Collect all non-zero net balance in an array balance_list.
-
-Define a recursive function dfs(cur) to clear all balances in the range balance_list[0 ~ cur]:
-
-Ignore cur if the balance is already 0. While balance_list[cur] = 0, proceed to the next person by incrementing cur by 1.
-
-If cur = n, return 0.
-Otherwise, set cost to a large integer like inf.
-Traverse through the index of nxt from cur + 1, if balance_list[nxt] * balance_list[cur] < 0,
-
-add the balance of balance_list[cur] to balance_list[nxt]: balance_list[nxt] += balance_list[cur].
-
-recursively call dfs(cur + 1) as dfs(cur) = 1 + dfs(cur + 1).
-
-remove the previous transferred balance from cur: balance_list[nxt] -= balance_list[cur] (backtrack).
-
-Repeat from step 5 and keep tracking of the minimum number of operations of cost = min(cost, 1 + dfs(cur + 1)) encountered in the iteration. Return cost when the iteration is complete.
-
-Return dfs(0).
+1. Create a hash map ```balance_sheet``` to store the net balance of each person.
+2. Collect all non-zero net balance in an array ```net_balances```.
+3. Define a recursive function ```dfs(curr)``` to clear all balances in the range ```net_balances[0 ~ curr]```:
+4. Ignore ```curr``` if the balance is already ```0```. While ```net_balances[curr] = 0```, proceed to the next person by incrementing ```curr``` by ```1```.
+    - If ```curr = n```, return ```0```.
+    - Otherwise, set ```ans``` to a large integer like ```inf```.
+5. Traverse through the index of ```next``` from ```curr + 1```, if ```net_balances[next] * net_balances[curr] < 0```,
+    - Add the balance of ```net_balances[curr]``` to ```net_balances[next]```: ```net_balances[next] += balance_list[curr]```.
+    - Recursively call ```dfs(curr + 1)``` as ```dfs(curr) = 1 + dfs(curr + 1)```.
+    - Remove the previous transferred balance from ```curr: net_balances[next] -= net_balances[curr]``` (backtracking).
+6. Repeat from step 5 and keep tracking of the minimum number of operations of ```ans = min(ans, 1 + dfs(curr + 1))``` encountered in the iteration. Return ans when the iteration is complete.
+7. Return ```dfs(0)```.
 
 ```Python
 class Solution:
@@ -98,14 +90,12 @@ class Solution:
         net_balances = [amount for amount in balance_sheet.values() if amount]
         n = len(net_balances)
 
-        print (net_balances)
-        print (balance_sheet)
-
         def dfs(curr):
-            # Base case
+            # Base cases: 
+            # Move to the next person if current person has no debt
             while curr < n and not net_balances[curr]:
                 curr += 1
-            
+            # Correct path, no more transaction
             if curr == n:
                 return 0
             
