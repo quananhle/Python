@@ -1,6 +1,6 @@
 ## [465. Optimal Account Balancing](https://leetcode.com/problems/optimal-account-balancing/)
 
-```Tag```: ```Backtracking```
+```Tag```: ```Backtracking``` ```Bitwise Operations```
 
 #### Difficulty: Hard
 
@@ -89,6 +89,8 @@ __Algorithm__
 
 6. Repeat from step 5 and keep tracking of the minimum number of operations of ```ans = min(ans, 1 + dfs(curr + 1))``` encountered in the iteration. Return ans when the iteration is complete.
 7. Return ```dfs(0)```.
+
+![image](https://github.com/quananhle/Python/assets/35042430/bfad9d68-2f98-466c-8a06-6b839451206e)
 
 ```Python
 class Solution:
