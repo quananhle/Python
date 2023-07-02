@@ -124,3 +124,38 @@ class Solution:
 
         return dfs(0)
 ```
+
+### Dynamic Programming
+
+```Python
+class Solution:
+    def minTransfers(self, transactions: List[List[int]]) -> int:
+        balance_sheet = collections.defaultdict(int)
+        for u, v, amount in transactions:
+            balance_sheet[u] += amount
+            balance_sheet[v] -= amount
+        
+        net_balances = [amount for amount in balance_sheet.values() if amount]
+        n = len(net_balances)
+
+        memo = [-1] * (1 << n)
+        memo[0] = 0
+        
+        def dfs(total_mask):
+            if memo[total_mask] != -1:
+                return memo[total_mask]
+            balance_sum, answer = 0, 0
+
+            # Remove one person at a time in total_mask
+            for i in range(n):
+                cur_bit = 1 << i
+                if total_mask & cur_bit:
+                    balance_sum += net_balances[i]
+                    answer = max(answer, dfs(total_mask ^ cur_bit))
+
+            # If the total balance of total_mask is 0, increment answer by 1.
+            memo[total_mask] = answer + (balance_sum == 0)
+            return memo[total_mask]
+        
+        return n - dfs((1 << n) - 1)
+```
