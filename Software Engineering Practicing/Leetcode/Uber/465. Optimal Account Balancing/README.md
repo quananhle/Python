@@ -127,6 +127,38 @@ class Solution:
 
 ### Dynamic Programming
 
+Our initial step involves storing the non-zero net balance of each person in a list.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/td1.png)
+
+To save time and space, we use a binary number to indicate which people are in the group, with the lowest bit set to ```1``` to denote that the $0^{th}$ person is in the group, and so on. This method is often referred to as ```bitmask```.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/td2.png)
+
+We get the optimal solution to the original problem by recursively searching for the optimal solutions to subproblems.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/td3.png)
+
+We remove one person from the current group at a time and recursively find the optimal solution for that subgroup. Taking the figure as an example, the current problem is the group that contains all four persons, represented by the binary number ```1111```. Hence, we need to traverse four subgroups ```(0111, 1011, 1101, 1110)``` and find the optimal solution for each of these subproblems.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/td4.png)
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/td5.png)
+
+Algorithm
+Create an array memo of length 2n2^n2 
+n
+ , with all values initialized to -1, as memory.
+
+Collect all non-zero net balances in the array balance_list.
+
+Define a recursive function dfs(total_mask) to divide total_mask into the largest possible number of subgroups whose sum is 0.
+
+If memo[total_mask] is not equal to -1, return memo[total_mask].
+For each bit cur_mask in total_mask that is 1, remove this bit and recursively call dfs(total_mask ^ cur_mask). Keep track of answer, the maximum result from these subproblems.
+If the sum of balances of total_mask is zero, return answer + 1. Otherwise, return answer.
+Return n - dfs((1 << n) - 1).
+
 ```Python
 class Solution:
     def minTransfers(self, transactions: List[List[int]]) -> int:
