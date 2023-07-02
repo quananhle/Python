@@ -47,3 +47,11 @@ __Constraints:__
 Rather than focusing on the debt relationships between each pair of individuals, we can direct our attention towards the net balance of each person. For instance, person ```1``` is owed ```5``` by person ```2```, but owes ```10``` to person ```3``` and ```10``` to person ```4```. Therefore, person ```1``` owes a net ```15```.
 
 ![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/1.png)
+
+As a result, we can envision an "institution" independent of all persons. If a person has a positive balance, he can clear his debt by transferring his balance to the institution in one transaction. Likewise, if a person has a negative balance, he can also clear his debt by withdrawing the owed balance from the institution in a single transaction. Therefore, it would take a maximum of nnn transactions to settle each person's debt.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/2.png)
+
+Additionally, we can even let one of the ```n``` individuals act as the institution, so the other ```n−1``` individuals can settle their debts in ```n−1``` transactions. Since the total debt sum is ```0```, clearing the debts of the first ```n−1``` individuals would automatically clear the debt of the $n^{th}$ person. Note that this idea applies to any group of people whose total debt sum is ```0```, not just all ```n``` individuals as a group.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/3.png)
