@@ -1,6 +1,6 @@
 ## [465. Optimal Account Balancing](https://leetcode.com/problems/optimal-account-balancing/)
 
-```Tag```:
+```Tag```: ```Backtracking```
 
 #### Difficulty: Hard
 
@@ -43,3 +43,7 @@ __Constraints:__
 - ```1 <= amounti <= 100```
 
 ---
+
+Rather than focusing on the debt relationships between each pair of individuals, we can direct our attention towards the net balance of each person. For instance, person ```1``` is owed ```5``` by person ```2```, but owes ```10``` to person ```3``` and ```10``` to person ```4```. Therefore, person ```1``` owes a net ```15```.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/1.png)
