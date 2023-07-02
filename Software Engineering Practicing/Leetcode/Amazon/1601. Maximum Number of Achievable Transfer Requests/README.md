@@ -74,6 +74,42 @@ __Algorithm__
   - iv. For the second option, where we ignore the request, make the recursion call with the following index without changing the ```count```.
 4. Return ```ans```.
 
-```Python
+![image](https://github.com/quananhle/Python/assets/35042430/59630813-5552-4367-99b5-9cad6cf6d2b6)
 
+```Python
+class Solution:
+    def maximumRequests(self, n: int, requests: List[List[int]]) -> int:
+        indegree = [0] * n
+
+        ans = 0
+
+        def dfs(curr, count):
+            nonlocal ans
+
+            # Base cases:
+            if curr == len(requests):.
+                # Check if all buildings have an in-degree of 0.
+                for i in range(n):
+                    if indegree[i] != 0:
+                        return
+
+                ans = max(ans, count)
+                return
+            
+            # Consider this request, increment and decrement for the buildings involved.
+            indegree[requests[curr][0]] -= 1
+            indegree[requests[curr][1]] += 1
+
+            # Move on to the next request and also increment the count of requests.
+            dfs(curr + 1, count + 1)
+
+            # Backtracking to the previous values to move back to the original state before the second recursion
+            indegree[requests[curr][0]] += 1
+            indegree[requests[curr][1]] -= 1
+
+            # Ignore this request and move on to the next request without incrementing the count
+            dfs(curr + 1, count)
+        
+        dfs(0, 0)
+        return ans
 ```
