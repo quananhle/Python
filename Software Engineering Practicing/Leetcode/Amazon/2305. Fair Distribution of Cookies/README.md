@@ -116,3 +116,39 @@ class Solution:
         
         return dfs(0, k)
 ```
+
+```Python
+class Solution:
+    def distributeCookies(self, cookies: List[int], k: int) -> int:
+        n = len(cookies)
+        children = [0] * k
+
+        def dfs(curr, remaining):
+            # Base cases:
+            # Not enough cookies for remaining children
+            if n - curr < remaining:
+                return float('inf')
+            # Correct path, all children had their cookies
+            if curr == n:
+                return max(children)
+            
+            ans = float('inf')
+            for i in range(k):
+               # Decrement the remaining children
+               if children[i] == 0:
+                   remaining -= 1
+               # Distribute cookies
+               children[i] += cookies[curr]
+
+               ans = min(ans, dfs(curr + 1, remaining))
+
+                # Backtracking
+               children[i] -= cookies[curr]
+               # Increment the remaining children
+               if children[i] == 0:
+                   remaining += 1
+            
+            return ans
+
+        return dfs(0, k)
+```
