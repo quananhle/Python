@@ -436,7 +436,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - [93. Restore IP addresses]
 - [131. Palindrome Partitioning]
 - :no_entry::no_entry::no_entry: [465. Optimal Account Balancing](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Uber/465.%20Optimal%20Account%20Balancing) ```Dynamic Programming``` ```Bitmasking```
-- :warning::warning: [784. Lettercase Permutation](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2011%20Recursion%20%7C%20Backtracking/784.%20Letter%20Case%20Permutation) ```Dynamic Programming``` ```Bitmasking```
+- :warning::warning: [784. Lettercase Permutation](https://github.com/quananhle/Python/tree/2ffbd586cfe82124b19492f169dd4e3d1eb92ba3/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2011%20-%20Recursion%20%7C%20Backtracking/784.%20Letter%20Case%20Permutation) ```Dynamic Programming``` ```Bitmasking```
 - [1079 Letter Tile Possibilities]
 - [1087. Brace Expansion]
 - :no_entry::no_entry::no_entry: [1601. Maximum Number of Achievable Transfer Requests](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1601.%20Maximum%20Number%20of%20Achievable%20Transfer%20Requests) ```Dynamic Programming``` ```Bitmasking```
