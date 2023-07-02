@@ -145,19 +145,15 @@ We remove one person from the current group at a time and recursively find the o
 
 ![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/td5.png)
 
-Algorithm
-Create an array memo of length 2n2^n2 
-n
- , with all values initialized to -1, as memory.
+__Algorithm__
 
-Collect all non-zero net balances in the array balance_list.
-
-Define a recursive function dfs(total_mask) to divide total_mask into the largest possible number of subgroups whose sum is 0.
-
-If memo[total_mask] is not equal to -1, return memo[total_mask].
-For each bit cur_mask in total_mask that is 1, remove this bit and recursively call dfs(total_mask ^ cur_mask). Keep track of answer, the maximum result from these subproblems.
-If the sum of balances of total_mask is zero, return answer + 1. Otherwise, return answer.
-Return n - dfs((1 << n) - 1).
+1. Create an array ```memo``` of length $2^{n}, with all values initialized to ```-1```, as memory.
+2. Collect all non-zero net balances in the array ```net_balances```.
+3. Define a recursive function ```dfs(total_mask)``` to divide ```total_mask``` into the largest possible number of subgroups whose sum is ```0```.
+    - If ```memo[total_mask]``` is not equal to ```-1```, return ```memo[total_mask]```.
+    - For each bit ```cur_mask``` in ```total_mask``` that is ```1```, remove this bit and recursively call ```dfs(total_mask ^ cur_mask)```. Keep track of ```answer```, the maximum result from these subproblems.
+    - If the sum of balances of ```total_mask``` is zero, return ```answer + 1```. Otherwise, return ```answer```.
+4. Return ```n - dfs((1 << n) - 1)```.
 
 ```Python
 class Solution:
