@@ -55,3 +55,9 @@ As a result, we can envision an "institution" independent of all persons. If a p
 Additionally, we can even let one of the ```n``` individuals act as the institution, so the other ```n−1``` individuals can settle their debts in ```n−1``` transactions. Since the total debt sum is ```0```, clearing the debts of the first ```n−1``` individuals would automatically clear the debt of the $n^{th}$ person. Note that this idea applies to any group of people whose total debt sum is ```0```, not just all ```n``` individuals as a group.
 
 ![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/3.png)
+
+Consequently, our initial step involves calculating the net balance of each person from all transactions. If a person's total balance is not zero, we store his net balance in a list.
+
+![image](https://leetcode.com/problems/optimal-account-balancing/Figures/465/5.png)
+
+If the list is empty, it implies that all persons have zero debt, and the problem can be solved with 0 transactions. Otherwise, we will proceed with working on the list of net balances.
