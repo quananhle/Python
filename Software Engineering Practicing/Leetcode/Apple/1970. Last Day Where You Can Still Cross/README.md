@@ -12,6 +12,8 @@ You want to find the __last__ day that it is possible to walk from the __top__ t
 
 Return _the last day where it is possible to walk from the top to the bottom by only walking on land cells_.
 
+![image](https://github.com/quananhle/Python/assets/35042430/74f500ea-8dbe-4026-a378-8e223b68fce9)
+
 ---
 
 __Example 1:__
