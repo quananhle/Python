@@ -1,6 +1,6 @@
 ## [859. Buddy Strings](https://leetcode.com/problems/buddy-strings/)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -41,3 +41,21 @@ __Constraints:__
 - ```s``` and ```goal``` consist of lowercase letters.
 
 ---
+
+### String & Array
+
+```Python
+class Solution:
+    def buddyStrings(self, s: str, goal: str) -> bool:
+        count = 0
+        for i in range(len(s)):
+            if s[i] != goal[i]:
+                count += 1
+            
+        if count == 2:
+            return Counter(goal) == Counter(s)
+        elif count == 0:
+            return len(set(s)) != len(s) and len(set(goal)) != len(goal)
+        else:
+            return False
+```
