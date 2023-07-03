@@ -52,10 +52,10 @@ class Solution:
             if s[i] != goal[i]:
                 count += 1
             
-        if count == 2:
+        if count == 2:                              # s = "ab", goal = "ba"
             return Counter(goal) == Counter(s)
-        elif count == 0:
+        elif count == 0:                            # s = "aa", goal = "aa" ; s = "abcd", goal = "abcde" ; 
             return len(set(s)) != len(s) and len(set(goal)) != len(goal)
         else:
-            return False
+            return False                            # s = "ab", goal = "ab"
 ```
