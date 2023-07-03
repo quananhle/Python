@@ -1,6 +1,6 @@
 ## [1601. Maximum Number of Achievable Transfer Requests](https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/)
 
-```Tag```: ```Backtracking``` ```Bitmasking``` ```Dynamic Programming```
+```Tag```: ```Backtracking``` ```Bitmasking``` ```Dynamic Programming``` ```Meet In The Middle```
 
 #### Difficulty: Hard
 
@@ -115,3 +115,5 @@ class Solution:
 ```
 
 ### Bitmasking
+
+![image](https://leetcode.com/problems/maximum-number-of-achievable-transfer-requests/Figures/1601/1601A.png)
