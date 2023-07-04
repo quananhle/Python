@@ -3,7 +3,3 @@
 ```Tag```:
 
 #### Difficulty: Medium
-
-
-
-
