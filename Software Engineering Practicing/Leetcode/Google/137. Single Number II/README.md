@@ -1,6 +1,6 @@
 ## [137. Single Number II](https://leetcode.com/problems/single-number-ii/)
 
-```Tag```:
+```Tag```: ```Sorting``` ```Hash Map``` ```Bitmasking```
 
 #### Difficulty: Medium
 
@@ -31,3 +31,48 @@ __Constraints:__
 - Each element in ```nums``` appears exactly three times except for one element which appears once.
 
 ---
+
+### Sorting
+
+```Python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+
+        for i in range(0, n - 1, 3):
+            if nums[i] == nums[i + 1]:
+                continue
+            else:
+                return nums[i]
+        
+        return nums[n - 1]
+```
+
+### Hash Table
+
+```Python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        counter = collections.defaultdict(int)
+        for num in nums:
+            counter[num] = 1 + counter.get(num, 0)
+        
+        for key, val in counter.items():
+            if val == 1:
+                return key
+        
+        return -1
+```
+
+```Python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        counter = collections.Counter(nums)
+
+        for key, val in counter.items():
+            if val == 1:
+                return key
+        
+        return -1
+```
