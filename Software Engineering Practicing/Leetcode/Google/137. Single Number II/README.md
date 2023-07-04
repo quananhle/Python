@@ -4,7 +4,3 @@
 
 #### Difficulty: Medium
 
-
-
-
-
