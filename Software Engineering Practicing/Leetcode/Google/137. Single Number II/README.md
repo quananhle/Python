@@ -26,8 +26,8 @@ Output: 99
 
 __Constraints:__
 
-- 1 <= ```nums.length``` <= $3 * 10^{4}$
-- $-2^{31}$ <= ```nums[i]``` <= $2^{31} - 1$
+- $1 <=$ ```nums.length``` $<= 3 * 10^{4}$
+- $-2^{31} <=$ ```nums[i]``` $<= 2^{31} - 1$
 - Each element in ```nums``` appears exactly three times except for one element which appears once.
 
 ---
