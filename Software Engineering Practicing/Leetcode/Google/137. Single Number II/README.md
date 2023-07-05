@@ -157,6 +157,8 @@ B >> 1 = 00101 >> 1 = 00010 = 2 (in decimal)
 
 ![image](https://github.com/quananhle/Python/assets/35042430/f83db64f-5d8a-4c1d-a4ce-81b617bae6da)
 
+![image](https://github.com/quananhle/Python/assets/35042430/dc564aaf-ec07-4a50-998b-148ade1f1856)
+
 - __Time Complexity__: $O(N)$
 - __Space Complexity__: $O(1)$
   
@@ -179,3 +181,5 @@ class Solution:
         
         return ans
 ```
+
+### Equation for Bitmask
