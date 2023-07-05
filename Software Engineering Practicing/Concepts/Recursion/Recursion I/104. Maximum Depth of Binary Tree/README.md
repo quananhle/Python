@@ -50,6 +50,8 @@ class Solution:
 
 ### Depth-First Search
 
+#### Recursive
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -59,16 +61,43 @@ class Solution:
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        self.ans = 0
+        ans = 0
+
         def dfs(node, level):
             if not node:
                 return 0
-            else:
-                if not node.left and not node.right:
-                    self.ans = max(self.ans, level)
-                dfs(node.left, level + 1)
-                dfs(node.right, level + 1)
-        # Base case if not root or not leaf nodes, height == 1
-        dfs(root, 1)
-        return self.ans
+            
+            dfs(node.left, level + 1)
+            dfs(node.right, level + 1)
+
+            nonlocal ans
+            ans = max(ans, level)
+            return ans
+        
+        return dfs(root, 1)
+```
+
+#### Iterative
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        # Iterative DFS
+        if not root:
+            return 0
+        
+        queue = collections.deque([(root, 1)])
+
+        while queue:
+            node, level = queue.popleft()
+            if node.left: queue.append((node.left, level + 1))
+            if node.right: queue.append((node.right, level + 1))
+        
+        return level
 ```
