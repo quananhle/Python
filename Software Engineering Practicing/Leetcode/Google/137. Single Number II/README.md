@@ -85,6 +85,11 @@ class Solution:
 
 ### Mathematics
 
+![image](https://github.com/quananhle/Python/assets/35042430/f41f51f5-3041-4c3b-a91b-922601f98e80)
+
+- __Time Complexity__: $O(N)$
+- __Space Complexity__: $O(N)$
+
 ```Python
 
 ```
