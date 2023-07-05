@@ -210,5 +210,18 @@ class Solution:
 ![image](https://leetcode.com/problems/single-number-ii/Documents/137/137_truth_table_1.SVG)
 
 ```Python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        # Count (modulo 3) bits
+        msb, lsb = 0, 0
 
+        # Process Every Num and update count bits
+        for num in nums:
+            new_lsb = (~msb & ~lsb & num) | (lsb & ~num)
+            new_msb = (lsb & num) | (msb & ~num)
+            lsb = new_lsb
+            msb = new_msb
+
+        # Return lsb as the answer 
+        return lsb
 ```
