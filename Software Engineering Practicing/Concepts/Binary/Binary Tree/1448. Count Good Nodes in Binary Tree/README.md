@@ -52,6 +52,9 @@ __Constraints:__
 
 #### Global Variable
 
+- Time Complexity: $O(N)$.
+- Space Complexity: $O(1)$.
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -79,4 +82,95 @@ class Solution:
             return ans
 
         return dfs(root, None)
+```
+
+#### Without Global Variable
+
+- Time Complexity: $O(N)$.
+- Space Complexity: $O(1)$.
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        res = [0]
+
+        def dfs(node, parent):
+            if not node:
+                return 0
+            
+            if parent is None or parent <= node.val:
+                parent = node.val
+                res[0] += 1
+            
+            dfs(node.left, parent)
+            dfs(node.right, parent)
+
+        dfs(root, None)
+        return res[0]
+```
+
+- Time Complexity: $O(N)$.
+- Space Complexity: $O(N)$.
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        def dfs(node, parent, res):
+            if not node:
+                return 0
+
+            if parent is None or parent <= node.val:
+                parent = node.val
+                res.append(1)
+            
+            dfs(node.left, parent, res)
+            dfs(node.right, parent, res)
+
+            return len(res)
+
+        return dfs(root, None, [])
+```
+
+### Breadth-First Search
+
+- Time Complexity: $O(N)$.
+- Space Complexity: $O(N)$.
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        ans = 0
+
+        if not root:
+            return None
+
+        queue = collections.deque([(root, None)])
+
+        while queue:
+            node, parent = queue.popleft()
+            if parent is None or parent <= node.val:
+                ans += 1
+                parent = node.val
+            if node.left: queue.append((node.left, parent))
+            if node.right: queue.append((node.right, parent))
+        
+        return ans
 ```
