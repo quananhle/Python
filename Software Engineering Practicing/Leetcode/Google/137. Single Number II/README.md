@@ -1,6 +1,6 @@
 ## [137. Single Number II](https://leetcode.com/problems/single-number-ii/)
 
-```Tag```: ```Sorting``` ```Hash Map``` ```Bitmasking```
+```Tag```: ```Sorting``` ```Hash Map``` ```Bitmasking``` ```Mathematics```
 
 #### Difficulty: Medium
 
@@ -54,6 +54,9 @@ class Solution:
 
 ### Hash Table
 
+- __Time Complexity__: $O(N)$
+- __Space Complexity__: $O(N)$
+
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
@@ -78,4 +81,10 @@ class Solution:
                 return key
         
         return -1
+```
+
+### Mathematics
+
+```Python
+
 ```
