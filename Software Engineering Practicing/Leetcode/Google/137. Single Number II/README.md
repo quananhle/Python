@@ -206,3 +206,9 @@ class Solution:
 ```
 
 ### Boolean Algebra and Karnaugh Map
+
+![image](https://leetcode.com/problems/single-number-ii/Documents/137/137_truth_table_1.SVG)
+
+```Python
+
+```
