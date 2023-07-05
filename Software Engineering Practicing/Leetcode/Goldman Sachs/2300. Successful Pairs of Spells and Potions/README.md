@@ -57,6 +57,21 @@ __Constraints:__
 class Solution:
     def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
         res = list()
+
+        for spell in spells:
+            count = 0
+            for potion in potions:
+                if spell * potion >= success:
+                    count += 1
+            res.append(count)
+        
+        return res
+```  
+
+```Python
+class Solution:
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+        res = list()
         
         for spell in spells:
             res.append(len([(spell * potion) for potion in potions if (spell * potion) >= success]))
