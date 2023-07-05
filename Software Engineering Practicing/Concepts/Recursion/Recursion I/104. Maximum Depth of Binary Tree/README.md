@@ -1,4 +1,4 @@
-## 104. Maximum Depth of Binary Tree
+## [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree)
 
 ```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Recursion```
 
