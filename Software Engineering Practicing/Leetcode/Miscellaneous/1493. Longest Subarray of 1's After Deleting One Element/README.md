@@ -86,3 +86,21 @@ class Solution:
                 start += 1
         return end - start
 ```
+
+```Python
+class Solution:
+    def longestSubarray(self, nums: List[int]) -> int:
+        count = 0
+        window = 0
+        start = 0
+        n = len(nums)
+
+        for end in range(n):
+            count += 1 if not nums[end] else 0
+            while count > 1:
+                count -= 1 if not nums[start] else 0
+                start += 1
+            window = max(window, end - start)
+
+        return window
+```
