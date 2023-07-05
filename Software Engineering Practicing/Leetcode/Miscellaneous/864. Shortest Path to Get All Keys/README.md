@@ -73,28 +73,19 @@ Each key in the grid has a matching lock.
 
 ![image](https://leetcode.com/problems/shortest-path-to-get-all-keys/Figures/864/5.png)
 
-Algorithm
-Traverse over grid and do the following:
+__Algorithm__
 
-collect all keys and locks in key_set and lock_set so we can check if a square is a key or lock easily.
-
-build the state that represents all keys.
-
-find the starting position.
-
-Initialize a queue queue and a hash map seen for BFS under different states. Start with the starting position.
-
-While queue is not empty, dequeue a state (cur_row, cur_col, keys, distance).
-
-Generate all possible moves from the current cell (up, down, left, and right), and for each move, check if it leads to a valid cell:
-
-If the move leads to an unseen key, we can update the key-holding state by picking up this key. If we have collected all the keys, return distance + 1, otherwise, add this new state to queue and seen.
-
-If the move leads to a lock and we don't have the corresponding key, skip this move.
-
-If the move leads to a new state, add it to queue and seen.
-
-Repeat steps 3 and 4 until either all cells under all states have been visited or there is no path to collect all the keys. If there is no path to collect all the keys, return -1.
+1. Traverse over ```grid``` and do the following:
+    - Collect all ```keys``` and ```locks``` in ```keys and ```locks``` so we can check if a square is a key or lock easily.
+    - Build the state that represents all keys.
+    - Find the starting position.
+2. Initialize a queue ```queue``` and a hash map ```seen``` for BFS under different states. Start with the starting position.
+3. While ```queue``` is not empty, dequeue a state ```(row, col, key, dst)```.
+4. Generate all possible moves from the current cell (up, down, left, and right), and for each move, check if it leads to a valid cell:
+    - If the move leads to an unseen ```key```, we can update the key-holding state by picking up this key. If we have collected all the keys, return ```dst + 1```, otherwise, add this new state to ```queue``` and ```seen```.
+    - If the move leads to a ```lock``` and we don't have the corresponding ```key```, skip this move.
+    - If the move leads to a new state, add it to ```queue``` and ```seen```.
+5. Repeat steps 3 and 4 until either all cells under all states have been visited or there is no path to collect all the keys. If there is no path to collect all the keys, return ```-1```.
 
 ```Python
 class Solution:
