@@ -61,7 +61,7 @@
 ### Binary Tree - DFS
 
 - :four_leaf_clover: [104. Maximum Depth of Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20I/104.%20Maximum%20Depth%20of%20Binary%20Tree)
-
+- :four_leaf_clover: [872. Leaf-Similar Trees](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/872.%20Leaf-Similar%20Trees)
 
 ### Binary Search Tree
 
