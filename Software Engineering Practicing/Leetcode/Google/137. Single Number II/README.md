@@ -157,6 +157,12 @@ B >> 1 = 00101 >> 1 = 00010 = 2 (in decimal)
 
 ![image](https://github.com/quananhle/Python/assets/35042430/f83db64f-5d8a-4c1d-a4ce-81b617bae6da)
 
+![image](https://github.com/quananhle/Python/assets/35042430/ea3f6206-6600-4a3c-a70b-af4d4d1667ad)
+
+![image](https://github.com/quananhle/Python/assets/35042430/2906eedc-9baf-4e67-8dbe-e434936116c7)
+
+![image](https://github.com/quananhle/Python/assets/35042430/005ed8fd-de91-4f5c-852c-fc4edeefb11d)
+
 ![image](https://github.com/quananhle/Python/assets/35042430/dc564aaf-ec07-4a50-998b-148ade1f1856)
 
 - __Time Complexity__: $O(N)$
@@ -165,21 +171,28 @@ B >> 1 = 00101 >> 1 = 00010 = 2 (in decimal)
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        ans = 0
-
+        # Loner. 
+        loner = 0
+        
+        # Iterate over all bits
         for shift in range(32):
             bit_sum = 0
-
+            
+            # For this bit, iterate over all integers
             for num in nums:
+                
+                # Compute the bit of num, and add it to bit_sum
                 bit_sum += (num >> shift) & 1
             
-            ans_bit = bit_sum % 3
-            ans = ans | (ans_bit << shift)
+            # Compute the bit of loner and place it
+            loner_bit = bit_sum % 3
+            loner = loner | (loner_bit << shift)
+
+        # Do not mistaken sign bit for MSB.
+        if loner >= (1 << 31):
+            loner = loner - (1 << 32)
         
-        if ans >= (1 << 31):
-            ans = ans - (1 << 32)
-        
-        return ans
+        return loner
 ```
 
 ### Equation for Bitmask
