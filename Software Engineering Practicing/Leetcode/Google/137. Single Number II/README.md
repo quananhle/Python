@@ -186,6 +186,9 @@ class Solution:
 
 ![image](https://github.com/quananhle/Python/assets/35042430/b461af4f-2b44-47df-8c06-25ef51d9b366)
 
+- __Time Complexity__: $O(N)$
+- __Space Complexity__: $O(1)$
+
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
@@ -201,3 +204,5 @@ class Solution:
         # Return integer which appears exactly once
         return seen_once
 ```
+
+### Boolean Algebra and Karnaugh Map
