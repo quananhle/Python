@@ -1,4 +1,6 @@
-## 872. Leaf-Similar Trees
+## [872. Leaf-Similar Trees](https://leetcode.com/problems/leaf-similar-trees)
+
+```Tag```: ```Binary Tree``` ```Depth-First Search```
 
 #### Difficulty: Easy
 
@@ -102,6 +104,28 @@ class Solution(object):
             ans += dfs(node.right)
             return ans
         return dfs(root1) == dfs(root2)
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        def dfs(node, stack):
+            if not node:
+                return None
+            
+            if not node.left and not node.right:
+                stack.append(node.val)
+        
+            if node.left: dfs(node.left, stack)
+            if node.right: dfs(node.right, stack)
+            
+            return stack
 ```
 
 ### Iterations
