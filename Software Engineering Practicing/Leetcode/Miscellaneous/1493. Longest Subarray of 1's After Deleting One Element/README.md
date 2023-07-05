@@ -8,7 +8,7 @@ Given a binary array ```nums```, you should delete __one__ element from it.
 
 Return _the size of the longest non-empty subarray containing only ```1```'s in the resulting array_. Return _```0``` if there is no such subarray_.
 
-![image](https://github.com/quananhle/Python/assets/35042430/ae965b2f-1887-472f-859a-6abfe3f06ac7)
+![image](https://github.com/quananhle/Python/assets/35042430/12cf41a1-1426-4946-b1e2-474a9cf2f7e7)
 
 ---
 
