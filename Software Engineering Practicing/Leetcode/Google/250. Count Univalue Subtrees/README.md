@@ -39,15 +39,18 @@ __Constraints:__
 
 ### Depth-First Search
 
-Algorithm
-Create an integer variable count to count the number of uni-value subtrees. We initialize it to 0.
-Perform the DFS traversal over the given binary tree. We perform dfs(root) where dfs is a recursive method that takes a TreeNode node as a parameter from which the traversal begins. It returns a boolean indicating whether the subtree rooted at node is a uni-value subtree or not. We perform the following in this method:
-If node is null, return true.
-Recursively check whether the left child forms a uni-value subtree. We perform isLeftUniValue = dfs(node.left).
-Recursively check whether the right child forms a uni-value subtree. We perform isRightUniValue = dfs(node.right).
-If both the children form uni-value subtrees, i.e, isLeftUniValue && isRightUniValue is true, we compare the values of the node's children with node' value. If the left child exists and node.left.val != node.val, we return false as the values don't match and we don't have a uni-value subtree. Likewise, if the right child exists and node.right.val != node.val, we return false. Otherwise, we increment count by 1 and return true.
-Otherwise, one or both of the children do not form a uni-value subtree, so the tree rooted at node cannot either. We return false.
-Return count.
+#### Using Global Variables
+
+__Algorithm__
+
+1. Create an integer variable ```count``` to count the number of uni-value subtrees. We initialize it to ```0```.
+2. Perform the DFS traversal over the given binary tree. We perform ```dfs(root)``` where ```dfs``` is a recursive method that takes a ```TreeNode node``` as a parameter from which the traversal begins. It returns a boolean indicating whether the subtree rooted at node is a uni-value subtree or not. We perform the following in this method:
+    - If ```node``` is null, return ```True```.
+    - Recursively check whether the ```left``` child forms a uni-value subtree. We perform ```left_uni = dfs(node.left)```.
+    - Recursively check whether the ```right``` child forms a uni-value subtree. We perform ```right_uni = dfs(node.right)```.
+    - If both the children form uni-value subtrees, i.e, ```left_uni and right_uni``` is ```True```, we compare the values of the ```node```'s children with ```node```' value. If the ```left``` child exists and ```node.left.val != node.val```, we return ```False``` as the values don't match and we don't have a uni-value subtree. Likewise, if the ```right``` child exists and ```node.right.val != node.val```, we return ```False```. Otherwise, we increment ```count``` by ```1``` and return ```True```.
+    - Otherwise, one or both of the children do not form a uni-value subtree, so the tree rooted at ```node``` cannot either. We return ```False```.
+3. Return ```count```.
 
 - Time Complexity: $O(N)$.
 - Space Complexity: $O(N)$.
