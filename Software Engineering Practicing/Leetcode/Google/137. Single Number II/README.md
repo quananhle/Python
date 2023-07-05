@@ -155,6 +155,27 @@ B = 5 = 00101 (in binary)
 B >> 1 = 00101 >> 1 = 00010 = 2 (in decimal)
 ```
 
-```Python
+![image](https://github.com/quananhle/Python/assets/35042430/f83db64f-5d8a-4c1d-a4ce-81b617bae6da)
 
+- __Time Complexity__: $O(N)$
+- __Space Complexity__: $O(1)$
+  
+```Python
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        ans = 0
+
+        for shift in range(32):
+            bit_sum = 0
+
+            for num in nums:
+                bit_sum += (num >> shift) & 1
+            
+            ans_bit = bit_sum % 3
+            ans = ans | (ans_bit << shift)
+        
+        if ans >= (1 << 31):
+            ans = ans - (1 << 32)
+        
+        return ans
 ```
