@@ -48,10 +48,10 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/Figures/2300/Slide1.PNG)
 
-### Brute Force
+### Brute Force (Time Limit Exceeded)
 
-- __Time Complexity__: ```O(N^2)```
-- __Space Complexity__: ```O(N)```
+- __Time Complexity__: $O(N^2)$
+- __Space Complexity__: $O(N)$
 
 ```Python
 class Solution:
