@@ -90,17 +90,19 @@ class Solution:
 ```Python
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
-        count = 0
-        window = 0
-        start = 0
         n = len(nums)
+        start = count = window = 0
 
         for end in range(n):
-            count += 1 if not nums[end] else 0
+            # Expand window to the right, increment count if encountering an element to delete
+            count += 1 if nums[end] == 0 else 0
+            # Pick up from current start pointer, increment to the right until encountering the element to delete
             while count > 1:
-                count -= 1 if not nums[start] else 0
+                # Decrement count once encountering the element to delete
+                count -= 1 if nums[start] == 0 else 0
+                # Increment start pointer
                 start += 1
             window = max(window, end - start)
-
+        
         return window
 ```
