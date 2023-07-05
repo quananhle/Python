@@ -1,6 +1,6 @@
 ## [1448. Count Good Nodes in Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -47,3 +47,36 @@ __Constraints:__
 - Each node's value is between $[-10^4, 10^4]$.
 
 ---
+
+### Depth-First Search
+
+#### Global Variable
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        ans = 0
+
+        def dfs(node, parent):
+            nonlocal ans
+
+            if not node:
+                return 0
+
+            if parent is None or parent <= node.val:
+                parent = node.val
+                ans += 1
+            
+            dfs(node.left, parent)
+            dfs(node.right, parent)
+
+            return ans
+
+        return dfs(root, None)
+```
