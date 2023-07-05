@@ -206,6 +206,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 ## [Bitwise Manipulation](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation)
 
 - :four_leaf_clover: [136. Single Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/136.%20Single%20Number)
+- :warning::warning: [137. Single Number II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/137.%20Single%20Number%20II) ```Sorting``` ```Hash Map``` ```Mathematics``` ```Karnaugh Map```
 - :four_leaf_clover: [190. Reverse Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/190.%20Reverse%20Bits)
 - :four_leaf_clover: [191. Number of 1 Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/191.%20Number%20of%201%20Bits)
 - :four_leaf_clover: [231. Power of Two](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/231.%20Power%20of%20Two)
