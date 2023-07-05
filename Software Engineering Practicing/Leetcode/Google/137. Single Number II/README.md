@@ -209,6 +209,9 @@ class Solution:
 
 ![image](https://leetcode.com/problems/single-number-ii/Documents/137/137_truth_table_1.SVG)
 
+- __Time Complexity__: $O(N)$
+- __Space Complexity__: $O(1)$
+
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
