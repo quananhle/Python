@@ -95,3 +95,55 @@ If the move leads to a lock and we don't have the corresponding key, skip this m
 If the move leads to a new state, add it to queue and seen.
 
 Repeat steps 3 and 4 until either all cells under all states have been visited or there is no path to collect all the keys. If there is no path to collect all the keys, return -1.
+
+```Python
+class Solution:
+    def shortestPathAllKeys(self, grid: List[str]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        queue = collections.deque()
+        seen = collections.defaultdict(set)
+
+        keys, locks = set(), set()
+        key_count = 0
+        start_row, start_col = -1, -1
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                cell = grid[row][col]
+                # Key: the number of keys in the grid is in the range [1, 6]
+                if cell in "abcdef":
+                    key_count += (1 << (ord(cell) - ord('a')))
+                    keys.add(cell)
+                # Lock
+                if cell in "ABCDEF":
+                    locks.add(cell)
+                if cell == '@':
+                    start_row, start_col = row, col
+        
+        # [row, column, key_state, distance]
+        queue.append((start_row, start_col, 0, 0))
+        seen[0].add((start_row, start_col))
+
+        while queue:
+            row, col, key, dst = queue.popleft()
+            for new_row, new_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if not (0 <= new_row < ROWS and 0 <= new_col < COLS and grid[new_row][new_col] != '#'):
+                    continue
+                cell = grid[new_row][new_col]
+                # Check if the current cell is a key never been picked up
+                if cell in keys and not ((1 << (ord(cell) - ord('a'))) & key):
+                    new_key = (key | (1 << (ord(cell) - ord('a'))))
+                    if new_key == key_count:
+                        return dst + 1
+                    seen[new_key].add((new_row, new_col))
+                    queue.append((new_row, new_col, new_key, dst + 1))
+                # Check if it is a lock but have no key
+                elif cell in locks and not (key & (1 << (ord(cell) - ord('A')))):
+                    continue
+                elif not (new_row, new_col) in seen[key]:
+                    seen[key].add((new_row, new_col))
+                    queue.append((new_row, new_col, key, dst + 1))
+        
+        return -1
+```
