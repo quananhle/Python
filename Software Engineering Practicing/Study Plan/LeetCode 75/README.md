@@ -58,6 +58,11 @@
 - :four_leaf_clover: [206. Reverse Linked List](https://github.com/quananhle/Python/blob/5a29ffee2f0c37964931776bac5de4932866e04e/Software%20Engineering%20Practicing/Concepts/Linked%20List/Classic%20Problems/206.%20Reverse%20Linked%20List)
 - :warning::warning: [2130. Maximum Twin Sum of a Linked List](https://github.com/quananhle/Python/blob/5a29ffee2f0c37964931776bac5de4932866e04e/Software%20Engineering%20Practicing/Leetcode/Amazon/2130.%20Maximum%20Twin%20Sum%20of%20a%20Linked%20List)
 
+### Binary Tree - DFS
+
+- :four_leaf_clover: [104. Maximum Depth of Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20I/104.%20Maximum%20Depth%20of%20Binary%20Tree)
+
+
 ### Binary Search Tree
 
 - :four_leaf_clover: [700. Search in a Binary Search Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/700.%20Search%20in%20a%20Binary%20Search%20Tree)
