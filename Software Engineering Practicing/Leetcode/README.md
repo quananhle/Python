@@ -338,6 +338,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ### Breadth-First Search in Graph
 
 - :no_entry::no_entry::no_entry: [815. Bus Routes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2011%20-%20Graph%20%7C%20BFS%20%7C%20DFS/815.%20Bus%20Routes)
+- :no_entry::no_entry::no_entry: [864. Shortest Path to Get All Keys](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/864.%20Shortest%20Path%20to%20Get%20All%20Keys)
 - :warning::warning: [1514. Path with Maximum Probability](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1514.%20Path%20with%20Maximum%20Probability) ```Bellman-Ford Algorithm``` ```Shortest Path Faster Algorithm``` ```Dijkstra's Algorithm```
 - :warning::warning: [1926. Nearest Exit from Entrance in Maze](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1926.%20Nearest%20Exit%20from%20Entrance%20in%20Maze)
 
