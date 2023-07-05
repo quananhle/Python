@@ -34,6 +34,9 @@ __Constraints:__
 
 ### Sorting
 
+- __Time Complexity__: $O(Nlog⁡N)$
+- __Space Complexity__: $O(N)$
+
 ```Python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
