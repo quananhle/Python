@@ -92,24 +92,29 @@
 - :four_leaf_clover: [1065. Index Pairs of a String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1065.%20Index%20Pairs%20of%20a%20String) ```Trie``` ```Hash Set```
 - :warning::warning: [1493. Longest Subarray of 1's After Deleting One Element](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1493.%20Longest%20Subarray%20of%201's%20After%20Deleting%20One%20Element) ```Two Pointers```
 
-#### Cumulative Sum
+- #### Cumulative Sum
 
-- :four_leaf_clover: [643. Maximum Average Subarray I](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/643.%20Maximum%20Average%20Subarray%20I) ```Math```
-- :warning::warning: [2090. K Radius Subarray Averages](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/2090.%20K%20Radius%20Subarray%20Averages)
+  - :four_leaf_clover: [643. Maximum Average Subarray I](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/643.%20Maximum%20Average%20Subarray%20I) ```Math```
+  - :warning::warning: [2090. K Radius Subarray Averages](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/2090.%20K%20Radius%20Subarray%20Averages)
 
-#### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
+- #### Subarray
 
-- :warning::warning: [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters) ```Hash Map```
-- :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring)
-- :warning::warning: [1456. Maximum Number of Vowels in a Substring of Given Length](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
+  - :warning::warning: [209. Minimum Size Subarray Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Two-Pointer%20Technique/209.%20Minimum%20Size%20Subarray%20Sum)
+  - :warning::warning: [2348. Number of Zero-Filled Subarrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2348.%20Number%20of%20Zero-Filled%20Subarrays) 
 
-##### Palindrome
+- #### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
 
-- :warning::warning: [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome/5.%20Longest%20Palindromic%20Substring) ```Dynamic Programming``` ```Sliding Window``` ```Two Pointers```
+  - :warning::warning: [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters) ```Hash Map```
+  - :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring)
+  - :warning::warning: [1456. Maximum Number of Vowels in a Substring of Given Length](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
 
-##### String Matching
+  - ##### Palindrome
 
-- :four_leaf_clover: [28. Find the Index of the First Occurrence in a String](https://github.com/quananhle/Python/tree/a73e97478eed5b0396014c1912f2d4303e2089d6/Software%20Engineering%20Practicing/Concepts/Algorithms/String%20Matching/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String) ```Sliding Window``` ```Rabin-Karp Algorithm``` ```Knuth–Morris–Pratt Algorithm```
+    - :warning::warning: [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome/5.%20Longest%20Palindromic%20Substring) ```Dynamic Programming``` ```Sliding Window``` ```Two Pointers```
+
+  - ##### String Matching
+
+    - :four_leaf_clover: [28. Find the Index of the First Occurrence in a String](https://github.com/quananhle/Python/tree/a73e97478eed5b0396014c1912f2d4303e2089d6/Software%20Engineering%20Practicing/Concepts/Algorithms/String%20Matching/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String) ```Sliding Window``` ```Rabin-Karp Algorithm``` ```Knuth–Morris–Pratt Algorithm```
 
 ### String Calculations
 
@@ -119,10 +124,6 @@
 - :four_leaf_clover: [258. Add Digits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/258.%20Add%20Digits) ```Math``` 
 - [415. Add Strings]
 - [989. Add to Array-Form of Integer]
-
-### Subarray
-
-- :warning::warning: [2348. Number of Zero-Filled Subarrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2348.%20Number%20of%20Zero-Filled%20Subarrays) ```Sliding Window```
 
 ### Two Pointers
 
