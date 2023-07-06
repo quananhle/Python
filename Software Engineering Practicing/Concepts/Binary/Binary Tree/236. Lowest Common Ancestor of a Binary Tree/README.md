@@ -119,17 +119,16 @@ class Solution:
         #### Space Complexity: O(N), extra memory space to keep up the recursion stack
         if not root:
             return None
+        
         if root == p or root == q:
             return root
-
+        
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
 
-        if not left:
-            return right
-        if not right:
-            return left
-        return root
+        if left is None: return right
+        elif right is None: return left
+        else: return root
 ```
 
 ### Backtracking
