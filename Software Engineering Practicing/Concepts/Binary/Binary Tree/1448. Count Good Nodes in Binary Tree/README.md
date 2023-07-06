@@ -87,7 +87,7 @@ class Solution:
 #### Without Global Variable
 
 - Time Complexity: $O(N)$.
-- Space Complexity: $O(1)$.
+- Space Complexity: $O(N)$.
 
 ```Python
 # Definition for a binary tree node.
