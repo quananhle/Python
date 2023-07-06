@@ -1,6 +1,6 @@
 ## [437. Path Sum III](https://leetcode.com/problems/path-sum-iii/)
 
-```Tag```: ```Binary Tree``` ```Prefix Sum```
+```Tag```: ```Binary Tree``` ```Prefix Sum``` ```Backtracking```
 
 #### Difficulty: Medium
 
