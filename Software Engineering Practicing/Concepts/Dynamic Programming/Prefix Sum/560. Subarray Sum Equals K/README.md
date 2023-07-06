@@ -88,26 +88,45 @@ class Solution:
         return count
 ```
 
-### Dynamic Programming
+### Cumulative Sum
 
 ```Python
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
         ### Time Limit Exceeded
-        count = 0
+        ans = 0
         n = len(nums)
-        dp = [0 for _ in range(n + 1)]
+        prefix_sums = [0 for _ in range(n + 1)]
 
         # Pre-calculate cumulative sum
         for i in range(1, n + 1):
-            dp[i] = dp[i - 1] + nums[i - 1]
+            prefix_sums[i] = prefix_sums[i - 1] + nums[i - 1]
 
         for end in range(1, n + 1):
             for start in range(end):
-                if dp[end] - dp[start] == k:
-                    count += 1
+                if prefix_sums[end] - prefix_sums[start] == k:
+                    ans += 1
                     
-        return count
+        return ans
+```
+
+```Python
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        ### Time Limit Exceeded
+        ans = 0
+        n = len(nums)
+        prefix_sums = [0] * (n + 1)
+
+        for i in range(1, n + 1):
+            prefix_sums[i] = prefix_sums[i - 1] + nums[i - 1]
+        
+        for start in range(n):
+            for end in range(start + 1, n + 1):
+                if prefix_sums[end] - prefix_sums[start] == k:
+                    ans += 1
+                
+        return ans
 ```
 
 ### Prefix Sum
