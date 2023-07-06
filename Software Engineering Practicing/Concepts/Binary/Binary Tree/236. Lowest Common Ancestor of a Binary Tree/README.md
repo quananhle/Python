@@ -78,14 +78,14 @@ class Solution:
         #### Space Complexity: O(N), extra memory space to keep up the recursion stack
         ans = 0
 
-        def helper(curr):
+        def dfs(curr):
             nonlocal ans
             if not curr:
                 return False
             # Traverse to the bottom left
-            left = helper(curr.left)
+            left = dfs(curr.left)
             # Traverse to the bottom right:
-            right = helper(curr.right)
+            right = dfs(curr.right)
             # Check if the current node is p or q
             '''
             mid = curr == p or curr == q
@@ -95,12 +95,16 @@ class Solution:
             else:
                 mid = False
             # Check if any two of the three flags left, right or mid become True.
+            '''
             if mid + left + right >= 2:
+                ans = curr
+            '''
+            if (mid and left) or (mid and right) or (left and right) or (mid and left and right):
                 ans = curr
             # Check if any of mid or left or right is True, meaning p or q was found, or False, meaning p or q has not been found yet
             return mid or left or right
         
-        helper(root)
+        dfs(root)
         return ans
 ```
 
