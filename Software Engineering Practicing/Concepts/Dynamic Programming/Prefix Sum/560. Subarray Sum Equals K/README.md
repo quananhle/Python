@@ -1,4 +1,4 @@
-## [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
+## [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) (Number of Continuous Subarrays that Sum to Target)
 
 ```Tag``` ```Prefix Sum``` ```Dynamic Programming```
 
