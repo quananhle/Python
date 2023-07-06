@@ -68,33 +68,38 @@ class Solution:
 
 #### Algorithm
 
+- Initialize ```ans``` to a large integer value
 - Initialize ```left``` pointer to 0 and ```total``` to 0
 - Iterate over the ```nums```:
-    - Add ```nums[i]``` to ```sum```
+    - Add ```nums[end]``` to ```total```
     - While ```total``` is greater than or equal to ```target```:
-        - Update ```ans = min⁡(ans, i+1−left)```, where ```i+1−left``` is the size of current subarray
+        - Update ```ans = min⁡(ans, end + 1 − left)```, where ```end + 1 − left``` is the size of current subarray
         - It means that the first index can safely be incremented, since, the minimum subarray starting with this index with ```total ≥ s``` has been achieved
-        - Subtract ```nums[left]``` from ```sum``` and increment ```left```
+        - Subtract ```nums[start]``` from ```total``` and increment ```start```
 
 ```Python
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         # Two Pointers
-        #### Time Complexity:
-        #### Space Complexity:
-        res = sys.maxsize
-        left, total = 0, 0
-        for i in range(len(nums)):
-            total += nums[i]
+        #### Time Complexity: O(N), traverse through the length of input array
+        #### Space Complexity: O(1), constant pointers required only 
+        ans = float('inf')
+        n = len(nums)
+        start = total = 0
+
+        for end in range(n):
+            total += nums[end]
             while total >= target:
-                res = min(res, i + 1 - left)
-                total -= nums[left]
-                left += 1
-        return res if res != sys.maxsize else 0
+                ans = min(ans, end - start + 1)
+                total -= nums[start]
+                start += 1
+
+        return ans if ans != float('inf') else 0
 ```
 
 __Time complexity__: ```O(n)```, single iteration of ```O(n)```.
 
 - Each element can be visited atmost twice, once by the right pointer(i) and (atmost) once by the ```left``` pointer.
+- You may be thinking: there is an inner while loop inside another for loop, isn't the time complexity $O(n^2)$. The reason it is still $O(n)$ is because the right pointer ```end``` can move $n$ times and the left pointer ```start``` can move also $n$ times in total. The inner loop is not running $n$ times for each iteration of the outer loop. A sliding window guarantees a maximum of $2n$ window iterations. This is what is referred to as __amortized analysis__ - even though the worst case for an iteration inside the for loop is $O(n)$, it averages out to $O(1)$ when you consider the entire runtime of the algorithm.
     
 __Space complexity__: ```O(1)```, constant space required for ```left```, ```total```, ```res``` and ```i```.
