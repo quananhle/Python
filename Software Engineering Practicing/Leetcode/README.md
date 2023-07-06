@@ -313,7 +313,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - [718. Maximum Length of Repeated Subarray]
 Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
-### Prefix Sum
+### [Prefix Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Prefix%20Sum)
 
 - :warning::warning: [560. Subarray Sum Equals K](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Prefix%20Sum/560.%20Subarray%20Sum%20Equals%20K) ```Dynamic Programming```
 - :four_leaf_clover: [724. Find Pivot Index](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Prefix%20Sum/724.%20Find%20Pivot%20Index)
