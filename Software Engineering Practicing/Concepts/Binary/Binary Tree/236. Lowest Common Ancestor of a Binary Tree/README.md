@@ -1,6 +1,6 @@
-## 236. Lowest Common Ancestor of a Binary Tree
+## [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree)
 
-```Tag```: ```Backtracking``` ```Recursion```
+```Tag```: ```Binary Tree``` ```Backtracking``` ```Recursion```
 
 #### Difficulty: Medium
 
