@@ -41,9 +41,9 @@ _Find a number of continuous subarrays that sum to target._
   - In situation 1, the subarray with the target sum starts from the beginning of the array. That means that the current prefix sum is equal to the target sum, and we increase the counter by ```1```.
 
   ![image](https://leetcode.com/problems/path-sum-iii/Figures/437/situation11.png)
-  __Situation 1: The subarray starts from the beginning of the array.__
+  _Situation 1: The subarray starts from the beginning of the array._
 
   - In situation 2, the subarray with the target sum starts somewhere in the middle. That means we should add to the counter the number of times we have seen the prefix sum ```curr_sum - target``` so far: ```count += prefix_sums[curr_sum - target]```. The logic is simple: the current prefix sum is ```curr_sum```, and some elements before the prefix sum was ```curr_sum - target```. All the elements in between sum up to ```curr_sum - (curr_sum - target) = target```.
  
   ![image](https://leetcode.com/problems/path-sum-iii/Figures/437/situation24.png)
-  __Situation 2: The subarray starts somewhere in the middle.__
+  _Situation 2: The subarray starts somewhere in the middle._
