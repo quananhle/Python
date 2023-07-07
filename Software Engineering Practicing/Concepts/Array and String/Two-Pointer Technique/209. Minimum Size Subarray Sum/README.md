@@ -97,6 +97,26 @@ class Solution:
         return ans if ans != float('inf') else 0
 ```
 
+```Python
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        # Two Pointers
+        #### Time Complexity: O(N), traverse through the length of input array
+        #### Space Complexity: O(1), constant pointers required only 
+        n = len(nums)
+        start = 0
+        ans = float('inf')
+
+        for end in range(n):
+            target -= nums[end]
+            while target <= 0:
+                target += nums[start]
+                ans = min(ans, end - start + 1)
+                start += 1
+            
+        return ans if ans != float('inf') else 0
+```
+
 __Time complexity__: ```O(n)```, single iteration of ```O(n)```.
 
 - Each element can be visited atmost twice, once by the right pointer(i) and (atmost) once by the ```left``` pointer.
