@@ -1,6 +1,6 @@
 ## [2024. Maximize the Confusion of an Exam](https://leetcode.com/problems/maximize-the-confusion-of-an-exam/)
 
-```Tag```: 
+```Tag```: ```Sliding Window``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -50,3 +50,24 @@ __Constraints:__
 - $1 <= k <= n$
 
 ---
+
+### Sliding WIndow
+
+```Python
+class Solution:
+    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+        counter = collections.Counter(answerKey[:k])
+        n = len(answerKey)
+        start = 0
+        ans = 0
+
+        for end in range(k, n):
+            counter[answerKey[end]] += 1
+            while min(counter['T'], counter['F']) > k:
+                counter[answerKey[start]] -= 1
+                start += 1
+
+            ans = max(ans, end - start + 1)
+        
+        return ans
+```
