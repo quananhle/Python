@@ -148,5 +148,31 @@ class Solution:
         return end - start
 ```
 
-### 2024. Maximize the Confusion of an Exam
+### [2024. Maximize the Confusion of an Exam](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/2024.%20Maximize%20the%20Confusion%20of%20an%20Exam)
 
+__Example 1:__
+```
+Input: answerKey = "TTFF", k = 2
+Output: 4
+Explanation: We can replace both the 'F's with 'T's to make answerKey = "TTTT".
+There are four consecutive 'T's.
+```
+
+```Python
+class Solution:
+    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+        counter = collections.Counter(answerKey[:k])
+        n = len(answerKey)
+        start = 0
+        ans = k
+
+        for end in range(k, n):
+            counter[answerKey[end]] += 1
+            while min(counter['T'], counter['F']) > k:
+                counter[answerKey[start]] -= 1
+                start += 1
+
+            ans = max(ans, end - start + 1)
+        
+        return ans
+```
