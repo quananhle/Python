@@ -59,7 +59,7 @@ class Solution:
         counter = collections.Counter(answerKey[:k])
         n = len(answerKey)
         start = 0
-        ans = 0
+        ans = k
 
         for end in range(k, n):
             counter[answerKey[end]] += 1
