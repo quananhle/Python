@@ -1,5 +1,33 @@
 ## Sliding Window
 
+### [209. Minimum Size Subarray Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/209.%20Minimum%20Size%20Subarray%20Sum)
+
+Given an array of positive integers ```nums``` and a positive integer ```target```, return _the __minimal length__ of a subarray whose sum is greater than or equal to ```target```_. If there is no such subarray, return ```0``` instead.
+
+__Example 1:__
+```
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Explanation: The subarray [4,3] has the minimal length under the problem constraint.
+```
+
+```Python
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        ans = float('inf')
+        n = len(nums)
+        start = total = 0
+
+        for end in range(n):
+            total += nums[end]
+            while total >= target:
+                ans = min(ans, end - start + 1)
+                total -= nums[start]
+                start += 1
+
+        return 0 if ans == float('inf') else ans
+```
+
 ### [643. Maximum Average Subarray I](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/643.%20Maximum%20Average%20Subarray%20I)
 
 You are given an integer array ```nums``` consisting of ```n``` elements, and an integer ```k```.
@@ -119,3 +147,6 @@ class Solution:
                 start += 1
         return end - start
 ```
+
+### 2024. Maximize the Confusion of an Exam
+
