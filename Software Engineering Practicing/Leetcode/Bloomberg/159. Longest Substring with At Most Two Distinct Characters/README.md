@@ -1,6 +1,6 @@
 ## [159. Longest Substring with At Most Two Distinct Characters](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/)
 
-```Tag```: ```Sliding Window```
+```Tag```: ```Sliding Window``` ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -30,3 +30,34 @@ __Constraints:__
 - ```s``` consists of English letters.
 
 ---
+
+### Sliding Window
+
+```Python
+class Solution:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
+        n = len(s)
+        start = 0
+        memo = collections.defaultdict(int)
+        ans = 0
+
+        if n < 3:
+            return n
+
+        for end in range(n):
+            right = s[end]
+            memo[right] = 1 + memo.get(right, 0)
+
+            while len(memo) > 2:
+                left = s[start]
+                memo[left] -= 1
+
+                if memo[left] == 0:
+                    del memo[left]
+                
+                start += 1
+            
+            ans = max(ans, end - start + 1)
+    
+        return ans
+```
