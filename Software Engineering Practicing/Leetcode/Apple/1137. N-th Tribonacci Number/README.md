@@ -55,12 +55,12 @@ class Solution:
         return memo[n]
 ```
 
-#### Dynamic Programming with Optimized Memorization (O(1) space) using List 
+#### Dynamic Programming with Optimized Memoization (O(1) space) using List 
 
 ```Python
 class Solution:
     def tribonacci(self, n: int) -> int:
-        # Dynamic Programming with Optimized Memorization (O(1) space) using List 
+        # Dynamic Programming with Optimized Memoization (O(1) space) using List 
         #### Time Complexity: O(N), traverse through the size of n
         #### Space Complexity: O(1), constant memory of 3 
         cache = [[] * (3) for _ in range(3)]
@@ -70,12 +70,12 @@ class Solution:
         return cache[n % 3]
 ```
 
-#### Dynamic Programming with Optimized Memorization (O(1) space) using Hash Map 
+#### Dynamic Programming with Optimized Memoization (O(1) space) using Hash Map 
 
 ```Python
 class Solution:
     def tribonacci(self, n: int) -> int:
-        # Dynamic Programming with Optimized Memorization (O(1) space) using Hash Map
+        # Dynamic Programming with Optimized Memoization (O(1) space) using Hash Map
         #### Time Complexity: O(N), traverse through the size of n
         #### Space Complexity: O(1), constant memory of 3 
         memo = collections.defaultdict(int)
@@ -87,7 +87,7 @@ class Solution:
 
 ### Optimize Runtime Performance
 
-#### Recursion with Memorization
+#### Recursion with Memoization
 
 ```Python
 # Precompute Tribonacci number
@@ -111,14 +111,14 @@ class Tribonacci:
 
 class Solution:
     def tribonacci(self, n: int) -> int:
-        # Recursion with Memorization
+        # Recursion with Memoization
         #### Time Complexity: O(1), to retrieve the preliminary computed Tribonacci number
         #### Space Complexity: O(1), constant space up to the constraint
         tri = Tribonacci()
         return tri.memo[n]
 ```
 
-#### Iterative Memorization
+#### Iterative Memoization
 
 ```Python
 # Precomputing Tribonacci number
@@ -151,7 +151,7 @@ class Tribonacci:
 
 class Solution:
     def tribonacci(self, n: int) -> int:
-        # Recursion with Memorization
+        # Recursion with Memoization
         #### Time Complexity: O(1), to retrieve the preliminary computed Tribonacci number
         #### Space Complexity: O(1), constant space up to the constraint
         tri = Tribonacci()
