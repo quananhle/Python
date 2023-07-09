@@ -38,7 +38,7 @@ Since both the maximal and minimal score are the same, we return 0.
 
 __Constraints:__
 
-- $1 <=$ ```k``` $<=$ ```weights.length``` $<= 10^{5}$
-- $1 <=$ ```weights[i]``` $<= 10^{9}$
+- $1 <= k <= weights.length <= 10^{5}$
+- $1 <= weights[i] <= 10^{9}$
 
 ---
