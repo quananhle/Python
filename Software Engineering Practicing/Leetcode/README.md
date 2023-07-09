@@ -106,6 +106,7 @@
 
   - :warning::warning: [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters) ```Hash Map```
   - :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring)
+  - :warning::warning: [159. Longest Substring with At Most Two Distinct Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters) ```Hash Map```
   - :warning::warning: [1456. Maximum Number of Vowels in a Substring of Given Length](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
 
   - ##### Palindrome
