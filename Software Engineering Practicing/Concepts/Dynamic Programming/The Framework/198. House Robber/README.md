@@ -79,7 +79,7 @@ class Solution:
         return dp(n - 1)
 ```
 
-```
+```Python
 class Solution:
     def rob(self, nums: List[int]) -> int:
         n = len(nums)
