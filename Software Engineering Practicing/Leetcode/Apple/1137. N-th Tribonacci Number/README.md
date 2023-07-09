@@ -40,12 +40,12 @@ __Constraints:__
 
 ### Optimized Space
 
-#### Dynamic Programming with Memorization using Hash Map
+#### Dynamic Programming with Memoization using Hash Map
 
 ```Python
 class Solution:
     def tribonacci(self, n: int) -> int:
-        # Dynamic Programming with Memorization using Hash Map
+        # Dynamic Programming with Memoization using Hash Map
         #### Time Complexity: O(N), traverse through the size of n
         #### Space Complexity: O(N), extra memory space to build hash map up to n numbers
         memo = collections.defaultdict(int)
