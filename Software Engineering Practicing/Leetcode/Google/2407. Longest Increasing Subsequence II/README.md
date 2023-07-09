@@ -99,7 +99,7 @@ class Solution:
         return ans
 ```
 
-### Memorization
+### Memoization
 
 ```Python
 class Solution:
