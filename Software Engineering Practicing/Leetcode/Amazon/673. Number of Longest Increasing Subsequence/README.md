@@ -108,7 +108,7 @@ class Solution:
         return ans
 ```
 
-#### Bottom-up Dynamic Programming (Memorization)
+#### Bottom-up Dynamic Programming (Memoization)
 
 ```Python
 class Solution:
