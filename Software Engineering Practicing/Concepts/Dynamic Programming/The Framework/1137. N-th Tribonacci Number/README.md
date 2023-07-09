@@ -213,7 +213,7 @@ class Tribonacci:
 
 class Solution:
     def tribonacci(self, n: int) -> int:
-        # Recursion with Memorization
+        # Recursion with Memoization
         #### Time Complexity: O(1), to retrieve the preliminary computed Tribonacci number
         #### Space Complexity: O(1), constant space up to the constraint
         tri = Tribonacci()
