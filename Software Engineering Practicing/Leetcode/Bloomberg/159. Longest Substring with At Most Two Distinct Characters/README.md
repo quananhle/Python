@@ -113,3 +113,29 @@ class Solution:
         
         return ans
 ```
+
+---
+
+### Sliding Window II
+
+```Python
+class Solution:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
+        n = len(s)
+        counter = collections.Counter()
+        ans = 0
+
+        for end in range(n):
+            right = s[end]
+            counter[right] += 1
+
+            if len(counter) <= 2:
+                ans += 1
+            else:
+                left = s[end - ans]
+                counter[left] -= 1
+                if counter[left] == 0:
+                    del counter[left]
+            
+        return ans
+```
