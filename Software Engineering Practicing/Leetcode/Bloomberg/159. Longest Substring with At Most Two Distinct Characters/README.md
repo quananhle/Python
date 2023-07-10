@@ -68,14 +68,10 @@ class Solution:
 
 ![image](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/Figures/159/sliding.png)
 
-Algorithm
+__Algorithm__
 
-Now one could write down the algortihm.
-
-Return N if the string length N is smaller than 3.
-Set both set pointers in the beginning
-of the string left = 0 and right = 0 and init max substring
-length max_len = 2.
+- Return ```N``` if the string length ```N``` is smaller than ```3```.
+- Set both set pointers in the beginning of the string ```start = 0``` and ```end = 0``` and init max substring length ```ans = 2```.
 While right pointer is less than N:
 If hashmap contains less than 3 distinct characters,
 add the current character s[right] in the hashmap and
