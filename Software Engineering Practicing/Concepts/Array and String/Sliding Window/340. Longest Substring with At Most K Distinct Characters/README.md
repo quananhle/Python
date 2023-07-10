@@ -35,6 +35,21 @@ __Constraints:__
 
 #### Longest Substring Template
 
+__Algorithm__
+
+1. Use a hash map ```memo``` to dynamically record the number of each character in the current window while scanning.
+2. Set ```start = 0``` and ```ans = 0```, iterate ```end``` from ```0``` to ```n - 1```, at each step ```end```, increment ```s[end]``` by ```1```:
+    - Increment ```memo[s[end]]``` by ```1```.
+    - While ```len(memo) > k```:
+        - Decrement ```memo[s[start]]``` by ```1```.
+        - Delete ```s[start]``` from ```memo``` if ```memo[s[start] = 0```.
+        - Increment ```start``` by ```1```.
+    - Now the window is valid, update the maximum size of valid window as ```ans = max(ans, right - left + 1)```.
+3. Return ```ans``` when the iteration ends.
+
+- Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
+- Space Complexity : $\mathcal{O}(k)$ since additional space is used only for a hashmap with at most ```k + 1``` elements.
+
 ```Python
 class Solution:
     def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
