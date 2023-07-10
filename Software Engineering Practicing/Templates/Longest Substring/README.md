@@ -77,9 +77,12 @@ class Solution:
 
 ---
 
-### 340. Longest Substring with At Most K Distinct Characters
+### [340. Longest Substring with At Most K Distinct Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/340.%20Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters)
 
 Given a string ```s``` and an integer ```k```, return _the length of the longest substring of ```s``` that contains at most ```k``` distinct characters_.
 
----
+```Python
+
+```
+
 
