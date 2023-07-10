@@ -102,14 +102,14 @@
   - :warning::warning: [209. Minimum Size Subarray Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Two-Pointer%20Technique/209.%20Minimum%20Size%20Subarray%20Sum)
   - :warning::warning: [2348. Number of Zero-Filled Subarrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2348.%20Number%20of%20Zero-Filled%20Subarrays) 
 
-- #### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
+- #### [Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/Longest%20Substring)
 
   - :warning::warning: [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters) ```Hash Map```
   - :no_entry::no_entry::no_entry: [76. Minimum Window Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2014%20-%20Sliding%20Window%20%7C%20Two%20Pointer/76.%20Minimum%20Window%20Substring)
   - :warning::warning: [159. Longest Substring with At Most Two Distinct Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters) ```Hash Map```
   - :warning::warning: [1456. Maximum Number of Vowels in a Substring of Given Length](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1456.%20Maximum%20Number%20of%20Vowels%20in%20a%20Substring%20of%20Given%20Length)
 
-  - ##### Palindrome
+  - ##### [Palindrome](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome)
 
     - :warning::warning: [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Longest%20Substring%20%7C%20Palindrome/5.%20Longest%20Palindromic%20Substring) ```Dynamic Programming``` ```Sliding Window``` ```Two Pointers```
 
