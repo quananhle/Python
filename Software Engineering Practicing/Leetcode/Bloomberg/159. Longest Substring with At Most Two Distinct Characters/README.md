@@ -35,6 +35,9 @@ __Constraints:__
 
 #### Longest Substring Template
 
+- Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
+- Space Complexity : $\mathcal{O}(1)$ since additional space is used only for a hashmap with at most ```3``` elements.
+
 ```Python
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
