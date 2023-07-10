@@ -61,3 +61,34 @@ class Solution:
     
         return ans
 ```
+
+![image](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/Figures/159/sliding.png)
+
+- Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
+- Space Complexity : $\mathcal{O}(1)$ since additional space is used only for a hashmap with at most ```3``` elements.
+
+```Python
+class Solution:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
+        n = len(s)
+        memo = collections.defaultdict(int)
+        start = end = 0
+        ans = 2
+
+        if n < 3:
+            return n
+        
+        while end < n:
+            right = s[end]
+            memo[right] = end
+            end += 1
+
+            if len(memo) > 2:
+                to_del = min(memo.values())
+                del memo[s[to_del]]
+                start = to_del + 1
+            
+            ans = max(ans, end - start)
+        
+        return ans
+```
