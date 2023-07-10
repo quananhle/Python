@@ -114,4 +114,48 @@ class Solution:
 
 ---
 
+### Binary Search & Fixed Size Sliding Window
+
+![image](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/Figures/340/1.png)
+
+![image](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/Figures/340/2.png)
+
+- Time Complexity : $\mathcal{O}(N * logN)$
+- Space Complexity : $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
+        n = len(s)
+        lo, hi = k, n
+
+        if n <= k:
+            return n
+
+        def is_valid(size):
+            counter = collections.Counter(s[:size])
+            if len(counter) <= k:
+                return True
+            for end in range(size, n):
+                left, right = s[end - size], s[end]
+                
+                counter[right] += 1
+                counter[left] -= 1
+                if counter[left] == 0:
+                    del counter[left]
+                if len(counter) <= k:
+                    return True
+                
+            return False
+        
+        while lo < hi:
+            mi = hi - (hi - lo) // 2
+
+            if is_valid(mi):
+                lo = mi
+            else:
+                hi = mi - 1
+            
+        return lo
+```
 
