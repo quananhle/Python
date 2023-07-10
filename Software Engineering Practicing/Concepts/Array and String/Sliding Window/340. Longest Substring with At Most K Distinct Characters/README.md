@@ -35,6 +35,8 @@ __Constraints:__
 
 #### Longest Substring Template
 
+![image](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/Figures/340/3.png)
+
 __Algorithm__
 
 1. Use a hash map ```memo``` to dynamically record the number of each character in the current window while scanning.
@@ -78,3 +80,38 @@ class Solution:
         
         return ans
 ```
+
+### Sliding Window II
+
+![image](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/Figures/340/s3.png)
+
+![image](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/Figures/340/s4.png)
+
+- Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
+- Space Complexity : $\mathcal{O}(N)$ since during the iteration, there might be at most ```O(n)``` unique characters in the window, which takes ```O(n)``` space.
+
+```Python
+class Solution:
+    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
+        n = len(s)
+        counter = collections.Counter()
+        ans = 0
+
+        for end in range(n):
+            right = s[end]
+            counter[right] += 1
+
+            if len(counter) <= k:
+                ans += 1
+            else:
+                left = s[end - ans]
+                counter[left] -= 1
+                if counter[left] == 0:
+                    del counter[left]
+            
+        return ans
+```
+
+---
+
+
