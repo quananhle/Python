@@ -12,6 +12,8 @@ __Algorithm__
     - Now the window is valid, update the maximum size of valid window as ```ans = max(ans, right - left + 1)```.
 3. Return ```ans``` when the iteration ends.
 
+---
+
 ### [3. Longest Substring Without Repeating Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/3.%20Longest%20Substring%20Without%20Repeating%20Characters)
 
 Given a string ```s```, return _the length of the longest substring without repeating characters_.
