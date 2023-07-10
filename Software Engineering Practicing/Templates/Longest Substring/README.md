@@ -96,7 +96,32 @@ Explanation: The substring is "ece" with length 3.
 ```
 
 ```Python
+class Solution:
+    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
+        n = len(s)
+        memo = collections.defaultdict(int)
+        start = 0
+        ans = 0
 
+        if n < k:
+            return n
+        
+        for end in range(n):
+            right = s[end]
+            memo[right] = 1 + memo.get(right, 0)
+
+            while len(memo) > k:
+                left = s[start]
+                memo[left] -= 1
+
+                if memo[left] == 0:
+                    del memo[left]
+
+                start += 1
+            
+            ans = max(ans, end - start + 1)
+        
+        return ans
 ```
 
 
