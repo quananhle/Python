@@ -138,4 +138,48 @@ class Solution:
         return ans
 ```
 
+### [2024. Maximize the Confusion of an Exam](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/2024.%20Maximize%20the%20Confusion%20of%20an%20Exam)
+
+You are given a string ```answerKey```, where ```answerKey[i]``` is the original answer to the $i^{th}$ question. In addition, you are given an integer ```k```, the maximum number of times you may perform the following operation:
+
+- Change the answer key for any question to ```'T'``` or ```'F'``` (i.e., set ```answerKey[i]``` to ```'T'``` or ```'F'```).
+
+Return _the maximum number of consecutive ```'T'```s or ```'F'```s in the answer key after performing the operation at most ```k``` times_.
+
+__Example:__
+```
+Input: answerKey = "TTFF", k = 2
+Output: 4
+Explanation: We can replace both the 'F's with 'T's to make answerKey = "TTTT".
+There are four consecutive 'T's.
+```
+
+```Python
+class Solution:
+    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+        n = len(answerKey)
+        counter = collections.Counter()
+        start = 0
+        ans = 0
+
+        if n == k:
+            return n
+        
+        for end in range(n):
+            right = answerKey[end]
+            counter[right] += 1
+
+            while min(counter['T'], counter['F']) > k:
+                left = answerKey[start]
+                counter[left] -= 1
+
+                if counter[left] == 0:
+                    del counter[left]
+                
+                start += 1
+            
+            ans = max(ans, end - start + 1)
+        
+        return ans
+```
 
