@@ -79,5 +79,7 @@ class Solution:
 
 ### 340. Longest Substring with At Most K Distinct Characters
 
+Given a string ```s``` and an integer ```k```, return _the length of the longest substring of ```s``` that contains at most ```k``` distinct characters_.
+
 ---
 
