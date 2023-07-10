@@ -313,6 +313,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 - :warning::warning: [53. Maximum Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/53.%20Maximum%20Subarray) ```Kadane's Algorithm``` ```Divide & Conquer```
 - :warning::warning: [152. Maximum Product Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/152.%20Maximum%20Product%20Subarray) ```Kadane's Algorithm```
+- :no_entry::no_entry::no_entry: [2272. Substring With Largest Variance](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2272.%20Substring%20With%20Largest%20Variance) ```Kadane's Algorithm```
 
 - [718. Maximum Length of Repeated Subarray]
 Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
