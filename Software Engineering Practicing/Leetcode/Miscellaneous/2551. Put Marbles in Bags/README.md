@@ -1,6 +1,6 @@
 ## [2551. Put Marbles in Bags](https://leetcode.com/problems/put-marbles-in-bags)
 
-```Tag```:
+```Tag```: ```Greedy Algorithm```
 
 #### Difficulty: Hard
 
@@ -42,3 +42,44 @@ __Constraints:__
 - $1 <= weights[i] <= 10^{9}$
 
 ---
+
+![image](https://leetcode.com/problems/put-marbles-in-bags/Figures/2551/1.png)
+
+### Greedy Algorithm
+
+![image](https://leetcode.com/problems/put-marbles-in-bags/Figures/2551/2.png)
+
+![image](https://leetcode.com/problems/put-marbles-in-bags/Figures/2551/3.png)
+
+![image](https://leetcode.com/problems/put-marbles-in-bags/Figures/2551/4.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/7b8ec3c7-cd13-4b4a-9f4a-ee59dff2d8a1)
+
+__Algorithm__
+
+1. Collect the value of every ```pair``` from ```weights``` in the array ```pair_weights``.
+2. Sort ```pair_weights```.
+3. Get the sum of the ```k - 1``` largest pairs, and the sum of the ```k - 1``` smallest pairs.
+4. Return ```an``` as the difference of the two sums in step 3.
+
+__Complexity Analysis__
+
+- Time Complexity : $\mathcal{O}(N \cdot logN)$
+- Space Complexity : $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def putMarbles(self, weights: List[int], k: int) -> int:
+        n = len(weights)
+        pair_weights = [0] * (n - 1)
+
+        for i in range(n - 1):
+            pair_weights[i] = weights[i] + weights[i + 1]
+        pair_weights.sort()
+
+        ans = 0
+        for i in range(k - 1):
+            ans += pair_weights[n - 2 -i] - pair_weights[i]
+        
+        return ans
+```
