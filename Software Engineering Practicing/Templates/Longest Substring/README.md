@@ -42,7 +42,38 @@ class Solution:
 
 ---
 
-### 159. Longest Substring with At Most Two Distinct Characters
+### [159. Longest Substring with At Most Two Distinct Characters](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/159.%20Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters)
+
+Given a string ```s```, return _the length of the longest substring that contains at most two distinct characters_.
+
+```Python
+class Solution:
+    def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
+        n = len(s)
+        memo = collections.defaultdict(int)
+        start = 0
+        ans = 0
+
+        if n < 3:
+            return n
+        
+        for end in range(n):
+            right = s[end]
+            memo[right] = 1 + memo.get(right, 0)
+
+            while len(memo) > 2:
+                left = s[start]
+                memo[left] -= 1
+
+                if memo[left] == 0:
+                    del memo[left]
+
+                start += 1
+            
+            ans = max(ans, end - start + 1)
+        
+        return ans
+```
 
 ---
 
