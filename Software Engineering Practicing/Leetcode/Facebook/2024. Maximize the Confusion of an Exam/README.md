@@ -51,7 +51,12 @@ __Constraints:__
 
 ---
 
-### Sliding WIndow
+### Sliding Window
+
+![image](https://leetcode.com/problems/maximize-the-confusion-of-an-exam/Figures/2024/3.png)
+
+- Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
+- Space Complexity : $\mathcal{O}(1)$ since additional space is used only for a hashmap with at most ```2``` elements.
 
 ```Python
 class Solution:
@@ -68,6 +73,71 @@ class Solution:
                 start += 1
 
             ans = max(ans, end - start + 1)
+        
+        return ans
+```
+
+#### Longest Substring Template
+
+```Python
+class Solution:
+    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+        n = len(answerKey)
+        counter = collections.Counter()
+        start = 0
+        ans = 0
+
+        if n == k:
+            return n
+        
+        for end in range(n):
+            right = answerKey[end]
+            counter[right] += 1
+
+            while min(counter['T'], counter['F']) > k:
+                left = answerKey[start]
+                counter[left] -= 1
+
+                if counter[left] == 0:
+                    del counter[left]
+                
+                start += 1
+            
+            ans = max(ans, end - start + 1)
+        
+        return ans
+```
+
+### Advanced Sliding Window
+
+![image](https://leetcode.com/problems/maximize-the-confusion-of-an-exam/Figures/2024/s3.png)
+![image](https://leetcode.com/problems/maximize-the-confusion-of-an-exam/Figures/2024/s4.png)
+
+- Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
+- Space Complexity : $\mathcal{O}(1)$ since additional space is used only for a hashmap with at most ```2``` elements.
+
+```Python
+class Solution:
+    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+        n = len(answerKey)
+        counter = collections.Counter()
+        ans = 0
+
+        if n == k:
+            return n
+        
+        for end in range(n):
+            right = answerKey[end]
+            counter[right] += 1
+
+            if min(counter.get('T', 0), counter.get('F', 0)) <= k:
+                ans += 1
+            else:
+                left = answerKey[end - ans]
+                counter[left] -= 1
+
+                if counter[left] == 0:
+                    del counter[left]
         
         return ans
 ```
