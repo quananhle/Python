@@ -70,17 +70,17 @@ class Solution:
 
 __Algorithm__
 
-- Return ```N``` if the string length ```N``` is smaller than ```3```.
-- Set both set pointers in the beginning of the string ```start = 0``` and ```end = 0``` and init max substring length ```ans = 2```.
-While right pointer is less than N:
-If hashmap contains less than 3 distinct characters,
-add the current character s[right] in the hashmap and
-move right pointer to the right.
-If hashmap contains 3 distinct characters,
-remove the leftmost character from the hashmap
-and move the left pointer so that sliding window contains
-again 2 distinct characters only.
-Update max_len.
+1. Return ```N``` if the string length ```N``` is smaller than ```3```.
+2. Set both set pointers in the beginning of the string ```start = 0``` and ```end = 0``` and init max substring length ```ans = 2```.
+3. While ```end``` pointer is less than ```N```:
+    - If hashmap ```memo``` contains less than 3 distinct characters,
+        - add the current character ```s[end]``` in the hashmap
+        - and move ```end``` pointer to the right.
+    - If hashmap ```memo``` contains 3 distinct characters,
+        - remove the leftmost character from the hashmap
+        - and move the ```start``` pointer so that sliding window contains again 2 distinct characters only.
+4. Update ```ans```.
+5. Return ```ans```.
 
 - Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
 - Space Complexity : $\mathcal{O}(1)$ since additional space is used only for a hashmap with at most ```3``` elements.
