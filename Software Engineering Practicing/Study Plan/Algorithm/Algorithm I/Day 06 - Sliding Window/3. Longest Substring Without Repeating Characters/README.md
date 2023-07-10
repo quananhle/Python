@@ -96,8 +96,8 @@ class Solution:
 
 ### Sliding Window
 
-- Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
-- Space Complexity : $\mathcal{O}(1)$ since additional space is used only for a hashmap with at most ```3``` elements.
+- Time Complexity : $\mathcal{O}(2N) = \mathcal{O}(N)$ where in the worst case each character will be visited twice by ```i``` and ```j```.
+- Space Complexity : $\mathcal{O}(min(m, n))$ whereas $\mathcal{O}(k)$ space for the sliding window, where ```k``` is the size of the Set. The size of the Set is upper bounded by the size of the string ```n``` and the size of the charset ```m```.
 
 ```Python
 from collections import Counter
