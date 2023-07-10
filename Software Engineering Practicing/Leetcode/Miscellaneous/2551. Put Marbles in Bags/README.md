@@ -16,6 +16,8 @@ The score after distributing the marbles is the sum of the costs of all the ```k
 
 Return _the difference between the maximum and minimum scores among marble distributions_.
 
+![image](https://github.com/quananhle/Python/assets/35042430/805ed1b0-0d35-43dd-8a96-14eab02f02bf)
+
 ---
 
 __Example 1:__
