@@ -33,6 +33,8 @@ __Constraints:__
 
 ### Sliding Window
 
+#### Longest Substring Template
+
 ```Python
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
@@ -62,7 +64,27 @@ class Solution:
         return ans
 ```
 
+---
+
 ![image](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/Figures/159/sliding.png)
+
+Algorithm
+
+Now one could write down the algortihm.
+
+Return N if the string length N is smaller than 3.
+Set both set pointers in the beginning
+of the string left = 0 and right = 0 and init max substring
+length max_len = 2.
+While right pointer is less than N:
+If hashmap contains less than 3 distinct characters,
+add the current character s[right] in the hashmap and
+move right pointer to the right.
+If hashmap contains 3 distinct characters,
+remove the leftmost character from the hashmap
+and move the left pointer so that sliding window contains
+again 2 distinct characters only.
+Update max_len.
 
 - Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
 - Space Complexity : $\mathcal{O}(1)$ since additional space is used only for a hashmap with at most ```3``` elements.
