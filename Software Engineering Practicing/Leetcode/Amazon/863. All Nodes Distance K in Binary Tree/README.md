@@ -37,12 +37,50 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/Figures/863/1.png)
+
 ### Depth-First Search
 
 #### Parent Pointer
 
 ```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
+class Solution:
+    def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
+        def find_parent(curr, parent):
+            if not curr:
+                return None
+            curr.parent = parent
+            find_parent(curr.left, curr)
+            find_parent(curr.right, curr)
+        
+        find_parent(root, None)
+
+        res = list()
+        visited = set()
+
+        def dfs(node, distance):
+            if not node or node in visited:
+                return
+            
+            visited.add(node)
+            if not distance:
+                res.append(node.val)
+                return
+            
+            dfs(node.parent, distance - 1)
+            dfs(node.left, distance - 1)
+            dfs(node.right, distance - 1)
+
+        dfs(target, k)
+
+        return res
 ```
 
 #### Equivalent Graph
