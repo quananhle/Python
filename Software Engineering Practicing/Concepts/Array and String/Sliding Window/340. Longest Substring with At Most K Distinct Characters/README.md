@@ -81,7 +81,7 @@ class Solution:
         return ans
 ```
 
-### Sliding Window II
+### Advanced Sliding Window
 
 ![image](https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/Figures/340/s3.png)
 
