@@ -162,22 +162,24 @@ class Solution:
         n = len(answerKey)
         counter = collections.Counter()
         start = 0
-        ans = 0
+        ans = highest_frequency = 0
 
-        if n == k:
+        if n <= k:
             return n
         
         for end in range(n):
             right = answerKey[end]
             counter[right] += 1
 
-            while min(counter['T'], counter['F']) > k:
+            highest_frequency = max(highest_frequency, counter[right])
+
+            while end - start + 1 - highest_frequency > k:
                 left = answerKey[start]
                 counter[left] -= 1
 
                 if counter[left] == 0:
                     del counter[left]
-                
+
                 start += 1
             
             ans = max(ans, end - start + 1)
