@@ -140,6 +140,53 @@ class Solution:
 
 ---
 
+### [424. Longest Repeating Character Replacement](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2012%20-%20Sliding%20Window%20%7C%20Two%20Pointer/424.%20Longest%20Repeating%20Character%20Replacement)
+
+You are given a string ```s``` and an integer ```k```. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most ```k``` times.
+
+Return _the length of the longest substring containing the same letter you can get after performing the above operations_.
+
+__Example:__
+
+```
+Input: s = "ABAB", k = 2
+Output: 4
+Explanation: Replace the two 'A's with two 'B's or vice versa.
+```
+
+```Python
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        n = len(s)
+        counter = collections.Counter()
+        start = 0
+        ans = highest_frequency = 0
+
+        if n <= k:
+            return n
+        
+        for end in range(n):
+            right = s[end]
+            counter[right] += 1
+
+            highest_frequency = max(highest_frequency, counter[right])
+
+            while end - start + 1 - highest_frequency > k:
+                left = s[start]
+                counter[left] -= 1
+
+                if counter[left] == 0:
+                    del counter[left]
+                
+                start += 1
+            
+            ans = max(ans, end - start + 1)
+        
+        return ans
+```
+
+---
+
 ### [2024. Maximize the Confusion of an Exam](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/2024.%20Maximize%20the%20Confusion%20of%20an%20Exam)
 
 You are given a string ```answerKey```, where ```answerKey[i]``` is the original answer to the $i^{th}$ question. In addition, you are given an integer ```k```, the maximum number of times you may perform the following operation:
