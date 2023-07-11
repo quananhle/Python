@@ -1,6 +1,6 @@
 ## [863. All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Breadth-First Search``` ```Hash Map``` 
 
 #### Difficulty: Medium
 
@@ -36,3 +36,25 @@ __Constraints:__
 - $0 <= k <= 1000$
 
 ---
+
+### Depth-First Search
+
+#### Parent Pointer
+
+```Python
+
+```
+
+#### Equivalent Graph
+
+```Python
+
+```
+
+### Breadth-First Search
+
+#### Equivalent Graph
+
+```Python
+
+```
