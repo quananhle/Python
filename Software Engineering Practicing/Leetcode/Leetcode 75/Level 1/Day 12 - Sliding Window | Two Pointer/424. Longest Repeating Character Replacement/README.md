@@ -1,4 +1,4 @@
-## 424. Longest Repeating Character Replacement
+## [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)
 
 #### Difficulty: Medium
 
