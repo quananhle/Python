@@ -138,6 +138,8 @@ class Solution:
         return ans
 ```
 
+---
+
 ### [2024. Maximize the Confusion of an Exam](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/2024.%20Maximize%20the%20Confusion%20of%20an%20Exam)
 
 You are given a string ```answerKey```, where ```answerKey[i]``` is the original answer to the $i^{th}$ question. In addition, you are given an integer ```k```, the maximum number of times you may perform the following operation:
