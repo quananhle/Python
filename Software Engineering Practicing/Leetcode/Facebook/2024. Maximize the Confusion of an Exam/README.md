@@ -141,3 +141,49 @@ class Solution:
         
         return ans
 ```
+
+---
+
+### Binary Search & Fixed Size Sliding Window
+
+![image](https://leetcode.com/problems/maximize-the-confusion-of-an-exam/Figures/2024/1.png)
+
+![image](https://leetcode.com/problems/maximize-the-confusion-of-an-exam/Figures/2024/2.png)
+
+- Time Complexity : $\mathcal{O}(N \cdot logN)$
+- Space Complexity : $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+        n = len(answerKey)
+        lo, hi = k, n
+
+        def is_valid(size):
+            counter = collections.Counter(answerKey[:size])
+            if min(counter.get('T', 0), counter.get('F', 0)) <= k:
+                return True
+            for end in range(size, n):
+                left, right = answerKey[end - size], answerKey[end]
+                
+                counter[right] += 1
+
+                counter[left] -= 1
+                if counter[left] == 0:
+                    del counter[left]
+                
+                if min(counter.get('T', 0), counter.get('F', 0)) <= k:
+                    return True
+
+            return False
+
+        while lo < hi:
+            mi = hi - (hi - lo) // 2
+
+            if is_valid(mi):
+                lo = mi
+            else:
+                hi = mi - 1
+
+        return lo
+```
