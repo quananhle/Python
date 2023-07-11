@@ -64,7 +64,7 @@
 - :four_leaf_clover: [872. Leaf-Similar Trees](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/872.%20Leaf-Similar%20Trees)
 - :warning::warning: [1448. Count Good Nodes in Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/1448.%20Count%20Good%20Nodes%20in%20Binary%20Tree)
 - :warning::warning: [437. Path Sum III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2007%20-%20Tree/437.%20Path%20Sum%20III)
-- :warning::warning: 1372. Longest ZigZag Path in a Binary Tree
+- :warning::warning: [1372. Longest ZigZag Path in a Binary Tree](https://github.com/quananhle/Python/blob/e4a7cdfe6e95fb10a568a3f86c88cdd07f2b0bc7/Software%20Engineering%20Practicing/Leetcode/Amazon/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree/README.md)
 - :warning::warning: [236. Lowest Common Ancestor of a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/236.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree)
 
 ### Binary Search Tree
