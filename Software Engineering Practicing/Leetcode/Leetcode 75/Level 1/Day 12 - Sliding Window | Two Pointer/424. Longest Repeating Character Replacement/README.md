@@ -72,10 +72,6 @@ class Solution:
         return ans
 ```
 
-```Python
-
-```
-
 ### Sliding Window and Hash Table
 
 ```Python
