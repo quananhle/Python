@@ -5,7 +5,7 @@
   - [Intervals](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#intervals)
   - [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#sliding-window)
     - [Cumulative Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#cumulative-sum)
-    - [Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode#subarray)
+    - [Subarray](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/README.md#subarray)
     - [Substring](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#substring)
       - [Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#palindrome)
       - [String Matching](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#string-matching)
