@@ -42,7 +42,34 @@ s consists of only uppercase English letters.
 #### Longest Substring Template
 
 ```Python
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        n = len(s)
+        counter = collections.Counter()
+        start = 0
+        ans = highest_frequency = 0
 
+        if n <= k:
+            return n
+        
+        for end in range(n):
+            right = s[end]
+            counter[right] += 1
+
+            highest_frequency = max(highest_frequency, counter[right])
+
+            while end - start + 1 - highest_frequency > k:
+                left = s[start]
+                counter[left] -= 1
+
+                if counter[left] == 0:
+                    del counter[left]
+                
+                start += 1
+            
+            ans = max(ans, end - start + 1)
+        
+        return ans
 ```
 
 ```Python
