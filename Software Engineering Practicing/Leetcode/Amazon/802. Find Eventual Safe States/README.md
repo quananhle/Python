@@ -64,9 +64,43 @@ If indegree[neighbor] == 0, it means that neighbor behaves as a leaf node, so we
 Create an answer array safeNodes of size n. Iterate over all the nodes from 0 to n - 1 and add all the safe nodes in safeNodes.
 Return safeNodes.
 
+__Complexity Analysis__
 
-
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 ```Python
+class Solution:
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        n = len(graph)
+        indegree = [0] * n
+        adj = collections.defaultdict(list)
 
+        for edge in range(n):
+            for node in graph[edge]:
+                adj[node].append(edge)
+                indegree[edge] += 1
+
+        queue = collections.deque()
+        for node in range(n):
+            if indegree[node] == 0:
+                queue.append(node)
+
+        visited = set()
+        
+        while queue:
+            node = queue.popleft()
+            visited.add(node)
+
+            for next in adj[node]:
+                indegree[next] -= 1
+                if indegree[next] == 0:
+                    queue.append(next)
+
+        res = list()
+        for node in range(n):
+            if node in visited:
+                res.append(node)
+            
+        return res
 ```
