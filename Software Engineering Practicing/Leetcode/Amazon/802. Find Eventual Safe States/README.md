@@ -47,3 +47,26 @@ __Constraints:__
 ### Topological Sort using Kahn's Algorithm
 
 ![image](https://leetcode.com/problems/find-eventual-safe-states/Figures/802/802-1.png)
+
+__Algorithm__
+
+Create an integer n equal to the length of graph to get the number of nodes in the given graph.
+Create an array indegree of length n where indegree[x] stores the number of edges entering node x.
+We create an adjacency list adj in which adj[x] contains all the nodes with an incoming edge from node x, i.e., neighbors of node x. We create this adjacency list by iterating over graph and adding the reverse edges. For a node i which originally has outgoing edges to nodes in graph[i], we push i into adj[node] to add a reverse edge from node to i.
+Initialize a queue of integers q and start a BFS algorithm moving from the leaf nodes to the parent nodes.
+Begin the BFS traversal by pushing all of the leaf nodes (indegree equal to 0) in the queue.
+Create a boolean array safe of size n to track the safe nodes in the graph.
+While the queue is not empty;
+Dequeue the first node from the queue.
+Mark node as safe.
+For each neighbor (nodes that have an incoming edge from node) of node, we decrement indegree[neighbor]by 1 to delete the node -> neighbor edge.
+If indegree[neighbor] == 0, it means that neighbor behaves as a leaf node, so we push neighbor in the queue.
+Create an answer array safeNodes of size n. Iterate over all the nodes from 0 to n - 1 and add all the safe nodes in safeNodes.
+Return safeNodes.
+
+
+
+
+```Python
+
+```
