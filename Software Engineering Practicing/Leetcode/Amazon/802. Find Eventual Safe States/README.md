@@ -1,6 +1,6 @@
 ## [802. Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/)
 
-```Tag```:
+```Tag```: ```Graph``` ```Topological Sort``` ```Kahn's Algorithm```
 
 #### Difficulty: Medium
 
@@ -43,3 +43,7 @@ __Constraints:__
 - The number of edges in the graph will be in the range $[1, 4 * 10^{4}]$.
 
 ---
+
+### Topological Sort using Kahn's Algorithm
+
+![image](https://leetcode.com/problems/find-eventual-safe-states/Figures/802/802-1.png)
