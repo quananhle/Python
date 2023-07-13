@@ -1,6 +1,6 @@
 ## [207. Course Schedule](https://leetcode.com/problems/course-schedule/)
 
-```Tag```: 
+```Tag```: ```Graph``` ```Depth-First Search``` ```Breadth-First Search``` ```Topological Sort``` ```Kahn's Algorithm```
 
 #### Difficulty: Medium
 
