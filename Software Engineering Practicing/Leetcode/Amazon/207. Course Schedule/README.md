@@ -134,3 +134,38 @@ class Solution:
             
         return True
 ```
+
+```Python
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        n = len(prerequisites)
+        graph = collections.defaultdict(list)
+        for a, b in prerequisites:
+            graph[b].append(a)
+
+        visited = set()
+        indegree = set()
+
+        def dfs(node):
+            if node in indegree:
+                return True
+            
+            if node in visited:
+                return False
+            
+            visited.add(node)
+            indegree.add(node)
+
+            for next in graph[node]:
+                if dfs(next):
+                    return True
+            
+            indegree.remove(node)
+            return False
+
+        for node in range(numCourses):
+            if dfs(node):
+                return False
+            
+        return True
+```
