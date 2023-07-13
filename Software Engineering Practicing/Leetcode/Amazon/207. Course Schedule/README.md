@@ -169,3 +169,23 @@ class Solution:
             
         return True
 ```
+
+```Python
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        n = len(prerequisites)
+        graph = collections.defaultdict(list)
+        for a, b in prerequisites:
+            graph[b].append(a)
+
+        visited = set()
+
+        @lru_cache(None)
+        def dfs(curr):
+            visited.add(curr)
+            pos = all(next not in visited and dfs(next) for next in graph[curr])
+            visited.remove(curr)
+            return pos
+        
+        return all(dfs(node) for node in range(numCourses))
+```
