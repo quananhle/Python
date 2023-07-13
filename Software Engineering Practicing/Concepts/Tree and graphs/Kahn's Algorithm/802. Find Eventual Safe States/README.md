@@ -66,8 +66,8 @@ Return safeNodes.
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(n)$
-- __Space Complexity__: $\mathcal{O}(n)$
+- __Time Complexity__: $\mathcal{O}(m+n)$
+- __Space Complexity__: $\mathcal{O}(m+n)$
 
 ```Python
 class Solution:
@@ -109,6 +109,11 @@ class Solution:
 
 ### Depth-First Search
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m+n)$
+- __Space Complexity__: $\mathcal{O}(m+n)$
+
 ```Python
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
@@ -133,6 +138,40 @@ class Solution:
                     return True
                 
             indegree[curr] -= 1
+            return False
+                
+        res = list()
+        for node in range(n):
+            if not dfs(node):
+                res.append(node)
+        
+        return res
+```
+
+```Python
+class Solution:
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        n = len(graph)
+        adj = collections.defaultdict(list)
+
+        indegree = set()
+        visited = set()
+        
+        def dfs(curr):
+            if curr in indegree:
+                return True
+            
+            if curr in visited:
+                return False
+            
+            visited.add(curr)
+            indegree.add(curr)
+
+            for next in graph[curr]:
+                if dfs(next):
+                    return True
+                
+            indegree.remove(curr)
             return False
                 
         res = list()
