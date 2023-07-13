@@ -139,3 +139,35 @@ class Solution:
 
         return ans
 ```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        total = float('-inf')
+        levels = list()
+        ans = 0
+
+        queue = collections.deque([(root, 0)])
+
+        while queue:
+            curr, level = queue.popleft()
+            if level == len(levels):
+                levels.append(list())
+            levels[level].append(curr.val)
+            if curr.left:
+                queue.append((curr.left, level + 1))
+            if curr.right:
+                queue.append((curr.right, level + 1))
+        
+        for level, nodes in enumerate(levels):
+            if total < sum(nodes):
+                total, ans = sum(nodes), level 
+        
+        return ans + 1
+```
