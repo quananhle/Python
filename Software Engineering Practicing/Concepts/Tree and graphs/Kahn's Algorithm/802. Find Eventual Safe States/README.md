@@ -50,8 +50,8 @@ __Constraints:__
 
 __Algorithm__
 
-Create an integer n equal to the length of graph to get the number of nodes in the given graph.
-Create an array indegree of length n where indegree[x] stores the number of edges entering node x.
+1. Create an integer ```n``` equal to the length of ```graph``` to get the number of nodes in the given ```graph```.
+2. Create an array ```indegree``` of length n where ```indegree[x]``` stores the number of ```edges``` entering node ```x```.
 We create an adjacency list adj in which adj[x] contains all the nodes with an incoming edge from node x, i.e., neighbors of node x. We create this adjacency list by iterating over graph and adding the reverse edges. For a node i which originally has outgoing edges to nodes in graph[i], we push i into adj[node] to add a reverse edge from node to i.
 Initialize a queue of integers q and start a BFS algorithm moving from the leaf nodes to the parent nodes.
 Begin the BFS traversal by pushing all of the leaf nodes (indegree equal to 0) in the queue.
@@ -97,6 +97,45 @@ class Solution:
                 if indegree[next] == 0:
                     queue.append(next)
 
+        res = list()
+        for node in range(n):
+            if node in visited:
+                res.append(node)
+            
+        return res
+```
+
+```Python
+class Solution:
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        n = len(graph)
+        adj = collections.defaultdict(list)
+        indegree = collections.defaultdict(int)
+
+        for edge in range(n):
+            for node in graph[edge]:
+                # Record the outgoing path of each node
+                adj[node].append(edge)
+                # Count the number of incoming paths
+                indegree[edge] += 1
+            
+        queue = collections.deque()
+        for node in range(n):
+            # Add nodes that have the outgoing paths to the queue
+            if not node in indegree:
+                queue.append(node)
+        
+        visited = set()
+        while queue:
+            node = queue.popleft()
+            visited.add(node)
+
+            for neighbor in adj[node]:
+                indegree[neighbor] -= 1
+
+                if indegree[neighbor] == 0:
+                    queue.append(neighbor)
+                
         res = list()
         for node in range(n):
             if node in visited:
