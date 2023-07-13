@@ -46,17 +46,17 @@ __Constraints:__
 
 __Algorithm__
 
-Create an array indegree of length n where indegree[x] stores the number of edges entering node x.
-We create an adjacency list adj in which adj[x] contains all the nodes with an incoming edge from node x, i.e., neighbors of node x. We create this adjacency list by iterating over prerequisites. For every prerequisite in prerequisites, we add an edge from prerequisite[1] to prerequisite[0] and increment the indegree of prerequisite[0] by 1.
-Initialize a queue of integers q and start a BFS algorithm moving from the leaf nodes to the parent nodes.
-Begin the BFS traversal by pushing all of the leaf nodes (indegree equal to 0) in the queue.
-Create an integer variable nodesVisited = 0 to count the number of visited nodes.
-While the queue is not empty;
-Dequeue the first node from the queue.
-Increment nodesVisited by 1.
-For each neighbor (nodes that have an incoming edge from node) of node, we decrement indegree[neighbor]by 1 to delete the node -> neighbor edge.
-If indegree[neighbor] == 0, it means that neighbor behaves as a leaf node, so we push neighbor in the queue.
-If the number of nodes visited is less than the total number of nodes, i.e., nodesVisited < n we return false as there must be a cycle. Otherwise, if nodesVisited == numCourses, we return true. We can shorten it to just return nodesVisited == numCourses.
+1. Create an array indegree of length ```n``` where ```indegree[x]``` stores the number of edges entering node ```x```.
+2. We create an adjacency list ```graph``` in which ```graph[x]``` contains all the nodes with an incoming edge from node ```x```, i.e., neighbors of node ```x```. We create this adjacency list by iterating over ```prerequisites```. For every ```a, b``` in ```prerequisites```, we add an edge from ```graph[b]``` to ```a``` and increment the ```indegree``` of ```a``` by ```1```.
+3. Initialize a queue of integers ```queue``` and start a BFS algorithm moving from the leaf nodes to the parent nodes.
+4. Begin the BFS traversal by pushing all of the leaf nodes (```indegree``` equal to ```0```) in the ```queue```.
+5. Create an set ```visited``` to count the number of visited nodes.
+6. While the ```queue``` is not empty;
+    - Dequeue the first ```node``` from the queue.
+    - Add ```node``` to ```visited```.
+    - For each ```next``` (nodes that have an incoming edge from ```node```) of ```node```, we decrement ```indegree[next]``` by ```1``` to delete the ```node -> neighbor``` edge.
+    - If ```indegree[next] == 0```, it means that ```next``` behaves as a leaf node, so we push ```next``` in the queue.
+7. If the number of nodes visited is less than the total number of nodes, i.e., number of nodes < n we return ```False``` as there must be a cycle. Otherwise, if ```visited.length == numCourses```, we return ```True```. We can shorten it to just return ```visited.length == numCourses```.
 
 __Complexity Analysis__
 
