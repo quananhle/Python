@@ -1,6 +1,6 @@
 ## [802. Find Eventual Safe States](https://leetcode.com/problems/find-eventual-safe-states/)
 
-```Tag```: ```Graph``` ```Topological Sort``` ```Kahn's Algorithm```
+```Tag```: ```Graph``` ```Depth-First Search``` ```Breadth-First Search``` ```Topological Sort``` ```Kahn's Algorithm```
 
 #### Difficulty: Medium
 
@@ -102,5 +102,43 @@ class Solution:
             if node in visited:
                 res.append(node)
             
+        return res
+```
+
+---
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        n = len(graph)
+        adj = collections.defaultdict(list)
+
+        indegree = [0] * n
+        visited = set()
+        
+        def dfs(curr):
+            if indegree[curr]:
+                return True
+            
+            if curr in visited:
+                return False
+            
+            visited.add(curr)
+            indegree[curr] += 1
+
+            for next in graph[curr]:
+                if dfs(next):
+                    return True
+                
+            indegree[curr] -= 1
+            return False
+                
+        res = list()
+        for node in range(n):
+            if not dfs(node):
+                res.append(node)
+        
         return res
 ```
