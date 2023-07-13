@@ -44,7 +44,8 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/course-schedule/Figures/207/207-1.png)
 
-Algorithm
+__Algorithm__
+
 Create an array indegree of length n where indegree[x] stores the number of edges entering node x.
 We create an adjacency list adj in which adj[x] contains all the nodes with an incoming edge from node x, i.e., neighbors of node x. We create this adjacency list by iterating over prerequisites. For every prerequisite in prerequisites, we add an edge from prerequisite[1] to prerequisite[0] and increment the indegree of prerequisite[0] by 1.
 Initialize a queue of integers q and start a BFS algorithm moving from the leaf nodes to the parent nodes.
@@ -57,7 +58,10 @@ For each neighbor (nodes that have an incoming edge from node) of node, we decre
 If indegree[neighbor] == 0, it means that neighbor behaves as a leaf node, so we push neighbor in the queue.
 If the number of nodes visited is less than the total number of nodes, i.e., nodesVisited < n we return false as there must be a cycle. Otherwise, if nodesVisited == numCourses, we return true. We can shorten it to just return nodesVisited == numCourses.
 
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(m+n)$
+- __Space Complexity__: $\mathcal{O}(m+n)$
 
 ```Python
 class Solution:
@@ -87,4 +91,10 @@ class Solution:
                     queue.append(next)
         
         return len(visited) == numCourses
+```
+
+### Depth-First Search
+
+```Python
+
 ```
