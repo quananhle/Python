@@ -102,7 +102,7 @@ class Solution:
         return 1 + stack.index(max(stack))
 ```
 
-### Breadth-First Search
+### ✅ Breadth-First Search
 
 ![image](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/Figures/1161/1161-bfs1.png)
 
