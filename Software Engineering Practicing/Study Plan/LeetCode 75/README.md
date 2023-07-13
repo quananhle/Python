@@ -67,6 +67,11 @@
 - :warning::warning: [1372. Longest ZigZag Path in a Binary Tree](https://github.com/quananhle/Python/blob/e4a7cdfe6e95fb10a568a3f86c88cdd07f2b0bc7/Software%20Engineering%20Practicing/Leetcode/Amazon/1372.%20Longest%20ZigZag%20Path%20in%20a%20Binary%20Tree/README.md)
 - :warning::warning: [236. Lowest Common Ancestor of a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/236.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree)
 
+### Binary Tree - BFS
+
+- :warning::warning: 1161. Maximum Level Sum of a Binary Tree
+- :warning::warning: 199. Binary Tree Right Side View
+
 ### Binary Search Tree
 
 - :four_leaf_clover: [700. Search in a Binary Search Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search%20Tree/700.%20Search%20in%20a%20Binary%20Search%20Tree)
