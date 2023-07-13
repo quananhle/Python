@@ -42,6 +42,23 @@ __Constraints:__
 
 ### Topological Sort using Kahn's Algorithm
 
+![image](https://leetcode.com/problems/course-schedule/Figures/207/207-1.png)
+
+Algorithm
+Create an array indegree of length n where indegree[x] stores the number of edges entering node x.
+We create an adjacency list adj in which adj[x] contains all the nodes with an incoming edge from node x, i.e., neighbors of node x. We create this adjacency list by iterating over prerequisites. For every prerequisite in prerequisites, we add an edge from prerequisite[1] to prerequisite[0] and increment the indegree of prerequisite[0] by 1.
+Initialize a queue of integers q and start a BFS algorithm moving from the leaf nodes to the parent nodes.
+Begin the BFS traversal by pushing all of the leaf nodes (indegree equal to 0) in the queue.
+Create an integer variable nodesVisited = 0 to count the number of visited nodes.
+While the queue is not empty;
+Dequeue the first node from the queue.
+Increment nodesVisited by 1.
+For each neighbor (nodes that have an incoming edge from node) of node, we decrement indegree[neighbor]by 1 to delete the node -> neighbor edge.
+If indegree[neighbor] == 0, it means that neighbor behaves as a leaf node, so we push neighbor in the queue.
+If the number of nodes visited is less than the total number of nodes, i.e., nodesVisited < n we return false as there must be a cycle. Otherwise, if nodesVisited == numCourses, we return true. We can shorten it to just return nodesVisited == numCourses.
+
+
+
 ```Python
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
