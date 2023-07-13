@@ -95,6 +95,42 @@ class Solution:
 
 ### Depth-First Search
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(m+n)$
+- __Space Complexity__: $\mathcal{O}(m+n)$
+
+```Python
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        n = len(prerequisites)
+        graph = collections.defaultdict(list)
+        for a, b in prerequisites:
+            graph[b].append(a)
+
+        visited = set()
+        indegree = [0] * numCourses
+
+        def dfs(node):
+            if indegree[node]:
+                return True
+            
+            if node in visited:
+                return False
+            
+            visited.add(node)
+            indegree[node] += 1
+
+            for next in graph[node]:
+                if dfs(next):
+                    return True
+            
+            indegree[node] -= 1
+            return False
+
+        for node in range(numCourses):
+            if dfs(node):
+                return False
+            
+        return True
 ```
