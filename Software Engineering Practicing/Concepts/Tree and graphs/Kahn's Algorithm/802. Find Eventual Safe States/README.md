@@ -114,34 +114,39 @@ class Solution:
 
         for edge in range(n):
             for node in graph[edge]:
-                # Record the outgoing path of each node
+                # Record the incoming edges of each node
                 adj[node].append(edge)
-                # Count the number of incoming paths
+                # Count the number of outgoing edgess of each node
                 indegree[edge] += 1
             
         queue = collections.deque()
         for node in range(n):
-            # Add nodes that have the outgoing paths to the queue
+            # Add nodes that have no outgoing edge or terminal nodes to the queue
             if not node in indegree:
                 queue.append(node)
-        
+
+
         visited = set()
         while queue:
             node = queue.popleft()
             visited.add(node)
 
             for neighbor in adj[node]:
+                # Remove edge after moving to the next node. Delete the edge "node -> neighbor".
                 indegree[neighbor] -= 1
 
+                # Again, add node that is the terminal node or has no outgoing edge
                 if indegree[neighbor] == 0:
                     queue.append(neighbor)
                 
         res = list()
         for node in range(n):
+            # All nodes visited in the queue are safe nodes
             if node in visited:
                 res.append(node)
             
         return res
+
 ```
 
 ---
