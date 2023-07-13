@@ -40,6 +40,11 @@ __Constraints:__
 
 ### Depth-First Search
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -107,6 +112,9 @@ class Solution:
 ![image](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/Figures/1161/1161-bfs1.png)
 
 ![image](https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/Figures/1161/1161-bfs2.png)
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 # Definition for a binary tree node.
