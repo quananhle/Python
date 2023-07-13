@@ -85,8 +85,46 @@ class Solution:
 
 #### Equivalent Graph
 
-```Python
+![image](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/Figures/863/5.png)
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
+        graph = collections.defaultdict(list)
+
+        def build_graph(curr, parent):
+            if curr and parent:
+                graph[curr.val].append(parent.val)
+                graph[parent.val].append(curr.val)
+            if curr.left:
+                build_graph(curr.left, curr)
+            if curr.right:
+                build_graph(curr.right, curr)
+        
+        build_graph(root, None)
+        
+        res = list()
+        visited = set([target.val])
+
+        def dfs(node, distance):
+            if distance == k:
+                res.append(node)
+                return
+            for neighbor in graph[node]:
+                if not neighbor in visited:
+                    visited.add(neighbor)
+                    dfs(neighbor, distance + 1)
+                
+        dfs(target.val, 0)
+        
+        return res
 ```
 
 ### Breadth-First Search
