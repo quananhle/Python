@@ -39,3 +39,32 @@ __Constraints:__
 - $-10^{4} <= arr[i], difference <= 10^{4}$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming (Recursive)
+
+```Python
+class Solution:
+    def longestSubsequence(self, arr: List[int], difference: int) -> int:
+        n = len(arr)
+
+        @lru_cache(None)
+        def dp(curr, prev):
+            # Base case
+            if curr >= n:
+                return 0
+
+            take = skip = 0
+            skip = dp(curr + 1, prev)
+
+            if prev == float('-inf'):
+                take = 1 + dp(curr + 1, arr[curr])
+            else:
+                if arr[curr] - prev == difference:
+                    take = 1 + dp(curr + 1, arr[curr])
+            
+            return max(skip, take)
+
+        return dp(0, float('-inf'))
+```
