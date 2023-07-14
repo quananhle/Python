@@ -1,6 +1,6 @@
 ## [1218. Longest Arithmetic Subsequence of Given Difference](https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -67,4 +67,25 @@ class Solution:
             return max(skip, take)
 
         return dp(0, float('-inf'))
+```
+
+#### Bottom-Up Dynamic Programming (Iterative)
+
+```Python
+class Solution:
+    def longestSubsequence(self, arr: List[int], difference: int) -> int:
+        n = len(arr)
+        dp = collections.defaultdict(int)
+        ans = 1
+
+        for curr in range(n):
+            num = arr[curr]
+            if num - difference in dp:
+                dp[num] = dp[num - difference] + 1
+            else:
+                dp[num] = 1
+            
+            ans = max(ans, dp[num])
+        
+        return ans
 ```
