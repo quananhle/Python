@@ -14,3 +14,41 @@ Return the maximum sum of values that you can receive by attending events.
 
 ---
 
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2021/01/10/screenshot-2021-01-11-at-60048-pm.png)
+
+```
+Input: events = [[1,2,4],[3,4,3],[2,3,1]], k = 2
+Output: 7
+Explanation: Choose the green events, 0 and 1 (0-indexed) for a total value of 4 + 3 = 7.
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2021/01/10/screenshot-2021-01-11-at-60150-pm.png)
+
+```
+Input: events = [[1,2,4],[3,4,3],[2,3,10]], k = 2
+Output: 10
+Explanation: Choose event 2 for a total value of 10.
+Notice that you cannot attend any other event as they overlap, and that you do not have to attend k events.
+```
+
+__Example 3:__
+
+![image](https://assets.leetcode.com/uploads/2021/01/10/screenshot-2021-01-11-at-60703-pm.png)
+```
+Input: events = [[1,1,1],[2,2,2],[3,3,3],[4,4,4]], k = 3
+Output: 9
+Explanation: Although the events do not overlap, you can only attend 3 events. Pick the highest valued three.
+```
+
+__Constraints:__
+
+- $1 <= k <= events.length$
+- $1 <= k * events.length <= 10^{6}$
+- $1 <= startDayi <= endDayi <= 10^{9}$
+- $1 <= valuei <= 10^{6}$
+
+---
