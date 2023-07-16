@@ -1,1 +1,1 @@
-1125. Smallest Sufficient Team
+## 1125. Smallest Sufficient Team
