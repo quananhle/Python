@@ -1,6 +1,6 @@
 ## [1751. Maximum Number of Events That Can Be Attended II](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -11,3 +11,6 @@ You can only attend one event at a time. If you choose to attend an event, you m
 Return the maximum sum of values that you can receive by attending events.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/248cee25-a729-464b-8239-4ce94e79f93f)
+
+---
+
