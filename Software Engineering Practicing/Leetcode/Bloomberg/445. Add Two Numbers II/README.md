@@ -11,3 +11,27 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 ![image](https://github.com/quananhle/Python/assets/35042430/f5f99783-5ec2-46a8-8d04-3a19eb53d1c3)
 
 ---
+
+Example 1:
+
+
+Input: l1 = [7,2,4,3], l2 = [5,6,4]
+Output: [7,8,0,7]
+Example 2:
+
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [8,0,7]
+Example 3:
+
+Input: l1 = [0], l2 = [0]
+Output: [0]
+ 
+
+Constraints:
+
+The number of nodes in each linked list is in the range [1, 100].
+0 <= Node.val <= 9
+It is guaranteed that the list represents a number that does not have leading zeros.
+ 
+
+Follow up: Could you solve it without reversing the input lists?
