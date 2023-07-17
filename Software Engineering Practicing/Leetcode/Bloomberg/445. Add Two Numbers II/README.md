@@ -44,6 +44,11 @@ __Constraints:__
 
 ### Stack
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m+n)$
+- __Space Complexity__: $\mathcal{O}(m+n)$
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
