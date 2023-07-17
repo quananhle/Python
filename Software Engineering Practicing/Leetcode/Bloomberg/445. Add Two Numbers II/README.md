@@ -49,6 +49,8 @@ __Complexity Analysis__
 - __Time Complexity__: $\mathcal{O}(m+n)$
 - __Space Complexity__: $\mathcal{O}(m+n)$
 
+#### Compute integer from left -> right
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
@@ -92,6 +94,12 @@ class Solution:
             curr = curr.next
 
         return new_head.next
+```
+
+#### Computer integer from left <- right
+
+```Python
+
 ```
 
 __Follow Up__: Could you solve it without reversing the input lists?
