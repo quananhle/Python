@@ -12,26 +12,34 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2021/04/09/sumii-linked-list.jpg)
+```
 Input: l1 = [7,2,4,3], l2 = [5,6,4]
 Output: [7,8,0,7]
-Example 2:
+```
 
+__Example 2:__
+```
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [8,0,7]
-Example 3:
+```
 
+__Example 3:__
+```
 Input: l1 = [0], l2 = [0]
 Output: [0]
- 
+```
 
-Constraints:
+---
 
-The number of nodes in each linked list is in the range [1, 100].
-0 <= Node.val <= 9
-It is guaranteed that the list represents a number that does not have leading zeros.
- 
+__Constraints:__
+
+- The number of nodes in each linked list is in the range $[1, 100]$.
+- ```0 <= Node.val <= 9```
+- It is guaranteed that the list represents a number that does not have leading zeros.
+
+---
 
 Follow up: Could you solve it without reversing the input lists?
