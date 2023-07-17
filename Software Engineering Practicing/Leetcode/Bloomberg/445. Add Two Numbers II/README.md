@@ -1,6 +1,6 @@
 ## [445. Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii)
 
-```Tag```: ```Stack``` ```Linked List```
+```Tag```: ```Stack``` ```Linked List``` ```Two Pointers```
 
 #### Difficulty: Medium
 
@@ -42,4 +42,51 @@ __Constraints:__
 
 ---
 
-Follow up: Could you solve it without reversing the input lists?
+### Stack
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        # Traverse the linked list
+        def get_number(node):
+            stack = list()
+            curr = node
+
+            while curr:
+                stack.append(curr.val)
+                curr = curr.next
+            
+            return stack
+
+        # Recompute the integer from list of individual numbers 
+        def build_number(arr):
+            n = len(arr)
+            num = 0
+            i = 0
+
+            while n:
+                num += arr[i] * (10 ** (n - 1))
+                n -= 1
+                i += 1
+            
+            return num
+        
+        num1, num2 = get_number(l1), get_number(l2)
+        num1, num2 = build_number(num1), build_number(num2)
+        new_num = str(num1 + num2)
+
+        # Build the output linked list
+        new_head = curr = ListNode()
+        for node in new_num:
+            curr.next = ListNode(node)
+            curr = curr.next
+
+        return new_head.next
+```
+
+__Follow Up__: Could you solve it without reversing the input lists?
