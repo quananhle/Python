@@ -42,7 +42,7 @@ __Constraints:__
 
 ### The Framework
 
-#### Top-Down Dynamic Programming (Recursive)
+#### Top-Down Dynamic Programming (Recursive) (Memory Limit Exceeded)
 
 ```Python
 class Solution:
@@ -65,6 +65,35 @@ class Solution:
                     take = 1 + dp(curr + 1, arr[curr])
             
             return max(skip, take)
+
+        return dp(0, float('-inf'))
+```
+
+```Python
+class Solution:
+    def longestSubsequence(self, arr: List[int], difference: int) -> int:
+        n = len(arr)
+        memo = collections.defaultdict(int)
+
+        def dp(curr, prev):
+            # Base case
+            if curr >= n:
+                return 0
+
+            if (curr, prev) in memo:
+                return memo[(curr, prev)]
+
+            # Recurrence relation: take or skip the current number
+            skip = take = 0
+            # Skip: move on to the next integer
+            skip = dp(curr + 1, prev)
+            # Take: move on to the next number, update the last element
+            if prev == float('-inf') or arr[curr] - prev == difference:
+                take = 1 + dp(curr + 1, arr[curr])
+            
+            ans = max(skip, take)
+            memo[(curr, prev)] = ans
+            return ans
 
         return dp(0, float('-inf'))
 ```
