@@ -138,10 +138,31 @@ class Solution:
 
 ### Binary Search
 
-#### Top-Down Dynamic Programming
+#### Top-down Dynamic Programming + Binary Search
 
 ```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        n = len(events)
+        events.sort()
+        starts = [start for start, end, value in events]
 
+        @lru_cache(None)
+        def dp(curr, count):
+            # Base case
+            if curr == n or count == k:
+                return 0
+
+            curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
+
+            next_meeting = bisect_right(starts, curr_end)
+            skip = dp(curr + 1, count)
+            take = dp(next_meeting, count + 1)
+            ans = max(skip, take + curr_value)
+
+            return ans
+        
+        return dp(0, 0)
 ```
 
 ```Python
