@@ -209,7 +209,7 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming + Binary Search
 
-- __Time Complexity__: $\mathcal{O}(n⋅(k+log⁡n))$
+- __Time Complexity__: $\mathcal{O}(n \cdot k \cdot log⁡n)$
 - __Space Complexity__: $\mathcal{O}(n \cdot k)$
 
 ```Python
