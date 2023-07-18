@@ -1,6 +1,6 @@
 ## [1125. Smallest Sufficient Team](https://leetcode.com/problems/smallest-sufficient-team/)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Bitmask``` ```Minimum Set Cover```
 
 #### Difficulty: Hard
 
@@ -45,3 +45,9 @@ __Constraints:__
 - It is guaranteed a sufficient team exists.
 
 ---
+
+### Minimum Set Cover
+
+```Python
+
+```
