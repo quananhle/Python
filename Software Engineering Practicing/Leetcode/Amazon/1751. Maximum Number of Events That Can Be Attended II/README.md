@@ -78,25 +78,29 @@ class Solution:
         events.sort()
 
         @lru_cache(None)
-        def dp(curr, count, prev_end):
+        def dp(curr, count, prev_end_time):
             # Base case
-            if curr == n or count == k:
+            if curr >= n or count <= 0:
                 return 0
             
             curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
 
-            # Recurrence relation: skip or attend the current meeting
+            # Recurrence relation: skip or join the current meeting
 
-            # Skip if time conflict due to inclusive end day, cannot attend current event, move to another event
-            skip = dp(curr + 1, count, prev_end)
-            if curr_start <= prev_end:
+            # Skip: move on to the next event
+            skip = dp(curr + 1, count, prev_end_time)
+            # Check if current event has time conflict with the attending event, break out early
+            if curr_start <= prev_end_time:
                 return skip
 
-            take = dp(curr + 1, count + 1, curr_end)
-            ans = max(skip, take + curr_value)
+            # Join: move on to the next event, decrement total number of events attended, update new end time, collect value
+            join = dp(curr + 1, count - 1, curr_end) + curr_value
+
+            # Get the maximum values from the decisions
+            ans = max(skip, join)
             return ans
         
-        return dp(0, 0, -1)
+        return dp(0, k, 0)
 ```
 
 - __Time Complexity__: $\mathcal{O}(n⋅(k+log⁡n))$
