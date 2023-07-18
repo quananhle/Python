@@ -52,6 +52,8 @@ __Constraints:__
 
 ![image](https://github.com/quananhle/Python/assets/35042430/cdb0c0a6-9a32-4355-b49f-994c6d41a9e9)
 
+Template if p and q are guaranteed to exist in the tree.
+
 __Complexity Analysis__
 
 - Time Complexity: $\mathcal{O}(N)$
