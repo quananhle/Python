@@ -138,7 +138,10 @@ class Solution:
 
 ### Binary Search
 
-#### Top-down Dynamic Programming + Binary Search
+#### Top-Down Dynamic Programming + Binary Search
+
+- __Time Complexity__: $\mathcal{O}(n \cdot k \cdot log⁡n)$
+- __Space Complexity__: $\mathcal{O}(n \cdot k)$
 
 ```Python
 class Solution:
@@ -164,6 +167,43 @@ class Solution:
         
         return dp(0, 0)
 ```
+
+```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        n = len(events)
+        events.sort()
+        starts = [start for start, end, value in events]
+
+        @lru_cache(None)
+        def dp(curr, count):
+            # Base case
+            if curr == n or count == k:
+                return 0
+
+            curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
+
+            lo, hi = 0, len(starts)
+
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if starts[mi] <= curr_end:
+                    lo = mi + 1
+                else:
+                    hi = mi
+
+            next_meeting = lo
+
+            skip = dp(curr + 1, count)
+            take = dp(next_meeting, count + 1)
+            ans = max(skip, take + curr_value)
+
+            return ans
+        
+        return dp(0, 0)
+```
+
+#### Bottom-Up Dynamic Programming + Binary Search
 
 ```Python
 
