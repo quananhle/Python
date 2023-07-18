@@ -51,6 +51,11 @@
 - :warning::warning: [198. House Robber](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/198.%20House%20Robber)
 - :warning::warning: [790. Domino and Tromino Tiling](https://github.com/quananhle/Python/blob/457664de2adba1b77cd866c1d3706d5ab3c5abce/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/790.%20Domino%20and%20Tromino%20Tiling)
 
+### Dynamic Programming - Multidimensional
+
+- :warning::warning: [62. Unique Paths](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2011%20-%20Dynamic%20Programming/62.%20Unique%20Paths)
+
+
 ### Linked List
 
 - :warning::warning: [2095. Delete the Middle Node of a Linked List](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/2095.%20Delete%20the%20Middle%20Node%20of%20a%20Linked%20List)
