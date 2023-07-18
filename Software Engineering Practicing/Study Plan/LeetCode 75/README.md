@@ -44,6 +44,10 @@
 - :warning::warning: [735. Asteroid Collision](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/735.%20Asteroid%20Collision)
 - :warning::warning: [394. Decode String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2014%20-%20Stack/394.%20Decode%20String)
 
+### Queue
+
+- :warning::warning: [933. Number of Recent Calls](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/933.%20Number%20of%20Recent%20Calls)
+
 ### Dynamic Programming - 1D
 
 - :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
