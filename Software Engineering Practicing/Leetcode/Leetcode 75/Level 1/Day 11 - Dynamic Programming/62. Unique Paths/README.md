@@ -49,7 +49,47 @@ __Constraints:__
 
 ---
 
+### Top-Down Dynamic Programming
+
+Complexity Analysis
+
+Time complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
+Space complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
+
+```Python
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        ROWS, COLS = m, n
+        DIRECTIONS = [(1, 0), (0, 1)]
+        ans = 0
+
+        memo = [[0] * n for _ in range(m)]
+
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return 0
+            
+            if row == ROWS - 1 or col == COLS - 1:
+                return 1
+
+            if memo[row][col]:
+                return memo[row][col]
+            
+            for dx, dy in DIRECTIONS:
+                memo[row][col] += dp(row + dx, col + dy)
+
+            return memo[row][col]
+        
+        return dp(0, 0)
+```
+
 ### Bottom-Up Dynamic Programming using 2D Tabulation
+
+Complexity Analysis
+
+Time complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
+Space complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
 
 ```Python
 class Solution(object):
@@ -89,6 +129,11 @@ class Solution(object):
 ```
 
 ### Bottom-Up Dynamic Programming using Tabulation
+
+Complexity Analysis
+
+Time complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
+Space complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
 
 ```Python
 class Solution(object):
