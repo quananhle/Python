@@ -136,3 +136,50 @@ class Solution:
 ```
 
 __Follow Up__: Could you solve it without reversing the input lists?
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m+n)$
+- __Space Complexity__: $\mathcal{O}(m+n)$
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        def reverse_list(head):
+            prev = None
+
+            while head:
+                tmp = head.next
+                head.next = prev
+                prev = head
+                head = tmp
+            
+            return prev
+
+        r1, r2 = reverse_list(l1), reverse_list(l2)
+
+        total = carry = 0
+        head = ListNode()
+
+        while r1 or r2:
+            if r1:
+                total += r1.val
+                r1 = r1.next
+            if r2:
+                total += r2.val
+                r2 = r2.next
+            
+            head.val = total % 10
+            carry = total // 10
+            curr = ListNode(carry)
+            curr.next = head
+            head = curr
+            total = carry
+        
+        return head.next if carry == 0 else head
+```
