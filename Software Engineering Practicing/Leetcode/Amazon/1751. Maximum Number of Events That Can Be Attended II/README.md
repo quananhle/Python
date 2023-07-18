@@ -209,6 +209,117 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming + Binary Search
 
-```Python
+- __Time Complexity__: $\mathcal{O}(n⋅(k+log⁡n))$
+- __Space Complexity__: $\mathcal{O}(n \cdot k)$
 
+```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        n = len(events)
+        dp = collections.defaultdict(int)
+        events.sort()
+        starts = [start for start, end, value in events]
+
+        for curr in range(n - 1, -1, -1):
+            curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
+            for count in range(k):
+                next_meeting = bisect_right(starts, curr_end)
+                dp[(curr, count)] = max(dp[(curr + 1, count)], dp[(next_meeting, count + 1)] + curr_value)
+            
+        return dp[(0, 0)]
+```
+
+```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        n = len(events)
+        dp = collections.defaultdict(int)
+        events.sort()
+        starts = [start for start, end, value in events]
+
+        for curr in range(n - 1, -1, -1):
+            curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
+            for count in range(1, k + 1):
+                next_meeting = bisect.bisect(starts, curr_end)
+                dp[(curr, count)] = max(dp[(curr + 1, count)], dp[(next_meeting, count - 1)] + curr_value)
+            
+        return dp[(0, k)]
+```
+
+```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        n = len(events)
+        dp = collections.defaultdict(int)
+        events.sort()
+        starts = [start for start, end, value in events]
+
+        for curr in range(n - 1, -1, -1):
+            curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
+            for count in range(1, k + 1):
+                lo, hi = 0, n
+
+                while lo < hi:
+                    mi = lo + (hi - lo) // 2
+
+                    if starts[mi] <= curr_end:
+                        lo = mi + 1
+                    else:
+                        hi = mi
+                
+                next_meeting = lo
+
+                dp[(curr, count)] = max(dp[(curr + 1, count)], dp[(next_meeting, count - 1)] + curr_value)
+            
+        return dp[(0, k)]
+```
+
+#### Bottom-Up Dynamic Programming + Optimized Binary Search
+
+- __Time Complexity__: $\mathcal{O}(n⋅(k+log⁡n))$
+- __Space Complexity__: $\mathcal{O}(n \cdot k)$
+
+```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        n = len(events)
+        dp = collections.defaultdict(int)
+        events.sort()
+        starts = [start for start, end, value in events]
+
+        for curr in range(n - 1, -1, -1):
+            next_meeting = bisect_right(starts, curr_end)
+            for count in range(1, k + 1):
+                dp[(curr, count)] = max(dp[(curr + 1, count)], dp[(next_meeting, count - 1)] + curr_value)
+            
+        return dp[(0, k)]
+```
+
+```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        n = len(events)
+        dp = collections.defaultdict(int)
+        events.sort()
+        starts = [start for start, end, value in events]
+
+        for curr in range(n - 1, -1, -1):
+            curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
+
+            lo, hi = 0, n
+
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+
+                if starts[mi] <= curr_end:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            
+            next_meeting = lo
+
+            for count in range(1, k + 1):
+                dp[(curr, count)] = max(dp[(curr + 1, count)], dp[(next_meeting, count - 1)] + curr_value)
+            
+        return dp[(0, k)]
 ```
