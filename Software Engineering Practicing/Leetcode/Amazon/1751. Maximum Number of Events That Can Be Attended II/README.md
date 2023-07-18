@@ -52,3 +52,30 @@ __Constraints:__
 - $1 <= valuei <= 10^{6}$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        ans = 0
+        n = len(events)
+        events.sort()
+
+        @lru_cache(None)
+        def dp(curr, count, prev_ending_time):
+            # Base case
+            if curr == n or count == k:
+                return 0
+            
+            # Recurrence relation: inclusive end day, cannot attend current event, move to another event
+            if events[curr][0] <= prev_ending_time:
+                return dp(curr + 1, count, prev_ending_time)
+            
+            ans = max(dp(curr + 1, count, prev_ending_time), dp(curr + 1, count + 1, events[curr][1]) + events[curr][2])
+            return ans
+        
+        return dp(0, 0, -1)
+```
