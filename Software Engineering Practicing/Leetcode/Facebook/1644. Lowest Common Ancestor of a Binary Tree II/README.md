@@ -50,6 +50,58 @@ __Constraints:__
 
 ### Depth-First Search
 
+![image](https://github.com/quananhle/Python/assets/35042430/cdb0c0a6-9a32-4355-b49f-994c6d41a9e9)
+
+__Complexity Analysis__
+
+- Time Complexity: $\mathcal{O}(N)$
+- Space Complexity: $\mathcal{O}(N)$
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        def dfs(node, target):
+            if node == target:
+                return True
+            if node is None:
+                return False
+            return dfs(node.left, target) or dfs(node.right, target)
+
+        
+        def LCA(node):
+            if node is None or node == p or node == q:
+                return node
+            left = LCA(node.left)
+            right = LCA(node.right)
+
+            if left and right:
+                return node
+            elif left:
+                return left
+            else:
+                return right
+            
+        ans = LCA(root)
+        if ans == p:
+            return p if dfs(p, q) else None
+        elif ans == q:
+            return q if dfs(q, p) else None
+        
+        return ans
+```
+
+__Follow up__: Can you find the LCA traversing the tree, without checking nodes existence?
+
+- Time Complexity: $\mathcal{O}(N)$
+- Space Complexity: $\mathcal{O}(N)$
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -82,6 +134,3 @@ class Solution:
 
         return ans
 ```
-
-__Follow up__: Can you find the LCA traversing the tree, without checking nodes existence?
-
