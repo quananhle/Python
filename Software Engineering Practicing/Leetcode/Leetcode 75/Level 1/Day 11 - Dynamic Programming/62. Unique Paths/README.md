@@ -1,6 +1,6 @@
 ## [62. Unique Paths](https://leetcode.com/problems/unique-paths)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Recursion```
 
 #### Difficulty: Medium
 
@@ -51,10 +51,10 @@ __Constraints:__
 
 ### Top-Down Dynamic Programming
 
-Complexity Analysis
+__Complexity Analysis__
 
-Time complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
-Space complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
+- __Time Complexity__: $\mathcal{O}(N \times M)$.
+- __Space Complexity__: $\mathcal{O}(N \times M)$.
 
 ```Python
 class Solution:
@@ -86,10 +86,10 @@ class Solution:
 
 ### Bottom-Up Dynamic Programming using 2D Tabulation
 
-Complexity Analysis
+__Complexity Analysis__
 
-Time complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
-Space complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
+- __Time Complexity__: $\mathcal{O}(N \times M)$.
+- __Space Complexity__: $\mathcal{O}(N \times M)$.
 
 ```Python
 class Solution(object):
@@ -130,10 +130,10 @@ class Solution(object):
 
 ### Bottom-Up Dynamic Programming using Tabulation
 
-Complexity Analysis
+__Complexity Analysis__
 
-Time complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
-Space complexity: O(N×M)\mathcal{O}(N \times M)O(N×M).
+- __Time Complexity__: $\mathcal{O}(N \times M)$.
+- __Space Complexity__: $\mathcal{O}(M)$.
 
 ```Python
 class Solution(object):
