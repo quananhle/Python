@@ -65,6 +65,12 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/Figures/1751/5.png)
 
+
+Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(n⋅(k+log⁡n))$
+- __Space Complexity__: $\mathcal{O}(n \cdot k)$
+
 ```Python
 class Solution:
     def maxValue(self, events: List[List[int]], k: int) -> int:
