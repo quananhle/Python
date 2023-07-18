@@ -99,6 +99,9 @@ class Solution:
         return dp(0, 0, -1)
 ```
 
+- __Time Complexity__: $\mathcal{O}(n⋅(k+log⁡n))$
+- __Space Complexity__: $\mathcal{O}(n \cdot k)$
+
 ```Python
 
 ```
