@@ -1,6 +1,6 @@
 ## [1644. Lowest Common Ancestor of a Binary Tree II](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-ii/)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -48,4 +48,40 @@ __Constraints:__
  
 ---
 
-Follow up: Can you find the LCA traversing the tree, without checking nodes existence?
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        ans = 0
+
+        def dfs(node):
+            nonlocal ans
+
+            if not node:
+                return False
+                
+            left = dfs(node.left)
+            right = dfs(node.right)
+
+            mid = node == p or node == q
+
+            if mid + left + right >= 2:
+                ans = node
+            
+            return mid or left or right
+        
+        dfs(root)
+
+        return ans
+```
+
+__Follow up__: Can you find the LCA traversing the tree, without checking nodes existence?
+
