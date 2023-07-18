@@ -1,4 +1,6 @@
-## 62. Unique Paths
+## [62. Unique Paths](https://leetcode.com/problems/unique-paths)
+
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
