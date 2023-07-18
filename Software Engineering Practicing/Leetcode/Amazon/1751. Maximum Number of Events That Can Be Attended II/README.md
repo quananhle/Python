@@ -53,9 +53,13 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/Figures/1751/b1.png)
+
 ### The Framework
 
 #### Top-Down Dynamic Programming
+
+![image](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/Figures/1751/5.png)
 
 ```Python
 class Solution:
@@ -65,16 +69,22 @@ class Solution:
         events.sort()
 
         @lru_cache(None)
-        def dp(curr, count, prev_ending_time):
+        def dp(curr, count, prev_end):
             # Base case
             if curr == n or count == k:
                 return 0
             
-            # Recurrence relation: inclusive end day, cannot attend current event, move to another event
-            if events[curr][0] <= prev_ending_time:
-                return dp(curr + 1, count, prev_ending_time)
-            
-            ans = max(dp(curr + 1, count, prev_ending_time), dp(curr + 1, count + 1, events[curr][1]) + events[curr][2])
+            curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
+
+            # Recurrence relation: skip or attend the current meeting
+
+            # Skip if time conflict due to inclusive end day, cannot attend current event, move to another event
+            skip = dp(curr + 1, count, prev_end)
+            if curr_start <= prev_end:
+                return skip
+
+            take = dp(curr + 1, count + 1, curr_end)
+            ans = max(skip, take + curr_value)
             return ans
         
         return dp(0, 0, -1)
