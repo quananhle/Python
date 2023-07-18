@@ -1,6 +1,6 @@
 ## [1751. Maximum Number of Events That Can Be Attended II](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/)
 
-```Tag```: ```Dynamic Programming``` ```Binary Search```
+```Tag```: ```Dynamic Programming``` ```Binary Search``` ```Sorting```
 
 #### Difficulty: Hard
 
@@ -98,3 +98,11 @@ class Solution:
         
         return dp(0, 0, -1)
 ```
+
+```Python
+
+```
+
+---
+
+
