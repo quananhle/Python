@@ -59,12 +59,15 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/Figures/1751/3.png)
+
+![image](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/Figures/1751/4.png)
+
 ![image](https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/Figures/1751/5.png)
 
 ```Python
 class Solution:
     def maxValue(self, events: List[List[int]], k: int) -> int:
-        ans = 0
         n = len(events)
         events.sort()
 
