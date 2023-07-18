@@ -103,7 +103,34 @@ class Solution:
 - __Space Complexity__: $\mathcal{O}(n \cdot k)$
 
 ```Python
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        n = len(events)
+        events.sort()
+        memo = collections.defaultdict()
 
+        def dp(curr, count, prev_end):
+            # Base case
+            if curr == n or count == k:
+                return 0
+            
+            if (curr, count, prev_end) in memo:
+                return memo[(curr, count, prev_end)]
+
+            curr_start, curr_end, curr_value = events[curr][0], events[curr][1], events[curr][2]
+            # Recurrence relation: inclusive end day, cannot attend current event, move to another event
+            skip = dp(curr + 1, count, prev_end)
+            if curr_start <= prev_end:
+                return skip
+
+            take = dp(curr + 1, count + 1, curr_end)
+            ans = max(skip, take + curr_value)
+
+            memo[(curr, count, prev_end)] = ans
+
+            return ans
+        
+        return dp(0, 0, -1)
 ```
 
 ---
