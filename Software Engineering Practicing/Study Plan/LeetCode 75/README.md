@@ -46,7 +46,7 @@
 
 ### Queue
 
-- :warning::warning: [933. Number of Recent Calls](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/933.%20Number%20of%20Recent%20Calls)
+- :four_leaf_clover: [933. Number of Recent Calls](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/933.%20Number%20of%20Recent%20Calls)
 
 ### Dynamic Programming - 1D
 
