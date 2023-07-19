@@ -1,8 +1,8 @@
 ## 1143. Longest Common Subsequence
 
-#### Difficulty: Medium
-
 ```Tag:``` [```Dynamic Programming```](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/README.md)
+
+#### Difficulty: Medium
 
 Given two strings ```text1``` and ```text2```, return _the length of their __longest common subsequence___. If there is no __common subsequence__, return ```0```.
 
