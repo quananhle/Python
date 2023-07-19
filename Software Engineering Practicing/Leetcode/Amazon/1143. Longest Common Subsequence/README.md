@@ -1,6 +1,6 @@
 ## [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence)
 
-```Tag:``` [```Dynamic Programming```](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/README.md)
+```Tag:``` [```Dynamic Programming```](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/README.md) ```Two Pointers```
 
 #### Difficulty: Medium
 
@@ -49,9 +49,27 @@ text1 and text2 consist of only lowercase English characters.
 
 ---
 
+### Brute Force
+
+#### Two Pointers
+
+```Python
+
+```
+
+---
+
 ### The Framework
 
 #### Top-Down Recursive
+
+```Python
+
+```
+
+```Python
+
+```
 
 ```Python
 class Solution(object):
