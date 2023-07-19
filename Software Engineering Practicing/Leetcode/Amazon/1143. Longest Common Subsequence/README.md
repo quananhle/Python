@@ -51,7 +51,7 @@ text1 and text2 consist of only lowercase English characters.
 
 ### Brute Force
 
-#### Recursion
+#### Recursion (Time Limit Exceeded)
 
 ```Python
 class Solution:
@@ -122,7 +122,34 @@ define function LCS(text1, text2):
 #### Top-Down Dynamic Programming (Recursive)
 
 ```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        m, n = len(text1), len(text2)
+        memo = collections.defaultdict(int)
 
+        @lru_cache(maxsize=None)
+        def dp(p1, p2):
+            # Base case
+            if p1 == m or p2 == n:
+                return 0
+
+            if (p1, p2) in memo:
+                return memo[(p1, p2)]
+
+            # Recurrence relation: matched, add to counter and move both pointers on. Not matched, move either pointer on.
+
+            # Matched
+            if text1[p1] == text2[p2]:
+                lcs = dp(p1 + 1, p2 + 1) + 1
+            # Not matched
+            else:
+                lcs = max(dp(p1 + 1, p2), dp(p1, p2 + 1))
+
+            memo[(p1, p2)] = lcs
+
+            return lcs
+
+        return dp(0, 0)
 ```
 
 ```Python
@@ -185,6 +212,7 @@ class Solution(object):
         # Top-Down Recursive
         #### Time Complexity: 0(M * N), traverse through the length of 2 input lists
         #### Space Complexity: O(M * N), recursively keep up to the size until base cases reached
+        @lru_cache(maxsize=None)
         def dp(p1, p2):
             # Base cases:
             # Emtpy strings
