@@ -1,4 +1,4 @@
-## 1143. Longest Common Subsequence
+## [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence)
 
 ```Tag:``` [```Dynamic Programming```](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/README.md)
 
