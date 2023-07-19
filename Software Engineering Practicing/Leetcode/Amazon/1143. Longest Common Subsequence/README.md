@@ -1,6 +1,6 @@
 ## [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence)
 
-```Tag:``` [```Dynamic Programming```](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/README.md) ```Two Pointers```
+```Tag:``` [```Dynamic Programming```](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/README.md) ```Recursion```
 
 #### Difficulty: Medium
 
@@ -51,10 +51,24 @@ text1 and text2 consist of only lowercase English characters.
 
 ### Brute Force
 
-#### Two Pointers
+#### Recursion
 
 ```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        m, n = len(text1), len(text2)
 
+        def LCS(p, q):
+            # Base case
+            if p == m or q == n:
+                return 0
+            
+            if text1[p] == text2[q]:
+                return 1 + LCS(p + 1, q + 1)
+            
+            return max(LCS(p + 1, q), LCS(p, q + 1))
+
+        return LCS(0, 0)
 ```
 
 ---
@@ -116,7 +130,7 @@ class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         m, n = len(text1), len(text2)
 
-        @lru_cache(None)
+        @lru_cache(maxsize=None)
         def dp(p1, p2):
             # Base case
             if p1 == m or p2 == n:
@@ -134,6 +148,29 @@ class Solution:
             
             return max(matched, not_matched)
         
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        m, n = len(text1), len(text2)
+
+        @lru_cache(maxsize=None)
+        def dp(p1, p2):
+            # Base case
+            if p1 == m or p2 == n:
+                return 0
+
+            # Recurrence relation: matched, add to counter and move both pointers on. Not matched, move either pointer on.
+
+            # Matched
+            if text1[p1] == text2[p2]:
+                return dp(p1 + 1, p2 + 1) + 1
+
+            # Not matched
+            return max(dp(p1 + 1, p2), dp(p1, p2 + 1))
+                    
         return dp(0, 0)
 ```
 
