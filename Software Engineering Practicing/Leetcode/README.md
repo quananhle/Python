@@ -289,6 +289,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [516. Longest Palindromic Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/516.%20Longest%20Palindromic%20Subsequence)
 - :no_entry::no_entry::no_entry: [727. Minimum Window Subsequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/727.%20Minimum%20Window%20Subsequence) ```Greedy``` ```Sliding Window``` 
 - :warning::warning: [1035. Uncrossed Lines](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1035.%20Uncrossed%20Lines)
+- :warning::warning: [1143. Longest Common Subsequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1143.%20Longest%20Common%20Subsequence)
 - :no_entry::no_entry::no_entry: [1312. Minimum Insertion Steps to Make a String Palindrome](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1312.%20Minimum%20Insertion%20Steps%20to%20Make%20a%20String%20Palindrome)
 
 #### Longest Increasing Subsequence
