@@ -105,14 +105,36 @@ define function LCS(text1, text2):
     return maximum of case1 and case2
 ```
 
-#### Top-Down Recursive
+#### Top-Down Dynamic Programming (Recursive)
 
 ```Python
 
 ```
 
 ```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        m, n = len(text1), len(text2)
 
+        @lru_cache(None)
+        def dp(p1, p2):
+            # Base case
+            if p1 == m or p2 == n:
+                return 0
+
+            # Recurrence relation: matched, add to counter and move both pointers on. Not matched, move either pointer on.
+            matched = not_matched = 0
+
+            # Matched
+            if text1[p1] == text2[p2]:
+                matched = dp(p1 + 1, p2 + 1) + 1
+            # Not matched
+            else:
+                not_matched = max(dp(p1 + 1, p2), dp(p1, p2 + 1))
+            
+            return max(matched, not_matched)
+        
+        return dp(0, 0)
 ```
 
 ```Python
@@ -144,7 +166,7 @@ class Solution(object):
         return dp(0, 0)
 ```
 
-### Bottom-Up Dynamic Programming with 2D Tabulation
+### Bottom-Up Dynamic Programming (Iterative)
 
 ![image](https://user-images.githubusercontent.com/35042430/208011171-794c5f80-5eb6-45ca-8965-6fdca7342480.png)
 
@@ -153,6 +175,8 @@ class Solution(object):
 ![image](https://user-images.githubusercontent.com/35042430/208011263-0295a76d-c516-4a97-bbee-d5119743b3e1.png)
 
 ![image](https://user-images.githubusercontent.com/35042430/208011302-7d743aee-1b29-4bbb-af51-4b41225c2314.png)
+
+#### 2D Tabulation
 
 ```Python
 class Solution(object):
@@ -190,7 +214,7 @@ class Solution(object):
         return memo[0][0]
 ```
 
-### Bottom-Up Dynamic Programming with 1D Tabulation
+#### 1D Tabulation
 
 ```Python
 class Solution(object):
