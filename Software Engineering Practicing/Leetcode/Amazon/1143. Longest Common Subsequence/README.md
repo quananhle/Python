@@ -61,6 +61,50 @@ text1 and text2 consist of only lowercase English characters.
 
 ### The Framework
 
+__Algorithm__
+
+From what we've explored in the intuition section, we can create a top-down recursive algorithm that looks like this in pseudocode:
+
+```JavaScript
+define function LCS(text1, text2):
+    // If either string is empty there, can be no common subsequence.
+    if length of text1 or text2 is 0:
+        return 0
+
+    letter1 = the first letter in text1
+    firstOccurence = first position of letter1 in text2
+
+    // The case where the line *is not* part of the optimal solution
+    case1 = LCS(text1.substring(1), text2)
+
+    // The case where the line *is* part of the optimal solution
+    case2 = 1 + LCS(text1.substring(1), text2.substring(firstOccurence + 1))
+   
+    return maximum of case1 and case2
+```
+
+You might notice from the pseudocode that there's one case we haven't handled: if letter1 isn't part of text2, then we can't solve the first subproblem. However, in this case, we can simply ignore the first subproblem as the line doesn't exist. This leaves us with:
+
+```JavaScript
+define function LCS(text1, text2):
+    // If either string is empty there can be no common subsequence
+    if length of text1 or text2 is 0:
+        return 0
+
+    letter1 = the first letter in text1
+
+    // The case where the line *is not* part of the optimal solution
+    case1 = LCS(text1.substring(1), text2)
+
+    case2 = 0
+    if letter1 is in text2:
+        firstOccurence = first position of letter1 in text2
+        // The case where the line *is* part of the optimal solution
+        case2 = 1 + LCS(text1.substring(1), text2.substring(firstOccurence + 1))
+
+    return maximum of case1 and case2
+```
+
 #### Top-Down Recursive
 
 ```Python
