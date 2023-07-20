@@ -298,6 +298,28 @@ class Solution(object):
 #### 1D Tabulation
 
 ```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        if len(text2) < len(text1):
+            text1, text2 = text2, text1
+
+        m, n = len(text1), len(text2)
+
+        prev = [0] * (m + 1)
+
+        for col in range(n - 1, -1, -1):
+            curr = [0] * (m + 1)
+            for row in range(m - 1, -1, -1):
+                if text1[row] == text2[col]:
+                    curr[row] = 1 + prev[row + 1]
+                else:
+                    curr[row] = max(prev[row], curr[row + 1])
+            prev = curr
+                
+        return prev[0]
+```
+
+```Python
 class Solution(object):
     def longestCommonSubsequence(self, text1, text2):
         """
