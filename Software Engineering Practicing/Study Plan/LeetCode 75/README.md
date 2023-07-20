@@ -59,6 +59,7 @@
 
 - :warning::warning: [62. Unique Paths](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2011%20-%20Dynamic%20Programming/62.%20Unique%20Paths)
 - :warning::warning: [1143. Longest Common Subsequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1143.%20Longest%20Common%20Subsequence)
+- :warning::warning: 714. Best Time to Buy and Sell Stock with Transaction Fee
 
 ### Linked List
 
