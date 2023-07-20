@@ -1,6 +1,6 @@
 ## [933. Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls)
 
-```Tag```: ```Queue``` ```Design```
+```Tag```: ```Queue``` ```Design``` ```Sliding Window```
 
 #### Difficulty: Easy
 
@@ -40,3 +40,23 @@ __Constraints:__
 - At most $10^{4}$ calls will be made to ```ping```.
 
 ---
+
+### Queue & Sliding Window
+
+```Python
+class RecentCounter:
+
+    def __init__(self):
+        self.window = collections.deque()
+
+    def ping(self, t: int) -> int:
+        self.window.append(t)
+        while self.window[0] < t - 3000:
+            self.window.popleft()
+        
+        return len(self.window)
+
+# Your RecentCounter object will be instantiated and called as such:
+# obj = RecentCounter()
+# param_1 = obj.ping(t)
+```
