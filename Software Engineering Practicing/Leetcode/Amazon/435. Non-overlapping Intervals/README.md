@@ -32,11 +32,10 @@ Explanation: You don't need to remove any of the intervals since they're already
 ```
 
 __Constraints:__
-```
-1 <= intervals.length <= 105
-intervals[i].length == 2
--5 * 104 <= starti < endi <= 5 * 104
-```
+
+- $1 <= intervals.length <= 10^{5}$
+- $intervals[i].length == 2$
+- $-5 * 10^{4} <= start_{i} < end_{i} <= 5 * 10^{4}$
 
 ---
 
