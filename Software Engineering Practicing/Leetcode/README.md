@@ -233,6 +233,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [705. Design HashSet](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/705.%20Design%20HashSet) ```Linked List``` ```Binary Search Tree```
 - :no_entry::no_entry::no_entry: [716. Max Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/716.%20Max%20Stack) ```Linked List``` ```Heap```
 - :warning::warning: [901. Online Stock Span](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/901.%20Online%20Stock%20Span) ```Monotonic Stack```
+- :four_leaf_clover: [933. Number of Recent Calls](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/933.%20Number%20of%20Recent%20Calls) ```Queue```
 - :warning::warning: [1146. Snapshot Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1146.%20Snapshot%20Array) ```Binary Search``` ```Hash Map```
 - :warning::warning: [1396. Design Underground System](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1396.%20Design%20Underground%20System) ```Hash Map```
 - :warning::warning: [1472. Design Browser History](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1472.%20Design%20Browser%20History) ```Linked List```
