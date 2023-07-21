@@ -252,6 +252,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [62. Unique Paths](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2011%20-%20Dynamic%20Programming/62.%20Unique%20Paths) ```Recursion```
 - :warning::warning: [64. Minimum Path Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/64.%20Minimum%20Path%20Sum)
 - :four_leaf_clover: [70. Climbing Stairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/70.%20Climbing%20Stairs) ```Recursion``` ```Bitwise Manipulations```
+- :warning::warning: [72. Edit Distance](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Compare%20Array/72.%20Edit%20Distance)
 - :no_entry::no_entry::no_entry: [87. Scramble String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/87.%20Scramble%20String/)
 - :warning::warning: [120. Triangle](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/120.%20Triangle)
 - [139. Word Break]
