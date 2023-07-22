@@ -1,6 +1,6 @@
 ## [688. Knight Probability in Chessboard](https://leetcode.com/problems/knight-probability-in-chessboard/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming ``` ```Math```
 
 #### Difficulty: Medium
 
@@ -44,3 +44,26 @@ __Constraints__:
 - $0 \le row, column \le n - 1$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
+        DIRECTIONS = [(2, 1), (1, 2), (-2, 1), (-1, 2), (2, -1), (1, -2), (-2, -1), (-1, -2)]
+
+        @lru_cache(maxsize=None)
+        def dp(row, col, curr):
+            # Base cases
+            if not (0 <= row < n and 0 <= col < n):
+                return 0
+            
+            if curr == 0:
+                return 1
+            
+            return sum(dp(row + dx, col + dy, curr - 1) for dx, dy in DIRECTIONS) / 8
+        
+        return dp(row, column, k)
+```
