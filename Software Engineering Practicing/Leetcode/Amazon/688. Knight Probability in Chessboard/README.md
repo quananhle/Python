@@ -15,3 +15,5 @@ Each time the knight is to move, it chooses one of eight possible moves uniforml
 The knight continues moving until it has made exactly ```k``` moves or has moved off the chessboard.
 
 Return _the probability that the knight remains on the board after it has stopped moving_.
+
+![image](https://github.com/quananhle/Python/assets/35042430/d09286ea-b262-4779-bad9-fccd2bb51d55)
