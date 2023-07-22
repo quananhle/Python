@@ -17,3 +17,24 @@ The knight continues moving until it has made exactly ```k``` moves or has moved
 Return _the probability that the knight remains on the board after it has stopped moving_.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/d09286ea-b262-4779-bad9-fccd2bb51d55)
+
+---
+
+Example 1:
+
+Input: n = 3, k = 2, row = 0, column = 0
+Output: 0.06250
+Explanation: There are two moves (to (1,2), (2,1)) that will keep the knight on the board.
+From each of those positions, there are also two moves that will keep the knight on the board.
+The total probability the knight stays on the board is 0.0625.
+Example 2:
+
+Input: n = 1, k = 0, row = 0, column = 0
+Output: 1.00000
+ 
+
+Constraints:
+
+1 <= n <= 25
+0 <= k <= 100
+0 <= row, column <= n - 1
