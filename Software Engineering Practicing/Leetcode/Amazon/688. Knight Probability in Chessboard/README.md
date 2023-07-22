@@ -29,11 +29,13 @@ From each of those positions, there are also two moves that will keep the knight
 The total probability the knight stays on the board is 0.0625.
 ```
 
-Example 2:
-
+__Example 2:__
+```
 Input: n = 1, k = 0, row = 0, column = 0
 Output: 1.00000
- 
+```
+
+---
 
 Constraints:
 
