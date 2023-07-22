@@ -39,6 +39,8 @@ Output: 1.00000
 
 __Constraints__:
 
-- $1 <= n <= 25$
-- $0 <= k <= 100$
-- $0 <= row, column <= n - 1$
+- $1 \le n \le 25$
+- $0 \le k \le 100$
+- $0 \le row, column \le n - 1$
+
+---
