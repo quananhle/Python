@@ -49,6 +49,37 @@ __Constraints__:
 
 #### Top-Down Dynamic Programming
 
+__Complexity Analysis__
+
+- Time Complexity: $\mathcal{O}(k \cdot n^{2})$
+- Space Complexity: $\mathcal{O}(k \cdot n^{2})$
+
+```Python
+class Solution:
+    def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
+        DIRECTIONS = [(2, 1), (1, 2), (-2, 1), (-1, 2), (2, -1), (1, -2), (-2, -1), (-1, -2)]
+        memo = collections.defaultdict(int)
+
+        @lru_cache(maxsize=None)
+        def dp(row, col, curr):
+            # Base cases
+            if not (0 <= row < n and 0 <= col < n):
+                return 0
+            
+            if curr == 0:
+                return 1
+            
+            if (row, col, curr) in memo:
+                return (row, col, curr)
+            
+            for dx, dy in DIRECTIONS:
+                memo[(row, col, curr)] += dp(row + dx, col + dy, curr - 1) / 8
+            
+            return memo[(row, col, curr)]
+        
+        return dp(row, column, k)
+```
+
 ```Python
 class Solution:
     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
