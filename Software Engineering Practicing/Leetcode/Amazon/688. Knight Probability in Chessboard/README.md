@@ -20,13 +20,15 @@ Return _the probability that the knight remains on the board after it has stoppe
 
 ---
 
-Example 1:
-
+__Example 1__:
+```
 Input: n = 3, k = 2, row = 0, column = 0
 Output: 0.06250
 Explanation: There are two moves (to (1,2), (2,1)) that will keep the knight on the board.
 From each of those positions, there are also two moves that will keep the knight on the board.
 The total probability the knight stays on the board is 0.0625.
+```
+
 Example 2:
 
 Input: n = 1, k = 0, row = 0, column = 0
