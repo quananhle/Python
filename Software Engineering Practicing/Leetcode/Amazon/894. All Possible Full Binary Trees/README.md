@@ -1,6 +1,6 @@
 ## [894. All Possible Full Binary Trees](https://leetcode.com/problems/all-possible-full-binary-trees/)
 
-```Tag```:
+```Tag```: ```Binary Tree```
 
 #### Difficulty: Medium
 
@@ -16,15 +16,20 @@ A full binary tree is a binary tree where each node has exactly ```0``` or ```2`
 
 __Example 1:__
 
-
+![image](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/08/22/fivetrees.png)
+```
 Input: n = 7
 Output: [[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]
-Example 2:
+```
 
+__Example 2:__
+```
 Input: n = 3
 Output: [[0,0,0]]
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= n <= 20
+- $1 \le n \le 20$
+
+---
