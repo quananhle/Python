@@ -1,6 +1,6 @@
 ## [439. Ternary Expression Parser](https://leetcode.com/problems/ternary-expression-parser/)
 
-```Tag```: ```Stack``` ```Polish Notation``` ```Binary Search```
+```Tag```: ```Stack``` ```Polish Notation```
 
 #### Difficulty: Medium
 
@@ -78,11 +78,10 @@ class Solution:
 
 ### Approach 2: Reverse Polish Notation
 
-__Constraints:__
+__Complexity Analysis__
 
-- $5 \le expression.length \le 10^{4}$
-- ```expression``` consists of digits, ```'T'```, ```'F'```, ```'?'```, and ```':'```.
-- It is guaranteed that ```expression``` is a valid ternary expression and that each number is a __one-digit number__.
+- Time Complexity: $\mathcal{O}(N^{2})$
+- Space Complexity: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
