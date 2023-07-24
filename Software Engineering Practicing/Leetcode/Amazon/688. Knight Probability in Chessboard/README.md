@@ -1,6 +1,6 @@
 ## [688. Knight Probability in Chessboard](https://leetcode.com/problems/knight-probability-in-chessboard/)
 
-```Tag```: ```Dynamic Programming ``` ```Math```
+```Tag```: ```Dynamic Programming ``` ```Math``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -98,3 +98,4 @@ class Solution:
         
         return dp(row, column, k)
 ```
+
