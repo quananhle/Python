@@ -14,3 +14,35 @@ The conditional expressions group right-to-left (as usual in most languages), an
 
 ---
 
+__Example 1:__
+```
+Input: expression = "T?2:3"
+Output: "2"
+Explanation: If true, then result is 2; otherwise result is 3.
+```
+
+__Example 2:__
+```
+Input: expression = "F?1:T?4:5"
+Output: "4"
+Explanation: The conditional expressions group right-to-left. Using parenthesis, it is read/evaluated as:
+"(F ? 1 : (T ? 4 : 5))" --> "(F ? 1 : 4)" --> "4"
+or "(F ? 1 : (T ? 4 : 5))" --> "(T ? 4 : 5)" --> "4"
+```
+
+__Example 3:__
+```
+Input: expression = "T?T?F:5:3"
+Output: "F"
+Explanation: The conditional expressions group right-to-left. Using parenthesis, it is read/evaluated as:
+"(T ? (T ? F : 5) : 3)" --> "(T ? F : 3)" --> "F"
+"(T ? (T ? F : 5) : 3)" --> "(T ? F : 5)" --> "F"
+```
+
+__Constraints:__
+
+- $5 \le expression.length \le 10^[4}$
+- ```expression``` consists of digits, ```'T'```, ```'F'```, ```'?'```, and ```':'```.
+- It is guaranteed that ```expression``` is a valid ternary expression and that each number is a __one-digit number__.
+
+---
