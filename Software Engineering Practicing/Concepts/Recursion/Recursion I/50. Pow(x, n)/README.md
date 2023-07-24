@@ -97,6 +97,8 @@ class Solution:
 
 ---
 
+![image](https://leetcode.com/problems/powx-n/Figures/50/Slide1.PNG)
+
 ### The Framework
 
 #### Top-Down Dynamic Programming
@@ -168,12 +170,6 @@ class Solution:
             return ans
         
         return dp(x, n)
-```
-
-#### Bottom-Up Dynamic Programming
-
-```Python
-
 ```
 
 ---
