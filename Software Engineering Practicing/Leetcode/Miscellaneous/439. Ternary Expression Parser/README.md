@@ -53,6 +53,10 @@ As illustrated here, due to the right-to-left associativity of ternary expressio
 
 ![image](https://github.com/quananhle/Python/assets/35042430/e20b6333-7c5b-43f0-922b-304a16ad0541)
 
+__Complexity Analysis__
+
+- Time Complexity: $\mathcal{O}(N^{2})$
+- Space Complexity: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
