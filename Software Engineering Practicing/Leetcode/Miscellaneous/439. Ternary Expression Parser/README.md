@@ -41,7 +41,7 @@ Explanation: The conditional expressions group right-to-left. Using parenthesis,
 
 __Constraints:__
 
-- $5 \le expression.length \le 10^[4}$
+- $5 \le expression.length \le 10^{4}$
 - ```expression``` consists of digits, ```'T'```, ```'F'```, ```'?'```, and ```':'```.
 - It is guaranteed that ```expression``` is a valid ternary expression and that each number is a __one-digit number__.
 
