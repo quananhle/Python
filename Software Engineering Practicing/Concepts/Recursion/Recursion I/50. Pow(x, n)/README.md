@@ -1,6 +1,6 @@
 ## [50. Pow(x, n)](https://leetcode.com/problems/powx-n)
 
-```Tag```: ```Recursion```
+```Tag```: ```Recursion``` ```Math``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
