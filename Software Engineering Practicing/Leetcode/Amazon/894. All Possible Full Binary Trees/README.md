@@ -1,6 +1,6 @@
 ## [894. All Possible Full Binary Trees](https://leetcode.com/problems/all-possible-full-binary-trees/)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -33,3 +33,39 @@ __Constraints:__
 - $1 \le n \le 20$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def allPossibleFBT(self, n: int) -> List[Optional[TreeNode]]:
+        @lru_cache(maxsize=None)
+        def dp(curr: int) -> List[TreeNode]:
+            if curr % 2 == 0:
+                return []
+
+            if curr == 1:
+                return [TreeNode()]
+
+            res = list()
+            for i in range(1, curr, 2):
+                left = dp(i)
+                right = dp(curr - i - 1)
+    
+                for l in left:
+                    for r in right:
+                        root = TreeNode(0, l, r)
+                        res.append(root)
+
+            return res
+
+        return dp(n)
+```
