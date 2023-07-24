@@ -96,3 +96,31 @@ class Solution:
 
         return res
 ```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def allPossibleFBT(self, n: int) -> List[Optional[TreeNode]]:
+        if n % 2 == 0:
+            return []
+        
+        dp = [[] for _ in range(n + 1)]
+        dp[1].append(TreeNode())
+
+        for curr in range(3, n + 1, 2):
+            for i in range(1, curr - 1, 2):
+                j = curr - 1 - i
+                for left in dp[i]:
+                    for right in dp[j]:
+                        root = TreeNode(0, left, right)
+                        dp[curr].append(root)
+        
+        return dp[n]
+```
