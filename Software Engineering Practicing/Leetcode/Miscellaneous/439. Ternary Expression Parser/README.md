@@ -1,6 +1,6 @@
 ## [439. Ternary Expression Parser](https://leetcode.com/problems/ternary-expression-parser/)
 
-```Tag```: 
+```Tag```: ```Stack``` ```Polish Notation```
 
 #### Difficulty: Medium
 
@@ -46,3 +46,23 @@ __Constraints:__
 - It is guaranteed that ```expression``` is a valid ternary expression and that each number is a __one-digit number__.
 
 ---
+
+### Find Rightmost Atomic Expression
+
+```Python
+class Solution:
+    def parseTernary(self, expression: str) -> str:
+        def is_valid_atomic(s):
+            return s[0] in 'TF' and s[1] == '?' and s[2] in 'TF0123456789' and s[3] == ':' and s[4] in 'TF0123456789'
+        
+        def solve_atomic(s):
+            return s[2] if s[0] == 'T' else s[4]
+        
+        while len(expression) != 1:
+            i = len(expression) - 1
+            while not is_valid_atomic(expression[i-4:i+1]):
+                i -= 1
+            expression = expression[:i-4] + solve_atomic(expression[i-4:i+1]) + expression[i+1:]
+        
+        return expression
+```
