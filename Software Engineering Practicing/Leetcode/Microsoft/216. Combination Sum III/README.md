@@ -49,3 +49,18 @@ __Constraints:__
 - $1 \le n \le 60$
 
 ---
+
+### Backtracking
+
+![image](https://leetcode.com/problems/combination-sum-iii/Figures/216/216_backtrack.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(\frac{9! \cdot K}{(9-K)!})$
+![image](https://github.com/quananhle/Python/assets/35042430/46a8bd41-bfa6-4b17-9468-4ef9609bf059)
+- __Space Complexity__: $\mathcal{O}(K)$
+![image](https://github.com/quananhle/Python/assets/35042430/e8ab8cb2-3b20-4240-8922-90ba8da3744d)
+
+```Python
+
+```
