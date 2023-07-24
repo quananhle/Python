@@ -49,6 +49,11 @@ __Constraints:__
 
 ### Find Rightmost Atomic Expression
 
+As illustrated here, due to the right-to-left associativity of ternary expressions, we can find the rightmost atomic expression of the form ```B?E1:E2``` and replace it with its value. We can repeat this process until we are left with a single value.
+
+![image](https://github.com/quananhle/Python/assets/35042430/e20b6333-7c5b-43f0-922b-304a16ad0541)
+
+
 ```Python
 class Solution:
     def parseTernary(self, expression: str) -> str:
