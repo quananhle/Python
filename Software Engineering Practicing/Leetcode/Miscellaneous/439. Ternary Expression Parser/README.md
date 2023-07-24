@@ -101,3 +101,26 @@ class Solution:
         
         return expression
 ```
+
+#### Reverse Polish Notation using Stack
+
+```Python
+class Solution:
+    def parseTernary(self, expression: str) -> str:
+        stack = list()
+        n = len(expression)
+        i = n - 1
+
+        while i >= 0:
+            char = expression[i]
+
+            if char in 'TF0123456789':
+                stack.append(char)
+            elif char == '?':
+                true, false = stack.pop(), stack.pop()
+                stack.append(true if expression[i - 1] == 'T' else false)
+                i -= 1
+            i -= 1
+        
+        return stack[0]
+```
