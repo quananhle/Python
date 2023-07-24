@@ -102,7 +102,41 @@ class Solution:
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        memo = collections.defaultdict(int)
 
+        @lru_cache(maxsize=None)
+        def dp(x, n):
+            # Base case
+            if x == 0:
+                return 0
+
+            if n == 0:
+                return 1
+
+            if n == 1:
+                return x
+
+            if n < 0:
+                x = 1/x
+                n = -n
+
+            if (x, n) in memo:
+                return memo[(x, n)]
+            
+            half = dp(x, n >> 1)
+            # Recurrence relation
+            if n % 2 == 0:
+                ans = half * half
+            else:
+                ans = half * half * x
+
+            memo[(x, n)] = ans
+            
+            return ans
+        
+        return dp(x, n)
 ```
 
 ```Python
