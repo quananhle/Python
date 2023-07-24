@@ -502,15 +502,19 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [735. Asteroid Collision](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/735.%20Asteroid%20Collision)
 - :warning::warning: [2390. Removing Stars From a String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2390.%20Removing%20Stars%20From%20a%20String)
 
-#### Monotonic Stack
-
-- :warning::warning: [739. Daily Temperatures](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Stack/739.%20Daily%20Temperatures)
-
 #### [Basic Calculator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/Basic%20Calculator) 
 
 - :no_entry::no_entry::no_entry: [224. Basic Calculator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/224.%20Basic%20Calculator)
 - :warning::warning: [227. Basic Calculator II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2018%20-%20Stack/227.%20Basic%20Calculator%20II)
 - :no_entry::no_entry::no_entry: [772. Basic Calculator III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/772.%20Basic%20Calculator%20III)
+
+#### Monotonic Stack
+
+- :warning::warning: [739. Daily Temperatures](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Stack/739.%20Daily%20Temperatures)
+
+#### Polish Notation
+
+- :warning::warning: [439. Ternary Expression Parser](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/439.%20Ternary%20Expression%20Parser)
 
 ---
 
