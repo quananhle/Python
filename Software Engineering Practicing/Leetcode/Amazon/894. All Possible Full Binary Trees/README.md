@@ -38,6 +38,11 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(2^{n/2})$.
+- Space Complexity: $\mathcal{O}(n ⋅ 2^{n/2})$.
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -69,6 +74,9 @@ class Solution:
 
         return dp(n)
 ```
+
+- __Time Complexity__: $\mathcal{O}(2^{n/2})$.
+- Space Complexity: $\mathcal{O}(n ⋅ 2^{n/2})$.
 
 ```Python
 # Definition for a binary tree node.
