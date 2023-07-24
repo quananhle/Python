@@ -1,6 +1,6 @@
 ## [50. Pow(x, n)](https://leetcode.com/problems/powx-n)
 
-```Tag```: ```Recursion``` ```Math``` ```Dynamic Programming```
+```Tag```: ```Recursion``` ```Math``` ```Dynamic Programming``` ```Bitmasking```
 
 #### Difficulty: Medium
 
@@ -105,6 +105,37 @@ class Solution:
 
 ```
 
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        @lru_cache(maxsize=None)
+        def dp(x, n):
+            # Base case
+            if x == 0:
+                return 0
+
+            if n == 0:
+                return 1
+
+            if n == 1:
+                return x
+
+            if n < 0:
+                x = 1/x
+                n = -n
+
+            half = dp(x, n >> 1)
+            # Recurrence relation
+            if n % 2 == 0:
+                ans = half * half
+            else:
+                ans = half * half * x
+            
+            return ans
+        
+        return dp(x, n)
+```
+
 #### Bottom-Up Dynamic Programming
 
 ```Python
@@ -122,6 +153,28 @@ class Solution:
 #### Algorithm
 
 ![image](https://user-images.githubusercontent.com/35042430/216752885-c966f64e-13b2-41af-8098-eb2c65a9f945.png)
+
+```Python
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        # Base cases
+        if not x:
+            return 0
+        if n == 0:
+            return 1
+        # Edge cases
+        if n < 0:
+            x = 1/x
+            n = -n
+
+        power, multiplications = x, 1
+
+        while n - multiplications * 2 >= 0: 
+            power *= power
+            multiplications *= 2
+
+        return power * self.myPow(x, n - multiplications)
+```
 
 ```Python
 class Solution:
