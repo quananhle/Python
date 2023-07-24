@@ -40,7 +40,7 @@ __Constraints:__
 
 ### Brute Force
 
-#### Time Limit Exceeded
+#### Time Limit Exceeded/Memory Limit Exceeded
 
 ```Python
 class Solution:
@@ -94,6 +94,24 @@ class Solution:
             cache[i] = x * cache[i-1]
         return cache[n]
 ```
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+---
 
 ### Fast Power Algorithm
 
