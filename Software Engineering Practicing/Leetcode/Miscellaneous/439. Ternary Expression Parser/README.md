@@ -1,6 +1,6 @@
 ## [439. Ternary Expression Parser](https://leetcode.com/problems/ternary-expression-parser/)
 
-```Tag```: ```Stack``` ```Polish Notation```
+```Tag```: ```Stack``` ```Polish Notation``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -47,7 +47,7 @@ __Constraints:__
 
 ---
 
-### Find Rightmost Atomic Expression
+### Approach 1: Find Rightmost Atomic Expression
 
 As illustrated here, due to the right-to-left associativity of ternary expressions, we can find the rightmost atomic expression of the form ```B?E1:E2``` and replace it with its value. We can repeat this process until we are left with a single value.
 
@@ -72,6 +72,32 @@ class Solution:
             while not is_valid_atomic(expression[i-4:i+1]):
                 i -= 1
             expression = expression[:i-4] + solve_atomic(expression[i-4:i+1]) + expression[i+1:]
+        
+        return expression
+```
+
+### Approach 2: Reverse Polish Notation
+
+__Constraints:__
+
+- $5 \le expression.length \le 10^[4}$
+- ```expression``` consists of digits, ```'T'```, ```'F'```, ```'?'```, and ```':'```.
+- It is guaranteed that ```expression``` is a valid ternary expression and that each number is a __one-digit number__.
+
+```Python
+class Solution:
+    def parseTernary(self, expression: str) -> str:
+        while len(expression) != 1:
+            question_mark_idx = len(expression) - 1
+            while expression[question_mark_idx] != '?':
+                question_mark_idx -= 1
+            
+            if expression[question_mark_idx - 1] == 'T':
+                value = expression[question_mark_idx + 1]
+            else:
+                value = expression[question_mark_idx + 3]
+            
+            expression = expression[:question_mark_idx - 1] + value + expression[question_mark_idx + 4:]
         
         return expression
 ```
