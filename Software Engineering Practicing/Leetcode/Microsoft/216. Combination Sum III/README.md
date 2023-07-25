@@ -62,9 +62,31 @@ __Complexity Analysis__
 ![image](https://github.com/quananhle/Python/assets/35042430/e8ab8cb2-3b20-4240-8922-90ba8da3744d)
 
 ```Python
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        res = list()
 
-```
+        def backtrack(curr, remaining, combination):
+            # Base cases:
+            # Combination has k numbers that sum up to n
+            if len(combination) == k and remaining == 0:
+                res.append(combination[:])
+                return
+            # Combination has k numbers but not sum up to n
+            elif len(combination) == k and remaining != 0:
+                return
+            # Combination has fewer than k numbers
+            else:
+                # Iterate through the reduced list of candidates
+                for num in range(curr, 10):
+                    combination.append(num)
 
-```Python
-
+                    # Recursive search for next candidate, update remaining less the candidate num
+                    backtrack(num + 1, remaining - num, combination)
+                
+                    # Backtracking
+                    combination.pop()
+        
+        backtrack(1, n, [])
+        return res
 ```
