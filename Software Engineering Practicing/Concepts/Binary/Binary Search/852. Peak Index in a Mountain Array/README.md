@@ -44,3 +44,21 @@ __Constraints:__
 - ```arr``` is guaranteed to be a mountain array.
 
 ---
+
+### Binary Search
+
+#### Template 2
+
+```Python
+        lo, hi = 0, len(arr) - 1
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            if arr[mi] > arr[mi + 1]:
+                hi = mi
+            else:
+                lo = mi + 1
+        
+        return lo
+```
