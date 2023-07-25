@@ -103,52 +103,38 @@ class Solution:
 ```
 Example 1:
 
-Input: candidates = [10,1,2,7,6,1,5], target = 8
-Output: [[1,1,6], [1,2,5], [1,7], [2,6]]
+Input: k = 3, n = 7
+Output: [[1,2,4]]
+Explanation: 1 + 2 + 4 = 7
+There are no other valid combinations.
 ```
 
 ```Python
 class Solution:
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        candidates.sort()
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
         res = list()
-        n = len(candidates)
 
-        def backtrack(curr, combination, remaining):
-            # 1. Target not met: remaining > 0 => keep looking for the right candidate
-            # 2. Target met: remaining == 0 => record the combination into the final output
-            # 3. Target exceeded: remaining < 0 => wrong path, backtrack
-
-            if remaining == 0:
+        def backtrack(curr, remaining, combination):
+            # Base cases:
+            # Combination has k numbers that sum up to n
+            if len(combination) == k and remaining == 0:
                 res.append(combination[:])
                 return
-            elif curr >= n or remaining < 0:
+            # Combination has k numbers but not sum up to n
+            elif len(combination) == k and remaining != 0:
                 return
+            # Combination has fewer than k numbers
             else:
-                for next in range(curr, n):
-                    #  Check the next element to avoid same element using twice in a combination
-                    if curr < next and candidates[next] == candidates[next - 1]:
-                        continue
+                # Iterate through the reduced list of candidates
+                for num in range(curr, 10):
+                    combination.append(num)
 
-                    # Pick the candidate and check if it is a valid candidate
-                    candidate = candidates[next]
-                    '''
-                    if remaining - candidate >= 0:
-                        combination.append(candidate)
-                    # Otherwise, invalid candidate, break
-                    else:
-                        break
-                    '''
-                    if remaining - candidate < 0:
-                        break
-                    
-                    combination.append(candidate)
-                    # Jump to the next element and update remaining
-                    backtrack(next + 1, combination, remaining - candidate)
+                    # Recursive search for next candidate, update remaining less the candidate num
+                    backtrack(num + 1, remaining - num, combination)
+                
                     # Backtracking
                     combination.pop()
-
-        backtrack(0, list(), target)
         
+        backtrack(1, n, [])
         return res
 ```
