@@ -115,5 +115,21 @@ class Solution:
 ### Built-in library ```combination```
 
 ```Python
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        res = list()
 
+        for combination in combinations(range(1, 10), k):
+            if sum(combination) == n:
+                res.append(combination)
+        
+        return res
+```
+
+#### One Liner
+
+```Python
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        return [combination for combination in combinations(range(1, 10), k) if sum(combination) == n]
 ```
