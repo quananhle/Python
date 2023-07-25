@@ -1,6 +1,6 @@
 ## [216. Combination Sum III](https://leetcode.com/problems/combination-sum-iii)
 
-```Tag```: ```Backtracking```
+```Tag```: ```Backtracking``` ```Depth-First Search``` ```Recursion```
 
 #### Difficulty: Medium
 
@@ -89,4 +89,31 @@ class Solution:
         
         backtrack(1, n, [])
         return res
+```
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        res = list()
+
+        def dfs(curr, k, n, combination):
+            # Base cases
+            if k < 0 or n < 0:
+                return
+            if k == 0 and n == 0:
+                res.append(combination)
+
+            for num in range(curr, 10):
+                dfs(num + 1, k - 1, n - num, combination + [num])
+
+        dfs(1, k, n, [])
+        return res
+```
+
+### Built-in library ```combination```
+
+```Python
+
 ```
