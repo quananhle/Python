@@ -43,15 +43,29 @@ class Solution:
 
 ### Priority Queue
 
-#### Min Heap
-
 __Complexity Analysis__
 
 Given ```n``` as the length of ```nums```,
 
-- __Time Complexity__: $ \mathcal{O}(n \cdot \log k)$
-- __Space Complexity__: $ \mathcal{O}(k)$
+- __Time Complexity__: $\mathcal{O}(n \cdot \log k)$
+- __Space Complexity__: $\mathcal{O}(k)$
 
+#### Min Heap
+
+```Python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        h = list()
+
+        for num in nums:
+            heapq.heappush(h, num)
+            if len(h) > k:
+                heapq.heappop(h)
+        
+        return h[0]
+```
+
+#### Max Heap
 
 ```Python
 class Solution:
@@ -68,3 +82,16 @@ class Solution:
         
         return ans
 ```
+
+### Quickselect
+
+```Python
+
+```
+
+### Counting Sort
+
+```Python
+
+```
+
