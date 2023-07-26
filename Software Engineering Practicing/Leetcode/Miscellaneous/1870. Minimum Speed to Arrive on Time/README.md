@@ -61,6 +61,8 @@ __Constraints:__
 
 ### Binary Search
 
+#### Template 1
+
 __Complexity Analysis__
 
 Here, ```N``` is the number of rides, and ```K``` is the size of the search space. For this problem, ```K``` is equal to $10^7$.
@@ -97,4 +99,10 @@ class Solution:
                 lo = mi + 1
 
         return ans
+```
+
+#### Template 2
+
+```Python
+
 ```
