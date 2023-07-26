@@ -97,3 +97,21 @@ class Solution:
         
         return lo
 ```
+
+```Python
+class Solution:
+    def peakIndexInMountainArray(self, arr: List[int]) -> int:
+        lo, hi = 0, len(arr) - 1
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            if arr[mi - 1] < arr[mi] and arr[mi] > arr[mi + 1]:
+                return mi
+            elif arr[mi - 1] > arr[mi]:
+                hi = mi
+            else:
+                lo = mi + 1
+            
+        return lo
+```
