@@ -52,6 +52,8 @@ Given ```n``` as the length of ```nums```,
 
 #### Min Heap
 
+![image](https://leetcode.com/problems/kth-largest-element-in-an-array/Figures/215/1.png)
+
 ```Python
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -85,8 +87,40 @@ class Solution:
 
 ### Quickselect
 
-```Python
+Quickselect, also known as __Hoare's selection algorithm__, is an algorithm for finding the $k^{th}$ smallest element in an unordered list. It is significant because it has an average runtime of $\mathcal{O}(n)$.
 
+![image](https://leetcode.com/problems/kth-largest-element-in-an-array/Figures/215/2.png)
+
+![image](https://leetcode.com/problems/kth-largest-element-in-an-array/Figures/215/3.png)
+
+![image](https://leetcode.com/problems/kth-largest-element-in-an-array/Figures/215/4.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/209ecf9e-86ce-46c1-91dd-ac66b4e7f843)
+
+```Python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        def quick_select(nums, k):
+            pivot = random.choice(nums)
+            left, mid, right = list(), list(), list()
+
+            for num in nums:
+                if num > pivot:
+                    left.append(num)
+                elif num < pivot:
+                    right.append(num)
+                else:
+                    mid.append(num)
+            
+            if k <= len(left):
+                return quick_select(left, k)
+            
+            if len(left) + len(mid) < k:
+                return quick_select(right, k - len(left) - len(mid))
+            
+            return pivot
+        
+        return quick_select(nums, k)
 ```
 
 ### Counting Sort
