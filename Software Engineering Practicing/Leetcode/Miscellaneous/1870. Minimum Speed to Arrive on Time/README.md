@@ -106,7 +106,7 @@ class Solution:
 ```Python
 class Solution:
     def minSpeedOnTime(self, dist: List[int], hour: float) -> int:
-        lo, hi, ans = 1, 10**7, -1
+        lo, hi, ans = 1, 10**7 + 1, -1
 
         def is_ontime(speed, hour):
             time = 0.0
