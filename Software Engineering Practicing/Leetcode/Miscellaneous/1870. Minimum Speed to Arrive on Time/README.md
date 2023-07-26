@@ -56,3 +56,11 @@ __Constraints:__
 - There will be at most two digits after the decimal point in ```hour```.
 
 ---
+
+![image](https://leetcode.com/problems/minimum-speed-to-arrive-on-time/Figures/1870/1870A.png)
+
+### Binary Search
+
+```Python
+
+```
