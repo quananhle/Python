@@ -1,6 +1,6 @@
 ## [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array)
 
-```Tag```: ```Heap```
+```Tag```: ```Priority Queue``` ```Sorting```
 
 #### Difficulty: Medium
 
@@ -33,3 +33,16 @@ __Constraints:__
 
 ---
 
+### Sorting
+
+```Python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        return sorted(nums)[len(nums) - k]
+```
+
+### Priority Queue
+
+```Python
+
+```
