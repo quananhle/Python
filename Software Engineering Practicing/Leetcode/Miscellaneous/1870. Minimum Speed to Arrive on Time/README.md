@@ -1,6 +1,6 @@
 ## [1870. Minimum Speed to Arrive on Time](https://leetcode.com/problems/minimum-speed-to-arrive-on-time/)
 
-```Tag```:
+```Tag```: ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -61,6 +61,40 @@ __Constraints:__
 
 ### Binary Search
 
-```Python
+__Complexity Analysis__
 
+Here, ```N``` is the number of rides, and ```K``` is the size of the search space. For this problem, ```K``` is equal to $10^7$.
+
+- __Time Complexity__: $ \mathcal{O}(N \log K)$
+- __Space Complexity__: $ \mathcal{O}(1)$
+
+```Python
+class Solution:
+    def minSpeedOnTime(self, dist: List[int], hour: float) -> int:
+        lo, hi, ans = 1, 10**7, -1
+
+        def is_ontime(speed, hour):
+            time = 0.0
+
+            for i in range(len(dist)):
+                t = dist[i] / speed
+                # Round up to the next integer, if not the last ride.
+                if i == len(dist) - 1:
+                    time += t
+                else:
+                    time += math.ceil(t)
+
+            return time <= hour
+
+
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+
+            if is_ontime(mi, hour):
+                ans = mi
+                hi = mi - 1
+            else:
+                lo = mi + 1
+
+        return ans
 ```
