@@ -104,5 +104,32 @@ class Solution:
 #### Template 2
 
 ```Python
+class Solution:
+    def minSpeedOnTime(self, dist: List[int], hour: float) -> int:
+        lo, hi, ans = 1, 10**7, -1
 
+        def is_ontime(speed, hour):
+            time = 0.0
+
+            for i in range(len(dist)):
+                t = dist[i] / speed
+                # Round up to the next integer, if not the last ride.
+                if i == len(dist) - 1:
+                    time += t
+                else:
+                    time += math.ceil(t)
+
+            return time <= hour
+
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            if is_ontime(mi, hour):
+                ans = mi
+                hi = mi
+            else:
+                lo = mi + 1
+
+        return ans
 ```
