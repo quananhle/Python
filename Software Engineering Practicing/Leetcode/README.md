@@ -194,6 +194,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [704. Binary Search](https://github.com/quananhle/Python/tree/abb74653d4796a4a84f360ada332716f5df8a2e5/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2007%20-%20Binary%20Search/704.%20Binary%20Search)
 - :no_entry::no_entry::no_entry: [719. Find K-th Smallest Pair Distance](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/719.%20Find%20K-th%20Smallest%20Pair%20Distance) ```Heap``` ```Prefix Sum``` ```Sliding Window```
 - :four_leaf_clover: [744. Find Smallest Letter Greater Than Target](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/744.%20Find%20Smallest%20Letter%20Greater%20Than%20Target)
+- :warning::warning: [852. Peak Index in a Mountain Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/852.%20Peak%20Index%20in%20a%20Mountain%20Array)
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 - :warning::warning:[1011. Capacity To Ship Packages Within D Days](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
 
