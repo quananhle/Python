@@ -18,3 +18,41 @@ Tests are generated such that the answer will not exceed ```10```<sup>7</sup> an
 
 ---
 
+__Example 1:__
+```
+Input: dist = [1,3,2], hour = 6
+Output: 1
+Explanation: At speed 1:
+- The first train ride takes 1/1 = 1 hour.
+- Since we are already at an integer hour, we depart immediately at the 1 hour mark. The second train takes 3/1 = 3 hours.
+- Since we are already at an integer hour, we depart immediately at the 4 hour mark. The third train takes 2/1 = 2 hours.
+- You will arrive at exactly the 6 hour mark.
+```
+
+__Example 2:__
+```
+Input: dist = [1,3,2], hour = 2.7
+Output: 3
+Explanation: At speed 3:
+- The first train ride takes 1/3 = 0.33333 hours.
+- Since we are not at an integer hour, we wait until the 1 hour mark to depart. The second train ride takes 3/3 = 1 hour.
+- Since we are already at an integer hour, we depart immediately at the 2 hour mark. The third train takes 2/3 = 0.66667 hours.
+- You will arrive at the 2.66667 hour mark.
+```
+
+__Example 3:__
+```
+Input: dist = [1,3,2], hour = 1.9
+Output: -1
+Explanation: It is impossible because the earliest the third train can depart is at the 2 hour mark.
+```
+
+__Constraints:__
+
+- $n == dist.length$
+- $1 \le \le 10^{5}$
+- $1 \le dist[i] \le 10^{5}$
+- $1 \le hour \le 10^{9}$
+- There will be at most two digits after the decimal point in ```hour```.
+
+---
