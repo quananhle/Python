@@ -45,7 +45,22 @@ __Constraints:__
 
 ---
 
+### Linear Scan
+
+```Python
+class Solution:
+    def peakIndexInMountainArray(self, arr: List[int]) -> int:
+        i = 0
+
+        while arr[i] < arr[i + 1]:
+            i += 1
+        
+        return i
+```
+
 ### Binary Search
+
+![image](https://leetcode.com/problems/peak-index-in-a-mountain-array/Figures/852/852-1.png)
 
 #### Template 2
 
