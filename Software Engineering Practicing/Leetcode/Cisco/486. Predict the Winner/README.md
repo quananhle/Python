@@ -41,6 +41,8 @@ __Constraints:__
 
 ### Recursion
 
+![image](https://leetcode.com/problems/predict-the-winner/Figures/486/d1.png)
+
 ```Python
 
 ```
