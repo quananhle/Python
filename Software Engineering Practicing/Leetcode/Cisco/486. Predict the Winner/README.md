@@ -56,7 +56,22 @@ __Constraints:__
 ```
 
 ```Python
+class Solution:
+    def PredictTheWinner(self, nums: List[int]) -> bool:
+        n = len(nums)
 
+        def dp(player1, player2):
+            # Base case
+            if player1 == player2:
+                return nums[player1]
+            
+            # Recurrence relation
+            p1_score = nums[player1] - dp(player1 + 1, player2)
+            p2_score = nums[player2] - dp(player1, player2 - 1)
+
+            return max(p1_score, p2_score)
+        
+        return dp(0, n - 1) >= 0
 ```
 
 #### Bottom-Up Dynamic Programming
