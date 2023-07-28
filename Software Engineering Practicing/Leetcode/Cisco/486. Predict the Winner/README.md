@@ -38,3 +38,31 @@ __Constraints:__
 - $0 \le nums[i] \le 10^{7}$
 
 ---
+
+### Recursion
+
+```Python
+
+```
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+
