@@ -18,7 +18,8 @@ Return _the maximum number of minutes you can run all the ```n``` computers simu
 
 __Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2022/01/06/example1-fit.png)
+```
 Input: n = 2, batteries = [3,3,3]
 Output: 4
 Explanation: 
@@ -27,8 +28,11 @@ After two minutes, remove battery 1 from the second computer and insert battery 
 At the end of the third minute, battery 0 is drained, and you need to remove it from the first computer and insert battery 1 instead.
 By the end of the fourth minute, battery 1 is also drained, and the first computer is no longer running.
 We can run the two computers simultaneously for at most 4 minutes, so we return 4.
+```
 
 __Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2022/01/06/example2.png)
 
 ```
 Input: n = 2, batteries = [1,1,1,1]
