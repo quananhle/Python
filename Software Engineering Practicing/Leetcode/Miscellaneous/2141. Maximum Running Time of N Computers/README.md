@@ -46,7 +46,7 @@ We can run the two computers simultaneously for at most 2 minutes, so we return 
 
 __Constraints:__
 
-1 <= n <= batteries.length <= 105
-1 <= batteries[i] <= 109
+- $1 \le n <= batteries.length \le 10^{5}$
+- $1 <= batteries[i] <= 10^{9}$
 
 ---
