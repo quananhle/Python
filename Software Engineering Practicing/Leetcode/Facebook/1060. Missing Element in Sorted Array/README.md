@@ -1,6 +1,6 @@
 ## [1060. Missing Element in Sorted Array](https://leetcode.com/problems/missing-element-in-sorted-array/)
 
-```Tag```:
+```Tag```: ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -35,10 +35,9 @@ __Constraints:__
 
 - $1 \le nums.length \le 5 * 10^{4}
 - $1 \le nums[i] \le 10^{7}$
-nums is sorted in ascending order, and all the elements are unique.
-1 <= k <= 108
+- ```nums``` is sorted in ascending order, and all the elements are unique.
+- $1 <= k <= 10^{8}$
  
-
 __Follow up__: Can you find a logarithmic time complexity (i.e., ```O(log(n))```) solution?
 
 ---
