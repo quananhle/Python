@@ -33,7 +33,7 @@ Explanation: The missing numbers are [3,5,6,7,...], hence the third missing numb
 
 __Constraints:__
 
-- $1 \le nums.length \le 5 * 10^{4}
+- $1 \le nums.length \le 5 * 10^{4}$
 - $1 \le nums[i] \le 10^{7}$
 - ```nums``` is sorted in ascending order, and all the elements are unique.
 - $1 <= k <= 10^{8}$
