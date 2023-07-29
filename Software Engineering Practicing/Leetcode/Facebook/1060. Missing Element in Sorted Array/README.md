@@ -30,3 +30,15 @@ Input: nums = [1,2,4], k = 3
 Output: 6
 Explanation: The missing numbers are [3,5,6,7,...], hence the third missing number is 6.
 ```
+
+__Constraints:__
+
+- 1 <= nums.length <= 5 * 104
+1 <= nums[i] <= 107
+nums is sorted in ascending order, and all the elements are unique.
+1 <= k <= 108
+ 
+
+__Follow up__: Can you find a logarithmic time complexity (i.e., ```O(log(n))```) solution?
+
+---
