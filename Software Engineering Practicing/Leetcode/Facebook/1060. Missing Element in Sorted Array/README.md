@@ -41,3 +41,23 @@ __Constraints:__
 __Follow up__: Can you find a logarithmic time complexity (i.e., ```O(log(n))```) solution?
 
 ---
+
+
+### Binary Search
+
+```Python
+class Solution:
+    def missingElement(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        lo, hi = 0, n - 1
+
+        while lo < hi:
+            mi = hi - (hi - lo) // 2
+
+            if nums[mi] - nums[0] - mi < k:
+                lo = mi
+            else:
+                hi = mi - 1
+            
+        return nums[0] + k + lo
+```
