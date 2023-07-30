@@ -66,6 +66,8 @@ class Solution:
 
 ![image](https://leetcode.com/problems/missing-element-in-sorted-array/Figures/1060/b2.png)
 
+![image](https://github.com/quananhle/Python/assets/35042430/1db00773-2298-43c2-b9dc-50b5dd0f19d0)
+
 ```Python
 class Solution:
     def missingElement(self, nums: List[int], k: int) -> int:
