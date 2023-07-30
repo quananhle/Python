@@ -42,6 +42,11 @@ __Follow up__: Can you find a logarithmic time complexity (i.e., ```O(log(n))```
 
 ---
 
+### Brute Force
+
+```Python
+
+```
 
 ### Binary Search
 
