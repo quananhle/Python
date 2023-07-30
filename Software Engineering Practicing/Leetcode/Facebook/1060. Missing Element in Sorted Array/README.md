@@ -42,7 +42,11 @@ __Follow up__: Can you find a logarithmic time complexity (i.e., ```O(log(n))```
 
 ---
 
+![image](https://leetcode.com/problems/missing-element-in-sorted-array/Figures/1060/intro.png)
+
 ### Brute Force
+
+![[image](https://leetcode.com/problems/missing-element-in-sorted-array/Figures/1060/1.png)
 
 ```Python
 
@@ -66,3 +70,5 @@ class Solution:
             
         return nums[0] + k + lo
 ```
+
+
