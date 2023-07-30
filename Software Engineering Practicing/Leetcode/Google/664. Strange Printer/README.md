@@ -15,7 +15,24 @@ Given a string ```s```, return _the minimum number of turns the printer needed t
 
 ---
 
+__Example 1:__
+```
+Input: s = "aaabbb"
+Output: 2
+Explanation: Print "aaa" first and then print "bbb".
+```
 
+__Example 2:__
+```
+Input: s = "aba"
+Output: 2
+Explanation: Print "aaa" first and then print "b" from the second place of the string, which will cover the existing character 'a'.
+```
+
+__Constraints:__
+
+1 <= s.length <= 100
+s consists of lowercase English letters.
 
 ---
 
