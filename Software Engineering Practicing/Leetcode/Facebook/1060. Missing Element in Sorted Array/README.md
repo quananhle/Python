@@ -46,7 +46,7 @@ __Follow up__: Can you find a logarithmic time complexity (i.e., ```O(log(n))```
 
 ### Brute Force
 
-![[image](https://leetcode.com/problems/missing-element-in-sorted-array/Figures/1060/1.png)
+![image](https://leetcode.com/problems/missing-element-in-sorted-array/Figures/1060/1.png)
 
 ```Python
 class Solution:
