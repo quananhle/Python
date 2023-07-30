@@ -31,8 +31,8 @@ Explanation: Print "aaa" first and then print "b" from the second place of the s
 
 __Constraints:__
 
-1 <= s.length <= 100
-s consists of lowercase English letters.
+- ```1 <= s.length <= 100```
+- ```s``` consists of lowercase English letters.
 
 ---
 
