@@ -1,6 +1,6 @@
 ## [664. Strange Printer](https://leetcode.com/problems/strange-printer)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -14,3 +14,38 @@ Given a string ```s```, return _the minimum number of turns the printer needed t
 ![image](https://github.com/quananhle/Python/assets/35042430/1f5c6206-aac6-405c-b4a5-d8d89fd85673)
 
 ---
+
+
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def strangePrinter(self, s: str) -> int:
+        n = len(s)
+        memo = collections.defaultdict(default=-1)
+
+        def dp(left, right):
+            if (left, right) in memo:
+                return memo[(left, right)]
+            
+            memo[(left, right)] = n
+            j = -1
+
+            for i in range(left, right):
+                if s[i] != s[right] and j == -1:
+                    j = i
+                if j != -1:
+                    memo[(left, right)] = min(memo[(left, right)], dp(j, i) + 1 + dp(i + 1, right))
+            
+            if j == -1:
+                memo[(left, right)] = 0
+            
+            return memo[(left, right)]
+            
+        return dp(0, n - 1) + 1
+```
