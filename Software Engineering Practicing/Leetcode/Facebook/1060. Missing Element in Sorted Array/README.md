@@ -1,6 +1,6 @@
 ## [1060. Missing Element in Sorted Array](https://leetcode.com/problems/missing-element-in-sorted-array/)
 
-```Tag```: ```Binary Search```
+```Tag```: ```Binary Search``` ```Math```
 
 #### Difficulty: Medium
 
@@ -49,10 +49,22 @@ __Follow up__: Can you find a logarithmic time complexity (i.e., ```O(log(n))```
 ![[image](https://leetcode.com/problems/missing-element-in-sorted-array/Figures/1060/1.png)
 
 ```Python
+class Solution:
+    def missingElement(self, nums: List[int], k: int) -> int:
+        n = len(nums)
 
+        for i in range(1, n):
+            missing = nums[i] - nums[i - 1] - 1
+            if missing >= k:
+                return nums[i - 1] + k
+            k -= missing
+        
+        return nums[n - 1] + k
 ```
 
 ### Binary Search
+
+![image](https://leetcode.com/problems/missing-element-in-sorted-array/Figures/1060/b2.png)
 
 ```Python
 class Solution:
@@ -71,4 +83,21 @@ class Solution:
         return nums[0] + k + lo
 ```
 
+```Python
+class Solution:
+    def missingElement(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        lo, hi = 0, n
+        start = nums[0]
+
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            if nums[mi] - start - mi < k:
+                lo = mi + 1
+            else:
+                hi = mi
+            
+        return start + k + lo - 1
+```
 
