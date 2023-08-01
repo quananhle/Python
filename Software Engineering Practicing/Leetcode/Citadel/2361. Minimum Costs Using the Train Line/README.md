@@ -24,9 +24,10 @@ Note that a stop can be counted as reached from either route.
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2022/07/25/ex1drawio.png)
+```
 Input: regular = [1,6,9,5], express = [5,2,3,10], expressCost = 8
 Output: [1,7,14,19]
 Explanation: The diagram above shows how to reach stop 4 from stop 0 with minimum cost.
@@ -36,6 +37,8 @@ Explanation: The diagram above shows how to reach stop 4 from stop 0 with minimu
 - Take the regular route from stop 3 to stop 4, costing 5.
 The total cost is 1 + 10 + 3 + 5 = 19.
 Note that a different route could be taken to reach the other stops with minimum cost.
+```
+
 Example 2:
 
 
