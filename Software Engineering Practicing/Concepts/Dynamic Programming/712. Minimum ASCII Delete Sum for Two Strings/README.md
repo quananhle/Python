@@ -50,5 +50,30 @@ __Constraints:__
 ```
 
 ```Python
+class Solution:
+    def minimumDeleteSum(self, s1: str, s2: str) -> int:
+        m, n = len(s1), len(s2)
 
+        @lru_cache(maxsize=None)
+        def dp(i, j):
+            # Base case
+            if i == m and j == n:
+                return 0
+            
+            # Recurrence relation
+            if i > m - 1:
+                ans = ord(s2[j]) + dp(i, j + 1)
+                return ans
+            if j > n - 1:
+                ans = ord(s1[i]) + dp(i + 1, j)
+                return ans
+            
+            if s1[i] == s2[j]:
+                ans = dp(i + 1, j + 1)
+            else:
+                ans = min(ord(s1[i]) + dp(i + 1, j), ord(s2[j]) + dp(i, j + 1))
+
+            return ans
+        
+        return dp(0, 0)
 ```
