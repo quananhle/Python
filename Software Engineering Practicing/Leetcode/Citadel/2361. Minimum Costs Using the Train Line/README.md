@@ -15,6 +15,11 @@ Note that:
 - There is no cost to transfer from the express route back to the regular route.
 - You pay ```expressCost``` every time you transfer from the regular route to the express route.
 - There is no extra cost to stay on the express route.
-Return a 1-indexed array costs of length n, where costs[i] is the minimum cost to reach stop i from stop 0.
+
+Return _a 1-indexed array costs of length ```n```, where ```costs[i]``` is the minimum cost to reach stop ```i``` from stop ```0```_.
 
 Note that a stop can be counted as reached from either route.
+
+![image](https://github.com/quananhle/Python/assets/35042430/b26412c5-0cbd-41d6-b82a-238faa27d5a9)
+
+---
