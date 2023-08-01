@@ -86,7 +86,7 @@ class Solution:
             if memo[curr][lane] is not None:
                 return memo[curr][lane]
             
-            # Recurrence relation: taking regular lane or express lane yield lower cost?
+            # Recurrence relation: taking regular lane or express lane yields lower cost?
             regular_cost = regular[curr] + dp(curr - 1, 0)
             express_cost = express[curr] + dp(curr - 1, 1) + (expressCost if lane == 0 else 0)
 
@@ -114,7 +114,7 @@ class Solution:
             if curr < 0:
                 return 0
 
-            # Recurrence relation: taking regular lane or express lane yield lower cost?
+            # Recurrence relation: taking regular lane or express lane yields lower cost?
             regular_cost = regular[curr] + dp(curr - 1, 0)
             express_cost = express[curr] + dp(curr - 1, 1) + (expressCost if lane == 0 else 0)
 
@@ -133,5 +133,20 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def minimumCosts(self, regular: List[int], express: List[int], expressCost: int) -> List[int]:
+        n = len(regular)
+        res = [None] * n
+        dp = [[0] * 2 for _ in range(n + 1)]
+        dp[0][1] = expressCost
 
+        for i in range(1, n + 1):
+            # Regular lane: no cost if changing lane
+            dp[i][0] = regular[i - 1] + min(dp[i - 1][0], dp[i - 1][1])
+            # Express lane: if change lane regular => express, add expressCost
+            dp[i][1] = express[i - 1] + min(dp[i - 1][0]  + expressCost, dp[i - 1][1])
+
+            res[i - 1] = min(dp[i][0], dp[i][1]) 
+
+        return res
 ```
