@@ -65,8 +65,41 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
-```Python
+__Complexity Analysis__
 
+Here, ```N``` is the number of stops.
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def minimumCosts(self, regular: List[int], express: List[int], expressCost: int) -> List[int]:
+        n = len(regular)
+        memo = [[None] * (2) for _ in range(n)]
+
+        def dp(curr, lane):
+            # Base case
+            if curr < 0:
+                return 0
+
+            if memo[curr][lane] is not None:
+                return memo[curr][lane]
+            
+            # Recurrence relation: taking regular lane or express lane yield lower cost?
+            regular_cost = regular[curr] + dp(curr - 1, 0)
+            express_cost = express[curr] + dp(curr - 1, 1) + (expressCost if lane == 0 else 0)
+
+            memo[curr][lane] = min(regular_cost, express_cost)
+            return memo[curr][lane]
+        
+        dp(n - 1, 0)
+
+        res = [None] * n
+        for i in range(n):
+            res[i] = memo[i][0]
+        
+        return res
 ```
 
 ```Python
