@@ -3,3 +3,5 @@
 ```Tag```: ```Dynamic Programming``` ```Recursion```
 
 #### Difficulty: Medium
+
+Given two strings ```s1``` and ```s2```, return _the lowest __ASCII__ sum of deleted characters to make two strings equal_.
