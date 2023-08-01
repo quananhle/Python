@@ -287,6 +287,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [2140. Solving Questions With Brainpower](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2140.%20Solving%20Questions%20With%20Brainpower)
 - :warning::warning: [2291. Maximum Profit From Trading Stocks](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/2291.%20Maximum%20Profit%20From%20Trading%20Stocks/)
 - :no_entry::no_entry::no_entry: [2328. Number of Increasing Paths in a Grid](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2328.%20Number%20of%20Increasing%20Paths%20in%20a%20Grid)
+- :no_entry::no_entry::no_entry: [2361. Minimum Costs Using the Train Line](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Citadel/2361.%20Minimum%20Costs%20Using%20the%20Train%20Line)
 - :warning::warning: [2466. Count Ways To Build Good Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2466.%20Count%20Ways%20To%20Build%20Good%20Strings)
 - :warning::warning: [2770. Maximum Number of Jumps to Reach the Last Index](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/2770.%20Maximum%20Number%20of%20Jumps%20to%20Reach%20the%20Last%20Index)
 
