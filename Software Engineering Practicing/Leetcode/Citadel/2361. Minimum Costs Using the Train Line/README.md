@@ -4,7 +4,7 @@
 
 #### Difficulty: Hard
 
-A train line going through a city has two routes, the regular route and the express route. Both routes go through the same n + 1 stops labeled from 0 to n. Initially, you start on the regular route at stop 0.
+A train line going through a city has two routes, the regular route and the express route. Both routes go through the same ```n + 1``` stops labeled from ```0``` to ```n```. Initially, you start on the regular route at stop ```0```.
 
 You are given two 1-indexed integer arrays regular and express, both of length n. regular[i] describes the cost it takes to go from stop i - 1 to stop i using the regular route, and express[i] describes the cost it takes to go from stop i - 1 to stop i using the express route.
 
