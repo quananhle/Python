@@ -31,4 +31,6 @@ If instead we turned both strings into "lee" or "eet", we would get answers of 4
 __Constraints:__
 
 - $1 \le s1.length, s2.length \le 1000$
-s1 and s2 consist of lowercase English letters.
+- ```s1``` and ```s2``` consist of lowercase English letters.
+
+---
