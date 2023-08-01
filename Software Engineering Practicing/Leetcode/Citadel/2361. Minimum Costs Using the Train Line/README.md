@@ -65,6 +65,8 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/minimum-costs-using-the-train-line/Figures/2361/2361A.png)
+
 __Complexity Analysis__
 
 Here, ```N``` is the number of stops.
@@ -132,6 +134,9 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 ```Python
 class Solution:
     def minimumCosts(self, regular: List[int], express: List[int], expressCost: int) -> List[int]:
@@ -148,5 +153,29 @@ class Solution:
 
             res[i - 1] = min(dp[i][0], dp[i][1]) 
 
+        return res
+```
+
+#### Space-Optimized Dynamic Programming
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def minimumCosts(self, regular: List[int], express: List[int], expressCost: int) -> List[int]:
+        prev_regular = 0
+        prev_express = expressCost
+
+        n = len(regular)
+        res = [0] * n
+
+        for i in range(1, n + 1):
+            regular_cost = regular[i - 1] + min(prev_regular, prev_express)
+            express_cost = express[i - 1] + min(prev_regular + expressCost, prev_express)
+            res[i - 1] = min(regular_cost, express_cost)
+            prev_regular = regular_cost
+            prev_express = express_cost
+        
         return res
 ```
