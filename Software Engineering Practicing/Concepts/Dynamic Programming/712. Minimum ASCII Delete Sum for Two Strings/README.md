@@ -190,6 +190,11 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $mathcal{O}(M \cdot N)$.
+- __Space Complexity__: $mathcal{O}(M \cdot N)$.
+
 ```Python
 class Solution:
     def minimumDeleteSum(self, s1: str, s2: str) -> int:
@@ -214,6 +219,11 @@ class Solution:
 ```
 
 #### Space-Optimized Dynamic Programming
+
+__Complexity Analysis__
+
+- __Time Complexity__: $mathcal{O}(M \cdot N)$.
+- __Space Complexity__: $mathcal{O}(min(M \cdot N))$.
 
 ```Python
 class Solution:
