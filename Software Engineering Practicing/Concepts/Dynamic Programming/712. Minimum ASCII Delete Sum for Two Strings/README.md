@@ -45,8 +45,42 @@ __Constraints:__
 
 ### The Framework
 
-```Python
+#### Top-Down Dynamic Programming
 
+```Python
+class Solution:
+    def minimumDeleteSum(self, s1: str, s2: str) -> int:
+        m, n = len(s1), len(s2)
+        memo = collections.defaultdict(int)
+        
+        def dp(i, j):
+            # Base case
+            if i == m and j == n:
+                return 0
+
+            if (i, j) in memo:
+                return memo[(i, j)]
+            
+            # Recurrence relation: matching or not matching character to delete
+
+            # Check if one string is already empty, delete the entire other string
+            if i > m - 1:
+                memo[(i, j)] = ord(s2[j]) + dp(i, j + 1)
+                return memo[(i, j)]
+            if j > n - 1:
+                memo[(i, j)] = ord(s1[i]) + dp(i + 1, j)
+                return memo[(i, j)]
+            
+            # Matching
+            if s1[i] == s2[j]:
+                memo[(i, j)] = dp(i + 1, j + 1)
+            # Not matching: delete character in s1 or delete character in s2 will yield the lowest cost?
+            else:
+                memo[(i, j)] = min(ord(s1[i]) + dp(i + 1, j), ord(s2[j]) + dp(i, j + 1))
+
+            return memo[(i, j)]
+        
+        return dp(0, 0)
 ```
 
 ```Python
