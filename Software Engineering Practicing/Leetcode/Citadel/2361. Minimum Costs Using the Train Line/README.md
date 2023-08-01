@@ -1,6 +1,6 @@
 ## [2361. Minimum Costs Using the Train Line](https://leetcode.com/problems/minimum-costs-using-the-train-line/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -58,3 +58,47 @@ __Constraints:__
 - $n == regular.length == express.length$
 - $1 \le n \le 10^{5}$
 - $1 \le regular[i], express[i], expressCost \le 10^{5}$
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+class Solution:
+    def minimumCosts(self, regular: List[int], express: List[int], expressCost: int) -> List[int]:
+        n = len(regular)
+        memo = [[None] * (2) for _ in range(n)]
+
+        @lru_cache(maxsize=None)
+        def dp(curr, lane):
+            # Base case
+            if curr < 0:
+                return 0
+
+            # Recurrence relation: taking regular lane or express lane yield lower cost?
+            regular_cost = regular[curr] + dp(curr - 1, 0)
+            express_cost = express[curr] + dp(curr - 1, 1) + (expressCost if lane == 0 else 0)
+
+            memo[curr][lane] = min(regular_cost, express_cost)
+            return memo[curr][lane]
+        
+        dp(n - 1, 0)
+
+        res = [0] * n
+        for i in range(n):
+            res[i] += memo[i][0]
+        
+        return res
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
