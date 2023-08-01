@@ -53,8 +53,8 @@ The total cost is 10 + 5 + 9 = 24.
 Note that the expressCost is paid again to transfer back to the express route.
 ```
 
-Constraints:
+__Constraints:__
 
-n == regular.length == express.length
+- $n == regular.length == express.length$
 1 <= n <= 105
 1 <= regular[i], express[i], expressCost <= 105
