@@ -71,7 +71,7 @@ class Solution:
                 memo[(i, j)] = ord(s1[i]) + dp(i + 1, j)
                 return memo[(i, j)]
             
-            # Matching
+            # Matching: no action required, move on to the next characters in both strings
             if s1[i] == s2[j]:
                 memo[(i, j)] = dp(i + 1, j + 1)
             # Not matching: delete character in s1 or delete character in s2 will yield the lowest cost?
@@ -81,6 +81,42 @@ class Solution:
             return memo[(i, j)]
         
         return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def minimumDeleteSum(self, s1: str, s2: str) -> int:
+        m, n = len(s1), len(s2)
+        memo = collections.defaultdict(int)
+        
+        def dp(i, j):
+            # Base case
+            if i == -1 and j == -1:
+                return 0
+
+            if (i, j) in memo:
+                return memo[(i, j)]
+            
+            # Recurrence relation: matching or not matching character to delete
+
+            # Check if one string is already empty, delete the entire other string
+            if i < 0:
+                memo[(i, j)] = ord(s2[j]) + dp(i, j - 1)
+                return memo[(i, j)]
+            if j < 0:
+                memo[(i, j)] = ord(s1[i]) + dp(i - 1, j)
+                return memo[(i, j)]
+            
+            # Matching
+            if s1[i] == s2[j]:
+                memo[(i, j)] = dp(i - 1, j - 1)
+            # Not matching: delete character in s1 or delete character in s2 will yield the lowest cost?
+            else:
+                memo[(i, j)] = min(ord(s1[i]) + dp(i - 1, j), ord(s2[j]) + dp(i, j - 1))
+
+            return memo[(i, j)]
+        
+        return dp(m - 1, n - 1)
 ```
 
 ```Python
@@ -110,4 +146,10 @@ class Solution:
             return ans
         
         return dp(0, 0)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
 ```
