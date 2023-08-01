@@ -57,4 +57,4 @@ __Constraints:__
 
 - $n == regular.length == express.length$
 - $1 \le n \le 10^{5}$
-1 <= regular[i], express[i], expressCost <= 105
+- $1 <= regular[i], express[i], expressCost <= 105$
