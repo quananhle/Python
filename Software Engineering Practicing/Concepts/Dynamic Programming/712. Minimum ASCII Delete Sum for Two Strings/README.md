@@ -41,8 +41,8 @@ __Complexity Analysis__
 
 Let ```s``` be the longer string between ```s1``` and ```s2```. Let ```K``` be the length of ```s```.
 
-- __Time Complexity__: $mathcal{O}(3^{K} \cdot K)$.
-- __Space Complexity__: $mathcal{O}(K)$.
+- __Time Complexity__: $\mathcal{O}(3^{K} \cdot K)$.
+- __Space Complexity__: $\mathcal{O}(K)$.
 
 ```Python
 class Solution:
@@ -84,8 +84,8 @@ class Solution:
 
 __Complexity Analysis__
 
-- __Time Complexity__: $mathcal{O}(M \cdot N)$.
-- __Space Complexity__: $mathcal{O}(M \cdot N)$.
+- __Time Complexity__: $\mathcal{O}(M \cdot N)$.
+- __Space Complexity__: $\mathcal{O}(M \cdot N)$.
 
 ```Python
 class Solution:
@@ -192,8 +192,8 @@ class Solution:
 
 __Complexity Analysis__
 
-- __Time Complexity__: $mathcal{O}(M \cdot N)$.
-- __Space Complexity__: $mathcal{O}(M \cdot N)$.
+- __Time Complexity__: $\mathcal{O}(M \cdot N)$.
+- __Space Complexity__: $\mathcal{O}(M \cdot N)$.
 
 ```Python
 class Solution:
@@ -222,8 +222,8 @@ class Solution:
 
 __Complexity Analysis__
 
-- __Time Complexity__: $mathcal{O}(M \cdot N)$.
-- __Space Complexity__: $mathcal{O}(min(M \cdot N))$.
+- __Time Complexity__: $\mathcal{O}(M \cdot N)$.
+- __Space Complexity__: $\mathcal{O}(min(M \cdot N))$.
 
 ```Python
 class Solution:
