@@ -200,3 +200,9 @@ class Solution:
         
         return dp[m][n]
 ```
+
+#### Space-Optimized Dynamic Programming
+
+```Python
+
+```
