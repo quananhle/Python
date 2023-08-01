@@ -12,9 +12,9 @@ You are also given an integer ```expressCost``` which represents the cost to tra
 
 Note that:
 
-There is no cost to transfer from the express route back to the regular route.
-You pay expressCost every time you transfer from the regular route to the express route.
-There is no extra cost to stay on the express route.
+- There is no cost to transfer from the express route back to the regular route.
+- You pay ```expressCost``` every time you transfer from the regular route to the express route.
+- There is no extra cost to stay on the express route.
 Return a 1-indexed array costs of length n, where costs[i] is the minimum cost to reach stop i from stop 0.
 
 Note that a stop can be counted as reached from either route.
