@@ -35,9 +35,37 @@ __Constraints:__
 
 ---
 
-### Recursion
+### Recursion (Time Limit Exceeded)
 
 ```Python
+class Solution:
+    def minimumDeleteSum(self, s1: str, s2: str) -> int:
+        m, n = len(s1), len(s2)
+
+        def helper(i, j):
+            # Check if s1 is empty, delete all character in s2
+            if i < 0:
+                cost = 0
+                for curr in range(j + 1):
+                    cost += ord(s2[curr])
+                return cost
+            
+            # Check if s2 is empty, delete all character in s1
+            if j < 0:
+                cost = 0
+                for curr in range(i + 1):
+                    cost += ord(s1[curr])
+                return cost
+            
+            # Compare s1 and s2: matching or not matching character
+            # Matching: skip, no deletion required
+            if s1[i] == s2[j]:
+                return helper(i - 1, j - 1)
+            # Not matching: get the lowest cost from deleting character in s1 or s2 or both
+            else:
+                return min(ord(s1[i]) + helper(i - 1, j), ord(s2[j]) + helper(i, j - 1), ord(s1[i]) + ord(s2[j]) + helper(i - 1, j - 1))
+            
+        return helper(m - 1, n - 1)
 
 ```
 
@@ -151,5 +179,24 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def minimumDeleteSum(self, s1: str, s2: str) -> int:
+        m, n = len(s1), len(s2)
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
 
+        for i in range(1, m + 1):
+            dp[i][0] = dp[i - 1][0] + ord(s1[i - 1])
+        for j in range(1, n + 1):
+            dp[0][j] = dp[0][j - 1] + ord(s2[j - 1])
+        
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                # Matching
+                if s1[i - 1] == s2[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1]
+                # Not matching
+                else:
+                    dp[i][j] = min(ord(s1[i - 1]) + dp[i - 1][j], ord(s2[j - 1]) + dp[i][j - 1])
+        
+        return dp[m][n]
 ```
