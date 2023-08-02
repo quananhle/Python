@@ -50,6 +50,36 @@ __Constraints:__
 class SmallestInfiniteSet:
 
     def __init__(self):
+        self.seen = set()
+        self.heap = list()
+        self.current_min = 1
+
+    def popSmallest(self) -> int:
+        if self.heap:
+            to_remove = heapq.heappop(self.heap)
+            self.seen.remove(to_remove)
+        else:
+            to_remove = self.current_min
+            self.current_min += 1
+        return to_remove
+
+    def addBack(self, num: int) -> None:
+        # Check if num is already present in or or added back to the infinite set 
+        if num in self.seen or self.current_min <= num:
+            return
+        heapq.heappush(self.heap, num)
+        self.seen.add(num)
+
+# Your SmallestInfiniteSet object will be instantiated and called as such:
+# obj = SmallestInfiniteSet()
+# param_1 = obj.popSmallest()
+# obj.addBack(num)
+```
+
+```Python
+class SmallestInfiniteSet:
+
+    def __init__(self):
         self.heap = list()
         self.min = 1
 
