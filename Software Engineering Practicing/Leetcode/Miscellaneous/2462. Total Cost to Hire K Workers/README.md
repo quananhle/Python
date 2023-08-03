@@ -53,32 +53,38 @@ __Constraints__:
 
 #### 2 Priority Queues
 
+__Algorithm__
+
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/1.png)
+
+1. Initialize two priority queues ```heads``` workers and ```tails``` workers that store the first ```m``` workers and the last ```m``` workers, where the worker with the lowest cost has the highest priority.
 
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/2.png)
 
+2. Set up two pointers ```next_head = m```, ```next_tail = n - m - 1``` indicating the next worker to be added to two queues.
+
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/3.png)
+
+3. Compare the top workers in both queues, and hire the one with the lowest cost, if both workers have the same cost, hire the worker from ```heads```. Add the cost of this worker to the total cost.
 
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/4.png)
 
+4. If ```next_head <= next_tail```, we need to fill the queue with one worker:
+  - If the hired worker is from ```heads``` workers, we add the worker ```costs[next_head]``` to it and increment ```next_head``` by ```1```.
+  - If the hired worker is from ```tails``` workers, we add the worker ```costs[tail_head]``` to it and decrement ```tail_head``` by ```1```.
+
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/5.png)
+
+5. Otherwise, skip this step.
+
+6. Repeat steps 3 and 4 ```k``` times.
 
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/6.png)
 
-__Algorithm__
-
-1. Initialize two priority queues ```heads``` workers and ```tails``` workers that store the first ```m``` workers and the last ```m``` workers, where the worker with the lowest cost has the highest priority.
-2. Set up two pointers ```next_head = m```, ```next_tail = n - m - 1``` indicating the next worker to be added to two queues.
-3. Compare the top workers in both queues, and hire the one with the lowest cost, if both workers have the same cost, hire the worker from ```heads```. Add the cost of this worker to the total cost.
-4. If ```next_head <= next_tail```, we need to fill the queue with one worker:
-- If the hired worker is from ```heads``` workers, we add the worker ```costs[next_head]``` to it and increment ```next_head``` by ```1```.
-- If the hired worker is from ```tails``` workers, we add the worker ```costs[tail_head]``` to it and decrement ```tail_head``` by ```1```.
-5. Otherwise, skip this step.
-6. Repeat steps 3 and 4 ```k``` times.
 7. Return the total cost of all the hired workers.
 
 - __Time Complexity__: $\mathcal{O}((k+m) \cdot \mathcal{log}(⁡m))$
-- __Space Complexity__: $O(m)$
+- __Space Complexity__: $\mathcal{O}(m)$
 
 ```Python
 class Solution:
