@@ -79,6 +79,13 @@ class Solution:
 
 ![image](https://leetcode.com/problems/predict-the-winner/Figures/486/d3.png)
 
+__Complexity Analysis__
+
+Let ```n``` be the length of the input array nums.
+
+- __Time Complexity__: $\mathcal{O}(n^{2})$
+- __Space Complexity__: $\mathcal{O}(n^{2})$
+
 ```Python
 class Solution:
     def predictTheWinner(self, nums: List[int]) -> bool:
@@ -124,8 +131,27 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+__Complexity Analysis__
+
+Let ```n``` be the length of the input array nums.
+
+- __Time Complexity__: $\mathcal{O}(n^{2})$
+- __Space Complexity__: $\mathcal{O}(n^{2})$
+
 ```Python
 
 ```
 
+#### Space-Optimized Dynamic Programming
+
+__Complexity Analysis__
+
+Let ```n``` be the length of the input array nums.
+
+- __Time Complexity__: $\mathcal{O}(n^{2})$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+
+```
 
