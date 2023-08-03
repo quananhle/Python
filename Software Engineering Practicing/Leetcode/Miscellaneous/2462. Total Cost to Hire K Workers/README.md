@@ -128,6 +128,37 @@ class Solution:
 
 #### 1 Priority Queue
 
-```Python
+![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/7.png)
 
+![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/8.png)
+
+```Python
+class Solution:
+    def totalCost(self, costs: List[int], k: int, candidates: int) -> int:
+        n = len(costs)
+        h = list()
+
+        # 0 for the first candidates workers, and 1 for the last candidates workers
+        for i in range(candidates):
+            h.append((costs[i], 0))
+        for i in range(max(candidates, n - candidates), n):
+            h.append((costs[i], 1))
+        
+        heapify(h)
+        ans = 0
+        next_head, next_tail = candidates, n - 1 - candidates
+
+        for _ in range(k):
+            curr_cost, curr_id = heapq.heappop(h)
+            ans += curr_cost
+
+            if next_head <= next_tail:
+                if curr_id == 0:
+                    heappush(h, (costs[next_head], 0))
+                    next_head += 1
+                else:
+                    heappush(h, (costs[next_tail], 1))
+                    next_tail -= 1
+            
+        return ans
 ```
