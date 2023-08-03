@@ -1,6 +1,6 @@
 ## [486. Predict the Winner](https://leetcode.com/problems/predict-the-winner/)
 
-```Tag```: ```Recursion``` ```Dynamic Programming```
+```Tag```: ```Recursion``` ```Dynamic Programming``` ```Math```
 
 #### Difficulty: Medium
 
@@ -45,8 +45,30 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/predict-the-winner/Figures/486/d2.png)
 
-```Python
+__Complexity Analysis__
 
+Let ```n``` be the length of the input array nums.
+
+- __Time Complexity__: $\mathcal{O}(2^{n})$
+- __Space Complexity__: $\mathcal{O}(n)$
+ 
+```Python
+class Solution:
+    def predictTheWinner(self, nums: List[int]) -> bool:
+        n = len(nums)
+
+        def helper(left, right):
+            # Base case
+            if left == right:
+                return nums[left]
+
+            # Recurrence relation
+            left_score = nums[left] - helper(left + 1, right)
+            right_score = nums[right] - helper(left, right - 1)
+
+            return max(left_score, right_score)
+        
+        return helper(0, n - 1) >= 0
 ```
 
 ---
