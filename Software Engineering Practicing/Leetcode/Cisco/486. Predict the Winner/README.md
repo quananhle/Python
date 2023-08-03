@@ -62,7 +62,7 @@ class Solution:
             if left == right:
                 return nums[left]
 
-            # Recurrence relation
+            # Recurrence relation: take score from the left or right? Deduct the score after player2 took and add score to player 1
             left_score = nums[left] - helper(left + 1, right)
             right_score = nums[right] - helper(left, right - 1)
 
@@ -131,6 +131,10 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+![image](https://leetcode.com/problems/predict-the-winner/Figures/486/1.png)
+
+![image](https://leetcode.com/problems/predict-the-winner/Figures/486/2.png)
+
 __Complexity Analysis__
 
 Let ```n``` be the length of the input array nums.
@@ -139,7 +143,21 @@ Let ```n``` be the length of the input array nums.
 - __Space Complexity__: $\mathcal{O}(n^{2})$
 
 ```Python
-
+class Solution:
+    def predictTheWinner(self, nums: List[int]) -> bool:
+        n = len(nums)
+        dp = [[0] * (n) for _ in range(n)]
+        
+        # Precompute the base case
+        for i in range(n):
+            dp[i][i] = nums[i]
+        
+        for diff in range(1, n):
+            for left in range(n - diff):
+                right = left + diff
+                dp[left][right] = max(nums[left] - dp[left + 1][right], nums[right] - dp[left][right - 1])
+            
+        return dp[0][n - 1] >= 0
 ```
 
 #### Space-Optimized Dynamic Programming
