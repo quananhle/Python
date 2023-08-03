@@ -43,9 +43,9 @@ The total hiring cost is 4.
 
 __Constraints__:
 
-- ```1 <= costs.length <= 10^5``` 
-- ```1 <= costs[i] <= 10^5```
-- ```1 <= k, candidates <= costs.length```
+- $1 \le costs.length \le 10^{5}$ 
+- $1 \le costs[i] \le 10^{5}$
+- $1 \le k, candidates \le costs.length$
 
 ---
 
