@@ -34,7 +34,7 @@ Output: ["a","b","c"]
 
 __Constraints:__
 
-- ```0 <= digits.length <= 4```
+- $0 \le digits.length \le 4$
 - ```digits[i]``` is a digit in the range ```['2', '9']```.
 
 ---
@@ -93,7 +93,44 @@ class Solution:
 #### Sorted List
 
 ```Python
+from sortedcontainers import SortedList
 
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        phone_dictionary = {
+            '2': {'a', 'b', 'c'},
+            '3': {'d', 'e', 'f'},
+            '4': {'g', 'h', 'i'},
+            '5': {'j', 'k', 'l'},
+            '6': {'m', 'n', 'o'},
+            '7': {'p', 'q', 'r', 's'},
+            '8': {'t', 'u', 'v'},
+            '9': {'w', 'x', 'y', 'z'}
+        }
+
+        n = len(digits)
+        res = SortedList()
+
+        def backtrack(curr, combination):
+            # Base case
+            if len(combination) == n:
+                res.add("".join(combination))
+                return
+
+            letters = phone_dictionary[digits[curr]]
+
+            for letter in letters:
+                combination.append(letter)
+            
+                backtrack(curr + 1, combination)
+
+                combination.pop()
+
+        if not digits:
+            return res
+
+        backtrack(0, [])
+        return res
 ```
 
 ---
