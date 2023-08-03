@@ -17,6 +17,8 @@ You are also given two integers ```k``` and ```candidates```. We want to hire ex
 
 Return _the total cost to hire exactly ```k``` workers_.
 
+![image](https://github.com/quananhle/Python/assets/35042430/bb718468-1bd8-4566-b7f7-9dad2f45a214)
+
 ---
 
 __Example 1__:
@@ -83,6 +85,8 @@ __Algorithm__
 
 7. Return the total cost of all the hired workers.
 
+__Complexity Analysis__
+
 - __Time Complexity__: $\mathcal{O}((k+m) \cdot \mathcal{log}(⁡m))$
 - __Space Complexity__: $\mathcal{O}(m)$
 
@@ -131,6 +135,11 @@ class Solution:
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/7.png)
 
 ![image](https://leetcode.com/problems/total-cost-to-hire-k-workers/Figures/2462/8.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}((k+m) \cdot \mathcal{log}(⁡m))$
+- __Space Complexity__: $\mathcal{O}(m)$
 
 ```Python
 class Solution:
