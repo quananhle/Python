@@ -43,6 +43,8 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/predict-the-winner/Figures/486/d1.png)
 
+![image](https://leetcode.com/problems/predict-the-winner/Figures/486/d2.png)
+
 ```Python
 
 ```
@@ -53,25 +55,47 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
-```Python
+![image](https://leetcode.com/problems/predict-the-winner/Figures/486/d3.png)
 
+```Python
+class Solution:
+    def predictTheWinner(self, nums: List[int]) -> bool:
+        n = len(nums)
+        memo = collections.defaultdict(int)
+
+        def dp(left, right):
+            # Base case
+            if left == right:
+                return nums[left]
+
+            if (left, right) in memo:
+                return memo[(left, right)]
+
+            # Recurrence relation
+            left_score = nums[left] - dp(left + 1, right)
+            right_score = nums[right] - dp(left, right - 1)
+        
+            memo[(left, right)] = max(left_score, right_score)
+            return memo[(left, right)]
+        
+        return dp(0, n - 1) >= 0
 ```
 
 ```Python
 class Solution:
-    def PredictTheWinner(self, nums: List[int]) -> bool:
+    def predictTheWinner(self, nums: List[int]) -> bool:
         n = len(nums)
 
-        def dp(player1, player2):
+        @lru_cache(maxsize=None)
+        def dp(left, right):
             # Base case
-            if player1 == player2:
-                return nums[player1]
+            if left == right:
+                return nums[left]
             
-            # Recurrence relation
-            p1_score = nums[player1] - dp(player1 + 1, player2)
-            p2_score = nums[player2] - dp(player1, player2 - 1)
-
-            return max(p1_score, p2_score)
+            left_score = nums[left] - dp(left + 1, right)
+            right_score = nums[right] - dp(left, right - 1)
+        
+            return max(left_score, right_score)
         
         return dp(0, n - 1) >= 0
 ```
