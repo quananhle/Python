@@ -105,6 +105,7 @@
 - :warning::warning: [215. Kth Largest Element in an Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Heap/215.%20Kth%20Largest%20Element%20in%20an%20Array)
 - :warning::warning: [2336. Smallest Number in Infinite Set](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2336.%20Smallest%20Number%20in%20Infinite%20Set)
 - :warning::warning: [2542. Maximum Subsequence Score](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2542.%20Maximum%20Subsequence%20Score)
+- :warning::warning: [2462. Total Cost to Hire K Workers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2462.%20Total%20Cost%20to%20Hire%20K%20Workers)
 
 ### Binary Search
 
