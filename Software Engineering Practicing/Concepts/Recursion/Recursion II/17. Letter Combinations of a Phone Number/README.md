@@ -1,6 +1,6 @@
 ## [17. Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number)
 
-```Tag```: ```Recursion``` ```Backtracking``` ```Breadth-First Search``` ```Depth-First Search```
+```Tag```: ```Recursion``` ```Backtracking``` ```Breadth-First Search``` ```Depth-First Search``` ```Sorted List```
 
 #### Difficulty: Medium
 
@@ -89,6 +89,14 @@ class Solution:
 
         return res
 ```
+
+#### Sorted List
+
+```Python
+
+```
+
+---
 
 ### Depth-First Search
 
