@@ -61,8 +61,6 @@ __Constraints:__
         top_k_sum = sum(top_k_heap)
         heapq.heapify(top_k_heap)
 
-        print (pairs)
-        print (top_k_heap)
         ans = top_k_sum * pairs[k - 1][1]
         
         for i in range(k, len(nums1)):
