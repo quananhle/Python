@@ -77,36 +77,46 @@ __Algorithm__
 6. Repeat steps 3 and 4 ```k``` times.
 7. Return the total cost of all the hired workers.
 
-- __Time Complexity__: $O((k+m)⋅log⁡m)$
+- __Time Complexity__: $\mathcal{O}((k+m) \cdot \mathcal{log}(⁡m))$
 - __Space Complexity__: $O(m)$
 
 ```Python
 class Solution:
     def totalCost(self, costs: List[int], k: int, candidates: int) -> int:
-        heads = costs[:candidates]
-        tails = costs[max(candidates, len(costs) - candidates):]
-
-        heapify(heads)
-        heapify(tails)
+        n = len(costs)
+        # First candidates workers
+        head = costs[:candidates]
+        # Last candidates workers or the remaining of candidates workers, whichever is greater
+        tail = costs[max(candidates, n - candidates):]
+        heapify(head)
+        heapify(tail)
 
         ans = 0
-        next_head, next_tail = candidates, len(costs) - 1 - candidates
-
+        # Pointers indicating the next worker to be added to two queues
+        next_head, next_tail = candidates, n - 1 - candidates
+        
+        # Run k sessions
         for _ in range(k):
-            if not tails or heads and heads[0] <= tails[0]:
-                ans += heappop(heads)
+            # If there are no workers left in tail or comparing the cheapest workers in two queues
+            if (not tail) or (head and head[0] <= tail[0]):
+                # Hire the worker from head
+                ans += heappop(head)
 
+                # Add next worker to head
                 if next_head <= next_tail:
-                    heappush(heads, costs[next_head])
+                    heappush(head, costs[next_head])
                     next_head += 1
-            
+            # Otherwise, if there are workers left in tail or the cheapest worker is from tail 
             else:
-                ans += heappop(tails)
+                # Hire the worker from tail
+                ans += heappop(tail)
 
+                # Add next worker to tail
                 if next_head <= next_tail:
-                    heappush(tails, costs[next_tail])
+                    heappush(tail, costs[next_tail])
                     next_tail -= 1
                 
+            # If tail pointer is larger than head pointer, there are no more workers outside of the queue to hire
         return ans
 ```
 
