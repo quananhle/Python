@@ -109,6 +109,45 @@ B >> 1 = 00101 >> 1 = 00010 = 2 (in decimal)
 ```Python
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
+        ''' 
+        Using AND, 4 cases:
+        - 1 & 1 = 1
+        - 1 & 0 = 1
+        - 0 & 1 = 1
+        - 0 & 0 = 0
+        '''
+        ans = 0
+
+        while a or b or c:
+            # Check if the least significant bit of c is 1
+            if c & 1:
+                # If the least significant of a or b is 1, no flip required; otherwise, flip 1 bit
+                if a & 1:
+                    ans += 0
+                elif b & 1:
+                    ans += 0
+                else:
+                    ans += 1
+            # Otherwise, the least significant bit of c is 0
+            else:
+                # If the least significant bit of a is 1, flip required
+                if a & 1:
+                    ans += 1
+                # If the least significant bit of b has 1, flip required
+                if b & 1:
+                    ans += 1
+
+            # Shift number to the right
+            a >>= 1
+            b >>= 1
+            c >>= 1
+        
+        return ans
+```
+
+```Python
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
         answer = 0
         while a or b or c:
             if c & 1:
