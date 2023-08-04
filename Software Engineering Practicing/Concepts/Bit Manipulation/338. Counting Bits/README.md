@@ -46,7 +46,11 @@ __Follow up:__
 
 ---
 
-__Approach 1__: Pop Count
+### Approach 1: Pop Count
+
+Complexity Analysis
+
+Time complexity: O(n⋅log⁡n)O(n \cdot \log n)O(n⋅logn). 
 
 ```Python
 class Solution:
