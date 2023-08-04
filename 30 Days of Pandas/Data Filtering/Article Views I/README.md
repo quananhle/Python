@@ -3,34 +3,37 @@
 ```Tag```: ```SQL``` ```Pandas```
 
 ```SQL
-Create table If Not Exists Customers (id int, name varchar(255))
-Create table If Not Exists Orders (id int, customerId int)
-Truncate table Customers
-insert into Customers (id, name) values ('1', 'Joe')
-insert into Customers (id, name) values ('2', 'Henry')
-insert into Customers (id, name) values ('3', 'Sam')
-insert into Customers (id, name) values ('4', 'Max')
-Truncate table Orders
-insert into Orders (id, customerId) values ('1', '3')
-insert into Orders (id, customerId) values ('2', '1')
+Create table If Not Exists Views (article_id int, author_id int, viewer_id int, view_date date)
+Truncate table Views
+insert into Views (article_id, author_id, viewer_id, view_date) values ('1', '3', '5', '2019-08-01')
+insert into Views (article_id, author_id, viewer_id, view_date) values ('1', '3', '6', '2019-08-02')
+insert into Views (article_id, author_id, viewer_id, view_date) values ('2', '7', '7', '2019-08-01')
+insert into Views (article_id, author_id, viewer_id, view_date) values ('2', '7', '6', '2019-08-02')
+insert into Views (article_id, author_id, viewer_id, view_date) values ('4', '7', '1', '2019-07-22')
+insert into Views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21')
+insert into Views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21')
+
 ```
 
 ```Python
-Customers = pd.DataFrame([], columns=['id', 'name']).astype({'id':'Int64', 'name':'object'})
-Orders = pd.DataFrame([], columns=['id', 'customerId']).astype({'id':'Int64', 'customerId':'Int64'})
+Views = pd.DataFrame([], columns=['article_id', 'author_id', 'viewer_id', 'view_date']).astype({'article_id':'Int64', 'author_id':'Int64', 'viewer_id':'Int64', 'view_date':'datetime64[ns]'})
 ```
+
+![image](https://github.com/quananhle/Python/assets/35042430/e75440a0-a9af-4240-bcad-163042efcb77)
 
 ---
 
 ```MySQL
 # Write your MySQL query statement below
-SELECT name AS customers FROM customers WHERE id NOT IN (SELECT customerId FROM orders);
+SELECT DISTINCT author_id AS id FROM Views WHERE author_id = viewer_id ORDER BY id;
 ```
 
 ```Python
 import pandas as pd
 
-def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
-    df = customers[~customers['id'].isin(orders['customerId'])]
-    return df[['name']].rename(columns={'name': 'Customers'})
+def article_views(views: pd.DataFrame) -> pd.DataFrame:
+    df = views[views['author_id'] == views['viewer_id']]
+    df.drop_duplicates(subset=['author_id'], inplace=True)
+    df.sort_values(by=['author_id'], inplace=True)
+    return df[['author_id']].rename(columns={'author_id': 'id'})
 ```
