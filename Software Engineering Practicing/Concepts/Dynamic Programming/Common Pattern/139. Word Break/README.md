@@ -1,6 +1,6 @@
 ## [139. Word Break](https://leetcode.com/problems/word-break)
 
-```Tag```: ```Dynamic Programming``` 
+```Tag```: ```Dynamic Programming``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -40,6 +40,38 @@ __Constraints:__
 - ```1 <= wordDict[i].length <= 20```
 - ```s``` and ```wordDict[i]``` consist of only lowercase English letters.
 - All the ```strings``` of ```wordDict``` are unique.
+
+---
+
+### Breadth-First Search
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^{3} + m \cdot k)$
+- __Space Complexity__: $\mathcal{O}(n + m \cdot k)$
+
+```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        words = set(wordDict)
+        queue = collections.deque([0])
+        seen = set()
+        n = len(s)
+
+        while queue:
+            start = queue.popleft()
+            if start == n:
+                return True
+
+            for end in range(start + 1, n + 1):
+                if end in seen:
+                    continue
+                if s[start:end] in words:
+                    queue.append(end)
+                    seen.add(end)
+        
+        return False
+```
 
 ---
 
