@@ -48,9 +48,10 @@ __Follow up:__
 
 ### Approach 1: Pop Count
 
-Complexity Analysis
+__Complexity Analysis__
 
-Time complexity: O(n⋅log⁡n)O(n \cdot \log n)O(n⋅logn). 
+- __Time Complexity__: $\mathcal{O}(n \cdot \log n)$. 
+- __Space Complexity__: $\mathcal{O}(1)$. 
 
 ```Python
 class Solution:
