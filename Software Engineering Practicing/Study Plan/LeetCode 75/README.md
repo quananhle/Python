@@ -62,6 +62,9 @@
 - :warning::warning: [714. Best Time to Buy and Sell Stock with Transaction Fee](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
 - :warning::warning: [72. Edit Distance](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Compare%20Array/72.%20Edit%20Distance)
 
+Bit Manipulation
+
+
 ### Linked List
 
 - :warning::warning: [2095. Delete the Middle Node of a Linked List](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/2095.%20Delete%20the%20Middle%20Node%20of%20a%20Linked%20List)
