@@ -41,7 +41,27 @@ __Constraints:__
 
 __Follow up:__
 
-- It is very easy to come up with a solution with a runtime of $\mathcal{O}(n \mathcal{log}n)$. Can you do it in linear time $\mathcal{O}(n)$ and possibly in a single pass?
+- It is very easy to come up with a solution with a runtime of $\mathcal{O}(n \cdot \mathcal{log}n)$. Can you do it in linear time $\mathcal{O}(n)$ and possibly in a single pass?
 - Can you do it without using any built-in function (i.e., like __builtin_popcount in C++)?
 
 ---
+
+__Approach 1__: Pop Count
+
+```Python
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        def pop_count(x: int) -> int:
+            count = 0
+            while x != 0:
+                # Zeroing out the least significant nonzero bit
+                x = x & (x - 1)
+                count += 1
+            return count
+        
+        res = [0] * (n + 1)
+        for x in range(n + 1):
+            res[x] = pop_count(x)
+        
+        return res
+```
