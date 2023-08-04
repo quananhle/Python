@@ -68,6 +68,11 @@
 - :four_leaf_clover: [136. Single Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/136.%20Single%20Number)
 - :warning::warning: [1318. Minimum Flips to Make a OR b Equal to c](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1318.%20Minimum%20Flips%20to%20Make%20a%20OR%20b%20Equal%20to%20c)
 
+### Trie
+
+- :warning::warning: [208. Implement Trie (Prefix Tree)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2016%20-%20Design/208.%20Implement%20Trie%20(Prefix%20Tree))
+-
+
 ### Linked List
 
 - :warning::warning: [2095. Delete the Middle Node of a Linked List](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/2095.%20Delete%20the%20Middle%20Node%20of%20a%20Linked%20List)
