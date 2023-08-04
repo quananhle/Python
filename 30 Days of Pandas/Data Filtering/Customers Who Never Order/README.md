@@ -18,6 +18,7 @@ insert into Orders (id, customerId) values ('2', '1')
 ```Python
 Customers = pd.DataFrame([], columns=['id', 'name']).astype({'id':'Int64', 'name':'object'})
 Orders = pd.DataFrame([], columns=['id', 'customerId']).astype({'id':'Int64', 'customerId':'Int64'})
+```
 
 ---
 
