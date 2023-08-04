@@ -93,3 +93,15 @@ class Solution:
         
         return res
 ```
+
+#### DP & Least Significant Bit
+
+```Python
+
+```
+
+#### DP & Last Bit Set
+
+```Python
+
+```
