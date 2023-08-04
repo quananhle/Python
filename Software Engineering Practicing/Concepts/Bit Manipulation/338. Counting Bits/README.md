@@ -1,6 +1,6 @@
 ## [338. Counting Bits](https://leetcode.com/problems/counting-bits)
 
-```Tag```: ```Bitwise```
+```Tag```: ```Bitwise``` ```Dynamic Programming```
 
 #### Difficulty: Easy
 
@@ -67,6 +67,29 @@ class Solution:
         res = [0] * (n + 1)
         for x in range(n + 1):
             res[x] = pop_count(x)
+        
+        return res
+```
+
+---
+
+### Dynamic Programming
+
+#### DP & Most Significant Bit
+
+```Python
+class Solution:
+    def countBits(self, n: int) -> List[int]:
+        res = [0] * (n + 1)
+        x = 0
+        b = 1
+
+        while b <= n:
+            while x < b and x + b <= n:
+                res[x + b] = res[x] + 1
+                x += 1
+            x = 0
+            b <<= 1
         
         return res
 ```
