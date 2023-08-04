@@ -64,7 +64,8 @@
 
 ### Bit Manipulation
 
- :four_leaf_clover: [338. Counting Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/338.%20Counting%20Bits)
+- :four_leaf_clover: [338. Counting Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/338.%20Counting%20Bits)
+- :four_leaf_clover: [136. Single Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/136.%20Single%20Number)
 
 
 ### Linked List
