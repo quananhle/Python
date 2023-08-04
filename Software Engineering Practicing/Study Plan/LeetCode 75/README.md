@@ -62,7 +62,9 @@
 - :warning::warning: [714. Best Time to Buy and Sell Stock with Transaction Fee](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Best%20Time%20to%20Buy%20and%20Sell%20Stock/714.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee)
 - :warning::warning: [72. Edit Distance](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Compare%20Array/72.%20Edit%20Distance)
 
-Bit Manipulation
+### Bit Manipulation
+
+ :four_leaf_clover: [338. Counting Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/338.%20Counting%20Bits)
 
 
 ### Linked List
