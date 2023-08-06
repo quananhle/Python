@@ -34,6 +34,8 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/unique-binary-search-trees-ii/solutions/187794/Figures/96_BST.png)
 
+![image](https://leetcode.com/problems/unique-binary-search-trees-ii/Figures/95/95-1.png)
+
 __Time Complexity__: ```O(C0+C1+...Cn)``` where C<sub>n</sub> is the Catalan number. The Catalan numbers for ```n = 0, 1, 2, 3, 4, 5, 6, 7, 8``` are ```1, 1, 2, 5, 14, 42, 132, 429, 1430```.
 
 __Space Complexity__: ```O(n * Cn)```, there is total C<sub>n</sub> __BSTs__, each __BST__ has ```n``` nodes
@@ -67,4 +69,41 @@ class Solution:
             return res
         
         return build_tree(1, n)
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+        @lru_cache(maxsize=None)
+        def helper(start, end):
+            res = list()
+            # Base case
+            if start > end:
+                res.append(None)
+                return res
+
+            for val in range(start, end + 1):
+                left_subtree = helper(start, val - 1)
+                right_subtree = helper(val + 1, end)
+
+                for left_node in left_subtree:
+                    for right_node in right_subtree:
+                        root = TreeNode(val=val, left=left_node, right=right_node)
+                        res.append(root)
+                
+            return res
+        
+        return helper(1, n)
+```
+
+### Bottom-Up Dynamic Programming
+
+```Python
+
 ```
