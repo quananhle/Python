@@ -41,3 +41,15 @@ __Constraints:__
 - $0 \le k < n \le goal \le 100$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
