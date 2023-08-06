@@ -127,6 +127,34 @@ class Solution:
 
 ### Bottom-Up Dynamic Programming
 
-```Python
+- __Time Complexity__: $\mathcal{O}(\dfrac{4^n}{\sqrt{n}})$
+- __Space Complexity__: $\mathcal{O}(\sum_{k=1}^{n}{[(n - k + 1) \cdot \dfrac{4^k}{\sqrt{k}}]})$
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+        dp = [[[] for _ in range(n + 1)] for _ in range(n + 1)]
+        # Base case
+        for i in range(1, n + 1):
+            dp[i][i] = [TreeNode(val=i)]
+
+        for nodes in range(2, n + 1):
+            for start in range(1, n - nodes + 2):
+                end = start + nodes - 1
+                for val in range(start, end + 1):
+                    left_subtree = dp[start][val - 1] if val != start else [None]
+                    right_subtree = dp[val + 1][end] if val != end else [None]
+
+                    for left in left_subtree:
+                        for right in right_subtree:
+                            root = TreeNode(val=val, left=left, right=right)
+                            dp[start][end].append(root)
+        
+        return dp[1][n]
 ```
