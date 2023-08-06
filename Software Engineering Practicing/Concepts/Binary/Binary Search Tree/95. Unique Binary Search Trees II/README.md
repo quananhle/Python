@@ -6,7 +6,7 @@
 
 Given an integer ```n```, return _all the structurally unique __BST's (binary search trees)__, which has exactly ```n``` nodes of unique values from ```1``` to ```n```_. Return _the answer in any order_.
 
-![image](https://user-images.githubusercontent.com/35042430/217061215-c32c32bc-c4a5-4de9-a0be-de8d736fef59.png)
+![image](https://github.com/quananhle/Python/assets/35042430/18708fbb-a40a-4691-823f-9392a92523cf)
 
 ---
 
