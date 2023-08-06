@@ -47,9 +47,59 @@ __Constraints:__
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:
+        MOD = 10**9 + 7
+        memo = collections.defaultdict(int)
 
+        def dp(curr, remaining):
+            # Base cases
+            if curr == 0 and remaining == 0:
+                return 1
+            if curr == 0 or remaining == 0:
+                return 0
+            
+            if (curr, remaining) in memo:
+                return memo[(curr, remaining)]
+
+            # DP transition: add a new song or replay an old song
+
+            # Add a new song: less one song to play, less 1 song in goal, all times the rest of the total song in player
+            ans = dp(curr - 1, remaining - 1) * (n - curr + 1) % MOD
+
+            # Replay an old song: songs to play remain same, less 1 song in goal, all times the song less the k already played songs
+            if curr > k:
+                ans += dp(curr, remaining - 1) * (curr - k) % MOD
+                ans %= MOD
+            
+            memo[(curr, remaining)] = ans
+            return ans
+        
+        return dp(n, goal)
 ```
 
 ```Python
+class Solution:
+    def numMusicPlaylists(self, n: int, goal: int, k: int) -> int:
+        MOD = 10**9 + 7
 
+        @lru_cache(maxsize=None)
+        def dp(i, j):
+            # Base cases
+            if i == 0 and j == 0:
+                return 1
+            if i == 0 or j == 0:
+                return 0
+            
+            # DP transition: add a new song or replay an old one
+            # Add a new song
+            ans = dp(i - 1, j - 1) * (n - j + 1) % MOD
+            # Replay the old song
+            if j > k:
+                ans += dp(i - 1, j) * (j - k) % MOD
+                ans %= MOD
+            
+            return ans
+        
+        return dp(goal, n)
 ```
