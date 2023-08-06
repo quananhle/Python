@@ -71,6 +71,9 @@ class Solution:
         return build_tree(1, n)
 ```
 
+- __Time Complexity__: $\mathcal{O}(\dfrac{4^n}{\sqrt{n}})$
+- __Space Complexity__: $\mathcal{O}(\sum_{k=1}^{n}{[(n - k + 1) \cdot \dfrac{4^k}{\sqrt{k}}]})$
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -100,6 +103,26 @@ class Solution:
             return res
         
         return helper(1, n)
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+        @lru_cache(maxsize=None)
+        def build_tree(left, right):
+            return [None] if left > right \
+                            else [TreeNode(val, l, r) \
+                                for val in range(left, right + 1) \
+                                    for l in build_tree(left, val - 1) \
+                                        for r in build_tree(val + 1, right)] 
+
+        return build_tree(1, n)
 ```
 
 ### Bottom-Up Dynamic Programming
