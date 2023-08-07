@@ -1,6 +1,6 @@
 ## [74. Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
 
-```Tag```: ```Matrix```
+```Tag```: ```Binary Search``` ```Matrix```
 
 #### Difficulty: Medium
 
@@ -38,6 +38,19 @@ __Constraints:__
 - $m == matrix.length$
 - $n == matrix[i].length$
 - $1 \le m, n \le 100$
-- -10^{4} \le matrix[i][j], target \le 10^{4}
+- $-10^{4} \le matrix[i][j], target \le 10^{4}$
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        ROWS, COLS = len(matrix), len(matrix[0])
+        for row in range(ROWS):
+            for col in range(COLS):
+                if matrix[row][col] == target:
+                    return True
+        return False
+```
