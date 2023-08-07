@@ -24,17 +24,22 @@ Users = pd.DataFrame([], columns=['user_id', 'name']).astype({'user_id':'Int64',
 ```Python
 import pandas as pd
 
-def calculate_special_bonus(employees: pd.DataFrame) -> pd.DataFrame:
-    employees['bonus'] = employees.apply(lambda x: x['salary'] if x['employee_id'] % 2 and not x['name'].startswith('M') else 0, axis=1)
-    df = employees[['employee_id', 'bonus']].sort_values('employee_id')
-    return df
+def fix_names(users: pd.DataFrame) -> pd.DataFrame:
+    users['name'] = users['name'].str[0].str.upper() + users['name'].str[1:].str.lower()
+    return users.sort_values('user_id')
+```
+
+```Python
+import pandas as pd
+
+def fix_names(users: pd.DataFrame) -> pd.DataFrame:
+    users["name"] = users["name"].str.title()
+    return users.sort_values("user_id")
 ```
 
 ```MySQL
 # Write your MySQL query statement below
-SELECT employee_id, CASE WHEN MOD(employee_id, 2) <> 0 AND name NOT LIKE 'M%' THEN salary
-                        ELSE 0
-                    END AS bonus
-FROM employees
-ORDER BY employee_id;
+SELECT user_id, CONCAT(UCASE(LEFT(name,1)), LCASE(SUBSTRING(name, 2))) AS name
+FROM Users
+ORDER BY user_id
 ```
