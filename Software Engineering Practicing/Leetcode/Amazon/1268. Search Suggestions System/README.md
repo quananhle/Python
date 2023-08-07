@@ -1,6 +1,6 @@
 ## [1268. Search Suggestions System](https://leetcode.com/problems/search-suggestions-system)
 
-```Tag```: ```Trie``` ```Binary Search``` ```Depth-First Search```
+```Tag```: ```Trie``` ```Binary Search``` ```Depth-First Search``` ```Two Pointers```
 
 #### Difficulty: Medium
 
@@ -41,6 +41,30 @@ __Constraints:__
 - ```searchWord``` consists of lowercase English letters.
 
 ---
+
+### Two Pointers
+
+```Python
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        n = len(products)
+        products.sort()
+        res = list()
+
+        start, end = 0, n - 1
+        for i, char in enumerate(searchWord):
+            while start <= end and (i >= len(products[start]) or products[start][i] < char):
+                start += 1
+            while start <= end and (i >= len(products[end]) or products[end][i] > char):
+                end -= 1
+            
+            if start <= end:
+                res.append(products[start:min(start + 3, end + 1)])
+            else:
+                res.append([])
+        
+        return res
+```
 
 ### Binary Search
 
