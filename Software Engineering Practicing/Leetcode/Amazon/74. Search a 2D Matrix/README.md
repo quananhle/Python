@@ -57,7 +57,32 @@ class Solution:
 
 ### Binary Search
 
-#### Template 1
+#### Flatten 2D-Matrix to 1D-Array
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        ROWS, COLS = len(matrix), len(matrix[0])
+        if not ROWS:
+            return False
+        array = [matrix[row][col] for row in range(ROWS) for col in range(COLS)]
+
+        n = len(array)
+        lo, hi = 0, n - 1
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            num = array[mi]
+            if num < target:
+                lo = mi + 1
+            elif num > target:
+                hi = mi - 1
+            else:
+                return True
+
+        return False
+```
+
+#### Traverse the 2D-Matrix
 
 ```Python
 class Solution:
