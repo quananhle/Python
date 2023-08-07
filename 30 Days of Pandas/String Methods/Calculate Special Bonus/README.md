@@ -1,4 +1,4 @@
-## [1683. Invalid Tweets](https://leetcode.com/problems/invalid-tweets/)
+## [1873. Calculate Special Bonus](https://leetcode.com/problems/calculate-special-bonus/)
 
 ```Tag```: ```Panda``` ```SQL```
 
