@@ -54,3 +54,29 @@ class Solution:
                     return True
         return False
 ```
+
+### Binary Search
+
+#### Template 1
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        ROWS, COLS = len(matrix), len(matrix[0])
+        if not ROWS:
+            return False
+        
+        lo, hi = 0, ROWS * COLS - 1
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            num = matrix[mi // COLS][mi % COLS]
+            if num == target:
+                return True
+            else:
+                if num < target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+        
+        return False
+```
