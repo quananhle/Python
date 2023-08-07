@@ -69,7 +69,23 @@ class Solution:
 ### Binary Search
 
 ```Python
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        n = len(products)
+        products.sort()  # Sort by increasing lexicographically order of products
+        res = list()
 
+        lo = 0
+        prefix = list()
+        for char in searchWord:
+            prefix.append(char)
+            lo = mi = bisect_left(products, "".join(prefix), lo, n)
+            curr = list()
+            for i in range(mi, min(mi + 3, n)):
+                if products[i].startswith("".join(prefix)):
+                    curr.append(products[i])
+            res.append(curr)
+        return res
 ```
 
 ### Trie
