@@ -48,7 +48,56 @@ __Constraints:__
 
 ```
 
-### Trie & Sort
+### Trie
+
+#### Depth-First Search
+
+```Python
+class Trie:
+    def __init__(self):
+        self.children = collections.defaultdict(Trie)
+        self.word = None
+
+    def insert(self, word):
+        curr = self
+        for c in word:
+            curr = curr.children[c]
+        curr.word = word
+
+    def search(self):
+        words = []
+
+        def dfs(curr):
+            if len(words) == 3: return
+            if curr.word != None:
+                words.append(curr.word)
+            for c in ascii_lowercase:
+                if c in curr.children:
+                    dfs(curr.children[c])
+
+        dfs(self)
+        return words
+
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        node = Trie()
+        for word in products:
+            node.insert(word)
+
+        res = []
+        curr = node
+        for char in searchWord:
+            if curr and char in curr.children:
+                curr = curr.children[char]
+                res.append(curr.search())
+            else:
+                curr = None
+                res.append([])
+
+        return res
+```
+
+#### Sorting
 
 ```Python
 class Solution:
@@ -76,3 +125,5 @@ class Solution:
             result.append(node.suggestion)
         return result
 ```
+
+
