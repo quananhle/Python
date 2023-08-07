@@ -16,9 +16,11 @@ insert into Employees (employee_id, name, salary) values ('9', 'Kannon', '7700')
 Employees = pd.DataFrame([], columns=['employee_id', 'name', 'salary']).astype({'employee_id':'int64', 'name':'object', 'salary':'int64'})
 ```
 
+![image](https://github.com/quananhle/Python/assets/35042430/f9397abc-7de3-44c9-8239-bfa0f0e13dd4)
+
 ---
 
-![image](https://github.com/quananhle/Python/assets/35042430/b4e09c5c-d3d8-4358-a12e-1266c5d92e2b)
+![image](https://github.com/quananhle/Python/assets/35042430/f1e108ca-422a-4a36-9049-501353870b1d)
 
 ---
 
