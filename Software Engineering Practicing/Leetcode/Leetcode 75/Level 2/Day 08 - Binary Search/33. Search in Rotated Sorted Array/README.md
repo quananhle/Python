@@ -36,11 +36,11 @@ Output: -1
 
 __Constraints__:
 
-- ```1 <= nums.length <= 5000```
-- -10<sup>4</sup> <= ```nums[i]``` <= 10<sup>4</sup>
+- $1 \le nums.length \le 5000$
+- $-10^{4} \le nums[i] \le 10^{4}$
 - All values of ```nums``` are __unique__.
 - ```nums``` is an ascending array that is possibly rotated.
-- -10<sup>4</sup> <= ```target``` <= 10<sup>4</sup>
+- $-10^{4} \le target \le 10^{4}
 
 ---
 
