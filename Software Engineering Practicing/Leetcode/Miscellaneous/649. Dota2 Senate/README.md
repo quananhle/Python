@@ -72,9 +72,3 @@ class Solution:
 
         return "Radiant" if radiants else "Dire"
 ```
-
-### One Queue
-
-```Python
-
-```
