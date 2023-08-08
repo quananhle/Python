@@ -1,4 +1,6 @@
-## 79. Word Search
+## [79. Word Search](https://leetcode.com/problems/word-search)
+
+```Tag```: ```Backtracking``` ```Trie```
 
 #### Difficulty: Medium
 
@@ -44,4 +46,8 @@ __Constraints:__
 
 ---
 
+### Backtracking
 
+```Python
+
+```
