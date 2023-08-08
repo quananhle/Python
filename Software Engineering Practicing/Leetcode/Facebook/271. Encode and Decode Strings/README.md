@@ -1,6 +1,6 @@
 ## [271. Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings/)
 
-```Tag```: 
+```Tag```: ```Array & String```
 
 #### Difficulty: Medium
 
@@ -68,5 +68,23 @@ __Constraints:__
 - ```strs[i]``` contains any possible characters out of ```256``` valid ASCII characters.
  
 ---
+
+### Approach 1: Non-ASCII delimiter
+
+```Python
+class Codec:
+    def encode(self, strs: List[str]) -> str:
+        """Encodes a list of strings to a single string."""
+        return "😁".join(strs)
+
+    def decode(self, s: str) -> List[str]:
+        """Decodes a single string to a list of strings."""
+        return s.split("😁")
+
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(strs))
+```
 
 Follow up: Could you write a generalized algorithm to work on any possible set of characters?
