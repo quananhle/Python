@@ -117,6 +117,77 @@ __Follow up:__ Could you write a generalized algorithm to work on any possible s
 
 ### Approach 2: Escaping
 
+Intuition
+While the non-ASCII delimiter approach can work well for many applications, it assumes that the delimiter character will not appear in the strings to be encoded. However, in many practical situations, we cannot make this assumption. The strings might contain any possible character, including our chosen delimiter. Therefore, we need a different approach that can handle this situation.
+
+For our purpose, we select /: as the delimiter. This choice provides us with a unique pattern to signal the end of a string during the encoding and decoding process. However, there's still a potential issue: What happens if one of our strings naturally contains the sequence /:? Let's examine how we can resolve this situation.
+
+Example 1: Simple approach works
+
+Suppose we have the following list of strings: ["Hello", "World", "Nice", "To", "Meet", "You"].
+
+If we use the simple approach to encode these strings, we just join them with our delimiter /: in between. This gives us: Hello/:World/:Nice/:To/:Meet/:You/:.
+
+When we decode this string, we split it at every /:, which gives us back our original list of strings: ["Hello", "World", "Nice", "To", "Meet", "You"]. So the simple approach works in this case.
+
+Example 2: Simple approach does not work
+
+Now suppose we have a different list of strings: ["Hello", "Wor/:ld", "Nice", "To", "Meet", "You"].
+
+If we use the simple approach to encode these strings, we get: Hello/:Wor/:ld/:Nice/:To/:Meet/:You/:.
+
+However, when we decode this string by splitting it at every /:, we get: ["Hello", "Wor", "ld", "Nice", "To", "Meet", "You"], which is not the same as our original list of strings.
+
+The string Wor/:ld has been incorrectly split into two strings: Wor and ld. The problem is that our delimiter /: appears in the original string Wor/:ld, which confuses our simple encoding and decoding approach.
+
+To handle this, we use a technique called escaping. This is a common concept in computer programming.
+
+So, what's the purpose of escaping? Let's say you have a character that has a special meaning in a certain context, like our delimiter /:. If this character sequence appears in our original strings, it might confuse our encoding and decoding process. We need a way to signal that in this particular instance, we don't want to treat /: as a delimiter but as a part of the original string.
+
+This is where escaping comes in. By choosing a specific character to act as an "escape character", we can denote that any special character following the escape character should be treated as a normal character instead of its special meaning. Here we choose the slash character / as our escape character.
+
+Let's illustrate with an example. Consider we have a string Wor/:ld. To avoid our delimiter /: being misinterpreted, we would "escape" the slash before the colon, making it //:. So, the string becomes Wor//:ld. Now, our encoding and decoding process will understand that /: in this context is not a delimiter, but a part of the original string.
+
+Let's consider another example using the escaping approach for the problem. In this case, our input list of strings is: ["Hello", "World/:", "How/are you?"].
+
+We have one string World/: that contains our delimiter sequence /: and another string How/are you? that contains the slash character /.
+
+First, we'll encode the list of strings into a single string.
+
+We iterate over each string in the list, and for each string, we iterate over each character. If a character is a slash /, we add another slash to escape it, resulting in //. If a character is not a slash, we simply add it to the output string. After we've processed all the characters in a string, we append our delimiter /: to mark the end of that string.
+
+This gives us the following encoded string: Hello/:World//:/:How//are you?/:.
+
+Now, we'll decode the encoded string back into a list of strings.
+
+We initialize an empty list to hold the decoded strings and an empty string to build the current string. Then, we iterate over the characters in the encoded string.
+
+If a character is our escape character /, we check the next character. If the next character is also a slash (so we have //), it indicates that the original string had a / and we just escaped it. However, if the next character is a : (so we have /:), it is our delimiter.
+
+If we find two characters //, it indicates an escaped slash. We add / to the current string and move on.
+If we find two characters /:, it indicates our delimiter. We add the current string to the output, clear it, and move on.
+So, how does the algorithm detect when the delimiter /: is part of a string? In the encoded string, /: is converted to //:. As we iterate over the encoded string, we see // (case 1), add /, and then move on to the :. To summarize:
+
+If we see //:, it means /: was part of a string, not a delimiter. The first slash is the escape character and what comes after it is the contents of the string.
+If we see /:, it must be a delimiter, because if it wasn't then it would have been escaped to //:.
+After we've processed all the characters in the encoded string, we return the list of decoded strings.
+
+This gives us our original list of strings: ["Hello", "World/:", "How/are you?"].
+
+When we decode the string, we would recognize the escape character and understand that the /: sequence that follows is not a delimiter but part of the original string.
+
+The concept of escaping in computing is widely used and has many real-world applications. Here are a few examples:
+
+HTML and XML: In these markup languages, the characters <, >, and & have special meanings and are used to denote tags and entities. If you want to include these characters as text in a document, you need to use their escaped versions: &lt;, &gt;, and &amp;.
+
+SQL Queries: In SQL, single quotes are used to denote string literals. To include a single quote within the string itself, you need to escape it using two single quotes: 'It''s a sunny day'.
+
+Regular Expressions: In regex, many characters like ., *, +, ?, ^, (, ), {, }, [, ], \, |, / have special meanings. If you want to match these characters literally, you need to escape them using a backslash.
+
+Programming Languages: Almost all programming languages have some form of escape sequences to denote special characters. For example, in Python, Java, and C++, \\n denotes a newline, \\t denotes a tab, \\" is used for a double quote within a string that is enclosed by double quotes, and \\' is used for a single quote within a string that is enclosed by single quotes.
+
+These examples illustrate the escaping technique's importance in handling special characters across various domains in computing.
+
 ```Python
 class Codec:
     def encode(self, strs: List[str]) -> str:
