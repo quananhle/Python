@@ -245,3 +245,87 @@ class Codec:
 # codec = Codec()
 # codec.decode(codec.encode(strs))
 ```
+
+```Python
+class Codec:
+    def encode(self, strs: List[str]) -> str:
+        """Encodes a list of strings to a single string."""
+        # Initialize an empty list to hold the encoded strings
+        encoded_string = list()
+
+        # Iterate over each string in the input list
+        for s in strs:
+            # Replace each occurrence of '$' with '$$'
+            # This is our way of "escaping" the slash character
+            # Then add our delimiter '$:' to the end
+            encoded_string.append(s.replace('$', '$$') + '$:')
+
+        # Return the final encoded string
+        return "".join(encoded_string)
+
+    def decode(self, s: str) -> List[str]:
+        """Decodes a single string to a list of strings."""
+        # Initialize an empty list to hold the decoded strings
+        decoded_strings = list()
+        # Initialize a string to hold the current string being built
+        current = list()
+        # Initialize an index 'i' to start of the string
+        i = 0
+
+        # Iterate while 'i' is less than the length of the encoded string
+        while i < len(s):
+            # If we encounter the delimiter '$:'
+            if s[i:i+2] == '$:':
+                # Add the current_string to the list of decoded_strings
+                decoded_strings.append("".join(current))
+                # Clear current for the next string
+                current = list()
+                # Move the index 2 steps forward to skip the delimiter
+                i += 2
+            # If we encounter an escaped slash '$$'
+            elif s[i:i+2] == '$$':
+                # Add a single slash to current
+                current.append('$')
+                # Move the index 2 steps forward to skip the escaped slash
+                i+= 2
+            # Otherwise, just add the character to current
+            else:
+                current.append(s[i])
+                i += 1
+        
+        return decoded_strings
+
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(strs))
+```
+
+### Approach 3: Chunked Transfer Encoding
+
+```Python
+class Codec:
+    def encode(self, strs: List[str]) -> str:
+        encoded_string = list()
+
+        for s in strs:
+            encoded_string.append(str(len(s)) + '/:' + s)
+
+        return "".join(encoded_string)
+
+    def decode(self, s: str) -> List[str]:
+        decoded_strings = list()
+        i = 0
+        while i < len(s):
+            delimiter = s.find('/:', i)
+            length = int(s[i:delimiter])
+            str_ = s[delimiter + 2 : delimiter + 2 + length]
+            decoded_strings.append(str_)
+            i = delimiter + 2 + length
+
+        return decoded_strings
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(strs))
+```
