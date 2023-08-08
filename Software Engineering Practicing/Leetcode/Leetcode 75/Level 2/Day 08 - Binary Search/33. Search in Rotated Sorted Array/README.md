@@ -128,8 +128,26 @@ Pivot element is smaller than the first element of the array, i.e. the rotation 
   - Otherwise: go left: `end = mid - 1`.
 ```
 
-- __Time complexity__: ```O(log⁡N)```
-- __Space complexity__: ```O(1)```
+__Algorithm__
+
+1. Initialize the boundaries of the searching space as ```lo = 0``` and ```hi = n - 1```.
+2. While ```lo <= hi```, do the followings:
+    - Locate the middle index as ```mi = lo + (hi - lo) // 2```. Compare ```nums[mi]``` with ```target```.
+        - If ```target = nums[mi]```, return ```mi```. Otherwise:
+        - If ```nums[mi] >= nums[lo]```, the left half is sorted.
+            - If ```target >= nums[lo]``` and ```target < nums[mid]```, ```target``` might be in the left half.
+            - Continue with the left half by setting ```hi = mi - 1```.
+            - Otherwise, move on with the right half by setting ```lo = mi + 1```.
+        - If ```nums[mi] < nums[lo]```, the right half is sorted.
+            - If ```target <= nums[lo]``` and ```target > nums[mi]```, target might be in the right half.
+            - Continue with the right half by setting ```lo = mi + 1```.
+            - Otherwise, move on with the left half by setting ```hi = mi + 1```.
+5. Return ```-1``` when the search is complete.
+
+__Complexity Analysis__
+
+- __Time complexity__: $\mathcal{O}(\log n)$
+- __Space complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
