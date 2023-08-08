@@ -10,6 +10,8 @@ The word can be constructed from letters of sequentially adjacent cells, where a
 
 <img width="814" alt="image" src="https://user-images.githubusercontent.com/35042430/203913679-73e0ca58-836b-45a4-9dd1-006d85b07ddf.png">
 
+![image](https://github.com/quananhle/Python/assets/35042430/b7ae9069-e2aa-4870-913d-6d027e3540b1)
+
 __Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2020/11/04/word2.jpg)
