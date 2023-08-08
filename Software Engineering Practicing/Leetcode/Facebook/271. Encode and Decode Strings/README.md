@@ -36,5 +36,37 @@ Implement the ```encode``` and ```decode``` methods.
 
 You are not allowed to solve the problem using any serialize methods (such as ```eval```).
 
+![image](https://github.com/quananhle/Python/assets/35042430/56ff711f-f763-4d14-a180-eecbb35a7d52)
+
+---
+
+__Example 1:__
+```
+Input: dummy_input = ["Hello","World"]
+Output: ["Hello","World"]
+Explanation:
+Machine 1:
+Codec encoder = new Codec();
+String msg = encoder.encode(strs);
+Machine 1 ---msg---> Machine 2
+
+Machine 2:
+Codec decoder = new Codec();
+String[] strs = decoder.decode(msg);
+```
+
+__Example 2:__
+```
+Input: dummy_input = [""]
+Output: [""]
+```
+
+__Constraints:__
+
+- $1 \le strs.length \le 200$
+- $0 \le strs[i].length \le 200$
+- ```strs[i]``` contains any possible characters out of ```256``` valid ASCII characters.
  
 ---
+
+Follow up: Could you write a generalized algorithm to work on any possible set of characters?
