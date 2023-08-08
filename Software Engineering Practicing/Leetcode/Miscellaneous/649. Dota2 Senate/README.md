@@ -1,6 +1,6 @@
 ## [649. Dota2 Senate](https://leetcode.com/problems/dota2-senate/)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Queue```
 
 #### Difficulty: Medium
 
@@ -16,6 +16,8 @@ Given a string ```senate``` representing each senator's party belonging. The cha
 The round-based procedure starts from the first senator to the last senator in the given order. This procedure will last until the end of voting. All the senators who have lost their rights will be skipped during the procedure.
 
 Suppose every senator is smart enough and will play the best strategy for his own party. Predict which party will finally announce the victory and change the Dota2 game. The output should be ```"Radiant"``` or ```"Dire"```.
+
+![image](https://github.com/quananhle/Python/assets/35042430/7fd840d5-7139-4f9e-9bcc-39f33da6ed70)
 
 ---
 
