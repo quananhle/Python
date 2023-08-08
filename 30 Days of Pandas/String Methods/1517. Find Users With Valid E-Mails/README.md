@@ -28,3 +28,23 @@ Users = pd.DataFrame(data, columns=['user_id', 'name', 'mail']).astype({'user_id
 ![image](https://github.com/quananhle/Python/assets/35042430/6ca456cc-4318-43f6-a108-671ee2eac982)
 
 ---
+
+### Regular Expression
+
+A valid e-mail has a prefix name and a domain where:
+
+- The prefix name is a string that may contain letters (upper or lower case), digits, underscore ```'_'```, period ```'.'```, and/or dash ```'-'```. The prefix name must start with a letter.
+- The domain is ```'@leetcode.com'```.
+
+```Python
+import pandas as pd
+
+def valid_emails(users: pd.DataFrame) -> pd.DataFrame:
+    df = users[users["mail"].str.match(r"^[a-zA-Z][a-zA-Z0-9_.-]*\@leetcode\.com$")]
+    return df
+```
+
+```MySQL
+# Write your MySQL query statement below
+SELECT * FROM users WHERE mail REGEXP '^[a-zA-Z][a-zA-Z0-9_.-]*\\@leetcode\\.com$';
+```
