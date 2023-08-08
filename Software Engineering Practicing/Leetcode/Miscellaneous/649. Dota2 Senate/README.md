@@ -48,3 +48,33 @@ __Constraints:__
 
 ---
 
+### Two Queues
+
+```Python
+class Solution:
+    def predictPartyVictory(self, senate: str) -> str:
+        n = len(senate)
+        radiants = collections.deque()
+        dires = collections.deque()
+
+        for i, senator in enumerate(senate):
+            if senator == 'R':
+                radiants.append(i)
+            else:
+                dires.append(i)
+
+        while radiants and dires:
+            radiant, dire = radiants.popleft(), dires.popleft()
+            if radiant <= dire:
+                radiants.append(radiant + n)
+            else:
+                dires.append(dire + n)
+
+        return "Radiant" if radiants else "Dire"
+```
+
+### One Queue
+
+```Python
+
+```
