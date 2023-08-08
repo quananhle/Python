@@ -1,6 +1,6 @@
 ## [271. Encode and Decode Strings](https://leetcode.com/problems/encode-and-decode-strings/)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Design```
 
 #### Difficulty: Medium
 
@@ -113,4 +113,10 @@ class Codec:
 # codec.decode(codec.encode(strs))
 ```
 
-Follow up: Could you write a generalized algorithm to work on any possible set of characters?
+__Follow up:__ Could you write a generalized algorithm to work on any possible set of characters?
+
+### Approach 2: Escaping
+
+```Python
+
+```
