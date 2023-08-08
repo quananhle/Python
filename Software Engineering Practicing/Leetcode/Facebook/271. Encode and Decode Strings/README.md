@@ -71,6 +71,16 @@ __Constraints:__
 
 ### Approach 1: Non-ASCII delimiter
 
+To accomplish this, we often use a delimiter, which is a special character or sequence of characters that we insert between each string when we combine them into one. The key thing about a delimiter is that it must be a character or sequence of characters that doesn't occur in the strings we're encoding. This allows us to correctly separate the strings when we decode them.
+
+In many cases, we might use a common ASCII character as the delimiter. ASCII (American Standard Code for Information Interchange) is a character encoding standard that includes most of the characters you see on a standard keyboard, like letters, digits, punctuation marks, and some control characters. For example, it is common to use a delimiter like a comma to separate integers. However, if the strings we're encoding could contain any ASCII character, then we can't use an ASCII character as the delimiter, because we wouldn't know whether that character is part of a string or a delimiter.
+
+That's where the idea of a non-ASCII delimiter comes in. There are many more characters available than just the ones in the ASCII set. Unicode is a character encoding standard that includes virtually every character from every writing system in the world, plus many symbols, control characters, and more. There are many Unicode characters that are not commonly used in text, and we can use one of these as our delimiter.
+
+For example, let's say we have a list of strings ```["abc", "d,ef"]``` and we wanted to use a comma as a delimiter. We would end up with the string ```"abc,d,ef"``` which would be converted back as ```["abc", "d", "ef"]```, which is incorrect. We can't tell the difference between a comma being a delimiter or part of a string.
+
+In this approach, we could choose a Unicode character like $\pi$. We can use this character as our delimiter when we encode our list of strings, and then look for this character to find the boundaries between strings when we decode.
+
 ```Python
 class Codec:
     def encode(self, strs: List[str]) -> str:
@@ -80,6 +90,22 @@ class Codec:
     def decode(self, s: str) -> List[str]:
         """Decodes a single string to a list of strings."""
         return s.split("😁")
+
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(strs))
+```
+
+```Python
+class Codec:
+    def encode(self, strs: List[str]) -> str:
+        """Encodes a list of strings to a single string."""
+        return "π".join(strs)
+
+    def decode(self, s: str) -> List[str]:
+        """Decodes a single string to a list of strings."""
+        return s.split("π")
 
 
 # Your Codec object will be instantiated and called as such:
