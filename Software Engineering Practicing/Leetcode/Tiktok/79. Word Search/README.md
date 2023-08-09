@@ -51,5 +51,35 @@ __Constraints:__
 ### Backtracking
 
 ```Python
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        ROWS, COLS = len(board), len(board[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+
+        def backtrack(row, col, curr):
+            # Base cases
+            if not (0 <= row < ROWS and 0 <= col < COLS and board[row][col] != '$'):
+                return False
+
+            if curr == len(word) - 1:
+                return True
+                
+            tmp = board[row][col]
+
+            board[row][col] = '$'
+            for new_row, new_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if 0 <= new_row < ROWS and 0 <= new_col < COLS and board[new_row][new_col] == word[curr + 1] and backtrack(new_row, new_col, curr + 1):
+                    return True
+
+            board[row][col] = tmp
+
+            return False
+        
+        # return any(backtrack(i, j, 0) for i in range(ROWS) for j in range(COLS))
+        for row in range(ROWS):
+            for col in range(COLS):
+                if board[row][col] == word[0] and backtrack(row, col, 0): 
+                    return True 
+        return False 
 
 ```
