@@ -116,6 +116,54 @@ class Solution:
 ### Trie
 
 ```Python
+class TrieNode():
+
+    def __init__(self):
+        self.children = collections.defaultdict()
+        self.complete = False
+
+class Trie:
+    def __init__(self) -> None:
+        self.root = TrieNode()
+    
+    def insert(self, word: str) -> None:
+        node = self.root
+        for char in word:
+            if not char in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.complete = True
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        ROWS, COLS = len(board), len(board[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+
+        trie = Trie()
+        trie.insert(word)
+
+        def backtrack(row: int, col: int, trie: Trie) -> bool:
+            char = board[row][col]
+            
+            if char in trie.children:
+                trie = trie.children[char]
+                board[row][col] = ""
+                
+                if trie.complete:
+                    return True
+                
+                for new_row, new_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                    if 0 <= new_row < ROWS and 0 <= new_col < COLS and backtrack(new_row, new_col, trie):
+                        return True
+                
+                board[row][col] = char
+
+            return False
+
+        return any(board[row][col] == word[0] and backtrack(row, col, trie.root) for row in range(ROWS) for col in range(COLS))
+```
+
+```Python
 class Trie:
     def __init__(self) -> None:
         self.root = {}
