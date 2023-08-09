@@ -1,6 +1,6 @@
 ## [2141. Maximum Running Time of N Computers](https://leetcode.com/problems/maximum-running-time-of-n-computers/)
 
-```Tag```: ```Binary Search```
+```Tag```: ```Binary Search``` ```Greedy``` ```Prefix Sum```
 
 #### Difficulty: Hard
 
@@ -53,8 +53,65 @@ __Constraints:__
 
 ---
 
+### Greedy & Prefix Sum
+
+![image](https://leetcode.com/problems/maximum-running-time-of-n-computers/Figures/2141/n5.png)
+
+Let's say ```live``` is sorted. We try using some of our extra power to increase ```live[0]``` running time to ```live[1]```. In the process, ```extra -= live[1] - live[0]```
+
+![image](https://leetcode.com/problems/maximum-running-time-of-n-computers/Figures/2141/n6.png)
+
+Now, ```live[0] = live[1]```. Can we continue? We try increasing the running time to ```live[2]```. However, not only would we need to increase ```live[1]``` to ```live[2]```, we also need to increase ```live[0]``` to ```live[2]``` so it doesn't bottleneck the running time. We already spent some power to increase ```live[0]``` to ```live[1]```, so we just need to spend twice as much power as the difference ```live[2] - live[1]```.
+
+![image](https://leetcode.com/problems/maximum-running-time-of-n-computers/Figures/2141/n70.png)
+
+Now we have ```live[0] = live[1] = live[2]```. If we want to increase the running time to ```live[3]```, we need to spend three times as much power as the difference ```(live[3] - live[2])```.
+
+![image](https://leetcode.com/problems/maximum-running-time-of-n-computers/Figures/2141/n71.png)
+
+Oops, seems we are running out of ```extra``` power before reaching ```live[3]```, so the bottleneck is decided by ```live[2]```. We have some extra power remaining, so we do our best to increase the running time by evenly splitting the remaining power to the computers (```extra / 3```).
+
+What if we have an example where extra is large enough to support all batteries in live becoming equal to ```live[n - 1]```. Any remaining power in extra should similarly be evenly split across all the computers to increase the final running time. The final running time is determined by ```live[n - 1]``` plus the extra running time we can make using extra power, which is ```extra / n```.
+
+![image](https://leetcode.com/problems/maximum-running-time-of-n-computers/Figures/2141/n8.png)
+
+If a battery ```batteries[i]``` has more power than the total running time, there is no way we can use its excess power to further increase the running time. Therefore, once we have picked the largest ```n``` batteries and assign them to ```n``` computers, these batteries are tied to their computer and swapping them does not bring any longer running time.
+
+```Python
+class Solution:
+    def maxRunTime(self, n: int, batteries: List[int]) -> int:
+        batteries.sort()
+        extra = sum(batteries[:-n])
+
+        live = batteries[-n:]
+
+        for i in range(n - 1):
+            if extra // (i + 1) < live[i + 1] - live[i]:
+                return live[i] + extra // (i + 1)
+            
+            extra -= (i + 1) * (live[i + 1] - live[i])
+
+        return live[-1] + extra // n
+```
+
 ### Binary Search
 
 ```Python
-
+class Solution:
+    def maxRunTime(self, n: int, batteries: List[int]) -> int:
+        left, right = 1, sum(batteries) // n
+        
+        while left < right:
+            target = right - (right - left) // 2
+            
+            extra = 0
+            for power in batteries:
+                extra += min(power, target)
+            
+            if extra // n >= target:
+                left = target
+            else:
+                right = target - 1
+        
+        return left
 ```
