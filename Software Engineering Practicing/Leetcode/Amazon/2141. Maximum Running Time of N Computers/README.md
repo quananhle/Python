@@ -2,7 +2,7 @@
 
 ```Tag```: ```Binary Search```
 
-#### Difficulty: Medium
+#### Difficulty: Hard
 
 You have ```n``` computers. You are given the integer ```n``` and a 0-indexed integer array ```batteries``` where the i<sup>th</sup> battery can run a computer for ```batteries[i]``` minutes. You are interested in running all ```n``` computers simultaneously using the given batteries.
 
@@ -52,3 +52,9 @@ __Constraints:__
 - $1 <= batteries[i] <= 10^{9}$
 
 ---
+
+### Binary Search
+
+```Python
+
+```
