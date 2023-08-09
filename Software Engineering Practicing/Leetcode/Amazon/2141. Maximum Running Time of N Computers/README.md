@@ -77,6 +77,16 @@ What if we have an example where extra is large enough to support all batteries 
 
 If a battery ```batteries[i]``` has more power than the total running time, there is no way we can use its excess power to further increase the running time. Therefore, once we have picked the largest ```n``` batteries and assign them to ```n``` computers, these batteries are tied to their computer and swapping them does not bring any longer running time.
 
+__Algorithm__
+
+1. Sort ```batteries```.
+2. Find the largest ```n``` batteries and assign them to ```n``` computers, these ```n``` batteries are exclusively used by each computer and cannot be shared with other computers. Create an array ```live``` that contains the largest ```n``` batteries in sorted order, which represents the ```n``` computers.
+3. Sum up the power of the remaining batteries as ```extra```.
+4. Iterate over ```live``` from ```0``` to ```n - 2```, for each index ```i```:
+    - If ```extra``` power can increase the running time of the first ```i``` computers from ```live[i]``` to ```live[i + 1]```, then we subtract the required power from ```extra``` and move on to the next index.
+    - Otherwise, we have to stop at this point and return ```live[i] + extra / (i + 1)```.
+5. If there is still power left after the iteration, it means we can further increase the total running time of ```n``` computers from ```live[n - 1]``` by ```extra / n```. Therefore, return ```live[n - 1] + extra / n```.
+
 ```Python
 class Solution:
     def maxRunTime(self, n: int, batteries: List[int]) -> int:
@@ -95,6 +105,21 @@ class Solution:
 ```
 
 ### Binary Search
+
+Alternatively, we can first set a target running time, ```target```, then try to reach this running time using all batteries.
+
+![image](https://leetcode.com/problems/maximum-running-time-of-n-computers/Figures/2141/b1.png)
+
+Here we still take advantage of the conclusion we reached at the end of the previous approach (Please refer to the previous approach):
+
+    - If the power of a battery is smaller than ```target```, we can use all of its power.
+    - If the power of a battery is larger than ```target```, we can only use ```target``` power from it.
+
+![image](https://leetcode.com/problems/maximum-running-time-of-n-computers/Figures/2141/b2.png)
+
+Instead of trying every ```target``` from ```1``` until finding the largest possible running time, we can take advantage of binary search to locate the largest ```target``` faster than linear search.
+
+![image](https://leetcode.com/problems/maximum-running-time-of-n-computers/Figures/2141/b3.png)
 
 ```Python
 class Solution:
