@@ -14,6 +14,8 @@ Return _the maximum number of minutes you can run all the ```n``` computers simu
 
 ![image](https://github.com/quananhle/Python/assets/35042430/bcc51552-39c4-4f50-8237-4017670837fa)
 
+![image](https://github.com/quananhle/Python/assets/35042430/5ed1a48f-bd35-4098-9aea-72101422587f)
+
 ---
 
 __Example 1:__
