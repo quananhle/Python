@@ -29,10 +29,28 @@ Patients = pd.DataFrame(data, columns=['patient_id', 'patient_name', 'conditions
 
 ### Regular Expression
 
+1. ```\b``` stands for word boundary. So it can either match beginning of word or end of word. 
+
 ```Python
 import pandas as pd
 
 def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
     df = patients[patients["conditions"].str.contains(r"\bDIAB1", regex=True)]
     return df
+```
+
+```MySQL
+SELECT patient_id, patient_name, conditions FROM patients
+WHERE conditions REGEXP '\\bDIAB1.*' ;
+```
+
+### Non-Regular Expression
+
+```Python
+
+```
+
+```MySQL
+# Write your MySQL query statement below
+SELECT patient_id, patient_name, conditions FROM patients WHERE conditions LIKE 'DIAB1%' OR conditions LIKE '% DIAB1%' ;
 ```
