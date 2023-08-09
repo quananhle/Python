@@ -71,15 +71,18 @@ class Solution:
                 if 0 <= new_row < ROWS and 0 <= new_col < COLS and board[new_row][new_col] == word[curr + 1] and backtrack(new_row, new_col, curr + 1):
                     return True
 
+            # Backtracking
             board[row][col] = tmp
 
             return False
         
-        # return any(backtrack(i, j, 0) for i in range(ROWS) for j in range(COLS))
+        '''
         for row in range(ROWS):
             for col in range(COLS):
                 if board[row][col] == word[0] and backtrack(row, col, 0): 
                     return True 
-        return False 
+        return False
+        '''
+        return any(backtrack(i, j, 0) for i in range(ROWS) for j in range(COLS))
 
 ```
