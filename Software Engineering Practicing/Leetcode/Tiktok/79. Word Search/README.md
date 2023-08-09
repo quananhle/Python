@@ -85,3 +85,80 @@ class Solution:
         '''
         return any(board[row][col] == word[0] and backtrack(row, col, 0) for row in range(ROWS) for col in range(COLS))
 ```
+
+```Python
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        ROWS, COLS = len(board), len(board[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        visited = set()
+
+        def backtrack(row, col, curr):
+            # Base cases
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in visited):
+                return False
+
+            if curr == len(word) - 1:
+                return True
+                
+            visited.add((row, col))
+            for new_row, new_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if 0 <= new_row < ROWS and 0 <= new_col < COLS and board[new_row][new_col] == word[curr + 1] and backtrack(new_row, new_col, curr + 1):
+                    return True
+
+            visited.remove((row, col))
+
+            return False
+        
+        return any(board[row][col] == word[0] and backtrack(row, col, 0) for row in range(ROWS) for col in range(COLS))
+```
+
+### Trie
+
+```Python
+class Trie:
+    def __init__(self) -> None:
+        self.root = {}
+    
+    def insert(self, word: str) -> None:
+        node = self.root
+        
+        for char in word:
+            if not char in node:
+                node[char] = {}
+            node = node[char]
+
+        node["*"] = True
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        ROWS, COLS = len(board), len(board[0])
+        DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
+        visited = set()
+
+        trie = Trie()
+        trie.insert(word)
+
+        def backtrack(row: int, col: int, trie: Trie) -> bool:
+            if (row, col) in visited:
+                return False
+
+            char = board[row][col]
+            
+            if char in trie:
+                trie = trie[char]
+                visited.add((row, col))
+                
+                if "*" in trie:
+                    return True
+                
+                for new_row, new_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                    if 0 <= new_row < ROWS and 0 <= new_col < COLS and backtrack(new_row, new_col, trie):
+                        return True
+                
+                visited.remove((row, col))
+
+            return False
+
+        return any(board[row][col] == word[0] and backtrack(row, col, trie.root) for row in range(ROWS) for col in range(COLS))
+```
