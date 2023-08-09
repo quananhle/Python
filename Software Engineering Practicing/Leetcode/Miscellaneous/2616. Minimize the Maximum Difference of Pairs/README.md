@@ -1,6 +1,6 @@
 ## [2616. Minimize the Maximum Difference of Pairs](https://leetcode.com/problems/minimize-the-maximum-difference-of-pairs/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Greedy``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -34,3 +34,28 @@ __Constraints__:
 - $0 \le p \le (nums.length)/2$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming (Memory Limit Exceeded)
+
+```Python
+class Solution:
+    def minimizeMax(self, nums: List[int], p: int) -> int:
+        n = len(nums)
+        nums.sort()
+
+        @lru_cache(maxsize=None)
+        def dp(curr, remaining):
+            # Base case
+            if remaining == 0:
+                return 0
+            
+            if curr >= n - 1:
+                return float('inf')
+            
+            # DP Transition
+            return min(dp(curr + 1, remaining), max(nums[curr + 1] - nums[curr], dp(curr + 2, remaining - 1)))
+        
+        return dp(0, p)
+```
