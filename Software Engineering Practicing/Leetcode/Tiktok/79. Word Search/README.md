@@ -83,6 +83,5 @@ class Solution:
                     return True 
         return False
         '''
-        return any(backtrack(i, j, 0) for i in range(ROWS) for j in range(COLS))
-
+        return any(board[row][col] == word[0] and backtrack(row, col, 0) for row in range(ROWS) for col in range(COLS))
 ```
