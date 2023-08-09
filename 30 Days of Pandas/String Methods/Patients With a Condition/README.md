@@ -1,6 +1,6 @@
 ## [1527. Patients With a Condition](https://leetcode.com/problems/patients-with-a-condition)
 
-```Tag```: ```SQL``` ```Pandas```
+```Tag```: ```SQL``` ```Pandas``` ```Regular Expression```
 
 #### Difficulty: Easy
 
@@ -27,3 +27,12 @@ Patients = pd.DataFrame(data, columns=['patient_id', 'patient_name', 'conditions
 
 ---
 
+### Regular Expression
+
+```Python
+import pandas as pd
+
+def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
+    df = patients[patients["conditions"].str.contains(r"\bDIAB1", regex=True)]
+    return df
+```
