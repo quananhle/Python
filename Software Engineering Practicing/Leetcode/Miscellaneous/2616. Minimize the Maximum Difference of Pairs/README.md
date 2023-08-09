@@ -59,3 +59,37 @@ class Solution:
         
         return dp(0, p)
 ```
+
+---
+
+### Binary Search & Greedy
+
+```Python
+class Solution:
+    def minimizeMax(self, nums: List[int], p: int) -> int:
+        nums.sort()
+        n = len(nums)
+
+        # Find the number of valid pairs by greedy approach
+        def count_valid_pairs(thresold):
+            index = count = 0
+            while index < n - 1:
+                if nums[index + 1] - nums[index] <= thresold:
+                    count += 1
+                    index += 1
+                index += 1
+            return count
+
+        lo, hi = 0, nums[-1] - nums[0]
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+
+            # If there are enough pairs, look for a smaller threshold
+            if count_valid_pairs(mi) >= p:
+                hi = mi
+            # Otherwise, look for a larger threshold.
+            else:
+                lo = mi + 1
+            
+        return lo
+```
