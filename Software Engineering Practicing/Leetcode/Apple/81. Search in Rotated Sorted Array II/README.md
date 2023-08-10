@@ -51,7 +51,7 @@ Let's refer to the first sorted array as ```F``` and second as ```S```.
 
 Also, we can observe that all the elements of the second array ```S``` will be __smaller or equal__ to the first element ```start``` of ```F```.
 
-!image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/3.png)
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/3.png)
 
 With this observation in mind, we can easily tell which of the 2 arrays (```F``` or ```S```) does a ```target``` element lie in by just comparing it with the first element of the array.
 
@@ -68,6 +68,18 @@ Let's say we are looking for element target in array ```arr```:
 - __Case 3__: If ```target == arr[start]```: ```target``` obviously exists in the first array ```F```, but it might also be present in the second array ```S```.
 
 ![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/6.png)
+
+__Algorithm__
+
+Recall that in standard binary search, we keep two pointers (i.e. ```lo``` and ```hi```) to track the search scope in an ```arr``` array. We then divide the search space in three parts ```[start, mid)```, ```[mid, mid]```, ```(mid, end]```. Now, we continue to look for our ```target``` element in one of these search spaces.
+
+By identifying the positions of both ```arr[mid]``` and ```target``` in ```F``` and ```S```, we can reduce search space in the very same way as in standard binary search:
+
+- Case 1: ```arr[mid]``` lies in ```F```, ```target``` lies in ```S```: Since ```S``` starts after ```F``` ends, we know that element lies here:```(mid, end]```.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/7.png)
+
+- 
 
 __Complexity Analysis__
 
