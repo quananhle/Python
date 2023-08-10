@@ -73,13 +73,19 @@ __Algorithm__
 
 Recall that in standard binary search, we keep two pointers (i.e. ```lo``` and ```hi```) to track the search scope in an ```arr``` array. We then divide the search space in three parts ```[start, mid)```, ```[mid, mid]```, ```(mid, end]```. Now, we continue to look for our ```target``` element in one of these search spaces.
 
-By identifying the positions of both ```arr[mid]``` and ```target``` in ```F``` and ```S```, we can reduce search space in the very same way as in standard binary search:
+By identifying the positions of both ```arr[mi]``` and ```target``` in ```F``` and ```S```, we can reduce search space in the very same way as in standard binary search:
 
-- Case 1: ```arr[mid]``` lies in ```F```, ```target``` lies in ```S```: Since ```S``` starts after ```F``` ends, we know that element lies here:```(mid, end]```.
+- Case 1: ```arr[mi]``` lies in ```F```, ```target``` lies in ```S```: Since ```S``` starts after ```F``` ends, we know that element lies here:```(mi, hi]```.
 
 ![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/7.png)
 
-- 
+- Case 2: ```arr[mi]``` lies in the ```S```, ```target``` lies in ```F```: Similarly, we know that element lies here: ```[lo, mi)```.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/8.png)
+
+- Case 3: Both ```arr[mi]``` and ```target``` lie in ```F```: since both of them are in same sorted array, we can compare ```arr[mi]``` and ```target``` in order to decide how to reduce search space.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/9.png)
 
 __Complexity Analysis__
 
