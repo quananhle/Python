@@ -44,6 +44,18 @@ __Constraints__:
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        try:
+            ans = nums.index(target)
+            return ans
+        except ValueError as error:
+            return -1
+```
+
 ### Two Binary Searches
 
 - __Time complexity__: ```O(log⁡N)```
