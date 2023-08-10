@@ -87,10 +87,67 @@ By identifying the positions of both ```arr[mi]``` and ```target``` in ```F``` a
 
 ![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/9.png)
 
+- Case 4: Both ```arr[mi]``` and ```target``` lie in ```S```: Again, since both of them are in same sorted array, we can compare ```arr[mi]``` and ```target``` in order to decide how to reduce search space.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/10.png)
+
+- Case 5: But there is a catch, if ```arr[mi]``` equals ```arr[lo]```, then we don't know which part ```arr[mi]``` might belong to and hence we cannot find the relative position of ```target``` from it. In this case, we have no option but to move to next search space iteratively. Hence, there are certain search spaces that allow a binary search, and some search spaces that don't.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/11.png)
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(N)$ worst case, $\mathcal{O}(\log N)$ best case
 - __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def search(self, nums: List[int], target: int) -> bool:
+        # Returns True if we can reduce the search space in current binary search space
+        def is_binary_search_helpful(start, num):
+            return nums[start] != num
+        
+        # Returns true if element exists in left array, false if it exists in the right
+        def exists_in_first(start, num):
+            return nums[start] <= num
+        
+        n = len(nums)
+
+        if n == 1:
+            return True if nums[0] == target else False
+
+        lo, hi = 0, n - 1
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+            num = nums[mi]
+
+            if num == target:
+                return True
+            
+            if not is_binary_search_helpful(lo, num):
+                lo += 1
+                continue
+            
+            target_array = exists_in_first(lo, num)
+            pivot_array = exists_in_first(lo, target)
+
+            # Check if pivot and target exist in different sorted arrays
+            if target_array ^ pivot_array:
+                if pivot_array:
+                    # Pivot is in the left half, target is in the right half
+                    lo = mi + 1
+                else:
+                    # Target is in the left half, pivot is in the right half
+                    hi = mi - 1
+            # Pivot and target exist in the same sorted array
+            else:
+                if num < target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+        
+        return False
+```
 
 ```Python
 class Solution:
