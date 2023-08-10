@@ -39,6 +39,34 @@ __Constraints:__
 
 ### Binry Search
 
+__Intuition__
+
+Recall that after rotating a sorted array, what we get is two sorted arrays appended to each other.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/1.png)
+
+Let's refer to the first sorted array as ```F``` and second as ```S```.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/2.png)
+
+Also, we can observe that all the elements of the second array ```S``` will be __smaller or equal__ to the first element ```start``` of ```F```.
+
+!image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/3.png)
+
+With this observation in mind, we can easily tell which of the 2 arrays (```F``` or ```S```) does a ```target``` element lie in by just comparing it with the first element of the array.
+
+Let's say we are looking for element target in array ```arr```:
+
+- __Case 1__: If ```target > arr[start]```: ```target``` exists in the first array ```F```.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/4.png)
+
+Case 2: If target < arr[start]: target exists in the second array S.
+rotating a sorted array
+
+Case 3: If target == arr[start]: target obviously exists in the first array F, but it might also be present in the second array S.
+rotating a sorted array
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(N)$ worst case, $\mathcal{O}((\log N)$ best case
