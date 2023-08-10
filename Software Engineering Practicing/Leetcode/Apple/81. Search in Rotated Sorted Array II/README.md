@@ -128,8 +128,8 @@ class Solution:
                 lo += 1
                 continue
             
-            target_array = exists_in_first(lo, num)
-            pivot_array = exists_in_first(lo, target)
+            target_array = exists_in_first(lo, target)
+            pivot_array = exists_in_first(lo, num)
 
             # Check if pivot and target exist in different sorted arrays
             if target_array ^ pivot_array:
