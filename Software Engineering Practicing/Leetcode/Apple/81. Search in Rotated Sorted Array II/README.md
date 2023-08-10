@@ -61,15 +61,17 @@ Let's say we are looking for element target in array ```arr```:
 
 ![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/4.png)
 
-Case 2: If target < arr[start]: target exists in the second array S.
-rotating a sorted array
+- __Case 2__: If ```target < arr[start]```: ```target``` exists in the second array ```S```.
 
-Case 3: If target == arr[start]: target obviously exists in the first array F, but it might also be present in the second array S.
-rotating a sorted array
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/5.png)
+
+- __Case 3__: If ```target == arr[start]```: ```target``` obviously exists in the first array ```F```, but it might also be present in the second array ```S```.
+
+![image](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/Figures/81/6.png)
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(N)$ worst case, $\mathcal{O}((\log N)$ best case
+- __Time Complexity__: $\mathcal{O}(N)$ worst case, $\mathcal{O}(\log N)$ best case
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
