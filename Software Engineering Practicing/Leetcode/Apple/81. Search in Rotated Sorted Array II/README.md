@@ -13,3 +13,24 @@ Given the array nums after the rotation and an integer target, return _```true``
 You must decrease the overall operation steps as much as possible.
 
 ---
+
+__Example 1:__
+```
+Input: nums = [2,5,6,0,0,1,2], target = 0
+Output: true
+```
+
+__Example 2:__
+```
+Input: nums = [2,5,6,0,0,1,2], target = 3
+Output: false
+```
+
+__Constraints:__
+
+- $1 \le nums.length \le 5000$
+- $-10^{4} \le nums[i] \le 10^{4}$
+- ```nums``` is guaranteed to be rotated at some pivot.
+- $-10^{4} \le target \le 10^{4}$
+
+---
