@@ -39,6 +39,11 @@ __Constraints:__
 
 ### Binry Search
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$ worst case, $\mathcal{O}((\log N)$ best case
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def search(self, nums: List[int], target: int) -> bool:
