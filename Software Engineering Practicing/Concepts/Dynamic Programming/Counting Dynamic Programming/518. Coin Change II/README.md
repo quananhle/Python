@@ -104,22 +104,28 @@ class Solution:
 ```Python
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
-        @lru_cache(None)
+        n = len(coins)
+        memo = collections.defaultdict(int)
+
+        @lru_cache(maxsize=None)
         def dp(curr, remaining):
             # Base cases
-            if curr == len(coins) or remaining < 0:
-                return 0
-            if remaining == 0:
+            if remaining == 0 and curr < n:
                 return 1
-                
-            # Recurrence relation
             
-            # Not taking the current coin and move on to the next coin
-            ans = dp(curr + 1, remaining)
-            # Taking the current coin, then update the remaining amount
-            ans += dp(curr, remaining - coins[curr])
+            if curr >= n or remaining < 0:
+                return 0
 
-            return ans
+            if (curr, remaining) in memo:
+                return memo[(curr, remaining)]
+            
+            # DP Transitions: take/retake or skip the current coin
+
+            skip = dp(curr + 1, remaining)              # Skip: move on to the next coin, remaining amount stays the same
+            take = dp(curr, remaining - coins[curr])    # Take: stay in the current coin to check if retake is possible, less the amount of current coin in remaining amount
+
+            memo[(curr, remaining)] = skip + take
+            return skip + take
 
         return dp(0, amount)
 ```
