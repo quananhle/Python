@@ -60,7 +60,7 @@ class Solution:
         memo = collections.defaultdict(int)
 
         def dp(curr, remaining):
-            # Base case
+            # Base cases
             if curr == len(coins) or remaining < 0:
                 return 0
             if remaining == 0:
@@ -84,7 +84,7 @@ class Solution:
         # Top-Down DP (Recursion)
         @lru_cache(None)
         def dp(curr, remaining):
-            # Base case
+            # Base cases
             if curr == len(coins) or remaining < 0:
                 return 0
             if remaining == 0:
@@ -104,7 +104,7 @@ class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         @lru_cache(None)
         def dp(curr, remaining):
-            # Base case
+            # Base cases
             if curr == len(coins) or remaining < 0:
                 return 0
             if remaining == 0:
@@ -119,6 +119,30 @@ class Solution:
 
             return ans
 
+        return dp(0, amount)
+```
+
+```Python
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        n = len(coins)
+
+        @lru_cache(maxsize=None)
+        def dp(curr, remaining):
+            # Base cases
+            if remaining == 0 and curr < n:
+                return 1
+            
+            if curr >= n or remaining < 0:
+                return 0
+            
+            # DP Transitions: take/retake or skip the current coin
+
+            skip = dp(curr + 1, remaining)              # Skip: move on to the next coin, remaining amount stays the same
+            take = dp(curr, remaining - coins[curr])    # Take: stay in the current coin to check if retake is possible, less the amount of current coin in remaining amount
+
+            return skip + take
+        
         return dp(0, amount)
 ```
 
