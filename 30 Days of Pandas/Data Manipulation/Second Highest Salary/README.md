@@ -28,3 +28,15 @@ Employee = pd.DataFrame(data, columns=['id', 'salary']).astype({'id':'int64', 's
 ![image](https://github.com/quananhle/Python/assets/35042430/459cf5fb-a4e8-4542-8910-1c2da3ec78bc)
 
 ---
+
+```Python
+import pandas as pd
+
+def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
+    df = employee[['salary']].drop_duplicates()
+    if len(df) < 2:
+        return pd.DataFrame({'SecondHighestSalary': [None]})
+    df = df.sort_values('salary', ascending=False).head(2).tail(1)
+    df.rename({'salary': 'SecondHighestSalary'}, axis=1, inplace=True)
+    return df
+```
