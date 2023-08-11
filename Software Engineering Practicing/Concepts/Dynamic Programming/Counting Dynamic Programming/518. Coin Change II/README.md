@@ -53,6 +53,8 @@ __Constraints:__
 
 #### Top Down Dynamic Programming (Recursion)
 
+![image](https://leetcode.com/problems/coin-change-ii/Figures/518/518-1.png)
+
 ```Python
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
@@ -146,7 +148,25 @@ class Solution:
         return dp(0, amount)
 ```
 
-#### Bottom-Up Dynamic Programming (Tabulation)
+#### Bottom-Up Dynamic Programming (2D Tabulation)
+
+```Python
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        n = len(coins)
+        dp = collections.defaultdict(int)
+        
+        for curr in range(n + 1):
+            dp[(curr, 0)] = 1
+
+        for curr in range(n - 1, -1, -1):
+            for remaining in range(1, amount + 1):
+                dp[(curr, remaining)] = dp[(curr + 1, remaining)] + dp[(curr, remaining - coins[curr])]
+
+        return dp[(0, amount)]
+```
+
+#### Bottom-Up Dynamic Programming with Space Optimization (1D Tabulation)
 
 ```Python
 class Solution:
