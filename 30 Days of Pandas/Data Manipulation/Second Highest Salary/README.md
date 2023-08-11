@@ -21,3 +21,10 @@ Employee = pd.DataFrame(data, columns=['id', 'salary']).astype({'id':'int64', 's
 
 ---
 
+![image](https://github.com/quananhle/Python/assets/35042430/e9164df6-849b-47a5-916c-a6a6465d52e9)
+
+---
+
+![image](https://github.com/quananhle/Python/assets/35042430/459cf5fb-a4e8-4542-8910-1c2da3ec78bc)
+
+---
