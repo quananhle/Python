@@ -42,10 +42,10 @@ Output: 1
 
 __Constraints:__
 
-- ```1 <= coins.length <= 300```
-- ```1 <= coins[i] <= 5000```
+- $1 \le coins.length \le 300$
+- $1 \le coins[i] \le 5000$
 - All the values of ```coins``` are unique.
-- ```0 <= amount <= 5000```
+- $0 \le amount \le 5000$
 
 ---
 
