@@ -53,3 +53,11 @@ def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
     employee.rename({'salary': 'SecondHighestSalary'}, axis=1, inplace=True)
     return employee.head(2).tail(1) 
 ```
+
+```MySQL
+SELECT MAX(salary) AS SecondHighestSalary FROM employee WHERE salary < (SELECT MAX(salary) AS max_salary FROM employee)
+```
+
+```MySQL
+SELECT (SELECT DISTINCT salary FROM employee ORDER BY salary DESC LIMIT 1 OFFSET 1) AS SecondHighestSalary;
+```
