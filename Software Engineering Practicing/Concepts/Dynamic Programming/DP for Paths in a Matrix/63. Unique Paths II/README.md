@@ -12,7 +12,7 @@ Return _the number of possible unique paths that the robot can take to reach the
 
 The testcases are generated so that the answer will be less than or equal to 2 * 10<sup>9</sup>.
 
-![image](https://user-images.githubusercontent.com/35042430/220469345-35d190d7-6bf9-47e8-8cf5-2c652c343ef3.png)
+![image](https://github.com/quananhle/Python/assets/35042430/6f78012a-20f5-46e5-b19b-ef34778662f7)
 
 ---
 
