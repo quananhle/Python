@@ -37,9 +37,9 @@ Output: 1
 
 __Constraints:__
 
-- ```m == obstacleGrid.length```
-- ```n == obstacleGrid[i].length```
-- ```1 <= m, n <= 100```
+- $m == obstacleGrid.length$
+- $n == obstacleGrid[i].length$
+- $1 \le m, n \le 100$
 - ```obstacleGrid[i][j]``` is ```0``` or ```1```.
 
 ---
