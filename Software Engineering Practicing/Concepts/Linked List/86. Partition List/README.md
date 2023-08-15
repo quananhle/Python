@@ -34,3 +34,33 @@ __Constraints:__
 
 ---
 
+### Two Pointers
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        before_x = before_head = ListNode(0)
+        after_x = after_head = ListNode(0)
+
+        curr = head
+        while curr:
+            if curr.val < x:
+                before_x.next = curr
+                before_x = before_x.next
+            else:
+                after_x.next = curr
+                after_x = after_x.next
+            
+            curr = curr.next
+        
+        after_x.next = None
+        before_x.next = after_head.next
+
+        return before_head.next
+```
+
