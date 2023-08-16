@@ -40,13 +40,14 @@ Reverse engineering the question tells us that if we break the reformed list at 
 
 ### Two Pointers
 
-Initialize two pointers before and after. In the implementation we have
-initialized these two with a dummy ListNode. This helps to reduce the number
-of conditional checks we would need otherwise. You can try an implementation
-where you don't initialize with a dummy node and see it yourself!
+__Algorithm__
 
+1. Initialize two pointers ```before``` and ```after```. In the implementation we have initialized these two with a dummy ```ListNode```. This helps to reduce the number of conditional checks we would need otherwise. You can try an implementation where you don't initialize with a dummy node and see it yourself!
+
+![image](https://leetcode.com/problems/partition-list/Figures/86/86_Partition_List_2.png)
 Dummy Node Initialization
-Iterate the original linked list, using the head pointer.
+
+2. Iterate the original linked list, using the head pointer.
 
 If the node's value pointed by head is lesser than x, the node should
 be part of the before list. So we move it to before list.
