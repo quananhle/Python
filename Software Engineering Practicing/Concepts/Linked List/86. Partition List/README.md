@@ -54,13 +54,11 @@ Dummy Node Initialization
 4. Else, the node should be part of ```after``` list. So we connect it to ```after``` list.
 ![image](https://leetcode.com/problems/partition-list/Figures/86/86_Partition_List_4.png)
 
-5. Once we are done with all the nodes in the original linked list, we would
-have two list before and after. The original list nodes are either part of
-before list or after list, depending on its value.
+5. Once we are done with all the nodes in the original linked list, we would have two list ```before``` and ```after```. The original list nodes are either part of ```before``` list or ```after``` list, depending on its value.
+![image](https://leetcode.com/problems/partition-list/Figures/86/86_Partition_List_5.png)
 
-
-Note: Since we traverse the original linked list from left to right,
-at no point would the order of nodes change relatively in the two lists. Another important thing to note here is that we show the original linked list intact in the above diagrams. However, in the implementation, we remove the nodes from the original linked list and attach them in the before or after list. We don't utilize any additional space. We simply move the nodes from the original list around.
+6. Note: _Since we traverse the original linked list from left to right,
+at no point would the order of nodes change relatively in the two lists. Another important thing to note here is that we show the original linked list intact in the above diagrams. However, in the implementation, we remove the nodes from the original linked list and attach them in the before or after list. We don't utilize any additional space. We simply move the nodes from the original list around_.
 
 Now, these two lists before and after can be combined to form the reformed list.
 
