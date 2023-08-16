@@ -64,10 +64,8 @@ __Note__: _Since we traverse the original linked list from left to right, at no 
 
 Complexity Analysis
 
-- __Time Complexity__: $\mathcal{O}(N), where ```N``` is the number of nodes in the original linked list and we iterate the original list.
-Space Complexity: O(1)O(1)O(1), we have not utilized any extra space, the point to
-note is that we are reforming the original list, by moving the original nodes, we
-have not used any extra space as such.
+- __Time Complexity__: $\mathcal{O}(N)$, where ```N``` is the number of nodes in the original linked list and we iterate the original list.
+- __Space Complexity__: $\mathcal{O}(1)$, we have not utilized any extra space, the point to note is that we are reforming the original list, by moving the original nodes, we have not used any extra space as such.
 
 ```Python
 # Definition for singly-linked list.
