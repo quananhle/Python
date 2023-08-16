@@ -93,6 +93,37 @@ class Solution:
         return dp(ROWS - 1, COLS - 1)
 ```
 
+```Python
+class Solution:
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
+        obstacles = set()
+        DIRECTIONS = [(1, 0), (0, 1)]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if obstacleGrid[row][col] == 1:
+                    obstacles.add((row, col))
+
+        @lru_cache(maxsize=None)
+        def dp(row, col):
+            ans = 0
+            # Base cases
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in obstacles):
+                return 0
+
+            if obstacleGrid[ROWS - 1][COLS - 1] == 1:
+                return 0
+
+            if (row, col) == (ROWS - 1, COLS - 1):
+                return 1
+
+            ans = sum([dp(row + dx, col + dy) for dx, dy in DIRECTIONS])
+            return ans
+
+        return dp(0, 0)
+```
+
 #### Bottom-Up Dynamic Programming (Tabulation)
 
 ```Python
