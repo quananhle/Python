@@ -34,6 +34,10 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/partition-list/Figures/86/86_Partition_List_1.png)
+
+Reverse engineering the question tells us that if we break the reformed list at the ```JOINT```, we will get two smaller linked lists, one with lesser elements and the other with elements greater or equal to ```x```. In the solution, our main aim is to create these two linked lists and join them.
+
 ### Two Pointers
 
 ```Python
