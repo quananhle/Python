@@ -40,6 +40,33 @@ Reverse engineering the question tells us that if we break the reformed list at 
 
 ### Two Pointers
 
+Initialize two pointers before and after. In the implementation we have
+initialized these two with a dummy ListNode. This helps to reduce the number
+of conditional checks we would need otherwise. You can try an implementation
+where you don't initialize with a dummy node and see it yourself!
+
+Dummy Node Initialization
+Iterate the original linked list, using the head pointer.
+
+If the node's value pointed by head is lesser than x, the node should
+be part of the before list. So we move it to before list.
+
+
+Else, the node should be part of after list. So we move it to after list.
+
+
+Once we are done with all the nodes in the original linked list, we would
+have two list before and after. The original list nodes are either part of
+before list or after list, depending on its value.
+
+
+Note: Since we traverse the original linked list from left to right,
+at no point would the order of nodes change relatively in the two lists. Another important thing to note here is that we show the original linked list intact in the above diagrams. However, in the implementation, we remove the nodes from the original linked list and attach them in the before or after list. We don't utilize any additional space. We simply move the nodes from the original list around.
+
+Now, these two lists before and after can be combined to form the reformed list.
+
+
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
