@@ -62,6 +62,12 @@ __Note__: _Since we traverse the original linked list from left to right, at no 
 6. Now, these two lists ```before``` and ```after``` can be combined to form the reformed list.
 ![image](https://leetcode.com/problems/partition-list/Figures/86/86_Partition_List_6.png)
 
+Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(N), where ```N``` is the number of nodes in the original linked list and we iterate the original list.
+Space Complexity: O(1)O(1)O(1), we have not utilized any extra space, the point to
+note is that we are reforming the original list, by moving the original nodes, we
+have not used any extra space as such.
 
 ```Python
 # Definition for singly-linked list.
