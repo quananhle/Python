@@ -51,10 +51,10 @@ Dummy Node Initialization
 3. If the node's value pointed by ```head``` is smaller than ```x```, the node should be part of the ```before``` list. So we connect it to ```before``` list.
 ![image](https://leetcode.com/problems/partition-list/Figures/86/86_Partition_List_3.png)
 
-Else, the node should be part of after list. So we move it to after list.
+4. Else, the node should be part of ```after``` list. So we connect it to ```after``` list.
+![image](https://leetcode.com/problems/partition-list/Figures/86/86_Partition_List_4.png)
 
-
-Once we are done with all the nodes in the original linked list, we would
+5. Once we are done with all the nodes in the original linked list, we would
 have two list before and after. The original list nodes are either part of
 before list or after list, depending on its value.
 
