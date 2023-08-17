@@ -515,6 +515,10 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 - :warning::warning: [649. Dota2 Senate](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/649.%20Dota2%20Senate)
 
+#### Monotonic Queue
+
+- :no_entry::no_entry::no_entry: [239. Sliding Window Maximum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/239.%20Sliding%20Window%20Maximum) ```Monotonic Queue```
+
 ### Stack
 
 - :four_leaf_clover: [20. Valid Parentheses](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/20.%20Valid%20Parentheses) ```Hash Map```
