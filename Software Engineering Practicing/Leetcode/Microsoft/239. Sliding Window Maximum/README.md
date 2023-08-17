@@ -59,6 +59,22 @@ class Solution:
 
 ### Monotonic Queue
 
+![image](https://github.com/quananhle/Python/assets/35042430/0ebc95a6-0595-4099-b871-1ec96321e2d3)
+
+![image](https://github.com/quananhle/Python/assets/35042430/65e39312-e2dc-4b51-84c3-d7c2b6d0e97a)
+
+![image](https://github.com/quananhle/Python/assets/35042430/f7ef0192-c2c4-4b42-bd64-52455e052beb)
+
+![image](https://github.com/quananhle/Python/assets/35042430/6de424a1-b655-422d-b4f2-27cbe2ca4d35)
+
+![image](https://github.com/quananhle/Python/assets/35042430/15773761-04c0-4dcf-8f7a-5c2614d74948)
+
+![image](https://github.com/quananhle/Python/assets/35042430/f2ffe253-a187-49d1-b565-4847d22481da)
+
+![image](https://github.com/quananhle/Python/assets/35042430/358dfc4f-9012-4671-afe7-2a6222160007)
+
+![image](https://github.com/quananhle/Python/assets/35042430/26699ba3-b8d0-4931-8e95-96e8f55fd73d)
+
 __Algorithm__
 
 1. Create a deque ```dq``` of integers.
