@@ -211,5 +211,21 @@ class Solution:
 #### Space Optimized Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def validPartition(self, nums: List[int]) -> bool:
+        n = len(nums)
+        dp = [True] + [False] * 2
 
+        for curr in range(n):
+            i = curr + 1
+            ans = False
+            if curr > 0 and nums[curr] == nums[curr - 1]:
+                ans |= dp[(i - 2) % 3]
+            if curr > 1 and nums[curr] == nums[curr - 1] == nums[curr - 2]:
+                ans |= dp[(i - 3) % 3]
+            if curr > 1 and nums[curr] == nums[curr - 1] + 1 == nums[curr - 2] + 2:
+                ans |= dp[(i - 3) % 3]
+
+            dp[i % 3] = ans
+        return dp[n % 3]
 ```
