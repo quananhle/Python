@@ -1,6 +1,6 @@
 ## [239. Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
-```Tag```: ```Sliding Window```
+```Tag```: ```Sliding Window``` ```Queue```
 
 #### Difficulty: Hard
 
@@ -55,4 +55,25 @@ class Solution:
             start += 1
         
         return res
+```
+
+### Monotonic Queue
+
+__Algorithm__
+
+1. Create a deque ```dq``` of integers.
+2. Create a list of integers ```res``` to store the answer.
+3. Iterate over the first ```k``` elements from ```i = 0``` to ```k - 1``` and perform the following:
+    - While dq is not empty and the current element nums[i] is greater or equal to nums[dq.peekLast()], continue to pop the last element.
+Push i at the end of dq.
+Push the largest element of the first window nums[dq.peekFirst()] to the answer.
+We iterate over all the remaining elements from i = k to n - 1 to move to the next windows. We perform the following in this loop:
+Check if the element at the front of dq is equal to i - k. If it is equal to i - k, it cannot be included in the current window. We pop this element.
+While dq is not empty and the current element nums[i] is greater or equal to nums[dq.back()], continue to pop the last element.
+Push i at the end of dq.
+Push the largest element of the current window nums[dq.peekFirst()] to the answer.
+Return res.
+
+```Python
+
 ```
