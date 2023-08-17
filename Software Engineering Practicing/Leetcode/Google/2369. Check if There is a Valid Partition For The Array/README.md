@@ -157,6 +157,24 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+        n = len(nums)
+        dp = [False] * n + [True]
+
+        for curr in range(n - 1, -1, -1):
+            if curr < n - 1 and nums[curr] == nums[curr + 1]:
+                if dp[curr + 2]:
+                    dp[curr] = True
+            if curr < n - 2 and nums[curr] == nums[curr + 1] == nums[curr + 2]:
+                if dp[curr + 3]:
+                    dp[curr] = True
+            if curr < n - 2 and nums[curr] == nums[curr + 1] - 1 == nums[curr + 2] - 2:
+                if dp[curr + 3]:
+                    dp[curr] = True
+
+        return dp[0]
+```
+
+```Python
 class Solution:
     def validPartition(self, nums: List[int]) -> bool:
         n = len(nums)
@@ -174,11 +192,20 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def validPartition(self, nums: List[int]) -> bool:
+        n = len(nums)
+        dp = [True] + [False] * n
 
-```
+        for curr in range(n):
+            if curr > 0 and nums[curr] == nums[curr - 1]:
+                dp[curr + 1] |= dp[curr - 1]
+            if curr > 1 and nums[curr] == nums[curr - 1] == nums[curr - 2]:
+                dp[curr + 1] |= dp[curr - 2]
+            if curr > 1 and nums[curr] == nums[curr - 1] + 1 == nums[curr - 2] + 2:
+                dp[curr + 1] |= dp[curr - 2]
 
-```Python
-
+        return dp[n]
 ```
 
 #### Space Optimized Bottom-Up Dynamic Programming
