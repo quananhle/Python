@@ -48,6 +48,82 @@ __Constraints:__
 class Solution:
     def validPartition(self, nums: List[int]) -> bool:
         n = len(nums)
+        memo = collections.defaultdict(int)
+
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return True
+            
+            if curr in memo:
+                return memo[curr]
+
+            # Condition 1: subarray consists of exactly 2 equal elements
+            if curr < n - 1:
+                if nums[curr] == nums[curr + 1]:
+                    if dp(curr + 2):
+                        memo[curr] = True
+                        return memo[curr]
+
+            # Condition 2 & 3: subarray consists of exactly 3 elements
+            if curr < n - 2:
+                # Equal elements
+                if nums[curr] == nums[curr + 1] == nums[curr + 2]:
+                    if dp(curr + 3):
+                        memo[curr] = True
+                        return memo[curr]
+
+
+                # Consecutive increasing elements
+                if nums[curr] == nums[curr + 1] - 1 == nums[curr + 2] - 2:
+                    if dp(curr + 3):
+                        memo[curr] = True
+                        return memo[curr]
+
+            memo[curr] = False
+            return memo[curr]
+
+        return dp(0)
+```
+
+```Python
+class Solution:
+    def validPartition(self, nums: List[int]) -> bool:
+        n = len(nums)
+        # If reached the last elements in num, partition is valid
+        memo = {-1: True}
+
+        def dp(curr):
+            ans = False
+
+            if curr in memo:
+                return memo[curr]
+
+            # Condition 1: subarray consists of exactly 2 equal elements
+            if curr > 0:
+                if nums[curr] == nums[curr - 1]:
+                    ans |= dp(curr - 2)
+
+            # Condition 2 & 3: subarray consists of exactly 3 elements
+            if curr > 1:
+                # Equal elements
+                if nums[curr] == nums[curr - 1] == nums[curr - 2]:
+                    ans |= dp(curr - 3)
+
+                # Consecutive increasing elements
+                if nums[curr] == nums[curr - 1] + 1 == nums[curr - 2] + 2:
+                    ans |= dp(curr - 3)
+
+            memo[curr] = ans
+            return ans
+
+        return dp(n - 1)
+```
+
+```Python
+class Solution:
+    def validPartition(self, nums: List[int]) -> bool:
+        n = len(nums)
 
         @lru_cache(maxsize=None)
         def dp(curr):
@@ -55,16 +131,20 @@ class Solution:
             if curr == n:
                 return True
             
+            # Condition 1: subarray consists of exactly 2 equal elements
             if curr < n - 1:
                 if nums[curr] == nums[curr + 1]:
                     if dp(curr + 2):
                         return True 
 
+            # Condition 2 & 3: subarray consists of exactly 3 elements
             if curr < n - 2:
+                # Equal elements
                 if nums[curr] == nums[curr + 1] == nums[curr + 2]:
                     if dp(curr + 3):
                         return True
 
+                # Consecutive increasing elements
                 if nums[curr] == nums[curr + 1] - 1 == nums[curr + 2] - 2:
                     if dp(curr + 3):
                         return True
@@ -72,4 +152,37 @@ class Solution:
             return False
 
         return dp(0)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def validPartition(self, nums: List[int]) -> bool:
+        n = len(nums)
+        dp = [False] * n + [True]
+
+        for curr in range(n - 1, -1, -1):
+            if curr < n - 1 and nums[curr] == nums[curr + 1]:
+                dp[curr] |= dp[curr + 2]
+            if curr < n - 2 and nums[curr] == nums[curr + 1] == nums[curr + 2]:
+                dp[curr] |= dp[curr + 3]
+            if curr < n - 2 and nums[curr] == nums[curr + 1] - 1 == nums[curr + 2] - 2:
+                dp[curr] |= dp[curr + 3]
+
+        return dp[0]
+```
+
+```Python
+
+```
+
+```Python
+
+```
+
+#### Space Optimized Bottom-Up Dynamic Programming
+
+```Python
+
 ```
