@@ -1,6 +1,6 @@
 ## [2369. Check if There is a Valid Partition For The Array](https://leetcode.com/problems/check-if-there-is-a-valid-partition-for-the-array/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -15,5 +15,27 @@ We call a partition of the array valid if each of the obtained subarrays satisfi
 Return _```true``` if the array has at least one valid partition_. Otherwise, return ```false```.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/b23bd353-71a9-4510-b98a-f3f69644b792)
+
+---
+
+__Example 1:__
+```
+Input: nums = [4,4,4,5,6]
+Output: true
+Explanation: The array can be partitioned into the subarrays [4,4] and [4,5,6].
+This partition is valid, so we return true.
+```
+
+__Example 2:__
+```
+Input: nums = [1,1,1,2]
+Output: false
+Explanation: There is no valid partition for this array.
+```
+
+__Constraints:__
+
+- $2 \le nums.length \le 10^{5}$
+- $1 \le nums[i] \le 10^{6}$
 
 ---
