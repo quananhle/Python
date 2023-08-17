@@ -39,3 +39,37 @@ __Constraints:__
 - $1 \le nums[i] \le 10^{6}$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def validPartition(self, nums: List[int]) -> bool:
+        n = len(nums)
+
+        @lru_cache(maxsize=None)
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return True
+            
+            if curr < n - 1:
+                if nums[curr] == nums[curr + 1]:
+                    if dp(curr + 2):
+                        return True 
+
+            if curr < n - 2:
+                if nums[curr] == nums[curr + 1] == nums[curr + 2]:
+                    if dp(curr + 3):
+                        return True
+
+                if nums[curr] == nums[curr + 1] - 1 == nums[curr + 2] - 2:
+                    if dp(curr + 3):
+                        return True
+                    
+            return False
+
+        return dp(0)
+```
