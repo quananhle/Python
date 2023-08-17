@@ -40,3 +40,19 @@ __Constraints:__
 - $1 \le k \le nums.length$
 
 ---
+
+### Brute-Force (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        start = 0
+        n = len(nums)
+        res = list()
+
+        for end in range(start + k, max(n, start + k) + 1):
+            res.append(max(nums[start:end]))
+            start += 1
+        
+        return res
+```
