@@ -88,10 +88,35 @@ class Solution:
             return False
         
         return dfs(start)
-``
+```
 
 ```Python
+class Solution:
+    def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
+        ROWS, COLS = len(maze), len(maze[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
 
+        def dfs(curr: List[int]) -> bool:
+            if curr == destination:
+                return True
+
+            for dx, dy in DIRECTIONS:
+                row, col = curr
+                # While the ball is in the empty space
+                while 0 <= row + dx < ROWS and 0 <= col + dy < COLS and maze[row + dx][col + dy] == 0:
+                    # The ball keeps moving
+                    row += dx
+                    col += dy
+
+                if not (row, col) in visited:
+                    visited.add((row, col))
+                    if dfs([row, col]):
+                        return True
+
+            return False
+        
+        return dfs(start)
 ```
 
 ### Breadth-First Search
