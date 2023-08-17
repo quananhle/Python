@@ -43,6 +43,7 @@
   - [Depth-First Search (DFS)](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#depth-first-search-dfs)
     - [Spiral Matrix](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#spiral-matrix)
   - [Queue](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#queue)
+    - [Monotonic Queue](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#monotonic-queue)
   - [Stack](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#stack)
     - [Basic Calculator](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#basic-calculator)
     - [Monotonic Stack](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#monotonic-stack)
