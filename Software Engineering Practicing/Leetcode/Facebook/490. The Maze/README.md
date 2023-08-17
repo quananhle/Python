@@ -1,6 +1,6 @@
 ## [490. The Maze](https://leetcode.com/problems/the-maze/)
 
-```Tag```:
+```Tag```: ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -52,3 +52,23 @@ __Constraints:__
 - The maze contains at least ```2``` empty spaces.
 
 ---
+
+### Depth-First Search
+
+```Python
+
+``
+
+```Python
+
+```
+
+### Breadth-First Search
+
+```Python
+
+```
+
+```Python
+
+```
