@@ -28,3 +28,11 @@ Department = pd.DataFrame(data, columns=['id', 'name']).astype({'id':'Int64', 'n
 ![image](https://github.com/quananhle/Python/assets/35042430/516c7285-8e99-4b9f-a14e-88309d2799e9)
 
 ---
+
+![image](https://github.com/quananhle/Python/assets/35042430/10e63546-7f9b-4cbd-a94d-890feb1eaef9)
+
+---
+
+![image](https://github.com/quananhle/Python/assets/35042430/a4b825ba-0f00-4a96-8ce8-594b60378355)
+
+---
