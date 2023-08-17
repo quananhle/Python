@@ -92,9 +92,36 @@ __Algorithm__
 
 __Complexity Analysis__
 
-- __Time Complexity__:
-- __Space Complexity__:
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(k)$
 
 ```Python
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        queue = collections.deque()
+        res = list()
+        n = len(nums)
 
+        # Iterate in the first-k-element window of list 
+        for i in range(k):
+            # The largest element in window is always guaranteed to be first element in window
+            while queue and nums[i] >= nums[queue[-1]]:
+                queue.pop()
+            queue.append(i)
+
+        # Append the max element of the first window to the output
+        res.append(nums[queue[0]])
+
+        # Iterate in the next windows
+        for i in range(k, n):
+            # Ensure the size of window is k
+            if queue and queue[0] == i - k:
+                queue.popleft()
+            # The largest element in window is always guaranteed to be first element in window
+            while queue and nums[i] >= nums[queue[-1]]:
+                queue.pop()
+            queue.append(i)
+            res.append(nums[queue[0]])
+        
+        return res
 ```
