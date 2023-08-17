@@ -122,9 +122,57 @@ class Solution:
 ### Breadth-First Search
 
 ```Python
+class Solution:
+    def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
+        ROWS, COLS = len(maze), len(maze[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        queue = collections.deque([start])
 
+        while queue:
+            curr = queue.popleft()
+            
+            if curr == destination:
+                return True
+            
+            for dx, dy in DIRECTIONS:
+                row, col = curr
+                while 0 <= row + dx < ROWS and 0 <= col + dy < COLS and maze[row + dx][col + dy] == 0:
+                    row += dx
+                    col += dy
+
+                if not (row, col) in visited:
+                    visited.add((row, col))
+                    queue.append([row, col])
+                
+        return False
 ```
 
 ```Python
+class Solution:
+    def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
+        ROWS, COLS = len(maze), len(maze[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        queue = collections.deque([start])
 
+        while queue:
+            curr = queue.popleft()
+            
+            if curr == destination:
+                return True
+            
+            for dx, dy in DIRECTIONS:
+                new_row, new_col = curr[0] + dx, curr[1] + dy
+                while 0 <= new_row < ROWS and 0 <= new_col < COLS and maze[new_row][new_col] == 0:
+                    new_row += dx
+                    new_col += dy
+                new_row -= dx
+                new_col -= dy
+
+                if not (new_row, new_col) in visited:
+                    visited.add((new_row, new_col))
+                    queue.append([new_row, new_col])
+                
+        return False
 ```
