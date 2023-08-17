@@ -36,3 +36,20 @@ Department = pd.DataFrame(data, columns=['id', 'name']).astype({'id':'Int64', 'n
 ![image](https://github.com/quananhle/Python/assets/35042430/a4b825ba-0f00-4a96-8ce8-594b60378355)
 
 ---
+
+```Python
+import pandas as pd
+
+def department_highest_salary(employee: pd.DataFrame, department: pd.DataFrame) -> pd.DataFrame:
+    df = employee.merge(department, left_on='departmentId', right_on='id', how='left')
+    df.rename(columns={'name_x': 'Employee', 'name_y': 'Department', 'salary': 'Salary'}, inplace=True)
+
+    max_salary = df.groupby('Department')['Salary'].transform('max')
+    df = df[df['Salary'] == max_salary]
+
+    return df[['Department', 'Employee', 'Salary']]
+```
+
+```MySQL
+
+```
