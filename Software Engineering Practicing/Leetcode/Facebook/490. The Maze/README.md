@@ -56,7 +56,38 @@ __Constraints:__
 ### Depth-First Search
 
 ```Python
+class Solution:
+    def hasPath(self, maze: List[List[int]], start: List[int], destination: List[int]) -> bool:
+        ROWS, COLS = len(maze), len(maze[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
 
+        def dfs(curr: List[int]) -> bool:
+            row, col = curr[0], curr[1]
+
+            # Base case
+            if (row, col) in visited:
+                return False
+            visited.add((row, col))
+
+            if [row, col] == destination:
+                return True
+            
+            curr_row, curr_col = row, col
+
+            for dx, dy in DIRECTIONS:
+                while 0 <= row + dx < ROWS and 0 <= col + dy < COLS and maze[row + dx][col + dy] == 0:
+                    row += dx
+                    col += dy
+
+                if dfs([row, col]):
+                    return True
+            
+                row, col = curr_row, curr_col
+                
+            return False
+        
+        return dfs(start)
 ``
 
 ```Python
