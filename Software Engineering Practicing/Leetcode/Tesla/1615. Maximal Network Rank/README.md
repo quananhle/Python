@@ -52,6 +52,15 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/maximal-network-rank/Figures/1615/Slide1.PNG)
+
+![image](https://leetcode.com/problems/maximal-network-rank/Figures/1615/Slide2.PNG)
+
+Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(E + V^{2})$
+- __Space Complexity__: $\mathcal{O}(E)$
+
 ### Graph
 
 ```Python
