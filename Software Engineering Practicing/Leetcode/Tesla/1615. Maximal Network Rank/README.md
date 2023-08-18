@@ -1,6 +1,6 @@
 ## [1615. Maximal Network Rank](https://leetcode.com/problems/maximal-network-rank/)
 
-```Tag```:
+```Tag```: ```Graph```
 
 #### Difficulty: Medium
 
@@ -51,3 +51,25 @@ __Constraints:__
 - Each pair of cities has at most one road connecting them.
 
 ---
+
+### Graph
+
+```Python
+class Solution:
+    def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
+        adjacent_graph = collections.defaultdict(list)
+        max_rank = 0
+
+        for u, v in roads:
+            adjacent_graph[u].append(v)
+            adjacent_graph[v].append(u)
+        
+        for node1 in range(n):
+            for node2 in range(node1 + 1, n):
+                curr_rank = len(adjacent_graph[node1]) + len(adjacent_graph[node2])
+                if node2 in adjacent_graph[node1]:
+                    curr_rank -= 1
+                max_rank = max(max_rank, curr_rank)
+            
+        return max_rank
+```
