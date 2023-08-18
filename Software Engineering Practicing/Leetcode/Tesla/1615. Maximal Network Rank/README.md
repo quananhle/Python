@@ -43,7 +43,7 @@ Explanation: The network rank of 2 and 5 is 5. Notice that all the cities do not
 
 __Constraints:__
 
-- $2 \len \le 100$
+- $2 \le n \le 100$
 - $0 \le roads.length \le n * (n - 1) / 2$
 - $roads[i].length == 2$
 - $0 \le ai, bi \le n-1$
