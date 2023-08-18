@@ -56,7 +56,7 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/maximal-network-rank/Figures/1615/Slide2.PNG)
 
-Complexity Analysis
+__Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(E + V^{2})$
 - __Space Complexity__: $\mathcal{O}(E)$
@@ -81,4 +81,22 @@ class Solution:
                 max_rank = max(max_rank, curr_rank)
             
         return max_rank
+```
+
+```Python
+class Solution:
+    def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        ans = -1
+
+        for u, v in roads:
+            graph[u].append(v)
+            graph[v].append(u)
+
+        for curr in range(n):
+            for next in range(curr + 1, n):
+                curr_rank = len(graph[curr]) + len(graph[next]) - (1 if curr in graph[next] else 0)
+                ans = max(ans, curr_rank)
+        
+        return ans
 ```
