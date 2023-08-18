@@ -1,4 +1,4 @@
-## [Delete Duplicate Emails](https://leetcode.com/problems/delete-duplicate-emails/)
+## [196. Delete Duplicate Emails](https://leetcode.com/problems/delete-duplicate-emails/)
 
 ```Tag```: ```SQL``` ```Pandas```
 
@@ -30,9 +30,19 @@ Person = pd.DataFrame(data, columns=['id', 'email']).astype({'id':'int64', 'emai
 ---
 
 ```Python
+import pandas as pd
 
+# Modify Person in place
+def delete_duplicate_emails(person: pd.DataFrame) -> None:
+    min_id = person.groupby('email')['id'].transform('min')
+    removed_person = person[person['id'] != min_id]
+    person.drop(removed_person.index, inplace=True)
+    return
 ```
 
 ```MySQL
-
+# Please write a DELETE statement and DO NOT write a SELECT statement.
+# Write your MySQL query statement below
+DELETE p1 FROM person p1, person p2
+WHERE p1.email = p2.email AND p1.id > p2.id
 ```
