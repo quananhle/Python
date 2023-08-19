@@ -1,6 +1,6 @@
 ## [376. Wiggle Subsequence](https://leetcode.com/problems/wiggle-subsequence)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Greedy Algorithm```
 
 #### Difficulty: Medium
 
@@ -45,4 +45,54 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+
+```
+
+### The Framwork
+
+#### Top-Down Dynamic Programming
+
+```Python
+        n = len(nums)
+
+        if n == 1:
+            return 1
+
+        def get_sign(x, y):
+            if x - y < 0:
+                return "N"
+            elif x - y > 0:
+                return "P"
+            return "Z"
+
+        @lru_cache(maxsize=None)
+        def dp(i, prev):
+            # Base case
+            if i == n:
+                return 1
+            
+            valid = invalid = 0
+            curr = get_sign(nums[i], nums[i - 1])
+
+            # DP Transtions: alternate or not alternate between positive and negative?
+
+            # If not alternate, mvoe on to the next element, previous sign not get updated
+            invalid = dp(i + 1, prev)
+
+            # If the first difference is not 0 or the differences alternate between postive and negative
+            if not prev and curr != 'Z' or prev == 'P' and curr == 'N' or prev == 'N' and curr == 'P':
+                valid = 1 + dp(i + 1, curr)
+
+            return max(valid, invalid)
+
+        sign = get_sign(nums[1], nums[0])
+
+        return dp(1, '')
+```
+
 Follow up: Could you solve this in O(n) time?
+
+
