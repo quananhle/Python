@@ -48,7 +48,23 @@ __Constraints:__
 ### Brute Force
 
 ```Python
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+        n = len(nums)
 
+        def calculate(index, positive):
+            max_count = 0
+            for i in range(index + 1, n):
+                curr, prev = nums[i], nums[index]
+                if positive and curr > prev or not positive and curr < prev: 
+                    max_count = max(max_count, 1 + calculate(i, not positive))
+
+            return max_count
+
+        if n < 2:
+            return n
+        
+        return 1 + max(calculate(0, True), calculate(0, False))
 ```
 
 ### The Framwork
