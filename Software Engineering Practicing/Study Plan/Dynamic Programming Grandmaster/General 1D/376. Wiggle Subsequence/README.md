@@ -208,6 +208,25 @@ class Solution:
 
 #### Space Optimized Bottom-Up Dynamic Programming
 
+```Python
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n < 2:
+            return n
+        
+        up = down = 1
+
+        for i in range(1, n):
+            curr, prev = nums[i], nums[i - 1]
+            if curr > prev:
+                up = down + 1
+            elif curr < prev:
+                down = up + 1
+        
+        return max(up, down)
+```
+
 ### Greedy
 
 ![image](https://leetcode.com/media/original_images/376_Wiggle_Subsequence.PNG)
