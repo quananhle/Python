@@ -192,7 +192,7 @@ __Follow up__: Could you solve this in ```O(n)``` time?
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(n})$. 
+- __Time Complexity__: $\mathcal{O}(n)$. 
 - __Space Complexity__: $\mathcal{O}(n)$.
 
 ```Python
@@ -257,5 +257,20 @@ __Complexity Analysis__
 - __Space Complexity__: $\mathcal{O}(1)$.
 
 ```Python
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n < 2:
+            return n
 
+        prev = nums[1] - nums[0]
+        count = 2 if prev != 0 else 1
+
+        for i in range(2, n):
+            diff = nums[i] - nums[i - 1]
+            if (diff > 0 and prev <= 0) or (diff < 0 and prev >= 0):
+                count += 1
+                prev = diff
+            
+        return count
 ```
