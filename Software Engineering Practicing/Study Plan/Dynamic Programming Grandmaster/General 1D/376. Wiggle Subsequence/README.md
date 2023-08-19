@@ -56,6 +56,45 @@ __Constraints:__
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        memo = collections.defaultdict(int)
+
+        if n == 1:
+            return 1
+        
+        def get_sign(diff):
+            if diff < 0:
+                return 'N'
+            if diff > 0:
+                return 'P'
+            return 'Z'
+
+        def dp(i, prev):
+            # Base case
+            if i == n - 1:
+                return 1
+
+            if i in memo:
+                return memo[i]
+
+            valid = invalid = 0
+            curr = get_sign(nums[i + 1] - nums[i])
+
+            # DP Transitions: valid wiggle or invalid?
+            if not prev and curr != 'Z' or prev == 'P' and curr == 'N' or prev == 'N' and curr == 'P':
+                valid = 1 + dp(i + 1, curr)
+
+            invalid = dp(i + 1, prev)
+
+            memo[i] = max(valid, invalid)
+            return memo[i]       
+
+        return dp(0, '')
+```
+
+```Python
         n = len(nums)
 
         if n == 1:
@@ -93,6 +132,22 @@ __Constraints:__
         return dp(1, '')
 ```
 
-Follow up: Could you solve this in O(n) time?
+#### Bottom-Up Dynamic Programming
 
+```Python
 
+```
+
+#### Space Optimized Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+__Follow up__: Could you solve this in ```O(n)``` time?
+
+### Greedy
+
+```Python
+
+```
