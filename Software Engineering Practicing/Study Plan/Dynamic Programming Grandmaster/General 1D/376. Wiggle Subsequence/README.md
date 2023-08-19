@@ -76,6 +76,11 @@ class Solution:
 
 #### Top-Down Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^{2})$. 
+- __Space Complexity__: $\mathcal{O}(n)$.
+
 ```Python
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
@@ -155,6 +160,11 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^{2})$. 
+- __Space Complexity__: $\mathcal{O}(n)$.
+
 ```Python
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
@@ -179,6 +189,11 @@ class Solution:
 __Follow up__: Could you solve this in ```O(n)``` time?
 
 ### Linear Dynamic Programming 
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n})$. 
+- __Space Complexity__: $\mathcal{O}(n)$.
 
 ```Python
 class Solution:
@@ -208,6 +223,11 @@ class Solution:
 
 #### Space Optimized Bottom-Up Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$. 
+- __Space Complexity__: $\mathcal{O}(1)$.
+
 ```Python
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
@@ -230,6 +250,11 @@ class Solution:
 ### Greedy
 
 ![image](https://leetcode.com/media/original_images/376_Wiggle_Subsequence.PNG)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$. 
+- __Space Complexity__: $\mathcal{O}(1)$.
 
 ```Python
 
