@@ -47,6 +47,11 @@ __Constraints:__
 
 ### Brute Force
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n!)$. ```calculate()``` will be called maximum ```n!``` times.
+- __Space Complexity__: $\mathcal{O}(n)$. Recursion of depth ```n``` is used.
+
 ```Python
 class Solution:
     def wiggleMaxLength(self, nums: List[int]) -> int:
