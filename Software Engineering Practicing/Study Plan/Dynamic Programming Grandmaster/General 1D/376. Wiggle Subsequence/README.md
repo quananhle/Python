@@ -156,18 +156,61 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n < 2:
+            return n
+        
+        up = [0] * n
+        down = [0] * n
 
-```
-
-#### Space Optimized Bottom-Up Dynamic Programming
-
-```Python
-
+        for i in range(1, n):
+            for j in range(i):
+                curr, prev = nums[i], nums[j]
+                if curr > prev:
+                    up[i] = max(up[i], down[j] + 1)
+                elif curr < prev:
+                    down[i] = max(down[i], up[j] + 1)
+        
+        return 1 + max(down[n - 1], up[n - 1])
 ```
 
 __Follow up__: Could you solve this in ```O(n)``` time?
 
+### Linear Dynamic Programming 
+
+```Python
+class Solution:
+    def wiggleMaxLength(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n < 2:
+            return n
+        
+        up = [0] * n
+        down = [0] * n
+        up[0] = down[0] = 1
+
+        for i in range(1, n):
+            curr, prev = nums[i], nums[i - 1]
+            if curr > prev:
+                up[i] = down[i - 1] + 1
+                down[i] = down[i - 1]
+            elif curr < prev:
+                down[i] = up[i - 1] + 1
+                up[i] = up[i - 1]
+            else:
+                down[i] = down[i - 1]
+                up[i] = up[i - 1]
+        
+        return max(down[n - 1], up[n - 1])
+```
+
+#### Space Optimized Bottom-Up Dynamic Programming
+
 ### Greedy
+
+![image](https://leetcode.com/media/original_images/376_Wiggle_Subsequence.PNG)
 
 ```Python
 
