@@ -29,13 +29,16 @@ __Example 1__:
 ---
 
 ```MySQL
-SELECT name, population, area FROM world WHERE area >= 3000000 OR population >= 25000000;
+SELECT event_day AS day , emp_id , SUM(out_time - in_time) AS total_time FROM Employees GROUP BY emp_id , event_day;
 ```
 
 ```Python
 import pandas as pd
 
-def big_countries(world: pd.DataFrame) -> pd.DataFrame:
-    df = world[(world['area'] >= 3000000) | (world['population'] >= 25000000)]
-    return df[['name', 'population', 'area']]
+def total_time(employees: pd.DataFrame) -> pd.DataFrame:
+    employees["total_time"] = employees['out_time'] - employees['in_time']
+    df = employees.groupby(["event_day" , "emp_id"])["total_time"].sum().reset_index()
+    df.rename({"event_day": "day"}, axis=1, inplace=True)
+    df["day"] = df["day"].astype(str)
+    return df
 ```
