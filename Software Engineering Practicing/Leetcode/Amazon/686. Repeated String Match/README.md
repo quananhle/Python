@@ -27,7 +27,7 @@ Output: 2
 
 __Constraints:__
 
-- 1 \le a.length, b.length \le 10^{4}$
+- $1 \le a.length, b.length \le 10^{4}$
 - ```a``` and ```b``` consist of lowercase English letters.
 
 ---
