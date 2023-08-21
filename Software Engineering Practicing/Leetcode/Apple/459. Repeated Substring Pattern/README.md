@@ -53,6 +53,7 @@ __Algorithm__
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(n \cdot \sqrt{n})$.
+- __Space Complexity__: $\mathcal{O}(n)$.
 
 ```Python
 class Solution:
@@ -68,3 +69,8 @@ class Solution:
         return False
 ```
 
+### String Concatenation
+
+```Python
+
+```
