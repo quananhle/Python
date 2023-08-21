@@ -11,6 +11,7 @@ Given a string ```s```, check if it can be constructed by taking a substring of 
 ---
 
 __Example 1:__
+
 ```
 Input: s = "abab"
 Output: true
@@ -36,4 +37,22 @@ __Constraints:__
 - ```s``` consists of lowercase English letters.
 
 ---
+
+### String Matching
+
+#### Using Divisors
+
+```Python
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        n = len(s)
+
+        for i in range(1, n // 2 + 1):
+            if n % i == 0:
+                pattern = s[:i] * (n // i)
+                if s == pattern:
+                    return True
+
+        return False
+```
 
