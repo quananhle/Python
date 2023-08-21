@@ -123,7 +123,8 @@
   - ##### String Matching
 
     - :four_leaf_clover: [28. Find the Index of the First Occurrence in a String](https://github.com/quananhle/Python/tree/a73e97478eed5b0396014c1912f2d4303e2089d6/Software%20Engineering%20Practicing/Concepts/Algorithms/String%20Matching/28.%20Find%20the%20Index%20of%20the%20First%20Occurrence%20in%20a%20String) ```Sliding Window``` ```Rabin-Karp Algorithm``` ```Knuth–Morris–Pratt Algorithm```
-    - :four_leaf_clover: [459. Repeated Substring Pattern](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Apple/459.%20Repeated%20Substring%20Pattern)
+    - :four_leaf_clover: [459. Repeated Substring Pattern](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Apple/459.%20Repeated%20Substring%20Pattern) ```Rabin-Karp Algorithm``` ```Knuth–Morris–Pratt Algorithm```
+    - :warning::warning: [686. Repeated String Match](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/686.%20Repeated%20String%20Match) ```Rabin-Karp Algorithm``` ```Knuth–Morris–Pratt Algorithm```
 
 ### String Calculations
 
