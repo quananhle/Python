@@ -80,6 +80,18 @@ __Algorithm__
 1. Create a string variable ```t``` and set it to ```s + s```.
 2. If the substring formed by removing the first and last character of ```t``` contains ```s```, we return ```True```. Otherwise, return ```False```. Note in our implementation, the ```substr``` function in ```C++``` and the ```substring``` method in ```Java``` both take two parameters. In both languages, the first parameter is the initial index from which our substring begins, while the second parameter works differently. It is the length of the substring in ```C++``` and the index of the last character in ```Java```.
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(n)$.
+- __Space Complexity__: $\mathcal{O}(n)$.
+
+```Python
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        t = s + s
+
+        if s in t[1:-1]:
+            return True
+
+        return False
 ```
