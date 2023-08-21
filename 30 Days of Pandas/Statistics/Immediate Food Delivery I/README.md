@@ -38,5 +38,7 @@ def food_delivery(delivery: pd.DataFrame) -> pd.DataFrame:
 ```
 
 ```MySQL
-
+# Write your MySQL query statement below
+SELECT ROUND((SELECT COUNT(a.customer_id) FROM Delivery a WHERE a.order_date = a.customer_pref_delivery_date) / COUNT(b.customer_id) * 100, 2) AS immediate_percentage
+FROM Delivery b
 ```
