@@ -47,12 +47,12 @@ However, if we press ```Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+V``
 
 Now we want to describe transitions (the recurrence relation). As stated above, it is inefficient to press ```Ctrl+V``` $5$ times or more in a row. This means we will press ```Ctrl+A```, ```Ctrl+C```, and then ```Ctrl+V``` up to four times:
 
-- $dp[i+3]=2⋅dp[i]\text{dp}[i + 3] = 2 \cdot \text{dp}[i]dp[i+3]=2⋅dp[i]$
-- $dp[i+4]=3⋅dp[i]\text{dp}[i + 4] = 3 \cdot \text{dp}[i]dp[i+4]=3⋅dp[i]$
-- $dp[i+5]=4⋅dp[i]\text{dp}[i + 5] = 4 \cdot \text{dp}[i]dp[i+5]=4⋅dp[i]$
-- $dp[i+6]=5⋅dp[i]\text{dp}[i + 6] = 5 \cdot \text{dp}[i]dp[i+6]=5⋅dp[i]$
+- $\text{dp}[i + 3] = 2 \cdot \text{dp}[i]$
+- $\text{dp}[i + 4] = 3 \cdot \text{dp}[i]$
+- $\text{dp}[i + 5] = 4 \cdot \text{dp}[i]$
+- $\text{dp}[i + 6] = 5 \cdot \text{dp}[i]$
 
-In general, we have dp[j]=(j−i−1)⋅dp[i]\text{dp}[j] = (j - i - 1) \cdot \text{dp}[i]dp[j]=(j−i−1)⋅dp[i], where i+3≤j≤i+6i + 3 \le j \le i + 6i+3≤j≤i+6. We want to take the maximum value, and this gives us our recurrence relation.
+In general, we have $\text{dp}[j] = (j - i - 1) \cdot \text{dp}[i]$, where $i + 3 \le j \le i + 6$. We want to take the maximum value, and this gives us our recurrence relation.
 
 ```Python
 class Solution:
