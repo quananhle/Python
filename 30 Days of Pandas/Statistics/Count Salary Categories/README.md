@@ -29,7 +29,30 @@ Delivery = pd.DataFrame(data, columns=['delivery_id', 'customer_id', 'order_date
 ---
 
 ```Python
+import pandas as pd
 
+def count_salary_categories(accounts: pd.DataFrame) -> pd.DataFrame:
+    low_salary = accounts[accounts['income'] < 20000]
+    average_salary = accounts[(20000 <= accounts['income']) & (accounts['income'] <= 50000)]
+    high_salary = accounts[accounts['income'] > 50000]
+
+    df = pd.DataFrame({'category': ['Low Salary' , 'Average Salary', 'High Salary'], 
+                       'accounts_count': [len(low_salary) , len(average_salary) , len(high_salary)]})
+    return df
+```
+
+```MySQL
+import pandas as pd
+
+def count_salary_categories(accounts: pd.DataFrame) -> pd.DataFrame:
+    low_salary = (accounts['income'] < 20000).sum()
+    average_salary = ((20000 <= accounts['income']) & (accounts['income'] <= 50000)).sum()
+    high_salary = (accounts['income'] > 50000).sum()
+
+    df = pd.DataFrame({'category': ['Low Salary' , 'Average Salary', 'High Salary'], 
+                       'accounts_count': [low_salary , average_salary , high_salary]
+                     })
+    return df
 ```
 
 ```MySQL
