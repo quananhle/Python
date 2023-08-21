@@ -1,4 +1,4 @@
-## 651. 4 Keys Keyboard
+## 651. [4 Keys Keyboard](https://leetcode.com/problems/4-keys-keyboard)
 
 ```Tag```: ```Dynamic Programming```
 
@@ -38,3 +38,49 @@ __Constraints:__
 - $1 \le n \le 50$
 
 ---
+
+### The Frameworkd
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def maxA(self, n: int) -> int:
+        # Time Limit Exceeded
+        @lru_cache(maxsize=None)
+        def dp(curr, total, selected, buffered):
+            # Base case
+            if curr == n:
+                return total
+            
+            # DP Transitions: should press 'A' better than select + copy + paste?
+            a = dp(curr + 1, total + 1, selected, buffered)
+            select = dp(curr + 1, total, total, buffered)
+            copy = dp(curr + 1, total, selected, selected)
+            paste = dp(curr + 1, total + buffered, selected, buffered)
+        
+            return max(a, select, copy, paste)
+        
+        return dp(0, 0, 0, 0)
+```
+
+```Python
+
+```
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
+
+
+
