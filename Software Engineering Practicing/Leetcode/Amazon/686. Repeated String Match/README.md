@@ -1,6 +1,6 @@
 ## [686. Repeated String Match](https://leetcode.com/problems/repeated-string-match/)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Rabin-Karp Algorithm``` ```Knuth–Morris–Pratt Algorithm```
 
 #### Difficulty: Medium
 
@@ -31,3 +31,4 @@ __Constraints:__
 - ```a``` and ```b``` consist of lowercase English letters.
 
 ---
+
