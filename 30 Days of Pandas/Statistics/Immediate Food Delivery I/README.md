@@ -5,40 +5,31 @@
 #### Difficulty: Easy
 
 ```MySQL
-Create table If Not Exists Delivery (delivery_id int, customer_id int, order_date date, customer_pref_delivery_date date)
-Truncate table Delivery
-insert into Delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('1', '1', '2019-08-01', '2019-08-02')
-insert into Delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('2', '5', '2019-08-02', '2019-08-02')
-insert into Delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('3', '1', '2019-08-11', '2019-08-11')
-insert into Delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('4', '3', '2019-08-24', '2019-08-26')
-insert into Delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('5', '4', '2019-08-21', '2019-08-22')
-insert into Delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('6', '2', '2019-08-11', '2019-08-13')
+Create table If Not Exists Accounts (account_id int, income int)
+Truncate table Accounts
+insert into Accounts (account_id, income) values ('3', '108939')
+insert into Accounts (account_id, income) values ('2', '12747')
+insert into Accounts (account_id, income) values ('8', '87709')
+insert into Accounts (account_id, income) values ('6', '91796')
 ```
 
 ```Python
-data = [[1, 1, '2019-08-01', '2019-08-02'], [2, 5, '2019-08-02', '2019-08-02'], [3, 1, '2019-08-11', '2019-08-11'], [4, 3, '2019-08-24', '2019-08-26'], [5, 4, '2019-08-21', '2019-08-22'], [6, 2, '2019-08-11', '2019-08-13']]
-Delivery = pd.DataFrame(data, columns=['delivery_id', 'customer_id', 'order_date', 'customer_pref_delivery_date']).astype({'delivery_id':'Int64', 'customer_id':'Int64', 'order_date':'datetime64[ns]', 'customer_pref_delivery_date':'datetime64[ns]'})
+data = [[3, 108939], [2, 12747], [8, 87709], [6, 91796]]
+Accounts = pd.DataFrame(data, columns=['account_id', 'income']).astype({'account_id':'Int64', 'income':'Int64'})
 ```
 
-![image](https://github.com/quananhle/Python/assets/35042430/e7ed406e-87b6-4eea-88b4-e8ea01524a31)
+![image](https://github.com/quananhle/Python/assets/35042430/40b17b99-949f-4f36-9180-40dedf04e7ae)
 
 ---
 
-![image](https://github.com/quananhle/Python/assets/35042430/6d2df469-d5b4-41a3-9de9-6b050c8f341a)
+![image](https://github.com/quananhle/Python/assets/35042430/0becdf92-8105-4623-a602-8e2450e5bf6c)
 
 ---
 
 ```Python
-import pandas as pd
 
-def food_delivery(delivery: pd.DataFrame) -> pd.DataFrame:
-    immediate = delivery[delivery['order_date'] == delivery['customer_pref_delivery_date']]
-    percentage = round(len(immediate) / len(delivery) * 100, 2)
-    return pd.DataFrame({'immediate_percentage': [percentage]})
 ```
 
 ```MySQL
-# Write your MySQL query statement below
-SELECT ROUND((SELECT COUNT(a.customer_id) FROM Delivery a WHERE a.order_date = a.customer_pref_delivery_date) / COUNT(b.customer_id) * 100, 2) AS immediate_percentage
-FROM Delivery b
+
 ```
