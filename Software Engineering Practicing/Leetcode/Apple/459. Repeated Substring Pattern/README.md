@@ -1,6 +1,6 @@
 ## [459. Repeated Substring Pattern](https://leetcode.com/problems/repeated-substring-pattern/description/)
 
-```Tag```: 
+```Tag```: ```Array & String```
 
 #### Difficulty: Easy
 
@@ -41,6 +41,18 @@ __Constraints:__
 ### String Matching
 
 #### Using Divisors
+
+__Algorithm__
+
+1. Create an integer variable ```n``` equal to the length of ```s```.
+2. Iterate over all the prefix substrings of length ```i = 1``` to ```n / 2```:
+    - If ```i``` divides ```n```, we declare an empty string pattern. Use an inner loop that iterates ```n / i``` times to concatenate the substring formed from the first ```i``` characters of ```s```.
+    - If pattern equals ```s```, we return ```True```.
+3. There is no substring that can be repeated to form ```s```. As a result, we return ```False```.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \cdot \sqrt{n})$.
 
 ```Python
 class Solution:
