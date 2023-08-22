@@ -2,6 +2,8 @@
 
 ```Tag```: ```SQL``` ```Pandas```
 
+#### Difficulty: Easy
+
 ![image](https://github.com/quananhle/Python/assets/35042430/013465b7-0414-440b-bc89-5620511dba34)
 
 ```SQL
