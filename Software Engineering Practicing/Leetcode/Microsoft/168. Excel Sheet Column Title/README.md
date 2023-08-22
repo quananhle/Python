@@ -62,10 +62,22 @@ Steps to get the letters:
 
 __Algorithm__
 
-1. Initialize an empty string ```ans``` which would store the column title.
-2. Do the following as long as columnNumber is greater than 0:
+1. Initialize an empty string ```res``` which would store the column title.
+2. Do the following as long as ```columnNumber``` is greater than ```0```:
+  a. Subtract ```1``` from the ```columnNumber```
+  b. Find the character corresponding to ```columnNumber % 26``` and append it to the ```res``` in the end.
+  c. Assign ```columnNumber``` to ```columnNumber // 26```.
+3. Reverse the string ```columnNumber``` and return it.
 
-Subtract 1 from the columnNumber
-Find the character corresponding to columnNumber % 26 and append it to the ans in the end.
-Assign columnNumber to columnNumber / 26.
-Reverse the string columnNumber and return it.
+```Python
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        res = list()
+
+        while columnNumber > 0:
+            columnNumber -= 1
+            res.append(chr(columnNumber % 26 + ord('A')))
+            columnNumber //= 26
+        
+        return "".join(res[::-1])
+```
