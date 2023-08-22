@@ -42,3 +42,21 @@ __Constraints:__
 - $1 \le board[i][j] \le 2000$
 
 ---
+
+### Find, Crush, Drop
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/1.png)
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/2.png)
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/3.png)
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/4.png)
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/5.png)
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/6.png)
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/7.png)
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/8.png)
