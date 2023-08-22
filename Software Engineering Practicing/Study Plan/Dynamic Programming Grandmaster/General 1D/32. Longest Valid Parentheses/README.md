@@ -36,3 +36,27 @@ __Constraints:__
 - ```s[i]``` is ```'('```, or ```')'```.
 
 ---
+
+### Stack
+
+```Python
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        n = len(s)
+        stack, ans = [-1], 0
+        for i in range(n):
+            # For every ‘(’ encountered, push its index onto the stack.
+            if s[i] == '(':
+                stack.append(i)
+            # For every ‘)’ encountered, pop the topmost element
+            else:
+                stack.pop()
+                # If stack is empty, the current index is the most recent index of invalid parentheses, push onto stack
+                if not stack:
+                    stack.append(i)
+                # Otherwise, get the length of the current valid parentheses, and its maximum length
+                else:
+                    ans = max(ans, i - stack[-1])
+        
+        return ans
+```
