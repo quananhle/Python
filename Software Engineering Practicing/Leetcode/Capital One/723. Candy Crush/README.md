@@ -152,6 +152,11 @@ class Solution:
 
 ![image](https://leetcode.com/problems/candy-crush/Figures/723/2_2.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m^{2} \cdot n^{2})$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def candyCrush(self, board: List[List[int]]) -> List[List[int]]:
