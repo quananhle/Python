@@ -60,3 +60,81 @@ __Constraints:__
 ![image](https://leetcode.com/problems/candy-crush/Figures/723/7.png)
 
 ![image](https://leetcode.com/problems/candy-crush/Figures/723/8.png)
+
+Algorithm
+Define find() to find all crushable candies:
+
+Initialize an empty set crushed_set.
+Iterate over each candy (r, c):
+If board[r][c] = 0, continue.
+If board[r][c] = board[r + 1][c] = board[r - 1][c], add (r, c), (r + 1, c) and (r - 1, c) to the set. If board[r][c] = board[r][c + 1] = board[r][c - 1], add (r, c), (r, c + 1) and (r, c - 1) to the set.
+Return crushed_set.
+Define crush(crushed_set) to mark all crushable candies:
+
+Iterate over every candy (r, c) in crushed_set and set board[r][c] = 0.
+Define drop() to rearrange the candies' new positions based on the rules:
+
+Iterate over each column c.
+For each column, set lowest_zero as -1 since there is no lowest zero yet.
+Iterate candies (r, c) from bottom to top, for each candy board[r][c]. If board[r][c] is zero, update lowest_zero as lowest_zero = max(lowest_zero, r). If board[r][c] is non-zero and lowest_zero is not -1, then we swap board[r][c] with board[lowest_zero][c] and decrement lowest_zero by 1.
+While find() returns an non-empty set crushed_set:
+
+Perform crush(crushed_set).
+Perform drop().
+Return board when the while loop is complete.
+
+```Python
+class Solution:
+    def candyCrush(self, board: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(board), len(board[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+        def find():
+            # Check vertically adjacent cells
+            for row in range(1, ROWS - 1):
+                for col in range(COLS):
+                    if board[row][col] == 0:
+                        continue
+                    if board[row][col] == board[row - 1][col] == board[row + 1][col]:
+                        crushed.add((row, col))
+                        crushed.add((row - 1, col))
+                        crushed.add((row + 1, col))
+            # Check hozirontally adjacent cells
+            for row in range(ROWS):
+                for col in range(1, COLS - 1):
+                    if board[row][col] == 0:
+                        continue
+                    if board[row][col] == board[row][col - 1] == board[row][col + 1]:
+                        crushed.add((row, col))
+                        crushed.add((row, col - 1))
+                        crushed.add((row, col + 1))
+            
+            return crushed
+        
+        def crush():
+            for (row, col) in crushed:
+                board[row][col] = 0
+        
+        def drop():
+            for col in range(COLS):
+                lowest_empty = -1
+
+                for row in range(ROWS - 1, -1, -1):
+                    # Locate the lowest empty spaces or crushed cells
+                    if board[row][col] == 0:
+                        lowest_empty = max(lowest_empty, row)
+                    # Swap current non-zero cell with the lowest empty space
+                    elif lowest_empty >= 0:
+                        board[row][col], board[lowest_empty][col] = board[lowest_empty][col], board[row][col]
+                        lowest_empty -= 1
+        
+        # Continue to find -> crush -> drop until no more possible candidate to crush
+        candidates = find()
+        while candidates:
+            crushed = set()
+            crush()
+            drop()
+            candidates = find()
+
+        return board
+```
