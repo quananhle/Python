@@ -8,14 +8,14 @@ Given an integer ```columnNumber```, return _its corresponding column title as i
 
 __For example__:
 
-> A -> 1
-> B -> 2
-> C -> 3
-> ...
-> Z -> 26
-> AA -> 27
-> AB -> 28 
-> ...
+- A -> 1
+- B -> 2
+- C -> 3
+- ...
+- Z -> 26
+- AA -> 27
+- AB -> 28
+- ...
 
 ![image](https://github.com/quananhle/Python/assets/35042430/653770ca-dcba-4b02-a026-e15cb6460154)
 
@@ -41,6 +41,6 @@ Output: "ZY"
 
 __Constraints:__
 
-- $1 \le columnNumber \le 2^{31} - 1
+- $1 \le columnNumber \le 2^{31} - 1$
 
 ---
