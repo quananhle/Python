@@ -61,15 +61,17 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/candy-crush/Figures/723/8.png)
 
-Algorithm
-Define find() to find all crushable candies:
+__Algorithm__
 
-Initialize an empty set crushed_set.
-Iterate over each candy (r, c):
-If board[r][c] = 0, continue.
-If board[r][c] = board[r + 1][c] = board[r - 1][c], add (r, c), (r + 1, c) and (r - 1, c) to the set. If board[r][c] = board[r][c + 1] = board[r][c - 1], add (r, c), (r, c + 1) and (r, c - 1) to the set.
-Return crushed_set.
-Define crush(crushed_set) to mark all crushable candies:
+1. Define ```find()``` to find all crushable candies:
+
+- Initialize an empty set ```crushed```.
+- Iterate over each candy ```(row, col)```:
+    - If ```board[row][col] = 0```, continue.
+    - If ```board[row][col] = board[row + 1][col] = board[row - 1][col]```, add ```(row, col)```, ```(row + 1, col)``` and ```(row - 1, col)``` to the set. If ```board[row][col] = board[row][col + 1] = board[row][col - 1]```, add ```(row, col)```, ```(row, col + 1)``` and (row, col - 1)``` to the set.
+    - Return ```crushed``` set.
+
+2. Define ```crush(crushed_set)``` to mark all crushable candies:
 
 Iterate over every candy (r, c) in crushed_set and set board[r][c] = 0.
 Define drop() to rearrange the candies' new positions based on the rules:
