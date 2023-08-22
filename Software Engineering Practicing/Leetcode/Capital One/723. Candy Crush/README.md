@@ -71,19 +71,22 @@ __Algorithm__
     - If ```board[row][col] = board[row + 1][col] = board[row - 1][col]```, add ```(row, col)```, ```(row + 1, col)``` and ```(row - 1, col)``` to the set. If ```board[row][col] = board[row][col + 1] = board[row][col - 1]```, add ```(row, col)```, ```(row, col + 1)``` and (row, col - 1)``` to the set.
     - Return ```crushed``` set.
 
-2. Define ```crush(crushed_set)``` to mark all crushable candies:
+2. Define ```crush()``` to mark all crushable candies:
 
-Iterate over every candy (r, c) in crushed_set and set board[r][c] = 0.
-Define drop() to rearrange the candies' new positions based on the rules:
+- Iterate over every candy (r, c) in ```crushed``` and set ```board[row][cpl] = 0```.
 
-Iterate over each column c.
-For each column, set lowest_zero as -1 since there is no lowest zero yet.
-Iterate candies (r, c) from bottom to top, for each candy board[r][c]. If board[r][c] is zero, update lowest_zero as lowest_zero = max(lowest_zero, r). If board[r][c] is non-zero and lowest_zero is not -1, then we swap board[r][c] with board[lowest_zero][c] and decrement lowest_zero by 1.
-While find() returns an non-empty set crushed_set:
+3. Define ```drop()``` to rearrange the candies' new positions based on the rules:
 
-Perform crush(crushed_set).
-Perform drop().
-Return board when the while loop is complete.
+- Iterate over each column ```col```.
+- For each column, set ```lowest_zero``` as ```-1``` since there is no lowest zero yet.
+- Iterate candies ```(row, col)``` from bottom to top, for each candy ```board[row][col]```. If ```board[row][col]``` is zero, update ```lowest_zero``` as ```lowest_zero = max(lowest_zero, row)```. If ```board[row][col]``` is non-zero and ```lowest_zero``` is not ```-1```, then we swap ```board[row][col]``` with ```board[lowest_zero][col]``` and decrement ```lowest_zero``` by ```1```.
+
+4. While ```find()``` returns an non-empty set ```candidates```:
+
+- Perform ```crush()```.
+- Perform ```drop()```.
+
+5. Return ```board``` when the while loop is complete.
 
 ```Python
 class Solution:
