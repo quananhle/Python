@@ -44,3 +44,10 @@ __Constraints:__
 - $1 \le columnNumber \le 2^{31} - 1$
 
 ---
+
+```N = 2002``` corresponds to ```BXZ```.
+
+In terms of base ```26```:
+
+- $N = (B + 1) \cdot 26^{2} + (X + 1) \cdot 26^{1} + (Z + 1) * 26^{0}$
+- $N = (1 + 1) \cdot 676 + (23 + 1) \cdot 26 + (25 + 1) \cdot 1 = 2002$
