@@ -26,3 +26,16 @@ Activity = pd.DataFrame(data, columns=['player_id', 'device_id', 'event_date', '
 ![image](https://github.com/quananhle/Python/assets/35042430/798ef1d6-dc8c-4308-baa4-d7370e09e8d9)
 
 ---
+
+```Python
+import pandas as pd
+
+def game_analysis(activity: pd.DataFrame) -> pd.DataFrame:
+    df = activity.groupby('player_id')['event_date'].min().reset_index()
+    return df.rename(columns={'event_date': 'first_login'})
+```
+
+```MySQL
+# Write your MySQL query statement below
+SELECT player_id, min(event_date) AS first_login FROM Activity GROUP BY player_id;
+```
