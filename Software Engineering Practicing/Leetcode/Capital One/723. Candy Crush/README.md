@@ -88,11 +88,15 @@ __Algorithm__
 
 5. Return ```board``` when the while loop is complete.
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m^{2} \cdot n^{2})$
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$
+
 ```Python
 class Solution:
     def candyCrush(self, board: List[List[int]]) -> List[List[int]]:
         ROWS, COLS = len(board), len(board[0])
-        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
         def find():
             # Check vertically adjacent cells
@@ -113,7 +117,6 @@ class Solution:
                         crushed.add((row, col))
                         crushed.add((row, col - 1))
                         crushed.add((row, col + 1))
-            
             return crushed
         
         def crush():
@@ -141,5 +144,64 @@ class Solution:
             drop()
             candidates = find()
 
+        return board
+
+```
+
+### In-place Modifications
+
+![image](https://leetcode.com/problems/candy-crush/Figures/723/2_2.png)
+
+```Python
+class Solution:
+    def candyCrush(self, board: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(board), len(board[0])
+
+        def find_and_crush():
+            complete = True
+
+            # Check vertically adjacent cells
+            for row in range(1, ROWS - 1):
+                for col in range(COLS):
+                    if board[row][col] == 0:
+                        continue
+                    if abs(board[row][col]) == abs(board[row - 1][col]) == abs(board[row + 1][col]):
+                        board[row][col] = -abs(board[row][col])
+                        board[row - 1][col] = -abs(board[row - 1][col])
+                        board[row + 1][col] = -abs(board[row + 1][col])
+                        complete = False
+                    
+            # Check horizontally adjacent cells
+            for row in range(ROWS):
+                for col in range(1, COLS - 1):
+                    if board[row][col] == 0:
+                        continue
+                    if abs(board[row][col]) == abs(board[row][col - 1]) == abs(board[row][col + 1]):
+                        board[row][col] = -abs(board[row][col])
+                        board[row][col - 1] = -abs(board[row][col - 1])
+                        board[row][col + 1] = -abs(board[row][col + 1])
+                        complete = False
+            
+            for row in range(ROWS):
+                for col in range(COLS):
+                    if board[row][col] < 0:
+                        board[row][col] = 0
+            
+            return complete
+        
+        def drop():
+            for col in range(COLS):
+                lowest_empty_cells = -1
+
+                for row in range(ROWS - 1, -1, -1):
+                    if board[row][col] == 0:
+                        lowest_empty_cells = max(lowest_empty_cells, row)
+                    elif lowest_empty_cells >= 0:
+                        board[row][col], board[lowest_empty_cells][col] = board[lowest_empty_cells][col], board[row][col]
+                        lowest_empty_cells -= 1
+        
+        while not find_and_crush():
+            drop()
+        
         return board
 ```
