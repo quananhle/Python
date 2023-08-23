@@ -51,6 +51,34 @@ __Algorithm__
   - Finally, push the original ```first_char``` back to ```pq```.
 4. Return the rearranged characters as a string by joining the elements in ```res```.
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: \mathcal{O}(N \cdot \log k)$
+- __Space Complexity__: \mathcal{O}(k)$
+
+```Python
+class Solution:
+    def reorganizeString(self, s: str) -> str:
+        n = len(s)
+        res = list()
+
+        pq = [(-count, char) for char, count in collections.Counter(s).items()]
+        heapq.heapify(pq)
+        
+        while pq:
+            first_cnt, first_chr = heapq.heappop(pq)
+            if not res or first_chr != res[-1]:
+                res.append(first_chr)
+                if first_cnt + 1 != 0:
+                    heapq.heappush(pq, (first_cnt + 1, first_chr))
+            else:
+                if not pq:
+                    return ""
+                second_cnt, second_chr = heapq.heappop(pq)
+                res.append(second_chr)
+                if second_cnt + 1 != 0:
+                    heapq.heappush(pq, (second_cnt + 1, second_chr))
+                heapq.heappush(pq, (first_cnt, first_chr))
+        
+        return "".join(res)
 ```
