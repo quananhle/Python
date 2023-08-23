@@ -53,8 +53,8 @@ __Algorithm__
 
 __Complexity Analysis__
 
-- __Time Complexity__: \mathcal{O}(N \cdot \log k)$
-- __Space Complexity__: \mathcal{O}(k)$
+- __Time Complexity__: $\mathcal{O}(N \cdot \log k)$. We add one character to the string per iteration, so there are $\mathcal{O}(N)$ iterations. In each iteration, we perform a maximum of ```3``` priority queue operations. Each priority queue operation costs $\log k$. For this problem, ```k``` is bounded by ```26```, so one could argue that the time complexity is actually $\mathcal{O}(N)$.
+- __Space Complexity__: $\mathcal{O}(k)$. The counter used to count the number of occurrences will incur a space complexity of $\mathcal{O}(k)$. Similarly, the maximum size of the priority queue will also be $\mathcal{O}(k)$. Given that $k \le 26$ in this problem, one could argue the space complexity is in fact $\mathcal{O}(1)$.
 
 ```Python
 class Solution:
