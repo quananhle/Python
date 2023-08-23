@@ -39,6 +39,11 @@ __Constraints:__
 
 ### Stack
 
+Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(n)$.
+- __Space Complexity__: $\mathcal{O}(n)$.
+
 ```Python
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
