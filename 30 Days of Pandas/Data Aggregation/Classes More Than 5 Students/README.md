@@ -29,11 +29,21 @@ orders = pd.DataFrame(data, columns=['order_number', 'customer_number']).astype(
 ---
 
 ```Python
+import pandas as pd
 
+def largest_orders(orders: pd.DataFrame) -> pd.DataFrame:
+    if orders.empty:
+        return pd.DataFrame({'customer_number': []})
+
+    df = orders.groupby('customer_number').size().reset_index(name='count')
+    df.sort_values(by='count', ascending=False, inplace=True)
+    return df[['customer_number']][0:1]
 ```
 
 ```MySQL
 # Write your MySQL query statement below
 
 ```
+
+__Follow up__: What if more than one customer has the largest number of orders, can you find all the ```customer_number``` in this case?
 
