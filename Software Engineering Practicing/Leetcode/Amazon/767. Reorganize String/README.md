@@ -1,6 +1,6 @@
 ## [767. Reorganize String](https://leetcode.com/problems/reorganize-string/)
 
-```Tag```: ```Priority Queue```
+```Tag```: ```Priority Queue``` ```Counter```
 
 #### Difficulty: Medium
 
@@ -94,6 +94,21 @@ class Solution:
 ![image](https://github.com/quananhle/Python/assets/35042430/88d72612-9673-42ac-992c-4fedd83d92a9)
 
 ![image](https://github.com/quananhle/Python/assets/35042430/c9e910ca-dd97-4492-9101-f514a4d154a1)
+
+__Algorithm__
+
+1. Create a counter ```counter``` to store the counts of each character in the input string ```s```.
+2. Find the character with the maximum count (```max_count```) in ```counter```. Set letter as the corresponding character.
+3. Check if ```max_count``` is greater than half of the length of the string rounded up. If so, it is not possible to rearrange the characters. Return an empty string.
+4. Initialize a list ```res``` of length equal to ```s```.
+5. Set the starting index ```i``` as ```0```.
+6. Place the most frequent character ```letter``` in the ```res``` list at every second index until its count becomes zero. Increment ```i``` by ```2``` for each placement and decrease the count of ```letter``` in ```counter```.
+7. Iterate through the remaining characters and their counts in ```counter```:
+  - While the ```count``` is greater than zero:
+    - If index ```i``` exceeds the length of ```s```, set index ```i``` as ```1``` to place all future characters at odd indices.
+    - Place the current character at index ```i``` in the ```res``` list and increment index ```i``` by ```2```.
+    - Decrease the ```count``` of the character by ```1```.
+8. Return the rearranged characters as a string by joining the elements in ```res```.
 
 __Complexity Analysis__
 
