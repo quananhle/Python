@@ -82,3 +82,77 @@ class Solution:
         
         return "".join(res)
 ```
+
+### Approach 2: Counting and Odd/Even
+
+![image](https://github.com/quananhle/Python/assets/35042430/ba6a6f91-5998-4ac3-9d8c-4fc28506ab03)
+
+![image](https://github.com/quananhle/Python/assets/35042430/b2c86914-df4d-4c54-a3d9-a81cb22167dd)
+
+![image](https://github.com/quananhle/Python/assets/35042430/bb59a813-6123-490f-b028-33874f7acd83)
+
+![image](https://github.com/quananhle/Python/assets/35042430/88d72612-9673-42ac-992c-4fedd83d92a9)
+
+![image](https://github.com/quananhle/Python/assets/35042430/c9e910ca-dd97-4492-9101-f514a4d154a1)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$. We add one character to the string per iteration, so there are $\mathcal{O}(N)$ iterations.
+- __Space Complexity__: $\mathcal{O}(k)$. The counter used to count the number of occurrences will incur a space complexity of $\mathcal{O}(k)$. Given that $k \le 26$ in this problem, one could argue the space complexity is in fact $\mathcal{O}(1)$.
+
+```Python
+class Solution:
+    def reorganizeString(self, s: str) -> str:
+        n = len(s)
+        res, counter, i = [''] * n, collections.Counter(s), 0
+        max_count, letter = 0, ''
+        for char, count in counter.items():
+            if count > max_count:
+                max_count = count
+                letter = char
+        
+        if max_count > (n + 1) // 2:
+            return ""
+        
+        # Distribute the most frequent character
+        while counter[letter] != 0:
+            res[i] = letter
+            i += 2
+            counter[letter] -= 1
+
+        del counter[letter]
+
+        # Distribute the res of the characters in any order
+        for char, count in counter.items():
+            while count > 0:
+                # After placing characters in all even indices, move pointer to the odd index
+                if i >= n:
+                    i = 1
+                res[i] = char
+                i += 2
+                count -= 1
+
+        return "".join(res)
+```
+
+```Python
+class Solution:
+    def reorganizeString(self, s: str) -> str:
+        n = len(s)
+        res, counter, i = [None] * n, collections.Counter(s), 0
+        most_common_char, most_common_freq = counter.most_common(1)[0][0], counter.most_common(1)[0][1]
+
+        if most_common_freq > (n + 1) // 2:
+            return ""
+        del counter[most_common_char]
+
+        for c, f in [(most_common_char, most_common_freq)] + list(counter.items()):
+            for _ in range(f):
+                res[i] = c
+                if i + 2 < n:
+                    i += 2
+                else:
+                    i = 1
+
+        return "".join(res)
+```
