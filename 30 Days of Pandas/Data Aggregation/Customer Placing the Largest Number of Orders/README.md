@@ -44,6 +44,8 @@ def find_classes(courses: pd.DataFrame) -> pd.DataFrame:
 
 ```MySQL
 # Write your MySQL query statement below
-
+# Write your MySQL query statement below
+SELECT class FROM courses 
+GROUP BY class HAVING COUNT(class) >= 5;
 ```
 
