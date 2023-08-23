@@ -34,11 +34,18 @@ Courses = pd.DataFrame(data, columns=['student', 'class']).astype({'student':'ob
 ---
 
 ```Python
+import pandas as pd
 
+def find_classes(courses: pd.DataFrame) -> pd.DataFrame:
+    df = courses.groupby('class')['student'].size().reset_index(name='count')
+    df = df[(df['count'] >= 5)]
+    return df[['class']]
 ```
 
 ```MySQL
 # Write your MySQL query statement below
-
+# Write your MySQL query statement below
+SELECT class FROM courses 
+GROUP BY class HAVING COUNT(class) >= 5;
 ```
 
