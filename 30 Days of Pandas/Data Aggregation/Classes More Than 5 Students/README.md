@@ -42,7 +42,9 @@ def largest_orders(orders: pd.DataFrame) -> pd.DataFrame:
 
 ```MySQL
 # Write your MySQL query statement below
-
+SELECT customer_number FROM orders 
+GROUP BY customer_number ORDER BY COUNT(*) DESC
+LIMIT 1;
 ```
 
 __Follow up__: What if more than one customer has the largest number of orders, can you find all the ```customer_number``` in this case?
