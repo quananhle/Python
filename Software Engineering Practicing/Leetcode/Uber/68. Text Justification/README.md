@@ -22,8 +22,8 @@ __Note:__
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: words = ["This", "is", "an", "example", "of", "text", "justification."], maxWidth = 16
 Output:
 [
@@ -31,8 +31,10 @@ Output:
    "example  of text",
    "justification.  "
 ]
-Example 2:
+```
 
+__Example 2:__
+```
 Input: words = ["What","must","be","acknowledgment","shall","be"], maxWidth = 16
 Output:
 [
@@ -42,8 +44,10 @@ Output:
 ]
 Explanation: Note that the last line is "shall be    " instead of "shall     be", because the last line must be left-justified instead of fully-justified.
 Note that the second line is also left-justified because it contains only one word.
-Example 3:
+```
 
+__Example 3:__
+```
 Input: words = ["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"], maxWidth = 20
 Output:
 [
@@ -54,14 +58,14 @@ Output:
   "everything  else  we",
   "do                  "
 ]
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= words.length <= 300
-1 <= words[i].length <= 20
-words[i] consists of only English letters and symbols.
-1 <= maxWidth <= 100
-words[i].length <= maxWidth
+- $1 \le words.length \le 300$
+- $1 \le words[i].length \le 20$
+- ```words[i]``` consists of only English letters and symbols.
+- $1 \le maxWidth \le 100$
+- $words[i].length \le maxWidth$
 
 ---
