@@ -1,6 +1,6 @@
 ## [68. Text Justification](https://leetcode.com/problems/text-justification/)
 
-```Tag```:
+```Tag```: ```Greedy```
 
 #### Difficulty: Hard
 
