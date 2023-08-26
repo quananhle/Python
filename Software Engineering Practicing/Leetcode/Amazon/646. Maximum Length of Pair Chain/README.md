@@ -4,9 +4,9 @@
 
 #### Difficulty: Medium
 
-You are given an array of ```n``` pairs ```pairs``` where ```pairs[i] = [lefti, righti]``` and ```lefti < righti```.
+You are given an array of ```n``` pairs ```pairs``` where $pairs[i] = [left_i, right_i]$ and $left_i < right_i$.
 
-A pair ```p2 = [c, d]``` follows a pair ```p1 = [a, b]``` if ```b < c```. A chain of pairs can be formed in this fashion.
+A pair $p_2 = [c, d]$ follows a pair $p_1 = [a, b]$ if ```b < c```. A chain of pairs can be formed in this fashion.
 
 Return _the length longest chain which can be formed_.
 
@@ -34,6 +34,6 @@ __Constraints:__
 
 - $n == pairs.length$
 - $1 \le n \le 1000$
-- $-1000 \le lefti \lt righti \le 1000$
+- $-1000 \le left_i \lt right_i \le 1000$
 
 ---
