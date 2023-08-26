@@ -1,6 +1,6 @@
 ## [646. Maximum Length of Pair Chain](https://leetcode.com/problems/maximum-length-of-pair-chain/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -37,3 +37,32 @@ __Constraints:__
 - $-1000 \le left_i \lt right_i \le 1000$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
+        n = len(pairs)
+        pairs.sort(key=lambda x:x[0])
+        ans = 0
+
+        @lru_cache(maxsize=None)
+        def dp (i, curr_upper):
+            # Minimum length of chain is 1 pair
+            ans = 1
+
+            for j in range(i + 1, n):
+                next_lower, next_upper = pairs[j][0], pairs[j][1]
+                if curr_upper < next_lower:
+                    ans = max(ans, 1 + dp(j, next_upper))
+            
+            return ans
+
+        for i in range(n):
+            ans = max(ans, dp(i, pairs[i][1]))
+        
+        return ans
+```
