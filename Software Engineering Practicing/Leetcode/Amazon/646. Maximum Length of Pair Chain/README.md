@@ -1,6 +1,6 @@
 ## [646. Maximum Length of Pair Chain](https://leetcode.com/problems/maximum-length-of-pair-chain/)
 
-```Tag```: ```Dynamic Programming``` ```Binary Search```
+```Tag```: ```Dynamic Programming``` ```Binary Search``` ```Greedy```
 
 #### Difficulty: Medium
 
@@ -42,6 +42,40 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+#### Complexity Analysis:
+
+- __Time Complexity__: $O(n^2)$.
+- __Space Complexity__: $O(n)$.
+
+```Python
+class Solution:
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
+        n = len(pairs)
+        pairs.sort(key=lambda x:x[0])
+        ans = 0
+
+        # Minimum length of chain is 1 pair
+        memo = collections.defaultdict(lambda:1)
+
+        def dp (i, curr_upper):
+            if i in memo:
+                return memo[i]
+
+            # Check every interval starting after the current interval in a already sorted list
+            for j in range(i + 1, n):
+                next_lower, next_upper = pairs[j][0], pairs[j][1]
+                if curr_upper < next_lower:
+                    memo[i] = max(memo[i], 1 + dp(j, next_upper))
+            
+            return memo[i]
+
+        # Check every interval
+        for i in range(n):
+            ans = max(ans, dp(i, pairs[i][1]))
+        
+        return ans
+```
+
 ```Python
 class Solution:
     def findLongestChain(self, pairs: List[List[int]]) -> int:
@@ -65,4 +99,47 @@ class Solution:
             ans = max(ans, dp(i, pairs[i][1]))
         
         return ans
+```
+
+#### Top-Down Dynamic Programming w/ Binary Search
+
+```Python
+class Solution:
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
+        n = len(pairs)
+        pairs.sort(key=lambda x:x[0])
+        ans = 0
+
+        # Minimum length of chain is 1 pair
+        memo = collections.defaultdict(lambda:1)
+
+        def binary_search(i):
+            lo, hi = i + 1, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if pairs[i][1] < pairs[mi][0]:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+                
+            return lo
+
+        def dp (i):
+            # Base case
+            if i == n:
+                return 0
+
+            if i in memo:
+                return memo[i]
+
+            # DP Transition: skip or take the current interval
+            skip = dp(i + 1)
+            take = 1 + dp(binary_search(i))
+
+            memo[i] = max(skip, take)
+            
+            return memo[i]
+
+        return dp(0)
 ```
