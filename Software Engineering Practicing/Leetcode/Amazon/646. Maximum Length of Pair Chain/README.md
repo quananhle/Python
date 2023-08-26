@@ -42,6 +42,8 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/maximum-length-of-pair-chain/Figures/646/646-1.png)
+
 #### Complexity Analysis:
 
 - __Time Complexity__: $O(n^2)$.
@@ -142,4 +144,57 @@ class Solution:
             return memo[i]
 
         return dp(0)
+```
+
+#### Bottom-Up Dynamic Programming
+
+#### Complexity Analysis:
+
+- __Time Complexity__: $O(n^2)$.
+- __Space Complexity__: $O(n)$.
+
+```Python
+class Solution:
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
+        n = len(pairs)
+        pairs.sort(key=lambda x:x[0])
+
+        # Minimum length of chain is 1 pair
+        ans = 1
+        dp = collections.defaultdict(lambda:1)
+
+        for i in range(n - 1, -1, -1):
+            for j in range(i + 1, n):
+                curr_upper, next_lower = pairs[i][1], pairs[j][0]
+                if curr_upper < next_lower:
+                    dp[i] = max(dp[i], 1 + dp[j])
+            
+            ans = max(ans, dp[i])
+        
+        return ans
+```
+
+---
+
+### Greedy
+
+#### Complexity Analysis:
+
+- __Time Complexity__: $O(n \cdot \log n)$.
+- __Space Complexity__: $O(1)$.
+
+```Python
+class Solution:
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
+        n = len(pairs)
+        pairs.sort(key=lambda x:x[1])
+        ans = 0
+        curr = float("-inf")
+
+        for pair in pairs:
+            if curr < pair[0]:
+                ans += 1
+                curr = pair[1]
+
+        return ans
 ```
