@@ -32,3 +32,19 @@ Employees = pd.DataFrame(data, columns=['emp_id', 'event_day', 'in_time', 'out_t
 ![image](https://github.com/quananhle/Python/assets/35042430/a0266006-7157-44b9-b0c4-64b9c06d9dc8)
 
 ---
+
+```Python
+import pandas as pd
+
+def total_time(employees: pd.DataFrame) -> pd.DataFrame:
+    employees["total_time"] = employees['out_time'] - employees['in_time']
+    df = employees.groupby(["event_day" , "emp_id"])["total_time"].sum().reset_index()
+    df.rename({"event_day": "day"}, axis=1, inplace=True)
+    df["day"] = df["day"].astype(str)
+    return df
+```
+
+```MySQL
+# Write your MySQL query statement below
+SELECT event_day AS day , emp_id , SUM(out_time - in_time) AS total_time FROM Employees GROUP BY emp_id , event_day;
+```
