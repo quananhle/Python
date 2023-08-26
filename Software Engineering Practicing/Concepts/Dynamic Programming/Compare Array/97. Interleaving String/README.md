@@ -140,6 +140,30 @@ class Solution:
         return dp(0, 0
 ```
 
+```Python
+class Solution:
+    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
+        m, n, l = len(s1), len(s2), len(s3)
+
+        if m + n != l:
+            return False
+        
+        @lru_cache(maxsize=None)
+        def dp(i, j, k):
+            # Base case
+            if i == m:
+                return s2[j:] == s3[k:]
+            if j == n:
+                return s1[i:] == s3[k:]
+
+            if (s1[i] == s3[k] and dp(i + 1, j, k + 1)) or (s2[j] == s3[k] and dp(i, j + 1, k + 1)):
+                return True
+            
+            return False
+        
+        return dp(0, 0, 0)
+```
+
 #### Bottom-Up Dynamic Programming
 
 ```Python
