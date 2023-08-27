@@ -50,9 +50,51 @@ __Constraints__:
 ```
 
 ```Python
+class Solution:
+    def canCross(self, stones: List[int]) -> bool:
+        n = len(stones)
 
+        if stones[1] > 1: 
+            return False 	
+
+        steps = {stone:i for i, stone in enumerate(stones)}
+
+        @lru_cache(maxsize=None)
+        def dp(i, k):
+            # Base case
+            if i == n - 1:
+                return True
+
+            # DP Transitions: is the next stone possible to jump in k - 1, k, k + 1 units?
+            ans = False
+
+            for step in range(k - 1, k + 2):
+                if stones[i] + step in steps and steps[stones[i] + step] > i:
+                    ans = ans or dp(steps[stones[i] + step], step)
+
+            return ans
+    
+        return dp(1, 1)
 ```
 
 ```Python
+class Solution:
+    def canCross(self, stones: List[int]) -> bool:
+        stone_set = set(stones)
 
+        @lru_cache(maxsize=None)
+        def dp(stone, k):
+            if stone in stones:
+                # Base case
+                if stone == stones[-1]:
+                    return True
+                
+                # DP Transitions
+                for next_leap in range(max(1, k - 1), k + 2):
+                    if dp(stone + next_leap, next_leap):
+                        return True
+                
+            return False
+        
+        return dp(0, 0)
 ```
