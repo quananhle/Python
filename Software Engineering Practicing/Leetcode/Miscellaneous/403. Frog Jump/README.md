@@ -36,3 +36,23 @@ __Constraints__:
 - ```stones``` is sorted in a strictly increasing order.
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
+
+```Python
+
+```
+
+```Python
+
+```
