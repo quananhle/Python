@@ -52,7 +52,6 @@ class Solution:
         steps = {stone:i for i, stone in enumerate(stones)}
         memo = collections.defaultdict(bool)
 
-        @lru_cache(maxsize=None)
         def dp(i, k):
             # Base case
             if i == n - 1:
@@ -73,7 +72,31 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def canCross(self, stones: List[int]) -> bool:
+        stone_set = set(stones)
+        memo = collections.defaultdict(bool)
 
+        def dp(stone, k):
+            if (stone, k) in memo:
+                return memo[(stone, k)]
+
+            if stone in stones:
+                # Base case
+                if stone == stones[-1]:
+                    memo[(stone, k)] = True
+                    return True
+                
+                # DP Transitions
+                for next_leap in range(max(1, k - 1), k + 2):
+                    if dp(stone + next_leap, next_leap):
+                        memo[(stone, k)] = True
+                        return True
+            
+            memo[(stone, k)] = False
+            return False
+        
+        return dp(0, 0)
 ```
 
 ```Python
