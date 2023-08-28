@@ -284,6 +284,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
 - :warning::warning: [688. Knight Probability in Chessboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/688.%20Knight%20Probability%20in%20Chessboard)
 - :warning::warning: [712. Minimum ASCII Delete Sum for Two Strings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/712.%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings) ```Recursion```
+- :warning::warning: [740. Delete and Earn](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/740.%20Delete%20and%20Earn)
 - :four_leaf_clover: [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
 - :warning::warning: [837. New 21 Game](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/837.%20New%2021%20Game)
 - :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
