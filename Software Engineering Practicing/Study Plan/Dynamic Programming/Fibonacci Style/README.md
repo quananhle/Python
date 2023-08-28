@@ -21,18 +21,20 @@ class Solution:
     def rob(self, nums: List[int]) -> int:
         n = len(nums)
 
-        @lru_cache(None)
-        def dp(curr):
+        @lru_cache(maxsize=None)
+        def dp(curr: int) -> int:
             # Base case
             if curr >= n:
                 return 0
             
-            # Recurrence relation: to skip or to rob the current house?
-            # Skip, move on to the next house, not gaining any money from the current house
+            # DP Transition: take or skip this house?
+            
+            # Skip the current house: move on to the next house, not taking the money from the current house
             skip = dp(curr + 1)
-            # Take, mvoe on down to 2 houses over, take the money off the current house
+            # Take the current house: move on to the next next house, taking the money from the current house
             take = nums[curr] + dp(curr + 2)
-            # What is the best decision?
+        
+            # Get the maximum amount of money
             return max(skip, take)
         
         return dp(0)
