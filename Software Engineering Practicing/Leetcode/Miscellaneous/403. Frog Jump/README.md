@@ -42,7 +42,34 @@ __Constraints__:
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def canCross(self, stones: List[int]) -> bool:
+        n = len(stones)
 
+        if stones[1] > 1: 
+            return False
+
+        steps = {stone:i for i, stone in enumerate(stones)}
+        memo = collections.defaultdict(bool)
+
+        @lru_cache(maxsize=None)
+        def dp(i, k):
+            # Base case
+            if i == n - 1:
+                return True
+
+            if (i, k) in memo:
+                return memo[(i, k)]
+            # DP Transitions: is the next stone possible to jump in k - 1, k, k + 1 units?
+            memo[(i, k)] = False
+
+            for step in range(k - 1, k + 2):
+                if stones[i] + step in steps and steps[stones[i] + step] > i:
+                    memo[(i, k)] = memo[(i, k)] or dp(steps[stones[i] + step], step)
+
+            return memo[(i, k)]
+    
+        return dp(1, 1)
 ```
 
 ```Python
