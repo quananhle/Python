@@ -158,6 +158,35 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N^{2})$
+- __Space Complexity__: $\mathcal{O}(N^{2})$
+
+```Python
+class Solution:
+    def canCross(self, stones: List[int]) -> bool:
+        n = len(stones)
+        dp = [[None] * (n + 1) for _ in range(n + 1)]
+        steps = {stone:i for i, stone in enumerate(stones)}
+
+        dp[0][0] = True
+
+        for i in range(n):
+            for k in range(n + 1):
+                if dp[i][k]:
+                    if (stones[i] + k) in steps:
+                        dp[steps.get(stones[i] + k)][k] = True
+                    
+                    if (stones[i] + k + 1) in steps:
+                        dp[steps.get(stones[i] + k + 1)][k + 1] = True
+                    
+                    if (stones[i] + k - 1) in steps:
+                        dp[steps.get(stones[i] + k - 1)][k - 1] = True
+                    
+        for i in range(n + 1):
+            if dp[n - 1][i]:
+                return True
+            
+        return False
 ```
