@@ -41,6 +41,13 @@ __Constraints__:
 
 #### Top-Down Dynamic Programming
 
+![image](https://github.com/quananhle/Python/assets/35042430/ead430b6-90a4-4d8a-af52-1aeb8d365b5f)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^{2})$
+- __Space Complexity__: $\mathcal{O}(N^{2})$
+
 ```Python
 class Solution:
     def canCross(self, stones: List[int]) -> bool:
