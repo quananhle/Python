@@ -48,6 +48,28 @@ class Solution:
         return dp(n)
 ```
 
+### [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
+
+```Python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        n = len(cost)
+
+        @lru_cache(maxsize=None)
+        def dp(curr):
+            # Base case
+            if curr >= n - 2:
+                return 0
+            
+            # DP Transition: does start from index 0 or index 1 better? Should be taking 1 step or 2 steps?
+            one = cost[curr + 1] + dp(curr + 1)
+            two = cost[curr + 2] + dp(curr + 2)
+
+            return min(one, two)
+        
+        return dp(-1)
+```
+
 ### [198. House Robber](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/198.%20House%20Robber)
 
 ```Python
@@ -72,4 +94,39 @@ class Solution:
             return max(skip, take)
         
         return dp(0)
+```
+
+### [740. Delete and Earn](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/740.%20Delete%20and%20Earn)
+
+```Python
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        n = len(nums)
+
+        points = collections.defaultdict(int)
+        max_num = 0
+
+        for num in nums:
+            points[num] += num
+            max_num = max(max_num, num)
+
+        @lru_cache(maxsize=None)
+        def dp(curr):
+            # Base cases
+            if curr == 0:
+                return 0
+            if curr == 1:
+                return points[curr]
+            
+            # DP Transitions: pick or skip the current number?
+
+            # Skip the current number
+            skip = dp(curr - 1)
+
+            # Take the current number
+            take = points[curr] + dp(curr - 2)
+
+            return max(skip, take)
+
+        return dp(max_num)
 ```
