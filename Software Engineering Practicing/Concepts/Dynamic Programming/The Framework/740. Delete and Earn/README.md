@@ -1,4 +1,4 @@
-## 740. Delete and Earn
+## [740. Delete and Earn](https://leetcode.com/problems/delete-and-earn)
 
 ```Tag```: ```Dynamic Programming``` ```Recursion```
 
