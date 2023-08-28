@@ -69,7 +69,7 @@ class Solution(object):
             if num in memo:
                 return memo[num]
             else:
-                memo[num] = helper(num - 1) + helper(num - 2)
+                memo[num] = dp(num - 1) + dp(num - 2)
             return memo[num]
 
         return dp(n)
