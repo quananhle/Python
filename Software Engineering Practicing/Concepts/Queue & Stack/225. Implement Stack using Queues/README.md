@@ -1,4 +1,4 @@
-## 225. Implement Stack using Queues
+## [225. Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues)
 
 ```Tag```: ```Stack```  ```Design```  ```Queue```
 
@@ -46,9 +46,55 @@ At most 100 calls will be made to push, pop, top, and empty.
 All the calls to pop and top are valid.
 ```
 
+---
+
+### Two Queues
+
+```Python
+class MyStack:
+
+    def __init__(self):
+        self.q1 = collections.deque()
+        self.q2 = collections.deque()
+        self.t = 0
+
+
+    def push(self, x: int) -> None:
+        self.q1.append(x)
+        self.t = x
+
+
+    def pop(self) -> int:
+        while len(self.q1) > 1:
+            if len(self.q1) == 2:
+                self.t = self.q1[0]
+            top = self.q1.popleft()
+            self.q2.append(top)
+        
+        output = self.q1.popleft()
+        self.q1, self.q2 = self.q2, self.q1
+        return output
+
+
+    def top(self) -> int:
+        return self.t
+
+
+    def empty(self) -> bool:
+        return len(self.q1) == 0        
+
+
+# Your MyStack object will be instantiated and called as such:
+# obj = MyStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.empty()
+```
+
 __Follow-up:__ Can you implement the stack using only one queue?
 
----
+### One Queue
 
 ```Python
 class MyStack:
