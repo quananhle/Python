@@ -18,6 +18,8 @@
 - [Bitwise Manipulation](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#bitwise-manipulation)
 - [Design](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#design)
 - [Dynamic Programming](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#dynamic-programming)
+  - [Fibonacci](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#fibonacci)
+  - [Matrix](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#matrix)
   - [Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#subsequence)
     - [Longest Common Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-common-subsequence)
     - [Longest Increasing Subsequence](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#longest-increasing-subsequence)
@@ -262,15 +264,10 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 
 ## Dynamic Programming
 
-- :warning::warning: [50. Pow(x, n)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/50.%20Pow(x,%20n)) ```Binary Search```
-- :warning::warning: [62. Unique Paths](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2011%20-%20Dynamic%20Programming/62.%20Unique%20Paths) ```Recursion```
-- :warning::warning: [64. Minimum Path Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/64.%20Minimum%20Path%20Sum)
-- :four_leaf_clover: [70. Climbing Stairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/70.%20Climbing%20Stairs) ```Recursion``` ```Bitwise Manipulations```
+- :warning::warning: [50. Pow(x, n)](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/50.%20Pow(x,%20n)) ```Binary Search``
 - :warning::warning: [72. Edit Distance](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Compare%20Array/72.%20Edit%20Distance)
 - :no_entry::no_entry::no_entry: [87. Scramble String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/87.%20Scramble%20String/)
-- :warning::warning: [120. Triangle](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/120.%20Triangle)
 - :warning::warning: [139. Word Break](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/139.%20Word%20Break)
-- :warning::warning: [198. House Robber](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/198.%20House%20Robber)
 - :no_entry::no_entry::no_entry: [265. Paint House II](https://github.com/quananhle/Python/blob/9df46749657cd415c76b348be61619651a3445c5/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/265.%20Paint%20House%20II)
 - [279. Perfect Squares]
 - :warning::warning: [322. Coin Change](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Common%20Pattern/322.%20Coin%20Change)
@@ -279,15 +276,11 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :no_entry::no_entry::no_entry: [410. Split Array Largest Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/410.%20Split%20Array%20Largest%20Sum) ```Binary Search```
 - :warning::warning: [416. Partition Equal Subset Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2013%20-%20Dynamic%20Programming/416.%20Partition%20Equal%20Subset%20Sum)
 - :warning::warning: [486. Predict the Winner](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Cisco/486.%20Predict%20the%20Winner) ```Recursion```
-- :four_leaf_clover: [509. Fibonacci Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2010%20-%20Dynamic%20Programming/509.%20Fibonacci%20Number)
 - :warning::warning: [518. Coin Change II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Counting%20Dynamic%20Programming/518.%20Coin%20Change%20II)
 - :warning::warning: [651. 4 Keys Keyboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/651.%204%20Keys%20Keyboard) ```Math```
 - :warning::warning: [688. Knight Probability in Chessboard](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/688.%20Knight%20Probability%20in%20Chessboard)
 - :warning::warning: [712. Minimum ASCII Delete Sum for Two Strings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/712.%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings) ```Recursion```
-- :warning::warning: [740. Delete and Earn](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/740.%20Delete%20and%20Earn)
-- :four_leaf_clover: [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
 - :warning::warning: [837. New 21 Game](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/837.%20New%2021%20Game)
-- :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
 - :no_entry::no_entry::no_entry: [1187. Make Array Strictly Increasing](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1187.%20Make%20Array%20Strictly%20Increasing) ```Binary Search```
 - :warning::warning: [1140. Stone Game II](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1140.%20Stone%20Game%20II)
 - :warning::warning: [1155. Number of Dice Rolls With Target Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/1155.%20Number%20of%20Dice%20Rolls%20With%20Target%20Sum)
@@ -306,6 +299,22 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [2369. Check if There is a Valid Partition For The Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2369.%20Check%20if%20There%20is%20a%20Valid%20Partition%20For%20The%20Array)
 - :warning::warning: [2466. Count Ways To Build Good Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2466.%20Count%20Ways%20To%20Build%20Good%20Strings)
 - :warning::warning: [2770. Maximum Number of Jumps to Reach the Last Index](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/2770.%20Maximum%20Number%20of%20Jumps%20to%20Reach%20the%20Last%20Index)
+
+### Fibonacci
+
+- :four_leaf_clover: [70. Climbing Stairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/70.%20Climbing%20Stairs) ```Recursion``` ```Bitwise Manipulations```
+- :warning::warning: [198. House Robber](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/198.%20House%20Robber)
+- :four_leaf_clover: [509. Fibonacci Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2010%20-%20Dynamic%20Programming/509.%20Fibonacci%20Number)
+- :warning::warning: [740. Delete and Earn](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/740.%20Delete%20and%20Earn)
+- :four_leaf_clover: [746. Min Cost Climbing Stairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/746.%20Min%20Cost%20Climbing%20Stairs)
+- :four_leaf_clover: [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
+
+### Matrix
+
+- :warning::warning: [62. Unique Paths](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2011%20-%20Dynamic%20Programming/62.%20Unique%20Paths)
+- :warning::warning: [63. Unique Paths II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/DP%20for%20Paths%20in%20a%20Matrix/63.%20Unique%20Paths%20II)
+- :warning::warning: [64. Minimum Path Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/64.%20Minimum%20Path%20Sum)
+- :warning::warning: [120. Triangle](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/120.%20Triangle)
 
 ### Subsequence
 
