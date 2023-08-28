@@ -1,3 +1,37 @@
+### [70. Climbing Stairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/70.%20Climbing%20Stairs)
+
+```Python
+class Solution(object):
+    def climbStairs(self, n: int) -> int:
+        memo = collections.defaultdict(int)
+        memo[1], memo[2] = 1, 2   
+
+        def dp(num):
+            if num in memo:
+                return memo[num]
+            else:
+                memo[num] = dp(num - 1) + dp(num - 2)
+            return memo[num]
+
+        return dp(n)
+```
+
+### [509. Fibonacci Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2010%20-%20Dynamic%20Programming/509.%20Fibonacci%20Number)
+
+```Python
+class Solution:
+    def fib(self, n: int) -> int:
+        memo = collections.defaultdict(int)
+        memo[0], memo[1], memo[2], memo[3], memo[4] = 0, 1, 1, 2, 3
+        if n < 5:
+            return memo[n]
+
+        for curr in range(5, n + 1):
+            memo[curr] = memo[curr - 1] + memo[curr - 2]
+        
+        return memo[n]
+```
+
 ### [1137. N-th Tribonacci Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/1137.%20N-th%20Tribonacci%20Number)
 
 ```Python
