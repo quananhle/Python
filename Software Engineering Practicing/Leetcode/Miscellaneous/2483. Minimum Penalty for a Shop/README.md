@@ -78,3 +78,26 @@ class Solution:
 
         return ans
 ```
+
+### One Pass
+
+```Python
+class Solution:
+    def bestClosingTime(self, customers: str) -> int:
+        # Minimize 'Y' and maximize 'N'
+        counter = collections.Counter(customers)
+        ans = 0
+        curr_penalty = min_penalty = 0
+
+        for h, c in enumerate(customers):
+            if c == 'Y':
+                curr_penalty -= 1
+            else:
+                curr_penalty += 1
+
+            if curr_penalty < min_penalty:
+                ans = h + 1
+                min_penalty = curr_penalty
+
+        return ans
+```
