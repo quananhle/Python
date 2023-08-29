@@ -1,6 +1,6 @@
 ## [2483. Minimum Penalty for a Shop](https://leetcode.com/problems/minimum-penalty-for-a-shop/)
 
-```Tag```:
+```Tag```: ```Array & String```
 
 #### Difficulty: Medium
 
@@ -55,3 +55,26 @@ __Constraints:__
 - ```customers``` consists only of characters ```'Y'``` and ```'N'```.
 
 ---
+
+### Counter
+
+```Python
+class Solution:
+    def bestClosingTime(self, customers: str) -> int:
+        # Minimize 'Y' and maximize 'N'
+        counter = collections.Counter(customers)
+        ans = 0
+        curr_penalty = min_penalty = counter.get('Y', 0)
+
+        for h, c in enumerate(customers):
+            if c == 'Y':
+                curr_penalty -= 1
+            else:
+                curr_penalty += 1
+
+            if curr_penalty < min_penalty:
+                ans = h + 1
+                min_penalty = curr_penalty
+
+        return ans
+```
