@@ -71,3 +71,24 @@ class Solution:
         
         return dp(0, 0)
 ```
+
+### [120. Triangle](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/120.%20Triangle)
+
+```Python
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        m = len(triangle)
+
+        @lru_cache(None)
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < m):
+                return 0
+            
+            # Recurrence relation: find the minimum number in the next row to add to the final output
+            path = triangle[row][col]
+            path += min(dp(row + 1, col), dp(row + 1, col + 1))
+            return path
+
+        return dp(0, 0)
+```
