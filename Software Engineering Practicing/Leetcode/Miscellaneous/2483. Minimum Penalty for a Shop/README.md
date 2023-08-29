@@ -21,3 +21,37 @@ Note that if a shop closes at the $j^{th}$ hour, it means the shop is closed at 
 ![image](https://github.com/quananhle/Python/assets/35042430/f69b914e-8613-4939-9874-c984c871eece)
 
 ---
+
+__Example 1:__
+```
+Input: customers = "YYNY"
+Output: 2
+Explanation: 
+- Closing the shop at the 0th hour incurs in 1+1+0+1 = 3 penalty.
+- Closing the shop at the 1st hour incurs in 0+1+0+1 = 2 penalty.
+- Closing the shop at the 2nd hour incurs in 0+0+0+1 = 1 penalty.
+- Closing the shop at the 3rd hour incurs in 0+0+1+1 = 2 penalty.
+- Closing the shop at the 4th hour incurs in 0+0+1+0 = 1 penalty.
+Closing the shop at 2nd or 4th hour gives a minimum penalty. Since 2 is earlier, the optimal closing time is 2.
+```
+
+__Example 2:__
+```
+Input: customers = "NNNNN"
+Output: 0
+Explanation: It is best to close the shop at the 0th hour as no customers arrive.
+```
+
+__Example 3:__
+```
+Input: customers = "YYYY"
+Output: 4
+Explanation: It is best to close the shop at the 4th hour as customers arrive at each hour.
+```
+
+__Constraints:__
+
+- $1 \le customers.length \le 10^5$
+- ```customers``` consists only of characters ```'Y'``` and ```'N'```.
+
+---
