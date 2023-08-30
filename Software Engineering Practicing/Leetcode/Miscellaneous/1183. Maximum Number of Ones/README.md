@@ -38,6 +38,6 @@ __Constraints:__
 
 - $1 \le width, height \le 100$
 - $1 \le sideLength \le width, height$
-- $0 \le maxOnes \le sideLength \cdot sideLength
+- $0 \le maxOnes \le sideLength \cdot sideLength$
 
 ---
