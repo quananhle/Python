@@ -12,8 +12,8 @@ Return _the maximum possible number of ones that the matrix ```M``` can have_.
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: width = 3, height = 3, sideLength = 2, maxOnes = 1
 Output: 4
 Explanation:
@@ -22,18 +22,22 @@ The best solution that has 4 ones is:
 [1,0,1]
 [0,0,0]
 [1,0,1]
-Example 2:
+```
 
+__Example 2:__
+```
 Input: width = 3, height = 3, sideLength = 2, maxOnes = 2
 Output: 6
 Explanation:
 [1,0,1]
 [1,0,1]
 [1,0,1]
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= width, height <= 100
-1 <= sideLength <= width, height
-0 <= maxOnes <= sideLength * sideLength
+- $1 \le width, height \le 100$
+- $1 \le sideLength \le width, height$
+- $0 \le maxOnes \le sideLength \cdot sideLength
+
+---
