@@ -96,7 +96,30 @@ class Solution:
 ### 931. Minimum Falling Path Sum
 
 ```Python
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        ROWS, COLS = len(matrix), len(matrix[0])
 
+        @lru_cache(maxsize=None)
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return math.inf
+
+            if row == ROWS - 1:
+                return matrix[row][col]
+            
+            left = dp(row + 1, col - 1)
+            mid =  dp(row + 1, col)
+            right = dp(row + 1, col + 1)
+
+            return min(left, mid, right) + matrix[row][col]
+        
+        ans = math.inf
+        for col in range(COLS):
+            ans = min(ans, dp(0, col))
+        
+        return ans
 ```
 
 ### 221. Maximal Square
