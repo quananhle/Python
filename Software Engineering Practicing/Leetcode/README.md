@@ -1,6 +1,6 @@
 # Problems
 
-- [Array & String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#array--string
+- [Array & String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#array--string)
   - [2D Array](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#2d-arraymatrix)
   - [Intervals](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#intervals)
   - [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/README.md#sliding-window)
