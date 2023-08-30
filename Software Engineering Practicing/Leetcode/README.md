@@ -74,6 +74,7 @@
 - :four_leaf_clover: [1491. Average Salary Excluding the Minimum and Maximum Salary](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1491.%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary)
 - :four_leaf_clover: [1502. Can Make Arithmetic Progression From Sequence](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1502.%20Can%20Make%20Arithmetic%20Progression%20From%20Sequence) ```Sorting```
 - :four_leaf_clover: [1822. Sign of the Product of an Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1822.%20Sign%20of%20the%20Product%20of%20an%20Array)
+- :warning::warning: [2483. Minimum Penalty for a Shop](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2483.%20Minimum%20Penalty%20for%20a%20Shop)
 - :four_leaf_clover: [2660. Determine the Winner of a Bowling Game](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2660.%20Determine%20the%20Winner%20of%20a%20Bowling%20Game) ```Brainteasing```
 
 ### 2D Array/Matrix
