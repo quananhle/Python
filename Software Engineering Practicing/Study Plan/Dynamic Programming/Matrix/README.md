@@ -92,3 +92,15 @@ class Solution:
 
         return dp(0, 0)
 ```
+
+### 931. Minimum Falling Path Sum
+
+```Python
+
+```
+
+### 221. Maximal Square
+
+```Python
+
+```
