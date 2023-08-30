@@ -8,7 +8,7 @@ Given an ```n x n``` array of integers ```matrix```, return _the __minimum sum__
 
 A __falling path__ starts at any element in the first row and chooses the element in the next row that is either directly below or diagonally left/right. Specifically, the next element from position ```(row, col)``` will be ```(row + 1, col - 1)```, ```(row + 1, col)```, or ```(row + 1, col + 1)```.
 
-![image](https://user-images.githubusercontent.com/35042430/220773219-7dfb7975-8782-4538-8e71-78204286846e.png)
+![image](https://github.com/quananhle/Python/assets/35042430/6aca375c-aa4c-4181-a592-5fcdd11d4daa)
 
 ---
 
