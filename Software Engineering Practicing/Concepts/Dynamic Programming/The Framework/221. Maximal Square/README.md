@@ -6,7 +6,7 @@
 
 Given an ```m x n``` binary ```matrix``` filled with ```0```'s and ```1```'s, _find the largest __square__ containing only ```1```'s and return its area_.
 
-![image](https://user-images.githubusercontent.com/35042430/219122468-77912fa5-52f5-45df-b9cd-0595000c9930.png)
+![image](https://github.com/quananhle/Python/assets/35042430/dc6b76d2-4356-4150-848c-12bd5afe4a32)
 
 ---
 
