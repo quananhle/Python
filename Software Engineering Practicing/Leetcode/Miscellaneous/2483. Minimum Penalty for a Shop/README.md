@@ -69,6 +69,15 @@ We can calculate the total penalty by traversing ```customers```.
 
 ![image](https://leetcode.com/problems/minimum-penalty-for-a-shop/Figures/2483/2.png)
 
+![image](https://leetcode.com/problems/minimum-penalty-for-a-shop/Figures/2483/3.png)
+
+First calculate the total penalty if we close instantly (after hour ```0```). Hence, the penalty of closing the shop after $\mathcal{0}^{th}$ hour is based on the status of ```customers[0]```:
+
+- If it is ```'Y'```, it means one penalty from the closed hours is removed, resulting in a decrease of the total penalty by ```1```.
+- If it is ```'N'```, it means an additional penalty is added from the open hours, resulting in an increase of the total penalty by ```1```.
+
+Each time we iterate over a new ```i```, we are finding the new penalty if we were to close after ```i``` instead of after ```i - 1```.
+
 ### Counter
 
 ```Python
