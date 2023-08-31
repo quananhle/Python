@@ -15,6 +15,8 @@ Return _the minimum number of taps that should be open to water the whole garden
 ---
 
 __Example 1:__
+
+1[image](https://assets.leetcode.com/uploads/2020/01/16/1685_example_1.png)
 ```
 Input: n = 5, ranges = [3,4,1,1,0,0]
 Output: 1
@@ -44,10 +46,33 @@ __Constraints:__
 
 ### The Framework
 
-#### Top-Down Dynamic Programming
+#### Top-Down Dynamic Programming (Memory Limit Exceeded)
 
 ```Python
+class Solution:
+    def minTaps(self, n: int, ranges: List[int]) -> int:
+        size = len(ranges)
 
+        @functools.lru_cache(maxsize=None)
+        def dp(i, prev):
+            # Base case
+            if i >= size:
+                return math.inf
+
+            ans = math.inf
+
+            if i - prev <= ranges[i]:
+                if i + ranges[i] >= size - 1:
+                    ans = 1
+                else:
+                    ans = 1 + dp(i + 1, i + ranges[i])
+
+            ans = min(ans, dp(i + 1, prev))
+
+            return ans
+
+        ans = dp(0, 0)
+        return -1 if ans == math.inf else ans
 ```
 
 #### Bottom-Up Dynamic Programming
