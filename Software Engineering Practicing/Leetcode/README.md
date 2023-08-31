@@ -422,6 +422,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :no_entry::no_entry::no_entry: [1326. Minimum Number of Taps to Open to Water a Garden](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1326.%20Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden) ```Dynamic Programming```
 - :warning::warning: [1328. Break a Palindrome](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1328.%20Break%20a%20Palindrome)
 - :warning::warning: [2131. Longest Palindrome by Concatenating Two Letter Words](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2005%20-%20Greedy/2131.%20Longest%20Palindrome%20by%20Concatenating%20Two%20Letter%20Words)
+- :no_entry::no_entry::no_entry: [2366. Minimum Replacements to Sort the Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2366.%20Minimum%20Replacements%20to%20Sort%20the%20Array)
 - :warning::warning: [2405. Optimal Partition of String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/2405.%20Optimal%20Partition%20of%20String/) ```Hash Table```
 - :no_entry::no_entry::no_entry: [2551. Put Marbles in Bags](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2551.%20Put%20Marbles%20in%20Bags) ```Sorting```
 
