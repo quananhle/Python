@@ -82,13 +82,22 @@ Each time we iterate over a new ```i```, we are finding the new penalty if we we
 - Closing the shop at the $\mathcal{0}^{th}$ hour incurs in 1+1+1+0+1+1+1+0+1+0+1+0 = 8 penalties.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/a257a80d-eac8-4048-a1af-85b22b929ab8)
-- Closing the shop at the $\mathcal{1}^{th}$ hour incurs in 0+1+1+0+1+1+1+0+1+0+1+0 = 7 penalties.
+- Closing the shop at the $\mathcal{1}^{st}$ hour incurs in 0+1+1+0+1+1+1+0+1+0+1+0 = 7 penalties.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/3d19e54c-464f-4bea-95a4-fe0a2fdf121c)
-- Closing the shop at the $\mathcal{2}^{th}$ hour incurs in 0+0+1+0+1+1+1+0+1+0+1+0 = 6 penalties.
- 
+- Closing the shop at the $\mathcal{2}^{nd}$ hour incurs in 0+0+1+0+1+1+1+0+1+0+1+0 = 6 penalties.
+
+![image](https://github.com/quananhle/Python/assets/35042430/ea85d62c-52b6-45f8-8148-06d5d8edfaee)
+- Closing the shop at the $\mathcal{3}^{rd}$ hour incurs in 0+0+0+0+1+1+1+0+1+0+1+0 = 5 penalties.
+
+![image](https://github.com/quananhle/Python/assets/35042430/5fb4743c-a607-4409-8aa1-ab5bff6f13e5)
+- Closing the shop at the $\mathcal{4}^{th}$ hour incurs in 0+0+0+0+1+1+1+0+1+0+1+0 = 5 penalties.
+
+![image](https://github.com/quananhle/Python/assets/35042430/ac12e2c8-6100-41c7-93fe-7253804230bc)
+- Closing the shop at the $\mathcal{5}^{th}$ hour incurs in 0+0+0+0+1+1+1+0+1+0+1+0 = 5 penalties.
+
+
 ![image](https://github.com/quananhle/Python/assets/35042430/72513aee-1080-47f3-9f52-d625a20cd182)
-- Closing the shop at the $\mathcal{1}^{th}$ hour incurs in 0+1+1+0+1+1+1+0+1+0+1+0 = 7 penalties.
 
 ### Counter
 
