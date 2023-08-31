@@ -132,6 +132,8 @@ class Solution:
 
 ### One Pass
 
+In the previous solution, we used the first traversal to calculate the count of ```'Y'```, ensuring that each penalty obtained is accurate. However, we do not need the actual penalty values. It is important to note that the problem only requires the earliest hour with the lowest penalty. Thus, the only thing that matters is the penalty of the hours relative to each other, and our initial reference point is not significant.
+
 ![image](https://leetcode.com/problems/minimum-penalty-for-a-shop/Figures/2483/4.png)
 
 ```Python
