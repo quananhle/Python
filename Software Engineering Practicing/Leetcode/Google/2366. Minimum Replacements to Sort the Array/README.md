@@ -1,6 +1,6 @@
 ## [2366. Minimum Replacements to Sort the Array](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Greedy```
 
 #### Difficulty: Hard
 
@@ -49,3 +49,38 @@ __Constraints:__
 ![image](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/Figures/2366/4.png)
 
 ![image](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/Figures/2366/5.png)
+
+### Greedy
+
+__Algorithm__
+
+1. Set ```ans``` as 0, and set ```n``` as the length of ```nums```.
+2. Iterate over ```nums``` backward from ```nums[n - 2]```, as we don't need to replace ```nums[n - 1]```.
+ - If ```nums[i] <= nums[i + 1]```, move on to the next element ```nums[i - 1]```.
+ - If ```nums[i]``` is divisible by ```nums[i + 1]```, break ```nums[i]``` into ```nums_elements = num[i] / nums[i + 1]``` elements, otherwise, break ```num[i]``` into ```nums_elements = nums[i] / nums[i + 1] + 1``` elements. This requires ```num_elements - 1``` replacement operations. Hence, we increment ```ans``` by ```num_elements - 1```.
+ - The largest possible ```nums[i]``` after the operations is ```nums[i] / num_elements```, update ```nums[i]``` as ```nums[i] / num_elements```.
+3. Return ```ans``` once the iteration is complete.
+
+```Python
+class Solution:
+    def minimumReplacement(self, nums: List[int]) -> int:
+        ans = 0
+        n = len(nums)
+
+        # Start from the second last element, as the last one is always sorted.
+        for i in range(n - 2, -1, -1):
+            # No need to break if they are already in order
+            if nums[i] <= nums[i + 1]:
+                continue
+            
+            # Count how many elements are made from breaking nums[i]
+            num_elems = (nums[i] + nums[i + 1] - 1) // nums[i + 1]
+
+            # Add number of operation = number of elements broken from nums[i] - 1
+            ans += num_elems - 1
+
+            # Maximize nums[i] after replace to sort the list in non-decreasing order
+            nums[i] = nums[i] // num_elems
+        
+        return ans
+```
