@@ -40,4 +40,6 @@ __Constraints:__
 - $ranges.length == n + 1$
 - $0 \le ranges[i] \le 100$
 
-__
+---
+
+
