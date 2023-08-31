@@ -78,7 +78,24 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def minTaps(self, n: int, ranges: List[int]) -> int:
+        dp = [math.inf] * (n + 1)
 
+        # Initialize the starting position of the garden
+        dp[0] = 0
+
+        for i in range(n  + 1):
+            tap_start = max(0, i - ranges[i])
+            tap_end = min(n, i + ranges[i])
+
+            for j in range(tap_start, tap_end + 1):
+                dp[tap_end] = min(dp[tap_end], dp[j] + 1)
+
+        if dp[n] == math.inf:
+            return -1
+        
+        return dp[n]
 ```
 
 ### Greedy
