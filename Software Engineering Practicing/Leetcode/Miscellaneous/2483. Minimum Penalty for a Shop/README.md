@@ -56,6 +56,19 @@ __Constraints:__
 
 ---
 
+We can start by considering the brute force approach, attempting to close the stop at every possible hour.
+
+![image](https://leetcode.com/problems/minimum-penalty-for-a-shop/Figures/2483/1.png)
+
+The calculation of the penalty (closed after a certain number hours) is divided into two parts:
+
+- During open hours, every ```'N'``` character contributes to ```1``` penalty.
+- During closed hours, every ```'Y'``` character also contributes to ```1``` penalty.
+
+We can calculate the total penalty by traversing ```customers```.
+
+![image](https://leetcode.com/problems/minimum-penalty-for-a-shop/Figures/2483/2.png)
+
 ### Counter
 
 ```Python
