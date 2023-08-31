@@ -132,6 +132,8 @@ class Solution:
 
 ### One Pass
 
+![image](https://leetcode.com/problems/minimum-penalty-for-a-shop/Figures/2483/4.png)
+
 ```Python
 class Solution:
     def bestClosingTime(self, customers: str) -> int:
