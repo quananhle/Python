@@ -1,6 +1,6 @@
 ## [1326. Minimum Number of Taps to Open to Water a Garden](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/)
 
-```Tag```:
+```Tag```: ```Greedy``` ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -42,4 +42,23 @@ __Constraints:__
 
 ---
 
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+### Greedy
+
+```Python
+
+```
 
