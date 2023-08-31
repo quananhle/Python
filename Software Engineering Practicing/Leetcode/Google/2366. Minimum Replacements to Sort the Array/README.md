@@ -1,6 +1,6 @@
 ## [2366. Minimum Replacements to Sort the Array](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/)
 
-```Tag```: ``````
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -37,3 +37,15 @@ __Constraints:__
 - $1 \le nums[i] \le 10^{9}$
 
 ---
+
+![image](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/Figures/2366/1.png)
+
+![image](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/Figures/2366/2.png)
+
+![image](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/Figures/2366/forward.png)
+
+![image](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/Figures/2366/3.png)
+
+![image](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/Figures/2366/4.png)
+
+![image](https://leetcode.com/problems/minimum-replacements-to-sort-the-array/Figures/2366/5.png)
