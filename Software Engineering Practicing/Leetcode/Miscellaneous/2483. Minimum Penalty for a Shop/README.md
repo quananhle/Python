@@ -91,13 +91,21 @@ Each time we iterate over a new ```i```, we are finding the new penalty if we we
 - Closing the shop at the $\mathcal{3}^{rd}$ hour incurs in 0+0+0+0+1+1+1+0+1+0+1+0 = 5 penalties.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/5fb4743c-a607-4409-8aa1-ab5bff6f13e5)
-- Closing the shop at the $\mathcal{4}^{th}$ hour incurs in 0+0+0+0+1+1+1+0+1+0+1+0 = 5 penalties.
+- Closing the shop at the $\mathcal{4}^{th}$ hour incurs in 0+0+0+1+1+1+1+0+1+0+1+0 = 6 penalties.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/ac12e2c8-6100-41c7-93fe-7253804230bc)
-- Closing the shop at the $\mathcal{5}^{th}$ hour incurs in 0+0+0+0+1+1+1+0+1+0+1+0 = 5 penalties.
+- Closing the shop at the $\mathcal{5}^{th}$ hour incurs in 0+0+0+1+0+1+1+0+1+0+1+0 = 5 penalties.
 
+![image](https://github.com/quananhle/Python/assets/35042430/6bc07f55-2d9b-49bf-9fbd-1bfd76f6c17e)
+- Closing the shop at the $\mathcal{6}^{th}$ hour incurs in 0+0+0+1+0+0+1+0+1+0+1+0 = 4 penalties.
 
-![image](https://github.com/quananhle/Python/assets/35042430/72513aee-1080-47f3-9f52-d625a20cd182)
+![image](https://github.com/quananhle/Python/assets/35042430/1c672f61-1dc4-4fb3-bb86-8373b828f47f)
+- Closing the shop at the $\mathcal{7}^{th}$ hour incurs in 0+0+0+1+0+0+0+0+1+0+1+0 = 3 penalties.
+
+![image](https://github.com/quananhle/Python/assets/35042430/a5499361-4eba-44c9-acd4-90175e359f58)
+- Closing the shop at the $\mathcal{8}^{th}$ hour incurs in 0+0+0+1+0+0+0+1+1+0+1+0 = 4 penalties.
+
+so on and so forth to the end. The minimum penalty is 3 which happens during $\mathcal{7}^{th}$, $\mathcal{9}^{th}$, and $\mathcal{11}^{th}$ hour. Hence, the earliest hour at which the shop must be closed to incur a minimum penalty is $\mathcal{7}^{th}$.
 
 ### Counter
 
