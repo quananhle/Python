@@ -16,7 +16,8 @@ Return _the minimum number of taps that should be open to water the whole garden
 
 __Example 1:__
 
-1[image](https://assets.leetcode.com/uploads/2020/01/16/1685_example_1.png)
+![image](https://assets.leetcode.com/uploads/2020/01/16/1685_example_1.png)
+
 ```
 Input: n = 5, ranges = [3,4,1,1,0,0]
 Output: 1
@@ -101,6 +102,29 @@ class Solution:
 ### Greedy
 
 ```Python
+class Solution:
+    def minTaps(self, n: int, ranges: List[int]) -> int:
+        max_reach = [0] * (n + 1)
 
+        for i in range(len(ranges)):
+            start = max(0, i - ranges[i])
+            end = min(n, i + ranges[i])
+
+            max_reach[start] = max(max_reach[start], end)
+
+        ans = 0
+        curr_end = next_end = 0
+
+        for i in range(n + 1):
+            if i > next_end:
+                return -1
+            
+            if i > curr_end:
+                ans += 1
+                curr_end = next_end
+
+            next_end = max(next_end, max_reach[i])
+        
+        return ans
 ```
 
