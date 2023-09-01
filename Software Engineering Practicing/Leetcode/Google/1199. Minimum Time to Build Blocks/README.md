@@ -1,6 +1,6 @@
 ## [1199. Minimum Time to Build Blocks](https://leetcode.com/problems/minimum-time-to-build-blocks/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Binary Tree``` ```Priority Queue (Heap)```
 
 #### Difficulty: Hard
 
@@ -46,3 +46,25 @@ __Constraints:__
 - $1 \le split \le 100$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+---
+
+### Priority Queue
+
+```Python
+
+```
