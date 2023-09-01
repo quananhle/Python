@@ -192,6 +192,47 @@ class Solution:
         return dp[(0, 1)]
 ```
 
+#### Space Optimized Bottom-Up Dynamic Programming
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^{2})$.
+- __Space Complexity__: $\mathcal{O}(N)$.
+
+```Python
+class Solution:
+    def minBuildTime(self, blocks: List[int], split: int) -> int:
+        n = len(blocks)
+        blocks.sort(reverse=True)
+        
+        # Initialize the dp array. When all N blocks
+        # done, we need 0 time.
+        dp = collections.defaultdict()
+
+        # The case when we have no workers.
+        dp[0] = float('inf')
+        
+        # Fill the dp array in a bottom-up fashion.
+        for i in range(n - 1, -1, -1):
+            for worker in range(n, 0, -1):                
+                # If we have more workers than blocks, 
+                # Then we can build all the blocks.
+                if worker >= n - i:
+                    dp[worker] = blocks[i]
+                    continue
+
+                # Recurrence relation.
+                to_work = max(blocks[i], dp[worker - 1])
+                to_split = split + dp[min(2 * worker, n - i)]
+                
+                # Store the result in the dp array
+                dp[worker] = min(to_work, to_split)
+        
+        # For building all the blocks, with 
+        # initially 1 worker.
+        return dp[1]
+```
+
 ---
 
 ### Priority Queue
