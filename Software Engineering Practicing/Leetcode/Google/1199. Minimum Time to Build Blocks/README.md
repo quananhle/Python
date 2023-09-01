@@ -67,6 +67,11 @@ __Algorithm__
   - Return ```memo[i][worker]```.
 4. Call ```dp(0, 1)``` because we have to finish all the blocks in the suffix array ```blocks[0 ~ N-1]```, and we have only one worker at the beginning.
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^{2})$.
+- __Space Complexity__: $\mathcal{O}(N^{2})$.
+ 
 ```Python
 class Solution:
     def minBuildTime(self, blocks: List[int], split: int) -> int:
