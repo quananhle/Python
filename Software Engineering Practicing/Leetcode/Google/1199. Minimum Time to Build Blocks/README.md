@@ -14,6 +14,8 @@ Output the minimum time needed to build all blocks.
 
 Initially, there is only one worker.
 
+![image](https://github.com/quananhle/Python/assets/35042430/42ec58e4-8bc3-4734-a7b0-493851a2d7d1)
+
 ---
 
 __Example 1:__
@@ -144,24 +146,15 @@ class Solution:
 __Algorithm__
 
 1. Sort the ```blocks``` array in descending order.
-
-Declare a two-dimensional array dp of size (N+1)∗(N+1)(N + 1) * (N + 1)(N+1)∗(N+1).
-
-Fill the first column of dp with ∞\infty∞, except for the first column of the last row.
-
-Fill the last row of dp with 000.
-
-Traverse b, the number of blocks state variable from N - 1 to 0. For every b, traverse w, the number of workers state variable from N to 1
-
-If w >= N - b, then we can build all the remaining blocks with the available workers. Hence, the minimum time taken to build the remaining blocks is the maximum time taken to build any of the remaining blocks. This is because we can build all the remaining blocks in parallel. Therefore, fill dp[b][w] with blocks[b].
-
-Otherwise, we will fill dp[b][w] with the minimum of two terms.
-
-The first term is the maximum of blocks[b] and dp[b + 1][w - 1], when we decide to use the current worker to build the current block.
-
-The second term would be split + dp[b][min(2 * w, N - b)] when we decide to split the current worker into two workers. We need at most N - b workers to build the remaining blocks, so we will take the minimum of 2 * w and N - b workers.
-
-Return dp[0][1]. In general, dp[b][w] denotes the minimum time taken to build all blocks from index b to the last block using w workers. Thus, dp[0][1] denotes the minimum time taken to build all blocks from index 0 to the last block using 1 worker.
+2. Declare a two-dimensional array ```dp``` of size $(n + 1)$.
+3. Fill the first column of ```dp``` with $\infty$, except for the first column of the last row.
+4. Fill the last row of ```dp``` with ```0```.
+5. Traverse ```i```, the number of blocks state variable from ```N - 1``` to ```0```. For every ```i```, traverse ```worker```, the number of workers state variable from ```N``` to ```1```
+  - If ```worker >= n - i```, then we can build all the remaining blocks with the available workers. Hence, the minimum time taken to build the remaining blocks is the maximum time taken to build any of the remaining blocks. This is because we can build all the remaining blocks in parallel. Therefore, fill ```dp[i][worker]``` with ```blocks[i]```.
+  - Otherwise, we will fill ```dp[i][worker]``` with the minimum of two terms.
+      - The first term is the maximum of ```blocks[i]``` and ```dp[i + 1][worker - 1]```, when we decide to use the current worker to build the current block.
+      - The second term would be ```split + dp[i][min(2 * worker, n - i)]``` when we decide to split the current worker into two workers. We need at most ```n - i``` workers to build the remaining blocks, so we will take the minimum of ```2 * worker``` and ```n - i``` workers.
+6. Return ```dp[0][1]```. In general, ```dp[i][worker]``` denotes the minimum time taken to build all blocks from index ```i``` to the last block using ```worker``` workers. Thus, ```dp[0][1]``` denotes the minimum time taken to build all blocks from index ```0``` to the last block using ```1``` worker.
 
 > It's worth noting that it is bottom-up because we are moving from the solved base case to the unsolved sub-problems.
 > 
