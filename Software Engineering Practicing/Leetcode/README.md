@@ -285,6 +285,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :no_entry::no_entry::no_entry: [1187. Make Array Strictly Increasing](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1187.%20Make%20Array%20Strictly%20Increasing) ```Binary Search```
 - :warning::warning: [1140. Stone Game II](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1140.%20Stone%20Game%20II)
 - :warning::warning: [1155. Number of Dice Rolls With Target Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/1155.%20Number%20of%20Dice%20Rolls%20With%20Target%20Sum)
+- :no_entry::no_entry::no_entry: [1199. Minimum Time to Build Blocks](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1199.%20Minimum%20Time%20to%20Build%20Blocks) ```Priority Queue```
 - :warning::warning: [1218. Longest Arithmetic Subsequence of Given Difference](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1218.%20Longest%20Arithmetic%20Subsequence%20of%20Given%20Difference)
 - :warning::warning: [1230. Toss Strange Coins](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1230.%20Toss%20Strange%20Coins)
 - :no_entry::no_entry::no_entry: [1406. Stone Game III](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/1406.%20Stone%20Game%20III)
