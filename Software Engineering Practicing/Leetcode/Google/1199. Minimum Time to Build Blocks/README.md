@@ -137,10 +137,66 @@ class Solution:
         return dp(0, 1)
 ```
 
-#### Bottom-Up Dynamic Programming
+#### Bottom-Up Dynamic Programming (Time Limit Exceeded)
+
+![image](https://github.com/quananhle/Python/assets/35042430/7d5a1963-6525-4edb-9597-616478f968a6)
+
+__Algorithm__
+
+1. Sort the ```blocks``` array in descending order.
+
+Declare a two-dimensional array dp of size (N+1)∗(N+1)(N + 1) * (N + 1)(N+1)∗(N+1).
+
+Fill the first column of dp with ∞\infty∞, except for the first column of the last row.
+
+Fill the last row of dp with 000.
+
+Traverse b, the number of blocks state variable from N - 1 to 0. For every b, traverse w, the number of workers state variable from N to 1
+
+If w >= N - b, then we can build all the remaining blocks with the available workers. Hence, the minimum time taken to build the remaining blocks is the maximum time taken to build any of the remaining blocks. This is because we can build all the remaining blocks in parallel. Therefore, fill dp[b][w] with blocks[b].
+
+Otherwise, we will fill dp[b][w] with the minimum of two terms.
+
+The first term is the maximum of blocks[b] and dp[b + 1][w - 1], when we decide to use the current worker to build the current block.
+
+The second term would be split + dp[b][min(2 * w, N - b)] when we decide to split the current worker into two workers. We need at most N - b workers to build the remaining blocks, so we will take the minimum of 2 * w and N - b workers.
+
+Return dp[0][1]. In general, dp[b][w] denotes the minimum time taken to build all blocks from index b to the last block using w workers. Thus, dp[0][1] denotes the minimum time taken to build all blocks from index 0 to the last block using 1 worker.
+
+> It's worth noting that it is bottom-up because we are moving from the solved base case to the unsolved sub-problems.
+> 
+> The order of traversal from bottom-row to up has nothing to do with the term bottom-up dynamic programming. Many problems require traversal in a diagonal manner. Thus, critically analyze the Bellman Equation to conclude the order of filling the array.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^{2})$.
+- __Space Complexity__: $\mathcal{O}(N^{2})$.
 
 ```Python
+class Solution:
+    def minBuildTime(self, blocks: List[int], split: int) -> int:
+        n = len(blocks)
+        blocks.sort(reverse=True)
+        dp = collections.defaultdict()
 
+        for i in range(n):
+            dp[(i, 0)] = math.inf
+
+        for worker in range(n + 1):
+            dp[(n, worker)] = 0
+        
+        for i in range(n - 1, -1, -1):
+            for worker in range(n, 0, -1):
+                if worker >= n - i:
+                    dp[(i, worker)] = blocks[i]
+                    continue
+                
+                to_work = max(blocks[i], dp[(i + 1, worker - 1)])
+                to_split = split + dp[(i, min(2 * worker, n - i))]
+
+                dp[(i, worker)] = min(to_work, to_split)
+            
+        return dp[(0, 1)]
 ```
 
 ---
