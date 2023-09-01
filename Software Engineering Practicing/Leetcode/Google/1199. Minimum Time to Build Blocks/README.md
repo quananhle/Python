@@ -51,6 +51,22 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+__Algorithm__
+
+1. Sort the ```blocks``` in descending order.
+2. Initialize a 2D array ```memo``` of size ```N * (N + 1)``` with ```-1``` or a dictionary ```memo```.
+3. Define a function ```dp(i, worker)``` which returns the minimum time taken to finish all the blocks in the suffix array ```blocks[b ~ N-1]``` using ```w``` workers, provided ```blocks``` is sorted in descending order. Apart from ```i``` and ```worker```, it can take other parameters so that we can access the required variables.
+  - If ```i == blocks.length```, then we have already built all the blocks. Hence, return ```0```.
+  - If ```worker == 0```, then we can't build any block. Hence, return ```Integer.MAX_VALUE```.
+  - If ```worker >= blocks.length - i```, then we can build all the remaining blocks without additional workers. Hence, return ```blocks[i]```, the block which will take the maximum time to build out of all the remaining blocks.
+  - If ```dp(i, worker)``` is already solved, then return the result from ```dp```. It can be checked by checking if ```memo[i][worker] != -1``` or if ```(i, worker)``` is already in ```memo```.
+  - Otherwise, we have two choices:
+      - Work here. Save its optimal result in ```work_here```. It would be ```max(blocks[i], dp(i + 1, worker - 1))```.
+      - Split here. Save its optimal result in ```split_here```. It would be ```split + dp(i, min(2 * worker, blocks.length - i))```.
+  - Save the minimum of ```work_here``` and ```split_here``` in ```memo[i][worker]```.
+  - Return ```memo[i][worker]```.
+4. Call ```dp(0, 1)``` because we have to finish all the blocks in the suffix array ```blocks[0 ~ N-1]```, and we have only one worker at the beginning.
+
 ```Python
 
 ```
