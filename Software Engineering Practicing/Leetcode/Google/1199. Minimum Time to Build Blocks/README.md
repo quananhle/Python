@@ -49,7 +49,7 @@ __Constraints:__
 
 ### The Framework
 
-#### Top-Down Dynamic Programming
+#### Top-Down Dynamic Programming (Memory Limit Exceeded)
 
 __Algorithm__
 
@@ -68,7 +68,68 @@ __Algorithm__
 4. Call ```dp(0, 1)``` because we have to finish all the blocks in the suffix array ```blocks[0 ~ N-1]```, and we have only one worker at the beginning.
 
 ```Python
+class Solution:
+    def minBuildTime(self, blocks: List[int], split: int) -> int:
+        n = len(blocks)
+        blocks.sort(reverse=True)
+        memo = collections.defaultdict(int)
 
+        def dp(i, worker):
+            # Base cases
+            if i == n:
+                return 0
+            
+            if worker == 0:
+                return math.inf
+
+            if worker >= n - i:
+                return blocks[i]
+
+            if (i, worker) in memo:
+                return memo[(i, worker)]
+            # DP Transitions: to work or to split here is better?
+
+            # Work: move on to the next block, reduce the number of worker
+            to_work = max(blocks[i], dp(i + 1, worker - 1))
+            
+            # Split: add time to split, split the number of worker, but only use up to sufficient workers for the remaining blocks
+            to_split = split + dp(i, min(2 * worker, n - i))
+
+            memo[(i, worker)] = min(to_work, to_split)
+            return memo[(i, worker)]
+        
+        return dp(0, 1)
+```
+
+```Python
+class Solution:
+    def minBuildTime(self, blocks: List[int], split: int) -> int:
+        n = len(blocks)
+        blocks.sort(reverse=True)
+
+        @functools.lru_cache(maxsize=None)
+        def dp(i, worker):
+            # Base cases
+            if i == n:
+                return 0
+            
+            if worker == 0:
+                return math.inf
+
+            if worker >= n - i:
+                return blocks[i]
+
+            # DP Transitions: to work or to split here is better?
+
+            # Work: move on to the next block, reduce the number of worker
+            to_work = max(blocks[i], dp(i + 1, worker - 1))
+            
+            # Split: add time to split, split the number of worker, but only use up to sufficient workers for the remaining blocks
+            to_split = split + dp(i, min(2 * worker, n - i))
+
+            return min(to_work, to_split)
+        
+        return dp(0, 1)
 ```
 
 #### Bottom-Up Dynamic Programming
