@@ -47,6 +47,11 @@ The recurrence relation in the ```dp``` function is as follows:
 
 ![image](https://leetcode.com/problems/extra-characters-in-a-string/Figures/2707/FigA.png)
 
+Complexity Analysis
+
+- Time Complexity__:
+- Space Complexity__:
+
 ```Python
 class Solution:
     def minExtraChar(self, s: str, dictionary: List[str]) -> int:
