@@ -38,12 +38,12 @@ __Constraints__:
 
 #### Top-Down Dynamic Programming
 
-The recurrence relation in the dp function is as follows:
+The recurrence relation in the ```dp``` function is as follows:
 
-If the start index reaches the end of the string (start == n), indicating that we have considered all characters in s, the function returns 0, as no extra characters are needed.
-If the start index is not at the end of the string, the function considers two possibilities:
-Counting the current character at start as an extra character by recursively calling dp with the next index (start + 1). This corresponds to the case where the current character is not part of any valid word in the dictionary. The result is incremented by 1, as we are counting the current character as an extra.
-Iterating over all possible end indices from start to the end of the string. For each end, the function checks if the substring s[start:end+1] exists in dictionary. We can convert dictionary to a set before starting the DP to make these checks more efficient. If it does, the function recursively calls dp with the next index after the valid word's end index, end + 1. The result is updated to the minimum value between the current minimum and the value returned from the recursive call.
+- If the ```curr``` index reaches the end of the string (curr == n), indicating that we have considered all characters in ```s```, the function returns ```0```, as no extra characters are needed.
+- If the ```curr``` index is not at the end of the string, the function considers two possibilities:
+    - Counting the current character at ```curr``` as an extra character by recursively calling ```dp``` with the next index ```(curr + 1)```. This corresponds to the case where the current character is not part of any valid word in the dictionary. The result is incremented by ```1```, as we are counting the current character as an extra.
+    - Iterating over all possible ```next``` indices from ```curr``` to the end of the string. For each ```next```, the function checks if the substring ```s[curr:next+1]``` exists in ```dictionary```. We can convert ```dictionary``` to a set before starting the ```DP``` to make these checks more efficient. If it does, the function recursively calls ```dp``` with the next index after the valid word's ```next``` index, ```next + 1```. The result is updated to the minimum value between the current minimum and the value returned from the recursive call.
 
 ![image](https://leetcode.com/problems/extra-characters-in-a-string/Figures/2707/FigA.png)
 
