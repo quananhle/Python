@@ -47,11 +47,10 @@ The recurrence relation in the ```dp``` function is as follows:
 
 ![image](https://leetcode.com/problems/extra-characters-in-a-string/Figures/2707/FigA.png)
 
-Complexity Analysis
+__Complexity Analysis__
 
-- Time Complexity__: $O(N^3)$
- )
-- Space Complexity__: O(N+M⋅K)
+- __Time Complexity__: $\mathcal{O}(N^{3})$
+- __Space Complexity__: $\mathcal{O}(N + M \cdot K)$
 
 ```Python
 class Solution:
