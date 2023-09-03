@@ -49,8 +49,9 @@ The recurrence relation in the ```dp``` function is as follows:
 
 Complexity Analysis
 
-- Time Complexity__:
-- Space Complexity__:
+- Time Complexity__: $O(N^3)$
+ )
+- Space Complexity__: O(N+M⋅K)
 
 ```Python
 class Solution:
