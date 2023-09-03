@@ -45,6 +45,7 @@ If the start index is not at the end of the string, the function considers two p
 Counting the current character at start as an extra character by recursively calling dp with the next index (start + 1). This corresponds to the case where the current character is not part of any valid word in the dictionary. The result is incremented by 1, as we are counting the current character as an extra.
 Iterating over all possible end indices from start to the end of the string. For each end, the function checks if the substring s[start:end+1] exists in dictionary. We can convert dictionary to a set before starting the DP to make these checks more efficient. If it does, the function recursively calls dp with the next index after the valid word's end index, end + 1. The result is updated to the minimum value between the current minimum and the value returned from the recursive call.
 
+![image](https://leetcode.com/problems/extra-characters-in-a-string/Figures/2707/FigA.png)
 
 ```Python
 class Solution:
@@ -69,6 +70,30 @@ class Solution:
                     ans = min(ans, dp(next + 1))
 
             memo[curr] = ans
+            
+            return ans
+        
+        return dp(0)
+```
+
+```Python
+class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        n, words = len(s), set(dictionary)
+
+        @functools.lru_cache(maxsize=None)
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return 0
+
+            # DP Transtions: 
+            ans = dp(curr + 1) + 1
+
+            for next in range(curr, n):
+                word = s[curr:next + 1]
+                if word in words:
+                    ans = min(ans, dp(next + 1))
             
             return ans
         
