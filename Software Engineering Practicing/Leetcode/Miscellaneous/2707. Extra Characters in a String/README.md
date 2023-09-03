@@ -1,6 +1,6 @@
 ## [2707. Extra Characters in a String](https://leetcode.com/problems/extra-characters-in-a-string)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Trie```
 
 #### Difficulty: Medium
 
@@ -34,3 +34,18 @@ __Constraints__:
 
 ---
 
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+---
