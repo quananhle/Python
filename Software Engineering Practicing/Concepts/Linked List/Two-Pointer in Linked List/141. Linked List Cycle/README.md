@@ -72,7 +72,7 @@ class Solution:
 
 __Follow up:__ Can you solve it using O(1) (i.e. constant) memory?
 
-### Slow and Fast Pointers
+### Slow and Fast Pointers (Floyd's Cycle Finding Algorithm)
 
 ```Python
 # Definition for singly-linked list.
