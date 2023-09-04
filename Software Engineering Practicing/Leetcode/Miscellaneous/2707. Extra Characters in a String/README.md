@@ -124,4 +124,25 @@ class Solution:
         return dp[0]
 ```
 
+```Python
+class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        n = len(s)
+        words = set(dictionary)
+        dp = [0] + [float('inf')] * n
+
+        for curr in range(1, n + 1):
+            dp[curr] = dp[curr - 1] + 1
+            for word in dictionary:
+                m = len(word)
+                if s[curr - m:curr] == word:
+                    dp[curr] = min(dp[curr], dp[curr - m])
+        
+        return dp[n]
+```
+
 ---
+
+### Trie
+
+
