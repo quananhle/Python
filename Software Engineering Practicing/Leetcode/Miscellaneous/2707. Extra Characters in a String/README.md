@@ -145,4 +145,14 @@ class Solution:
 
 ### Trie
 
+#### Top-Down Dynamic Programming with Trie
 
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming with Trie
+
+```Python
+
+```
