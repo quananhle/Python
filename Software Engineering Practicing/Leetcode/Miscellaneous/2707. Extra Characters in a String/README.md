@@ -108,7 +108,20 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        n = len(s)
+        words = set(dictionary)
+        dp = [0] * (n + 1)
 
+        for curr in range(n - 1, -1, -1):
+            dp[curr] = 1 + dp[curr + 1]
+            for next in range(curr, n):
+                word = s[curr:next + 1]
+                if word in words:
+                    dp[curr] = min(dp[curr], dp[next + 1])
+        
+        return dp[0]
 ```
 
 ---
