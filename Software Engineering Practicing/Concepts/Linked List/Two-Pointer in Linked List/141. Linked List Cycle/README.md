@@ -42,11 +42,10 @@ Explanation: There is no cycle in the linked list.
 ```
 
 __Constraints:__
-```
-The number of the nodes in the list is in the range [0, 104].
--105 <= Node.val <= 105
-pos is -1 or a valid index in the linked-list.
-```
+
+- The number of the nodes in the list is in the range $[0, 10^{4}]$.
+- $-10^{5} \le Node.val \le 10^{5}$
+- ```pos``` is ```-1``` or a valid index in the linked-list.
 
 ---
 
@@ -72,6 +71,8 @@ class Solution:
 ```
 
 __Follow up:__ Can you solve it using O(1) (i.e. constant) memory?
+
+### Slow and Fast Pointers
 
 ```Python
 # Definition for singly-linked list.
