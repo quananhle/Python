@@ -5,3 +5,21 @@
 ```Python
 
 ```
+
+### 139. Word Break
+
+```Python
+
+```
+
+### 516. Longest Palindromic Subsequence
+
+```Python
+
+```
+
+### 72. Edit Distance
+
+```Python
+
+```
