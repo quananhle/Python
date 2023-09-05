@@ -48,11 +48,10 @@ Output: [[3,null],[3,0],[3,null]]
 ```
 
 __Constraints:__
-```
-0 <= n <= 1000
--104 <= Node.val <= 104
-Node.random is null or is pointing to some node in the linked list.
-```
+
+- $0 \le n \le 1000$
+- $-10^{4} \le Node.val \le 10^{4}$
+- ```Node.random``` is ```null``` or is pointing to some node in the linked list.
 
 ---
 
