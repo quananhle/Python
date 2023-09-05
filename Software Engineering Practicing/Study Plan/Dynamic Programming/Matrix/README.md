@@ -125,5 +125,29 @@ class Solution:
 ### [221. Maximal Square](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/221.%20Maximal%20Square)
 
 ```Python
+class Solution:
+    def maximalSquare(self, matrix: List[List[str]]) -> int:
+        ROWS, COLS = len(matrix), len(matrix[0])
+        visited = set()
+        ans = 0
 
+        @functools.lru_cache(maxsize=None)
+        def dp(row, col):
+            # Base case
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in visited):
+                return 0
+            
+            ans = 0
+            if matrix[row][col] == "0":
+                visited.add((row, col))
+            else:
+                ans = 1 + min(dp(row + 1, col + 1), dp(row + 1, col), dp(row, col + 1))
+            
+            return ans
+        
+        for row in range(ROWS):
+            for col in range(COLS):
+                ans = max(ans, dp(row, col))
+            
+        return ans**2
 ```
