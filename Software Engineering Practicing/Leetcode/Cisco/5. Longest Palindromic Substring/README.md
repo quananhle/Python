@@ -1,6 +1,6 @@
 ## [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Manacher's Algorithm```
 
 #### Difficulty: Medium
 
@@ -212,14 +212,17 @@ class Solution:
         dp = collections.defaultdict(bool)
         ans = [0, 0]
 
+        # Base case for all substrings of length 1
         for i in range(n):
             dp[(i, i)] = True
-        
+
+        # Check every even pair of the substring
         for i in range(n - 1):
             if s[i] == s[i + 1]:
                 dp[(i, i + 1)] = True
                 ans = [i, i + 1]
-            
+
+        # Check every odd substring
         for diff in range(2, n):
             for i in range(n - diff):
                 j = i + diff
@@ -230,3 +233,59 @@ class Solution:
         i, j = ans
         return s[i:j + 1]
 ```
+
+---
+
+### Expand from Center
+
+__Algorithm__
+
+1. Create a helper method ```expand(start, end)``` to find the length of the longest palindrome centered at ```start, end```.
+    - Set ```left = start``` and ```right = end```.
+    - While ```left``` and ```right``` are both in bounds and ```s[left] == s[right]```, move the pointers away from each other.
+    - The formula for the length of a substring starting at ```left``` and ending at ```right``` is ```right - left + 1```.
+    - However, when the while loop ends, it implies ```s[left] != s[right]```. Therefore, we need to subtract ```2```. Return ```right - left - 1```.
+2. Initialize ```ans = [0, 0]```. This will hold the inclusive bounds of the answer.
+3. Iterate ```i``` over all indices of ```s```.
+    - Find the length of the longest __odd-length palindrome__ centered at ```i```: ```oddLength = expand(i, i)```.
+    - If ```odd_length``` is the greatest length we have seen so far, i.e. ```odd_length > ans[1] - ans[0] + 1```, update ```ans```.
+    - Find the length of the longest __even-length palindrome__ centered at i: ```even_length = expand(i, i + 1)```.
+    - If ```even_length``` is the greatest length we have seen so far, update ```ans```.
+4. Retrieve the answer bounds from ans as ```i, j```.
+5. Return the substring of ```s``` starting at index ```i``` and ending with index ```j```.
+
+- __Time Complexity__: $\mathcal{O}(n^{2})$
+- __Space Complexity__: $\mathcal{O}(1})$
+
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+
+        def expand(start, end):
+            left, right = start, end
+            while left >= 0 and right < n and s[left] == s[right]:
+                left -= 1
+                right += 1
+            return right - left - 1
+
+        ans = [0, 0]
+
+        for i in range(n):
+            odd_length = expand(i, i)
+            if odd_length > ans[1] - ans[0] + 1:
+                length = odd_length // 2
+                ans = [i - length, i + length]
+            
+            even_length = expand(i, i + 1)
+            if even_length > ans[1] - ans[0] + 1:
+                length = (even_length // 2) - 1
+                ans = [i - length, i + 1 + length]
+            
+        i, j = ans
+        return s[i:j + 1]
+```
+
+---
+
+### Manacher's Algorithm
