@@ -178,6 +178,38 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+![image](https://leetcode.com/problems/longest-palindromic-substring/Figures/5/2.png)
+
+We know that all substrings of length 1 are palindromes. From this, we can check if each substring of length 3 is a palindrome using the above fact. We just need to check every ```i, j``` pair where ```j - i = 2```. Once we know all palindromes of length 3, we can use that information to find all palindromes of length 5, and then 7, and so on.
+
+What about even-length palindromes? A substring of length 2 is a palindrome if both characters are equal. That is, ```i```, ```i + 1``` is a palindrome if ```s[i] == s[i + 1]```. From this, we can use the earlier logic to find all palindromes of length 4, then 6, and so on.
+
+```dp[(i, j)]``` is a boolean representing if the substring with inclusive bounds ```i, j``` is a palindrome. We initialize ```dp[(i, i)] = True``` for the substrings of length 1, and then ```dp[(i, i + 1)] = (s[i] == s[i + 1])``` for the substrings of length 2.
+
+Because we are starting with the shortest substrings and iterating toward the longest substrings, every time we find a new palindrome, it must be the longest one we have seen so far. We can use this fact to keep track of the answer on the fly.
+
+Algorithm
+
+Initialize n = s.length and a boolean table dp with size n * n, and all values to false.
+
+Initialize ans = [0, 0]. This will hold the inclusive bounds of the answer.
+
+Set all dp[i][i] = true.
+
+Iterate over all pairs i, i + 1. For each one, if s[i] == s[i + 1], then set dp[i][i + 1] = true and update ans = [i, i + 1].
+
+Now, we populate the dp table. Iterate over diff from 2 until n. This variable represents the difference j - i.
+
+In a nested for loop, iterate over i from 0 until n - diff.
+
+Set j = i + diff.
+Check the condition: if s[i] == s[j] && dp[i + 1][j - 1], we found a palindrome.
+In that case, set dp[i][j] = true and ans = [i, j]
+Retrieve the answer bounds from ans as i, j. Return the substring of s starting at index i and ending with index j.
+
+- __Time Complexity__: $\mathcal{O}(n^{2})$
+- __Space Complexity__: $\mathcal{O}(n^{2})$
+
 ```Python
 class Solution:
     def longestPalindrome(self, s: str) -> str:
