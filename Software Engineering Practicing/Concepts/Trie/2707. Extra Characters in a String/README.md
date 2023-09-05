@@ -148,11 +148,79 @@ class Solution:
 #### Top-Down Dynamic Programming with Trie
 
 ```Python
+class Trie:
 
+    def __init__(self):
+        self.children = collections.defaultdict(Trie)
+        self.complete = False
+    
+    def insert(self, word):
+        curr = self
+        for c in word:
+            curr = curr.children[c]
+        curr.word = word
+        curr.complete = True
+
+class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        n = len(s)
+        trie = Trie()
+
+        for word in dictionary:
+            trie.insert(word)
+
+        dp = [0] * (n + 1)
+
+        for curr in range(n - 1, -1, -1):
+            dp[curr] = dp[curr + 1] + 1
+            node = trie
+            for next in range(curr, n):
+                char = s[next]
+                if not char in node.children:
+                    break
+                node = node.children[char]
+                if node.complete:
+                    dp[curr] = min(dp[curr], dp[next + 1])
+
+        return dp[0]
 ```
 
 #### Bottom-Up Dynamic Programming with Trie
 
 ```Python
+class Trie:
 
+    def __init__(self):
+        self.children = collections.defaultdict(Trie)
+        self.complete = False
+    
+    def insert(self, word):
+        curr = self
+        for c in word:
+            curr = curr.children[c]
+        curr.word = word
+        curr.complete = True
+
+class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        n = len(s)
+        trie = Trie()
+
+        for word in dictionary:
+            trie.insert(word)
+
+        dp = [0] * (n + 1)
+
+        for curr in range(n - 1, -1, -1):
+            dp[curr] = dp[curr + 1] + 1
+            node = trie
+            for next in range(curr, n):
+                char = s[next]
+                if not char in node.children:
+                    break
+                node = node.children[char]
+                if node.complete:
+                    dp[curr] = min(dp[curr], dp[next + 1])
+
+        return dp[0]
 ```
