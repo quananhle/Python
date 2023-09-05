@@ -8,7 +8,7 @@ Given a string ```s``` and a dictionary of strings ```wordDict```, return _```tr
 
 Note that the same word in the dictionary may be reused multiple times in the segmentation.
 
-![image](https://user-images.githubusercontent.com/35042430/219778036-477a29ba-d8d6-4d23-a329-111121cf2e9b.png)
+![image](https://github.com/quananhle/Python/assets/35042430/e13855c8-e6ea-474c-a4f2-58dd96987b72)
 
 ---
 
@@ -43,7 +43,58 @@ __Constraints:__
 
 ---
 
-### Depth-First Search
+### Breadth-First Search
+
+We start at node ```0```, which represents the empty string. We want to reach node ```s.length```, which implies that we have built the entire string. We can run a BFS to accomplish this traversal.
+
+At each node ```start```, we iterate over all the nodes ```end``` that come after ```start```. For each ```end```, we check if the substring between ```start```, ```end``` is in ```wordDict```. If it is, we can add ```end``` to the ```queue```.
+
+We will first convert ```wordDict``` into a set so that we can perform the checks in constant time. We will also use a data structure ```seen``` to prevent us from visiting a node more than once.
+
+__Algorithm__
+
+1. Convert ```wordDict``` into a set ```words```.
+2. Initialize a ```queue``` with ```0``` and a set ```seen```.
+3. While the ```queue``` is not empty:
+    - Remove the first element, ```start```.
+    - If ```start == s.length```, return ```true```.
+    - Iterate ```end``` from ```start + 1``` up to and including ```s.length```. For each ```end```, if ```end``` has not been visited yet,
+        - Check the substring starting at ```start``` and ending before ```end```. If it is in ```words```, add ```end``` to the ```queue``` and mark it in seen.
+4. Return ```false``` if the BFS finishes without reaching the final node.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^3 + m \cdot k)$
+- __Space Complexity__: $\mathcal{O}(n + m \cdot k)$
+
+```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        # Breadth-First Search
+        visited = set()
+        word_set = set(wordDict)
+        n = len(s)
+
+        # Start at index 0 of string s
+        queue = collections.deque([0])
+
+        while queue:
+            start = queue.popleft()
+            
+            # Base case
+            if start in visited:
+                continue
+            visited.add(start)
+            
+            for end in range(start + 1, n + 1):
+                if s[start:end] in word_set:
+                    queue.append(end)
+                    if end == len(s):
+                        return True
+        return False
+```
+
+### Depth-First Search with Trie
 
 ```Python
 class TrieNode:
@@ -80,35 +131,6 @@ class Solution:
                     break
         
         return stack[0]
-```
-
-### Breadth-First Search
-
-```Python
-class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        # Breadth-First Search
-        visited = set()
-        word_set = set(wordDict)
-        n = len(s)
-
-        # Start at index 0 of string s
-        queue = collections.deque([0])
-
-        while queue:
-            start = queue.popleft()
-            
-            # Base case
-            if start in visited:
-                continue
-            visited.add(start)
-            
-            for end in range(start + 1, n + 1):
-                if s[start:end] in word_set:
-                    queue.append(end)
-                    if end == len(s):
-                        return True
-        return False
 ```
 
 ---
