@@ -30,3 +30,47 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^{3})$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        # Time Limit Exceeded
+        n = len(s)
+
+        if n == 1:
+            return s
+
+        def is_palindrome(start, end):
+            left, right = start, end - 1
+
+            while left < right:
+                if s[left] != s[right]:
+                    return False
+                left += 1
+                right -= 1
+
+            return True
+        
+        res = ""
+        for end in range(n + 1):
+            for start in range(end):
+                if is_palindrome(start, end) and len(res) < len(s[start:end]):
+                    res = s[start:end]
+        
+        return res
+```
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^{3})$. 
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+
+```
