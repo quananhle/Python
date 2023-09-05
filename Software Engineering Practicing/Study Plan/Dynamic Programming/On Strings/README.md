@@ -23,3 +23,15 @@
 ```Python
 
 ```
+
+### 712. Minimum ASCII Delete Sum for Two Strings
+
+```Python
+
+```
+
+### 115. Distinct Subsequences
+
+```Python
+
+```
