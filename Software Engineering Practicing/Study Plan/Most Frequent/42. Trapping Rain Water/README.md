@@ -1,6 +1,6 @@
 ## [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -32,3 +32,24 @@ __Constraints:__
 - $0 \le height[i] \le 10^{5}$
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        ans = 0
+        n = len(height)
+
+        for i in range(1, n - 1):
+            left_peak, right_peak = 0, 0
+            for j in range(i, -1, -1):
+                left_peak = max(left_peak, height[j])
+            
+            for j in range(i, n):
+                right_peak = max(right_peak, height[j])
+            
+            ans += min(left_peak, right_peak) - height[i]
+        
+        return ans
+```
