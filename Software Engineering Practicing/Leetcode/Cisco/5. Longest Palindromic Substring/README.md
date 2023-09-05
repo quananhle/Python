@@ -37,6 +37,8 @@ __Complexity Analysis__
 - __Time Complexity__: $\mathcal{O}(n^{3})$
 - __Space Complexity__: $\mathcal{O}(1)$
 
+![image](https://github.com/quananhle/Python/assets/35042430/9fe01fca-3e17-4025-a958-0b4ca0a0b9d4)
+
 ```Python
 class Solution:
     def longestPalindrome(self, s: str) -> str:
@@ -72,6 +74,8 @@ __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(n^{3})$. Note that this time complexity is in the worst case and has a significant constant divisor that is dropped by big $\mathcal{O}$. Due to the optimizations of checking the longer length substrings first and exiting the palindrome check early if we determine that a substring cannot be a palindrome, the practical runtime of this algorithm is not too bad.
 - __Space Complexity__: $\mathcal{O}(1)$
+
+![image](https://github.com/quananhle/Python/assets/35042430/b9083581-d004-4c91-864b-f47181d2ac81)
 
 ```Python
 class Solution:
@@ -205,6 +209,8 @@ __Algorithm__
 - __Time Complexity__: $\mathcal{O}(n^{2})$
 - __Space Complexity__: $\mathcal{O}(n^{2})$
 
+![image](https://github.com/quananhle/Python/assets/35042430/978ccc8f-40d6-4f68-921f-efd043924f3f)
+
 ```Python
 class Solution:
     def longestPalindrome(self, s: str) -> str:
@@ -236,14 +242,14 @@ class Solution:
 
 ---
 
-### Expand from Center
+### Expand From Center
 
 __Algorithm__
 
 1. Create a helper method ```expand(start, end)``` to find the length of the longest palindrome centered at ```start, end```.
     - Set ```left = start``` and ```right = end```.
     - While ```left``` and ```right``` are both in bounds and ```s[left] == s[right]```, move the pointers away from each other.
-    - The formula for the length of a substring starting at ```left``` and ending at ```right``` is ```right - left + 1```.
+    - The formula for the length of a  substring starting at ```left``` and ending at ```right``` is ```right - left + 1```.
     - However, when the while loop ends, it implies ```s[left] != s[right]```. Therefore, we need to subtract ```2```. Return ```right - left - 1```.
 2. Initialize ```ans = [0, 0]```. This will hold the inclusive bounds of the answer.
 3. Iterate ```i``` over all indices of ```s```.
@@ -256,6 +262,8 @@ __Algorithm__
 
 - __Time Complexity__: $\mathcal{O}(n^{2})$
 - __Space Complexity__: $\mathcal{O}(1)$
+
+![image](https://github.com/quananhle/Python/assets/35042430/90476b8e-d235-4d65-8360-724942167ec0)
 
 ```Python
 class Solution:
@@ -285,6 +293,10 @@ class Solution:
         i, j = ans
         return s[i:j + 1]
 ```
+
+#### Time Optimized Expand From Center
+
+![image](https://github.com/quananhle/Python/assets/35042430/e474162e-7d60-4bae-8a36-216b938cb583)
 
 ```Python
 class Solution:
@@ -325,6 +337,8 @@ class Solution:
 
 - __Time Complexity__: $\mathcal{O}(n)$
 - __Space Complexity__: $\mathcal{O}(n)$
+
+![image](https://github.com/quananhle/Python/assets/35042430/074e3e2d-f367-42dd-9974-5280e7fccacb)
 
 ```Python
 class Solution:
