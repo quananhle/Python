@@ -104,7 +104,76 @@ class Solution:
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        # Memory Limit Exceeded
+        n = len(s)
+        ans = leftmost = 0
+        memo = collections.defaultdict(int)
 
+        def dp(left, right):
+            nonlocal ans
+            nonlocal leftmost
+            # Base case
+            if left > right:
+                return 0
+            elif left == right:
+                return 1
+
+            if (left, right) in memo:
+                return memo[(left, right)]
+            
+            if s[left] == s[right]:
+                length = right - left - 1
+                if length == dp(left + 1, right - 1):
+                    count = length + 2
+                    if ans < count:
+                        ans = count
+                        leftmost = left
+                    memo[(left, right)] = count
+                    return count
+            
+            start = dp(left + 1, right)
+            end = dp(left, right - 1)
+            memo[(left, right)] = max(start, end)
+            return max(start, end)
+        
+        window = dp(0, n - 1)
+        return s[leftmost:leftmost + window]
+```
+
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        # Memory Limit Exceeded
+        n = len(s)
+        ans = leftmost = 0
+
+        @functools.lru_cache(maxsize=None)
+        def dp(left, right):
+            nonlocal ans
+            nonlocal leftmost
+            # Base case
+            if left > right:
+                return 0
+            elif left == right:
+                return 1
+            
+            if s[left] == s[right]:
+                length = right - left - 1
+                if length == dp(left + 1, right - 1):
+                    count = length + 2
+                    if ans < count:
+                        ans = count
+                        leftmost = left
+                    return count
+            
+            start = dp(left + 1, right)
+            end = dp(left, right - 1)
+            return max(start, end)
+        
+        window = dp(0, n - 1)
+        return s[leftmost:leftmost + window]
 ```
 
 #### Bottom-Up Dynamic Programming
