@@ -66,11 +66,33 @@ class Solution:
         return res
 ```
 
+#### Optimized Brute Force
+
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(n^{3})$. 
+- __Time Complexity__: $\mathcal{O}(n^{3})$. Note that this time complexity is in the worst case and has a significant constant divisor that is dropped by big $\mathcal{O}$. Due to the optimizations of checking the longer length substrings first and exiting the palindrome check early if we determine that a substring cannot be a palindrome, the practical runtime of this algorithm is not too bad.
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
 
+        def is_palindrome(start, end):
+            left, right = start, end - 1
+
+            while left < right:
+                if s[left] != s[right]:
+                    return False
+                left += 1
+                right -= 1
+
+            return True
+            
+        for length in range(n, 0, -1):
+            for start in range(n - length + 1):
+                if is_palindrome(start, start + length):
+                    return s[start:start + length]
+        
+        return ""
 ```
