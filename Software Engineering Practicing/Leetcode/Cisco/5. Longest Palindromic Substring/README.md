@@ -188,24 +188,19 @@ What about even-length palindromes? A substring of length 2 is a palindrome if b
 
 Because we are starting with the shortest substrings and iterating toward the longest substrings, every time we find a new palindrome, it must be the longest one we have seen so far. We can use this fact to keep track of the answer on the fly.
 
-Algorithm
+__Algorithm__
 
-Initialize n = s.length and a boolean table dp with size n * n, and all values to false.
-
-Initialize ans = [0, 0]. This will hold the inclusive bounds of the answer.
-
-Set all dp[i][i] = true.
-
-Iterate over all pairs i, i + 1. For each one, if s[i] == s[i + 1], then set dp[i][i + 1] = true and update ans = [i, i + 1].
-
-Now, we populate the dp table. Iterate over diff from 2 until n. This variable represents the difference j - i.
-
-In a nested for loop, iterate over i from 0 until n - diff.
-
-Set j = i + diff.
-Check the condition: if s[i] == s[j] && dp[i + 1][j - 1], we found a palindrome.
-In that case, set dp[i][j] = true and ans = [i, j]
-Retrieve the answer bounds from ans as i, j. Return the substring of s starting at index i and ending with index j.
+1. Initialize ```n = s.length``` and a boolean table ```dp``` with size ```n * n```, and all values to ```false```.
+2. Initialize ```ans = [0, 0]```. This will hold the inclusive bounds of the answer.
+3. Set all ```dp[i][i] = true``` since substring of length 1 is the palindrome of itself.
+4. Iterate over all pairs ```i, i + 1```. For each one, if ```s[i] == s[i + 1]```, then set ```dp[i][i + 1] = true``` and update ```ans = [i, i + 1]```.
+5. Now, we populate the ```dp``` table. Iterate over ```diff``` from ```2``` until ```n```. This variable represents the difference ```j - i```.
+6. In a nested for loop, iterate over ```i``` from ```0``` until ```n - diff```:
+    - Set ```j = i + diff```.
+    - Check the condition: if ```s[i] == s[j] && dp[i + 1][j - 1]```, we found a palindrome.
+    - In that case, set ```dp[i][j] = true``` and ```ans = [i, j]```
+7. Retrieve the answer bounds from ```ans``` as ```i, j```.
+8. Return the substring of ```s``` starting at index ```i``` and ending with index ```j```.
 
 - __Time Complexity__: $\mathcal{O}(n^{2})$
 - __Space Complexity__: $\mathcal{O}(n^{2})$
