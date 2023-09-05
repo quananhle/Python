@@ -1,6 +1,6 @@
 ## [139. Word Break](https://leetcode.com/problems/word-break)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Trie```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Trie``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -109,4 +109,20 @@ class Solution:
                     if end == len(s):
                         return True
         return False
+```
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
 ```
