@@ -96,3 +96,19 @@ class Solution:
         
         return ""
 ```
+
+--- 
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
