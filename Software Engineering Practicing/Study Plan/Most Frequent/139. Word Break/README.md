@@ -94,7 +94,97 @@ class Solution:
         return False
 ```
 
-### Depth-First Search with Trie
+### Depth-First Search (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        words = set(wordDict)
+        seen = set()
+
+        def dfs(start):
+            # Base case
+            if start == n:
+                return True
+            
+            for end in range(start + 1, n + 1):
+                if end in seen:
+                    continue
+                
+                if s[start:end] in words and dfs(end) :
+                    seen.add(end)
+                    return True
+            
+            return False
+
+        return dfs(0)
+```
+
+---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        words = set(wordDict)
+        memo = collections.defaultdict(bool)
+
+        def dp(start):
+            # Base case
+            if start == n:
+                return True
+
+            if start in memo:
+                return memo[start]
+            
+            for end in range(start + 1, n + 1):
+                if s[start:end] in words and dp(end):
+                    memo[start] = True
+                    return True
+
+            memo[start] = False
+            return False
+        
+        return dp(0)
+```
+
+```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        words = set(wordDict)
+
+        @functools.lru_cache(maxsize=None)
+        def dp(start):
+            # Base case
+            if start == n:
+                return True
+            
+            for end in range(start + 1, n + 1):
+                if s[start:end] in words and dp(end):
+                    return True
+
+            return False
+        
+        return dp(0)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+---
+
+### Trie
+
+#### Depth-First Search with Trie
 
 ```Python
 class TrieNode:
@@ -131,20 +221,4 @@ class Solution:
                     break
         
         return stack[0]
-```
-
----
-
-### The Framework
-
-#### Top-Down Dynamic Programming
-
-```Python
-
-```
-
-#### Bottom-Up Dynamic Programming
-
-```Python
-
 ```
