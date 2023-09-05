@@ -34,7 +34,24 @@ class Solution:
 ### 139. Word Break
 
 ```Python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        n = len(s)
+        words = set(wordDict)
 
+        @functools.lru_cache(maxsize=None)
+        def dp(start):
+            # Base case
+            if start == n:
+                return True
+            
+            for end in range(start + 1, n + 1):
+                if s[start:end] in words and dp(end):
+                    return True
+
+            return False
+        
+        return dp(0)
 ```
 
 ### 516. Longest Palindromic Subsequence
