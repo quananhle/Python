@@ -169,20 +169,31 @@ class Solution:
         for word in dictionary:
             trie.insert(word)
 
-        dp = [0] * (n + 1)
+        memo = collections.defaultdict(int)
 
-        for curr in range(n - 1, -1, -1):
-            dp[curr] = dp[curr + 1] + 1
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return 0
+            
+            if curr in memo:
+                return memo[curr]
+
+            ans = dp(curr + 1) + 1
             node = trie
+
             for next in range(curr, n):
                 char = s[next]
                 if not char in node.children:
                     break
                 node = node.children[char]
                 if node.complete:
-                    dp[curr] = min(dp[curr], dp[next + 1])
+                    ans = min(ans, dp(next + 1))
+            
+            memo[curr] = ans
+            return ans
 
-        return dp[0]
+        return dp(0)
 ```
 
 #### Bottom-Up Dynamic Programming with Trie
