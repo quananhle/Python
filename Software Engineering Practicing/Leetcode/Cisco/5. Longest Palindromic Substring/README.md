@@ -255,7 +255,7 @@ __Algorithm__
 5. Return the substring of ```s``` starting at index ```i``` and ending with index ```j```.
 
 - __Time Complexity__: $\mathcal{O}(n^{2})$
-- __Space Complexity__: $\mathcal{O}(1})$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -286,6 +286,73 @@ class Solution:
         return s[i:j + 1]
 ```
 
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+
+        def expand(start, end):
+            left, right = start, end
+            while left >= 0 and right < n and s[left] == s[right]:
+                left -= 1
+                right += 1
+            return left + 1, right - 1
+
+        ans = [0, 0]
+        max_length = 1
+
+        for i in range(n):
+            start, end = expand(i, i)
+            max_length = ans[1] - ans[0] + 1
+            if end - start > ans[1] - ans[0]:
+                ans = [start, end]
+            
+            start, end = expand(i, i + 1)
+            if end - start > ans[1] - ans[0]:
+                ans = [start, end]
+            
+            # Break out early if the remaining length is no longer than the maximum length we already got
+            if max_length // 2 > n - i:
+                break
+
+        i, j = ans
+        return s[i:j +1]
+```
+
 ---
 
 ### Manacher's Algorithm
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        s_prime = '#' + '#'.join(s) + '#'
+        n = len(s_prime)
+        palindrome_radii = [0] * n
+        center = radius = 0
+
+        for i in range(n):
+            mirror = 2 * center - i
+        
+            if i < radius:
+                palindrome_radii[i] = min(radius - i, palindrome_radii[mirror])
+
+            while i + 1 + palindrome_radii[i] < n and \
+                  i - 1 - palindrome_radii[i] >= 0 and \
+                  s_prime[i + 1 + palindrome_radii[i]] == s_prime[i - 1 - palindrome_radii[i]]:
+                palindrome_radii[i] += 1
+            
+            if i + palindrome_radii[i] > radius:
+                center = i
+                radius = i + palindrome_radii[i]
+            
+        length = max(palindrome_radii)
+        center = palindrome_radii.index(length)
+        start = (center - length) // 2
+        res = s[start:start + length]
+
+        return res
+```
