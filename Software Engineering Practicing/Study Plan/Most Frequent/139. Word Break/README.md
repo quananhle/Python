@@ -64,7 +64,9 @@ __Algorithm__
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(n^3 + m \cdot k)$
+Given ```n``` as the length of ```s```, ```m``` as the length of ```wordDict```, and ```k``` as the average length of the words in ```wordDict```,
+
+- __Time Complexity__: $\mathcal{O}(n^3 + m \cdot k)$. There are $\mathcal{O}(n)$ nodes. Because of ```seen```, we never visit a node more than once. At each node, we iterate over the nodes in front of the current node, of which there are $\mathcal{O}(n)$. For each node ```end```, we create a substring, which also costs $\mathcal{O}(n)$. Therefore, handling a node costs $\mathcal{O}(n^2)$, so the BFS could cost up to $\mathcal{O}(n^3)$. Finally, we also spent $\mathcal{O}(m \cdot k) to create the set ```words```.
 - __Space Complexity__: $\mathcal{O}(n + m \cdot k)$
 
 ```Python
