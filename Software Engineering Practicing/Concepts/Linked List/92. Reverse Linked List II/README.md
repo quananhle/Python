@@ -6,7 +6,7 @@
 
 Given the ```head``` of a singly linked list and two integers ```left``` and ```right``` where ```left <= right```, reverse the nodes of the list from position ```left``` to position ```right```, and return _the reversed list_.
 
-![image](https://user-images.githubusercontent.com/35042430/223356659-b9f3fb4f-4f0f-4692-8e4b-bfdc0043a771.png)
+![image](https://github.com/quananhle/Python/assets/35042430/9b0aa32c-6fd9-4e46-95bb-15d58670b114)
 
 ---
 
