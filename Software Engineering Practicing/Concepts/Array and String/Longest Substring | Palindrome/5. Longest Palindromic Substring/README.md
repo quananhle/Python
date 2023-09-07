@@ -25,7 +25,7 @@ Output: "bb"
 
 __Constraints:__
 
-- ```1 <= s.length <= 1000```
+- $1 \le s.length \le 1000$
 - ```s``` consist of only digits and English letters.
 
 ---
