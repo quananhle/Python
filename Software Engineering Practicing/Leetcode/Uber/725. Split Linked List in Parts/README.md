@@ -15,3 +15,30 @@ Return _an array of the ```k``` parts_.
 ![image](https://github.com/quananhle/Python/assets/35042430/e3e43e89-455a-4807-bc64-fde659f0c787)
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2021/06/13/split1-lc.jpg)
+```
+Input: head = [1,2,3], k = 5
+Output: [[1],[2],[3],[],[]]
+Explanation:
+The first element output[0] has output[0].val = 1, output[0].next = null.
+The last element output[4] is null, but its string representation as a ListNode is [].
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2021/06/13/split2-lc.jpg)
+```
+Input: head = [1,2,3,4,5,6,7,8,9,10], k = 3
+Output: [[1,2,3,4],[5,6,7],[8,9,10]]
+Explanation:
+The input has been split into consecutive parts with size difference at most 1, and earlier parts are a larger size than the later parts.
+```
+
+__Constraints:__
+
+- The number of nodes in the list is in the range [0, 1000].
+- 0 <= Node.val <= 1000
+- 1 <= k <= 50
