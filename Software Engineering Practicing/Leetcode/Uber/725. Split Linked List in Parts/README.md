@@ -39,6 +39,8 @@ The input has been split into consecutive parts with size difference at most 1, 
 
 __Constraints:__
 
-- The number of nodes in the list is in the range [0, 1000].
-- 0 <= Node.val <= 1000
-- 1 <= k <= 50
+- The number of nodes in the list is in the range $[0, 1000]$.
+- $0 \le Node.val \le 1000$
+- $1 \le k \le 50$
+
+---
