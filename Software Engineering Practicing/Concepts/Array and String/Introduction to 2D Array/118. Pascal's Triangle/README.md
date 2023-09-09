@@ -1,4 +1,4 @@
-## 118. Pascal's Triangle
+## [118. Pascal's Triangle](https://leetcode.com/problems/pascals-triangle)
 
 ```Tag```: ```Dynamic Programming```
 
@@ -27,9 +27,9 @@ Output: [[1]]
 ```
 
 __Constraints:__
-```
-1 <= numRows <= 30
-```
+
+- $1 \le numRows \le 30$
+
 
 ---
 
@@ -39,8 +39,22 @@ __Constraints:__
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         res = [[1] * i for i in range(1, numRows+1)]
+
         for i in range(2, len(res)):
             for j in range(1, len(res[i-1])):
                 res[i][j] = res[i-1][j-1] + res[i-1][j]
+
+        return res
+```
+
+```Python
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        res = [[1] * n for n in range(1, numRows + 1)]
+        
+        for row in range(2, numRows):
+            for col in range(1, row): 
+                res[row][col] = res[row - 1][col - 1] + res[row - 1][col]
+        
         return res
 ```
