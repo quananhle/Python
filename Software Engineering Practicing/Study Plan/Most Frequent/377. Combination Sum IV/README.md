@@ -1,6 +1,6 @@
 ## [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv)
 
-```Tag```: ```Backtracking``` 
+```Tag```: ```Dynamic Programming``` 
 
 #### Difficulty: Medium
 
@@ -44,3 +44,29 @@ __Constraints:__
 __Follow up__: What if negative numbers are allowed in the given array? How does it change the problem? What limitation we need to add to the question to allow negative numbers?
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
+        res = list()
+        n = len(nums)
+
+        @functools.lru_cache(maxsize=None)
+        def dp(remain):
+            # Base case
+            if remain == 0:
+                return 1
+            
+            ans = 0
+            for num in nums:
+                if remain - num >= 0:
+                    ans += dp(remain - num)
+            
+            return ans
+        
+        return dp(target)
+```
