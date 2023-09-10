@@ -41,3 +41,27 @@ __Constraints:__
 - $1 \le n \le 500$
 
 --- 
+
+![image](https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/Figures/1359/Slide1.PNG)
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
