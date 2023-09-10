@@ -64,7 +64,31 @@ waysToDeliver = (undelivered - unpicked) * totalWays(unpicked, undelivered - 1)
 ![image](https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/Figures/1359/Slide2.PNG)
 
 ```Python
+class Solution:
+    def countOrders(self, n: int) -> int:
+        MOD = 10**9 + 7
+        memo = collections.defaultdict(int)
+        
+        def dp(unpicked, undelivered):
+            # Base case
+            if unpicked < 0 or undelivered < 0 or undelivered < unpicked:
+                return 0
 
+            if not unpicked and not undelivered:
+                return 1
+
+            if (unpicked, undelivered) in memo:
+                return memo[(unpicked, undelivered)]
+
+            # DP Transitions: 
+            pick_up = unpicked * dp(unpicked - 1, undelivered) % MOD
+
+            deliver = (undelivered - unpicked) * dp(unpicked, undelivered - 1) % MOD
+
+            memo[(unpicked, undelivered)] = pick_up + deliver
+            return pick_up + deliver
+
+        return dp(n, n)
 ```
 
 ```Python
@@ -113,7 +137,25 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def countOrders(self, n: int) -> int:
+        MOD = 10**9 + 7
+        dp = collections.defaultdict(int)
 
+        for unpicked in range(n + 1):
+            for undelivered in range(unpicked, n + 1):
+                if not unpicked and not undelivered:
+                    dp[(unpicked, undelivered)] = 1
+                    continue
+                if unpicked > 0:
+                    dp[(unpicked, undelivered)] += unpicked * dp[(unpicked - 1, undelivered)]
+                dp[(unpicked, undelivered)] %= MOD
+
+                if undelivered > unpicked:
+                    dp[(unpicked, undelivered)] += (undelivered - unpicked) * dp[(unpicked, undelivered - 1)]
+                dp[(unpicked, undelivered)] %= MOD
+        
+        return dp[(n, n)]
 ```
 
 __Step 1: Setting a Starting Point (Base Case)__
