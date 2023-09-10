@@ -61,12 +61,34 @@ waysToDeliver = (undelivered - unpicked) * totalWays(unpicked, undelivered - 1)
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/Figures/1359/Slide2.PNG)
+
 ```Python
 
 ```
 
 ```Python
+class Solution:
+    def countOrders(self, n: int) -> int:
+        MOD = 10**9 + 7
 
+        @functools.lru_cache(maxsize=None)
+        def dp(unpicked, undelivered):
+            # Base case
+            if unpicked < 0 or undelivered < 0 or undelivered < unpicked:
+                return 0
+
+            if not unpicked and not undelivered:
+                return 1
+
+            # DP Transitions: 
+            pick_up = unpicked * dp(unpicked - 1, undelivered) % MOD
+
+            deliver = (undelivered - unpicked) * dp(unpicked, undelivered - 1) % MOD
+
+            return pick_up + deliver
+
+        return dp(n, n)
 ```
 
 #### Bottom-Up Dynamic Programming
