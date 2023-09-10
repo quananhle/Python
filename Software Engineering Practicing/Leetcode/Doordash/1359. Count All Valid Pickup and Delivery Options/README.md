@@ -116,24 +116,32 @@ class Solution:
 
 ```
 
-Step 1: Setting a Starting Point (Base Case)
-Why do we start with count = 1?
+__Step 1: Setting a Starting Point (Base Case)__
+
+- Why do we start with ```count = 1```?
 Imagine you have just one order. This order has one pickup (P1) and one delivery (D1). The only rule is that the delivery (D1) must come after the pickup (P1). This gives you just one way to arrange this order: (P1, D1). So, you start your count at 1.
-Step 2: Building Up the Solution (Iterative Computation)
-Why do we start the loop from 2?
+
+__Step 2: Building Up the Solution (Iterative Computation)__
+
+- Why do we start the loop from 2?
 
 You've already solved the problem for 1 order. Now you start adding more orders into the mix, one at a time, starting from the second order.
-What's the deal with 2i - 1 and i?
 
-Let's say you're at the i-th order. You would have i pickups and i deliveries, making it 2i positions in total.
-Now, when you're adding the pickup (Pi) for the i-th order, you can put it anywhere except at the end. That's 2i - 1 choices for Pi.
-For Di, you only have i choices, because it must come after Pi.
-How do we update count?
+- What's the deal with ```2i - 1``` and ```i```?
 
-Multiply your current count by (2i - 1) * i to get the new count. This gives you the total number of sequences for i orders.
-Step 3: The Final Answer
-How do you get the final answer?
-After you've gone through all the orders, the value in count will be the total number of valid sequences. Return this value.
+Let's say you're at the ```i```-th order. You would have ```i``` pickups and ```i``` deliveries, making it ```2i``` positions in total.
+Now, when you're adding the pickup (Pi) for the ```i-th``` order, you can put it anywhere except at the end. That's ```2i - 1``` choices for Pi.
+For Di, you only have ```i``` choices, because it must come after Pi.
+
+- How do we update ```count```?
+
+Multiply your current count by ```(2i - 1) * i``` to get the new count. This gives you the total number of sequences for ```i``` orders.
+
+__Step 3: The Final Answer__
+
+- How do you get the final answer?
+
+After you've gone through all the orders, the value in ```count``` will be the total number of valid sequences. Return this value.
 
 ```Python
 class Solution:
