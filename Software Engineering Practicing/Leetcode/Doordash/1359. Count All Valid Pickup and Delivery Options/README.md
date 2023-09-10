@@ -51,7 +51,7 @@ If we want to pick one order then there are ```unpicked``` different choices to 
 
 Hence, we can say,
 
-```Python
+```JavaScript
 // If we want to pick one order then,
 waysToPick = unpicked * totalWays(unpicked - 1, undelivered)
 
