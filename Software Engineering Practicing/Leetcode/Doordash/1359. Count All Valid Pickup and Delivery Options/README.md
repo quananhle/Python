@@ -74,7 +74,7 @@ class Solution:
 
         @functools.lru_cache(maxsize=None)
         def dp(unpicked, undelivered):
-            # Base case
+            # Base case: can't pick or deliver more than N items, and number of deliveries can't exceed number of pickups as we can only deliver after a pickup.
             if unpicked < 0 or undelivered < 0 or undelivered < unpicked:
                 return 0
 
