@@ -46,6 +46,19 @@ __Constraints:__
 
 ### The Framework
 
+Let's say we have ```unpicked``` number of orders that have not been picked up and ```undelivered``` number orders to be delivered.
+If we want to pick one order then there are ```unpicked``` different choices to pick at the current step. Or if we want to deliver one order then there are ```undelivered - unpicked``` (orders which are picked but not delivered) different choices.
+
+Hence, we can say,
+
+```Python
+// If we want to pick one order then,
+waysToPick = unpicked * totalWays(unpicked - 1, undelivered)
+
+// If we want to deliver one order then,    
+waysToDeliver = (undelivered - unpicked) * totalWays(unpicked, undelivered - 1)
+```
+
 #### Top-Down Dynamic Programming
 
 ```Python
