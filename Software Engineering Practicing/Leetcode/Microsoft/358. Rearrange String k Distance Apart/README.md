@@ -1,6 +1,6 @@
-## [358. Rearrange String k Distance Apart](https://leetcode.com/problems/rearrange-string-k-distance-apart/)
+  ## [358. Rearrange String k Distance Apart](https://leetcode.com/problems/rearrange-string-k-distance-apart/)
 
-```Tag```: ```Priority Queue```
+```Tag```: ```Priority Queue``` ```Greedy```
 
 #### Difficulty: Medium
 
@@ -89,6 +89,34 @@ class Solution:
             freq, key = queue.popleft()
             if freq < 0:
                 return ""
+        
+        return "".join(res)
+```
+
+### Greedy
+
+```Python
+class Solution:
+    def rearrangeString(self, s: str, k: int) -> str:
+        n = len(s)
+        if not k:
+            return s
+        
+        counter = collections.Counter(s)
+        max_frequency = max(counter.values())
+        max_count = sum(1 for val in counter.values() if val == max_frequency)
+
+        if (max_frequency - 1) * k + max_count > len(s):
+            return ""
+        
+        res = list(s)
+        i = (n - 1) % k
+        for c in sorted(counter, key=lambda i: -counter[i]):
+            for j in range(counter[c]):
+                res[i] = c
+                i += k
+                if i >= n:
+                    i = (i - 1) % k
         
         return "".join(res)
 ```
