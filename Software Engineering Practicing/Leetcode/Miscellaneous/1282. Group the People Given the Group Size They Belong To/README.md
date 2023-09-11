@@ -43,6 +43,11 @@ __Constraints:__
 
 ### Greedy & Hash Map
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 #### Two Passes
 
 ```Python
