@@ -439,6 +439,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :four_leaf_clover: [350. Intersection of Two Arrays II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/350.%20Intersection%20of%20Two%20Arrays%20II)
 - :four_leaf_clover: [760. Find Anagram Mappings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/760.%20Find%20Anagram%20Mappings)
 - :four_leaf_clover: [1207. Unique Number of Occurrences](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1207.%20Unique%20Number%20of%20Occurrences)
+- :warning::warning: [1282. Group the People Given the Group Size They Belong To](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1282.%20Group%20the%20People%20Given%20the%20Group%20Size%20They%20Belong%20To) ```Greedy```
 - :warning::warning: [1657. Determine if Two Strings Are Close](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1657.%20Determine%20if%20Two%20Strings%20Are%20Close) ```Sorting```
 
 ### Hash Set
