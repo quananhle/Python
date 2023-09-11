@@ -42,5 +42,33 @@ __Constraints:__
 ### Priority Queue
 
 ```Python
+class Solution:
+    def rearrangeString(self, s: str, k: int) -> str:
+        if k == 0:
+            return s
+        
+        h = [(-freq, key) for key, freq in Counter(s).items()]
+        heapq.heapify(h)
+        queue = collections.deque()
+        res = list()
 
+        while h:
+            freq, key = heapq.heappop(h)
+            res.append(key)
+            queue.append((freq + 1, key))
+
+            if len(queue) < k:
+                continue
+            
+            freq, key = queue.popleft()
+            if freq < 0:
+                heapq.heappush(h, (freq, key))
+            
+        
+        while queue:
+            freq, key = queue.popleft()
+            if freq < 0:
+                return ""
+        
+        return "".join(res)
 ```
