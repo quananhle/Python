@@ -40,3 +40,29 @@ __Constraints:__
 - $1 \le groupSizes[i] \le n$
 
 ---
+
+### Hash Map
+
+```Python
+class Solution:
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        memo = collections.defaultdict(list)
+        
+        for i, e in enumerate(groupSizes):
+            memo[e].append(i)
+        
+        res = list()
+
+        for key, val in memo.items():
+            tmp = [None] * key
+
+            for i in range(len(val)):
+                if tmp[-1] is not None:
+                    res.append(tmp)
+                    tmp = [None] * key
+                tmp[i % key] = val[i]
+
+            res.append(tmp)
+
+        return res
+```
