@@ -41,6 +41,29 @@ __Constraints:__
 
 ### Priority Queue
 
+Algorithm
+
+Create a map freq from character to integer (or integer to integer by converting char to ASCII values). This map will store the frequency of each character in the string SSS.
+
+Create a max heap/priority queue free; this queue will have all the characters that can be placed next, with the character having the highest frequency at the top.
+
+Initialize an empty queue busy, which will store the characters that cannot be used as they have been used within previous KKK indices.
+
+Do the following until the length of string ans becomes equal to the length of SSS:
+
+Check if the size of busy is KKK; if yes, remove it from the front of the queue and add the element back to free.
+
+If free is empty, there is no available character to place, and the task is impossible. Return an empty string.
+
+Remove the top character from the heap and append it to ans. Decrement its frequency in freq. If the frequency is not zero, insert it into the busy.
+
+Return ans.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathal{O}((N + K) \log K)$
+- __Space Complexity__: $\mathal{O}(K)$
+
 ```Python
 class Solution:
     def rearrangeString(self, s: str, k: int) -> str:
