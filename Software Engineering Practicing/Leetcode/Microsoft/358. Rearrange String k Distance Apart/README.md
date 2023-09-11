@@ -41,28 +41,21 @@ __Constraints:__
 
 ### Priority Queue
 
-Algorithm
+__Algorithm__
 
-Create a map freq from character to integer (or integer to integer by converting char to ASCII values). This map will store the frequency of each character in the string SSS.
-
-Create a max heap/priority queue free; this queue will have all the characters that can be placed next, with the character having the highest frequency at the top.
-
-Initialize an empty queue busy, which will store the characters that cannot be used as they have been used within previous KKK indices.
-
-Do the following until the length of string ans becomes equal to the length of SSS:
-
-Check if the size of busy is KKK; if yes, remove it from the front of the queue and add the element back to free.
-
-If free is empty, there is no available character to place, and the task is impossible. Return an empty string.
-
-Remove the top character from the heap and append it to ans. Decrement its frequency in freq. If the frequency is not zero, insert it into the busy.
-
-Return ans.
+1. Create a map ```h``` from character to integer (or integer to integer by converting char to ASCII values). This map will store the frequency of each character in the string ```S```.
+2. Create a max heap/priority queue ```h```; this queue will have all the characters that can be placed next, with the character having the highest frequency at the top.
+3. Initialize an empty queue ```busy```, which will store the characters that cannot be used as they have been used within previous ```K``` indices.
+4. Do the following until the length of string ```res``` becomes equal to the length of ```S```:
+    a. Check if the size of ```busy``` is ```K```; if yes, remove it from the front of the queue and add the element back to ```h```.
+    b. If ```h``` is empty, there is no available character to place, and the task is impossible. Return an empty string.
+    c. Remove the top character from the heap and append it to ```res```. Decrement its frequency in ```h```. If the frequency is not zero, insert it into the ```busy```.
+5. Return ```res```.
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathal{O}((N + K) \log K)$
-- __Space Complexity__: $\mathal{O}(K)$
+- __Time Complexity__: $\mathcal{O}((N + K) \log K)$
+- __Space Complexity__: $\mathcal{O}(K)$
 
 ```Python
 class Solution:
