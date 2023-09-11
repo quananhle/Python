@@ -72,5 +72,30 @@ class Solution:
 ### One Pass
 
 ```Python
+class Solution:
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        groups = collections.defaultdict(list)
+        res = list()
 
+        for person, size in enumerate(groupSizes):
+            groups[size].append(person)
+            if len(groups[size]) == size:
+                res.append(groups.pop(size))
+            
+        return res
+```
+
+```Python
+class Solution:
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        groups = collections.defaultdict(list)
+        res = list()
+
+        for person, size in enumerate(groupSizes):
+            groups[size].append(person)
+            if len(groups[size]) == size:
+                res.append(groups[size])
+                del groups[size]
+            
+        return res
 ```
