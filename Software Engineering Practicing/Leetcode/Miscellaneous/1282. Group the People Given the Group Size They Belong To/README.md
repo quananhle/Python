@@ -1,6 +1,6 @@
 ## [1282. Group the People Given the Group Size They Belong To](https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to)
 
-```Tag```: ```Hash Map```
+```Tag```: ```Greedy Algorithms``` ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -41,7 +41,9 @@ __Constraints:__
 
 ---
 
-### Hash Map
+### Greedy & Hash Map
+
+#### Two Passes
 
 ```Python
 class Solution:
@@ -65,4 +67,10 @@ class Solution:
             res.append(tmp)
 
         return res
+```
+
+### One Pass
+
+```Python
+
 ```
