@@ -36,7 +36,7 @@ Output: [[1],[0,5],[2,3,4]]
 __Constraints:__
 
 - $groupSizes.length == n$
-- 1 \le n \le 500$
+- $1 \le n \le 500$
 - $1 \le groupSizes[i] \le n$
 
 ---
