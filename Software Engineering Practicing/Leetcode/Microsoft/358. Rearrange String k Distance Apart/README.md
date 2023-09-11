@@ -1,6 +1,6 @@
 ## [358. Rearrange String k Distance Apart](https://leetcode.com/problems/rearrange-string-k-distance-apart/)
 
-```Tag```:
+```Tag```: ```Priority Queue```
 
 #### Difficulty: Medium
 
@@ -38,3 +38,9 @@ __Constraints:__
 - $0 \le k \le s.length$
 
 ---
+
+### Priority Queue
+
+```Python
+
+```
