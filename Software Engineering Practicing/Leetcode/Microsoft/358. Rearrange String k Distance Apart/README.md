@@ -47,10 +47,14 @@ __Algorithm__
 2. Create a max heap/priority queue ```h```; this queue will have all the characters that can be placed next, with the character having the highest frequency at the top.
 3. Initialize an empty queue ```busy```, which will store the characters that cannot be used as they have been used within previous ```K``` indices.
 4. Do the following until the length of string ```res``` becomes equal to the length of ```S```:
-    a. Check if the size of ```busy``` is ```K```; if yes, remove it from the front of the queue and add the element back to ```h```.
-    b. If ```h``` is empty, there is no available character to place, and the task is impossible. Return an empty string.
-    c. Remove the top character from the heap and append it to ```res```. Decrement its frequency in ```h```. If the frequency is not zero, insert it into the ```busy```.
-5. Return ```res```.
+
+   a. Check if the size of ```busy``` is ```K```; if yes, remove it from the front of the queue and add the element back to ```h```.
+
+   b. If ```h``` is empty, there is no available character to place, and the task is impossible. Return an empty string.
+
+   c. Remove the top character from the heap and append it to ```res```. Decrement its frequency in ```h```. If the frequency is not zero, insert it into the ```busy```.
+
+6. Return ```res```.
 
 __Complexity Analysis__
 
