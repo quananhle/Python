@@ -60,7 +60,6 @@ class Solution:
             curr = curr.next
         
         width, remainder = divmod(n, k)
-        print (width, remainder)
 
         res = list()
         curr = head
