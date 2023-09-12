@@ -78,3 +78,29 @@ class Solution:
         backtrack([], target, 0)
         return res
 ```
+
+```Python
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = list()
+        n = len(candidates)
+
+        def backtrack(curr, combination, remaining):
+            # Base case
+            if remaining == 0:
+                res.append(combination[:])
+                return
+            
+            for i in range(curr, n):
+                if remaining - candidates[i] >= 0:
+                    combination.append(candidates[i])
+                    # Stay in the same number until base case reached or end of loop
+                    backtrack(i, combination, remaining - candidates[i])
+                    # Backtrack
+                    combination.pop()
+                else:
+                    continue
+
+        backtrack(0, [], target)
+        return res
+```
