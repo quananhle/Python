@@ -1,6 +1,6 @@
 ## [1647. Minimum Deletions to Make Character Frequencies Unique](https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique)
 
- ```Tag```:
+ ```Tag```: ```Hash Ma[``` ```Hash Set``` ```Priority Queue```
 
  #### Difficulty: Medium
 
@@ -43,3 +43,24 @@ __Constraints:__
 - ```s``` contains only lowercase English letters.
 
 ---
+
+### Counter
+
+```Python
+class Solution:
+    def minDeletions(self, s: str) -> int:
+        counter = collections.defaultdict(int)
+        for c in s:
+            counter[c] = counter.get(c, 0) + 1
+
+        ans = 0
+        seen_frequency = set()
+
+        for _, f in counter.items():
+            while f and f in seen_frequency:
+                f -= 1
+                ans += 1
+            seen_frequency.add(f)
+    
+        return ans
+```
