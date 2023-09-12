@@ -49,6 +49,8 @@ __Follow up__: What if negative numbers are allowed in the given array? How does
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/combination-sum-iv/Figures/377/377_combinations_123.png)
+
 ```Python
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
@@ -118,4 +120,14 @@ class Solution:
             return ans
         
         return dp(target)
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
 ```
