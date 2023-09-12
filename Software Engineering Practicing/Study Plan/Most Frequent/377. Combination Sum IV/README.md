@@ -108,6 +108,29 @@ class Solution:
         @functools.lru_cache(maxsize=None)
         def dp(curr):
             # Base case
+            if curr == target:
+                return 1
+            elif curr > target:
+                return 0
+            else:
+                ans = 0
+                # DP Transitions:
+                for num in nums:
+                    ans += dp(curr + num)
+            
+            return ans
+        
+        return dp(0)
+```
+
+```Python
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+
+        @functools.lru_cache(maxsize=None)
+        def dp(curr):
+            # Base case
             if curr == 0:
                 return 1
             elif curr < 0:
@@ -125,9 +148,29 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        dp = collections.defaultdict(int)
+        dp[0] = 1
 
+        for curr in range(target + 1):
+            for num in nums:
+                dp[curr] += dp[curr - num]
+        
+        return dp[target]
 ```
 
 ```Python
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        dp = collections.defaultdict(int)
+        dp[target] = 1
 
+        for curr in range(target, -1, -1):
+            for num in nums:
+                dp[curr] += dp[curr + num]
+        
+        return dp[0]
 ```
