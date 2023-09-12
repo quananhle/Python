@@ -1,6 +1,6 @@
 ## [1647. Minimum Deletions to Make Character Frequencies Unique](https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique)
 
- ```Tag```: ```Hash Ma[``` ```Hash Set``` ```Priority Queue```
+ ```Tag```: ```Hash Map``` ```Hash Set``` ```Priority Queue```
 
  #### Difficulty: Medium
 
@@ -45,6 +45,11 @@ __Constraints:__
 ---
 
 ### Counter
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N + K^{2})$
+- __Space Complexity__: $\mathcal{O}O(K)$
 
 ```Python
 class Solution:
