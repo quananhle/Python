@@ -51,6 +51,11 @@ __Follow up__: What if negative numbers are allowed in the given array? How does
 
 ![image](https://leetcode.com/problems/combination-sum-iv/Figures/377/377_combinations_123.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(T \cdot N)$
+- __Space Complexity__: $\mathcal{O}(T)$
+
 ```Python
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
@@ -146,6 +151,19 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming
+
+![image](https://leetcode.com/problems/combination-sum-iv/Figures/377/377_dp_init.png)
+
+![image](https://leetcode.com/problems/combination-sum-iv/Figures/377/377_dp_step_1.png)
+
+![image](https://leetcode.com/problems/combination-sum-iv/Figures/377/377_dp_step_2.png)
+
+![image](https://leetcode.com/problems/combination-sum-iv/Figures/377/377_dp_final.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(T \cdot N)$
+- __Space Complexity__: $\mathcal{O}(T)$
 
 ```Python
 class Solution:
