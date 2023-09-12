@@ -13,3 +13,33 @@ The frequency of a character in a string is the number of times it appears in th
 ![image](https://github.com/quananhle/Python/assets/35042430/fbc7939a-ad29-4fc0-b3f7-aa412c27990d)
 
 ---
+
+__Example 1:__
+```
+Input: s = "aab"
+Output: 0
+Explanation: s is already good.
+```
+
+__Example 2:__
+```
+Input: s = "aaabbbcc"
+Output: 2
+Explanation: You can delete two 'b's resulting in the good string "aaabcc".
+Another way it to delete one 'b' and one 'c' resulting in the good string "aaabbc".
+```
+
+__Example 3:__
+```
+Input: s = "ceabaacb"
+Output: 2
+Explanation: You can delete both 'c's resulting in the good string "eabaab".
+Note that we only care about characters that are still in the string at the end (i.e. frequency of 0 is ignored).
+```
+
+__Constraints:__
+
+- $1 \le s.length \le 10^{5}$
+- ```s``` contains only lowercase English letters.
+
+---
