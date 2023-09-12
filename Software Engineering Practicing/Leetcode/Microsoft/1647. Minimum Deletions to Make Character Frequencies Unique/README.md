@@ -123,6 +123,9 @@ class Solution:
 
 ### Sorting
 
+- __Time Complexity__: $\mathcal{O}(N + K \log K)$
+- __Space Complexity__: $\mathcal{O}(K)$
+
 ```Python
 class Solution:
     def minDeletions(self, s: str) -> int:
