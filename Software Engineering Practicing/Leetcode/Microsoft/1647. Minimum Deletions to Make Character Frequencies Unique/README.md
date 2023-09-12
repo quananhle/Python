@@ -91,3 +91,32 @@ class Solution:
         
         return ans
 ```
+
+### Priority Queue
+
+- __Time Complexity__: $\mathcal{O}(N + K^{2} \log K)$
+- __Space Complexity__: $\mathcal{O}(K)$
+
+```Python
+class Solution:
+    def minDeletions(self, s: str) -> int:
+        frequency = collections.defaultdict(int)
+        for c in s:
+            frequency[c] = frequency.get(c, 0) + 1
+
+        h = [-freq for freq in frequency.values() if freq != 0]
+        heapq.heapify(h)
+
+        ans = 0
+        while len(h) > 1:
+            top_element = -heapq.heappop(h)
+
+            if top_element == -h[0]:
+                if top_element - 1 > 0:
+                    top_element -= 1
+                    heapq.heappush(h, -top_element)
+                
+                ans += 1
+        
+        return ans
+```
