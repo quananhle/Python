@@ -52,6 +52,33 @@ __Follow up__: What if negative numbers are allowed in the given array? How does
 ```Python
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        memo = collections.defaultdict(int)
+
+        def dp(curr):
+            # Base case
+            if curr == 0:
+                return 1
+            elif curr < 0:
+                return 0
+            else:
+                if curr in memo:
+                    return memo[curr]
+
+                ans = 0
+                # DP Transitions:
+                for num in nums:
+                    ans += dp(curr - num)
+
+            memo[curr] = ans            
+            return ans
+        
+        return dp(target)
+```
+
+```Python
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
         res = list()
         n = len(nums)
 
@@ -65,6 +92,28 @@ class Solution:
             for num in nums:
                 if remain - num >= 0:
                     ans += dp(remain - num)
+            
+            return ans
+        
+        return dp(target)
+```
+
+```Python
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+
+        @functools.lru_cache(maxsize=None)
+        def dp(curr):
+            # Base case
+            if curr == 0:
+                return 1
+            elif curr < 0:
+                return 0
+            else:
+                ans = 0
+                for num in nums:
+                    ans += dp(curr - num)
             
             return ans
         
