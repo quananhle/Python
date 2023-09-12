@@ -120,3 +120,28 @@ class Solution:
         
         return ans
 ```
+
+### Sorting
+
+```Python
+class Solution:
+    def minDeletions(self, s: str) -> int:
+        frequency = [0] * 26
+        for c in s:
+            frequency[ord(c) - ord('a')] += 1
+        
+        frequency.sort(reverse=True)
+
+        ans = 0
+        # Maximum frequency a character can have.
+        max_frequency_allowed = len(s)
+
+        for freq in frequency:
+            if freq > max_frequency_allowed:
+                ans += freq - max_frequency_allowed
+                freq = max_frequency_allowed
+
+            max_frequency_allowed = max(0, freq - 1)
+        
+        return ans
+```
