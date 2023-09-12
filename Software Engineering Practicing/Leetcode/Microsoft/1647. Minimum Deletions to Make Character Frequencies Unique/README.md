@@ -44,16 +44,17 @@ __Constraints:__
 
 ---
 
-### Counter
+### Hash Map
 
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(N + K^{2})$
-- __Space Complexity__: $\mathcal{O}O(K)$
+- __Space Complexity__: $\mathcal{O}(K)$
 
 ```Python
 class Solution:
     def minDeletions(self, s: str) -> int:
+        # Counter
         counter = collections.defaultdict(int)
         for c in s:
             counter[c] = counter.get(c, 0) + 1
@@ -67,5 +68,26 @@ class Solution:
                 ans += 1
             seen_frequency.add(f)
     
+        return ans
+```
+
+### Array
+
+```Python
+class Solution:
+    def minDeletions(self, s: str) -> int:
+        frequency = [0] * 26
+        for c in s:
+            frequency[ord(c) - ord('a')] += 1
+        
+        ans = 0
+        seen_frequency = set()
+
+        for i, f in enumerate(frequency):
+            while f and f in seen_frequency:
+                f -= 1
+                ans += 1
+            seen_frequency.add(f)
+        
         return ans
 ```
