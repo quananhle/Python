@@ -260,6 +260,8 @@ __Algorithm__
 4. Retrieve the answer bounds from ans as ```i, j```.
 5. Return the substring of ```s``` starting at index ```i``` and ending with index ```j```.
 
+__Complexity Analysis__
+
 - __Time Complexity__: $\mathcal{O}(n^{2})$
 - __Space Complexity__: $\mathcal{O}(1)$
 
@@ -334,6 +336,8 @@ class Solution:
 ---
 
 ### Manacher's Algorithm
+
+__Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(n)$
 - __Space Complexity__: $\mathcal{O}(n)$
