@@ -1,6 +1,6 @@
 ## [135. Candy](https://leetcode.com/problems/candy)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Greedy Algorithm```
 
 #### Difficulty: Hard
 
@@ -66,4 +66,22 @@ class Solution:
                     have_change = True
                 
         return sum(candies)
+```
+
+### Two Arrays
+
+```Python
+
+```
+
+### One Array
+
+```Python
+
+```
+
+###
+
+```Python
+
 ```
