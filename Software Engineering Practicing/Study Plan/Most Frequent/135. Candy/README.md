@@ -70,6 +70,8 @@ class Solution:
 
 ### Two Arrays
 
+![image](https://leetcode.com/problems/candy/Figures/135_Candy_Two_Pass.gif)
+
 ```Python
 class Solution:
     def candy(self, ratings: List[int]) -> int:
