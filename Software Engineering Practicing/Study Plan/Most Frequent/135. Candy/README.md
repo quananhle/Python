@@ -71,7 +71,26 @@ class Solution:
 ### Two Arrays
 
 ```Python
+class Solution:
+    def candy(self, ratings: List[int]) -> int:
+        ans = 0
+        n = len(ratings)
+        # Give at least 1 candy to every student
+        left_to_right = [1] * n
+        right_to_left = [1] * n
 
+        for i in range(1, n):
+            if ratings[i - 1] < ratings[i]:
+                left_to_right[i] = left_to_right[i - 1] + 1
+        
+        for i in range(n - 2, -1, -1):
+            if ratings[i + 1] < ratings[i]:
+                right_to_left[i] = right_to_left[i + 1] + 1
+        
+        for i in range(n):
+            ans += max(left_to_right[i], right_to_left[i])
+
+        return ans
 ```
 
 ### One Array
