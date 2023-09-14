@@ -35,14 +35,14 @@ Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","
 ```
 
 __Constraints:__
-```
-1 <= tickets.length <= 300
-tickets[i].length == 2
-fromi.length == 3
-toi.length == 3
-fromi and toi consist of uppercase English letters.
-fromi != toi
-```
+
+- $1 \le tickets.length \le 300$
+- $tickets[i].length == 2$
+- $from{_i}.length == 3$
+- $to{_i}.length == 3$
+- $from{_i}$ and $to{_i}$ consist of uppercase English letters.
+- $from{_i} \neq to{_i}$
+
 
 ---
 
