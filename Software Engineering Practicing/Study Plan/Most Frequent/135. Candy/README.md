@@ -135,6 +135,8 @@ class Solution:
 
 ### One Pass with Constant Space
 
+![image](https://leetcode.com/problems/candy/Figures/135_Candy_Constant_Space.PNG)
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(n)$.
