@@ -51,7 +51,7 @@ __Complexity Analysis__
 class Solution:
     def candy(self, ratings: List[int]) -> int:
         n = len(ratings)
-        # Give at least 1 candy to every student
+        # Give at least 1 candy to every child
         candies = [1] * n
         have_change = True
 
@@ -59,14 +59,14 @@ class Solution:
         while have_change:
             have_change = not have_change
             for i in range(n):
-                # Check if current student has higher rating and has less or equal candies than the next student
+                # Check if current child has higher rating and has less or equal candies than the next child
                 if i != n - 1 and ratings[i] > ratings[i + 1] and candies[i] <= candies[i + 1]:
-                    # Give more candies to current student
+                    # Give more candies to current child
                     candies[i] = candies[i + 1] + 1
                     have_change = True
-                # Check if current student has higher rating and has less or equal candies than the previous student  
+                # Check if current child has higher rating and has less or equal candies than the previous child  
                 if i > 0 and ratings[i] > ratings[i - 1] and candies[i] <= candies[i - 1]:
-                    # Give more candies to current student
+                    # Give more candies to current child
                     candies[i] = candies[i - 1] + 1
                     have_change = True
                 
