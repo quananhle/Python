@@ -13,6 +13,8 @@ You may assume all tickets form at least one valid itinerary. You must use all t
 
 ![image](https://user-images.githubusercontent.com/35042430/211759978-150b8287-1481-4559-bf2c-08e008a767bc.png)
 
+![image](https://github.com/quananhle/Python/assets/35042430/22404f27-39d0-44b2-b82a-8cefad2d7f95)
+
 ---
 
 __Example 1:__
