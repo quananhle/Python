@@ -40,22 +40,28 @@ __Constraints:__
 
 ---
 
-### Brute Force
+### Brute Force (Time Limit Exceeded)
 
 ```Python
 class Solution:
     def candy(self, ratings: List[int]) -> int:
         n = len(ratings)
+        # Give at least 1 candy to every student
         candies = [1] * n
         have_change = True
 
+        # Check if no update in candies, return the number of candies
         while have_change:
             have_change = not have_change
             for i in range(n):
+                # Check if current student has higher rating and has less or equal candies than the next student
                 if i != n - 1 and ratings[i] > ratings[i + 1] and candies[i] <= candies[i + 1]:
+                    # Give more candies to current student
                     candies[i] = candies[i + 1] + 1
                     have_change = True
+                # Check if current student has higher rating and has less or equal candies than the previous student  
                 if i > 0 and ratings[i] > ratings[i - 1] and candies[i] <= candies[i - 1]:
+                    # Give more candies to current student
                     candies[i] = candies[i - 1] + 1
                     have_change = True
                 
