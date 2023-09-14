@@ -39,3 +39,25 @@ __Constraints:__
 - $0 \le ratings[i] \le 2 * 10^{4}$
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def candy(self, ratings: List[int]) -> int:
+        n = len(ratings)
+        candies = [1] * n
+        have_change = True
+
+        while have_change:
+            have_change = not have_change
+            for i in range(n):
+                if i != n - 1 and ratings[i] > ratings[i + 1] and candies[i] <= candies[i + 1]:
+                    candies[i] = candies[i + 1] + 1
+                    have_change = True
+                if i > 0 and ratings[i] > ratings[i - 1] and candies[i] <= candies[i - 1]:
+                    candies[i] = candies[i - 1] + 1
+                    have_change = True
+                
+        return sum(candies)
+```
