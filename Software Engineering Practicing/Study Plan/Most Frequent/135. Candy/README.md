@@ -72,6 +72,11 @@ class Solution:
 
 ![image](https://leetcode.com/problems/candy/Figures/135_Candy_Two_Pass.gif)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^{2})$.
+- __Space Complexity__: $\mathcal{O}(n)$.
+
 ```Python
 class Solution:
     def candy(self, ratings: List[int]) -> int:
