@@ -60,6 +60,7 @@
 
 ## Array & String
 
+- :no_entry::no_entry::no_entry: [135. Candy](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Most%20Frequent/135.%20Candy)
 - :four_leaf_clover: [163. Missing Ranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/163.%20Missing%20Ranges)
 - :four_leaf_clover: [168. Excel Sheet Column Title](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/168.%20Excel%20Sheet%20Column%20Title) ```Math```
 - :four_leaf_clover: [228. Summary Ranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/228.%20Summary%20Ranges)
