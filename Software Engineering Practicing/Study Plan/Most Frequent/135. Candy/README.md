@@ -140,8 +140,42 @@ class Solution:
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(n)$.
-- __Space Complexity__: $\mathcal{O}(n)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
 
 ```Python
+class Solution:
+    def candy(self, ratings: List[int]) -> int:
+        def count(n):
+            return (n * (n + 1)) // 2
+        
+        ans = 0
+        n = len(ratings)
+        if n <= 1:
+            return n
+        
+        candies = up = down = old_slope = 0
 
+        for i in range(1, n):
+            if ratings[i - 1] < ratings[i]:
+                new_slope = 1
+            elif ratings[i] < ratings[i - 1]:
+                new_slope = -1
+            else:
+                new_slope = 0
+            
+            if (old_slope > 0 and new_slope == 0) or (old_slope < 0 and new_slope >= 0):
+                candies += count(up) + count(down) + max(up, down)
+                up = down = 0
+            
+            if new_slope > 0:
+                up += 1
+            elif new_slope < 0:
+                down += 1
+            else:
+                candies += 1
+            
+            old_slope = new_slope
+        
+        candies += count(up) + count(down) + max(up, down) + 1
+        return candies
 ```
