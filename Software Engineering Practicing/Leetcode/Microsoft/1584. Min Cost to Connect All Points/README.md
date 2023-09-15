@@ -263,7 +263,7 @@ __Complexity Analysis__
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
         n = len(points)
-        min_distance = [0] + [math.inf] * (n - 1)
+        min_weight = [0] + [math.inf] * (n - 1)
         seen = set()
         ans = 0
         # Edges used to break out early once all nodes are connected
@@ -274,8 +274,8 @@ class Solution:
             curr_node = -1
 
             for curr in range(n):
-                if not curr in seen and curr_min_edge > min_distance[curr]:
-                    curr_min_edge = min_distance[curr]
+                if not curr in seen and curr_min_edge > min_weight[curr]:
+                    curr_min_edge = min_weight[curr]
                     curr_node = curr
 
             ans += curr_min_edge
@@ -284,8 +284,8 @@ class Solution:
 
             for next_node in range(n):
                 next_weight = abs(points[curr_node][0] - points[next_node][0]) + abs(points[curr_node][1] - points[next_node][1])
-                if not next_node in seen and min_distance[next_node] > next_weight:
-                    min_distance[next_node] = next_weight
+                if not next_node in seen and min_weight[next_node] > next_weight:
+                    min_weight[next_node] = next_weight
                     
         return ans
 ```
