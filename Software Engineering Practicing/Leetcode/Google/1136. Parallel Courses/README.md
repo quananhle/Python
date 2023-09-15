@@ -14,3 +14,33 @@ Return _the minimum number of semesters needed to take all courses_. If there is
 
 ---
 
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2021/02/24/course1graph.jpg)
+```
+Input: n = 3, relations = [[1,3],[2,3]]
+Output: 2
+Explanation: The figure above represents the given graph.
+In the first semester, you can take courses 1 and 2.
+In the second semester, you can take course 3.
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2021/02/24/course2graph.jpg)
+```
+Input: n = 3, relations = [[1,2],[2,3],[3,1]]
+Output: -1
+Explanation: No course can be studied because they are prerequisites of each other.
+```
+
+__Constraints:__
+
+- $1 \le n \le 5000$
+- $1 \le relations.length \le 5000$
+- $relations[i].length == 2$
+- $1 \le $prevCourse_{i}$, $nextCourse_{i}$ \le n$
+- $prevCourse_{i} \neq nextCourse_{i}$
+- All the pairs $[prevCourse_{i}, nextCourse_{i}]$ are unique.
+
+---
