@@ -204,3 +204,43 @@ class Solution:
                 
         return ans
 ```
+
+### Prim's Algorithm
+
+Prim's algorithm is also a greedy algorithm for building a minimum spanning tree in a weighted and undirected graph.
+
+![image](https://leetcode.com/problems/min-cost-to-connect-all-points/Figures/1584/prims.gif)
+
+In this algorithm, we can pick any node to start with. Then we will choose the lowest-weighted edge that connects a node present in the MST to a node not present in the MST. We could keep all of the edges in an array and then sort them. But then, for each new node that we add to the MST, we would have to add the new node's edges to the array and sort the array again. This would be a costly operation when done repeatedly.
+
+A more efficient way to track which edges are available and which of these edges has the lowest weight is to use a min-heap data structure. A min-heap is a tree-like data structure that always stores the minimum valued element (edge weight here) at the root and where insertion and removal of elements (edges) take logarithmic time.
+
+![image](https://leetcode.com/problems/min-cost-to-connect-all-points/Figures/1584/Slide2.PNG)
+
+```Python
+class Solution:
+    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        n = len(points)
+        h = [(0, 0)]
+        seen = set()
+        ans = 0
+        # Edges used to break out early once all nodes are connected
+        edges_used = 0
+
+        while edges_used < n:
+            weight, curr = heapq.heappop(h)
+
+            if curr in seen:
+                continue
+            
+            seen.add(curr)
+            ans += weight
+            edges_used += 1
+
+            for next in range(n):
+                if not next in seen:
+                    next_weight = abs(points[curr][0] - points[next][0]) + abs(points[curr][1] - points[next][1])
+                    heapq.heappush(h, (next_weight, next))
+                
+        return ans
+```
