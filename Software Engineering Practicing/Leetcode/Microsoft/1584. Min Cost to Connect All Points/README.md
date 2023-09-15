@@ -217,6 +217,13 @@ A more efficient way to track which edges are available and which of these edges
 
 ![image](https://leetcode.com/problems/min-cost-to-connect-all-points/Figures/1584/Slide2.PNG)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2 \cdot \log(N))$.
+![image](https://github.com/quananhle/Python/assets/35042430/d4482d2e-6265-4c95-8a0c-fee3630ab218)
+- __Space Complexity__: $\mathcal{O}(N^{2})$.
+![image](https://github.com/quananhle/Python/assets/35042430/9dfbb8d2-f734-41ae-b9a0-284fbbac5dfb)
+
 ```Python
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
@@ -243,4 +250,10 @@ class Solution:
                     heapq.heappush(h, (next_weight, next))
                 
         return ans
+```
+
+### Prim's Algorithm (Optimized)
+
+```Python
+
 ```
