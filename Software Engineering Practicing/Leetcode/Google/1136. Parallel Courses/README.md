@@ -39,7 +39,7 @@ __Constraints:__
 - $1 \le n \le 5000$
 - $1 \le relations.length \le 5000$
 - $relations[i].length == 2$
-- $1 \le $prevCourse_{i}$, $nextCourse_{i}$ \le n$
+- $1 \le prevCourse_{i}, nextCourse_{i} \le n$
 - $prevCourse_{i} \neq nextCourse_{i}$
 - All the pairs $[prevCourse_{i}, nextCourse_{i}]$ are unique.
 
