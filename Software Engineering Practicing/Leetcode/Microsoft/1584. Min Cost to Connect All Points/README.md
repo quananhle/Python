@@ -51,3 +51,13 @@ __Constraints:__
 Kruskal's algorithm is a greedy algorithm for building a minimum spanning tree in a weighted and undirected graph.
 
 ![image](https://leetcode.com/problems/min-cost-to-connect-all-points/Figures/1584/kruskal.gif)
+
+The union-find data structure has two primary functions:
+
+- ```find(a)```: Function which returns the ID of the group in which node ```a``` belongs.
+- ```union(a, b)```: Function to merge the groups of node ```a``` and ```b```. If they already belong to the same group, we don't do anything and return ```false``` to signify the edge between ```a``` and ```b``` was not added. Otherwise, we return ```true```.
+
+While there are several ways to implement union-find, in this approach, we will implement union-find by rank with path compression.
+
+So, after sorting all the edges in increasing order, we will try to connect the end nodes of each edge one by one.
+First, we need to check if these two nodes are already connected. To do so, we can use the ```find``` function. If they are already connected by some other path, then adding this edge will form a cycle; thus, we will omit this edge from the MST. If the nodes are not connected, we can use the ```union``` function to connect them. We will perform the ```find``` check inside the ```union``` function to keep our code clean.
