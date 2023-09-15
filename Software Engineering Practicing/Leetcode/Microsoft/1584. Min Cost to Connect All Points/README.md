@@ -13,3 +13,33 @@ Return _the minimum cost to make all points connected_. All points are connected
 ![image](https://github.com/quananhle/Python/assets/35042430/cfe2fe6c-0a67-482f-973b-daf95705ff5f)
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2020/08/26/d.png)
+```
+Input: points = [[0,0],[2,2],[3,10],[5,2],[7,0]]
+Output: 20
+Explanation:
+```
+
+![image](https://assets.leetcode.com/uploads/2020/08/26/c.png)
+
+```
+We can connect the points as shown above to get the minimum cost of 20.
+Notice that there is a unique path between every pair of points.
+```
+
+__Example 2:__
+```
+Input: points = [[3,12],[-2,5],[-4,1]]
+Output: 18
+```
+
+__Constraints:__
+
+- $1 \le points.length \le 1000$
+- $-10^{6} \le x_{i}, y_{i} \le 10^{6}$
+- All pairs $(x_{i}, y_{i})$ are distinct.
+
+---
