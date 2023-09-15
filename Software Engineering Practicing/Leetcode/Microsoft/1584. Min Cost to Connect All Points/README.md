@@ -254,6 +254,38 @@ class Solution:
 
 ### Prim's Algorithm (Optimized)
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N^2)$.
+- __Space Complexity__: $\mathcal{O}(N)$.
+
+```Python
+class Solution:
+    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        n = len(points)
+        min_distance = [0] + [math.inf] * (n - 1)
+        seen = set()
+        ans = 0
+        # Edges used to break out early once all nodes are connected
+        edges_used = 0
+
+        while edges_used <= n - 1:
+            curr_min_edge = math.inf
+            curr_node = -1
+
+            for curr in range(n):
+                if not curr in seen and curr_min_edge > min_distance[curr]:
+                    curr_min_edge = min_distance[curr]
+                    curr_node = curr
+
+            ans += curr_min_edge
+            edges_used += 1
+            seen.add(curr_node)
+
+            for next_node in range(n):
+                next_weight = abs(points[curr_node][0] - points[next_node][0]) + abs(points[curr_node][1] - points[next_node][1])
+                if not next_node in seen and min_distance[next_node] > next_weight:
+                    min_distance[next_node] = next_weight
+                    
+        return ans
 ```
