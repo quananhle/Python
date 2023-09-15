@@ -43,3 +43,11 @@ __Constraints:__
 - All pairs $(x_{i}, y_{i})$ are distinct.
 
 ---
+
+![image](https://leetcode.com/problems/min-cost-to-connect-all-points/Figures/1584/Slide1.PNG)
+
+### Kruskal's Algorithm
+
+Kruskal's algorithm is a greedy algorithm for building a minimum spanning tree in a weighted and undirected graph.
+
+![image](https://leetcode.com/problems/min-cost-to-connect-all-points/Figures/1584/kruskal.gif)
