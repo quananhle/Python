@@ -1,6 +1,6 @@
 ## [1584. Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points)
 
-```Tag```:
+```Tag```: ```Kruskal's Algorithm``` ```Prim's Algorithm``` ```Union-Find```
 
 #### Difficulty: Medium
 
