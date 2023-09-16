@@ -1,6 +1,6 @@
 ## [1631. Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Priority Queue``` ```Union-Find``` ```Binary Search Tree```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Priority Queue``` ```Union-Find``` ```Binary Search Tree``` ```Dijkstra's Algorithm```
 
 #### Difficulty: Medium
 
@@ -51,7 +51,7 @@ __Constraints:__
 
 ---
 
-###
+### Dijkstra's Algorithm with Priority Queue
 
 ```Python
 class Solution:
