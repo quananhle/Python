@@ -1,6 +1,6 @@
 ## [1631. Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Priority Queue``` ```Union-Find``` ```Binary Search Tree``` ```Dijkstra's Algorithm```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Priority Queue``` ```Union-Find``` ```Binary Search Tree``` ```Dijkstra's Algorithm``` ```Backtracking```
 
 #### Difficulty: Medium
 
@@ -50,6 +50,20 @@ __Constraints:__
 - $1 \le heights[i][j] \le 10^{6}$
 
 ---
+
+![image](https://leetcode.com/problems/path-with-minimum-effort/Figures/5548/minEffortOverview.png)
+
+### Brute Force with Backtracking
+
+The backtracking algorithms consists of the following steps,
+
+- __Choose__: Choose the potential candidate. For any given cell A, we must choose the adjacent cells in all 4 directions (up, down, left, right) as a potential candidate.
+- __Constraint__: Define a constraint that must be satisfied by the chosen candidate. In this case, a chosen cell is valid if it is within the boundaries of the matrix and it is not visited before.
+- __Goal__: We must define the goal that determines if we have found the required solution and we must backtrack. Here, our goal is achieved once we have reached the destination cell. On reaching the destination cell, we must track the maximum absolute difference in that path and backtrack.
+
+```Python
+
+```
 
 ### Dijkstra's Algorithm with Priority Queue
 
