@@ -1,6 +1,6 @@
 ## [1631. Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort)
 
-```Tag```: ```Graph```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Priority Queue``` ```Union-Find``` ```Binary Search Tree```
 
 #### Difficulty: Medium
 
@@ -50,3 +50,33 @@ __Constraints:__
 - $1 \le heights[i][j] \le 10^{6}$
 
 ---
+
+###
+
+```Python
+class Solution:
+    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+        ROWS, COLS = len(heights), len(heights[0])
+        DIRECTIONS = [(1,0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        ans = math.inf
+
+        queue = [(0, 0, 0)]
+        efforts = [[math.inf] * COLS for _ in range(ROWS)]
+        efforts[0][0] = 0
+
+        while queue:
+            effort, row, col = heapq.heappop(queue)
+            if row == ROWS - 1 and col == COLS - 1:
+                return effort
+            visited.add((row, col))
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not (next_row, next_col) in visited):
+                    continue
+                max_effort = max(abs(heights[row][col] - heights[next_row][next_col]), efforts[row][col])
+                if efforts[next_row][next_col] > max_effort:
+                    efforts[next_row][next_col] = max_effort
+                    heapq.heappush(queue, (max_effort, next_row, next_col))
+
+        return -1
+```
