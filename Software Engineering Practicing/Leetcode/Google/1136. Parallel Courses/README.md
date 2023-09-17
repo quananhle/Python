@@ -1,6 +1,6 @@
 ## [1136. Parallel Courses](https://leetcode.com/problems/parallel-courses)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Topological Sort``` ```Kahn's Algorithm``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
