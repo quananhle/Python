@@ -53,7 +53,7 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/path-with-minimum-effort/Figures/5548/minEffortOverview.png)
 
-### Brute Force with Backtracking
+### Brute Force with Backtracking (Time Limit Exceeded)
 
 The backtracking algorithms consists of the following steps,
 
@@ -61,8 +61,43 @@ The backtracking algorithms consists of the following steps,
 - __Constraint__: Define a constraint that must be satisfied by the chosen candidate. In this case, a chosen cell is valid if it is within the boundaries of the matrix and it is not visited before.
 - __Goal__: We must define the goal that determines if we have found the required solution and we must backtrack. Here, our goal is achieved once we have reached the destination cell. On reaching the destination cell, we must track the maximum absolute difference in that path and backtrack.
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(3^{m \cdot n})$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$
+
+```Python
+class Solution:
+    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+        ROWS, COLS = len(heights), len(heights[0])
+        DIRECTIONS = [(1,0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        curr_max = math.inf
+
+        def dfs(row, col, max_difference):
+            nonlocal curr_max
+            # Base case
+            if row == ROWS - 1 and col == COLS - 1:
+                curr_max = min(curr_max, max_difference)
+                return max_difference
+
+            visited.add((row, col))
+            min_effort = math.inf
+
+            for next_row, next_col in [(dx + row, dy + col) for dx, dy in DIRECTIONS]:
+                if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not (next_row, next_col) in visited):
+                    continue
+                current_difference = abs(heights[next_row][next_col] - heights[row][col])
+                max_current_difference = max(max_difference, current_difference)
+                if max_current_difference < curr_max:
+                    effort = dfs(next_row, next_col, max_current_difference)
+                    min_effort = min(min_effort, effort)
+
+            # Backtracking
+            visited.remove((row, col))
+            return min_effort
+
+        return dfs(0, 0, 0)
 ```
 
 ### Dijkstra's Algorithm with Priority Queue
