@@ -233,8 +233,8 @@ To find if there exists a path from the source cell to the destination cell for 
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(m \cdot n}$.
-- __Space Complexity__: $\mathcal{O}(m \cdot n}$.
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$.
 
 ```Python
 class Solution:
