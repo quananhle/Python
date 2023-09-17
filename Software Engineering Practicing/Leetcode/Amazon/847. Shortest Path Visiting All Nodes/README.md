@@ -1,6 +1,6 @@
 ## [847. Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes)
 
-```Tag```: ```Graph``` ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Graph``` ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search``` ```Bitwise Manipulations```
 
 #### Difficulty: Hard
 
@@ -59,6 +59,10 @@ While this is an easy and very efficient way to encode state, we also need to kn
 To change the mask through flipping bits, we can start by taking the number ```1```. If we left shift ```1``` $i$ times, then we will end up with a binary number that only has a ```1``` in the $i^{th}$ position. For example, ```1 << 4``` equals ```16```, or ```'10000'``` in binary, which is just a ```1``` in the 4<sup>th</sup> position. We can then $XOR$ this number with our mask. Because ```1 XOR 1 = 0``` and ```1 XOR 0 = 1```, this would flip the bit in the 4<sup>th</sup> position of our mask.
 
 ![image](https://leetcode.com/problems/shortest-path-visiting-all-nodes/Figures/847/847_2.png)
+
+Now, given a mask, how do we tell if a certain node has been visited? We can use the exact same process as above - let's say we wanted to check if the 7<sup>th</sup> node has been visited. Take the number ```1```, and left shift it ```7``` times. ```1 << 7``` equals ```128```, or ```10000000``` in binary. Now, instead of performing an $XOR$, perform an $AND$. If the mask has the 7<sup>th</sup> bit set to ```1```, then the $AND$ will just give us back the same number, ```128```. If the mask has the 7<sup>th</sup> bit set to ```0```, then the $AND$ will give us back ```0```. Thus, if the result of the $AND$ equals ```0```, then we know the node has not been visited yet.
+
+![image](https://leetcode.com/problems/shortest-path-visiting-all-nodes/Figures/847/847_3.png)
 
 ```Python
 
