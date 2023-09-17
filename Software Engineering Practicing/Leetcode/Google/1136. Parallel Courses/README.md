@@ -44,3 +44,13 @@ __Constraints:__
 - All the pairs $[prevCourse_{i}, nextCourse_{i}]$ are unique.
 
 ---
+
+### Topological Sort using Kahn's Algorithm
+
+![image](https://camo.githubusercontent.com/2cf5467d09fbacb3ddf239cac1c42f214b3abe785139960b9383bbea42a6bc52/68747470733a2f2f6c656574636f64652e636f6d2f70726f626c656d732f636f757273652d7363686564756c652f466967757265732f3230372f3230372d312e706e67)
+
+We can treat the problem as a directed graph problem (the courses are nodes and the prerequisites are egdes). What we need to do is somehow iterate over all the nodes in the graph.
+
+```Python
+
+```
