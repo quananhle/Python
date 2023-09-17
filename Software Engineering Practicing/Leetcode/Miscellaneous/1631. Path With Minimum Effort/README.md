@@ -231,6 +231,11 @@ Given the lower bound as $0$ and upper bound as $10^6$, we could repeatedly calc
 
 To find if there exists a path from the source cell to the destination cell for a given mid value, we could use simple graph traversal.
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n}$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n}$.
+
 ```Python
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
