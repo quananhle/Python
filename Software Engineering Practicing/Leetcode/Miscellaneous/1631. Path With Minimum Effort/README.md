@@ -232,7 +232,36 @@ Given the lower bound as $0$ and upper bound as $10^6$, we could repeatedly calc
 To find if there exists a path from the source cell to the destination cell for a given mid value, we could use simple graph traversal.
 
 ```Python
+class Solution:
+    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+        ROWS, COLS = len(heights), len(heights[0])
+        DIRECTIONS = [(1,0), (0, 1), (-1, 0), (0, -1)]
 
+        def bfs(mid):
+            visited = set()
+            queue = collections.deque([(0, 0)])
+            while queue:
+                row, col = queue.popleft()
+                if row == ROWS - 1 and col == COLS - 1:
+                    return True
+                visited.add((row, col))
+                for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                    if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not (next_row, next_col) in visited):
+                        continue
+                    curr_diff = abs(heights[next_row][next_col] - heights[row][col])
+                    if curr_diff <= mid:
+                        visited.add((next_row, next_col))
+                        queue.append((next_row, next_col))
+
+        lo, hi = 0, 10000000
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            if bfs(mi):
+                hi = mi
+            else:
+                lo = mi + 1
+        
+        return lo
 ```
 
 ### Binary Search with DFS
