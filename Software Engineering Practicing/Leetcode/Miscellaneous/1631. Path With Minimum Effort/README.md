@@ -139,6 +139,8 @@ class Solution:
 
 ### Union Find - Disjoint Set
 
+![image](https://leetcode.com/problems/path-with-minimum-effort/Figures/5548/unionFindEdgeList.png)
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(m \cdot n \log(m \cdot n))$.
