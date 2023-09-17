@@ -1,6 +1,6 @@
 ## [1631. Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Priority Queue``` ```Union-Find``` ```Binary Search Tree``` ```Dijkstra's Algorithm``` ```Backtracking```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Priority Queue``` ```Union-Find``` ```Binary Search Tree``` ```Dijkstra's Algorithm``` ```Backtracking``` ```Graph```
 
 #### Difficulty: Medium
 
@@ -217,4 +217,18 @@ class Solution:
                 return difference
 
         return -1
+```
+
+---
+
+### Binary Search with BFS
+
+```Python
+
+```
+
+### Binary Search with DFS
+
+```Python
+
 ```
