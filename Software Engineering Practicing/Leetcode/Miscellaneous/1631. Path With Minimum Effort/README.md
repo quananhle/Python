@@ -270,6 +270,11 @@ class Solution:
 
 ### Binary Search with DFS
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$.
+
 ```Python
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
