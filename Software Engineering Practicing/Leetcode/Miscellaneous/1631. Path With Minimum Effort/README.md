@@ -139,6 +139,15 @@ class Solution:
 
 ### Union Find - Disjoint Set
 
+__Algorithm__
+
+- Initially, each cell is a disconnected component, so we initialize each cell as a parent of itself. Also we flatten a 2D matrix into a 1D matrix of size ```ROWS * COLS``` and each cell ```(row, col)``` in a 2D matrix can be stored at ```(row * COLS + col)``` in a 1D matrix.
+The below figure illustrates this idea.
+
+![image](https://leetcode.com/problems/path-with-minimum-effort/Figures/5548/flatten2DMatrix2.png)
+
+We also build an ```edge_list``` which consists of the absolute difference between every adjacent cell in the matrix. We also sort the edge list in non-decreasing order of difference. The below example illustrates the edge list of given heights matrix ```[[1,2,2],[3,8,2],[5,3,5]]``` sorted by difference.
+
 ![image](https://leetcode.com/problems/path-with-minimum-effort/Figures/5548/unionFindEdgeList.png)
 
 __Complexity Analysis__
