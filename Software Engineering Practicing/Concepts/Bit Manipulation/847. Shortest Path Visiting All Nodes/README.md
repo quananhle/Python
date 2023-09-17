@@ -64,6 +64,24 @@ Now, given a mask, how do we tell if a certain node has been visited? We can use
 
 ![image](https://leetcode.com/problems/shortest-path-visiting-all-nodes/Figures/847/847_3.png)
 
+__Algorithm__
+
+1. Initialize some variables.
+
+- ```n```, as the length of ```graph```.
+- ```ending_mask = (1 << n) - 1```, a bitmask that represents all nodes being visited. For example, if ```n = 5```, then ```ending_mask = 31 = '11111'```.
+- ```cache```, a data structure that will be used to cache results to prevent duplicate computation.
+
+2. Create a function ```dp(node, mask)``` that will be used for DFS.
+
+- First, check if this state has already been visited. If it has, return the cached result.
+- If not, check for the base case. If ```(mask & (mask - 1)) == 0```, then we have visited all other nodes, return ```0```.
+- Otherwise, add an entry into the cache for this state with a very large number like infinity. We need to do this before applying the recurrence relation to avoid the infinite cycles we talked about above.
+- Now, apply the recurrence relation. For all neighbor in ```graph[node]```, explore both mask options: already visited ```(dp(neighbor, mask))``` or visiting for the first time ```(dp(neighbor, mask ^ (1 << node)))```. Choose the best option out of all adjacent states, add ```1``` to it, and update the entry in the ```cache``` for the current state.
+- At the end of the recurrence application, just return the result for the current state stored in the cache.
+
+3. Perform a DFS for each node - ```dp(node, ending_mask)``` for all node from ```0``` to ```n - 1```. Pick the lowest result and return it.
+
 ```Python
 
 ```
