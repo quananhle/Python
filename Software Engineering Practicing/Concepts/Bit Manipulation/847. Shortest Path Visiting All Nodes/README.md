@@ -82,6 +82,11 @@ __Algorithm__
 
 3. Perform a DFS for each node - ```dp(node, ending_mask)``` for all node from ```0``` to ```n - 1```. Pick the lowest result and return it.
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(2^{N} \cdot N^{2})$. The total number of possible states is $O(2^{N} \cdot N)$, because there are $2^{N}$ possibilities for mask, each of which can be paired with one of ```N``` nodes.
+- __Space Complexity__: $\mathcal{O}(2^{N} \cdot N)$.
+
 ```Python
 class Solution:
     def shortestPathLength(self, graph: List[List[int]]) -> int:
