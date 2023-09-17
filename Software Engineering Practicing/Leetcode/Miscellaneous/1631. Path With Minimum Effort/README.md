@@ -139,6 +139,71 @@ class Solution:
 
 ### Union Find - Disjoint Set
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(m \cdot n \log(m \cdot n))$.
+For every edge, we ```find``` the parent of each cell and perform the ```union``` (Union Find). For ```n``` elements, the time complexity of ```Union Find``` is $\log n$. Thus for $m \cdot n$ cells, the time taken to perform ```Union Find``` would be $\log m \cdot n$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$;
+
+```Python
+class UnionFind:
+
+    def __init__(self, size: int) -> None:
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.size = size
+    
+    def find(self, x: int) -> int:
+        if x != self.root[x]:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    
+    def union(self, x: int, y: int) -> bool:
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x == root_y:
+            return False
+        if self.rank[root_x] < self.rank[root_y]:
+            self.root[root_x] = root_y
+            self.rank[root_y] += root_x
+        else:
+            self.root[root_y] = root_x
+            self.rank[root_x] += root_y
+        self.size -= 1
+        return True
+    
+    def get_size(self) -> int:
+        return self.size
+    
+    def compare(self, x: int, y: int) -> bool:
+        return self.find(x) == self.find(y)
+
+class Solution:
+    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+        ROWS, COLS = len(heights), len(heights[0])
+        if ROWS == 1 and COLS == 1:
+            return 0
+
+        DIRECTIONS = [(1,0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        curr_max = math.inf
+
+        edge_list = list()
+        for row in range(ROWS):
+            for col in range(COLS):
+                if row > 0:
+                    difference = abs(heights[row][col] - heights[row - 1][col])
+                    edge_list.append((difference, row * COLS + col, (row - 1) * COLS + col))
+                if col > 0:
+                    difference = abs(heights[row][col] - heights[row][col - 1])
+                    edge_list.append((difference, row * COLS + col, row * COLS + col - 1))
+        
+        edge_list.sort()
+        uf = UnionFind(ROWS * COLS)
+
+        for difference, x, y in edge_list:
+            uf.union(x, y)
+            if uf.find(0) == uf.find(ROWS * COLS - 1):
+                return difference
+
+        return -1
 ```
