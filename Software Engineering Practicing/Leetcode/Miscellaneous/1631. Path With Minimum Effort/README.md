@@ -223,6 +223,14 @@ class Solution:
 
 ### Binary Search with BFS
 
+Our aim to find the minimum effort required to travel from source cell to destination cell. We know from the given constraints that the maximum height could be $10^6 (1000000)$. So we know that our required absolute difference values would between $0$ and $10^6$. We could use Binary Search and reduce our search space by half.
+
+Given the lower bound as $0$ and upper bound as $10^6$, we could repeatedly calculate the middle value. Let this middle value be ```mid```. We could divide our search space based on the following condition,
+- If there exists a path from the source cell to the destination cell with the effort less than the value ```mid```, we know that the required minimum effort value lies between lower bound ```0``` and ```mid```.
+- Similarly, if there doesn't exist any path from a source cell to destination cell with the effort less than the value ```mid```, we know that the required minimum effort value lies between ```mid``` and upper bound $10^6$.
+
+To find if there exists a path from the source cell to the destination cell for a given mid value, we could use simple graph traversal.
+
 ```Python
 
 ```
