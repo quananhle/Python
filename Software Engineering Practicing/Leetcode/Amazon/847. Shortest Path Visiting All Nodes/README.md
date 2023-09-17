@@ -56,6 +56,8 @@ While this is an easy and very efficient way to encode state, we also need to kn
 1. How to change the mask (flip certain bits, for example, if we visit the 6th node, how do we flip the 6th bit?)
 2. How to tell what nodes we have visited so far (given a certain mask, how do we tell if we have visited the 4th node?)
 
+To change the mask through flipping bits, we can start by taking the number ```1```. If we left shift ```1``` $i$ times, then we will end up with a binary number that only has a ```1``` in the $i^{th}$ position. For example, ```1 << 4``` equals ```16```, or ```'10000'``` in binary, which is just a ```1``` in the 4<sup>th</sup> position. We can then $XOR$ this number with our mask. Because ```1 XOR 1 = 0``` and ```1 XOR 0 = 1```, this would flip the bit in the 4<sup>th</sup> position of our mask.
+
 ![image](https://leetcode.com/problems/shortest-path-visiting-all-nodes/Figures/847/847_2.png)
 
 ```Python
