@@ -102,6 +102,13 @@ class Solution:
 
 ### Dijkstra's Algorithm with Priority Queue
 
+![image](https://github.com/quananhle/Python/assets/35042430/8298ad20-36ca-4668-81b0-8d63684e0fdd)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n \log(m \cdot n))$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$;
+
 ```Python
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
