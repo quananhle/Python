@@ -255,7 +255,6 @@ class Solution:
                         continue
                     curr_diff = abs(heights[next_row][next_col] - heights[row][col])
                     if curr_diff <= mid:
-                        visited.add((next_row, next_col))
                         queue.append((next_row, next_col))
 
         lo, hi = 0, 10000000
@@ -272,5 +271,31 @@ class Solution:
 ### Binary Search with DFS
 
 ```Python
+class Solution:
+    def minimumEffortPath(self, heights: List[List[int]]) -> int:
+        ROWS, COLS = len(heights), len(heights[0])
+        DIRECTIONS = [(1,0), (0, 1), (-1, 0), (0, -1)]
 
+        def dfs(row, col, mid):
+            if row == ROWS - 1 and col == COLS - 1:
+                return True
+            visited.add((row, col))
+            for next_row, next_col in [(row + dx, col + dy) for dx, dy in DIRECTIONS]:
+                if 0 <= next_row < ROWS and 0 <= next_col < COLS and not (next_row, next_col) in visited:
+                    curr_diff = abs(heights[next_row][next_col] - heights[row][col])
+                    if curr_diff <= mid:
+                        visited.add((next_row, next_col))
+                        if dfs(next_row, next_col, mid):
+                            return True
+
+        lo, hi = 0, 10000000
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            visited = set()
+            if dfs(0, 0, mi):
+                hi = mi
+            else:
+                lo = mi + 1
+        
+        return lo
 ```
