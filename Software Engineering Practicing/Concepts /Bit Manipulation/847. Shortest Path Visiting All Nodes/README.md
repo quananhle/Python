@@ -1,6 +1,6 @@
 ## [847. Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes)
 
-```Tag```: ```Graph``` ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search``` ```Bitwise Manipulations```
+```Tag```: ```Graph``` ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search``` ```Bitwise Manipulation```
 
 #### Difficulty: Hard
 
