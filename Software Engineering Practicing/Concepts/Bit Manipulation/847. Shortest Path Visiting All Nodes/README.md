@@ -125,3 +125,35 @@ class Solution:
         # Start at any node
         return min(dp(node, ending_mask) for node in range(n))
 ```
+
+---
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def shortestPathLength(self, graph: List[List[int]]) -> int:
+        n = len(graph)
+        if n == 1:
+            return 0
+
+        ending_mask = (1 << n) - 1
+        queue = collections.deque([(start, 1 << start) for start in range(n)])
+        visited = set(queue)
+        ans = 0
+
+        while queue:
+            for _ in range(len(queue)):
+                curr, mask = queue.popleft()
+                if mask == ending_mask:
+                    return ans
+                for next in graph[curr]:
+                    # Update state of mask with neighbor node
+                    next_mask = mask | (1 << next)
+                    if not (next, next_mask) in visited:
+                        visited.add((next, next_mask))
+                        queue.append((next, next_mask))
+            ans += 1
+            
+        return ans
+```
