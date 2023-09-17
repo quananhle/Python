@@ -130,6 +130,12 @@ class Solution:
 
 ### Breadth-First Search
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(2^{N} \cdot N^{2})$. The total number of possible states is $O(2^{N} \cdot N)$, because there are $2^{N}$ possibilities for mask, each of which can be paired with one of ```N``` nodes.
+Despite having the same time complexity as the first approach, in most cases, this algorithm will outperform the first one for the reasons we talked about in the intuition section, particularly because this algorithm will exit early as soon as it finds a solution.
+- __Space Complexity__: $\mathcal{O}(2^{N} \cdot N)$.
+
 ```Python
 class Solution:
     def shortestPathLength(self, graph: List[List[int]]) -> int:
@@ -145,10 +151,11 @@ class Solution:
         while queue:
             for _ in range(len(queue)):
                 curr, mask = queue.popleft()
+                # Break out early if all nodes have been visited
                 if mask == ending_mask:
                     return ans
                 for next in graph[curr]:
-                    # Update state of mask with neighbor node
+                    # Update state of mask with neighbor node to mask as visited using OR
                     next_mask = mask | (1 << next)
                     if not (next, next_mask) in visited:
                         visited.add((next, next_mask))
