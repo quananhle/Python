@@ -1,6 +1,6 @@
 ## [847. Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes)
 
-```Tag```: ```Graph```
+```Tag```: ```Graph``` ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Hard
 
@@ -40,3 +40,24 @@ __Constraints:__
 - The input ```graph``` is always connected.
 
 ---
+
+### Dynamic Programming
+
+#### Depth-First Search with Top-Down Dynamic Programming
+
+__Bit Manipulation To Encode State__
+
+We can use bitmasks, which is a great tool to learn as many other problems can be solved more efficiently by using them. If there are ```n``` nodes, then there are $2^n$ possible states of nodes we have visited so far - for each node, we have either visited it or we haven't. Therefore, we can use an integer to represent the nodes that we have visited so far - if the $i^{th}$ bit of the integer (from the right side) is set to ```1```, then that means we have visited node ```i```.
+
+![image](https://leetcode.com/problems/shortest-path-visiting-all-nodes/Figures/847/847_1.png)
+
+While this is an easy and very efficient way to encode state, we also need to know how to do 2 things:
+
+1. How to change the mask (flip certain bits, for example, if we visit the 6th node, how do we flip the 6th bit?)
+2. How to tell what nodes we have visited so far (given a certain mask, how do we tell if we have visited the 4th node?)
+
+![image](https://leetcode.com/problems/shortest-path-visiting-all-nodes/Figures/847/847_2.png)
+
+```Python
+
+```
