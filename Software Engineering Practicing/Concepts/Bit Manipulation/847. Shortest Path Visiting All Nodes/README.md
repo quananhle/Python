@@ -83,5 +83,40 @@ __Algorithm__
 3. Perform a DFS for each node - ```dp(node, ending_mask)``` for all node from ```0``` to ```n - 1```. Pick the lowest result and return it.
 
 ```Python
+class Solution:
+    def shortestPathLength(self, graph: List[List[int]]) -> int:
+        n = len(graph)
+        ending_mask = (1 << n) - 1
+        cache = collections.defaultdict(int)
 
+        @functools.lru_cache(maxsize=None)
+        def dp(curr, mask):
+            state = (curr, mask)
+            if state in cache:
+                return cache[state]
+
+            # Base case: mask has only a single "1", meaning only the current node has been visited
+            if mask & (mask - 1) == 0:
+                return 0
+            
+            cache[state] = math.inf
+            # Recurrence relation
+            for next in graph[curr]:
+                '''
+                print ('mask: ', bin(mask), mask)
+                print ('next: ', bin(next), next)
+                print (bin(mask & (1 << next)), mask & (1 << next))
+                '''
+                # Check if neighbor node has not been visited from the current node
+                if mask & (1 << next):
+                    # Neighbor node has been visited from different node, do nothing in mask
+                    do_nothing = 1 + dp(next, mask)
+                    # Mask as visited for the first time by flipping
+                    flip = 1 + dp(next, mask ^ (1 << curr))
+                    cache[state] = min(cache[state], do_nothing, flip)
+
+            return cache[state]
+        
+        # Start at any node
+        return min(dp(node, ending_mask) for node in range(n))
 ```
