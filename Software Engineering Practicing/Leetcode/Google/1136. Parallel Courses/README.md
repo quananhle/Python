@@ -124,3 +124,85 @@ class Solution:
 
         return ans if len(topological_sort) == n else -1
 ```
+
+### Depth-First Search: Check for Cycles + Find Longest Path
+
+There is an important insight:
+
+> The number of semesters needed is equal to the length of the longest path in the graph.
+
+![image](https://leetcode.com/problems/parallel-courses/Documents/1136/1136_2_1.drawio.svg)
+
+![image](https://leetcode.com/problems/parallel-courses/Documents/1136/1136_2_2.drawio.svg)
+
+So firstly, we need to check if the graph has a cycle. If it does, we can directly return ```-1``` since we can never finish all courses.
+
+Now we break the problem into two parts:
+
+1. Check if the graph has a cycle
+2. Calculate the length of the longest path
+
+__Algorithm__
+
+- Step 1: Build a directed graph from relations.
+- Step 2: Implement a function ```dfs_detect_cycle``` to check whether the graph has a cycle:
+    - It returns a boolean indicating whether there is a cycle in the graph. If any dfs call returns ```True```, we have a cycle.
+    - If node is already present in ```indegree```, we have a cycle. We return ```True```.
+    - If node is already visited, we return ```False``` because we already visited this node and didn't find a cycle earlier.
+    - We mark node as visited by adding node into ```visited``` and ``indegree```.
+    - We iterate over all the outgoing edges of node and for each neighbor, we recursively call ```dfs_detect_cycle(neighbor)```. If we get a cycle from neighbor, we return ```True```.
+    - After we have processed all the outgoing edges of node, we remove node from ```indegree``` to backtrack. We also return ```False``` as we didn't find any cycle.
+- Step 3: Implement a function ```dfs_find_longest_path``` to calculate the length of the longest path in the graph.
+- Step 4: Call ```dfs_detect_cycle```, return ```-1``` if the graph has a cycle.
+- Step 5: Otherwise, call ```dfs_find_longest_path```. Return the length of the longest path in the graph.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N+E)$.
+- __Space Complexity__: $\mathcal{O}(N+E)$.
+
+```Python
+class Solution:
+    def minimumSemesters(self, n: int, relations: List[List[int]]) -> int:
+        graph = {i: [] for i in range(1, n + 1)}
+        for start, end in relations:
+            graph[start].append(end)
+
+        visited = set()
+        indegree = set()
+
+        def dfs_detect_cycle(curr):
+            if curr in indegree:
+                return True
+            
+            if curr in visited:
+                return False
+            
+            visited.add(curr)
+            indegree.add(curr)
+
+            for next in graph[curr]:
+                if dfs_detect_cycle(next):
+                    return True
+            
+            indegree.remove(curr)
+            return False
+
+        for curr in graph.keys():
+            if dfs_detect_cycle(curr):
+                return -1
+            
+        visited = collections.defaultdict(int)
+        def dfs_find_longest_path(curr: int) -> int:
+            # Base case
+            if curr in visited:
+                return visited[curr]
+            ans = 1
+            for next in graph[curr]:
+                length = dfs_find_longest_path(next)
+                ans = max(ans, length + 1)
+            visited[curr] = ans
+            return ans
+        
+        return max(dfs_find_longest_path(node) for node in graph)
+```
