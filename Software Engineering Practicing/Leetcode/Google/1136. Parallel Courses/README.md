@@ -51,6 +51,76 @@ __Constraints:__
 
 We can treat the problem as a directed graph problem (the courses are nodes and the prerequisites are egdes). What we need to do is somehow iterate over all the nodes in the graph.
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N+E)$.
+- __Space Complexity__: $\mathcal{O}(N+E)$.
+
+```Python
+class Solution:
+    def minimumSemesters(self, n: int, relations: List[List[int]]) -> int:
+        graph = {i: [] for i in range(1, n + 1)}
+        indegree = collections.defaultdict(int)
+
+        for start, end in relations:
+            graph[start].append(end)
+            # Count the number of prerequisite courses for every end node
+            indegree[end] += 1
+
+        queue = collections.deque()
+        for node in graph:
+            if indegree[node] == 0:
+                queue.append(node)
+            
+        # Start with no semester completed and no course taken
+        ans = taken = 0
+        while queue:
+            # New semester starts
+            ans += 1
+            next_queue = list()
+            for curr in queue:
+                taken += 1
+                for next in graph[curr]:
+                    indegree[next] -= 1
+                    # If all prerequisite courses taken
+                    if indegree[next] == 0:
+                        # Get the next courses to take next semester to the queue
+                        next_queue.append(next)
+            queue = next_queue
+
+        return ans if taken == n else -1
+```
+
+```Python
+class Solution:
+    def minimumSemesters(self, n: int, relations: List[List[int]]) -> int:
+        graph = collections.defaultdict(list)
+        indegree = collections.defaultdict(int)
+
+        for start, end in relations:
+            graph[start].append(end)
+            indegree[end] += 1
+
+        queue = collections.deque()
+        for node in range(1, n + 1):
+            if indegree[node] == 0:
+                queue.append((1, node))
+            
+        # Start with no semester completed and no course taken
+        ans = 0
+        taken = list()
+        while queue:
+            # New semester starts
+            semester, curr = queue.popleft()
+            # Record taken course
+            taken.append(curr)
+            ans = max(ans, semester)
+            for next in graph[curr]:
+                indegree[next] -= 1
+                # If all prerequisite courses taken
+                if indegree[next] == 0:
+                    # Get the next courses to take next semester to the queue
+                    queue.append((semester + 1, next))
+
+        return ans if len(topological_sort) == n else -1
 ```
