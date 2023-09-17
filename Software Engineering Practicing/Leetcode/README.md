@@ -384,6 +384,16 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [1615. Maximal Network Rank](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tesla/1615.%20Maximal%20Network%20Rank)
 - :warning::warning: [1631. Path With Minimum Effort](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1631.%20Path%20With%20Minimum%20Effort) ```Depth-First Search``` ```Breadth-First Search``` ```Priority Queue``` ```Union-Find``` ```Binary Search Tree``` ```Dijkstra's Algorithm``` ```Backtracking```
 
+### Breadth-First Search in Graph
+
+- :warning::warning: [210. Course Schedule II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2011%20-%20Graph%20%7C%20BFS%20%7C%20DFS/210.%20Course%20Schedule%20II) ```Topological Sorting``` ```Kahn's Algorithm```
+- :warning::warning: [802. Find Eventual Safe States](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Tree%20and%20graphs/Kahn's%20Algorithm/802.%20Find%20Eventual%20Safe%20States) ```Topological Sorting``` ```Kahn's Algorithm```
+- :no_entry::no_entry::no_entry: [815. Bus Routes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2011%20-%20Graph%20%7C%20BFS%20%7C%20DFS/815.%20Bus%20Routes)
+- :no_entry::no_entry::no_entry: [864. Shortest Path to Get All Keys](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/864.%20Shortest%20Path%20to%20Get%20All%20Keys)
+- :warning::warning: [1514. Path with Maximum Probability](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1514.%20Path%20with%20Maximum%20Probability) ```Bellman-Ford Algorithm``` ```Shortest Path Faster Algorithm``` ```Dijkstra's Algorithm```
+- :warning::warning: [1926. Nearest Exit from Entrance in Maze](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1926.%20Nearest%20Exit%20from%20Entrance%20in%20Maze)
+
+
 ### Depth-First Search in Graph
 
 - :warning::warning: [133. Clone Graph](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Depth-First%20Search/133.%20Clone%20Graph)
@@ -393,15 +403,10 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :no_entry::no_entry::no_entry: [1857. Largest Color Value in a Directed Graph](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/1857.%20Largest%20Color%20Value%20in%20a%20Directed%20Graph) ```Topological Sorted Order``` ```Kahn's Algorithm```
 - :no_entry::no_entry::no_entry: [2360. Longest Cycle in a Graph](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/2360.%20Longest%20Cycle%20in%20a%20Graph) ```Topological Sorted Order``` ```Kahn's Algorithm```
 
-### Breadth-First Search in Graph
+### Topological Sort 
 
-- :warning::warning: [207. Course Schedule](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Tree%20and%20graphs/Kahn's%20Algorithm/207.%20Course%20Schedule) ```Topological Sorting``` ```Kahn's Algorithm```
-- :warning::warning: [210. Course Schedule II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2011%20-%20Graph%20%7C%20BFS%20%7C%20DFS/210.%20Course%20Schedule%20II) ```Topological Sorting``` ```Kahn's Algorithm```
-- :warning::warning: [802. Find Eventual Safe States](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Tree%20and%20graphs/Kahn's%20Algorithm/802.%20Find%20Eventual%20Safe%20States) ```Topological Sorting``` ```Kahn's Algorithm```
-- :no_entry::no_entry::no_entry: [815. Bus Routes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2011%20-%20Graph%20%7C%20BFS%20%7C%20DFS/815.%20Bus%20Routes)
-- :no_entry::no_entry::no_entry: [864. Shortest Path to Get All Keys](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/864.%20Shortest%20Path%20to%20Get%20All%20Keys)
-- :warning::warning: [1514. Path with Maximum Probability](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1514.%20Path%20with%20Maximum%20Probability) ```Bellman-Ford Algorithm``` ```Shortest Path Faster Algorithm``` ```Dijkstra's Algorithm```
-- :warning::warning: [1926. Nearest Exit from Entrance in Maze](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1926.%20Nearest%20Exit%20from%20Entrance%20in%20Maze)
+- :warning::warning: [207. Course Schedule](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Tree%20and%20graphs/Kahn's%20Algorithm/207.%20Course%20Schedule) ```Kahn's Algorithm``` ```Depth-First Search``` ```Breadth-First Search```
+- :warning::warning: [1136. Parallel Courses](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1136.%20Parallel%20Courses) ```Kahn's Algorithm``` ```Depth-First Search``` ```Breadth-First Search```
 
 ### [Union-Find](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Tree%20and%20graphs/Disjoint%20Set)
 
