@@ -160,7 +160,7 @@ return lo
 
 __Complexity Analysis__
 
-- __Time Complexity__: $O(m \cdot \log mn))$.
+- __Time Complexity__: $O(m \cdot \log mn)$.
 - __Space Complexity__: $O(m)$.
 
 ```Python
@@ -190,6 +190,36 @@ class Solution:
 
 #### Priority Queue
 
-```Python
+> Python has a Min-Priority Queue called ```heapq```. We can convert it into a Max-Priority Queue by putting a negative sign in front of all the numbers going into it.
 
+```Python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+
+        def binary_search(row):
+            lo, hi = 0, COLS
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if row[mi] == 1:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            return lo
+
+        h = list()
+        for i, row in enumerate(mat):
+            pair = (-binary_search(row), -i)
+            if len(h) < k or pair > h[0]:
+                heapq.heappush(h, pair)
+            if len(h) > k:
+                heapq.heappop(h)
+            
+        res = list()
+        while h:
+            _, i = heapq.heappop(h)
+            res.append(-i)
+        
+        res = res[::-1]
+        return res
 ```
