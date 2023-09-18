@@ -87,3 +87,18 @@ class Solution:
 
         return h
 ```
+
+### Sum()
+
+```Python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+        res = list()
+
+        for row in range(ROWS):
+            res.append((sum(mat[row]), row))
+
+        res.sort()
+        return [i for _, i in res[:k]]
+```
