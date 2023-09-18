@@ -122,8 +122,41 @@ class Solution:
 
 ### Binary Search and Sorting/ Map
 
-![image](https://github.com/quananhle/Python/assets/35042430/a4a8d82c-502e-41ba-8165-e72ae8b68cf5)
+Here's the pseudocode forthe binary search algorithm (Template 2):
 
 ```Python
+lo = 0
+hi = n
+while lo < hi:
+    mi = lo + (hi - lo) // 2
+    if row[mi] == 1:
+        lo = mi + 1
+    else:
+        hi = mi
+return lo
+```
+
+![image](https://github.com/quananhle/Python/assets/35042430/a4a8d82c-502e-41ba-8165-e72ae8b68cf5)
+
+![image](https://github.com/quananhle/Python/assets/35042430/0c3249d4-09a5-4f07-8160-8dc2f18203b1)
+
+![image](https://github.com/quananhle/Python/assets/35042430/27694e9a-91da-49ee-b909-175e5efa5d8c)
+
+![image](https://github.com/quananhle/Python/assets/35042430/3e0bd128-a076-4da7-9c01-a190641a66e7)
+
+![image](https://github.com/quananhle/Python/assets/35042430/919f52ec-22dd-4727-a9da-52ddaf113944)
+
+![image](https://github.com/quananhle/Python/assets/35042430/b91cfc7f-c534-45a8-9c60-14e5ebc9f7e4)
+
+![image](https://github.com/quananhle/Python/assets/35042430/e08b3d41-20ac-49a3-aee9-81f65eea88cb)
+
+![image](https://github.com/quananhle/Python/assets/35042430/b47edeaa-7ccd-44c4-a7a7-ee4c98b2c2f8)
+
+![image](https://github.com/quananhle/Python/assets/35042430/5c10a607-d3ed-44a8-a6cf-9cb0aeca76b9)
+
+![image](https://github.com/quananhle/Python/assets/35042430/3e6adbfe-e792-4103-b74f-5702ce4c5ea3)
+
+```Python
+
 
 ```
