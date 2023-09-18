@@ -471,7 +471,8 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [767. Reorganize String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/767.%20Reorganize%20String) ```Counter```
 - :four_leaf_clover: [1046. Last Stone Weight](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2015%20-%20Heap/1046.%20Last%20Stone%20Weight)
 - :four_leaf_clover: [1086. High Five](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1086.%20High%20Five) ```Sorted List``` ```Sorting```
-- :warning::warning: [2462. Total Cost to Hire K Workers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2462.%20Total%20Cost%20to%20Hire%20K%20Workers)
+- :four_leaf_clover: [1337. The K Weakest Rows in a Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1337.%20The%20K%20Weakest%20Rows%20in%20a%20Matrix) ```Binary Search``` ```Array & String``` ```Linear Search``` ```Sorting``` ```Vertical Iteration```
+- :warning::warning: [2462. Total Cost to Hire K Workers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2462.%20Total%20Cost%20to%20Hire%20K%20Workers) 
 - :warning::warning: [2542. Maximum Subsequence Score](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2542.%20Maximum%20Subsequence%20Score) ```Sorting```
 
 ---
