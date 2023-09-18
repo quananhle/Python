@@ -64,3 +64,26 @@ __Constraints:__
 - $matrix[i][j]$ is either ```0``` or ```1```.
 
 ---
+
+### Linear Search & Sort
+
+```Python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+        res = list()
+
+        for row in range(ROWS):
+            counts_1 = 0
+            for col in range(COLS):
+                if mat[row][col] == 1:
+                    counts_1 += 1
+            res.append((counts_1, row))
+
+        res.sort()
+        h = list()
+        for i in range(k):
+            h.append(res[i][1])
+
+        return h
+```
