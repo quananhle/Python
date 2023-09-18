@@ -120,7 +120,9 @@ class Solution:
 
 ---
 
-### Binary Search and Sorting/ Map
+### Binary Search
+
+#### Sorting/ Map
 
 Here's the pseudocode forthe binary search algorithm (Template 2):
 
@@ -156,7 +158,38 @@ return lo
 
 ![image](https://github.com/quananhle/Python/assets/35042430/3e6adbfe-e792-4103-b74f-5702ce4c5ea3)
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $O(m \cdot \log mn))$.
+- __Space Complexity__: $O(m)$.
+
+```Python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+
+        def binary_search(row):
+            lo, hi = 0, COLS
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if row[mi] == 1:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            return lo
+        
+        res = list()
+        for i, row in enumerate(mat):
+            res.append((binary_search(row), i))
+        
+        res.sort()
+        return [i for _, i in res[:k]]
+```
+
+### Binary Search
+
+#### Priority Queue
+
+```Python
 
 ```
