@@ -134,8 +134,7 @@ class Solution:
         h = list()
         for soldiers, i in res:
             pair = (-soldiers, -i)
-            if len(h) < k or pair > h[0]:
-                heapq.heappush(h, pair)
+            heapq.heappush(h, pair)
             if len(h) > k:
                 heapq.heappop(h)
 
@@ -251,4 +250,57 @@ class Solution:
         
         res = res[::-1]
         return res
+```
+
+---
+
+### Vertical Scan
+
+On each cell we pass that is a ```0```, we check if the cell to the left was a ```1```. If it was, then we're on the first ```0``` of that row and should add its index to our output list. Once there are ```k``` indexes in the output list, we simply return the list. The order in which the rows are found using this approach turns out to be the sorted order we want!
+
+```Python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+
+        res = list()
+        for col, row in itertools.product(range(COLS), range(ROWS)):
+            if len(res) == k: break
+            # Check if in the first column, or the adjacent cell to the left of the current cell (0) is 1
+            if mat[row][col] == 0 and (col == 0 or mat[row][col - 1] == 1):
+                res.append(row)
+
+        # Cover edge case when the rows contain entirely 1's
+        i = 0
+        while len(res) < k:
+            if mat[i][-1] == 1:
+                res.append(i)
+            i += 1
+        
+        return res
+```
+
+```Python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+        res = collections.defaultdict(bool)
+
+        # Vertical traversal
+        for col in range(COLS):
+            for row in range(ROWS):
+                # Check if current cell is 1 or current row index already in record, continue to the next row
+                if mat[row][col] or row in res: continue
+                # Otherwise, mark the row as found and decrement k
+                res[row] = True
+                k -= 1
+                # Exit early and return output once got enough k rows
+                if not k: return res.keys()
+            
+        # To cover edge case when after vertical scanning, k is not enough, entire row contain 1's
+        for row in range(ROWS):
+            if not row in res:
+                res[row] = True
+                k -= 1
+                if not k: return res.keys()
 ```
