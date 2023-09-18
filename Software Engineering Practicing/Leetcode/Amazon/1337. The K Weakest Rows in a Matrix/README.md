@@ -1,6 +1,6 @@
 ## [1337. The K Weakest Rows in a Matrix](https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix)
 
-```Tag```: ```Binary Search``` ```Array & String``` ```Linear Search``` ```Priority Queue``` ```Sorting``` 
+```Tag```: ```Priority Queue``` ```Binary Search``` ```Array & String``` ```Linear Search``` ```Sorting``` 
 
 #### Difficulty: Easy
 
@@ -67,7 +67,9 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/Figures/1337/row_counts.png)
 
-### Linear Search & Sort
+### Linear Search 
+
+#### Sort
 
 __Complexity Analysis__
 
@@ -95,7 +97,7 @@ class Solution:
         return h
 ```
 
-### Sum() & List Comprehension
+#### Sum() & List Comprehension
 
 ```Python
 class Solution:
@@ -116,6 +118,33 @@ class Solution:
         res = [(sum(row), i) for i, row in enumerate(mat)]
         res.sort()
         return [i for _, i in res[:k]]
+```
+
+#### Priority Queue
+
+```Python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+        res = list()
+
+        for row in range(ROWS):
+            res.append((sum(mat[row]), row))
+
+        h = list()
+        for soldiers, i in res:
+            pair = (-soldiers, -i)
+            if len(h) < k or pair > h[0]:
+                heapq.heappush(h, pair)
+            if len(h) > k:
+                heapq.heappop(h)
+
+        res = list()
+        while h:
+            _, i = heapq.heappop(h)
+            res.append(-i)
+
+        return [num for num in res[::-1]]
 ```
 
 ---
