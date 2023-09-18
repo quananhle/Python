@@ -1,6 +1,6 @@
 ## [1337. The K Weakest Rows in a Matrix](https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix)
 
-```Tag```: ```Array & String``` ```Linear Search``` ```Priority Queue``` ```Binary Search``` ```Sorting``` 
+```Tag```: ```Binary Search``` ```Array & String``` ```Linear Search``` ```Priority Queue``` ```Sorting``` 
 
 #### Difficulty: Easy
 
@@ -65,7 +65,14 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/Figures/1337/row_counts.png)
+
 ### Linear Search & Sort
+
+__Complexity Analysis__
+
+- __Time Complexity__: $O(m \cdot (n + \log \,m))$.
+- __Space Complexity__: $O(m)$.
 
 ```Python
 class Solution:
@@ -88,12 +95,12 @@ class Solution:
         return h
 ```
 
-### Sum()
+### Sum() & List Comprehension
 
 ```Python
 class Solution:
     def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
-        ROWS, COLS = len(mat), len(mat[0])
+        ROWS = len(mat)
         res = list()
 
         for row in range(ROWS):
@@ -101,4 +108,22 @@ class Solution:
 
         res.sort()
         return [i for _, i in res[:k]]
+```
+
+```Python
+class Solution:
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        res = [(sum(row), i) for i, row in enumerate(mat)]
+        res.sort()
+        return [i for _, i in res[:k]]
+```
+
+---
+
+### Binary Search and Sorting/ Map
+
+![image](https://github.com/quananhle/Python/assets/35042430/a4a8d82c-502e-41ba-8165-e72ae8b68cf5)
+
+```Python
+
 ```
