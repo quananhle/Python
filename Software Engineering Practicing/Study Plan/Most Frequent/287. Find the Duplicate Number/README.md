@@ -39,6 +39,11 @@ __Constraints:__
 
 #### Sort()
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \log n)$
+- __Space Complexity__: $\mathcal{O}(\log n)$ or $\mathcal{O}(n)$
+
 ```Python
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
