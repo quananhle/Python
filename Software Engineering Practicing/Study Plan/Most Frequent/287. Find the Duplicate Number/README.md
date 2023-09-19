@@ -74,6 +74,10 @@ class Solution:
 
 ### Negative Masking
 
+There are $n + 1$ positive numbers in the array ($nums$) (all in the range $[1, n]$). Since the array only contains positive integers, we can track each number ($num$) that has been seen before by flipping the sign of the number located at index $|num|$, where $||$ denotes absolute value.
+
+For example, if the input array is [1,3,3,2][1, 3, 3, 2][1,3,3,2], then for 111, flip the number at index 111, making the array [1,−3,3,2][1,-3,3,2][1,−3,3,2]. Next, for −3-3−3 flip the number at index 333, making the array [1,−3,3,−2][1,-3,3,-2][1,−3,3,−2]. Finally, when we reach the second 333, we'll notice that nums[3]nums[3]nums[3] is already negative, indicating that 333 has been seen before and hence is the duplicate number.
+
 ```Python
 
 ```
