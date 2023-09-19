@@ -79,7 +79,20 @@ There are $n + 1$ positive numbers in the array ($nums$) (all in the range $[1, 
 For example, if the input array is [1,3,3,2][1, 3, 3, 2][1,3,3,2], then for 111, flip the number at index 111, making the array [1,−3,3,2][1,-3,3,2][1,−3,3,2]. Next, for −3-3−3 flip the number at index 333, making the array [1,−3,3,−2][1,-3,3,-2][1,−3,3,−2]. Finally, when we reach the second 333, we'll notice that nums[3]nums[3]nums[3] is already negative, indicating that 333 has been seen before and hence is the duplicate number.
 
 ```Python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        for num in nums:
+            curr = abs(num)
+            if nums[curr] < 0:
+                duplicate = curr
+                break
+            nums[curr] = -nums[curr]
+        
+        # Restore original values in array
+        for i in range(len(nums)):
+            nums[i] *= -1
 
+        return duplicate
 ```
 
 __Follow up__:
