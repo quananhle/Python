@@ -37,7 +37,7 @@ __Constraints:__
 
 ### First Approach: Array Modifications
 
-#### Sort()
+### Sort()
 
 __Complexity Analysis__
 
@@ -54,13 +54,25 @@ class Solution:
         return -1
 ```
 
-#### Set()
+### Set()
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 ```Python
-
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return num
+            seen.add(num)
+        return -1
 ```
 
-#### Negative Masking
+### Negative Masking
 
 ```Python
 
