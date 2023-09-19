@@ -35,6 +35,26 @@ __Constraints:__
 
 ---
 
+### First Approach: Array Modifications
+
+#### Sort()
+
+```Python
+
+```
+
+#### Set()
+
+```Python
+
+```
+
+#### Negative Masking
+
+```Python
+
+```
+
 __Follow up__:
 
 - How can we prove that at least one duplicate number must exist in nums?
