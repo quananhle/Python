@@ -60,6 +60,11 @@ __Algorithm__
     - If ```curr``` is equal to ```total - x```, update the maximum length ```longest_subarray```.
 - __Step 4__: Return the result.
 
+__Complexity Analysis___
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
