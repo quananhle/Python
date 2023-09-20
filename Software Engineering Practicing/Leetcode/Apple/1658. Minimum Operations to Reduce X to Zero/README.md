@@ -1,6 +1,6 @@
 ## [1658. Minimum Operations to Reduce X to Zero](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero)
 
-```Tag```: ```Two Pointers```
+```Tag```: ```Two Pointers``` ```Sliding Window```
 
 #### Difficulty: Medium
 
@@ -49,6 +49,19 @@ An insight is that:
 ![image](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/Documents/5602/5602_1_1.drawio.svg)
 
 ![image](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/Documents/5602/5602_1_2.drawio.svg)
+
+__Algorithm__
+
+- __Step 1__: Calculate the total sum of ```nums```. Mark as ```total```.
+
+- __Step 2__: Initialize two pointers ```left``` and ```right``` to ```0```. Initialize an integer current to represent the sum from nums[left] to nums[right], inclusively. Initialize an integer maxi to record the maximum length that sums up to total - x.
+
+Step 3: Iterate right form 0 to the end of nums. In each iteration:
+
+Update current.
+If current is greater than total - x, move left to left.
+If current is equal to total - x, update the maximum length.
+Step 4: Return the result.
 
 ```Python
 class Solution:
