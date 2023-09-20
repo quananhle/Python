@@ -1,6 +1,6 @@
 ## [1658. Minimum Operations to Reduce X to Zero](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero)
 
-```Tag```:
+```Tag```: ```Two Pointers```
 
 #### Difficulty: Medium
 
@@ -39,3 +39,9 @@ __Constraints:__
 - $1 \le x \le 10^{9}%
 
 ---
+
+### Two Pointers
+
+```Python
+
+```
