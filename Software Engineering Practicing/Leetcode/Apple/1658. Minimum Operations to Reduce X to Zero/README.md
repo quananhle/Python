@@ -46,6 +46,8 @@ An insight is that:
 
 > To find the shortest required operations that sum up to ```x``` is to find the longest subarray that sums up to ```total - x```.
 
+![image](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/Documents/5602/5602_1_1.drawio.svg)
+
 ```Python
 
 ```
