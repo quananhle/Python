@@ -53,12 +53,9 @@ An insight is that:
 __Algorithm__
 
 - __Step 1__: Calculate the total sum of ```nums```. Mark as ```total```.
-
-- __Step 2__: Initialize two pointers ```left``` and ```right``` to ```0```. Initialize an integer current to represent the sum from nums[left] to nums[right], inclusively. Initialize an integer maxi to record the maximum length that sums up to total - x.
-
-Step 3: Iterate right form 0 to the end of nums. In each iteration:
-
-Update current.
+- __Step 2__: Initialize two pointers ```left``` and ```right``` to ```0```. Initialize an integer ```curr``` to represent the sum from ```nums[left]``` to ```nums[right]```, inclusively. Initialize an integer ```longest_subarray``` to record the maximum length that sums up to ```total - x```.
+- __Step 3__: Iterate ```right``` from ```0``` to the end of ```nums```. In each iteration:
+    - Update ```curr```.
 If current is greater than total - x, move left to left.
 If current is equal to total - x, update the maximum length.
 Step 4: Return the result.
