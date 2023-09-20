@@ -48,6 +48,8 @@ An insight is that:
 
 ![image](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/Documents/5602/5602_1_1.drawio.svg)
 
+![image](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/Documents/5602/5602_1_2.drawio.svg)
+
 ```Python
 
 ```
