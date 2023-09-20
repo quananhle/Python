@@ -51,5 +51,21 @@ An insight is that:
 ![image](https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/Documents/5602/5602_1_2.drawio.svg)
 
 ```Python
+class Solution:
+    def minOperations(self, nums: List[int], x: int) -> int:
+        total = sum(nums)
+        n = len(nums)
+        longest_subarray = -math.inf
+        left = 0
+        curr = 0
 
+        for right in range(n):
+            curr += nums[right]
+            while curr > total - x and left <= right:
+                curr -= nums[left]
+                left += 1
+            if curr == total - x:
+                longest_subarray = max(longest_subarray, right - left + 1)
+            
+        return n - longest_subarray if longest_subarray != -math.inf else -1
 ```
