@@ -75,6 +75,7 @@ class Solution:
         curr = 0
 
         for right in range(n):
+            # sum([left ,..., right]) = total - x
             curr += nums[right]
             while curr > total - x and left <= right:
                 curr -= nums[left]
