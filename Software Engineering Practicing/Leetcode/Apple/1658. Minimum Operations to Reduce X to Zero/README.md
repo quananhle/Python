@@ -36,11 +36,15 @@ __Constraints:__
 
 - $1 \le nums.length \le 10^{5}$
 - $1 \le nums[i] \le 10^{4}$
-- $1 \le x \le 10^{9}%
+- $1 \le x \le 10^{9}$
 
 ---
 
 ### Two Pointers
+
+An insight is that:
+
+> To find the shortest required operations that sum up to ```x``` is to find the longest subarray that sums up to ```total - x```.
 
 ```Python
 
