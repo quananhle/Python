@@ -40,7 +40,7 @@ __Constraints:__
 
 ---
 
-### Two Pointers
+### Two Pointers (Indirectly)
 
 An insight is that:
 
@@ -84,3 +84,10 @@ class Solution:
             
         return n - longest_subarray if longest_subarray != -math.inf else -1
 ```
+
+### Two Pointers
+
+```Python
+
+```
+
