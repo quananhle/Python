@@ -53,7 +53,7 @@ __Constraints:__
 
 ```
 
-#### Bottom-Up Dynamic Programming
+#### Bottom-Up Dynamic Programming (1D Array)
 
 ```Python
 class Solution:
