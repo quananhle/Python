@@ -46,6 +46,11 @@ __Constraints:__
 
 ### Brute Force
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
+
 ```Python
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
@@ -64,7 +69,12 @@ class Solution:
         return res
 ```
 
-### Hash Map
+#### Better Brute Force using Hash Map
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
 
 ```Python
 class Solution:
@@ -85,4 +95,5 @@ class Solution:
         
         return res
 ```
+
 __Follow up__: Could you find an ```O(nums1.length + nums2.length)``` solution?
