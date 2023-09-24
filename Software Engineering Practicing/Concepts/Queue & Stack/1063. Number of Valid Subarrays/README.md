@@ -42,3 +42,25 @@ __Constraints:__
 When you want to find the right/left most index of next smaller/greater element for each item in ```O(n)```
 
 ![image](https://leetcode.com/problems/number-of-valid-subarrays/Figures/1063/1063A.png)
+
+### Monotonic Stack
+
+```Python
+class Solution:
+    def validSubarrays(self, nums: List[int]) -> int:
+        stack = list()
+        ans = 0
+        n = len(nums)
+
+        for i, num in enumerate(nums):
+            while stack and num < nums[stack[-1]]:
+                ans += (i - stack[-1])
+                stack.pop()
+            stack.append(i)
+        
+        while stack:
+            ans += n - stack[-1]
+            stack.pop()
+        
+        return ans
+```
