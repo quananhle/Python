@@ -41,6 +41,6 @@ Output: 1.00000
 __Constraints:__
 
 - $0 \le poured \le 10^{9}$
-- $0 \le query_glass \le query_row \lt 100$
+- $0 \le query{\textunderscore}glass \le query_row \lt 100$
 
 ---
