@@ -44,4 +44,27 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+#### Hash Map
+
+```Python
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        m, n = len(nums1), len(nums2)
+        memo = collections.defaultdict(int)
+        for i, num in enumerate(nums2):
+            memo[num] = i                   # Only work in distinct integer array
+
+        res = list()
+        for i, num in enumerate(nums1):
+            for j in range(memo[num], n):   # nums1 is a subset of nums2 -> num is guaranteed to be in nums2
+                if num < nums2[j]:
+                    res.append(nums2[j])
+                    break
+                if j == n - 1:
+                    res.append(-1)
+        
+        return res
+```
 __Follow up__: Could you find an ```O(nums1.length + nums2.length)``` solution?
