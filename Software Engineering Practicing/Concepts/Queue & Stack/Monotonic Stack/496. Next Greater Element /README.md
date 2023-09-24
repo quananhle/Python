@@ -1,6 +1,6 @@
 ## [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i)
 
-```Tag```: ```Monotonic Stack``` ```Hash Map```
+```Tag```: ```Monotonic Stack``` ```Hash Map``` ```Queue```
 
 #### Difficulty: Easy
 
@@ -100,6 +100,11 @@ __Follow up__: Could you find an ```O(nums1.length + nums2.length)``` solution?
 
 ### Monotonic Stack
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$.
+- __Space Complexity__: $\mathcal{O}(n)$.
+
 ```Python
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
@@ -122,6 +127,28 @@ class Solution:
 
         for i in range(m):
             res.append(memo[nums1[i]])
+        
+        return res
+```
+
+
+### Queue
+
+```Python
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        m, n = len(nums1), len(nums2)
+        queue = collections.deque()
+        res = [-1] * m
+        memo = {val:idx for idx, val in enumerate(nums1)}
+
+        for num2 in nums2:
+            while queue and queue[0] < num2:
+                num = queue.popleft()
+                if num in memo:
+                    res[memo[num]] = num2
+            else:
+                queue.appendleft(num2)
         
         return res
 ```
