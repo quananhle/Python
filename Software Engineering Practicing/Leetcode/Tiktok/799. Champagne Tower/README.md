@@ -55,7 +55,31 @@ __Complexity Analysis__
 - __Space Complexity__: $\mathcal{O}(N^{2})$
 
 ```Python
-
+class Solution:
+    def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
+        @functools.lru_cache(maxsize=None)
+        def dp(row, glass):
+            # Base case
+            if row == 0:
+                return poured
+            
+            ans = 0
+            overflow = (dp(row - 1, glass) > 1) or (dp(row - 1, glass - 1) > 1)
+            # Leftmost glasses
+            if glass == 0 and overflow:
+                ans = (dp(row - 1, glass) - 1.0) / 2.0
+            # Rightmost glasses
+            elif glass == row and overflow:
+                ans = (dp(row - 1, glass - 1) - 1.0) / 2.0
+            # Glasses that can receive champage from above two glasses
+            elif 0 < glass < row:
+                if dp(row - 1, glass) > 1:
+                    ans += (dp(row - 1, glass) - 1.0) / 2.0
+                if dp(row - 1, glass - 1) > 1:
+                    ans += (dp(row - 1, glass - 1) - 1.0) / 2.0
+            return ans
+        
+        return min(1.0, dp(query_row, query_glass))
 ```
 
 #### Bottom-Up Dynamic Programming (2D Array)
