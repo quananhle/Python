@@ -1,6 +1,6 @@
 ## [496. Next Greater Element I](https://leetcode.com/problems/next-greater-element-i)
 
-```Tag```: ```Monotonic Stack```
+```Tag```: ```Monotonic Stack``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -46,7 +46,25 @@ __Constraints:__
 
 ### Brute Force
 
-#### Hash Map
+```Python
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        m, n = len(nums1), len(nums2)
+        res = list()
+        for i, num in enumerate(nums1):
+            for j in range(n):
+                if num == nums2[j]:
+                    for k in range(j, n):
+                        if num < nums2[k]:
+                            res.append(nums2[k])
+                            break
+                        if k == n - 1:
+                            res.append(-1)
+        
+        return res
+```
+
+### Hash Map
 
 ```Python
 class Solution:
