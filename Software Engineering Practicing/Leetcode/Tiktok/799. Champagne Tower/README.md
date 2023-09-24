@@ -56,7 +56,26 @@ __Constraints:__
 #### Bottom-Up Dynamic Programming (2D Array)
 
 ```Python
+class Solution:
+    def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
+        triangle = [[0] * row for row in range(1, 102)]
+        # Initialize the base case for the topmost glass
+        triangle[0][0] = poured
 
+        # Traverse each row up to the query row
+        for row in range(query_row + 1):
+            # Traverse each glass in the current level
+            for col in range(row + 1):
+                # Compute the overflow amount to ditribute to two adjacent glasses
+                overflow = (triangle[row][col] - 1.0) / 2.0
+                # If there is overflow, distribute it to the two glass directly under the current glass
+                if overflow > 0:
+                    triangle[row + 1][col] += overflow
+                    triangle[row + 1][col + 1] += overflow
+
+        # If there is an overflow in query glass, the glass can only hold at most a full cup of champagne or 1.0
+        # If there is not an overflow in query glass, the glass can hold from 0.0 <= poured < 1.0
+        return min(1.0, triangle[query_row][query_glass])
 ```
 
 #### Bottom-Up Dynamic Programming (1D Array)
@@ -73,7 +92,7 @@ class Solution:
             next_level = [0.0] * (row + 2)
             # Traverse each glass in the current level
             for glass in range(len(current_level)):
-                # Compute the overflow amount
+                # Compute the overflow amount to ditribute to two adjacent glasses
                 overflow = (current_level[glass] - 1.0) / 2.0
                 # If there is overflow, distribute it to the two glass directly under the current glass
                 if overflow > 0.0:
