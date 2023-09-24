@@ -10,6 +10,8 @@ A __subsequence__ of a string is a new string that is formed from the original s
 
 ![image](https://user-images.githubusercontent.com/35042430/205380949-977ed83a-4f51-44f1-86d3-6411153715d2.png)
 
+![image](https://github.com/quananhle/Python/assets/35042430/4aa4ec9b-4445-4938-b4d3-4a6daed5c049)
+
 ---
 
 __Example 1:__
@@ -86,6 +88,21 @@ class Solution(object):
                 s_idx += 1
             t_idx += 1
         return s_idx == S_BOUND
+```
+
+```Python
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        m, n = len(s), len(t)
+
+        i, j = 0, 0
+        while i < m and j < n:
+            if s[i] == t[j]:
+                i += 1; j += 1
+            else:
+                j += 1
+            
+        return i == m
 ```
 
 ```Python
