@@ -1,6 +1,6 @@
 ## [799. Champagne Tower](https://leetcode.com/problems/champagne-tower)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Pascal Triangle```
 
 #### Difficulty: Medium
 
@@ -58,15 +58,22 @@ __Constraints:__
 ```Python
 class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
+        # Initialize the current level with the poured amount in the top glass
         current_level = [poured]
-        
+
+        # Traverse each row up to the query row
         for row in range(query_row):
+            # # Initialize the next level with the appropriate number of glasses for the current row
             next_level = [0.0] * (row + 2)
+            # Traverse each glass in the current level
             for glass in range(len(current_level)):
+                # Compute the overflow amount
                 overflow = (current_level[glass] - 1.0) / 2.0
+                # If there is overflow, distribute it to the two glass directly under the current glass
                 if overflow > 0.0:
                     next_level[glass] += overflow
                     next_level[glass + 1] += overflow
+            # Move the next level
             current_level = next_level
         
         # If there is an overflow in query glass, the glass can only hold at most a full cup of champagne or 1.0
