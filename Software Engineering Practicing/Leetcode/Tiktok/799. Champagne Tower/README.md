@@ -49,11 +49,21 @@ __Constraints:__
 
 #### Top-down Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^{2})$
+- __Space Complexity__: $\mathcal{O}(N^{2})$
+
 ```Python
 
 ```
 
 #### Bottom-Up Dynamic Programming (2D Array)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^{2})$
+- __Space Complexity__: $\mathcal{O}(N^{2})$
 
 ```Python
 class Solution:
@@ -79,6 +89,11 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming (1D Array)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^{2})$
+- __Space Complexity__: $\mathcal{O}(N^{2})$
 
 ```Python
 class Solution:
