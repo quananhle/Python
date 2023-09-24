@@ -97,3 +97,31 @@ class Solution:
 ```
 
 __Follow up__: Could you find an ```O(nums1.length + nums2.length)``` solution?
+
+### Monotonic Stack
+
+```Python
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        stack = list()
+        memo = collections.defaultdict(int)
+        m, n = len(nums1), len(nums2)
+        res = list()
+
+        # Iterate over the nums2 array
+        for i in range(n):
+            # While stack is not empty and the current element in nums2 is greater than top element in stack
+            while stack and nums2[i] > stack[-1]:
+                # Next greater element found, record in the map
+                memo[stack.pop()] = nums2[i]
+            stack.append(nums2[i])
+
+        # If stack is not empty, no greater element found the the rest of elements in stack
+        while stack:
+            memo[stack.pop()] = - 1
+
+        for i in range(m):
+            res.append(memo[nums1[i]])
+        
+        return res
+```
