@@ -53,6 +53,12 @@ __Constraints:__
 
 ```
 
+#### Bottom-Up Dynamic Programming (2D Array)
+
+```Python
+
+```
+
 #### Bottom-Up Dynamic Programming (1D Array)
 
 ```Python
