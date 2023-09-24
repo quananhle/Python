@@ -37,3 +37,8 @@ __Constraints:__
 - $0 \le nums[i] \le 10^{5}$
 
 ---
+
+### How to easily detect monotonic stack? 
+When you want to find the right/left most index of next smaller/greater element for each item in ```O(n)```
+
+![image](https://leetcode.com/problems/number-of-valid-subarrays/Figures/1063/1063A.png)
