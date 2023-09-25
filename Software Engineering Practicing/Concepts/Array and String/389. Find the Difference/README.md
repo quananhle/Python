@@ -35,3 +35,28 @@ __Constraints:__
 
 ---
 
+### Counter
+
+```Python
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        s_counter, t_counter = collections.Counter(s), collections.Counter(t)
+        ans = t_counter - s_counter
+        return list(ans)[-1]
+```
+
+```Python
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        s_counter, t_counter = collections.Counter(s), collections.Counter(t)
+        ans = t_counter - s_counter
+        return tuple(ans)[-1]
+```
+
+#### One Liner
+
+```Python
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        return tuple(collections.Counter(t) - collections.Counter(s))[-1]
+```
