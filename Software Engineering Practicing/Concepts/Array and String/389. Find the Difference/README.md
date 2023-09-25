@@ -1,6 +1,6 @@
 ## [389. Find the Difference](https://leetcode.com/problems/find-the-difference)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Counter``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations```
 
 #### Difficulty: Easy
 
@@ -34,3 +34,4 @@ __Constraints:__
 - ```s``` and ```t``` consist of lowercase English letters.
 
 ---
+
