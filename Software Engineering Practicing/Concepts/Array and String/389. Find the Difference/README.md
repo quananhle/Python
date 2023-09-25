@@ -35,6 +35,20 @@ __Constraints:__
 
 ---
 
+### Array & String
+
+```Python
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        s_total = t_total = 0
+        for c in s:
+            s_total += ord(c)
+        for c in t:
+            t_total += ord(c)
+        
+        return chr(t_total - s_total)
+```
+
 ### Counter
 
 ```Python
@@ -60,3 +74,21 @@ class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
         return tuple(collections.Counter(t) - collections.Counter(s))[-1]
 ```
+
+### Bitwise Manipulations
+
+```Python
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        if not s:
+            return t
+
+        ans = ord(s[0])
+
+        for i, c in enumerate(s[1:] + t):
+            ans ^= ord(c)
+
+        return chr(ans)
+```
+
+
