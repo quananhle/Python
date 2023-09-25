@@ -1,6 +1,6 @@
 ## [389. Find the Difference](https://leetcode.com/problems/find-the-difference)
 
-```Tag```: ```Array & String``` ```Counter``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations```
+```Tag```: ```Array & String``` ```Counter``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Sorting```
 
 #### Difficulty: Easy
 
@@ -35,7 +35,33 @@ __Constraints:__
 
 ---
 
+### Sorting
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \log (N))$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        s, t = sorted(s), sorted(t)
+
+        i = 0
+        while i < len(s):
+            if s[i] != t[i]:
+                return t[i]
+            i += 1
+        
+        return t[i]
+```
+
 ### Array & String
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N))$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -50,6 +76,9 @@ class Solution:
 ```
 
 ### Counter
+
+- __Time Complexity__: $\mathcal{O}(N))$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
@@ -75,7 +104,29 @@ class Solution:
         return tuple(collections.Counter(t) - collections.Counter(s))[-1]
 ```
 
+### Hash Map
+
+- __Time Complexity__: $\mathcal{O}(N))$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        s_counter, t_counter = collections.defaultdict(int), collections.defaultdict(int)
+        for c in s:
+            s_counter[c] = 1 + s_counter.get(c, 0)
+        
+        for c in t:
+            if not c in s_counter or s_counter[c] == 0:
+                return c
+            else:
+                s_counter[c] -= 1
+```
+
 ### Bitwise Manipulations
+
+- __Time Complexity__: $\mathcal{O}(N + M))$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -90,5 +141,6 @@ class Solution:
 
         return chr(ans)
 ```
+
 
 
