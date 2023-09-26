@@ -6,7 +6,7 @@
 
 Given a string ```s```, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.
 
-![image](https://github.com/quananhle/Python/assets/35042430/f06eb5d4-2af0-4421-af12-a9e74b0fb0e2)
+![image](https://github.com/quananhle/Python/assets/35042430/b07a6a7d-2bb1-454d-a5b5-d26bc42aa8db)
 
 ---
 
