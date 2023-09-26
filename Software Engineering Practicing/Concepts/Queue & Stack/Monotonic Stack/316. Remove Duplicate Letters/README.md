@@ -31,6 +31,14 @@ __Note__: This question is the same as [1081](https://leetcode.com/problems/smal
 
 ---
 
+### Greedy Algorithm
+
+#### Solving Letter by Letter
+
+__Intuition__
+
+
+
 ### Monotonic Stack
 
 ```Python
