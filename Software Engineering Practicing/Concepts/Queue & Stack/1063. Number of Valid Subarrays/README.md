@@ -48,19 +48,24 @@ When you want to find the right/left most index of next smaller/greater element 
 ```Python
 class Solution:
     def validSubarrays(self, nums: List[int]) -> int:
-        stack = list()
-        ans = 0
+        '''
+        [1,4]     -> [1],[4],[1,4]
+        [1,4,5]   -> [1],[4],[5],[1,4],[1,5],[4,5],[1,4,5]
+        [1,4,5,6] -> [1],[4],[5],[6],[1,4],[1,5],[1,6],[4,5],[4,6],[5,6],[1,4,5],[4,5,6],[1,4,5,6]
+        '''
         n = len(nums)
+        monotonic_stack = list()
+        ans = 0
 
         for i, num in enumerate(nums):
-            while stack and num < nums[stack[-1]]:
-                ans += (i - stack[-1])
-                stack.pop()
-            stack.append(i)
-        
-        while stack:
-            ans += n - stack[-1]
-            stack.pop()
+            while monotonic_stack and num < nums[monotonic_stack[-1]]:
+                ans += (i - monotonic_stack[-1])
+                monotonic_stack.pop()
+            monotonic_stack.append(i)
+
+        while monotonic_stack:
+            ans += (n - monotonic_stack[-1])
+            monotonic_stack.pop()
         
         return ans
 ```
