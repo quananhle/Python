@@ -588,6 +588,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 - :four_leaf_clover: [496. Next Greater Element I](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Monotonic%20Stack/496.%20Next%20Greater%20Element%20) ```Queue``` ```Hash Map```
 - :warning::warning: [739. Daily Temperatures](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Stack/739.%20Daily%20Temperatures)
+- :no_entry::no_entry::no_entry: [1063. Number of Valid Subarrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/1063.%20Number%20of%20Valid%20Subarrays)
 
 #### Polish Notation
 
