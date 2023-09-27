@@ -44,3 +44,26 @@ __Constraints:__
 - ```s``` consists of lowercase English letters and digits ```2``` through ```9```.
 
 ---
+
+### Stack
+
+#### Math
+
+```Python
+class Solution:
+    def decodeAtIndex(self, s: str, k: int) -> str:
+        size = 0
+        for c in s:
+            if c.isdigit():
+                size *= int(c)
+            else:
+                size += 1
+        for c in s[::-1]:
+            k %= size
+            if k == 0 and c.isalpha():
+                return c
+            if c.isdigit():
+                size /= int(c)
+            else:
+                size -= 1
+```
