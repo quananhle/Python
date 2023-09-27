@@ -78,6 +78,8 @@ If we have a decoded string like ```appleappleappleappleappleapple``` (```length
 
 In general, when a decoded string is equal to some word with ```size``` length repeated some number of times (such as ```apple``` with ```size = 5``` repeated 6 times), the answer is the same for the index ```K``` as it is for the index ```K % size```.
 
+We can use this insight by working backwards, keeping track of the ```size``` of the decoded string. Whenever the decoded string would equal some word repeated ```d``` times, we can reduce ```K``` to ```K % (word.length)```.
+
 ```Python
 class Solution:
     def decodeAtIndex(self, s: str, k: int) -> str:
