@@ -47,6 +47,28 @@ __Constraints:__
 
 ### Stack
 
+```Python
+class Solution:
+    def decodeAtIndex(self, s: str, k: int) -> str:
+        # Memory Limit Exceeded
+        stack = list()
+        decoded_string = ""
+        for i, c in enumerate(s):
+            if c.isalpha():
+                stack.append(c)
+            else:
+                curr_stack = list()
+                while stack:
+                    curr_stack.append(stack.pop())
+                curr_str = "".join(curr_stack[::-1])
+                if not decoded_string:
+                    decoded_string = curr_str * int(c)
+                else:
+                    decoded_string = (decoded_string + curr_str) * int(c)
+
+        return decoded_string[k - 1]
+```
+
 #### Math
 
 ```Python
