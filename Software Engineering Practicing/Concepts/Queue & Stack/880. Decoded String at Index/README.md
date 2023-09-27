@@ -45,13 +45,7 @@ __Constraints:__
 
 ---
 
-### Intuition
-
-If we have a decoded string like ```appleappleappleappleappleapple``` (```length = 30```) and an index like ```K = 24```, the answer is the same as if ```K = 4```.
-
-In general, when a decoded string is equal to some word with ```size``` length repeated some number of times (such as ```apple``` with ```size = 5``` repeated 6 times), the answer is the same for the index ```K``` as it is for the index ```K % size```.
-
-### Stack
+### Stack (Memory Limit Exceeded)
 
 ```Python
 class Solution:
@@ -76,6 +70,13 @@ class Solution:
 ```
 
 ### Math
+
+
+### Intuition
+
+If we have a decoded string like ```appleappleappleappleappleapple``` (```length = 30```) and an index like ```K = 24```, the answer is the same as if ```K = 4```.
+
+In general, when a decoded string is equal to some word with ```size``` length repeated some number of times (such as ```apple``` with ```size = 5``` repeated 6 times), the answer is the same for the index ```K``` as it is for the index ```K % size```.
 
 ```Python
 class Solution:
