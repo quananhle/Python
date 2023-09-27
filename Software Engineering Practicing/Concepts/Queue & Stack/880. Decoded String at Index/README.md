@@ -57,10 +57,10 @@ class Solution:
             if c.isalpha():
                 stack.append(c)
             else:
-                curr_stack = list()
+                curr = list()
                 while stack:
-                    curr_stack.append(stack.pop())
-                curr_str = "".join(curr_stack[::-1])
+                    curr.append(stack.pop())
+                curr_str = "".join(curr[::-1])
                 if not decoded_string:
                     decoded_string = curr_str * int(c)
                 else:
@@ -69,7 +69,7 @@ class Solution:
         return decoded_string[k - 1]
 ```
 
-#### Math
+### Math
 
 ```Python
 class Solution:
