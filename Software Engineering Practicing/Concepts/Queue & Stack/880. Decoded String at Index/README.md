@@ -1,6 +1,6 @@
 ## [880. Decoded String at Index](https://leetcode.com/problems/decoded-string-at-index)
 
-```Tag```: ```Stack```
+```Tag```: ```Stack``` ```Math``` ```Array & String```
 
 #### Difficulty: Medium
 
@@ -85,16 +85,29 @@ class Solution:
     def decodeAtIndex(self, s: str, k: int) -> str:
         size = 0
         for c in s:
-            if c.isdigit():
-                size *= int(c)
-            else:
+            if c.isalpha():
                 size += 1
-        for c in s[::-1]:
+            else:
+                size *= int(c)
+
+        # Traverse the string from backward as it is always ended with a digit
+        for c in reversed(s):
+            '''
+            Normalize size by modding size by k
+                - if k > size: k = k - (k // size * k)
+                - if k == size: k = 0
+                - if k < size: k = k
+            '''
             k %= size
+            # Check if k == 0 and c is a character, return the character as answer is found
             if k == 0 and c.isalpha():
                 return c
-            if c.isdigit():
+            # Check if c is a digit for any k
+            elif c.isdigit():
+                # Reduce size by digit
                 size /= int(c)
+            # Otherwise, decrement size
             else:
                 size -= 1
+
 ```
