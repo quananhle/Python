@@ -50,12 +50,20 @@ class Solution:
 ```Python
 class Solution:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
-        # Two Pointers
+        # List Comprehension
         #### Time Complexity : O(N), traverse through the input array to build even and odd lists
         #### Space Complexity: O(N), extra memory space to build even and odd lists
         even = [num for num in nums if num % 2 == 0] 
         odd = [num for num in nums if num % 2 != 0]
         return even + odd
+```
+
+#### One Liner
+
+```Python
+class Solution:
+    def sortArrayByParity(self, nums: List[int]) -> List[int]:
+        return [num for num in nums if num % 2 == 0] + [num for num in nums if num % 2 != 0]
 ```
 
 ### Two Pointers and Swap
@@ -80,6 +88,7 @@ class Solution:
 ```Python
 class Solution:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
+        # Two Pointers
         i, j = 0, len(nums) - 1
 
         while i < j:
