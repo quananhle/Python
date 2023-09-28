@@ -45,7 +45,7 @@ class Solution:
         return nums
 ```
 
-### Two Pointers
+### List Comprehension
 
 ```Python
 class Solution:
