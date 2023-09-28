@@ -27,10 +27,9 @@ Output: [0]
 ```
 
 __Constraints:__
-```
-1 <= nums.length <= 5000
-0 <= nums[i] <= 5000
-```
+
+- $1 \le nums.length \le 5000$
+- $0 \le nums[i] \le 5000$
 
 ---
 
@@ -75,5 +74,23 @@ class Solution:
                 left += 1
             if nums[right] % 2 != 0:
                 right -= 1          
+        return nums
+```
+
+```Python
+class Solution:
+    def sortArrayByParity(self, nums: List[int]) -> List[int]:
+        i, j = 0, len(nums) - 1
+
+        while i < j:
+            if nums[i] % 2 != 0 and nums[j] % 2 == 0:
+                nums[i], nums[j] = nums[j], nums[i]
+            else:
+                if nums[j] % 2 != 0:
+                    j -= 1
+                elif nums[i] % 2 == 0:
+                    i += 1
+                else:
+                    i += 1; j -= 1
         return nums
 ```
