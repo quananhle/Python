@@ -1,4 +1,4 @@
-## 905. Sort Array By Parity
+## [905. Sort Array By Parity](https://leetcode.com/problems/sort-array-by-parity)
 
 ```Tag```: ```Two Pointers``` ```In-Place``` ```Sorting```
 
@@ -9,6 +9,7 @@ Given an integer array ```nums```, move all the even integers at the beginning o
 Return ___any array__ that satisfies this condition_.
 
 ![image](https://user-images.githubusercontent.com/35042430/212778181-c82e0d63-53d1-434e-95ca-122597b7f4b6.png)
+![image](https://github.com/quananhle/Python/assets/35042430/9a31c5b5-34ba-4bad-b2d1-d1b3cad89628)
 
 ---
 
