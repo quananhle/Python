@@ -38,3 +38,49 @@ __Constraints:__
 - $-10^{5} \le nums[i] \le 10^{5}$
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def isMonotonic(self, nums: List[int]) -> bool:
+        n = len(nums)
+
+        # Check if monotone increasing or monotone decreasing
+        if nums[0] <= nums[len(nums) - 1]:
+            for i in range(1, n):
+                if nums[i - 1] <= nums[i]:
+                    continue
+                else:
+                    return False
+        else:
+            for i in range(n - 2, -1, -1):
+                if nums[i + 1] <= nums[i]:
+                    continue
+                else:
+                    return False
+
+        return True
+```
+
+```Python
+class Solution:
+    def isMonotonic(self, nums: List[int]) -> bool:
+        n = len(nums)
+
+        # Check if monotone increasing or monotone decreasing
+        if nums[0] <= nums[len(nums) - 1]:
+            for i in range(1, n):
+                if nums[i - 1] <= nums[i]:
+                    continue
+                else:
+                    return False
+        else:
+            for i in range(1, n):
+                if nums[i - 1] >= nums[i]:
+                    continue
+                else:
+                    return False
+
+        return True
+```
