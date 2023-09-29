@@ -55,6 +55,8 @@ class Solution:
 
 ### One Pass
 
+#### Remember the Stream
+
 To perform this check in one pass, we want to handle a stream of comparisons from $\{-1, 0, 1\}$, corresponding to ```<```, ```==```, or ```>```. For example, with the array ```[1, 2, 2, 3, 0]```, we will see the stream ```(-1, 0, -1, 1)```.
 
 __Complexity Analysis__
@@ -67,14 +69,33 @@ class Solution:
     def isMonotonic(self, nums: List[int]) -> bool:
         stream = 0
         n = len(nums)
+
         for i in range(n - 1):
             comparison = -1 if nums[i] < nums[i + 1] else 1 if nums[i] > nums[i + 1] else 0 
             if comparison:
                 if comparison != stream != 0:
                     return False
                 stream = comparison
+
         return True
 ```
+
+```Python
+class Solution:
+    def isMonotonic(self, nums: List[int]) -> bool:
+        increasing = decreasing = True
+        n = len(nums)
+
+        for i in range(n - 1):
+            if nums[i] < nums[i + 1]:
+                decreasing = False
+            if nums[i] > nums[i + 1]:
+                increasing = False
+            
+        return increasing or decreasing
+```
+
+#### Monotonic Property
 
 __Complexity Analysis__
 
