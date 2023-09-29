@@ -1,6 +1,6 @@
 ## [896. Monotonic Array](https://leetcode.com/problems/monotonic-array)
 
-```Tag```:
+```Tag```: ```Array & String```
 
 #### Difficulty: Easy
 
@@ -39,7 +39,16 @@ __Constraints:__
 
 ---
 
-### Brute Force
+### Two Pass
+
+```Python
+class Solution:
+    def isMonotonic(self, nums: List[int]) -> bool:
+        return all(nums[i] <= nums[i + 1] for i in range(len(nums) - 1)) or \
+               all(nums[i] >= nums[i + 1] for i in range(len(nums) - 1))
+```
+
+### One Pass
 
 ```Python
 class Solution:
