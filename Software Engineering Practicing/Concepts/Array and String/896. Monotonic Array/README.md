@@ -41,6 +41,11 @@ __Constraints:__
 
 ### Two Pass
 
+__Complexity Analysis__
+
+- __Time Complexity__: $O(N)$
+- __Space Complexity__: $O(1)$
+
 ```Python
 class Solution:
     def isMonotonic(self, nums: List[int]) -> bool:
@@ -49,6 +54,32 @@ class Solution:
 ```
 
 ### One Pass
+
+To perform this check in one pass, we want to handle a stream of comparisons from $\{-1, 0, 1\}$, corresponding to ```<```, ```==```, or ```>```. For example, with the array ```[1, 2, 2, 3, 0]```, we will see the stream ```(-1, 0, -1, 1)```.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $O(N)$
+- __Space Complexity__: $O(1)$
+
+```Python
+class Solution:
+    def isMonotonic(self, nums: List[int]) -> bool:
+        stream = 0
+        n = len(nums)
+        for i in range(n - 1):
+            comparison = -1 if nums[i] < nums[i + 1] else 1 if nums[i] > nums[i + 1] else 0 
+            if comparison:
+                if comparison != stream != 0:
+                    return False
+                stream = comparison
+        return True
+```
+
+__Complexity Analysis__
+
+- __Time Complexity__: $O(N)$
+- __Space Complexity__: $O(1)$
 
 ```Python
 class Solution:
@@ -93,3 +124,5 @@ class Solution:
 
         return True
 ```
+
+
