@@ -86,6 +86,11 @@ As discussed in the last approach, once we've fixed a $nums[i], nums[j]$ pair, w
 
 ![image](https://leetcode.com/problems/132-pattern/Figures/456/456_132_Pattern.PNG)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 ```Python
 class Solution:
     def find132pattern(self, nums: List[int]) -> bool:
@@ -109,4 +114,102 @@ class Solution:
                     return True
             k += 1    
         return False
+```
+
+```Python
+class Solution:
+    def find132pattern(self, nums: List[int]) -> bool:
+        subsequences = list()
+        n = len(nums)
+        i, k = 0, 1
+
+        for k in range(n):
+            # Check if encounter a falling edge, k - 1 is the peak index, or j as j < k and nums[k] < nums[j]
+            j = k - 1
+            if nums[k] < nums[j]:
+                # Check if i is smaller than j, indicating interval has a range of at least 3 elements
+                if i < j:
+                    # Record the index of i and j
+                    subsequences.append((nums[i], nums[j]))
+                # Jump i to the lowest point of the falling slope
+                i = k
+            # Check subsequence if it has 132 pattern
+            for subsequence in subsequences:
+                if subsequence[0] < nums[k] < subsequence[1]:
+                    return True
+        return False
+```
+
+### Montonic Stack
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def find132pattern(self, nums: List[int]) -> bool:
+        n = len(nums)
+        if n < 3:
+            return False
+        stack = list()
+
+        # Preprocess prefix min array for nums[i] candidate
+        min_array = [nums[0]] * n
+        for i in range(1, len(nums)):
+            min_array[i] = min(min_array[i - 1], nums[i])
+
+        # Traverse backward to add all candidate of nums[k] to the monotonic stack
+        for j in range(n - 1, -1, -1):
+            if nums[j] <= min_array[j]:
+                continue
+            # Ensure nums[k] candidate in the monotonic stack is larger than nums[i] candidate
+            while stack and stack[-1] <= min_array[j]:
+                stack.pop()
+            # If the nums[k] candidate, if there is in stack, is smaller than nums[j] candidate
+            if stack and stack[-1] < nums[j]:
+                # All candidates for nums[i] < nums[k] < nums[j] found 
+                return True
+            stack.append(nums[j])
+        
+        return False
+```
+
+### Using Array as Stack
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def find132pattern(self, nums: List[int]) -> bool:
+        k = len(nums)
+        if k < 3:
+            return False
+
+        # Preprocess prefix min array for nums[i] candidate
+        min_array = [nums[0]] * k
+        for i in range(1, len(nums)):
+            min_array[i] = min(min_array[i - 1], nums[i])
+
+        for j in range(len(nums) - 1, -1, -1):
+            if nums[j] <= min_array[j]:
+                continue
+            while k < len(nums) and nums[k] <= min_array[j]:
+                k += 1
+            if k < len(nums) and nums[k] < nums[j]:
+                return True
+            k -= 1
+            nums[k] = nums[j]
+        
+        return False
+```
+
+### Binary Search
+
+```Python
+
 ```
