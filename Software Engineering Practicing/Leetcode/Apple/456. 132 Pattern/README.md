@@ -79,3 +79,34 @@ class Solution:
         
         return False
 ```
+
+### Search Intervals
+
+As discussed in the last approach, once we've fixed a $nums[i], nums[j]$ pair, we just need to determine a $nums[k]$ which falls in the range $(nums[i],nums[j])$. Further, to maximize the likelihood of any arbitrary $nums[k]$ falling in this range, we need to try to keep this range as much as possible. But, in the last approach, we tried to work only on $nums[i]$. But, it'll be a better choice, if we can somehow work out on $nums[j]$ as well.
+
+![image](https://leetcode.com/problems/132-pattern/Figures/456/456_132_Pattern.PNG)
+
+```Python
+class Solution:
+    def find132pattern(self, nums: List[int]) -> bool:
+        subsequences = list()
+        n = len(nums)
+        i, k = 0, 1
+
+        while k < n:
+            # Check if encounter a falling edge, k - 1 is the peak index, or j as j < k and nums[k] < nums[j]
+            j = k - 1
+            if nums[k] < nums[j]:
+                # Check if i is smaller than j, indicating interval has a range of at least 3 elements
+                if i < j:
+                    # Record the index of i and j
+                    subsequences.append((nums[i], nums[j]))
+                # Jump i to the lowest point of the falling slope
+                i = k
+            # Check subsequence if it has 132 pattern
+            for subsequence in subsequences:
+                if subsequence[0] < nums[k] < subsequence[1]:
+                    return True
+            k += 1    
+        return False
+```
