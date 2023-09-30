@@ -43,6 +43,11 @@ __Constraints:__
 
 ### Brute Force
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^3)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def find132pattern(self, nums: List[int]) -> bool:
