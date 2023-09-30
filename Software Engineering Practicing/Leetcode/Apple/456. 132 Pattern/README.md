@@ -1,6 +1,6 @@
 ## [456. 132 Pattern](https://leetcode.com/problems/132-pattern)
 
-```Tag```:
+```Tag```: ```Stack``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -12,27 +12,31 @@ Return _```true``` if there is a 132 pattern in ```nums```, otherwise, return ``
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: nums = [1,2,3,4]
 Output: false
 Explanation: There is no 132 pattern in the sequence.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: nums = [3,1,4,2]
 Output: true
 Explanation: There is a 132 pattern in the sequence: [1, 4, 2].
-Example 3:
+```
 
+__Example 3:__
+```
 Input: nums = [-1,3,2,0]
 Output: true
 Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0].
- 
+```
 
-Constraints:
+__Constraints:__
 
-n == nums.length
-1 <= n <= 2 * 105
--109 <= nums[i] <= 109
+- $n == nums.length$
+- $1 \le n \le 2 * 10^{5}$
+- $10^{9} \le nums[i] \le 10^{9}$
 
 ---
