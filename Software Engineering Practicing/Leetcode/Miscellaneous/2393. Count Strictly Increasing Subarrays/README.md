@@ -1,6 +1,6 @@
 ## [2393. Count Strictly Increasing Subarrays](https://leetcode.com/problems/count-strictly-increasing-subarrays)
 
-```Tag```: ```Dynamic Programming``` ```Greedy```
+```Tag```: ```Dynamic Programming``` ```Greedy``` ```Sliding Window```
 
 #### Difficulty: Medium
 
@@ -37,7 +37,7 @@ __Constraints:__
 
 ---
 
-### Greedy
+### Dynamic Programming
 
 ```Python
 class Solution:
@@ -55,4 +55,29 @@ class Solution:
             ans += curr
         
         return ans
+```
+
+### Sliding Window
+
+```Python
+class Solution:
+    def countSubarrays(self, nums: List[int]) -> int:
+        start = prev = ans = 0
+        n = len(nums)
+
+        for end in range(n):
+            if nums[end] <= prev:
+                start = end
+            ans += end - start + 1
+            prev = nums[end]
+        
+        return ans
+```
+
+### Greedy
+
+![image](https://github.com/quananhle/Python/assets/35042430/2367c3a6-8247-4ea7-8d27-28252bd98042)
+
+```Python
+
 ```
