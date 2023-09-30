@@ -39,6 +39,11 @@ __Constraints:__
 
 ### Dynamic Programming
 
+#### Complexity Analysis
+
+- Time Complexity: $\mathcal(O){N}$
+- Space Complexity: $\mathcal{O}(N)$
+
 ```Python
 class Solution:
     def countSubarrays(self, nums: List[int]) -> int:
@@ -59,6 +64,11 @@ class Solution:
 
 ### Sliding Window
 
+#### Complexity Analysis
+
+- Time Complexity: $\mathcal(O){N}$
+- Space Complexity: $\mathcal{O}(N)$
+
 ```Python
 class Solution:
     def countSubarrays(self, nums: List[int]) -> int:
@@ -78,6 +88,27 @@ class Solution:
 
 ![image](https://github.com/quananhle/Python/assets/35042430/2367c3a6-8247-4ea7-8d27-28252bd98042)
 
-```Python
+#### Complexity Analysis
 
+- Time Complexity: $\mathcal(O){N}$
+- Space Complexity: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def countSubarrays(self, nums: List[int]) -> int:
+        ans = 0
+        n = len(nums)
+        
+        i = 0
+        while i < n:
+            curr = 1
+            
+            while i + 1 < n and nums[i] < nums[i + 1]:
+                curr += 1
+                i += 1
+            
+            ans += (curr * (curr + 1)) // 2
+            i += 1
+        
+        return ans
 ```
