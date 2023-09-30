@@ -1,6 +1,6 @@
 ## [456. 132 Pattern](https://leetcode.com/problems/132-pattern)
 
-```Tag```: ```Stack``` ```Binary Search```
+```Tag```: ```Stack``` ```Binary Search``` ```Interval```
 
 #### Difficulty: Medium
 
@@ -40,3 +40,17 @@ __Constraints:__
 - $10^{9} \le nums[i] \le 10^{9}$
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def find132pattern(self, nums: List[int]) -> bool:
+        for i in range(len(nums) - 2):
+            for j in range(i + 1, len(nums) - 1):
+                for k in range(j + 1, len(nums)):
+                    if nums[k] > nums[i] and nums[j] > nums[k]:
+                        return True
+        
+        return False
+```
