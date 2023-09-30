@@ -1,6 +1,6 @@
 ## [2393. Count Strictly Increasing Subarrays](https://leetcode.com/problems/count-strictly-increasing-subarrays)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Greedy```
 
 #### Difficulty: Medium
 
@@ -37,7 +37,7 @@ __Constraints:__
 
 ---
 
-### One Pass
+### Greedy
 
 ```Python
 class Solution:
