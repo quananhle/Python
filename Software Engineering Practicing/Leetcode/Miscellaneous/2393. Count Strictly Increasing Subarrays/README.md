@@ -41,8 +41,8 @@ __Constraints:__
 
 #### Complexity Analysis
 
-- Time Complexity: $\mathcal(O){N}$
-- Space Complexity: $\mathcal{O}(N)$
+- Time Complexity: $\mathcal{O}(N)$
+- Space Complexity: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -66,8 +66,8 @@ class Solution:
 
 #### Complexity Analysis
 
-- Time Complexity: $\mathcal(O){N}$
-- Space Complexity: $\mathcal{O}(N)$
+- Time Complexity: $\mathcal{O}(N)$
+- Space Complexity: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -90,8 +90,8 @@ class Solution:
 
 #### Complexity Analysis
 
-- Time Complexity: $\mathcal(O){N}$
-- Space Complexity: $\mathcal{O}(N)$
+- Time Complexity: $\mathcal{O}(N)$
+- Space Complexity: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
