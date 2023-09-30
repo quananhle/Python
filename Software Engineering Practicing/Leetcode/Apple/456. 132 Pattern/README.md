@@ -59,3 +59,23 @@ class Solution:
         
         return False
 ```
+
+### Optimized Brute Force
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def find132pattern(self, nums: List[int]) -> bool:
+        min_num = math.inf
+        for j in range(len(nums) - 1):
+            min_num = min(nums[j], min_num)
+            for k in range(j + 1, len(nums)):
+                if min_num < nums[k] < nums[j]:
+                    return True
+        
+        return False
+```
