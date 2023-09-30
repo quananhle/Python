@@ -36,3 +36,23 @@ __Constraints:__
 - $1 \le nums[i] \le 10^{6}$
 
 ---
+
+### One Pass
+
+```Python
+class Solution:
+    def countSubarrays(self, nums: List[int]) -> int:
+        n = len(nums)
+        # Subarray has at least 1 element
+        ans = curr = 1
+
+        for i in range(1, n):
+            # Expand the size of the window if elements are strictly increasing
+            if nums[i - 1] < nums[i]:
+                curr += 1
+            else:
+                curr = 1
+            ans += curr
+        
+        return ans
+```
