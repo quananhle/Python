@@ -48,6 +48,7 @@ __Constraints:__
 
 ---
 
+```Python
 class TrieNode():
 
     def __init__(self):
@@ -105,3 +106,4 @@ class Trie:
 # param_2 = obj.countWordsEqualTo(word)
 # param_3 = obj.countWordsStartingWith(prefix)
 # obj.erase(word)
+```
