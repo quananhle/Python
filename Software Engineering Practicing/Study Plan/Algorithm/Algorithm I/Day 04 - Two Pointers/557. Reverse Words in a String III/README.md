@@ -57,6 +57,8 @@ class Solution:
 
 ### In-Place Reverse
 
+In Python, string is mutable; hence, in-place reverse in Python requires extra space to convert string to a list and rebuild list to a string later on.
+
 ```Python
 class Solution:
     def reverseWords(self, s: str) -> str:
@@ -78,6 +80,27 @@ class Solution:
         # Flip the last word in the input
         flip_word(start, n - 1)
         
+        return "".join(res)
+```
+
+```Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        def flip(lo, hi):
+            while lo < hi:
+                res[lo], res[hi] = res[hi], res[lo]
+                lo += 1; hi -= 1
+
+        start = 0
+        res = list(s)
+        n = len(s)
+        for end, char in enumerate(s):
+            if char == " ":
+                flip(start, end - 1)
+                start = end + 1
+            if end == n - 1:
+                flip(start, n - 1)
+
         return "".join(res)
 ```
 
@@ -114,4 +137,20 @@ class Solution:
                 res[start:] = s[start:][::-1]
 
         return ''.join(res)
+```
+
+```Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        start = 0
+        res = list()
+        n = len(s)
+        for end, char in enumerate(s):
+            if char == " ":
+                res.append(s[start:end][::-1])
+                start = end + 1
+            if end == n - 1:
+                res.append(s[start:end + 1][::-1])
+            
+        return " ".join(res)
 ```
