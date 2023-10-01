@@ -8,6 +8,8 @@ Given a string ```s```, reverse the order of characters in each word within a se
 
 ![image](https://user-images.githubusercontent.com/35042430/210122621-68108bf8-429d-45a1-a5ae-e7e490b5e637.png)
 
+![image](https://github.com/quananhle/Python/assets/35042430/1c2ca7b5-5a7a-40d1-8acc-4afa931c45df)
+
 ---
 
 __Example 1:__
