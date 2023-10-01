@@ -47,3 +47,61 @@ __Constraints:__
 - It is guaranteed that for any function call to ```erase```, the string ```word``` will exist in the trie.
 
 ---
+
+class TrieNode():
+
+    def __init__(self):
+        self.children = dict()
+        self.complete = False
+        self.ending = 0
+        self.beginning = 0
+
+class Trie:
+
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word: str) -> None:
+        node = self.root
+        for char in word:
+            index = ord(char) - ord('a')
+            if not index in node.children:
+                node.children[index] = TrieNode()
+            node = node.children[index]
+            node.beginning += 1
+        node.complete = True
+        node.ending += 1
+
+    def countWordsEqualTo(self, word: str) -> int:
+        node = self.root
+        for char in word:
+            index = ord(char) - ord('a')
+            if not index in node.children:
+                return 0
+            node = node.children[index]
+        return node.ending
+
+    def countWordsStartingWith(self, prefix: str) -> int:
+        node = self.root
+        for char in prefix:
+            index = ord(char) - ord('a')
+            if not index in node.children:
+                return 0
+            node = node.children[index]
+        return node.beginning 
+
+    def erase(self, word: str) -> None:
+        node = self.root
+        for char in word:
+            index = ord(char) - ord('a')
+            node = node.children[index]
+            node.beginning -= 1
+        node.ending -= 1
+
+
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.countWordsEqualTo(word)
+# param_3 = obj.countWordsStartingWith(prefix)
+# obj.erase(word)
