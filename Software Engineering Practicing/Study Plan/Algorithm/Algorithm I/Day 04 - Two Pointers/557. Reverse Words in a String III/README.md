@@ -25,17 +25,29 @@ Output: "doG gniD"
 ```
 
 __Constraints:__
-```
-1 <= s.length <= 5 * 104
-s contains printable ASCII characters.
-s does not contain any leading or trailing spaces.
-There is at least one word in s.
-All the words in s are separated by a single space.
-```
+
+- $1 \le s.length \le 5 * 10^4$
+- ```s``` contains printable ASCII characters.
+- ```s``` does not contain any leading or trailing spaces.
+- There is at least one word in ```s```.
+- All the words in ```s``` are separated by a single space.
 
 ---
 
-### One Liner
+### Pythonic
+
+```Python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        words = s.split(" ")
+        res = list()
+        for word in words:
+            res.append(word[::-1])
+
+        return " ".join(res)
+```
+
+#### One Liner
 
 ```Python
 class Solution:
