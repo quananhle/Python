@@ -50,8 +50,8 @@ __Constraints:__
 
 __Complexity Analysis__
 
-- __Time Complexity__: O(N)O(N)O(N)
-- __Space Complexity__: O(N⋅M)O(N \cdot M)O(N⋅M)
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N \cdot M)$
 
 ```Python
 class TrieNode():
