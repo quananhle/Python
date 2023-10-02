@@ -24,7 +24,7 @@ Output: "acdb"
 
 __Constraints:__
 
-- ```1 <= s.length <= 10^4```
+- $1 \le s.length \le 10^4$
 - ```s``` consists of lowercase English letters.
 
 __Note__: This question is the same as [1081](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/)
@@ -42,6 +42,11 @@ The leftmost letter in the solution will be the smallest letter such that the su
     - and we know that the solution will have the lexicographically smallest leftmost character possible.
 
 If there are multiple smallest letters in the input string, then we pick the leftmost one in the input string simply because it optimally gives us more options. We can always eliminate more letters later on, so the optimal solution will always remain in our search space.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$. 
+- __Space Complexity__: $\mathcal{O}(N)$.
 
 ```Python
 class Solution:
@@ -67,6 +72,10 @@ class Solution:
 ```
 
 ### Monotonic Stack
+
+__Intuition__
+
+
 
 ```Python
 class Solution:
