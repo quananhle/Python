@@ -134,6 +134,18 @@ class Solution:
         return Alice - Bob >= 1  # return Alice > Bob
 ```
 
+### Groupby()
+
+```Python
+
+```
+
+#### One Liner
+
+```Python
+
+```
+
 ### Regular Expression
 
 ```Python
