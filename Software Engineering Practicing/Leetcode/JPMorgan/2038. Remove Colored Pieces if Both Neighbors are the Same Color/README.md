@@ -97,8 +97,26 @@ Because Alice moves first, she must make at least one move more than Bob to win.
 
 __Algorithm__
 
-1. Initialize alice = bob = 0.
+1. Initialize ```alice = bob = 0```.
 2. Iterate i from 1 to colors.length - 1.
   - If colors[i - 1] == colors[i] == colors[i + 1], increment Alice or Bob depending on what colors[i] is. If colors[i] is equal to "A", increment Alice, otherwise, increment Bob.
 3. Return alice - bob >= 1
 
+```Python
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        n = len(colors)
+        if n < 3:
+            return False
+
+        Alice = Bob = 0
+
+        for i in range(1, n - 1):
+            if colors[i - 1] == colors[i] == colors[i + 1]:
+                if colors[i] == 'A':
+                    Alice += 1
+                else:
+                    Bob += 1
+        
+        return Alice - Bob >= 1
+```
