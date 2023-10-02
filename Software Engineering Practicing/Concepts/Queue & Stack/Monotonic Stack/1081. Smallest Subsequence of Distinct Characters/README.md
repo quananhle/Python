@@ -1,6 +1,6 @@
 ## [1081. Smallest Subsequence of Distinct Characters](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters)
 
-```Tag```:
+```Tag```: ```Monotonic Stack``` ```Array & String```
 
 #### Difficulty: Medium
 
@@ -10,22 +10,24 @@ Given a string ```s```, return _the __lexicographically smallest subsequence__ o
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: s = "bcabc"
 Output: "abc"
-Example 2:
+```
 
+__Example 2:__
+```
 Input: s = "cbacdcbc"
 Output: "acdb"
+```
+
+__Constraints:__
+
+- $1 \le s.length \le 1000$
+- ```s``` consists of lowercase English letters.
  
 
-Constraints:
-
-1 <= s.length <= 1000
-s consists of lowercase English letters.
- 
-
-Note: This question is the same as 316: https://leetcode.com/problems/remove-duplicate-letters/
+Note: This question is the same as [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/).
 
 ---
