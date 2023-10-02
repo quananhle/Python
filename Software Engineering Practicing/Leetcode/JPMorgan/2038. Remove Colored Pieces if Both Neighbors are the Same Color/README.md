@@ -1,6 +1,6 @@
 ## [2038. Remove Colored Pieces if Both Neighbors are the Same Color](https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Array & String```
 
 #### Difficulty: Medium
 
@@ -66,3 +66,22 @@ __Constraints:__
 - ```colors``` consists of only the letters ```'A'``` and ```'B'```
 
 ---
+
+__Intuition__
+
+There are two very important things to notice about this game that will allow us to easily solve the problem:
+
+1. When one player removes a letter, it will never create a new removal opportunity for the other player. For example, let's say you had ```"ABAA"```. If the ```"B"``` wasn't there, then Alice would have a new removal opportunity. However, the ```"B"``` can never be removed because of the rules of the game. This observation implies that at the start of the game, all moves are already available to both players.
+2. The order in which the removals happen is irrelevant. This is a side effect of the previous observation. Let's say there was a section in the middle of the string ```"BAAAAAB"```. Alice has three removal choices here, ```"BA[A]AAAB"```, ```"BAA[A]AAB"```, and ```"BAAA[A]AB"```. However, her choice is irrelevant, because all three choices will result in ```"BAAAAB"```.
+
+We can think of splitting the string into groups. A group consists of three or more of the same character. From observation 2, removals within a group can happen in any order. From observation 1, no two groups can ever "merge".
+
+__Thus, the only thing that matters is the number of moves available to both players at the start of the game.__
+
+The number of moves available to Alice is the number of times the substring ```"AAA"``` appears. Similarly, the number of moves available to Bob is the number of times the substring ```"BBB"``` appears.
+
+As shown below, in the string ```"AAAAA"```, substring ```"AAA"``` appears ```3``` times, indicating ```3``` moves available for Alice.
+
+![image](https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color/Figures/2038/1.png)
+
+
