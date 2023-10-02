@@ -38,6 +38,25 @@ __Note__: This question is the same as [1081](https://leetcode.com/problems/smal
 __Intuition__
 
 
+```Python
+class Solution:
+    def removeDuplicateLetters(self, s: str) -> str:
+        counter = Counter(s)
+        pivot = 0
+        n = len(s)
+
+        for i in range(n):
+            if s[i] < s[pivot]:
+                pivot = i
+            counter[s[i]] -= 1
+            if counter[s[i]] == 0:
+                del counter[s[i]]
+                break
+        
+        # Output is the leftmost letter plus the recursive call on the remainder of the string
+        # Note: have to get rid of further occurrences of s[pivot] to ensure that there are no duplicates
+        return s[pivot] + self.removeDuplicateLetters(s[pivot:].replace(s[pivot], "")) if s else ""
+```
 
 ### Monotonic Stack
 
