@@ -171,7 +171,9 @@ class Solution:
 #### One Liner
 
 ```Python
-
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        return sum((max(sum(1 for _ in group) - 2, 0)) * (1 if color == 'A' else -1) for color, group in groupby(colors)) > 0
 ```
 
 ### Sliding Window
@@ -198,5 +200,11 @@ class Solution:
 ### Regular Expression
 
 ```Python
-
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        counter = collections.defaultdict(int)
+        for group in re.findall(r'(A+|B+)', colors):
+            if len(group) >= 3:
+                counter[group[0]] += len(group) - 2
+        return counter['A'] > counter['B']
 ```
