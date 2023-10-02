@@ -1,6 +1,6 @@
 ## [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)
 
-```Tag```: ```Greedy``` ```Monotonic Stack```
+```Tag```: ```Greedy``` ```Monotonic Stack``` ```Array & String```
 
 #### Difficulty: Medium
 
