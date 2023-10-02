@@ -67,6 +67,8 @@ __Constraints:__
 
 ---
 
+### Count
+
 __Intuition__
 
 There are two very important things to notice about this game that will allow us to easily solve the problem:
