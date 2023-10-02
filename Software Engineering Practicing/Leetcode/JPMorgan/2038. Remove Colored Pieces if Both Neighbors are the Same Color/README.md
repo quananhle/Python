@@ -129,5 +129,5 @@ class Solution:
 
 __Complexity Analysis__
 
-- Time Complexity: $O(n)$
-- Space Complexity: $O(1)$
+- Time Complexity: $\mathcal{O}(n)$
+- Space Complexity: $\mathcal{O}(1)$
