@@ -1,6 +1,6 @@
 ## [2038. Remove Colored Pieces if Both Neighbors are the Same Color](https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color)
 
-```Tag```: ```Array & String``` ```Regular Expression``` ```Greedy```
+```Tag```: ```Array & String``` ```Regular Expression``` ```Greedy``` ```Sliding Window```
 
 #### Difficulty: Medium
 
@@ -172,6 +172,27 @@ class Solution:
 
 ```Python
 
+```
+
+### Sliding Window
+
+```Python
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        start = end = 0
+        color = colors[0]
+        counter = collections.Counter()
+        n = len(colors)
+
+        while end < n:
+            if colors[end] != color:
+                counter[color] += max(end - start - 2, 0)
+                color = colors[end]
+                start = end
+            end += 1
+        
+        counter[color] += max(end - start - 2, 0)
+        return counter['A'] > counter['B']
 ```
 
 ### Regular Expression
