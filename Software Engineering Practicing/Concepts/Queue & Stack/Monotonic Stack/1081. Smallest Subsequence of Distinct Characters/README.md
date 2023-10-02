@@ -1,3 +1,31 @@
 ## [1081. Smallest Subsequence of Distinct Characters](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters)
 
-```Tag```
+```Tag```:
+
+#### Difficulty: Medium
+
+Given a string ```s```, return _the __lexicographically smallest subsequence__ of ```s``` that contains all the distinct characters of ```s``` exactly once_.
+
+![image](https://github.com/quananhle/Python/assets/35042430/c605e63e-7205-40e7-8a4e-0c6b65ef35fa)
+
+---
+
+Example 1:
+
+Input: s = "bcabc"
+Output: "abc"
+Example 2:
+
+Input: s = "cbacdcbc"
+Output: "acdb"
+ 
+
+Constraints:
+
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+ 
+
+Note: This question is the same as 316: https://leetcode.com/problems/remove-duplicate-letters/
+
+---
