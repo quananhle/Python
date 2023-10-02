@@ -1,6 +1,6 @@
 ## [2038. Remove Colored Pieces if Both Neighbors are the Same Color](https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color)
 
-```Tag```: ```Array & String``` ```Regular Expression```
+```Tag```: ```Array & String``` ```Regular Expression``` ```Greedy```
 
 #### Difficulty: Medium
 
@@ -78,7 +78,7 @@ There are two very important things to notice about this game that will allow us
 
 We can think of splitting the string into groups. A group consists of three or more of the same character. From observation 2, removals within a group can happen in any order. From observation 1, no two groups can ever "merge".
 
-__Thus, the only thing that matters is the number of moves available to both players at the start of the game.__
+__Thus, the only thing that matters is the number of moves available to both players at the start of the game.__ Or in other words, there is only a fixed number of moves. Hence, the winner of the game is already decided before the game even starts.
 
 The number of moves available to Alice is the number of times the substring ```"AAA"``` appears. Similarly, the number of moves available to Bob is the number of times the substring ```"BBB"``` appears.
 
