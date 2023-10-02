@@ -79,7 +79,7 @@ As we iterate over our string, if character ```i``` is greater than character ``
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(N)$
+- __Time Complexity__: $\mathcal{O}(N)$, although there is a loop inside a loop, the time complexity is still ```O(N)```. This is because the inner while loop is bounded by the total number of elements added to the stack (each time it fires an element goes). This means that the total amount of time spent in the inner loop is bounded by ```O(N)```, giving us a total time complexity of ```O(N)```
 - __Space Complexity__: $\mathcal{O}(1)$.
 
 ```Python
