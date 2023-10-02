@@ -77,6 +77,11 @@ __Intuition__
 
 As we iterate over our string, if character ```i``` is greater than character ```i +`1``` and another occurrence of character ```i``` exists later in the string, deleting character ```i``` will always lead to the optimal solution. Characters that come later in the string ```i``` don't matter in this calculation because ```i``` is in a more significant spot. Even if character ```i + 1``` isn't the best yet, we can always replace it for a smaller character down the line if possible.
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$.
+
 ```Python
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
@@ -85,9 +90,15 @@ class Solution:
         memo = {c:i for i, c in enumerate(s)}
 
         for i, c in enumerate(s):
+            # Only add c if it's not already in final output
             if not c in seen:
+                # Check if the last letter in the final output:
+                #    1. exists
+                #    2. is greater than current character
+                #    3. it's not the last occurrence in the input string
+                # Remove it from the solution to keep the solution optimal
                 while stack and c < stack[-1] and i < memo[stack[-1]]:
-                    seen.discard(stack.pop())
+                    seen.discard(stack.pop())                            # seen.remove(stack.pop())
                 seen.add(c)
                 stack.append(c)
             
