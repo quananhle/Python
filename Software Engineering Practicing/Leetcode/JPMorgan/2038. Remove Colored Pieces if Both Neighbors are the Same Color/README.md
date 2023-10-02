@@ -67,6 +67,10 @@ __Constraints:__
 
 ---
 
+```
+This problem is a prime example of one should fully understand the nature of the problem and its requirements through careful observing and throrough anylysing before diving into development.
+```
+
 ### Count
 
 __Intuition__
