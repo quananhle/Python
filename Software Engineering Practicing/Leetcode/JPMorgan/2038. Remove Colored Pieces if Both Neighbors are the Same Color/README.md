@@ -71,7 +71,7 @@ __Constraints:__
 This problem is a prime example of one should fully understand the nature of the problem and its requirements through careful observing and throrough anylysing before diving into development.
 ```
 
-### Count
+### Greedy
 
 __Intuition__
 
@@ -132,6 +132,27 @@ class Solution:
                     Bob += 1
         
         return Alice - Bob >= 1  # return Alice > Bob
+```
+
+```Python
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        Alice = Bob = 0
+        n = len(colors)
+        i = 0
+
+        while i < n:
+            color = colors[i]
+            count = 0
+            while i < n and colors[i] == color:
+                i += 1; count += 1
+            if count > 2:
+                if color == 'A':
+                    Alice += count - 2
+                else:
+                    Bob += count - 2
+        
+        return Alice > Bob
 ```
 
 ### Groupby()
