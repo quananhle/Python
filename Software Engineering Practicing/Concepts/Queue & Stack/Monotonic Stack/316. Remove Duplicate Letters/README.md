@@ -37,6 +37,11 @@ __Note__: This question is the same as [1081](https://leetcode.com/problems/smal
 
 __Intuition__
 
+The leftmost letter in the solution will be the smallest letter such that the suffix from that letter contains every other. This is because we know that: 
+    - The solution must have one copy of every letter, 
+    - and we know that the solution will have the lexicographically smallest leftmost character possible.
+
+If there are multiple smallest letters in the input string, then we pick the leftmost one in the input string simply because it optimally gives us more options. We can always eliminate more letters later on, so the optimal solution will always remain in our search space.
 
 ```Python
 class Solution:
@@ -45,10 +50,13 @@ class Solution:
         pivot = 0
         n = len(s)
 
+        # Search for the candidate with smallest lexicographical order
         for i in range(n):
+            # Pick the first encountered or leftmost smallest letter only
             if s[i] < s[pivot]:
                 pivot = i
             counter[s[i]] -= 1
+            # Once all s[i] letters were encountered, break out of the loop 
             if counter[s[i]] == 0:
                 del counter[s[i]]
                 break
