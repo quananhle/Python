@@ -84,4 +84,20 @@ As shown below, in the string ```"AAAAA"```, substring ```"AAA"``` appears ```3`
 
 ![image](https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color/Figures/2038/1.png)
 
+We can simply iterate over the string and for each index ```i```, check if ```colors[i - 1] == colors[i] == colors[i + 1]```. If so, then we can increment either Alice or Bob's available moves.
 
+Because Alice moves first, she must make at least one move more than Bob to win. That is, Alice wins if ```alice - bob >= 1```. For example, let's say Alice has 3 moves and Bob has 2 moves.
+
+- Turn 1: Alice
+- Turn 2: Bob
+- Turn 3: Alice
+- Turn 4: Bob
+- Turn 5: Alice
+- Turn 6: Bob has no moves left but it's his turn, Bob loses
+
+__Algorithm__
+
+Initialize alice = bob = 0.
+Iterate i from 1 to colors.length - 1.
+If colors[i - 1] == colors[i] == colors[i + 1], increment Alice or Bob depending on what colors[i] is. If colors[i] is equal to "A", increment Alice, otherwise, increment Bob.
+Return alice - bob >= 1
