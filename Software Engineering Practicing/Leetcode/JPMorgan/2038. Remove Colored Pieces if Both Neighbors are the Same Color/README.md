@@ -137,7 +137,14 @@ class Solution:
 ### Groupby()
 
 ```Python
-
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        counter = collections.Counter()
+        for color, group in groupby(colors):
+            length_of_consecutive_elements = sum(1 for _ in group)
+            # Remove all pieces that are not in the edges; hence, length of consecutive elements less 2
+            counter[color] += max(0, length_of_consecutive_elements - 2)
+        return counter['A'] > counter['B']
 ```
 
 #### One Liner
