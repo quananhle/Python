@@ -1,6 +1,6 @@
 ## [2038. Remove Colored Pieces if Both Neighbors are the Same Color](https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Regular Expression```
 
 #### Difficulty: Medium
 
@@ -106,7 +106,10 @@ __Algorithm__
     - Otherwise, increment ```Bob```.
 3. Return ```Alice - Bob >= 1```
 
----
+__Complexity Analysis__
+
+- Time Complexity: $\mathcal{O}(n)$
+- Space Complexity: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -127,7 +130,8 @@ class Solution:
         return Alice - Bob >= 1  # return Alice > Bob
 ```
 
-__Complexity Analysis__
+### Regular Expression
 
-- Time Complexity: $\mathcal{O}(n)$
-- Space Complexity: $\mathcal{O}(1)$
+```Python
+
+```
