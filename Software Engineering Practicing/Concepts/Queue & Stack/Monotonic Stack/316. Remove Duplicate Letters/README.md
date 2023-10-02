@@ -38,14 +38,14 @@ __Note__: This question is the same as [1081](https://leetcode.com/problems/smal
 __Intuition__
 
 The leftmost letter in the solution will be the smallest letter such that the suffix from that letter contains every other. This is because we know that: 
-    - The solution must have one copy of every letter, 
-    - and we know that the solution will have the lexicographically smallest leftmost character possible.
+- The solution must have one copy of every letter, 
+- and we know that the solution will have the lexicographically smallest leftmost character possible.
 
 If there are multiple smallest letters in the input string, then we pick the leftmost one in the input string simply because it optimally gives us more options. We can always eliminate more letters later on, so the optimal solution will always remain in our search space.
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(N)$. 
+- __Time Complexity__: $\mathcal{O}(N)$, the number of recursive calls is bounded by a constant (26 letters in the alphabet), so we have $\mathcal{O}(N) \cdot C = \mathcal{O}(N)$
 - __Space Complexity__: $\mathcal{O}(N)$.
 
 ```Python
@@ -75,7 +75,7 @@ class Solution:
 
 __Intuition__
 
-
+As we iterate over our string, if character ```i``` is greater than character ```i +`1``` and another occurrence of character ```i``` exists later in the string, deleting character ```i``` will always lead to the optimal solution. Characters that come later in the string ```i``` don't matter in this calculation because ```i``` is in a more significant spot. Even if character ```i + 1``` isn't the best yet, we can always replace it for a smaller character down the line if possible.
 
 ```Python
 class Solution:
