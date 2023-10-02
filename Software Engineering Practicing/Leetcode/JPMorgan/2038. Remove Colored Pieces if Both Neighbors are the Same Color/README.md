@@ -124,7 +124,7 @@ class Solution:
                 else:
                     Bob += 1
         
-        return Alice - Bob >= 1
+        return Alice - Bob >= 1  # return Alice > Bob
 ```
 
 __Complexity Analysis__
