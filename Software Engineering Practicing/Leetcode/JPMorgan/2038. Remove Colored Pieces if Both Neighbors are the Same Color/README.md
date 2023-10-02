@@ -18,3 +18,51 @@ Assuming Alice and Bob play optimally, return _```true``` if Alice wins, or retu
 ![image](https://github.com/quananhle/Python/assets/35042430/76c9e030-541d-422c-b563-e0f744916a76)
 
 ---
+
+__Example 1:__
+```
+Input: colors = "AAABABB"
+Output: true
+Explanation:
+AAABABB -> AABABB
+Alice moves first.
+She removes the second 'A' from the left since that is the only 'A' whose neighbors are both 'A'.
+
+Now it's Bob's turn.
+Bob cannot make a move on his turn since there are no 'B's whose neighbors are both 'B'.
+Thus, Alice wins, so return true.
+```
+
+__Example 2:__
+```
+Input: colors = "AA"
+Output: false
+Explanation:
+Alice has her turn first.
+There are only two 'A's and both are on the edge of the line, so she cannot move on her turn.
+Thus, Bob wins, so return false.
+```
+
+__Example 3:__
+```
+Input: colors = "ABBBBBBBAAA"
+Output: false
+Explanation:
+ABBBBBBBAAA -> ABBBBBBBAA
+Alice moves first.
+Her only option is to remove the second to last 'A' from the right.
+
+ABBBBBBBAA -> ABBBBBBAA
+Next is Bob's turn.
+He has many options for which 'B' piece to remove. He can pick any.
+
+On Alice's second turn, she has no more pieces that she can remove.
+Thus, Bob wins, so return false.
+```
+
+__Constraints:__
+
+- $1 \le colors.length \le 10^{5}$
+- ```colors``` consists of only the letters ```'A'``` and ```'B'```
+
+---
