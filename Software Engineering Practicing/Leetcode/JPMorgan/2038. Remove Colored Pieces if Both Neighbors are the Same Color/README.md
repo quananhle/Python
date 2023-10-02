@@ -97,7 +97,8 @@ Because Alice moves first, she must make at least one move more than Bob to win.
 
 __Algorithm__
 
-Initialize alice = bob = 0.
-Iterate i from 1 to colors.length - 1.
-If colors[i - 1] == colors[i] == colors[i + 1], increment Alice or Bob depending on what colors[i] is. If colors[i] is equal to "A", increment Alice, otherwise, increment Bob.
-Return alice - bob >= 1
+1. Initialize alice = bob = 0.
+2. Iterate i from 1 to colors.length - 1.
+  - If colors[i - 1] == colors[i] == colors[i + 1], increment Alice or Bob depending on what colors[i] is. If colors[i] is equal to "A", increment Alice, otherwise, increment Bob.
+3. Return alice - bob >= 1
+
