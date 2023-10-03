@@ -94,15 +94,15 @@ class Solution:
 
 ### Sum of Arithmetic Progression (AP)
 
-__Complexity Analysis__
-
-- __Time Complexity__: $\mathcal{O}(n)$
-- __Space Complexity__: $\mathcal{O}(n)$
-
 - $1 -> 0$ pairs
 - $11 -> +1$ pair
 - $111 -> +2$ pairs
 - $1111 -> +3$ pairs $=> 1+2+3=((4 - 1) * (4 - 1 + 1) // 2 = 6$
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 ```Python
 class Solution:
