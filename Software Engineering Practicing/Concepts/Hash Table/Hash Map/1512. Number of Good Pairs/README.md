@@ -94,6 +94,31 @@ class Solution:
 
 ### Sum of Arithmetic Progression (AP)
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+- $1 -> 0$ pairs
+- $11 -> +1$ pair
+- $111 -> +2$ pairs
+- $1111 -> +3$ pairs $=> 1+2+3=((4 - 1) * (4 - 1 + 1) // 2 = 6$
+
+```Python
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        counter = dict()
+        ans = 0
+        for num in nums:
+            counter[num] = counter.get(num, 0) + 1
+
+        return sum((v - 1) * ((v - 1) + 1) // 2 for v in counter.values())
+```
+
+#### One Liner
+
+```Python
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        return sum((v - 1) * ((v - 1) + 1) // 2 for v in Counter(nums).values())
 ```
