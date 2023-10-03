@@ -41,6 +41,11 @@ __Constraints:__
 
 ### Brute Force
 
+Complexity Analysis
+
+- Time Complexity: $\mathcal{O}(n^2)$
+- Space Complexity: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
