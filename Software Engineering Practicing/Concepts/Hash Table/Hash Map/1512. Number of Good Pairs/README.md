@@ -1,6 +1,6 @@
 ## [1512. Number of Good Pairs](https://leetcode.com/problems/number-of-good-pairs)
 
-```Tag```: ```Hash Map```
+```Tag```: ```Hash Map``` ```Math```
 
 #### Difficulty: Easy
 
@@ -41,10 +41,10 @@ __Constraints:__
 
 ### Brute Force
 
-Complexity Analysis
+__Complexity Analysis__
 
-- Time Complexity: $\mathcal{O}(n^2)$
-- Space Complexity: $\mathcal{O}(1)$
+- __Time Complexity__: $\mathcal{O}(n^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -60,6 +60,11 @@ class Solution:
 
 ### Hash Map
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
 ```Python
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
@@ -72,4 +77,23 @@ class Solution:
                 ans += counter[num]
                 counter[num] += 1
         return ans
+```
+
+```Python
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        counter = collections.defaultdict(int)
+        ans = 0
+        
+        for num in nums:
+            ans += counter[num]
+            counter[num] += 1
+
+        return ans
+```
+
+### Sum of Arithmetic Progression (AP)
+
+```Python
+
 ```
