@@ -1,6 +1,6 @@
 ## [1081. Smallest Subsequence of Distinct Characters](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters)
 
-```Tag```: ```Monotonic Stack``` ```Array & String```
+```Tag```: ```Monotonic Stack``` ```Array & String``` ```Greedy```
 
 #### Difficulty: Medium
 
@@ -31,3 +31,23 @@ __Constraints:__
 Note: This question is the same as [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/).
 
 ---
+
+### Greedy
+
+```Python
+class Solution:
+    def smallestSubsequence(self, s: str) -> str:
+        n = len(s)
+        pivot = 0
+        counter = collections.Counter(s)
+
+        for i, char in enumerate(s):
+            if char < s[pivot]:
+                pivot = i
+            counter[char] -= 1
+            if counter[char] == 0:
+                del counter[char]
+                break
+        
+        return s[pivot] + self.smallestSubsequence(s[pivot:].replace(s[pivot], "")) if s else ""
+```
