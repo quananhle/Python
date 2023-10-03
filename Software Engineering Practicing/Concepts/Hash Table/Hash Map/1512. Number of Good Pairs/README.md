@@ -38,3 +38,19 @@ __Constraints:__
 - $1 \le nums[i] \le 100$
 
 ---
+
+### Hash Map
+
+```Python
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        counter = dict()
+        ans = 0
+        for num in nums:
+            if not num in counter:
+                counter[num] = counter.get(num, 0) + 1
+            else:
+                ans += counter[num]
+                counter[num] += 1
+        return ans
+```
