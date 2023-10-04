@@ -1,6 +1,6 @@
 ## [706. Design HashMap](https://leetcode.com/problems/design-hashmap)
 
-```Tag```: ```Design``` ```Hash Map```
+```Tag```: ```Design``` ```Hash Map``` ```Array & String```
 
 #### Difficulty: Easy
 
@@ -43,3 +43,31 @@ __Constraints:__
 - At most $10^4$ calls will be made to ```put```, ```get```, and ```remove```.
 
 ---
+
+### List
+
+```Python
+class MyHashMap:
+
+    def __init__(self):
+        self.map = [None] * (10**6 + 1)
+
+    def put(self, key: int, value: int) -> None:
+        self.map[key] = value
+
+    def get(self, key: int) -> int:
+        if self.map[key] is None:
+            return -1
+        return self.map[key]
+
+    def remove(self, key: int) -> None:
+        if self.map[key] is not None:
+            self.map[key] = None
+
+
+# Your MyHashMap object will be instantiated and called as such:
+# obj = MyHashMap()
+# obj.put(key,value)
+# param_2 = obj.get(key)
+# obj.remove(key)
+```
