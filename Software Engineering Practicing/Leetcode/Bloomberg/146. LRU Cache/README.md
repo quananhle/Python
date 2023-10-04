@@ -159,6 +159,10 @@ class LRUCache:
 
 ### Linked List
 
+Complexity Analysis
+
+- Time complexity: O(1)O(1)O(1)
+
 The problem can be solved with a hashmap that keeps track of the keys and its values in the double linked list. That results in ```O(1)``` time for ```put``` and ```get``` operations and allows to remove the first added node in ```O(1)``` time as well.
 
 ![image](https://leetcode.com/problems/lru-cache/Figures/146/structure.png)
@@ -254,11 +258,14 @@ class LRUCache:
 
     def __init__(self, capacity: int):
         self.size = capacity
+        # Initialize a dictionary to keep track of the list node (key, value)
         self.hash = dict()
+        # Initialize a doubly linked list
         self.head = self.tail = ListNode(-1, -1)
         self.head.next = self.tail
         self.tail.next = self.head
     
+    # Adding a node to the back of the linked list
     def add(self, node):
         prev_end = self.tail.prev
         prev_end.next = node
@@ -266,29 +273,43 @@ class LRUCache:
         self.tail.prev = node
         node.prev = prev_end
 
+    # Removing a node from the linked list
     def remove(self, node):
         node.next.prev = node.prev
         node.prev.next = node.next
 
     def get(self, key: int) -> int:
+        # Check if key is not found in the hash map
         if not key in self.hash:
             return -1
+        # Get value of the key from the hash map
         node = self.hash[key]
+        # Remove the node from the linked list and add it back to the end of the linked list
         self.remove(node)
         self.add(node)
+        # Return value
         return node.val
 
     def put(self, key: int, value: int) -> None:
+        # Check if key already exists in the hash map
         if key in self.hash:
-            lru_node = self.hash[key]
-            self.remove(lru_node)
+            # Get value of the key from the hash map
+            old_node = self.hash[key]
+            # Remove the node from the linked list
+            self.remove(old_node)
+        # Initialize the new node with (key, value)
         node = ListNode(key, value)
+        # Update value of key in the hash map
         self.hash[key] = node
+        # Add node to the back of the linked list
         self.add(node)
-
+        # Check if the memory of the lru cache is full
         if len(self.hash) == self.size:
-            node_to_del = self.head.next
+            # Get the least recently used node
+            lru_node = self.head.next
+            # Remove the least recently used node from the linked list
             self.remove(node_to_del)
+            # Remove the least recently used key from the hash map 
             del self.cache[node_to_del]
 
 # Your LRUCache object will be instantiated and called as such:
