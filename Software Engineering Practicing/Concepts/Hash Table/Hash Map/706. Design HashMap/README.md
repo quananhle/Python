@@ -44,7 +44,21 @@ __Constraints:__
 
 ---
 
-### List
+### Intuition
+
+Hashmap is a common data structure that is implemented in various forms in different programming languages, e.g. dict in Python and HashMap in Java. The most distinguish characteristic about hashmap is that it provides a fast access to a value that is associated with a given key.
+
+There are two main issues that we should tackle, in order to design an efficient hashmap data structure: 1). hash function design and 2). collision handling.
+
+1). hash function design: the purpose of hash function is to map a key value to an address in the storage space, similarly to the system that we assign a postcode to each mail address.
+As one can image, for a good hash function, it should map different keys evenly across the storage space, so that we don't end up with the case that the majority of the keys are concentrated in a few spaces.
+
+2). collision handling: essentially the hash function reduces the vast key space into a limited address space. As a result, there could be the case where two different keys are mapped to the same address, which is what we call 'collision'.
+Since the collision is inevitable, it is important that we have a strategy to handle the collision.
+
+Depending on how we deal with each of the above two issues, we could have various implementation of hashmap data structure.
+
+Even though a list could act as hash function design, like the design below, it in fact does not reduce the key space into a limited address space. The design below is bounded to the provided constraints; hence, not as efficient as a true hash map
 
 ```Python
 class MyHashMap:
