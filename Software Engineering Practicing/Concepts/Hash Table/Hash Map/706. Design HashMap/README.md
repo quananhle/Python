@@ -132,30 +132,33 @@ This localization process can be done in two steps:
 
 ![image](https://leetcode.com/problems/design-hashmap/Figures/706/706_hashmap.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(\dfrac{N}{K})$
+- __Space Complexity__: $\mathcal{O}(K + M)$
+
 ```Python
 class Bucket:
 
     def __init__(self):
         self.bucket = list()
 
-    def get(self, key: int) -> int:
+    def get(self, key: int) -> int:                     # O(N)
         for (k, v) in self.bucket:
             if k == key:
                 return v
         return -1
 
-    def update(self, key: int, value: int) -> None:
-        found = False
+    def update(self, key: int, value: int) -> None:     # O(N)
         for i, pair in enumerate(self.bucket):
             k, v = pair
             if k == key:
                 self.bucket[i] = (key, value)
-                found = True
                 break
-        if not found:
+        else:
             self.bucket.append((key, value))
 
-    def remove(self, key: int) -> None:
+    def remove(self, key: int) -> None:                 # O(N)
         for i, pair in enumerate(self.bucket):
             k, v = pair
             if k == key:
@@ -163,20 +166,20 @@ class Bucket:
 
 class MyHashMap:
 
-    def __init__(self):
+    def __init__(self):                                 # O(K)
         # Prime number reduces collision rates
         self.key_space = 2069
         self.map = [Bucket() for i in range(self.key_space)]
 
-    def put(self, key: int, value: int) -> None:
+    def put(self, key: int, value: int) -> None:        # O(1)
         hash_key = key % self.key_space
         self.map[hash_key].update(key, value)
 
-    def get(self, key: int) -> int:
+    def get(self, key: int) -> int:                     # O(N)
         hash_key = key % self.key_space
         return self.map[hash_key].get(key)
 
-    def remove(self, key: int) -> None:
+    def remove(self, key: int) -> None:                 # O(N)
         hash_key = key % self.key_space
         self.map[hash_key].remove(key)
 
@@ -187,3 +190,5 @@ class MyHashMap:
 # param_2 = obj.get(key)
 # obj.remove(key)
 ```
+
+
