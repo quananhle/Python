@@ -51,3 +51,9 @@ class Solution:
         
         return s[pivot] + self.smallestSubsequence(s[pivot:].replace(s[pivot], "")) if s else ""
 ```
+
+### Stack
+
+```Python
+
+```
