@@ -171,15 +171,15 @@ class MyHashMap:
         self.key_space = 2069
         self.map = [Bucket() for i in range(self.key_space)]
 
-    def put(self, key: int, value: int) -> None:        # O(1)
+    def put(self, key: int, value: int) -> None:        # O(N/K)
         hash_key = key % self.key_space
         self.map[hash_key].update(key, value)
 
-    def get(self, key: int) -> int:                     # O(N)
+    def get(self, key: int) -> int:                     # O(N/K)
         hash_key = key % self.key_space
         return self.map[hash_key].get(key)
 
-    def remove(self, key: int) -> None:                 # O(N)
+    def remove(self, key: int) -> None:                 # O(N/K)
         hash_key = key % self.key_space
         self.map[hash_key].remove(key)
 
