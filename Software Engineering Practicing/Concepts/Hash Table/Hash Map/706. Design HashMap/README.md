@@ -60,6 +60,8 @@ Depending on how we deal with each of the above two issues, we could have variou
 
 Even though a list could act as hash function design, like the design below, it in fact does not reduce the key space into a limited address space. The design below is bounded to the provided constraints; hence, not as efficient as a true hash map
 
+#### List
+
 ```Python
 class MyHashMap:
 
@@ -111,11 +113,20 @@ class MyHashMap:
 # obj.remove(key)
 ```
 
-
-
-### Modulo + Array
+### Modulo + List
 
 As one of the most intuitive implementations, we could adopt the ```modulo``` operator as the hash function, since the key value is of integer type. In addition, in order to minimize the potential collisions, it is advisable to use a prime number as the base of modulo, e.g. ```2069```.
+
+__Algorithm__
+
+For each of the methods in hashmap data structure, namely ```get()```, ```put()``` and ```remove()```, it all boils down to the method to locate the value that is stored in hashmap, given the key.
+
+This localization process can be done in two steps:
+
+- For a given ```key``` value, first we apply the hash function to generate a hash key, which corresponds to the address in our main storage. With this hash key, we would find the bucket where the value should be stored.
+- Now that we found the bucket, we simply iterate through the bucket to check if the desired ```<key, value>``` pair does exist.
+
+![image](https://leetcode.com/problems/design-hashmap/Figures/706/706_hashmap.png)
 
 ```Python
 
