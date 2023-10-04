@@ -1,6 +1,6 @@
 ## [706. Design HashMap](https://leetcode.com/problems/design-hashmap)
 
-```Tag```:
+```Tag```: ```Design``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -39,7 +39,7 @@ myHashMap.get(2);    // return -1 (i.e., not found), The map is now [[1,1]]
 
 __Constraints:__
 
-- $0 <= key, value <= 106$
-- At most $104$ calls will be made to ```put```, ```get```, and ```remove```.
+- $0 \le key, value \le 10^6$
+- At most $10^4$ calls will be made to ```put```, ```get```, and ```remove```.
 
 ---
