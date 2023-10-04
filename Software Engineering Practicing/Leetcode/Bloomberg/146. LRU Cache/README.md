@@ -14,7 +14,7 @@ Implement the ```LRUCache``` class:
 
 The functions ```get``` and ```put``` must each run in ```O(1)``` average time complexity.
 
-![image](https://user-images.githubusercontent.com/35042430/226724430-fc26ae67-b715-4b7e-9756-f3da83733614.png)
+![image](https://github.com/quananhle/Python/assets/35042430/61d308eb-cd45-4569-9d92-23ccd42fdb7e)
 
 ---
 
