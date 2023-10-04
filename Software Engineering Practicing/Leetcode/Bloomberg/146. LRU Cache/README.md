@@ -239,3 +239,60 @@ class LRUCache:
 # param_1 = obj.get(key)
 # obj.put(key,value)
 ```
+
+![image](https://leetcode.com/problems/lru-cache/Figures/146/1.png)
+
+```Python
+class ListNode():
+
+    def __init__(self, key: int, val: int) -> None:
+        self.node = key
+        self.val = val
+        self.next = self.prev = None
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.size = capacity
+        self.hash = dict()
+        self.head = self.tail = ListNode(-1, -1)
+        self.head.next = self.tail
+        self.tail.next = self.head
+    
+    def add(self, node):
+        prev_end = self.tail.prev
+        prev_end.next = node
+        node.next = self.tail
+        self.tail.prev = node
+        node.prev = prev_end
+
+    def remove(self, node):
+        node.next.prev = node.prev
+        node.prev.next = node.next
+
+    def get(self, key: int) -> int:
+        if not key in self.hash:
+            return -1
+        node = self.hash[key]
+        self.remove(node)
+        self.add(node)
+        return node.val
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.hash:
+            lru_node = self.hash[key]
+            self.remove(lru_node)
+        node = ListNode(key, value)
+        self.hash[key] = node
+        self.add(node)
+
+        if len(self.hash) == self.size:
+            node_to_del = self.head.next
+            self.remove(node_to_del)
+            del self.cache[node_to_del]
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+```
