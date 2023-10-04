@@ -254,6 +254,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [348. Design Tic-Tac-Toe](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/348.%20Design%20Tic-Tac-Toe) ```Matrix```
 - :four_leaf_clover: [703. K<sup>th</sup> Largest Element in a Stream](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Heap/703.%20Kth%20Largest%20Element%20in%20a%20Stream) ```Heap```
 - :four_leaf_clover: [705. Design HashSet](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/705.%20Design%20HashSet) ```Linked List``` ```Binary Search Tree```
+- :four_leaf_clover: [706. Design HashMap](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/Hash%20Map/706.%20Design%20HashMap) ```Array & String```
 - :no_entry::no_entry::no_entry: [716. Max Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/716.%20Max%20Stack) ```Linked List``` ```Heap```
 - :warning::warning: [901. Online Stock Span](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/901.%20Online%20Stock%20Span) ```Monotonic Stack```
 - :four_leaf_clover: [933. Number of Recent Calls](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/933.%20Number%20of%20Recent%20Calls) ```Queue```
