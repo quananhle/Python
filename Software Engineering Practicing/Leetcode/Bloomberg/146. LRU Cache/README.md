@@ -159,9 +159,10 @@ class LRUCache:
 
 ### Linked List
 
-Complexity Analysis
+__Complexity Analysis__
 
-- Time complexity: O(1)O(1)O(1)
+- __Time Complexity__: $\mathcal{O}(1)$
+- __Space Complexity__: $\mathcal{O}(\text{capacity})$
 
 The problem can be solved with a hashmap that keeps track of the keys and its values in the double linked list. That results in ```O(1)``` time for ```put``` and ```get``` operations and allows to remove the first added node in ```O(1)``` time as well.
 
