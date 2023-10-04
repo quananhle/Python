@@ -96,3 +96,9 @@ class MyHashMap:
 # param_2 = obj.get(key)
 # obj.remove(key)
 ```
+
+### Modulo + Array
+
+```Python
+
+```
