@@ -37,6 +37,9 @@ __Constraints:__
 
 ### Counter
 
+- __Time Complexity__: \mathcal{O}(N)$
+- __Space Complexity__: \mathcal{O}(N)$
+
 ```Python
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
@@ -59,7 +62,18 @@ class Solution:
         return [num for num, freq in collections.Counter(nums).items() if freq > (len(nums) // 3)]
 ```
 
+__Follow up__: Could you solve the problem in linear time and in ```O(1)``` space?
+
 ### Boyer-Moore Voting Algorithm
+
+__Intuition__
+
+To figure out a ```O(1)``` space requirement, we would need to get this simple intuition first. For an array of length ```n```:
+
+- There can be at most one majority element which is more than ```⌊n/2⌋``` times.
+- There can be at most two majority elements which are more than ```⌊n/3⌋``` times.
+- There can be at most three majority elements which are more than ```⌊n/4⌋``` times.
+and so on.
 
 ```Python
 
