@@ -44,11 +44,10 @@ __Constraints:__
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
         n = len(nums)
+        res = list()
         counter = collections.defaultdict(int)
         for num in nums:
             counter[num] = 1 + counter.get(num, 0)
-        res = list()
-        for num, freq in counter.items():
             if freq > (n // 3):
                 res.append(num)
         return res
@@ -77,10 +76,48 @@ and so on.
 
 Unless the constraints guaranteed that there is a majority element in the array so the implementation can omit the second pass. Otherwise, in a general case, a second pass is required since an array can have no majority elements at all!
 
+If an element is truly a majority element, it will stick in the potential candidate variable, no matter how it shows up in the array (i.e. all clustered in the beginning of the array, all clustered near the end of the array, or showing up anywhere in the array), after the whole array has been scanned. Of course, while you are scanning the array, the element might be replaced by another element in the process, but the true majority element will definitely remain as the potential candidate in the end.
+
 ![image](https://github.com/quananhle/Python/assets/35042430/33a5d413-daf7-4e67-b1a4-359f6bca1426)
 
 ![image](https://github.com/quananhle/Python/assets/35042430/0e0e82d8-8afc-4076-85f0-e4ecc12788ff)
 
-```Python
+- __Time Complexity__: \mathcal{O}(N)$
+- __Space Complexity__: \mathcal{O}(1)$
 
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        cnt1 = cnt2 = 0
+        num1 = num2 = None
+
+        if not nums:
+            return []
+        
+        for num in nums:
+            # If the current element is equal to one of the potential candidate, 
+            # the count for that candidate is increased while leaving the count of the other candidate as it is.
+            if num == num1:
+                cnt1 += 1
+            elif num == num2:
+                cnt2 += 1
+            # If the counter reaches zero, the candidate associated with that counter will be replaced with the next element 
+            # if the next element is not equal to the other candidate as well.
+            elif cnt1 == 0:
+                num1 = num
+                cnt1 += 1
+            elif cnt2 == 0:
+                num2 = num
+                cnt2 += 1
+            # Both counters are decremented only when the current element is different from both candidates.
+            else:
+                cnt1 -= 1; cnt2 -= 1
+        
+        res = list()
+        for num in [num1, num2]:
+            if nums.count(num) > n // 3:
+                res.append(num)
+        
+        return res
 ```
