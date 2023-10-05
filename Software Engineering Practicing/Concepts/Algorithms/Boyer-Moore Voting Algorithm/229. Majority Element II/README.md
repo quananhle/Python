@@ -70,10 +70,16 @@ __Intuition__
 
 To figure out a ```O(1)``` space requirement, we would need to get this simple intuition first. For an array of length ```n```:
 
-- There can be at most one majority element which is more than ```⌊n/2⌋``` times.
-- There can be at most two majority elements which are more than ```⌊n/3⌋``` times.
-- There can be at most three majority elements which are more than ```⌊n/4⌋``` times.
+- There can be at most __one__ majority element which is more than ```⌊n/2⌋``` times.
+- There can be at most __two__ majority elements which are more than ```⌊n/3⌋``` times.
+- There can be at most __three__ majority elements which are more than ```⌊n/4⌋``` times.
 and so on.
+
+Unless the constraints guaranteed that there is a majority element in the array so the implementation can omit the second pass. Otherwise, in a general case, a second pass is required since an array can have no majority elements at all!
+
+![image](https://github.com/quananhle/Python/assets/35042430/33a5d413-daf7-4e67-b1a4-359f6bca1426)
+
+![image](https://github.com/quananhle/Python/assets/35042430/0e0e82d8-8afc-4076-85f0-e4ecc12788ff)
 
 ```Python
 
