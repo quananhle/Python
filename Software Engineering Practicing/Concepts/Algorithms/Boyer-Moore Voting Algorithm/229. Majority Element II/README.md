@@ -95,7 +95,7 @@ class Solution:
         if not nums:
             return []
         
-        for num in nums:
+        for num in nums:                    # O(N)
             # If the current element is equal to one of the potential candidate, 
             # the count for that candidate is increased while leaving the count of the other candidate as it is.
             if num == num1:
@@ -115,8 +115,8 @@ class Solution:
                 cnt1 -= 1; cnt2 -= 1
         
         res = list()
-        for num in [num1, num2]:
-            if nums.count(num) > n // 3:
+        for num in [num1, num2]:                # O(1)
+            if nums.count(num) > n // 3:        # O(N)
                 res.append(num)
         
         return res
