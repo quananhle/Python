@@ -1,6 +1,6 @@
 ## [229. Majority Element II](https://leetcode.com/problems/majority-element-ii)
 
-```Tag```:
+```Tag```: ```Hash Map``` ```Boyer-Moore Voting Algorithm```
 
 #### Difficulty: Medium
 
@@ -34,3 +34,13 @@ __Constraints:__
 - -10^9 \le nums[i] \le 10^9
 
 ---
+
+### Counter
+
+#### One Liner
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        return [num for num, freq in collections.Counter(nums).items() if freq > (len(nums) // 3)]
+```
