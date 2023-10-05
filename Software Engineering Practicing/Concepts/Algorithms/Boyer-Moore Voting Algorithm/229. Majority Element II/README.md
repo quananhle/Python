@@ -37,10 +37,30 @@ __Constraints:__
 
 ### Counter
 
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        counter = collections.defaultdict(int)
+        for num in nums:
+            counter[num] = 1 + counter.get(num, 0)
+        res = list()
+        for num, freq in counter.items():
+            if freq > (n // 3):
+                res.append(num)
+        return res
+```
+
 #### One Liner
 
 ```Python
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
         return [num for num, freq in collections.Counter(nums).items() if freq > (len(nums) // 3)]
+```
+
+### Boyer-Moore Voting Algorithm
+
+```Python
+
 ```
