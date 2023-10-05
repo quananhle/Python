@@ -37,6 +37,6 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 __Constraints__:
 
 - $1 \le s.length \le 2 * 10^5$
-- $s$ consists only of printable ASCII characters.
+- ```s``` consists only of printable ASCII characters.
 
 ---
