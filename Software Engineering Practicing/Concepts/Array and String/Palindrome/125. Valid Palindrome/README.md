@@ -45,8 +45,8 @@ __Constraints__:
 
 __Complexity Analysis__
 
-- __Time Complexity__: O(n)O(n)O(n)
-- __Space Complexity__: O(1)
+- __Time Complexity__: \mathcal{O}(n)$
+- __Space Complexity__: \mathcal{O}(1)$
 
 ```Python
 class Solution:
