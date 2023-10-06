@@ -40,3 +40,25 @@ __Constraints__:
 - ```s``` consists only of printable ASCII characters.
 
 ---
+
+### Two Pointers
+
+```Python
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        n = len(s)
+        i, j = 0, n - 1
+
+        while i < j:
+            while not s[i].lower().isalnum() and i < n - 1:
+                i += 1
+            while not s[j].lower().isalnum() and j > 1:
+                j -= 1
+
+            if s[i].lower() != s[j].lower() and s[i] != '.' and s[j] != '.':
+                return False
+            
+            i += 1; j -= 1
+        
+        return True
+```
