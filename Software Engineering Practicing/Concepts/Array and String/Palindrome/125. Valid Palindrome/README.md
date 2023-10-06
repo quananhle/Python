@@ -41,10 +41,18 @@ __Constraints__:
 
 ---
 
-### Reverse + Compare
+### Reverse
 
 ```Python
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        filter_chars = filter(lambda c: c.isalnum(), s)
+        lowercase = map(lambda c: c.lower(), filter_chars)
 
+        filtered_chars_list = list(lowercase)
+        reversed_chars_list = filtered_chars_list[::-1]
+
+        return filtered_chars_list == reversed_chars_list
 ```
 
 ### Two Pointers
