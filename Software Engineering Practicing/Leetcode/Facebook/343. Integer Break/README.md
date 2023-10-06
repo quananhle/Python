@@ -1,6 +1,6 @@
 ## [343. Integer Break](https://leetcode.com/problems/integer-break)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Math```
 
 #### Difficulty: Medium
 
@@ -31,3 +31,9 @@ __Constraints:__
 - $2 \le n \le 58$
 
 ---
+
+### Top-Down Dynamic Programming
+
+```Python
+
+```
