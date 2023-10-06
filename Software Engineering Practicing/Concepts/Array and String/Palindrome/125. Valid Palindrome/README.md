@@ -61,9 +61,9 @@ class Solution:
         i, j = 0, n - 1
 
         while i < j:
-            while not s[i].lower().isalnum() and i < n - 1:
+            while not s[i].isalnum() and i < n - 1:
                 i += 1
-            while not s[j].lower().isalnum() and j > 1:
+            while not s[j].isalnum() and j > 1:
                 j -= 1
 
             if s[i].lower() != s[j].lower() and s[i] != '.' and s[j] != '.':
@@ -72,4 +72,8 @@ class Solution:
             i += 1; j -= 1
         
         return True
+```
+
+```Python
+
 ```
