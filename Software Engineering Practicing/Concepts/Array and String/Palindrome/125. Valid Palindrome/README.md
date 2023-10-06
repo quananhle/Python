@@ -43,6 +43,11 @@ __Constraints__:
 
 ### Reverse
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
 ```Python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
@@ -53,6 +58,13 @@ class Solution:
         reversed_chars_list = filtered_chars_list[::-1]
 
         return filtered_chars_list == reversed_chars_list
+```
+
+```Python
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        word = [c for c in s.lower() if c.isalnum()]
+        return word == word[::-1]
 ```
 
 ### Two Pointers
