@@ -40,3 +40,231 @@ __Constraints:__
 - $-10^9 \le target \le 10^9$
 
 ---
+
+### Binary Search & Linear Search
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+
+        start, end = -1, -1
+        if n == 0: return [start, end]
+
+        lo, hi = 0, n - 1
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+
+            if nums[mi] < target:
+                lo = mi + 1
+            elif nums[mi] > target:
+                hi = mi - 1
+            else:
+                start = end = mi
+                while start > 0 and nums[start - 1] == target:
+                    start -= 1
+                while end < n - 1 and nums[end + 1] == target: 
+                    end += 1
+                break
+        
+        return [start, end]
+```
+
+### Binary Search
+
+#### Template 1
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        res = [-1, -1]
+
+        if n == 0: return res
+
+        lo, hi = 0, n - 1
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+
+            if nums[mi] < target:
+                lo = mi + 1
+            else:
+                hi = mi - 1
+        
+        if lo < n and nums[lo] == target: 
+            res[0] = lo
+
+        lo, hi = 0, n - 1
+        while lo <= hi:
+            mi = lo + (hi - lo) // 2
+
+            if nums[mi] > target:
+                hi = mi - 1
+            else:
+                lo = mi + 1
+
+        if nums[hi] == target: 
+            res[-1] = hi
+
+        return res
+```
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        res = [-1, -1]
+
+        if n == 0: return res
+
+        def binary_search_lower():
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] >= target:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+            
+            return lo
+
+        def binary_search_upper():
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] <= target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+
+            return hi
+        
+        start, end = binary_search_lower(), binary_search_upper()
+        if start <= end:
+            return [start, end]
+        return res
+```
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        res = [-1, -1]
+
+        def binary_search_lower():
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] < target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+            
+            return lo
+
+        def binary_search_upper():
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] <= target:
+                    lo = mi + 1
+                else:
+                    hi = mi - 1
+
+            return hi
+        
+        start, end = binary_search_lower(), binary_search_upper()
+        if start <= end:
+            return [start, end]
+        return res
+```
+
+#### ✅ Template 2 (Best Solution)
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        if n == 0: return [-1, -1]
+
+        def search(x):
+            lo, hi = 0, n
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if nums[mi] < x:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            return lo
+
+        start = search(target)
+        # Find the starting position of the element next to target, its previous index is the ending position of target
+        end = search(target + 1) - 1
+
+        if start <= end:
+            return [start, end]
+        return [-1, -1]
+```
+
+#### Template 3
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        res = [-1, -1]
+
+        if n == 0: return res
+
+        def binary_search_lower():
+            lo, hi = 0, n - 1
+            
+            while lo + 1 < hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] < target:
+                    lo = mi + 1
+                else:
+                    hi = mi
+                
+            if nums[lo] == target: return lo
+            if nums[hi] == target: return hi
+            return -1
+
+        def binary_search_upper():
+            lo, hi = 0, n - 1
+            
+            while lo + 1 < hi:
+                mi = lo + (hi - lo) // 2
+
+                if nums[mi] <= target:
+                    lo = mi
+                else:
+                    hi = mi - 1
+                
+            if nums[hi] == target: return hi
+            if nums[lo] == target: return lo
+            return -1
+
+        return [binary_search_lower(), binary_search_upper()]
+```
+
+#### Built-in Binary Search
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        n = len(nums)
+        if n == 0: return [-1, -1]
+
+        start = bisect_left(nums, target)
+        end = bisect_right(nums, target) - 1
+
+        if start <= end:
+            return [start, end]
+        return [-1, -1]        
+```
