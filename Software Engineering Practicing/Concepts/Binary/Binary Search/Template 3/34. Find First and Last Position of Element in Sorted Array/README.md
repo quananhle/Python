@@ -34,10 +34,10 @@ Output: [-1,-1]
 
 __Constraints:__
 
-- ```0 <= nums.length <= 10^5```
-- ```-10^9 <= nums[i] <= 10^9```
+- $0 \le nums.length \le 10^5$
+- $-10^9 \le nums[i] \le 10^9$
 - ```nums``` is a non-decreasing array.
-- ```-10^9 <= target <= 10^9```
+- $-10^9 \le target \le 10^9$
 
 ---
 
