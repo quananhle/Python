@@ -1,6 +1,6 @@
 ## [2009. Minimum Number of Operations to Make Array Continuous](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous)
 
-```Tag```:
+```Tag```: ```Binary Search```
 
 #### Difficulty: Hard
 
@@ -51,3 +51,36 @@ __Constraints:__
 - $1 \le nums[i] \le 10^9$
 
 ---
+
+### Binary Search
+
+```Python
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        n = len(nums)
+        # Total number of operations will not exceed to total number of elements in nums
+        ans = n
+        unique_nums = sorted(set(nums))
+
+        def binary_search(target):
+            lo, hi = 0, len(unique_nums)
+            
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if nums[mi] <= target:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            
+            return lo
+
+
+        for i in range(len(unique_nums)):
+            # Find the left and right boundaries
+            left, right = unique_nums[i], left + n - 1
+            j = binary_search(right)
+            operations = j - i
+            ans = min(ans, n - operations)
+        
+        return ans
+```
