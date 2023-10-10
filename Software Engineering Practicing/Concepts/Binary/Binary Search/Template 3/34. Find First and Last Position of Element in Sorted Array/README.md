@@ -77,11 +77,11 @@ class Solution:
 __Algorithm__
 
 1. Define a function called ```binary_search``` which takes one argument: a boolean value ```is_first``` which indicates if we are trying to find the first or the last occurrence of target.
-We use 2 variables to keep track of the subarray that we are scanning. Let's call them begin and end. Initially, begin is set to 0 and end is set to the last index of the array.
-We iterate until begin is greater than to end.
-At each step, we calculate the middle element mid = (begin + end) / 2. We use the value of the middle element to decide which half of the array we need to search.
-nums[mid] == target
-isFirst is true ~ This implies that we are trying to find the first occurrence of the element. If mid == begin or nums[mid - 1] != target, then we return mid as the first occurrence of the target. Otherwise, we update end = mid - 1
+2. We use 2 variables to keep track of the subarray that we are scanning. Let's call them ```lo``` and ```hi```. Initially, ```lo``` is set to ```0``` and ```hi``` is set to the last index of the array.
+3. We iterate until ```lo``` is greater than to ```hi```.
+4. At each step, we calculate the middle element ```mi = lo + (hi - lo) // 2```. We use the value of the middle element to decide which half of the array we need to search:
+    - ```nums[mi] == target```
+        - ```is_first``` is ```True``` ~ This implies that we are trying to find the first occurrence of the element. If ```mi == lo``` or ```nums[mi - 1] != target```, then we return mi as the first occurrence of the target. Otherwise, we update ```hi = mi - 1```
 isFirst is false ~ This implies we are trying to find the last occurrence of the element. If mid == end or nums[mid + 1] != target, then we return mid as the last occurrence of the target. Otherwise, we update begin = mid + 1
 nums[mid] > target ~ We update end = mid - 1 since we must discard the right side of the array as the middle element is greater than target.
 nums[mid] < target ~ We update begin = mid + 1 since we must discard the left side of the array as the middle element is less than target.
