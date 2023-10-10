@@ -74,6 +74,49 @@ class Solution:
 
 #### Template 1
 
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def binary_search(is_first):
+            n = len(nums)
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                
+                if nums[mi] == target:
+                    
+                    if is_first:
+                        # This means we found our lower bound.
+                        if mi == lo or nums[mi - 1] < target:
+                            return mi
+
+                        # Search on the left side for the bound.
+                        hi = mi - 1
+                    else:
+                        
+                        # This means we found our upper bound.
+                        if mi == hi or nums[mi + 1] > target:
+                            return mi
+                        
+                        # Search on the right side for the bound.
+                        lo = mi + 1
+                
+                elif nums[mi] > target:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+            
+            return -1
+
+        lower_boundary = binary_search(is_first=True)
+        if lower_boundary == -1:
+            return [-1, -1]
+        upper_boundary = binary_search(is_first=False)
+
+        return [lower_boundary, upper_boundary]
+```
+
 ```Python
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
