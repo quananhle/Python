@@ -1,6 +1,6 @@
 ## [505. The Maze II](https://leetcode.com/problems/the-maze-ii)
 
-```Tag```: ```Breadth-First Search``` ```Depth-First Search``` ```Dijkstra's Algorithm``` ```Priority Queue```
+```Tag```: ```Breadth-First Search``` ```Depth-First Search``` ```Dijkstra's Algorithm``` ```Priority Queue``` ```A* Search Algorithm```
 
 #### Difficulty: Medium
 
@@ -131,4 +131,11 @@ class Solution:
                 heapq.heappush(h, (distance + tmp, (row, col)))
         
         return -1
+```
+
+### A* Search Algorithm (Best-First Search)
+
+```
+Dijkstra's Algorithm: best to find the shortest paths to all possible destinations
+A* Search Algorithm: best to find the shortest path from start to a single destination
 ```
