@@ -74,6 +74,70 @@ class Solution:
 
 #### Template 1
 
+![image](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/Figures/34/img1.png)
+
+![image](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/Figures/34/img2.png)
+
+![image](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/Figures/34/img3.png)
+
+![image](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/Figures/34/img4.png)
+
+__Algorithm__
+
+1. Define a function called ```binary_search``` which takes one argument: a boolean value ```is_first``` which indicates if we are trying to find the first or the last occurrence of target.
+2. We use 2 variables to keep track of the subarray that we are scanning. Let's call them ```lo``` and ```hi```. Initially, ```lo``` is set to ```0``` and ```hi``` is set to the last index of the array.
+3. We iterate until ```lo``` is greater than to ```hi```.
+4. At each step, we calculate the middle element ```mi = lo + (hi - lo) // 2```. We use the value of the middle element to decide which half of the array we need to search:
+    - ```nums[mi] == target```
+        - ```is_first``` is ```True``` ~ This implies that we are trying to find the first occurrence of the element. If ```mi == lo``` or ```nums[mi - 1] != target```, then we return ```mi``` as the first occurrence of the ```target```. Otherwise, we update ```hi = mi - 1```
+        - ```is_first``` is ```False``` ~ This implies we are trying to find the last occurrence of the element. If ```mi == hi``` or ```nums[mi + 1] != target```, then we return ```mi``` as the last occurrence of the ```target```. Otherwise, we update ```lo = mi + 1```
+    - ```nums[mi] > target``` ~ We update ```hi = mi - 1``` since we must discard the right side of the array as the middle element is greater than ```target```.
+    - ```nums[mi] < target``` ~ We update ```lo = mi + 1``` since we must discard the left side of the array as the middle element is smaller than ```target```.
+5. We return a value of ```-1``` at the end of our function which indicates that ```target``` was not found in the array.
+6. In the main ```searchRange``` function, we first call ```binary_search``` with ```is_first``` set to ```True```. If this value is ```-1```, we can simply return ```[-1, -1]```. Otherwise, we call ```binary_search``` with ```is_first``` set to ```False``` to get the last occurrence and then return the result.
+
+```Python
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def binary_search(is_first):
+            n = len(nums)
+            lo, hi = 0, n - 1
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                
+                if nums[mi] == target:
+                    
+                    if is_first:
+                        # This means we found our lower bound.
+                        if mi == lo or nums[mi - 1] < target:
+                            return mi
+
+                        # Search on the left side for the bound.
+                        hi = mi - 1
+                    else:
+                        
+                        # This means we found our upper bound.
+                        if mi == hi or nums[mi + 1] > target:
+                            return mi
+                        
+                        # Search on the right side for the bound.
+                        lo = mi + 1
+                
+                elif nums[mi] > target:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+            
+            return -1
+
+        lower_boundary = binary_search(is_first=True)
+        if lower_boundary == -1:
+            return [-1, -1]
+        upper_boundary = binary_search(is_first=False)
+
+        return [lower_boundary, upper_boundary]
+```
+
 ```Python
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
