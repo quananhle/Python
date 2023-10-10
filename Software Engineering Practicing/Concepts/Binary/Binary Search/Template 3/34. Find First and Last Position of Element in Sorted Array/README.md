@@ -74,6 +74,14 @@ class Solution:
 
 #### Template 1
 
+![image](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/Figures/34/img1.png)
+
+![image](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/Figures/34/img2.png)
+
+![image](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/Figures/34/img3.png)
+
+![image](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/Figures/34/img4.png)
+
 __Algorithm__
 
 1. Define a function called ```binary_search``` which takes one argument: a boolean value ```is_first``` which indicates if we are trying to find the first or the last occurrence of target.
