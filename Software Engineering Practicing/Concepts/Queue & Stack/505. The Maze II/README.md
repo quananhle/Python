@@ -1,1 +1,13 @@
+## 
 
+```Tag```:
+
+#### Difficulty: Medium
+
+There is a ball in a maze with empty spaces (represented as 0) and walls (represented as 1). The ball can go through the empty spaces by rolling up, down, left or right, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.
+
+Given the m x n maze, the ball's start position and the destination, where start = [startrow, startcol] and destination = [destinationrow, destinationcol], return the shortest distance for the ball to stop at the destination. If the ball cannot stop at destination, return -1.
+
+The distance is the number of empty spaces traveled by the ball from the start position (excluded) to the destination (included).
+
+You may assume that the borders of the maze are all walls (see examples).
