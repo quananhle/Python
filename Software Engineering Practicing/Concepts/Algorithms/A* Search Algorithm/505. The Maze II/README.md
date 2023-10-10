@@ -96,7 +96,7 @@ class Solution:
         return visited[destination] if destination in visited else -1
 ```
 
-### Dijkstra's algorithm
+### Dijkstra's Algorithm
 
 ```Python
 class Solution:
@@ -138,4 +138,45 @@ class Solution:
 ```
 Dijkstra's Algorithm: best to find the shortest paths to all possible destinations
 A* Search Algorithm: best to find the shortest path from start to a single destination
+```
+                
+```Python
+class Solution:
+    def shortestDistance(self, maze: List[List[int]], start: List[int], destination: List[int]) -> int:
+        def manhattance_distance(a: Tuple[int], b: Tuple[int]) -> int:
+            return abs(a[0] - b[0]) + abs(a[1] - b[1])
+        
+        ROWS, COLS = len(maze), len(maze[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        start, destination = tuple(start), tuple(destination)
+
+        # Heap starts with heuristic, 0 distance, and coordination of start point
+        h = [(manhattance_distance(start, destination), 0, start)]
+
+        while h:
+            _, distance, curr = heapq.heappop(h)
+            # Similar to Dijkstra's Algorithm, A* Search Algorithm guarantees the shortest path
+            if curr == destination:
+                return distance
+            
+            if curr in visited:
+                continue
+            visited.add(curr)
+        
+            for dx, dy in DIRECTIONS:
+                row, col = curr
+                tmp = 0
+                
+                # Ball moves freely between empty spaces
+                while 0 <= row + dx < ROWS and 0 <= col + dy < COLS and maze[row + dx][col + dy] == 0:
+                    row += dx
+                    col += dy
+                    tmp += 1
+                
+                new_distance = distance + tmp
+                heuristic = manhattance_distance((row, col), destination) + new_distance
+                heapq.heappush(h, (heuristic, distance + tmp, (row, col)))
+            
+        return -1
 ```
