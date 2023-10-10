@@ -100,7 +100,7 @@ class Solution:
         n = len(nums)
         # Total number of operations will not exceed to total number of elements in nums
         ans = n
-        unique_nums = sorted(set(nums))
+        unique_nums = sorted(set(nums))                                                                              # O(n * log n)
 
         def binary_search(new_nums, target):
             lo, hi = 0, len(unique_nums)
@@ -114,12 +114,12 @@ class Solution:
             
             return lo
 
-        for i in range(len(unique_nums)):
+        for i in range(len(unique_nums)):                                                                            # O(n)
             # Find the left and right boundaries
             left = unique_nums[i]
             right = left + n - 1
             # Searching the index after the greatest element less than or equal to right of unique_nums
-            j = binary_search(unique_nums, right)
+            j = binary_search(unique_nums, right)                                                                    # O(log n)
             # Number of elements needed to be changed in unique_nums equals the index of the first element outside of the range minus the index of the first element inside of the range
             operations = j - i
             ans = min(ans, n - operations)
@@ -133,14 +133,14 @@ class Solution:
         n = len(nums)
         # Total number of operations will not exceed to total number of elements in nums
         ans = n
-        unique_nums = sorted(set(nums))
+        unique_nums = sorted(set(nums))                                                                              # O(n * log n)
 
-        for i in range(len(unique_nums)):
+        for i in range(len(unique_nums)):                                                                            # O(n)
             # Find the left and right boundaries
             left = unique_nums[i]
             right = left + n - 1
             # Searching the index after the greatest element less than or equal to right of unique_nums
-            j = bisect_right(unique_nums, right)
+            j = bisect_right(unique_nums, right)                                                                     # O(log n)
             # Number of elements needed to be changed in unique_nums equals the index of the first element outside of the range minus the index of the first element inside of the range
             operations = j - i
             ans = min(ans, n - operations)
@@ -150,6 +150,40 @@ class Solution:
 
 ### Sliding Window
 
-```Python
+Because ```j``` starts at ```0``` and cannot exceed the length of ```unique_nums```, it will only be incremented at most ```n``` times across the entire algorithm. This means it costs $\mathcal{O}(1)$ amortized to calculate ```j```, an improvement from the $\mathcal{O}(\log{}n)$ binary search.
 
+```Python
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        n = len(nums)
+        # Total number of operations will not exceed to total number of elements in nums
+        ans = n
+        unique_nums = sorted(set(nums))
+        j = 0
+
+        for i in range(len(unique_nums)):
+            # Increment j until it points to the first element out of continuous range within the range of unique_nums
+            while j < len(unique_nums) and unique_nums[j] < unique_nums[i] + n:
+                j += 1
+            operations = j - i
+            ans = min(ans, n - operations)
+        
+        return ans
+```
+
+```Python
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        n = len(nums)
+        # Total number of operations will not exceed to total number of elements in nums
+        ans = n
+        unique_nums = sorted(set(nums))
+        j = 0
+
+        for i in range(len(unique_nums)):
+            while j < len(unique_nums) and unique_nums[j] < unique_nums[i] + n:
+                j += 1
+            ans = min(ans, n - j + i)
+        
+        return ans
 ```
