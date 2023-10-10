@@ -10,7 +10,7 @@ If ```target``` is not found in the array, return ```[-1, -1]```.
 
 You must write an algorithm with ```O(log n)``` runtime complexity.
 
-![image](https://user-images.githubusercontent.com/35042430/230162999-93b6d9f6-21b4-4ade-b703-685415c6f3a4.png)
+![image](https://github.com/quananhle/Python/assets/35042430/9539aeb1-6434-47fc-928b-085e1c9ecdc1)
 
 ---
 
@@ -81,12 +81,12 @@ __Algorithm__
 3. We iterate until ```lo``` is greater than to ```hi```.
 4. At each step, we calculate the middle element ```mi = lo + (hi - lo) // 2```. We use the value of the middle element to decide which half of the array we need to search:
     - ```nums[mi] == target```
-        - ```is_first``` is ```True``` ~ This implies that we are trying to find the first occurrence of the element. If ```mi == lo``` or ```nums[mi - 1] != target```, then we return mi as the first occurrence of the target. Otherwise, we update ```hi = mi - 1```
-isFirst is false ~ This implies we are trying to find the last occurrence of the element. If mid == end or nums[mid + 1] != target, then we return mid as the last occurrence of the target. Otherwise, we update begin = mid + 1
-nums[mid] > target ~ We update end = mid - 1 since we must discard the right side of the array as the middle element is greater than target.
-nums[mid] < target ~ We update begin = mid + 1 since we must discard the left side of the array as the middle element is less than target.
-We return a value of -1 at the end of our function which indicates that target was not found in the array.
-In the main searchRange function, we first call findBound with isFirst set to true. If this value is -1, we can simply return [-1, -1]. Otherwise, we call findBound with isFirst set to false to get the last occurrence and then return the result.
+        - ```is_first``` is ```True``` ~ This implies that we are trying to find the first occurrence of the element. If ```mi == lo``` or ```nums[mi - 1] != target```, then we return ```mi``` as the first occurrence of the ```target```. Otherwise, we update ```hi = mi - 1```
+        - ```is_first``` is ```False``` ~ This implies we are trying to find the last occurrence of the element. If ```mi == hi``` or ```nums[mi + 1] != target```, then we return ```mi``` as the last occurrence of the ```target```. Otherwise, we update ```lo = mi + 1```
+    - ```nums[mi] > target``` ~ We update ```hi = mi - 1``` since we must discard the right side of the array as the middle element is greater than ```target```.
+    - ```nums[mi] < target``` ~ We update ```lo = mi + 1``` since we must discard the left side of the array as the middle element is smaller than ```target```.
+5. We return a value of ```-1``` at the end of our function which indicates that ```target``` was not found in the array.
+6. In the main ```searchRange``` function, we first call ```binary_search``` with ```is_first``` set to ```True```. If this value is ```-1```, we can simply return ```[-1, -1]```. Otherwise, we call ```binary_search``` with ```is_first``` set to ```False``` to get the last occurrence and then return the result.
 
 ```Python
 class Solution:
