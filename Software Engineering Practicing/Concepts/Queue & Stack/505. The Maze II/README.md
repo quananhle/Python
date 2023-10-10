@@ -55,3 +55,42 @@ __Constraints:__
 - The ```maze``` contains at least ```2``` empty spaces.
 
 ---
+
+It should be noted that the ball will continue to roll in the same direction until it hits a wall. We can only change the direction of the ball once it hits a wall and comes to a halt.
+
+```Python
+class Solution:
+    def shortestDistance(self, maze: List[List[int]], start: List[int], destination: List[int]) -> int:
+        ROWS, COLS = len(maze), len(maze[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = dict()
+
+        start, destination = tuple(start), tuple(destination)
+        queue = collections.deque([(0, start)])
+
+        while queue:
+            n = len(queue)
+            for _ in range(n):
+                distance, curr = queue.popleft()
+
+                # Check if the current position is previously visited from a shorter distance, no further search needed from this point
+                if curr in visited and visited[curr] <= distance:
+                    continue
+
+                # Keep track of the distance to the current position
+                visited[curr] = distance
+
+                for dx, dy in DIRECTIONS:
+                    curr_row, curr_col = curr
+                    new_distance = 0
+                    # Ball keeps moving to any direction in empty spaces
+                    while 0 <= curr_row + dx < ROWS and 0 <= curr_col + dy < COLS and maze[curr_row + dx][curr_col + dy] == 0:
+                        curr_row += dx
+                        curr_col += dy
+                        new_distance += 1
+
+                    queue.append((new_distance + distance, (curr_row, curr_col)))
+                    
+        
+        return visited[destination] if destination in visited else -1
+```
