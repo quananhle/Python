@@ -552,6 +552,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 1162. As Far from Land as Possible
 1765. Map of Highest Peak
 
+- :warning::warning: [505. The Maze II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Algorithms/A*%20Search%20Algorithm/505.%20The%20Maze%20II) ```Depth-First Search``` ```Dijkstra's Algorithm``` ```Priority Queue``` ```A* Search Algorithm```
 - :warning::warning: [542. 01 Matrix](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2009%20-%20Breadth-First%20Search%20%7C%20Depth-First%20Search/542.%2001%20Matrix) ```Dynamic Programming```
 - :warning::warning: [934. Shortest Bridge](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/934.%20Shortest%20Bridge) ```Depth-First Search``` ```Manhattan Distance```
 - :warning::warning: [994. Rotting Oranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2010%20-%20Graph%20%7C%20DFS%20%7C%20BFS/994.%20Rotting%20Oranges)
