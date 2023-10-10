@@ -89,6 +89,11 @@ We can repeat this process for every index in the sorted, duplicate-free array. 
 
 ![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/8.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: \mathcal{O}(n \cdot \log{}n)$
+- __Space Complexity__: \mathcal{O}(n)$
+
 ```Python
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
