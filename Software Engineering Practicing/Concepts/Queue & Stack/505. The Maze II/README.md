@@ -1,6 +1,6 @@
 ## [505. The Maze II](https://leetcode.com/problems/the-maze-ii)
 
-```Tag```:
+```Tag```: ```Breadth-First Search``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -51,7 +51,7 @@ __Constraints:__
 - $destination.length == 2$
 - $0 \le start_{row}, destination_{row} \lt m$
 - $0 \le start_{col}, destination_{col} \lt n$
-- Both the ball and the ```destination``` exist in an empty space, and they will not be in the same position initially.
+- Both the ball and the destination exist in an empty space, and they will not be in the same position initially.
 - The ```maze``` contains at least ```2``` empty spaces.
 
 ---
