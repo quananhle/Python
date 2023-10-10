@@ -1,6 +1,6 @@
 ## [505. The Maze II](https://leetcode.com/problems/the-maze-ii)
 
-```Tag```: ```Breadth-First Search``` ```Depth-First Search``` ```Dijkstra's Algorithm```
+```Tag```: ```Breadth-First Search``` ```Depth-First Search``` ```Dijkstra's Algorithm``` ```Priority Queue```
 
 #### Difficulty: Medium
 
@@ -66,8 +66,8 @@ class Solution:
         ROWS, COLS = len(maze), len(maze[0])
         DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
         visited = dict()
-
         start, destination = tuple(start), tuple(destination)
+
         queue = collections.deque([(0, start)])
 
         while queue:
@@ -92,13 +92,43 @@ class Solution:
                         new_distance += 1
 
                     queue.append((new_distance + distance, (curr_row, curr_col)))
-                    
-        
+
         return visited[destination] if destination in visited else -1
 ```
 
 ### Dijkstra's algorithm
 
 ```Python
+class Solution:
+    def shortestDistance(self, maze: List[List[int]], start: List[int], destination: List[int]) -> int:
+        ROWS, COLS = len(maze), len(maze[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        visited = set()
+        start, destination = tuple(start), tuple(destination)
 
+        h = [(0, start)]
+
+        while h:
+            distance, curr = heapq.heappop(h)
+
+            # Check if visiting destination, return the distance directly since Dijkstra's algorithm guarantees nodes appearing in shortest distance ordering.
+            if curr == destination:
+                return distance
+
+            if curr in visited:
+                continue
+            visited.add(curr)
+
+            for dx, dy in DIRECTIONS:
+                row, col = curr
+                tmp = 0
+
+                while 0 <= row + dx < ROWS and 0 <= col + dy < COLS and maze[row + dx][col + dy] == 0:
+                    row += dx
+                    col += dy
+                    tmp += 1
+
+                heapq.heappush(h, (distance + tmp, (row, col)))
+        
+        return -1
 ```
