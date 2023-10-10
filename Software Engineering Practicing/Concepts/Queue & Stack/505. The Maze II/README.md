@@ -16,3 +16,42 @@ You may assume that the borders of the maze are all walls (see examples).
 
 ---
 
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2021/03/31/maze1-1-grid.jpg)
+```
+Input: maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [4,4]
+Output: 12
+Explanation: One possible way is : left -> down -> left -> down -> right -> down -> right.
+The length of the path is 1 + 1 + 3 + 1 + 2 + 2 + 2 = 12.
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2021/03/31/maze1-2-grid.jpg)
+```
+Input: maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [3,2]
+Output: -1
+Explanation: There is no way for the ball to stop at the destination. Notice that you can pass through the destination but you cannot stop there.
+```
+
+__Example 3:__
+```
+Input: maze = [[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]], start = [4,3], destination = [0,1]
+Output: -1
+```
+
+__Constraints:__
+
+- $m == maze.length$
+- $n == maze[i].length$
+- $1 \le m, n \le 100$
+- $maze[i][j]$ is ```0``` or ```1```.
+- $start.length == 2$
+- $destination.length == 2$
+- $0 \le start_{row}, destination_{row} \lt m$
+- $0 \le start_{col}, destination_{col} \lt n$
+- Both the ball and the ```destination``` exist in an empty space, and they will not be in the same position initially.
+- The ```maze``` contains at least ```2``` empty spaces.
+
+---
