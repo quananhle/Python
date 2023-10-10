@@ -74,6 +74,19 @@ class Solution:
 
 #### Template 1
 
+__Algorithm__
+
+1. Define a function called ```binary_search``` which takes one argument: a boolean value ```is_first``` which indicates if we are trying to find the first or the last occurrence of target.
+We use 2 variables to keep track of the subarray that we are scanning. Let's call them begin and end. Initially, begin is set to 0 and end is set to the last index of the array.
+We iterate until begin is greater than to end.
+At each step, we calculate the middle element mid = (begin + end) / 2. We use the value of the middle element to decide which half of the array we need to search.
+nums[mid] == target
+isFirst is true ~ This implies that we are trying to find the first occurrence of the element. If mid == begin or nums[mid - 1] != target, then we return mid as the first occurrence of the target. Otherwise, we update end = mid - 1
+isFirst is false ~ This implies we are trying to find the last occurrence of the element. If mid == end or nums[mid + 1] != target, then we return mid as the last occurrence of the target. Otherwise, we update begin = mid + 1
+nums[mid] > target ~ We update end = mid - 1 since we must discard the right side of the array as the middle element is greater than target.
+nums[mid] < target ~ We update begin = mid + 1 since we must discard the left side of the array as the middle element is less than target.
+We return a value of -1 at the end of our function which indicates that target was not found in the array.
+In the main searchRange function, we first call findBound with isFirst set to true. If this value is -1, we can simply return [-1, -1]. Otherwise, we call findBound with isFirst set to false to get the last occurrence and then return the result.
 
 ```Python
 class Solution:
