@@ -1,6 +1,6 @@
 ## [505. The Maze II](https://leetcode.com/problems/the-maze-ii)
 
-```Tag```: ```Breadth-First Search``` ```Depth-First Search```
+```Tag```: ```Breadth-First Search``` ```Depth-First Search``` ```Dijkstra's Algorithm```
 
 #### Difficulty: Medium
 
@@ -56,6 +56,8 @@ __Constraints:__
 
 ---
 
+### Breadth-First Search
+
 It should be noted that the ball will continue to roll in the same direction until it hits a wall. We can only change the direction of the ball once it hits a wall and comes to a halt.
 
 ```Python
@@ -93,4 +95,10 @@ class Solution:
                     
         
         return visited[destination] if destination in visited else -1
+```
+
+### Dijkstra's algorithm
+
+```Python
+
 ```
