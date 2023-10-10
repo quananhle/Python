@@ -19,19 +19,23 @@ Return _the minimum number of operations to make ```nums``` continuous_.
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: nums = [4,2,5,3]
 Output: 0
 Explanation: nums is already continuous.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: nums = [1,2,3,5,6]
 Output: 1
 Explanation: One possible solution is to change the last element to 4.
 The resulting array is [1,2,3,5,4], which is continuous.
-Example 3:
+```
 
+__Example 3:__
+```
 Input: nums = [1,10,100,1000]
 Output: 3
 Explanation: One possible solution is to:
@@ -39,11 +43,11 @@ Explanation: One possible solution is to:
 - Change the third element to 3.
 - Change the fourth element to 4.
 The resulting array is [1,2,3,4], which is continuous.
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= nums.length <= 105
-1 <= nums[i] <= 109
+- $1 \le nums.length \le 10^5$
+- $1 \le nums[i] \le 10^9$
 
 ---
