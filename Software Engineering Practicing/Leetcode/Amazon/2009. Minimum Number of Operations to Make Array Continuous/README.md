@@ -54,6 +54,22 @@ __Constraints:__
 
 ### Binary Search
 
+#### Template 2
+
+Let's summarize the algorithm with an example.
+
+![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/1.png)
+First, we remove duplicates from the array, then sort it. Note the original length before removing duplicates as ```n = 8```.
+
+![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/2.png)
+Now, we iterate over the array. For each index ```i```, we treat ```left = new_nums[i]```.
+
+![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/3.png)
+If we were to create a continuous array with ```left = 2``` as the minimum, we would need a maximum of ```right = left + n - 1 = 9```.
+
+![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/4.png)
+How many operations do we need? We start by finding how many elements in the array are already in the desired range ```[left, right]```. Binary search to find the insertion index of ```right```. Note that the binary search here is finding the index after the greatest element less than or equal to ```right```.
+
 ```Python
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
@@ -62,23 +78,23 @@ class Solution:
         ans = n
         unique_nums = sorted(set(nums))
 
-        def binary_search(target):
+        def binary_search(new_nums, target):
             lo, hi = 0, len(unique_nums)
             
             while lo < hi:
                 mi = lo + (hi - lo) // 2
-                if nums[mi] <= target:
+                if new_nums[mi] <= target:
                     lo = mi + 1
                 else:
                     hi = mi
             
             return lo
 
-
         for i in range(len(unique_nums)):
             # Find the left and right boundaries
-            left, right = unique_nums[i], left + n - 1
-            j = binary_search(right)
+            left = unique_nums[i]
+            right = left + n - 1
+            j = binary_search(unique_nums, right)
             operations = j - i
             ans = min(ans, n - operations)
         
