@@ -91,8 +91,8 @@ We can repeat this process for every index in the sorted, duplicate-free array. 
 
 __Complexity Analysis__
 
-- __Time Complexity__: \mathcal{O}(n \cdot \log{}n)$
-- __Space Complexity__: \mathcal{O}(n)$
+- __Time Complexity__: $\mathcal{O}(n \cdot \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 ```Python
 class Solution:
@@ -118,7 +118,9 @@ class Solution:
             # Find the left and right boundaries
             left = unique_nums[i]
             right = left + n - 1
+            # Searching the index after the greatest element less than or equal to right of unique_nums
             j = binary_search(unique_nums, right)
+            # Number of elements needed to be changed in unique_nums equals the index of the first element outside of the range minus the index of the first element inside of the range
             operations = j - i
             ans = min(ans, n - operations)
         
@@ -137,7 +139,9 @@ class Solution:
             # Find the left and right boundaries
             left = unique_nums[i]
             right = left + n - 1
+            # Searching the index after the greatest element less than or equal to right of unique_nums
             j = bisect_right(unique_nums, right)
+            # Number of elements needed to be changed in unique_nums equals the index of the first element outside of the range minus the index of the first element inside of the range
             operations = j - i
             ans = min(ans, n - operations)
         
