@@ -59,16 +59,35 @@ __Constraints:__
 Let's summarize the algorithm with an example.
 
 ![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/1.png)
+
 First, we remove duplicates from the array, then sort it. Note the original length before removing duplicates as ```n = 8```.
 
 ![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/2.png)
+
 Now, we iterate over the array. For each index ```i```, we treat ```left = new_nums[i]```.
 
 ![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/3.png)
+
 If we were to create a continuous array with ```left = 2``` as the minimum, we would need a maximum of ```right = left + n - 1 = 9```.
 
 ![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/4.png)
-How many operations do we need? We start by finding how many elements in the array are already in the desired range ```[left, right]```. Binary search to find the insertion index of ```right```. Note that the binary search here is finding the index after the greatest element less than or equal to ```right```.
+
+How many operations do we need? We start by finding how many elements in the array are already in the desired range ```[left, right]```. Binary search to find the insertion index of ```right```. 
+Note that the binary search here is finding __the index after the greatest element less than or equal to ```right```__.
+
+![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/5.png)
+
+Let's call this index ```j```. We have ```j``` as the index of the first element that falls outside our range due to it being too large. We also have ```i``` as the index of the first element in our range. Thus, we can calculate the number of elements already in our range as ```j - i```.
+
+![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/6.png)
+
+As you can see, we have ```4``` elements already in the range ```[left, right]```. Thus, these elements do not need to be changed. As we must construct an array of length ```8```, we require ```8 - 4 = 4``` operations (one for each other element) to create a continuous array if we treat ```2``` as the minimum.
+
+![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/7.png)
+
+We can repeat this process for every index in the sorted, duplicate-free array. For example, if we treat ```nums[3] = 7``` as the minimum, then our range is ```[7, 14]```. We can binary search to find ```j``` and then calculate ```j - i = 2``` as the number of elements already in our range. Thus, we need to perform ```8 - 2 = 6``` operations if we treat ```7``` as the minimum.
+
+![image](https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/Figures/2009/8.png)
 
 ```Python
 class Solution:
