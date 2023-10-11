@@ -11,3 +11,33 @@ Return _an integer array answer of size ```n```, where ```answer[i]``` is the nu
 ![image](https://github.com/quananhle/Python/assets/35042430/b9ef293d-db24-4415-867c-7f1c2a64e27d)
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2022/03/02/ex1new.jpg)
+```
+Input: flowers = [[1,6],[3,7],[9,12],[4,13]], poeple = [2,3,7,11]
+Output: [1,2,2,2]
+Explanation: The figure above shows the times when the flowers are in full bloom and when the people arrive.
+For each person, we return the number of flowers in full bloom during their arrival.
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2022/03/02/ex2new.jpg)
+```
+Input: flowers = [[1,10],[3,3]], poeple = [3,3,2]
+Output: [2,2,1]
+Explanation: The figure above shows the times when the flowers are in full bloom and when the people arrive.
+For each person, we return the number of flowers in full bloom during their arrival.
+```
+
+__Constraints:__
+
+- $1 \le flowers.length \le 5 * 10^4$
+- $flowers[i].length == 2$
+- $1 \le start_i \le end_i \le 10^9$
+- $1 \le people.length \le 5 * 10^4$
+- $1 \le people[i] \le 109$
+
+---
