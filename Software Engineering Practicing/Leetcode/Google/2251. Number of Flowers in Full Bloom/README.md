@@ -92,4 +92,23 @@ class Solution:
 
 There is a technique called difference array that can be used to solve many "range" based problems. The technique involves creating an array ```difference``` and iterating over all ranges ```[start, end]```. We perform ```difference[start]++``` and ```difference[end + 1]--``` for each range.
 
-> Some people also call this technique "line sweep".
+The idea is that each index of ```difference``` represents the change in the number of flowers we can see when we cross this index (not the actual number of flowers on this index), with each index representing a unit of time. Thus, we could take a ```prefix``` sum of this ```difference``` array to find how many flowers can be seen at any given time with ```prefix[time]```.
+
+> This technique is also referred as "line sweep".
+
+Unfortunately, if we look at the constraints, we find that values of ```start, end, people``` can be up to $10^9$. It would not be feasible to create an array with such a large size. Thus, we need to use a map structure instead. Like in the previous approach, we still want to process everything chronologically. We will use the following data structures:
+
+- In Java, we will use ```TreeMap```.
+- In C++, we will use ```std::map```.
+- In Python, we will use ```sortedcontainers.SortedDict```.
+
+    Note that if you were not allowed to use these structures in an interview, you could still implement this approach using a normal hash map. You would just need to sort the elements in the hash map by key values after you populated it.
+
+Let's summarize the algorithm with an example:
+
+![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/1.png)
+
+![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/2.png)
+
+![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/3.png)
+
