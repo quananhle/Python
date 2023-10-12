@@ -1,6 +1,6 @@
 ## [2251. Number of Flowers in Full Bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom)
 
-```Tag```: ```Interval```
+```Tag```: ```Interval``` ```Priority Queue``` ```Binary Search```
 
 #### Difficulty: Hard
 
@@ -41,3 +41,16 @@ __Constraints:__
 - $1 \le people[i] \le 109$
 
 ---
+
+### Brute Force (Memory Limit Exceeded)
+
+```Python
+class Solution:
+    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
+        memo = collections.defaultdict(int)
+        for start, end in flowers:
+            for i in range(start, end + 1):
+                memo[i] += 1
+        
+        return [memo[month] for month in people]   
+```
