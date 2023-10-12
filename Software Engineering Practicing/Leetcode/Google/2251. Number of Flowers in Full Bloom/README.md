@@ -89,3 +89,7 @@ class Solution:
 ```
 
 ### Difference Array + Binary Search
+
+There is a technique called difference array that can be used to solve many "range" based problems. The technique involves creating an array ```difference``` and iterating over all ranges ```[start, end]```. We perform ```difference[start]++``` and ```difference[end + 1]--``` for each range.
+
+> Some people also call this technique "line sweep".
