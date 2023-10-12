@@ -226,6 +226,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [1870. Minimum Speed to Arrive on Time](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1870.%20Minimum%20Speed%20to%20Arrive%20on%20Time)
 - :no_entry::no_entry::no_entry: [2141. Maximum Running Time of N Computers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2141.%20Maximum%20Running%20Time%20of%20N%20Computers) ```Prefix Sum``` ```Greedy```
 - :warning::warning: [2187. Minimum Time to Complete Trips](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/2187.%20Minimum%20Time%20to%20Complete%20Trips)
+- :no_entry::no_entry::no_entry: [2251. Number of Flowers in Full Bloom](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2251.%20Number%20of%20Flowers%20in%20Full%20Bloom) ```Priority Queue``` ```Two Pointer```
 - :warning::warning: [2300. Successful Pairs of Spells and Potions](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/2300.%20Successful%20Pairs%20of%20Spells%20and%20Potions/) ```Two Pointers```
 - :warning::warning: [2616. Minimize the Maximum Difference of Pairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2616.%20Minimize%20the%20Maximum%20Difference%20of%20Pairs)
 
