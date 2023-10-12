@@ -88,60 +88,6 @@ class Solution:
         return [memo[person] for person in people]
 ```
 
-### Two Pointer
-
-```Python
-from sortedcontainers import SortedDict
-class Solution:
-    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
-        starts = sorted([x[0] for x in flowers])
-        ends = sorted([x[1] for x in flowers])
-        people = sorted(enumerate(people), key = lambda x: x[1])
-
-        p1, p2 = 0, 0
-        n = len(starts)
-        m = len(people)
-        curr_flower = 0
-        memo = SortedDict()
-        
-        for i, time in people:
-            while p1 < n and starts[p1] <= time:
-                curr_flower += 1
-                p1 += 1
-            while p2 < n and ends[p2] < time:
-                curr_flower -= 1
-                p2 += 1
-            memo[i] = curr_flower
-        
-        return memo.values()
-```
-
-```Python
-class Solution:
-    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
-        starts = sorted([x[0] for x in flowers])
-        ends = sorted([x[1] for x in flowers])
-        people = sorted(enumerate(people), key = lambda x: x[1])
-
-        p1, p2 = 0, 0
-        n = len(starts)
-        m = len(people)
-        curr_flower = 0
-        memo = dict()
-        
-        for i, time in people:
-            while p1 < n and starts[p1] <= time:
-                curr_flower += 1
-                p1 += 1
-            while p2 < n and ends[p2] < time:
-                curr_flower -= 1
-                p2 += 1
-            memo[i] = curr_flower
-        9
-        return [memo[i] for i in range(m)]
-
-```
-
 ### Difference Array + Binary Search
 
 There is a technique called difference array that can be used to solve many "range" based problems. The technique involves creating an array ```difference``` and iterating over all ranges ```[start, end]```. We perform ```difference[start]++``` and ```difference[end + 1]--``` for each range.
@@ -224,10 +170,88 @@ class Solution:
         return res
 ```
 
+---
+
+### Two Pointer
+
+```Python
+from sortedcontainers import SortedDict
+class Solution:
+    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
+        starts = sorted([x[0] for x in flowers])
+        ends = sorted([x[1] for x in flowers])
+        people = sorted(enumerate(people), key = lambda x: x[1])
+
+        p1, p2 = 0, 0
+        n = len(starts)
+        m = len(people)
+        curr_flower = 0
+        memo = SortedDict()
+        
+        for i, time in people:
+            while p1 < n and starts[p1] <= time:
+                curr_flower += 1
+                p1 += 1
+            while p2 < n and ends[p2] < time:
+                curr_flower -= 1
+                p2 += 1
+            memo[i] = curr_flower
+        
+        return memo.values()
+```
+
+```Python
+class Solution:
+    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
+        starts = sorted([x[0] for x in flowers])
+        ends = sorted([x[1] for x in flowers])
+        people = sorted(enumerate(people), key = lambda x: x[1])
+
+        p1, p2 = 0, 0
+        n = len(starts)
+        m = len(people)
+        curr_flower = 0
+        memo = dict()
+        
+        for i, time in people:
+            while p1 < n and starts[p1] <= time:
+                curr_flower += 1
+                p1 += 1
+            while p2 < n and ends[p2] < time:
+                curr_flower -= 1
+                p2 += 1
+            memo[i] = curr_flower
+        9
+        return [memo[i] for i in range(m)]
+
+```
+
+---
+
 ### Binary Search
 
 ![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/6.png)
 
-```Python
+![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/7.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}((n + m) \cdot \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+class Solution:
+    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
+        starts = sorted([start for start, _ in flowers])
+        ends = sorted([end + 1 for _, end in flowers])
+        res = list()
+
+        for person in people:
+            i = bisect_right(starts, person)
+            j = bisect_right(ends, person)
+            res.append(i - j)
+        
+        return res
 ```
+
+
