@@ -223,3 +223,11 @@ class Solution:
         
         return res
 ```
+
+### Binary Search
+
+![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/6.png)
+
+```Python
+
+```
