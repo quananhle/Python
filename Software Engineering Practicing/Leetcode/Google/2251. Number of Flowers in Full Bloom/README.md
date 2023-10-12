@@ -58,6 +58,7 @@ class Solution:
 ### Heap/Priority Queue
 
 > To summarize, we use a pointer ```i``` to iterate along ```flowers```. For a given ```person```, we find all the flowers that started blooming before ```person``` arrives. We push the end time of these flowers onto a heap. We can then remove all the flowers that finished blooming by popping from the heap, since a min heap efficiently gives us the minimum (earliest) times.
+> 
 > As we sort both input arrays, flowers that we pop from heap will never be seen again by future people.
 
 __Complexity Analysis__
