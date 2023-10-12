@@ -1,6 +1,6 @@
 ## [2251. Number of Flowers in Full Bloom](https://leetcode.com/problems/number-of-flowers-in-full-bloom)
 
-```Tag```: ```Interval``` ```Priority Queue``` ```Binary Search```
+```Tag```: ```Interval``` ```Priority Queue``` ```Binary Search``` ```Two Pointer```
 
 #### Difficulty: Hard
 
@@ -88,6 +88,60 @@ class Solution:
         return [memo[person] for person in people]
 ```
 
+### Two Pointer
+
+```Python
+from sortedcontainers import SortedDict
+class Solution:
+    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
+        starts = sorted([x[0] for x in flowers])
+        ends = sorted([x[1] for x in flowers])
+        people = sorted(enumerate(people), key = lambda x: x[1])
+
+        p1, p2 = 0, 0
+        n = len(starts)
+        m = len(people)
+        curr_flower = 0
+        memo = SortedDict()
+        
+        for i, time in people:
+            while p1 < n and starts[p1] <= time:
+                curr_flower += 1
+                p1 += 1
+            while p2 < n and ends[p2] < time:
+                curr_flower -= 1
+                p2 += 1
+            memo[i] = curr_flower
+        
+        return memo.values()
+```
+
+```Python
+class Solution:
+    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
+        starts = sorted([x[0] for x in flowers])
+        ends = sorted([x[1] for x in flowers])
+        people = sorted(enumerate(people), key = lambda x: x[1])
+
+        p1, p2 = 0, 0
+        n = len(starts)
+        m = len(people)
+        curr_flower = 0
+        memo = dict()
+        
+        for i, time in people:
+            while p1 < n and starts[p1] <= time:
+                curr_flower += 1
+                p1 += 1
+            while p2 < n and ends[p2] < time:
+                curr_flower -= 1
+                p2 += 1
+            memo[i] = curr_flower
+        9
+        return [memo[i] for i in range(m)]
+
+```
+
 ### Difference Array + Binary Search
 
 There is a technique called difference array that can be used to solve many "range" based problems. The technique involves creating an array ```difference``` and iterating over all ranges ```[start, end]```. We perform ```difference[start]++``` and ```difference[end + 1]--``` for each range.
@@ -128,3 +182,44 @@ There are a few more things to consider before we start implementation.
 
 1. What happens if there is a ```person``` that arrives before any flower blooms? This may confuse our binary search since the minimum value in ```positions``` will be greater than ```person```. We will initialize ```difference``` with ```0: 0``` to represent at time ```0```, we don't see any new flowers.
 2. Regarding the binary search; how should it be configured? Referencing the above example images, inserting ```11``` into the given positions array will put it at index ```6```. However, we need index ```5```. Thus, we need the insertion index minus one. What if the value exists in positions, as is the case with ```person = 7```? To offset the minus one, we will binary search for the rightmost insertion index (```bisect_right``` in Python, ```upper_bound``` in C++).
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}((n + m) \cdot \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+from sortedcontainers import SortedDict
+class Solution:
+    def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
+        difference = SortedDict({0:0})
+        for start, end in flowers:
+            difference[start] = difference.get(start, 0) + 1
+            difference[end + 1] = difference.get(end + 1, 0) - 1
+        
+        positions = list()
+        prefix = list()
+        curr = 0
+
+        for key, val in difference.items():
+            positions.append(key)
+            curr += val
+            prefix.append(curr)
+        
+        def binary_search(nums, target):
+            lo, hi = 0, len(nums)
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if nums[mi] <= target:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            return lo
+
+        res = list()
+        for person in people:
+            i = binary_search(positions, person) - 1
+            res.append(prefix[i])
+        
+        return res
+```
