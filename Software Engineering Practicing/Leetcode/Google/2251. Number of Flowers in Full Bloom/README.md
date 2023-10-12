@@ -221,9 +221,8 @@ class Solution:
                 curr_flower -= 1
                 p2 += 1
             memo[i] = curr_flower
-        9
-        return [memo[i] for i in range(m)]
 
+        return [memo[i] for i in range(m)]
 ```
 
 ---
