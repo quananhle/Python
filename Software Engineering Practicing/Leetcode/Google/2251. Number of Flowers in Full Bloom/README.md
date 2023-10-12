@@ -108,7 +108,23 @@ Let's summarize the algorithm with an example:
 
 ![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/1.png)
 
+Our first step is to populate ```difference```. Each ```key, value``` pair in ```difference``` represents "at time ```key```, we see a change in ```value``` new flowers". For example, the key value pair of ```6: -2``` means that at time ```6```, we see two less flowers.
+
 ![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/2.png)
+
+Next, we create a ```prefix``` sum on the values of ```difference```, as well as an array ```positions``` to associate each ```prefix``` value with a position in time. Notice that ```positions``` is just the keys of ```difference```.
 
 ![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/3.png)
 
+With these arrays, we can now use binary search to identify how many flowers a given ```person``` will see. For example, consider ```person``` at time ```7```:
+
+![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/4.png)
+
+What about ```person``` at time ```11```?
+
+![image](https://leetcode.com/problems/number-of-flowers-in-full-bloom/Figures/2251/5.png)
+
+There are a few more things to consider before we start implementation.
+
+1. What happens if there is a ```person``` that arrives before any flower blooms? This may confuse our binary search since the minimum value in ```positions``` will be greater than ```person```. We will initialize ```difference``` with ```0: 0``` to represent at time ```0```, we don't see any new flowers.
+2. Regarding the binary search; how should it be configured? Referencing the above example images, inserting ```11``` into the given positions array will put it at index ```6```. However, we need index ```5```. Thus, we need the insertion index minus one. What if the value exists in positions, as is the case with ```person = 7```? To offset the minus one, we will binary search for the rightmost insertion index (```bisect_right``` in Python, ```upper_bound``` in C++).
