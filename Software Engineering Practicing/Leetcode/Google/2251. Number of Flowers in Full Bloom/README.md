@@ -54,3 +54,9 @@ class Solution:
         
         return [memo[month] for month in people]   
 ```
+
+### Heap/Priority Queue
+
+```Python
+
+```
