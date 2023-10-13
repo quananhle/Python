@@ -214,6 +214,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [875. Koko eating bananas](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/875.%20Koko%20Eating%20Bananas)
 - :warning::warning: [1011. Capacity To Ship Packages Within D Days](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Search/1011.%20Capacity%20To%20Ship%20Packages%20Within%20D%20Days)
 - :warning::warning: [1060. Missing Element in Sorted Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1060.%20Missing%20Element%20in%20Sorted%20Array) ```Array & String```
+- :no_entry::no_entry::no_entry: [1095. Find in Mountain Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1095.%20Find%20in%20Mountain%20Array)
 
 - Minimum number of days to make m bouquets
 - Magnetic force between two balls
