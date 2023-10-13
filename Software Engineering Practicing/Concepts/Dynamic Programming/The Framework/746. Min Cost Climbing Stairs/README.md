@@ -10,7 +10,7 @@ You can either start from the step with index ```0```, or the step with index ``
 
 Return _the minimum cost to reach the top of the floor_.
 
-![image](https://user-images.githubusercontent.com/35042430/218664062-1878a5c7-f879-491d-9f0c-212c08687493.png)
+![image](https://github.com/quananhle/Python/assets/35042430/829220a5-fa1d-492c-8b21-f9ece134c2dc)
 
 ---
 
@@ -39,8 +39,8 @@ The total cost is 6.
 
 __Constraints:__
 
-- ```2 <= cost.length <= 1000```
-- ```0 <= cost[i] <= 999```
+- $2 \le cost.length \le 1000$
+- $0 \le cost[i] \le 999$
 
 ---
 
