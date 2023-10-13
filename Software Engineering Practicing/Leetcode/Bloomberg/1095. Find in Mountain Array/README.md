@@ -1,6 +1,6 @@
 ## [1095. Find in Mountain Array](https://leetcode.com/problems/find-in-mountain-array)
 
-```Tag```:
+```Tag```: ```Binary Search```
 
 #### Difficulty: Hard
 
@@ -47,3 +47,7 @@ __Constraints:__
 - $0 \le mountain_arr.get(index) \le 10^9$
 
 ---
+
+In Binary Search, we discard half of the search space at each step, based on the test condition on the middle element of the search space. We must ensure that we don't end up discarding the element we are looking for. Our ```[lo, hi]``` search space must always contain the element we are looking for.
+
+
