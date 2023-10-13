@@ -48,6 +48,8 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/find-in-mountain-array/Figures/1095/1095_used/Slide3.PNG)
+
 In Binary Search, we discard half of the search space at each step, based on the test condition on the middle element of the search space. We must ensure that we don't end up discarding the element we are looking for. Our ```[lo, hi]``` search space must always contain the element we are looking for.
 
 ```Python
