@@ -50,7 +50,25 @@ Given the constraints $n \leq 500$, we should try a dynamic programming approach
 ![image](https://leetcode.com/problems/painting-the-walls/Figures/2742/1.png)
 
 ```Python
+class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        n = len(cost)
 
+        @functools.lru_cache(maxsize=None)
+        def dp(curr, remaining):
+            # Base case
+            if remaining <= 0:
+                return 0
+
+            if curr >= n:
+                return math.inf
+            
+            # DP Transition: to paint or not to paint the current wall?
+            paint = dp(curr + 1, remaining - 1 - time[curr]) + cost[curr]
+            skip = dp(curr + 1, remaining)
+            return min(paint, skip)
+
+        return dp(0, n)
 ```
 
 #### Bottom-Up Dynamic Programming
