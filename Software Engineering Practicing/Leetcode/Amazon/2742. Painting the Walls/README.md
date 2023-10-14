@@ -104,6 +104,11 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^2)$
+- __Space Complexity__: $\mathcal{O}(n^2)$
+
 ```Python
 class Solution:
     def paintWalls(self, cost: List[int], time: List[int]) -> int:
