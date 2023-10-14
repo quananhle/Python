@@ -130,5 +130,21 @@ class Solution:
 #### Space-Optimized Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        n = len(cost)
+        dp = [0] * (n + 1)
+        prev = [math.inf] * (n + 1)
+        prev[0] = 0
 
+        for curr in range(n - 1, -1, -1):
+            dp = [0] * (n + 1)
+            for remaining in range(1, n + 1):
+                paint = prev[max(0, remaining - 1 - time[curr])] + cost[curr]
+                skip = prev[remaining]
+                dp[remaining] = min(paint, skip)
+            
+            prev = dp
+        
+        return dp[n]
 ```
