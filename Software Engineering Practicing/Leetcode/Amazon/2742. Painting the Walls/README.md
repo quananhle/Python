@@ -40,7 +40,14 @@ __Constraints:__
 
 ### The Framework
 
+
 #### Top-Down Dynamic Programming
+
+Intuitively, we want to put the paid painter on walls that cost less and take longer to paint. The longer the paid painter paints, the more we can make use of the free painter. It seems extremely difficult to formulate a greedy approach since decisions will cascade on top of each other. Which walls do we pay for? Which walls do we have the free painter paint?
+
+Given the constraints $n \leq 500$, we should try a dynamic programming approach, which will consider all possible decisions.
+
+![image](https://leetcode.com/problems/painting-the-walls/Figures/2742/1.png)
 
 ```Python
 
