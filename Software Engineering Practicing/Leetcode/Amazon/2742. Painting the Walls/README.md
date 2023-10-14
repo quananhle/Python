@@ -56,19 +56,23 @@ class Solution:
 
         @functools.lru_cache(maxsize=None)
         def dp(curr, remaining):
-            # Base case
+            # Base case: check if there is no wall left to paint
             if remaining <= 0:
                 return 0
-
+            # No more wall to paint for the paid painter
             if curr >= n:
                 return math.inf
             
-            # DP Transition: to paint or not to paint the current wall?
+            # DP Transition: hire paid painter to paint or not to paint the current wall to maximize the use of free painter?
             paint = dp(curr + 1, remaining - 1 - time[curr]) + cost[curr]
             skip = dp(curr + 1, remaining)
             return min(paint, skip)
 
         return dp(0, n)
+```
+
+```Python
+
 ```
 
 #### Bottom-Up Dynamic Programming
