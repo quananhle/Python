@@ -1,6 +1,6 @@
 ## [2742. Painting the Walls](https://leetcode.com/problems/painting-the-walls)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -37,3 +37,17 @@ __Constraints:__
 - $1 \le time[i] \le 500$
 
 ---
+
+### The Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
