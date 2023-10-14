@@ -52,7 +52,7 @@ Given the constraints $n \leq 500$, we should try a dynamic programming approach
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(n^2)$
-- __Space Complexity__: 
+- __Space Complexity__: $\mathcal{O}(n^2)$
 
 ```Python
 class Solution:
