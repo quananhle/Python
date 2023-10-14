@@ -49,6 +49,11 @@ Given the constraints $n \leq 500$, we should try a dynamic programming approach
 
 ![image](https://leetcode.com/problems/painting-the-walls/Figures/2742/1.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^2)$
+- __Space Complexity__: 
+
 ```Python
 class Solution:
     def paintWalls(self, cost: List[int], time: List[int]) -> int:
