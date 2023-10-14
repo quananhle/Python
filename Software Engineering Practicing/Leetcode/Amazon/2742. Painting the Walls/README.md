@@ -105,7 +105,21 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def paintWalls(self, cost: List[int], time: List[int]) -> int:
+        dp = collections.defaultdict(int)
+        n = len(cost)
 
+        for i in range(1, n + 1):
+            dp[(n, i)] = math.inf
+
+        for curr in range(n - 1, -1, -1):
+            for remaining in range(1, n + 1):
+                paint = dp[(curr + 1, remaining - 1 - time[curr])] + cost[curr]
+                skip = dp[(curr + 1, remaining)]
+                dp[(curr, remaining)] = min(paint, skip)
+            
+        return dp[(0, n)]
 ```
 
 #### Space-Optimized Bottom-Up Dynamic Programming
