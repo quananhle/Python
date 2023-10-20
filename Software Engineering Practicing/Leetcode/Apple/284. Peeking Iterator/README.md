@@ -19,8 +19,8 @@ Note: Each language may have a different implementation of the constructor and `
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input
 ["PeekingIterator", "next", "peek", "next", "next", "hasNext"]
 [[[1, 2, 3]], [], [], [], [], []]
@@ -34,14 +34,14 @@ peekingIterator.peek();    // return 2, the pointer does not move [1,2,3].
 peekingIterator.next();    // return 2, the pointer moves to the next element [1,2,3]
 peekingIterator.next();    // return 3, the pointer moves to the next element [1,2,3]
 peekingIterator.hasNext(); // return False
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= nums.length <= 1000
-1 <= nums[i] <= 1000
-All the calls to next and peek are valid.
-At most 1000 calls will be made to next, hasNext, and peek.
+- $1 \le nums.length \le 1000$
+- $1 \le nums[i] \le 1000$
+- All the calls to ```next``` and ```peek``` are valid.
+- At most 1000 calls will be made to ```next```, ```hasNext```, and ```peek```.
 
 ---
 
