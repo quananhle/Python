@@ -1,6 +1,6 @@
 ## [2355. Maximum Number of Books You Can Take](https://leetcode.com/problems/maximum-number-of-books-you-can-take)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -58,3 +58,17 @@ __Constraints:__
 - $0 \le books[i] \le 10^5$
 
 ---
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
