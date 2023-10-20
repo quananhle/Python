@@ -27,3 +27,24 @@ If ```res``` matches the expected flattened list, then your code will be judged 
 ![image](https://github.com/quananhle/Python/assets/35042430/04580604-1aac-40ad-951d-28de1d2cf607)
 
 ---
+
+__Example 1__:
+```
+Input: nestedList = [[1,1],2,[1,1]]
+Output: [1,1,2,1,1]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].
+```
+
+__Example 2__:
+```
+Input: nestedList = [1,[4,[6]]]
+Output: [1,4,6]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
+```
+
+__Constraints__:
+
+- $1 \le nestedList.length \le 500$
+- The values of the integers in the nested list is in the range $[-10^6, 10^6]$.
+
+---
