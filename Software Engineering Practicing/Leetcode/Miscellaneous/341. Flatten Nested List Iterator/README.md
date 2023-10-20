@@ -1,6 +1,6 @@
 ## [341. Flatten Nested List Iterator](https://leetcode.com/problems/flatten-nested-list-iterator)
 
-```Tag```:
+```Tag```: ```Design``` ```Array & String``` ```Recursion```
 
 #### Difficulty: Medium
 
@@ -48,3 +48,54 @@ __Constraints__:
 - The values of the integers in the nested list is in the range $[-10^6, 10^6]$.
 
 ---
+
+### Recursion
+
+```Python
+# """
+# This is the interface that allows for creating nested lists.
+# You should not implement it, or speculate about its implementation
+# """
+#class NestedInteger:
+#    def isInteger(self) -> bool:
+#        """
+#        @return True if this NestedInteger holds a single integer, rather than a nested list.
+#        """
+#
+#    def getInteger(self) -> int:
+#        """
+#        @return the single integer that this NestedInteger holds, if it holds a single integer
+#        Return None if this NestedInteger holds a nested list
+#        """
+#
+#    def getList(self) -> [NestedInteger]:
+#        """
+#        @return the nested list that this NestedInteger holds, if it holds a nested list
+#        Return None if this NestedInteger holds a single integer
+#        """
+
+class NestedIterator:
+    def __init__(self, nestedList: [NestedInteger]):
+        def flatten_list(nested_list):
+
+            for elem in nested_list:
+                if elem.isInteger():
+                    self.list.append(elem.getInteger())
+                else:
+                    flatten_list(elem.getList())
+        self.list = list()
+        self.curr = -1
+        flatten_list(nestedList)
+        self.size = len(self.list)
+    
+    def next(self) -> int:
+        self.curr += 1
+        return self.list[self.curr]
+
+    def hasNext(self) -> bool:
+        return self.curr + 1 < self.size
+
+# Your NestedIterator object will be instantiated and called as such:
+# i, v = NestedIterator(nestedList), []
+# while i.hasNext(): v.append(i.next())
+```
