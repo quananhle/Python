@@ -10,3 +10,30 @@ A subsequence of an array is obtained by deleting some number of elements (can b
 
 ---
 
+__Example 1:__
+```
+Input: nums = [10,2,-10,5,20], k = 2
+Output: 37
+Explanation: The subsequence is [10, 2, 5, 20].
+```
+
+__Example 2:__
+```
+Input: nums = [-1,-2,-3], k = 1
+Output: -1
+Explanation: The subsequence must be non-empty, so we choose the largest number.
+```
+
+__Example 3:__
+```
+Input: nums = [10,-2,-10,-5,20], k = 2
+Output: 23
+Explanation: The subsequence is [10, -2, -5, 20].
+```
+
+__Constraints:__
+
+- $1 \le k \le nums.length \le 10^5$
+- $-10^4 \le nums[i] \le 10^4$
+
+---
