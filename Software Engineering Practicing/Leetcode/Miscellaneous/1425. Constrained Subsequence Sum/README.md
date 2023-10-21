@@ -60,7 +60,12 @@ Anytime we have a positive net gain, we should consider taking this element beca
   - Push ```(curr, i)``` to heap.
 3. Return ```ans```.
 
-> Implementation note: Python's heapq module only implements min heaps, so we will make the values in the heap negative to simulate a max heap.
+> Implementation note: Python's ```heapq``` module only implements min heaps, so we will make the values in the heap negative to simulate a max heap.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \cdot \log{}n)$
+- __Space Complexity__:  $\mathcal{O}(n)$
 
 ```Python
 class Solution:
