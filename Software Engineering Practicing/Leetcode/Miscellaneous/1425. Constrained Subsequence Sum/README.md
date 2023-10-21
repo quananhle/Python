@@ -1,6 +1,6 @@
 ## [1425. Constrained Subsequence Sum](https://leetcode.com/problems/constrained-subsequence-sum)
 
-```Tag```:
+```Tag```: ```Priority Queue``` ```Dynamic Programming``` ```Kadane's Algorithm```
 
 #### Difficulty: Hard
 
@@ -37,3 +37,47 @@ __Constraints:__
 - $-10^4 \le nums[i] \le 10^4$
 
 ---
+
+### Heap/Priority Queue
+
+We need to maximize the sum of a subsequence. We can take as many integers as we want, but the primary constraint is that we cannot have a gap of ```k``` or more in our subsequence.
+
+You may immediately notice that in an array of positive integers, we should always take the entire array. The tricky part comes in when we have negative integers. Of course, we would prefer to avoid negative integers since they will decrease our sum. However, it may be worth taking a negative integer as a sort of "bridge". Take a look at the following example:
+
+![image](https://leetcode.com/problems/constrained-subsequence-sum/Figures/1425/1.png)
+
+![image](https://leetcode.com/problems/constrained-subsequence-sum/Figures/1425/2.png)
+
+Anytime we have a positive net gain, we should consider taking this element because it can contribute to a positive sum and potentially increase the sum of subsequent subsequences.
+
+#### Alogirthm
+
+1. Initialize a max heap ```h``` with ```(nums[0], 0)```. Also initialize the answer ```ans = nums[0]```.
+2. Iterate ```i``` over the indices of ```nums```, starting from ```i = 1```:
+  - While ```i``` minus the index (second element) at the top of heap ```h``` is greater than ```k```, pop from heap ```h```.
+  - Set ```curr``` to the value (first element) at the top of heap, plus ```nums[i]```. Note that if the value at the top of heap is negative, we should take ```0``` instead.
+  - Update ```ans``` with ```curr``` if it is larger.
+  - Push ```(curr, i)``` to heap.
+3. Return ```ans```.
+
+> Implementation note: Python's heapq module only implements min heaps, so we will make the values in the heap negative to simulate a max heap.
+
+```Python
+class Solution:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        # Initialize a priority queue with element and index at start of array
+        h  = [(-nums[0], 0)]
+        ans = nums[0]
+        n = len(nums)
+        
+        for i in range(1, n):
+            # Ensure element in the heap is not more than k away from current index
+            while i - h[0][1] > k:
+                heapq.heappop(h)
+            
+            curr = max(0, -h[0][0]) + nums[i]
+            ans = max(ans, curr)
+            heapq.heappush(h, (-curr, i))
+        
+        return ans
+```
