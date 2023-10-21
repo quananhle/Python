@@ -63,6 +63,14 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/maximum-number-of-books-you-can-take/Figures/2355/2355_example_1.drawio.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/24c5b24b-2eae-4c7c-9771-28222594cb83)
+
+![image](https://leetcode.com/problems/maximum-number-of-books-you-can-take/Figures/2355/2355_constraint.drawio.png)
+
+![image](https://leetcode.com/problems/maximum-number-of-books-you-can-take/Figures/2355/2355_index_j.drawio.png)
+
 ```Python
 
 ```
