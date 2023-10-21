@@ -61,6 +61,38 @@ __Constraints:__
 
 ### Dynamic Programming Framework
 
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def maximumBooks(self, books: List[int]) -> int:
+        n = len(books)
+        ans = float("-inf")
+        memo = {}
+
+        def dp(i, prev_book_taken):
+            if i == n:
+                return 0
+
+            if (i, prev_book_taken) in memo:
+                return memo[(i, prev_book_taken)]
+ 
+            # DP Transitions
+            take = 0
+            for j in range(books[i], 0, -1):
+                if prev_book_taken >= j:
+                    continue
+
+                take = max(take, j + dp(i + 1, j))
+            
+            memo[(i, prev_book_taken)] = take
+            return memo[(i, prev_book_taken)]
+        
+        for i in range(n):
+            ans = max(ans, dp(i, 0))
+        return ans
+```
+
 ![image](https://leetcode.com/problems/maximum-number-of-books-you-can-take/Figures/2355/2355_example_1.drawio.png)
 
 ![image](https://github.com/quananhle/Python/assets/35042430/24c5b24b-2eae-4c7c-9771-28222594cb83)
