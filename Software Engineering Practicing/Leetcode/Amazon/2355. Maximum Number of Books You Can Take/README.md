@@ -76,5 +76,28 @@ __Constraints:__
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def maximumBooks(self, books: List[int]) -> int:
+        n = len(books)
 
+        def calculate_arithmetic_sum(left, right):
+            count = min(books[right], right - left + 1)
+            return (2 * books[right] - (count - 1)) * count // 2
+        
+        stack = list()
+        dp = [0] * n
+
+        for i in range(n):
+            while stack and books[stack[-1]] - stack[-1] >= books[i] - i:
+                stack.pop()
+            
+            if not stack:
+                dp[i] = calculate_arithmetic_sum(0, i)
+            else:
+                j = stack[-1]
+                dp[i] = dp[j] + calculate_arithmetic_sum(j + 1, i)
+            
+            stack.append(i)
+        
+        return max(dp)
 ```
