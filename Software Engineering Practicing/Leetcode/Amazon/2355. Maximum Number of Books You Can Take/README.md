@@ -61,8 +61,6 @@ __Constraints:__
 
 ### Dynamic Programming Framework
 
-#### Top-Down Dynamic Programming
-
 ![image](https://leetcode.com/problems/maximum-number-of-books-you-can-take/Figures/2355/2355_example_1.drawio.png)
 
 ![image](https://github.com/quananhle/Python/assets/35042430/24c5b24b-2eae-4c7c-9771-28222594cb83)
@@ -71,9 +69,9 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/maximum-number-of-books-you-can-take/Figures/2355/2355_index_j.drawio.png)
 
-```Python
+![image](https://leetcode.com/problems/maximum-number-of-books-you-can-take/Figures/2355/2355_arithmetic_progressions.drawio.png)
 
-```
+![image](https://github.com/quananhle/Python/assets/35042430/74f675b8-daa5-4dc8-9570-75680e487f18)
 
 #### Bottom-Up Dynamic Programming
 
