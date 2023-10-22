@@ -1,6 +1,6 @@
 ## [1425. Constrained Subsequence Sum](https://leetcode.com/problems/constrained-subsequence-sum)
 
-```Tag```: ```Priority Queue``` ```Dynamic Programming``` ```Kadane's Algorithm```
+```Tag```: ```Priority Queue``` ```Dynamic Programming``` ```Kadane's Algorithm``` ```Monotonic Queue```
 
 #### Difficulty: Hard
 
@@ -103,6 +103,35 @@ class Solution:
             window.add(dp[i])
             if i >= k:
                 window.remove(dp[i - k])
+        
+        return max(dp)
+```
+
+### Monotonic Queue
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$. We iterate over each index once. At each iteration, we have a while loop. This while loop runs in $\mathcal{O}(1)$) amortized. Each element in ```nums``` can only be pushed and popped from queue at most once. Thus, this while loop will not run more than ```n``` times across all ```n``` iterations. Everything else in each iteration runs in $\mathcal{O}(1)$). Thus, each iteration costs $\mathcal{O}(1)$) amortized.
+- __Space Complexity__:  $\mathcal{O}(n)$
+
+```Python
+class Solution:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        queue = collections.deque()
+        n = len(nums)
+        dp = [0] * n
+
+        for i in range(n):
+            # Ensure element in the queue is not more than k away from current index
+            while queue and i - queue[0] > k:
+                queue.popleft()
+            
+            dp[i] = (dp[queue[0]] if queue else 0) + nums[i]
+            while queue and dp[queue[-1]] < dp[i]:
+                queue.pop()
+            
+            if dp[i] > 0:
+                queue.append(i)
         
         return max(dp)
 ```
