@@ -14,22 +14,24 @@ Return _the maximum possible __score__ of a __good__ subarray_.
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: nums = [1,4,3,7,4,5], k = 3
 Output: 15
-Explanation: The optimal subarray is (1, 5) with a score of min(4,3,7,4,5) * (5-1+1) = 3 * 5 = 15. 
-Example 2:
+Explanation: The optimal subarray is (1, 5) with a score of min(4,3,7,4,5) * (5-1+1) = 3 * 5 = 15.
+```
 
+__Example 2:__
+```
 Input: nums = [5,5,4,5,4,1,1,1], k = 0
 Output: 20
 Explanation: The optimal subarray is (0, 4) with a score of min(5,5,4,5,4) * (4-0+1) = 4 * 5 = 20.
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= nums.length <= 105
-1 <= nums[i] <= 2 * 104
-0 <= k < nums.length
+- $1 \le nums.length \le 10^5$
+- $1 \le nums[i] \le 2 * 10^4$
+- $0 \le k \lt nums.length$
 
 ---
