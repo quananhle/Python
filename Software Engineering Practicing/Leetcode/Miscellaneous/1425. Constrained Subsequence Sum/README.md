@@ -86,3 +86,23 @@ class Solution:
         
         return ans
 ```
+
+### ```sortedcontainers.SortedList``` or ```TreeMap``` Data Structure
+
+```Python
+from sortedcontainers import SortedList
+
+class Solution:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        window = SortedList([0])
+        n = len(nums)
+        dp = [0] * n
+
+        for i in range(n):
+            dp[i] = nums[i] + window[-1]
+            window.add(dp[i])
+            if i >= k:
+                window.remove(dp[i - k])
+        
+        return max(dp)
+```
