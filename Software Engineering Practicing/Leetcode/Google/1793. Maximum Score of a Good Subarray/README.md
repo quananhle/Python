@@ -1,6 +1,6 @@
 ## [1793. Maximum Score of a Good Subarray](https://leetcode.com/problems/maximum-score-of-a-good-subarray)
 
-```Tag```:
+```Tag```: ```Binary Search```
 
 #### Difficulty: Hard
 
@@ -35,3 +35,5 @@ __Constraints:__
 - $0 \le k \lt nums.length$
 
 ---
+
+### Binary Search
