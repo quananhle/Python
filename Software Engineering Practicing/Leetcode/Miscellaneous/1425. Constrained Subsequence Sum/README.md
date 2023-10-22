@@ -111,7 +111,7 @@ class Solution:
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathcal{O}(n)$. We iterate over each index once. At each iteration, we have a while loop. This while loop runs in $\mathcal{O}(1)$) amortized. Each element in ```nums``` can only be pushed and popped from queue at most once. Thus, this while loop will not run more than ```n``` times across all ```n``` iterations. Everything else in each iteration runs in $\mathcal{O}(1)$). Thus, each iteration costs $\mathcal{O}(1)$) amortized.
+- __Time Complexity__: $\mathcal{O}(n)$. We iterate over each index once. At each iteration, we have a while loop. This while loop runs in $\mathcal{O}(1)$ amortized. Each element in ```nums``` can only be pushed and popped from queue at most once. Thus, this while loop will not run more than ```n``` times across all ```n``` iterations. Everything else in each iteration runs in $\mathcal{O}(1)$. Thus, each iteration costs $\mathcal{O}(1)$ amortized.
 - __Space Complexity__:  $\mathcal{O}(n)$
 
 ```Python
