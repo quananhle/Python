@@ -1,6 +1,6 @@
 ## [1793. Maximum Score of a Good Subarray](https://leetcode.com/problems/maximum-score-of-a-good-subarray)
 
-```Tag```: ```Binary Search```
+```Tag```: ```Binary Search``` ```Monotonic Stack``` ```Greedy```
 
 #### Difficulty: Hard
 
@@ -37,3 +37,5 @@ __Constraints:__
 ---
 
 ### Binary Search
+
+![image](https://leetcode.com/problems/maximum-score-of-a-good-subarray/Figures/1793/1.png)
