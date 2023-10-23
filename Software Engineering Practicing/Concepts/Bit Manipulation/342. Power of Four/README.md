@@ -101,8 +101,35 @@ class Solution:
 
 ![image](https://github.com/quananhle/Python/assets/35042430/5a0d3753-9621-4112-8ae7-41742d6e95c5)
 
+__Complexity Analysis__:
+
+- __Time Complexity__: $\mathcal{O}(1)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         return n > 0 and math.log2(n) % 2 == 0
+```
+
+### Bit Manipulation
+
+![image](https://leetcode.com/problems/power-of-four/Figures/342/odd_even.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/ad1899dc-1582-40d5-b880-ca32673f64dd)
+
+__Complexity Analysis__:
+
+- __Time Complexity__: $\mathcal{O}(1)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        '''
+        - Check if n > 0
+        - Check if n is a power of 2
+        - Check if n & (101010...10) == 0
+        '''
+        return n > 0 and n & (n - 1) == 0 and n & 0xaaaaaaaa == 0
 ```
