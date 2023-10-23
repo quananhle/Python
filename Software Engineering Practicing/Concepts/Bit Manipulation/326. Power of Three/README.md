@@ -43,7 +43,7 @@ __Constraints:__
 
 __Complexity Analysis__:
 
-- __Time Complexity__: $\mathcal{O}(\log3{N})$
+- __Time Complexity__: $\mathcal{O}(\log_3{N})$
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
