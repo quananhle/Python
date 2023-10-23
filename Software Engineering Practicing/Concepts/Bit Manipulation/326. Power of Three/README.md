@@ -64,5 +64,25 @@ __Complexity Analysis__:
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
+class Power:
+    def __init__(self):
+        max_power = 19
+        self.power = power = [1] * (max_power + 1)
+        for i in range(1, max_power + 1):
+            power[i] = 3 * power[i - 1]
 
+class Solution:
+    num = Power()
+    def isPowerOfThree(self, n: int) -> bool:
+        return n > 0 and n in self.num.power
 ```
+
+### Math
+
+![image](https://github.com/quananhle/Python/assets/35042430/09f830f0-d2b0-42dd-aca7-6560301e6735)
+
+```Python
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
+        return math.log(n) / math.log(3) % 1 == 0
+```  
