@@ -30,6 +30,11 @@ Input: n = 1
 Output: true
 ```
  
+__Example 4:__
+```
+Input: n = 0
+Output: false
+```
 
 __Constraints:__
 
