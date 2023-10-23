@@ -41,5 +41,11 @@ __Constraints:__
 - $-2^{31} \le n \le 2^{31} - 1$
 
 ---
- 
+
+### Brute Force
+
+```Python
+
+```
+
 __Follow up__: Could you solve it without loops/recursion?
