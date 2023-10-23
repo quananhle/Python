@@ -1,6 +1,6 @@
 ## [326. Power of Three](https://leetcode.com/problems/power-of-three)
 
-```Tag```: ```Math``` ```Bitwise Manipulation```
+```Tag```: ```Math```
 
 #### Difficulty: Easy
 
