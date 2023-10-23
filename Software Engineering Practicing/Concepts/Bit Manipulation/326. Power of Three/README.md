@@ -41,6 +41,11 @@ __Constraints:__
 
 ### Brute Force
 
+__Complexity Analysis__:
+
+- __Time Complexity__: $\mathcal{O}(\log3{N})$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 
 ```
@@ -52,6 +57,11 @@ __Constraints:__
 __Follow up__: Could you solve it without loops/recursion?
 
 ### Precomputations
+
+__Complexity Analysis__:
+
+- __Time Complexity__: $\mathcal{O}(1)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 
