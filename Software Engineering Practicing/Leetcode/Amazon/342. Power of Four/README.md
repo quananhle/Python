@@ -11,3 +11,30 @@ An integer ```n``` is a power of four, if there exists an integer ```x``` such t
 <img width="647" alt="image" src="https://github.com/quananhle/Python/assets/35042430/c54a21e1-0168-424d-9c21-823bb014ebf7">
 
 ---
+
+__Example 1:__
+```
+Input: n = 16
+Output: true
+```
+
+__Example 2:__
+```
+Input: n = 5
+Output: false
+```
+
+__Example 3:__
+```
+Input: n = 1
+Output: true
+```
+ 
+
+__Constraints:__
+
+- $-2^{31} \le n \le 2^{31} - 1$
+
+---
+ 
+Follow up: Could you solve it without loops/recursion?
