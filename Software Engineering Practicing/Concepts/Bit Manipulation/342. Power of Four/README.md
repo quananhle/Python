@@ -133,3 +133,15 @@ class Solution:
         '''
         return n > 0 and n & (n - 1) == 0 and n & 0xaaaaaaaa == 0
 ```
+
+### Bit Manipulation + Math
+
+![image](https://github.com/quananhle/Python/assets/35042430/1674a12a-b7de-4699-a4ef-685a1084565c)
+
+![image](https://github.com/quananhle/Python/assets/35042430/95e949d2-2909-4d0b-afcb-4f9f817fa91e)
+
+```Python
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n > 0 and n & (n - 1) == 0 and n % 3 == 1
+```
