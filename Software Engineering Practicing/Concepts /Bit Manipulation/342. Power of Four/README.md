@@ -1,6 +1,6 @@
 ## [342. Power of Four](https://leetcode.com/problems/power-of-four/)
 
-```Tag```: ```Math```
+```Tag```: ```Math``` ```Bitwise Manipulation```
 
 #### Difficulty: Easy
 
@@ -43,6 +43,11 @@ __Constraints:__
 ---
 
 ### Brute Force
+
+__Complexity Analysis__:
+
+- __Time Complexity__: $\mathcal{O}(\log{}N)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
