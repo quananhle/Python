@@ -37,4 +37,4 @@ __Constraints:__
 
 ---
  
-Follow up: Could you solve it without loops/recursion?
+__Follow up__: Could you solve it without loops/recursion?
