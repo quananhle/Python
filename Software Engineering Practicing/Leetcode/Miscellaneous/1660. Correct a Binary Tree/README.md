@@ -1,6 +1,6 @@
 ## [1660. Correct a Binary Tree](https://leetcode.com/problems/correct-a-binary-tree)
 
-```Tag```:
+```Tag```: ```Binary Tree```
 
 #### Difficulty: Medium
 
@@ -20,23 +20,27 @@ After the binary tree rooted at ```root``` is parsed, the ```TreeNode``` with va
 
 ---
 
-Example 1:
+__Example 1:__
 
+![image](https://assets.leetcode.com/uploads/2020/10/22/ex1v2.png)
+```
 Input: root = [1,2,3], fromNode = 2, toNode = 3
 Output: [1,null,3]
 Explanation: The node with value 2 is invalid, so remove it.
+```
 
-Example 2:
+__Example 2:__
 
+![image](https://assets.leetcode.com/uploads/2020/10/22/ex2v3.png)
+```
 Input: root = [8,3,1,7,null,9,4,2,null,null,null,5,6], fromNode = 7, toNode = 4
 Output: [8,3,1,null,null,9,4,null,null,5,6]
 Explanation: The node with value 7 is invalid, so remove it and the node underneath it, node 2.
+```
 
- 
+__Constraints:__
 
-Constraints:
-
-    The number of nodes in the tree is in the range [3, 104].
+- The number of nodes in the tree is in the range [3, 104].
     -109 <= Node.val <= 109
     All Node.val are unique.
     fromNode != toNode
