@@ -46,7 +46,7 @@ __Constraints:__
 
 __Complexity Analysis__:
 
-- __Time Complexity__: $\mathcal{O}(\log{}N)$
+- __Time Complexity__: $\mathcal{O}(\log{N})$
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
@@ -57,6 +57,21 @@ class Solution:
         while n % 4 == 0:
             n /= 4
         return n == 1
+```
+
+```Python
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        if n <= 0:
+            return False
+        
+        x = curr = 0
+
+        while curr < n:
+            curr = 4**x
+            x += 1
+        
+        return curr == n
 ```
 
 __Follow up__: Could you solve it without loops/recursion?
