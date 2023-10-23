@@ -97,3 +97,12 @@ class Solution:
         return n in self.power.nums
 ```
 
+### Math
+
+![image](https://github.com/quananhle/Python/assets/35042430/5a0d3753-9621-4112-8ae7-41742d6e95c5)
+
+```Python
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n > 0 and math.log2(n) % 2 == 0
+```
