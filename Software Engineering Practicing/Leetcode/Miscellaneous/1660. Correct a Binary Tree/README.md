@@ -40,12 +40,12 @@ Explanation: The node with value 7 is invalid, so remove it and the node underne
 
 __Constraints:__
 
-- The number of nodes in the tree is in the range [3, 104].
-    -109 <= Node.val <= 109
-    All Node.val are unique.
-    fromNode != toNode
-    fromNode and toNode will exist in the tree and will be on the same depth.
-    toNode is to the right of fromNode.
-    fromNode.right is null in the initial tree from the test data.
+- The number of nodes in the tree is in the range $[3, 10^4]$.
+- $-10^9 \le Node.val \le 10^9$
+- All ```Node.val``` are unique.
+- $fromNode != toNode$
+- ```fromNode``` and ```toNode``` will exist in the tree and will be on the same depth.
+- ```toNode``` is to the right of ```fromNode```.
+- ```fromNode.right``` is ```null``` in the initial tree from the test data.
 
 ---
