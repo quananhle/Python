@@ -1,6 +1,6 @@
 ## [326. Power of Three](https://leetcode.com/problems/power-of-three)
 
-```Tag```:
+```Tag```: ```Math``` ```Bitwise Manipulation```
 
 #### Difficulty: Easy
 
@@ -12,3 +12,29 @@ An integer ```n``` is a power of three, if there exists an integer ```x``` such 
 
 ---
 
+__Example 1:__
+```
+Input: n = 27
+Output: true
+Explanation: 27 = 33
+```
+
+__Example 2:__
+```
+Input: n = 0
+Output: false
+Explanation: There is no x where 3x = 0.
+```
+
+__Example 3:__
+```
+Input: n = -1
+Output: false
+Explanation: There is no x where 3x = (-1).
+```
+
+__Constraints:__
+
+- $-2^{31} \le n \le 2^{31} - 1$
+
+---
