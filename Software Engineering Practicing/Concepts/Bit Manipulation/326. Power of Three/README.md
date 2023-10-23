@@ -16,21 +16,21 @@ __Example 1:__
 ```
 Input: n = 27
 Output: true
-Explanation: 27 = 33
+Explanation: 27 = 3^3
 ```
 
 __Example 2:__
 ```
 Input: n = 0
 Output: false
-Explanation: There is no x where 3x = 0.
+Explanation: There is no x where 3^x = 0.
 ```
 
 __Example 3:__
 ```
 Input: n = -1
 Output: false
-Explanation: There is no x where 3x = (-1).
+Explanation: There is no x where 3^x = (-1).
 ```
 
 __Constraints:__
@@ -38,3 +38,21 @@ __Constraints:__
 - $-2^{31} \le n \le 2^{31} - 1$
 
 ---
+
+### Brute Force
+
+```Python
+
+```
+
+```Python
+
+```
+
+__Follow up__: Could you solve it without loops/recursion?
+
+### Precomputations
+
+```Python
+
+```
