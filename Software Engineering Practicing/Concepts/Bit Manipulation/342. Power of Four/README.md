@@ -75,3 +75,25 @@ class Solution:
 ```
 
 __Follow up__: Could you solve it without loops/recursion?
+
+### Precomputations
+
+__Complexity Analysis__:
+
+- __Time Complexity__: $\mathcal{O}(1)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Powers:
+    def __init__(self):
+        max_power = 15
+        self.nums = nums = [1] * (max_power + 1)
+        for i in range(1, max_power + 1):
+            nums[i] = 4 * nums[i - 1]
+
+class Solution:
+    power = Powers()
+    def isPowerOfFour(self, n: int) -> bool:
+        return n in self.power.nums
+```
+
