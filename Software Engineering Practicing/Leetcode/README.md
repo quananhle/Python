@@ -441,6 +441,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Greedy
 
+- :four_leaf_clover: [326. Power of Three](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/326.%20Power%20of%20Three) ```Math```
 - :four_leaf_clover: [409. Longest Palindrome](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%201/Day%2005%20-%20Greedy/409.%20Longest%20Palindrome) ```Hash Set``` ```Hash Map```
 - :four_leaf_clover: [605. Can Place Flowers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/605.%20Can%20Place%20Flowers)
 - :warning::warning: [646. Maximum Length of Pair Chain](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/646.%20Maximum%20Length%20of%20Pair%20Chain) ```Dynamic Programming```
