@@ -3,5 +3,6 @@
 #### Difficulty: Easy
 
 ```SQL
-
+-- Write your PostgreSQL query statement below
+SELECT COALESCE(b.unique_id, NULL) AS unique_id, a.name FROM Employees a LEFT JOIN EmployeeUNI b ON a.id = b.id;
 ```
