@@ -34,6 +34,11 @@ __Constraints:__
 
 ### Depth-First Search
 
+__Complexity Analysis__:
+
+- __Time Complexity__: \mathcal{O}(n)$
+- __Space Complexity__: \mathcal{O}(h)$
+
 #### Recursive DFS
 
 ```Python
@@ -96,6 +101,11 @@ class Solution:
 ```
 
 ### Breadth-First Search
+
+__Complexity Analysis__:
+
+- __Time Complexity__: \mathcal{O}(n)$
+- __Space Complexity__: \mathcal{O}(n)$
 
 ```Python
 # Definition for a binary tree node.
