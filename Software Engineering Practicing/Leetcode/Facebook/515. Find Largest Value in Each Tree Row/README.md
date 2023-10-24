@@ -36,8 +36,8 @@ __Constraints:__
 
 __Complexity Analysis__:
 
-- __Time Complexity__: \mathcal{O}(n)$
-- __Space Complexity__: \mathcal{O}(h)$
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(h)$
 
 #### Recursive DFS
 
@@ -104,8 +104,8 @@ class Solution:
 
 __Complexity Analysis__:
 
-- __Time Complexity__: \mathcal{O}(n)$
-- __Space Complexity__: \mathcal{O}(n)$
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 ```Python
 # Definition for a binary tree node.
