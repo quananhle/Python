@@ -1,6 +1,6 @@
 ## [823. Binary Trees With Factors](https://leetcode.com/problems/binary-trees-with-factors)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Dynamic Programming``` ```Binary Tree```
 
 #### Difficulty: Medium
 
@@ -35,3 +35,10 @@ __Constraints:__
 - All the values of ```arr``` are unique.
 
 ---
+
+### Dynamic Programming
+
+```Python
+
+
+```
