@@ -14,22 +14,24 @@ Return _the number of binary trees we can make_. The answer may be too large so 
 
 ---
 
-Example 1:
-
+__Example 1__:
+```
 Input: arr = [2,4]
 Output: 3
 Explanation: We can make these trees: [2], [4], [4, 2, 2]
-Example 2:
+```
 
+__Example 2__:
+```
 Input: arr = [2,4,5,10]
 Output: 7
 Explanation: We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= arr.length <= 1000
-2 <= arr[i] <= 109
-All the values of arr are unique.
+- $1 \le arr.length \le 1000$
+- $2 \le arr[i] \le 10^9$
+- All the values of ```arr``` are unique.
 
 ---
