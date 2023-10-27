@@ -6,7 +6,7 @@
 
 Given a string ```s```, return _the __longest palindromic substring__ in ```s```_.
 
-![image](https://github.com/quananhle/Python/assets/35042430/3dc3bccb-45f2-4ba7-8af5-83a0471e6d3a)
+![image](https://github.com/quananhle/Python/assets/35042430/39ab4b53-f59b-4fe2-8fb2-875aaa20c426)
 
 ---
 
