@@ -1,6 +1,6 @@
 ## [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
 
-```Tag```: ```Dynamic Programming``` ```Manacher's Algorithm```
+```Tag```: ```Two Pointers``` ```Dynamic Programming``` ```Manacher's Algorithm```
 
 #### Difficulty: Medium
 
