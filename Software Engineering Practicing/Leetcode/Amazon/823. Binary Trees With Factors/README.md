@@ -10,7 +10,7 @@ We make a binary tree using these integers, and each number may be used for any 
 
 Return _the number of binary trees we can make_. The answer may be too large so return the answer modulo $10^9 + 7$.
 
-![image](https://github.com/quananhle/Python/assets/35042430/42319ea8-cc2e-4535-94ca-5e19a405d736)
+![image](https://github.com/quananhle/Python/assets/35042430/a32b48ef-f19c-4193-a379-5c6d5a6e2e88)
 
 ---
 
