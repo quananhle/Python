@@ -1,6 +1,6 @@
 ## [1660. Correct a Binary Tree](https://leetcode.com/problems/correct-a-binary-tree)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Breadth-First Search``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
