@@ -15,7 +15,7 @@ Given an integer ```n```, your task is to count how many strings of length ```n`
 
 Since the answer may be too large, return it modulo ```10^9 + 7```.
 
-![image](https://user-images.githubusercontent.com/35042430/221495440-0c246a29-d2ab-4da8-a920-e867790e3db3.png)
+![image](https://github.com/quananhle/Python/assets/35042430/77127f9f-2f4c-403c-b5e8-632cd5a20dca)
 
 ---
 
