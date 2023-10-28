@@ -58,3 +58,20 @@ class Solution:
         
         return sum(dp) % MOD
 ```
+
+```Python
+class Solution:
+    def numFactoredBinaryTrees(self, arr: List[int]) -> int:
+        MOD = 10**9 + 7
+        arr.sort()
+        idx = {e: 1 for _, e in enumerate(arr)}
+
+        for elem in arr:
+            for factor in arr:
+                if factor == elem:
+                    break
+                if elem % factor == 0 and elem // factor in idx:
+                    idx[elem] += idx[factor] * idx[elem // factor]
+
+        return sum(idx.values()) % MOD 
+```
