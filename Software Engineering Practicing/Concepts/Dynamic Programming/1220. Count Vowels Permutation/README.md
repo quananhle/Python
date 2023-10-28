@@ -74,7 +74,8 @@ class Solution:
     def countVowelPermutation(self, n: int) -> int:
         # Top-Down DP (Recursion)
         MOD = 10**9 + 7
-        @lru_cache(None)
+
+        @functools.lru_cache(maxsize=None)
         def dp(i, vowel):
             # Base case
             total = 1
@@ -114,6 +115,25 @@ class Solution:
             dp[4][i] = (dp[2][i - 1] + dp[3][i - 1]) % MOD
 
         return sum(dp[vowel][n - 1] for vowel in range(len('aeiou'))) % MOD
+```
+
+```Python
+class Solution:
+    def countVowelPermutation(self, n: int) -> int:
+        MOD = 10**9 + 7
+        dp = collections.defaultdict(lambda: 1)
+
+        for curr in range(1, n):
+            dp[(curr, 'a')] = dp[(curr - 1, 'e')] % MOD
+            dp[(curr, 'e')] = (dp[(curr - 1, 'a')] + dp[(curr - 1, 'i')]) % MOD
+            dp[(curr, 'o')] = (dp[(curr - 1, 'i')] + dp[(curr - 1, 'u')]) % MOD            
+            dp[(curr, 'u')] = dp[(curr - 1, 'a')] % MOD
+            dp[(curr, 'i')] = (dp[(curr - 1, 'a')] + dp[(curr - 1, 'e')] + dp[(curr - 1, 'o')] + dp[(curr - 1, 'u')]) % MOD
+
+        '''
+        return (dp[(n - 1, 'a')] + dp[(n - 1, 'e')] + dp[(n - 1, 'o')] + dp[(n - 1, 'u')] + dp[(n - 1, 'i')]) % MOD
+        '''
+        return sum(dp[(n - 1, vowel)] for vowel in 'aeiou') % MOD
 ```
 
 #### Optimized Space Bottom-Up Dynamic Programming 
