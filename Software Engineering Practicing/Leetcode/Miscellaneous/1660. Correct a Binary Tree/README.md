@@ -49,3 +49,44 @@ __Constraints:__
 - ```fromNode.right``` is ```null``` in the initial tree from the test data.
 
 ---
+
+### Breadth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def correctBinaryTree(self, root: TreeNode) -> TreeNode:
+        queue = collections.deque([(root, None)])
+
+        while queue:
+            n = len(queue)
+
+            # Keep track of all the visited nodes in the current level
+            visited = set()
+
+            # Traverse all the nodes in the current level
+            for _ in range(n):
+                node, parent = queue.popleft()
+                # Check if defected node found
+                if node.right in visited:
+                    # Replace the child of the node's parent with null and return the root
+                    if parent.left == node:
+                        parent.left = None
+                    else:
+                        parent.right = None
+                    return root
+
+                visited.add(node)
+
+                # Add the right child to the queue first as right nodes need to be visited first
+                if node.right: queue.append((node.right, node))
+                if node.left: queue.append((node.left, node))
+
+            
+        return None
+```
