@@ -1,6 +1,6 @@
 ## [1197. Minimum Knight Moves](https://leetcode.com/problems/minimum-knight-moves)
 
-```Tag```: ```Breadth-First Search``` ```Djikstra's Algorithm``` ```Depth-First Search``` ```Dynamic Programming```
+```Tag```: ```Breadth-First Search``` ```Dijkstra's Algorithm``` ```Depth-First Search``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -36,3 +36,15 @@ __Constraints__:
 - $0 \le |x| + |y| \le 300$
 
 ---
+
+### Breadth-First Search
+
+```Python
+
+```
+
+### Dijkstra's Algorithm
+
+```Python
+
+```
