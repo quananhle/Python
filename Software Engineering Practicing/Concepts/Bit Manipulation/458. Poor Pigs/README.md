@@ -80,6 +80,10 @@ The same way two pigs could test $2^2 = 4$ buckets
 
 ![image](https://leetcode.com/problems/poor-pigs/Figures/458/2_pigs_results.png)
 
+![image](https://github.com/quananhle/Python/assets/35042430/9ae1bc3a-201d-4ca3-8db7-4d0456a83410)
+
+![image](https://github.com/quananhle/Python/assets/35042430/bcbe1cdd-785e-468b-90c2-e724b1b7ef1c)
+
 ```Python
 class Solution:
     def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -> int:
