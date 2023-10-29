@@ -39,7 +39,7 @@ __Constraints__:
 
 ### Breadth-First Search
 
-![image](https://leetcode.com/problems/minimum-knight-moves/Figures/1197/1197_bfs.png)
+![image](https://github.com/quananhle/Python/assets/35042430/3e015ed1-28de-47e0-a515-2309f521dc26)
 
 ```Python
 class Solution:
