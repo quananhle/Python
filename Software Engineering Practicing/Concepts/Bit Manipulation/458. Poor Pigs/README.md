@@ -51,3 +51,19 @@ __Constraints:__
 - $1 \le minutesToDie \le minutesToTest \le 100$
 
 ---
+
+### Quantum bit
+
+#### Intuition
+
+If there is no time to test, i.e. $minutesToTest / minutesToDie = 0$, the pig has only one state - ```alive```.
+
+If $minutesToTest / minutesToDie = 1$ then the pig has a time to die from the poison, that means that now there are two states available for the pig : ```alive``` or ```dead```.
+
+One more step. If $minutesToTest / minutesToDie = 2$ then there are three available states for the pig : ```alive``` / ```dead after the first test``` / ```dead after the second test```.
+
+![image](https://leetcode.com/problems/poor-pigs/Figures/458/pigs.png)
+
+```Python
+
+```
