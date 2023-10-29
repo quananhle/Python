@@ -39,6 +39,8 @@ __Constraints__:
 
 ### Breadth-First Search
 
+![image](https://leetcode.com/problems/minimum-knight-moves/Figures/1197/1197_bfs.png)
+
 ```Python
 class Solution:
     def minKnightMoves(self, x: int, y: int) -> int:
