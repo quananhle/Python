@@ -244,6 +244,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [338. Counting Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/338.%20Counting%20Bits) ```Dynamic Programming```
 - :four_leaf_clover: [342. Power of Four](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/342.%20Power%20of%20Four) ```Math```
 - :four_leaf_clover: [389. Find the Difference](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/389.%20Find%20the%20Difference) ```Array & String``` ```Counter``` ```Hash Map``` ```Hash Set``` ```Sorting```
+- :no_entry::no_entry::no_entry: [458. Poor Pigs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/458.%20Poor%20Pigs) ```Quantum Bit```
 - :no_entry::no_entry::no_entry: [847. Shortest Path Visiting All Nodes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/847.%20Shortest%20Path%20Visiting%20All%20Nodes) ```Graph``` ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search```
 - :warning::warning: [1318. Minimum Flips to Make a OR b Equal to c](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1318.%20Minimum%20Flips%20to%20Make%20a%20OR%20b%20Equal%20to%20c)
 
