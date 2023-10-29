@@ -88,6 +88,15 @@ class Solution:
 19      return dist[], prev[]
 ```
 
+```
+1  S ← empty sequence
+2  u ← target
+3  if prev[u] is defined or u = source:          // Do something only if the vertex is reachable
+4      while u is defined:                       // Construct the shortest path with a stack S
+5          insert u at the beginning of S        // Push the vertex onto the stack
+6          u ← prev[u]                           // Traverse from target to source
+```
+
 ```Python
 
 ```
