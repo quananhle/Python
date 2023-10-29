@@ -124,3 +124,30 @@ class Solution:
 
         return dfs(root)
 ```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def __init__(self):
+        self.visited = set()
+
+    def correctBinaryTree(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return None
+        
+        if root.right and root.right.val in self.visited:
+            return None
+        
+        self.visited.add(root.val)
+
+        root.right = self.correctBinaryTree(root.right)
+        root.left = self.correctBinaryTree(root.left)
+
+        return root
+```
