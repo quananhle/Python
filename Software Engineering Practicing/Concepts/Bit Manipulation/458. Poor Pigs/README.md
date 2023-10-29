@@ -56,13 +56,21 @@ __Constraints:__
 
 #### Intuition
 
+__How many states does a pig have__
+
 If there is no time to test, i.e. $minutesToTest / minutesToDie = 0$, the pig has only one state - ```alive```.
 
 If $minutesToTest / minutesToDie = 1$ then the pig has a time to die from the poison, that means that now there are two states available for the pig : ```alive``` or ```dead```.
 
 One more step. If $minutesToTest / minutesToDie = 2$ then there are three available states for the pig : ```alive``` / ```dead after the first test``` / ```dead after the second test```.
 
+> The number of available states for the pig is $states = minutesToTest / minutesToDie + 1$.
+
 ![image](https://leetcode.com/problems/poor-pigs/Figures/458/pigs.png)
+
+__How many buckets could test ```x``` pigs with ```2``` available states__
+
+One pig could test ```2``` buckets - let's make him drink from the bucket number ```1``` and then wait ```minutesToDie``` time. If he is ```alive``` - the poison is in the bucket number ```2```. If he is ```dead``` - the poison is in the bucket number ```1```.
 
 ```Python
 
