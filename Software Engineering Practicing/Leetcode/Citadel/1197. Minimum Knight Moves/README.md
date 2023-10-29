@@ -40,7 +40,26 @@ __Constraints__:
 ### Breadth-First Search
 
 ```Python
+class Solution:
+    def minKnightMoves(self, x: int, y: int) -> int:
+        DIRECTIONS = [(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (1, -2), (-1, 2), (1, 2)]
+        queue = collections.deque([(0, 0)])
+        visited = set()
+        ans = 0
 
+        while queue:
+            next_queue = list()
+            for curr_row, curr_col in queue:
+                if (curr_row, curr_col) == (x, y):
+                    return ans
+                for next_row, next_col in [(curr_row + dx, curr_col + dy) for dx, dy in DIRECTIONS]:
+                    if not (next_row, next_col) in visited:
+                        visited.add((next_row, next_col))
+                        next_queue.append((next_row, next_col))
+            queue = next_queue
+            ans += 1
+
+        return ans
 ```
 
 ### Dijkstra's Algorithm
