@@ -184,3 +184,51 @@ class Solution:
 
         return -1
 ```
+
+### Depth-First Search
+
+#### Iterative DFS
+
+```Python
+class Solution:
+    def minKnightMoves(self, x: int, y: int) -> int:
+        DIRECTIONS = [(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (1, -2), (-1, 2), (1, 2)]
+        queue = collections.deque([(0, 0, 0)])
+        visited = set()
+
+        while True:
+            curr_row, curr_col, curr_steps = queue.popleft()
+            if (curr_row, curr_col) == (x, y):
+                return curr_steps
+
+            for next_row, next_col in [(curr_row + dx, curr_col + dy) for dx, dy in DIRECTIONS]:
+                if not (next_row, next_col) in visited:
+                    start_queue.append((next_row, next_col, curr_steps + 1))
+                    visited.add((next_row, next_col))
+
+        return -1
+```
+
+
+### Dynamic Programming
+
+![image](https://github.com/quananhle/Python/assets/35042430/a00766b7-b743-440e-9062-b91f307aeedf)
+
+![image](https://leetcode.com/problems/minimum-knight-moves/Figures/1197/1197_dfs_base_cases.png)
+
+```Python
+class Solution:
+    def minKnightMoves(self, x: int, y: int) -> int:
+        @functools.lru_cache(maxsize=None)
+        def dfs(x, y):
+            if x + y == 0:
+                # Base case: (0, 0)
+                return 0
+            elif x + y == 2:
+                # Base case: (1, 1), (0, 2), (2, 0)
+                return 2
+            else:
+                return min(dfs(abs(x - 1), abs(y - 2)), dfs(abs(x - 2), abs(y - 1))) + 1
+
+        return dfs(abs(x), abs(y))
+```
