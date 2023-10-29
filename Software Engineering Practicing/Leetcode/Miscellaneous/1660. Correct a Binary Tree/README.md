@@ -90,3 +90,37 @@ class Solution:
             
         return None
 ```
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def correctBinaryTree(self, root: TreeNode) -> TreeNode:
+        if not root:
+            return None
+        
+        visited = set()
+
+        def dfs(node):
+            # Base case
+            if not node:
+                return None
+
+            if node.right and node.right.val in visited:
+                return None
+            
+            visited.add(node.val)
+
+            node.right = dfs(node.right)
+            node.left = dfs(node.left)
+
+            return node
+
+        return dfs(root)
+```
