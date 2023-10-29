@@ -1,6 +1,6 @@
 ## [1197. Minimum Knight Moves](https://leetcode.com/problems/minimum-knight-moves)
 
-```Tag```: ```Breadth-First Search``` ```Dijkstra's Algorithm``` ```Depth-First Search``` ```Dynamic Programming```
+```Tag```: ```Breadth-First Search``` ```Dijkstra's Algorithm``` ```Depth-First Search``` ```Dynamic Programming``` ```A* Search Algorithm```
 
 #### Difficulty: Medium
 
@@ -148,6 +148,39 @@ class Solution:
 
 #### Bidirectional BFS
 
-```Python
+![image](https://github.com/quananhle/Python/assets/35042430/ccb24e9c-33c7-45a5-9aaa-f15aafb6118b)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}\bigg(\big(\max(|x|, |y|)\big) ^ 2\bigg)$
+- __Space Complexity__: $\mathcal{O}\bigg(\big(\max(|x|, |y|)\big) ^ 2\bigg)$
+
+```Python
+class Solution:
+    def minKnightMoves(self, x: int, y: int) -> int:
+        DIRECTIONS = [(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (1, -2), (-1, 2), (1, 2)]
+        start_queue = collections.deque([(0, 0, 0)])
+        start_distn = {(0, 0): 0}
+        finish_queue = collections.deque([(x, y, 0)])
+        finish_distn = {(x, y): 0}
+
+        while True:
+            curr_row, curr_col, curr_steps = start_queue.popleft()
+            if (curr_row, curr_col) in finish_distn:
+                return curr_steps + finish_distn[(curr_row, curr_col)]
+            
+            finish_row, finish_col, finish_steps = finish_queue.popleft()
+            if (finish_row, finish_col) in start_distn:
+                return finish_steps + start_distn[(finish_row, finish_col)]
+
+            for next_from_start_row, next_from_start_col, next_from_finish_row, next_from_finish_col in [(curr_row + dx, curr_col + dy, finish_row + dx, finish_col + dy) for dx, dy in DIRECTIONS]:
+                if not (next_from_start_row, next_from_start_col) in start_distn:
+                    start_queue.append((next_from_start_row, next_from_start_col, curr_steps + 1))
+                    start_distn[(next_from_start_row, next_from_start_col)] = curr_steps + 1
+
+                if not (next_from_finish_row, next_from_finish_col) in finish_distn:
+                    finish_queue.append((next_from_finish_row, next_from_finish_col, finish_steps + 1))
+                    finish_distn[(next_from_finish_row, next_from_finish_col)] = finish_steps + 1
+
+        return -1
 ```
