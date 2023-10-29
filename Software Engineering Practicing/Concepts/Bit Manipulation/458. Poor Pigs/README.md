@@ -72,6 +72,17 @@ __How many buckets could test ```x``` pigs with ```2``` available states__
 
 One pig could test ```2``` buckets - let's make him drink from the bucket number ```1``` and then wait ```minutesToDie``` time. If he is ```alive``` - the poison is in the bucket number ```2```. If he is ```dead``` - the poison is in the bucket number ```1```.
 
-```Python
+![image](https://leetcode.com/problems/poor-pigs/Figures/458/pigs_bucket.png)
 
+The same way two pigs could test $2^2 = 4$ buckets
+
+![image](https://leetcode.com/problems/poor-pigs/Figures/458/2_pigs.png)
+
+![image](https://leetcode.com/problems/poor-pigs/Figures/458/2_pigs_results.png)
+
+```Python
+class Solution:
+    def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -> int:
+        states = minutesToTest // minutesToDie + 1
+        return math.ceil(math.log2(buckets) / math.log2(states))
 ```
