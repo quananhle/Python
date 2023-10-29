@@ -16,21 +16,23 @@ Return _the minimum number of steps needed to move the knight to the square ```[
 
 ---
 
-Example 1:
-
+__Example 1__:
+```
 Input: x = 2, y = 1
 Output: 1
 Explanation: [0, 0] → [2, 1]
-Example 2:
+```
 
+__Example 2__:
+```
 Input: x = 5, y = 5
 Output: 4
 Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
- 
+```
 
-Constraints:
+__Constraints__:
 
--300 <= x, y <= 300
-0 <= |x| + |y| <= 300
+- $-300 \le x, y \le 300$
+- $0 \le |x| + |y| \le 300$
 
 ---
