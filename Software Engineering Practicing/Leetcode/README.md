@@ -565,7 +565,10 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [934. Shortest Bridge](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/934.%20Shortest%20Bridge) ```Depth-First Search``` ```Manhattan Distance```
 - :warning::warning: [994. Rotting Oranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2010%20-%20Graph%20%7C%20DFS%20%7C%20BFS/994.%20Rotting%20Oranges)
 - :warning::warning: [1091. Shortest Path in Binary Matrix](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1091.%20Shortest%20Path%20in%20Binary%20Matrix)
+- :warning::warning: [1197. Minimum Knight Moves](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Citadel/1197.%20Minimum%20Knight%20Moves) ```Depth-First Search``` ```Dijkstra's Algorithm```
 - :four_leaf_clover: [1572. Matrix Diagonal Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1572.%20Matrix%20Diagonal%20Sum) ```Depth-First Search``` ```Matrix```
+- :warning::warning: [1660. Correct a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1660.%20Correct%20a%20Binary%20Tree) ```Binary Search```
+
 
 ### Depth-First Search (DFS)
 
@@ -645,7 +648,6 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [1448. Count Good Nodes in Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Binary/Binary%20Tree/1448.%20Count%20Good%20Nodes%20in%20Binary%20Tree) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1485. Clone Binary Tree With Random Pointer](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1485.%20Clone%20Binary%20Tree%20With%20Random%20Pointer) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1644. Lowest Common Ancestor of a Binary Tree II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1644.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20II) ```Backtracking``` ```Recursion``` ```Depth-First Search```
-- :warning::warning: [1660. Correct a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1660.%20Correct%20a%20Binary%20Tree)
 
 #### Path Sum
 
