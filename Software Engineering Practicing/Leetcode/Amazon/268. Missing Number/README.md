@@ -1,6 +1,6 @@
 ## [268. Missing Number](https://leetcode.com/problems/missing-number)
 
-```Tag```: ```Sorting``` ```Hash Map``` ```Bitwise Manipulation``` ```Math```
+```Tag```: ```Sorting``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulation``` ```Math```
 
 #### Difficulty: Easy
 
@@ -92,6 +92,11 @@ class Solution:
 
 ### Hash Map
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 #### Two Passes
 
 ```Python
@@ -102,7 +107,7 @@ class Solution:
         for num in range(n + 1):
             all_nums[num] = all_nums.get(num, 0) + 1
         for num in nums:
-            all_nums[num] = all_nums.get(num, 0) + 1
+            all_nums[num] = all_nums.get(num, 0) - 1
 
         for num, val in all_nums.items():
             if val == 1:
@@ -111,4 +116,53 @@ class Solution:
         return -1
 ```
 
+### Hash Set
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        all_nums = set(nums)
+        n = len(nums)
+        for num in range(n + 1):
+            if not num in all_nums:
+                return num
+        
+        return -1
+```
+
 __Follow up__: Could you implement a solution using only ```O(1)``` extra space complexity and ```O(n)``` runtime complexity?
+
+### Bit Manipulation
+
+#### XOR
+
+![image](https://github.com/quananhle/Python/assets/35042430/abde9a9c-ddfc-409c-bc09-48d4cc1dcaea)
+
+```Python
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        missing = len(nums)
+
+        for i, num in enumerate(nums):
+            missing ^= i ^ num
+        
+        return missing
+```
+
+### Math
+
+#### Gauss' Formula
+
+```Python
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        expected_sum = n * (n + 1) // 2
+        actual_sum = sum(nums)
+        return expected_sum - actual_sum
+```
