@@ -50,7 +50,11 @@ class Solution:
 #### Built-in ```count()```
 
 ```Python
-
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        nums = [(num, bin(num).count('1')) for num in arr]
+        nums.sort(key=lambda x: (x[1], x[0]))
+        return [num[0] for num in nums]
 ```
 
 #### Bitwise Manipulation
