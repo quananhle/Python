@@ -42,7 +42,9 @@ __Constraints:__
 #### Built-in ```bit_count()```
 
 ```Python
-
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        return sorted(arr, key=lambda x: (x.bit_count(), x))
 ```
 
 #### Built-in ```count()```
