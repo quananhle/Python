@@ -36,3 +36,30 @@ __Constraints:__
 - $0 \le arr[i] \le 10^4$
 
 ---
+
+### Sorting
+
+#### Built-in ```bit_count()```
+
+```Python
+
+```
+
+#### Built-in ```count()```
+
+```Python
+
+```
+
+#### Bitwise Manipulation
+
+```Python
+
+```
+
+#### Brian Kerninghan's Algorithm
+
+```Python
+
+```
+
