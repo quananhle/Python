@@ -6,7 +6,7 @@
 
 Given an integer array ```nums```, return _```true``` if any value appears at least twice in the array, and return ```false``` if every element is distinct_.
 
-![image](https://user-images.githubusercontent.com/35042430/211179824-b51e904d-6e99-445b-b4d2-2323fc9be6d9.png)
+![image](https://github.com/quananhle/Python/assets/35042430/7bee9446-633a-4a69-bb5c-7e570ae790b5)
 
 ---
 
@@ -29,10 +29,10 @@ Output: true
 ```
 
 __Constraints:__
-```
-1 <= nums.length <= 105
--109 <= nums[i] <= 109
-```
+
+- $1 \le nums.length \le 10^5$
+- $-10^9 \le nums[i] \le 10^9$
+
 
 ---
 
