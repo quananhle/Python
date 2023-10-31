@@ -1,4 +1,4 @@
-## 217. Contains Duplicate
+## [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
 
 ```Tag```: ```Hash Table``` ```Sort``` ```Brute Force``` ```Hash Set```
 
