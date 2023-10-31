@@ -4,7 +4,7 @@
 
 #### Difficulty: Medium
 
-You are given an integer array ```pref``` of size ```n```. Find and return _the array ```arr``` of size ```n``` that satisfies:
+You are given an integer array ```pref``` of size ```n```. Find and return _the array ```arr``` of size ```n``` that satisfies_:
 
 ```
 pref[i] = arr[0] ^ arr[1] ^ ... ^ arr[i].
@@ -57,4 +57,17 @@ class Solution:
             res[i] = pref[i] ^ pref[i -1]
         
         return res
+```
+
+### In-Place Modification
+
+```Python
+class Solution:
+    def findArray(self, pref: List[int]) -> List[int]:
+        n = len(pref)
+
+        for i in range(n -1, 0, -1):
+            pref[i] ^= pref[i - 1]
+        
+        return pref
 ```
