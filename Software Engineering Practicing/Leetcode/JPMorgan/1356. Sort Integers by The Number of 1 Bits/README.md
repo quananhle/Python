@@ -66,8 +66,35 @@ class Solution:
 
 #### Bitwise Manipulation
 
-```Python
+![image](https://github.com/quananhle/Python/assets/35042430/c7a29b77-c19a-4ee5-a7ee-1805df44473e)
 
+![image](https://github.com/quananhle/Python/assets/35042430/81e17656-0340-447e-81f4-32fd82ff16f6)
+
+![image](https://github.com/quananhle/Python/assets/35042430/f2758175-fdd1-4230-b2ad-2201dc205af5)
+
+![image](https://github.com/quananhle/Python/assets/35042430/a61116f9-b5a2-4213-a4f2-c7149db8c170)
+
+![image](https://github.com/quananhle/Python/assets/35042430/02be9a06-dcc9-457b-9f27-02baf3d859ba)
+
+![image](https://github.com/quananhle/Python/assets/35042430/f3bbff01-8675-4c0f-b727-6515b29e6294)
+
+```Python
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        def count_bit(num):
+            mask = 1
+            weight = 0
+
+            while num:
+                if num & mask:
+                    weight += 1
+                    num ^= mask
+                mask <<= 1
+            
+            return weight
+
+        arr.sort(key=lambda x: (count_bit(x), x))
+        return arr
 ```
 
 #### Brian Kerninghan's Algorithm
