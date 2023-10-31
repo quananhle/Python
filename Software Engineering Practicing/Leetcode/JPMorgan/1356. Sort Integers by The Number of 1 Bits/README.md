@@ -85,10 +85,15 @@ class Solution:
             mask = 1
             weight = 0
 
+            # While num > 0
             while num:
+                # Check if num & mask is non-zero
                 if num & mask:
+                    # Increment weight
                     weight += 1
+                    # XOR num with mask to offset the least significant 1 to 0 in num
                     num ^= mask
+                # Left shift mask by 1 bit
                 mask <<= 1
             
             return weight
