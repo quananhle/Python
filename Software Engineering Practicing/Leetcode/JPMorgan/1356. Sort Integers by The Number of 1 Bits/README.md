@@ -104,7 +104,20 @@ class Solution:
 
 #### Brian Kerninghan's Algorithm
 
-```Python
+![image](https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/Figures/1356/7.png)
 
+```Python
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        def count_bit(num):
+            weight = 0
+            while num:
+                weight += 1
+                # Offset least significan bit
+                num &= num - 1
+            return weight
+        
+        arr.sort(key=lambda x: (count_bit(x), x))
+        return arr
 ```
 
