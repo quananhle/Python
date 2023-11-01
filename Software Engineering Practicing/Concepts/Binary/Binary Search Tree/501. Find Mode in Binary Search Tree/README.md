@@ -37,6 +37,37 @@ __Constraints:__
  
 ---
 
+### In-order Traversal
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        stack = list()
+        freq = collections.Counter()
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            freq[root.val] = freq.get(root.val, 0) + 1
+            root = root.right
+
+        res = list()
+        highest_frequency = max(freq.values())
+        for key, val in freq.items():
+            if val == highest_frequency:
+                res.append(key)
+        
+        return res
+```
+
 ### Depth-First Search
 
 ```Python
