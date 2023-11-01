@@ -181,7 +181,44 @@ If you perform an inorder DFS traversal on a binary search tree (BST), you will 
 Recall that in a BST, all nodes to the left are less than the current node and all nodes to the right are greater than the current node. In an inorder traversal, we handle all the nodes on the left first, then the current node, then all the nodes to the right.
 
 ```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        nums = list()
 
+        def dfs(node):
+            if not node:
+                return None
+            
+            # Inorder traversal
+            dfs(node.left)
+            nums.append(node.val)
+            dfs(node.right)
+
+        dfs(root)
+        max_streak = curr_streak = curr = 0
+        res = list()
+
+        for num in nums:
+            if num == curr:
+                curr_streak += 1
+            else:
+                curr_steak = 1
+                curr = num
+            
+            if max_streak < curr_streak:
+                res = list()
+                max_streak = curr_streak
+            
+            if curr_streak == max_streak:
+                res.append(num)
+            
+        return res
 ```
 
 ---
