@@ -131,4 +131,39 @@ class Solution:
         return res
 ```
 
+### Breadth-First Search
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/bfs.png)
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        queue = collections.deque([(root)])
+        freq = collections.defaultdict(int)
+        res = list()
+
+        while queue:
+            n = len(queue)
+
+            for _ in range(n):
+                node = queue.popleft()
+                freq[node.val] = 1 + freq.get(node.val, 0)
+
+                if node.left: queue.append(node.left)
+                if node.right: queue.append(node.right)
+
+        highest_frequency = max(freq.values())
+        for key, val in freq.items():
+            if val == highest_frequency:
+                res.append(key)
+        
+        return res
+```
+
 __Follow up__: Could you do that without using any extra space? (Assume that the implicit stack space incurred due to recursion does not count).
