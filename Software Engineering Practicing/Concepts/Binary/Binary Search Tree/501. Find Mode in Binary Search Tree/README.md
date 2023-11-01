@@ -174,6 +174,8 @@ class Solution:
 
 #### Recursive Inorder Traversal
 
+![image](https://github.com/quananhle/Python/assets/35042430/3a379fe5-13c5-4bf0-9971-84dff49b5ef9)
+
 So far, we have not taken advantage of the fact that the input tree is a binary search tree (with duplicates). The first three approaches would work for any binary tree.
 
 If you perform an inorder DFS traversal on a binary search tree (BST), you will handle the nodes in sorted order. Why?
@@ -201,7 +203,7 @@ class Solution:
             dfs(node.right)
 
         dfs(root)
-        max_streak = curr_streak = curr = 0
+        max_streak = curr_streak = curr = 1
         res = list()
 
         for num in nums:
