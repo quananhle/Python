@@ -37,4 +37,35 @@ __Constraints:__
  
 ---
 
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        freq = collections.defaultdict(int)
+        res = list()
+
+        def dfs(node):
+            if not node:
+                return None
+            
+            freq[node.val] = 1 + freq.get(node.val, 0)
+            dfs(node.left)
+            dfs(node.right)
+        
+        dfs(root)
+        highest_frequency = max(freq.values())
+        for key, val in freq.items():
+            if val == highest_frequency:
+                res.append(key)
+        
+        return res
+```
+
 __Follow up__: Could you do that without using any extra space? (Assume that the implicit stack space incurred due to recursion does not count).
