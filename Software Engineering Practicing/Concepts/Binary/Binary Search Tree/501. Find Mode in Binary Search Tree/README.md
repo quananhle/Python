@@ -203,14 +203,14 @@ class Solution:
             dfs(node.right)
 
         dfs(root)
-        max_streak = curr_streak = curr = 1
+        max_streak = curr_streak = curr = 0
         res = list()
 
         for num in nums:
             if num == curr:
                 curr_streak += 1
             else:
-                curr_steak = 1
+                curr_streak = 1
                 curr = num
             
             if max_streak < curr_streak:
@@ -220,6 +220,48 @@ class Solution:
             if curr_streak == max_streak:
                 res.append(num)
             
+        return res
+```
+
+#### Iterative Inorder Traversal
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        stack = list()
+        nums = list()
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            nums.append(root.val)
+            root = root.right
+
+        res = list()
+        longest_streak = current_streak = curr = 0
+
+        for num in nums:
+            if curr == num:
+                current_streak += 1
+            else:
+                current_streak = 1
+                curr = num
+            
+            if longest_streak < current_streak:
+                res = list()
+                longest_streak = current_streak
+            
+            if longest_streak == current_streak:
+                res.append(num)
+        
         return res
 ```
 
