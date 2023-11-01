@@ -190,6 +190,11 @@ __Follow up__: Could you do that without using any extra space? (Assume that the
 
 ### Morris Traversal
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\matcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 
 ```
