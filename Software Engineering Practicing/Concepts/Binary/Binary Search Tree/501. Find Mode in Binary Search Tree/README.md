@@ -70,6 +70,8 @@ class Solution:
 
 ### Depth-First Search
 
+#### Recursive DFS
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -91,6 +93,36 @@ class Solution:
             dfs(node.right)
         
         dfs(root)
+        highest_frequency = max(freq.values())
+        for key, val in freq.items():
+            if val == highest_frequency:
+                res.append(key)
+        
+        return res
+```
+
+#### Iterative DFS
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        stack = [root]
+        freq = collections.defaultdict(int)
+        res = list()
+
+        while stack:
+            node = stack.pop()
+            freq[node.val] = 1 + freq.get(node.val, 0)
+
+            if node.left: stack.append(node.left)
+            if node.right: stack.append(node.right)
+
         highest_frequency = max(freq.values())
         for key, val in freq.items():
             if val == highest_frequency:
