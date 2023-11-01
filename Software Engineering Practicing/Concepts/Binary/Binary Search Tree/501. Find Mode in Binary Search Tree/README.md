@@ -180,4 +180,12 @@ Recall that in a BST, all nodes to the left are less than the current node and a
 
 ```
 
+---
+
 __Follow up__: Could you do that without using any extra space? (Assume that the implicit stack space incurred due to recursion does not count).
+
+### Morris Traversal
+
+```Python
+
+```
