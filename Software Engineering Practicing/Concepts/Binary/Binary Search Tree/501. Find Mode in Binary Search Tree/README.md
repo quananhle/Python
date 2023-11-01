@@ -168,7 +168,11 @@ class Solution:
         return res
 ```
 
+---
+
 ### Binay Search Tree Property
+
+#### Recursive Inorder Traversal
 
 So far, we have not taken advantage of the fact that the input tree is a binary search tree (with duplicates). The first three approaches would work for any binary tree.
 
