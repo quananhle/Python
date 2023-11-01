@@ -39,6 +39,8 @@ __Constraints:__
 
 ### In-order Traversal
 
+#### Iterative In-order Traversal
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -164,6 +166,12 @@ class Solution:
                 res.append(key)
         
         return res
+```
+
+### Binay Search Tree
+
+```Python
+
 ```
 
 __Follow up__: Could you do that without using any extra space? (Assume that the implicit stack space incurred due to recursion does not count).
