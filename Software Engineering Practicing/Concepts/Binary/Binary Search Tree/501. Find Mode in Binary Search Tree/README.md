@@ -1,5 +1,5 @@
 ## [501. Find Mode in Binary Search Tree](https://leetcode.com/problems/find-mode-in-binary-search-tree)
-   
+
 ```Tag```: ```Binary Search Tree``` ```Depth-First Search``` ```Breadth-First Search``` ```Hash Map``` ```Morris's Traversal```
 
 #### Difficulty: Easy
