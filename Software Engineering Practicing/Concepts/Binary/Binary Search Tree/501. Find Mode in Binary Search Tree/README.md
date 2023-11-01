@@ -168,7 +168,13 @@ class Solution:
         return res
 ```
 
-### Binay Search Tree
+### Binay Search Tree Property
+
+So far, we have not taken advantage of the fact that the input tree is a binary search tree (with duplicates). The first three approaches would work for any binary tree.
+
+If you perform an inorder DFS traversal on a binary search tree (BST), you will handle the nodes in sorted order. Why?
+
+Recall that in a BST, all nodes to the left are less than the current node and all nodes to the right are greater than the current node. In an inorder traversal, we handle all the nodes on the left first, then the current node, then all the nodes to the right.
 
 ```Python
 
