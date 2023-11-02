@@ -1,6 +1,6 @@
 ## [2265. Count Nodes Equal to Average of Subtree](https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree)
 
-```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Binary Tree``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -44,6 +44,8 @@ __Constraints:__
 ---
 
 ### Depth-First Search
+
+![image](https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/Figures/2265/2265A.png)
 
 ```Python
 # Definition for a binary tree node.
@@ -118,4 +120,32 @@ class Solution:
         
         dfs(root)
         return ans
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
+        def dfs(node):
+            ans = 0
+
+            # Base case
+            if not node.left and not node.right:
+                return 1, node.val, 1
+
+            left_subtree_cnt, left_substree_val, left_subtree_ans = dfs(node.left) if node.left else (0, 0, 0)
+            right_subtree_cnt, right_subtree_val, right_subtree_ans = dfs(node.right) if node.right else (0, 0, 0)
+
+            total = left_substree_val + right_subtree_val + node.val
+            count = left_subtree_cnt + right_subtree_cnt + 1
+            ans += left_subtree_ans + right_subtree_ans + (1 if total // count == node.val else 0)
+
+            return (count, total, ans)
+        
+        return dfs(root)[2]
 ```
