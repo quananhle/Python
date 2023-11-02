@@ -43,7 +43,7 @@ __Constraints:__
 
 ---
 
-### Dept-First Search
+### Depth-First Search
 
 ```Python
 # Definition for a binary tree node.
