@@ -12,3 +12,33 @@ __Note__:
 - A __subtree__ of ```root``` is a tree consisting of ```root``` and all of its descendants.
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2022/03/15/image-20220315203925-1.png)
+```
+Input: root = [4,8,5,0,1,null,6]
+Output: 5
+Explanation: 
+For the node with value 4: The average of its subtree is (4 + 8 + 5 + 0 + 1 + 6) / 6 = 24 / 6 = 4.
+For the node with value 5: The average of its subtree is (5 + 6) / 2 = 11 / 2 = 5.
+For the node with value 0: The average of its subtree is 0 / 1 = 0.
+For the node with value 1: The average of its subtree is 1 / 1 = 1.
+For the node with value 6: The average of its subtree is 6 / 1 = 6.
+```
+
+__Example 2:__
+
+![image](https://assets.leetcode.com/uploads/2022/03/26/image-20220326133920-1.png)
+```
+Input: root = [1]
+Output: 1
+Explanation: For the node with value 1: The average of its subtree is 1 / 1 = 1.
+```
+
+__Constraints:__
+
+- The number of nodes in the tree is in the range $[1, 1000]$.
+- $0 \le Node.val \le 1000$
+
+---
