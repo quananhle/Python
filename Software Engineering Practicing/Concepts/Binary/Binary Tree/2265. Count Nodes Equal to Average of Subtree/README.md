@@ -42,3 +42,44 @@ __Constraints:__
 - $0 \le Node.val \le 1000$
 
 ---
+
+### Dept-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+
+        ans = 0
+
+        def dfs(node):
+            count = value = 0
+            nonlocal ans
+
+            # Base case
+            if not node:
+                return (0, 0)
+
+            count += 1
+            value += node.val
+
+            left_subtree_cnt, left_substree_val = dfs(node.left)
+            right_subtree_cnt, right_subtree_val = dfs(node.right)
+
+            value += left_substree_val + right_subtree_val
+            count += left_subtree_cnt + right_subtree_cnt
+            if math.floor(value / count) == node.val:
+                ans += 1
+            
+            return (count, value)
+        
+        dfs(root)
+        return ans
+```
