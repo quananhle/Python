@@ -372,8 +372,6 @@ Morris traversal takes advantage of the following facts:
 
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/21.png)
 
-![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/22.png)
-
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/25.png)
 
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/26.png)
@@ -383,8 +381,45 @@ __Complexity Analysis__
 - __Time Complexity__: $\mathcal{O}(n)$
 - __Space Complexity__: $\mathcal{O}(1)$
 
-
-
 ```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        max_streak = cur_streak = curr = 0
+        res = list()
 
+        node = root
+        while node:
+            if node.left:
+                friend = node.left
+                while friend.right:
+                    friend = friend.right
+
+                friend.right = node
+
+                left = node.left
+                node.left = None
+                node = left
+            else:
+                num = node.val
+                if num == curr:
+                    cur_streak += 1
+                else:
+                    curr = num
+                    cur_streak = 1
+                
+                if max_streak < cur_streak:
+                    res = list()
+                    max_streak = cur_streak
+                
+                if max_streak == cur_streak:
+                    res.append(num)
+                node = node.right
+            
+        return res
 ```
