@@ -94,3 +94,27 @@ class Solution:
         
         return False
 ```
+
+```Python
+class Solution:
+    def canBeIncreasing(self, nums: List[int]) -> bool:
+        found = False
+        n = len(nums)
+
+        for i in range(1, n):
+            # Check if found the non-increasing element
+            if nums[i] <= nums[i - 1]:
+                # Check if another non-increasing element has previously been found before
+                if found:
+                    return False
+                # Check if non-increasing element is in the middle of the array, or element before peak before non-increasing > non-increasing element
+                if i > 1 and nums[i] <= nums[i - 2]:            # [1,4,6,3,7]: remove 3
+                    # Remove the element before non-increasing
+                    nums[i] = nums[i - 1]
+                # Otherwise, non-incresing element in first or last positions, or element before peak before non-increasing < non-increasing element
+                else:                                           # [1,2,10,5,7]: remove 10
+                    nums[i - 1] = nums[i]                       
+                found = True
+
+        return True
+```
