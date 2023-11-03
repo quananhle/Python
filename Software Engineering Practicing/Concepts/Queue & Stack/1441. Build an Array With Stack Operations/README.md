@@ -1,6 +1,6 @@
 ## [1441. Build an Array With Stack Operations](https://leetcode.com/problems/build-an-array-with-stack-operations)
 
-```Tag```: ```Stack & Queue```
+```Tag```: ```Stack & Queue``` ```Two Pointers```
 
 #### Difficulty: Medium
 
@@ -63,3 +63,26 @@ __Constraints:__
 - ```target``` is strictly increasing.
 
 ---
+
+### Two Pointers
+
+```Python
+class Solution:
+    def buildArray(self, target: List[int], n: int) -> List[str]:
+        res = list()
+
+        m = len(target)
+        i = 1
+        for num in target:
+            while i < n + 1 and i != num:
+                i += 1
+                res.extend(["Push", "Pop"])
+            else:
+                if i == n + 2:
+                    break
+                elif i == num:
+                    res.append("Push")
+            i += 1
+        
+        return res
+```
