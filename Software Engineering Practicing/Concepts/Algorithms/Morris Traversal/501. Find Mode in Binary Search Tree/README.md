@@ -393,6 +393,57 @@ class Solution:
         max_streak = cur_streak = curr = 0
         res = list()
 
+        def count_streak(num):
+            nonlocal max_streak, cur_streak, curr, res
+
+            if num == curr:
+                cur_streak += 1
+            else:
+                curr = num
+                cur_streak = 1
+            
+            if max_streak < cur_streak:
+                res = list()
+                max_streak = cur_streak
+            
+            if max_streak == cur_streak:
+                res.append(num)
+
+        node = root
+        while node:
+            if node.left:
+                friend = node.left
+                while friend.right and friend.right != node:
+                    friend = friend.right
+                
+                if not friend.right:
+                    friend.right = node
+                    node = node.left
+                else:
+                    friend.right = None
+                    count_streak(node.val)
+                    node = node.right
+            else:
+                count_streak(node.val)
+                node = node.right
+        
+        return res
+```
+
+#### Modify Tree
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        max_streak = cur_streak = curr = 0
+        res = list()
+
         node = root
         while node:
             if node.left:
