@@ -46,6 +46,19 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+```Python
+class Solution:
+    def canBeIncreasing(self, nums: List[int]) -> bool:
+        # Time Limit Exceeded
+        for i in range(len(nums)):
+            new_arr = nums[:i] + nums[i+1:]
+            if new_arr == sorted(set(new_arr)):
+                return True
+        return False
+```
+
 ### One Pass
 
 ```Python
