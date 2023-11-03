@@ -273,7 +273,7 @@ __Follow up__: Could you do that without using any extra space? (Assume that the
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\matcal{O}(n)$
+- __Time Complexity__: $\mathcal{O}(n)$
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
