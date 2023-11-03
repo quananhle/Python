@@ -342,12 +342,21 @@ Furthermore, when we are the green node, how do we get back to the blue nodes? L
 
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/12.png)
 
+You may notice that some nodes will not have a friend. Namely, a node will not have a friend if it does not have a left child.
 
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/13.png)
 
+Morris traversal takes advantage of the following facts:
 
+> All friends are unique. That is, a node cannot be the friend of more than one node.
+>
+> Friend nodes do not have the right children. This is because, by definition, we find friend nodes by traversing right until there is no right child.
 
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/14.png)
 
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/15.png)
 
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/16.png)
 
 __Complexity Analysis__
 
