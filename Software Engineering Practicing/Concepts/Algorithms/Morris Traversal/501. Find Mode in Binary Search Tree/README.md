@@ -39,6 +39,11 @@ __Constraints:__
 
 ### In-order Traversal
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
 #### Iterative In-order Traversal
 
 ```Python
@@ -71,6 +76,11 @@ class Solution:
 ```
 
 ### Depth-First Search
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 #### Recursive DFS
 
@@ -137,6 +147,11 @@ class Solution:
 
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/bfs.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -171,6 +186,11 @@ class Solution:
 ---
 
 ### Binay Search Tree Property
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 #### Recursive Inorder Traversal
 
@@ -232,7 +252,7 @@ class Solution:
 #         self.right = right
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
-        max_streak = cur_streak = curr = ans = 0
+        max_streak = cur_streak = curr = 0
         res = list()
 
         def dfs(node):
@@ -312,10 +332,27 @@ __Follow up__: Could you do that without using any extra space? (Assume that the
 
 ### Morris Traversal
 
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/10.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(n)$
 - __Space Complexity__: $\mathcal{O}(1)$
+
+
 
 ```Python
 
