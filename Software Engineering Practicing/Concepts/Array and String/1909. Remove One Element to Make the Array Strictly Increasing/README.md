@@ -45,3 +45,39 @@ __Constraints:__
 - $1 \le nums[i] \le 1000$
 
 ---
+
+### One Pass
+
+```Python
+class Solution:
+    def canBeIncreasing(self, nums: List[int]) -> bool:
+        n = len(nums)
+        found = False
+        idx = 0
+
+        # Check if there are multiple non-increasing elements
+        for i in range(1, n):
+            if nums[i] <= nums[i - 1]:
+                # Get the index of the non-increasing elements
+                idx = i - 1
+                if not found:
+                    found = True
+                else:
+                    return False
+        
+        # Check if the array is already strictly increasing
+        if not found:
+            return True
+        
+        # Check if the non-increasing element is in first or last positions
+        if idx == 0 or idx == n - 2:
+            return True
+        
+        # Check if non-increasing element is in the middle of the array
+        # [1,2,1,3,4,5] -> [1,2,(1),3,4,5]: check elements before and after non-increasing element
+        # [3,4,5,6,1,7] -> [3,4,5,6,(1),7]: check elements in second to last position
+        if nums[idx - 1] < nums[idx + 1] or (idx + 2 < n and nums[idx] < nums[idx + 2]):
+            return True
+        
+        return False
+```
