@@ -66,6 +66,11 @@ __Constraints:__
 
 ### Two Pointers
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def buildArray(self, target: List[int], n: int) -> List[str]:
