@@ -70,9 +70,8 @@ __Constraints:__
 class Solution:
     def buildArray(self, target: List[int], n: int) -> List[str]:
         res = list()
-
-        m = len(target)
         i = 1
+
         for num in target:
             while i < n + 1 and i != num:
                 i += 1
@@ -82,6 +81,23 @@ class Solution:
                     break
                 elif i == num:
                     res.append("Push")
+            i += 1
+        
+        return res
+```
+
+```Python
+class Solution:
+    def buildArray(self, target: List[int], n: int) -> List[str]:
+        res = list()
+        i = 0
+
+        for num in target:
+            while i < num - 1:
+                i += 1
+                res.extend(["Push", "Pop"])
+
+            res.append("Push")
             i += 1
         
         return res
