@@ -334,11 +334,13 @@ __Follow up__: Could you do that without using any extra space? (Assume that the
 
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/10.png)
 
+In the above tree, we start at the root and move to the left child. Once we are finished fully handling the left subtree, we then handle the root, and finally the right subtree. The reason we use extra stack space during DFS is to "remember" the root and right subtree. Think about it: if we move to ```root.left```, how can we get back to ```root``` and thus ```root.right```?
 
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/11.png)
 
+Furthermore, when we are the green node, how do we get back to the blue nodes? Let's assign each node a friend. A node's friend is the rightmost node in the left subtree. That is, to find the friend of ```node```, we first do ```node = node.left```, then do ```node = node.right``` until there is no right child.
 
-
-
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/12.png)
 
 
 
