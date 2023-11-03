@@ -332,6 +332,8 @@ __Follow up__: Could you do that without using any extra space? (Assume that the
 
 ### Morris Traversal
 
+#### Intuition
+
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/10.png)
 
 In the above tree, we start at the root and move to the left child. Once we are finished fully handling the left subtree, we then handle the root, and finally the right subtree. The reason we use extra stack space during DFS is to "remember" the root and right subtree. Think about it: if we move to ```root.left```, how can we get back to ```root``` and thus ```root.right```?
@@ -357,6 +359,24 @@ Morris traversal takes advantage of the following facts:
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/15.png)
 
 ![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/16.png)
+
+#### Algorithm
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/17.png)
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/18.png)
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/19.png)
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/20.png)
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/21.png)
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/22.png)
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/25.png)
+
+![image](https://leetcode.com/problems/find-mode-in-binary-search-tree/Figures/501/26.png)
 
 __Complexity Analysis__
 
