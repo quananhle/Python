@@ -223,6 +223,47 @@ class Solution:
         return res
 ```
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        max_streak = cur_streak = curr = ans = 0
+        res = list()
+
+        def dfs(node):
+            nonlocal max_streak, cur_streak, curr, res
+            # Base case
+            if not node:
+                return None
+            
+            # Inorder traversal
+            dfs(node.left)
+
+            num = node.val
+            if num == curr:
+                cur_streak += 1
+            else:
+                curr = num
+                cur_streak = 1
+            
+            if max_streak < cur_streak:
+                res = list()
+                max_streak = cur_streak
+            
+            if max_streak == cur_streak:
+                res.append(num)
+            
+            dfs(node.right)
+
+        dfs(root)
+        return res
+```
+
 #### Iterative Inorder Traversal
 
 ```Python
