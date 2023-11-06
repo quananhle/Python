@@ -46,17 +46,22 @@ __Constraints:__
 
 ### Priority Queue
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}((m + n) \cdot \log n)$. $m$ calls to ```reserve()``` or ```unreserve()```, and initializing the ```SeatManager``` take $\mathcal{O}(n \cdot \log n)$ for iterating through ```n``` seats and push into heap for $\mathcal{O}(\log n)$ time.
+- __Space Complexity__: $\mathcal{O}(n)$
+
 ```Python
 class SeatManager:
 
-    def __init__(self, n: int):
+    def __init__(self, n: int):                                     # O(nlogn)
         self.available_seats = [i for i in range(1, n + 1)]
 
-    def reserve(self) -> int:
+    def reserve(self) -> int:                                       # O(logn)
         seat = heapq.heappop(self.available_seats)
         return seat
 
-    def unreserve(self, seatNumber: int) -> None:
+    def unreserve(self, seatNumber: int) -> None:                   # O(logn)
         heapq.heappush(self.available_seats, seatNumber)
 
 # Your SeatManager object will be instantiated and called as such:
