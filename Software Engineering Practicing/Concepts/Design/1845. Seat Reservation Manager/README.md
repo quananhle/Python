@@ -14,8 +14,8 @@ Implement the ```SeatManager``` class:
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input
 ["SeatManager", "reserve", "reserve", "unreserve", "reserve", "reserve", "reserve", "reserve", "unreserve"]
 [[5], [], [], [2], [], [], [], [], [5]]
@@ -32,14 +32,14 @@ seatManager.reserve();    // The available seats are [3,4,5], so return the lowe
 seatManager.reserve();    // The available seats are [4,5], so return the lowest of them, which is 4.
 seatManager.reserve();    // The only available seat is seat 5, so return 5.
 seatManager.unreserve(5); // Unreserve seat 5, so now the available seats are [5].
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= n <= 105
-1 <= seatNumber <= n
-For each call to reserve, it is guaranteed that there will be at least one unreserved seat.
-For each call to unreserve, it is guaranteed that seatNumber will be reserved.
-At most 105 calls in total will be made to reserve and unreserve.
+- $1 \le n \le 10^5$
+- $1 \le seatNumber \le n$
+- For each call to ```reserve```, it is guaranteed that there will be at least one unreserved seat.
+- For each call to ```unreserve```, it is guaranteed that ```seatNumber``` will be reserved.
+- At most $10^5$ calls in total will be made to ```reserve``` and ```unreserve```.
 
 ---
