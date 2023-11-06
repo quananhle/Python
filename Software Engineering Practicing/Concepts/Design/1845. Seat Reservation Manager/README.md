@@ -1,6 +1,6 @@
 ## [1845. Seat Reservation Manager](https://leetcode.com/problems/seat-reservation-manager)
 
-```Tag```: ```Design``` ```Hash Set``` 
+```Tag```: ```Design``` ```Priority Queue``` ```Hash Set```
 
 #### Difficulty: Medium
 
@@ -43,6 +43,28 @@ __Constraints:__
 - At most $10^5$ calls in total will be made to ```reserve``` and ```unreserve```.
 
 ---
+
+### Priority Queue
+
+```Python
+class SeatManager:
+
+    def __init__(self, n: int):
+        self.available_seats = [i for i in range(1, n + 1)]
+
+    def reserve(self) -> int:
+        seat = heapq.heappop(self.available_seats)
+        return seat
+
+    def unreserve(self, seatNumber: int) -> None:
+        heapq.heappush(self.available_seats, seatNumber)
+
+# Your SeatManager object will be instantiated and called as such:
+# obj = SeatManager(n)
+# param_1 = obj.reserve()
+# obj.unreserve(seatNumber)
+```
+
 
 ### Hash Set
 
