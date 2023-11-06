@@ -264,10 +264,10 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [304. Range Sum Query 2D - Immutable](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/304.%20Range%20Sum%20Query%202D%20-%20Immutable) ```Prefix Sum``` ```Dynamic Programming```
 - :warning::warning: [341. Flatten Nested List Iterator](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/341.%20Flatten%20Nested%20List%20Iterator) ```Recursion```
 - :warning::warning: [348. Design Tic-Tac-Toe](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Apple/348.%20Design%20Tic-Tac-Toe) ```Matrix```
-- :four_leaf_clover: [703. K<sup>th</sup> Largest Element in a Stream](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Heap/703.%20Kth%20Largest%20Element%20in%20a%20Stream) ```Heap```
+- :four_leaf_clover: [703. K<sup>th</sup> Largest Element in a Stream](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Heap/703.%20Kth%20Largest%20Element%20in%20a%20Stream) ```Priority Queue```
 - :four_leaf_clover: [705. Design HashSet](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/705.%20Design%20HashSet) ```Linked List``` ```Binary Search Tree```
 - :four_leaf_clover: [706. Design HashMap](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/Hash%20Map/706.%20Design%20HashMap) ```Array & String```
-- :no_entry::no_entry::no_entry: [716. Max Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/716.%20Max%20Stack) ```Linked List``` ```Heap```
+- :no_entry::no_entry::no_entry: [716. Max Stack](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/LinkedIn/716.%20Max%20Stack) ```Linked List``` ```Priority Queue```
 - :warning::warning: [901. Online Stock Span](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/901.%20Online%20Stock%20Span) ```Monotonic Stack```
 - :four_leaf_clover: [933. Number of Recent Calls](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/933.%20Number%20of%20Recent%20Calls) ```Queue```
 - :warning::warning: [1146. Snapshot Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1146.%20Snapshot%20Array) ```Binary Search``` ```Hash Map```
@@ -275,7 +275,8 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [1472. Design Browser History](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1472.%20Design%20Browser%20History) ```Linked List```
 - :warning::warning: [1538. Guess the Majority in a Hidden Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/1538.%20Guess%20the%20Majority%20in%20a%20Hidden%20Array)
 - :four_leaf_clover: [1603. Design Parking System](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1603.%20Design%20Parking%20System) ```Hash Table```
-- :warning::warning: [2336. Smallest Number in Infinite Set](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/2336.%20Smallest%20Number%20in%20Infinite%20Set) ```Heap```
+- :warning::warning: [1845. Seat Reservation Manager](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Design/1845.%20Seat%20Reservation%20Manager) ```Priority Queue``` ```Sorted Set```
+- :warning::warning: [2336. Smallest Number in Infinite Set](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/2336.%20Smallest%20Number%20in%20Infinite%20Set) ```Priority Queue```
 
 - Implement Stack using Queues
 - Design Linked List
