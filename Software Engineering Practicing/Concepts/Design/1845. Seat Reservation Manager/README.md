@@ -1,6 +1,6 @@
 ## [1845. Seat Reservation Manager](https://leetcode.com/problems/seat-reservation-manager)
 
-```Tag```:
+```Tag```: ```Design``` ```Hash Set``` 
 
 #### Difficulty: Medium
 
@@ -43,3 +43,29 @@ __Constraints:__
 - At most $10^5$ calls in total will be made to ```reserve``` and ```unreserve```.
 
 ---
+
+### Hash Set
+
+```Python
+class SeatManager:
+
+    def __init__(self, n: int):
+        self.seats = [i for i in range(1, n + 1)]
+        self.curr_available = 0
+        self.available = set()
+
+    def reserve(self) -> int:
+        if not self.available:
+            self.curr_available += 1
+            return self.curr_available
+
+        for i, seat in enumerate(self.seats):
+            if seat == 0:
+                self.seats[i] = i + 1
+                self.available.remove(i + 1)
+                return i + 1
+
+    def unreserve(self, seatNumber: int) -> None:
+        self.seats[seatNumber - 1] = 0
+        self.available.add(seatNumber)
+```
