@@ -103,15 +103,20 @@ class SeatManager:
 
 ### Hash Set
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$. $m$ calls to ```reserve()``` or ```unreserve()```.
+- __Space Complexity__: $\mathcal{O}(n)$
+
 ```Python
 class SeatManager:
 
-    def __init__(self, n: int):
+    def __init__(self, n: int):                                     # O(nlogn)
         self.seats = [i for i in range(1, n + 1)]
         self.curr_available = 0
         self.available = set()
 
-    def reserve(self) -> int:
+    def reserve(self) -> int:                                       # O(n)   
         if not self.available:
             self.curr_available += 1
             return self.curr_available
@@ -122,7 +127,35 @@ class SeatManager:
                 self.available.remove(i + 1)
                 return i + 1
 
-    def unreserve(self, seatNumber: int) -> None:
+    def unreserve(self, seatNumber: int) -> None:                   # O(logn)
         self.seats[seatNumber - 1] = 0
         self.available.add(seatNumber)
+```
+
+### Sorted Set
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot \log n)$. $m$ calls to ```reserve()``` or ```unreserve()```.
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+from sortedcontainers import SortedSet
+class SeatManager:
+
+    def __init__(self, n: int):                                     # O(1)
+        self.available_seats = SortedSet()
+        self.curr_available = 1
+
+    def reserve(self) -> int:                                       # O(logn)
+        if not self.available_seats:
+            seat = self.curr_available
+            self.curr_available += 1
+            return seat
+
+        seat = self.available_seats.pop(0)
+        return seat
+
+    def unreserve(self, seatNumber: int) -> None:                   # O(logn)
+        self.available_seats.add(seatNumber)
 ```
