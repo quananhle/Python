@@ -70,6 +70,36 @@ class SeatManager:
 # obj.unreserve(seatNumber)
 ```
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot \log n)$. $m$ calls to ```reserve()``` or ```unreserve()```.
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+class SeatManager:
+
+    def __init__(self, n: int):                                     # O(1)
+        self.available_seats = []
+        self.curr_available = 1
+
+    def reserve(self) -> int:                                       # O(logn)
+        if not self.available_seats:
+            seat = self.curr_available
+            self.curr_available += 1
+            return seat
+
+        seat = heapq.heappop(self.available_seats)
+        return seat
+
+    def unreserve(self, seatNumber: int) -> None:                   # O(logn)
+        heapq.heappush(self.available_seats, seatNumber)
+
+# Your SeatManager object will be instantiated and called as such:
+# obj = SeatManager(n)
+# param_1 = obj.reserve()
+# obj.unreserve(seatNumber)
+```
+
 
 ### Hash Set
 
