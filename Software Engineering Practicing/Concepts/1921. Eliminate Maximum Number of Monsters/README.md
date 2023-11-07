@@ -1,6 +1,6 @@
 ## [1921. Eliminate Maximum Number of Monsters](https://leetcode.com/problems/eliminate-maximum-number-of-monsters)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Priority Queue```
 
 #### Difficulty: Medium
 
@@ -54,3 +54,9 @@ __Constraints:__
 - $1 \le dist[i], speed[i] \le 10^5$
 
 ---
+
+### Sort
+
+```Python
+
+```
