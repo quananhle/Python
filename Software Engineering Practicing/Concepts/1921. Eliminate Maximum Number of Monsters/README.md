@@ -167,3 +167,49 @@ class Solution:
         
         return kills
 ```
+
+```Python
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        time = list()
+        n = len(dist)
+
+        for i in range(n):
+           time.append(dist[i] / speed[i])
+
+        # First monster to be killed
+        heapq.heapify(time)
+        heapq.heappop(time)
+        kills = 1
+        minute_passed = 1
+
+        while time:
+            if heapq.heappop(time) <= minute_passed:
+                break
+
+            minute_passed += 1
+            kills += 1
+        
+        return kills
+```
+
+```Python
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        time = list()
+        n = len(dist)
+
+        for i in range(n):
+            heapq.heappush(time, dist[i] / speed[i])
+
+        kills = 0
+        minute_passed = 0
+        while time:
+            if heapq.heappop(time) <= minute_passed:
+                break
+
+            minute_passed += 1
+            kills += 1
+        
+        return kills
+```
