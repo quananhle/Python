@@ -54,6 +54,6 @@ __Constraints:__
 - $0 \le right.length \le n + 1$
 - $0 \le right[i] \le n$
 - $1 \le left.length + right.length \le n + 1$
-- $All values of left and right are unique, and each value can appear only in one of the two arrays.$
+- All values of ```left``` and ```right``` are unique, and each value can appear only in one of the two arrays.
 
 ---
