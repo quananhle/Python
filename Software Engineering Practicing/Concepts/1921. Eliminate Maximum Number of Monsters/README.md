@@ -94,3 +94,28 @@ class Solution:
 
         return kills
 ```
+
+```Python
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        time = list()
+        n = len(dist)
+
+        for i in range(n):
+            time.append(dist[i] / speed[i])
+        
+        time.sort()
+
+        kills = 1
+        minute_passed = 0
+
+        # First monster is always killed, so start from the second monster
+        for i, e in enumerate(time[1:]):
+            minute_passed += 1
+            if e - minute_passed <= 0:
+                break
+
+            kills += 1
+
+        return kills
+```
