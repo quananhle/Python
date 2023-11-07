@@ -127,5 +127,26 @@ class Solution:
 ### Heap/Priority Queue
 
 ```Python
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        time = list()
+        n = len(dist)
 
+        for i in range(n):
+            heapq.heappush(time, dist[i] / speed[i])
+
+        # First monster is always to be killed
+        heapq.heappop(time)
+        kills = 1
+        
+        minute_passed = 0
+        while time:
+            minute_passed += 1
+            monster = heapq.heappop(time)
+            if monster - minute_passed <= 0:
+                break
+            
+            kills += 1
+        
+        return kills
 ```
