@@ -121,7 +121,24 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        time = list()
+        n = len(dist)
 
+        for i in range(n):
+            time.append(dist[i] / speed[i])
+        
+        time.sort()
+        kills = 0
+
+        for i, e in enumerate(time):
+            if e <= i:
+                break
+
+            kills += 1
+
+        return kills
 ```
 
 ### Heap/Priority Queue
