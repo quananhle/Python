@@ -57,6 +57,37 @@ __Constraints:__
 
 ### Sort
 
-```Python
+__Sort by Travel Time__
 
+```Python
+        time = list()
+        n = len(dist)
+
+        # Get the travel time needed for all monsters to arrive the city
+        for i in range(n):
+            time.append(dist[i] / speed[i])
+        
+        time.sort()
+
+        kills = 0
+        first = True
+        minute_passed = 0
+
+        for i, e in enumerate(time):
+            # Player goes first, monster is always killed in the first round
+            if first:
+                first = False
+                kills += 1
+                continue
+
+            # Increment the time passed after every turn
+            minute_passed += 1
+            # Check if monster has arrived the city
+            if e - minute_passed <= 0:
+                break
+
+            # Increment kills after every turn
+            kills += 1
+
+        return kills
 ```
