@@ -60,13 +60,16 @@ __Constraints:__
 __Sort by Travel Time__
 
 ```Python
+class Solution:
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
         time = list()
         n = len(dist)
 
         # Get the travel time needed for all monsters to arrive the city
         for i in range(n):
             time.append(dist[i] / speed[i])
-        
+
+        # Sort the time to select from closest to farthest monster to kill
         time.sort()
 
         kills = 0
