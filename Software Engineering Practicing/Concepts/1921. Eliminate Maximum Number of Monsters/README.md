@@ -57,6 +57,11 @@ __Constraints:__
 
 ### Sort
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \cdot \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
 __Sort by Travel Time__
 
 ```Python
@@ -142,6 +147,11 @@ class Solution:
 ```
 
 ### Heap/Priority Queue
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \cdot \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 ```Python
 class Solution:
