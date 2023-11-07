@@ -17,6 +17,7 @@ Given an integer ```n``` and two integer arrays ```left``` and ```right```, the 
 __Example 1:__
 
 ![image](https://assets.leetcode.com/uploads/2020/06/17/ants.jpg)
+```
 Input: n = 4, left = [4,3], right = [0,1]
 Output: 4
 Explanation: In the image above:
@@ -25,30 +26,34 @@ Explanation: In the image above:
 -The ant at index 3 is named C and going to the left.
 -The ant at index 4 is named D and going to the left.
 The last moment when an ant was on the plank is t = 4 seconds. After that, it falls immediately out of the plank. (i.e., We can say that at t = 4.0000000001, there are no ants on the plank).
+```
 
 __Example 2:__
 
 ![image](https://assets.leetcode.com/uploads/2020/06/17/ants2.jpg)
+```
 Input: n = 7, left = [], right = [0,1,2,3,4,5,6,7]
 Output: 7
 Explanation: All ants are going to the right, the ant at index 0 needs 7 seconds to fall.
+```
 
 __Example 3:__
 
 ![image](https://assets.leetcode.com/uploads/2020/06/17/ants3.jpg)
+```
 Input: n = 7, left = [0,1,2,3,4,5,6,7], right = []
 Output: 7
 Explanation: All ants are going to the left, the ant at index 7 needs 7 seconds to fall.
- 
+```
 
 __Constraints:__
 
 - $1 \le n \le 10^4$
-- 0 <= left.length <= n + 1
-- 0 <= left[i] <= n
-- 0 <= right.length <= n + 1
-- 0 <= right[i] <= n
-- 1 <= left.length + right.length <= n + 1
-- All values of left and right are unique, and each value can appear only in one of the two arrays.
+- $0 \le left.length \le n + 1$
+- $0 \le left[i] \le n$
+- $0 \le right.length \le n + 1$
+- $0 \le right[i] \le n$
+- $1 \le left.length + right.length \le n + 1$
+- $All values of left and right are unique, and each value can appear only in one of the two arrays.$
 
 ---
