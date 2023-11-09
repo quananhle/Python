@@ -12,8 +12,8 @@ A substring is a contiguous sequence of characters within a string.
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: s = "abbcccaa"
 Output: 13
 Explanation: The homogenous substrings are listed as below:
@@ -25,20 +25,24 @@ Explanation: The homogenous substrings are listed as below:
 "cc"  appears 2 times.
 "ccc" appears 1 time.
 3 + 1 + 2 + 1 + 3 + 2 + 1 = 13.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: s = "xy"
 Output: 2
 Explanation: The homogenous substrings are "x" and "y".
-Example 3:
+```
 
+__Example 3:__
+```
 Input: s = "zzzzz"
 Output: 15
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= s.length <= 105
-s consists of lowercase letters.
+- 1 <= s.length <= 105
+- s consists of lowercase letters.
 
 ---
