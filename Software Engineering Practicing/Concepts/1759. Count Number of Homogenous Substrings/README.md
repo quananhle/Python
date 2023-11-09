@@ -1,6 +1,6 @@
 ## [1759. Count Number of Homogenous Substrings](https://leetcode.com/problems/count-number-of-homogenous-substrings)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Sliding Window```
 
 #### Difficulty: Medium
 
@@ -46,3 +46,24 @@ __Constraints:__
 - ```s``` consists of lowercase letters.
 
 ---
+
+###
+
+```Python
+class Solution:
+    def countHomogenous(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+        curr_streak = 0
+        MOD = 10**9 + 7
+
+        for i in range(n):
+            if i == 0 or s[i] == s[i - 1]:
+                curr_streak += 1
+            else:
+                curr_streak = 1
+            
+            ans = (ans + curr_streak) % MOD
+
+        return ans
+```
