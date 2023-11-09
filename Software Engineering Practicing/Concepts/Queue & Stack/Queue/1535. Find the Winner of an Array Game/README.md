@@ -75,6 +75,25 @@ class Solution:
 
 If no player can win before seeing the max player, max player will always be a winner, any player that comes after the max player does not matter.
 
-```Python
+Hence, the moves to the end of the array do not matter.
 
+```Python
+class Solution:
+    def getWinner(self, arr: List[int], k: int) -> int:
+        n = len(arr)
+        max_element = max(arr)
+        player_1 = arr[0]
+        streak = 0
+
+        for i in range(1, n):
+            player_2 = arr[i]
+
+            if player_1 < player_2:
+                streak = 1
+            else:
+                player_1 = player_2
+                streak += 1
+            
+            if streak == k or player_1 == max_element:
+                return player_1
 ```
