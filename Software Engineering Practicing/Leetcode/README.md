@@ -592,6 +592,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ### Queue
 
 - :warning::warning: [649. Dota2 Senate](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/649.%20Dota2%20Senate)
+- :warning::warning: [1535. Find the Winner of an Array Game](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Queue%20%26%20Stack/Queue/1535.%20Find%20the%20Winner%20of%20an%20Array%20Game)
 
 #### Monotonic Queue
 
