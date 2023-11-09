@@ -42,7 +42,7 @@ Output: 15
 
 __Constraints:__
 
-- 1 <= s.length <= 105
-- s consists of lowercase letters.
+- $1 \le s.length \le 10^5$
+- $s consists of lowercase letters.$
 
 ---
