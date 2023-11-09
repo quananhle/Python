@@ -49,7 +49,7 @@ __Constraints:__
 
 ![image](https://github.com/quananhle/Python/assets/35042430/d0fd0301-2656-463f-a70e-70551f99cb1e)
 
-###
+### Counting Streak
 
 ```Python
 class Solution:
@@ -76,6 +76,25 @@ class Solution:
 class Solution:
     def countHomogenous(self, s: str) -> int:
         n = len(s)
+        ans = 0
+        start = end = 0
+        MOD = 10**9 + 7
+
+        while end < n:
+            c = s[end]
+            tmp_cnt = 0
+            while end < n and s[end] == c:
+                tmp_cnt += 1
+                ans = (ans + tmp_cnt) % MOD
+                end += 1
+            
+        return ans
+```
+
+```Python
+class Solution:
+    def countHomogenous(self, s: str) -> int:
+        n = len(s)
         start = 0
         MOD = 10**9 + 7
         ans = 0
@@ -88,5 +107,26 @@ class Solution:
                 start = end
                 ans += 1
         
+        return ans % MOD
+```
+
+```Python
+class Solution:
+    def countHomogenous(self, s: str) -> int:
+        n = len(s)
+        start = end = 0
+        MOD = 10**9 + 7
+        ans = 0
+
+        while end < n:
+            while end < n and s[start] == s[end]:
+                end += 1
+
+            window = end - start
+            ans += window * (window + 1) // 2
+            ans %= MOD
+            
+            start = end
+
         return ans % MOD
 ```
