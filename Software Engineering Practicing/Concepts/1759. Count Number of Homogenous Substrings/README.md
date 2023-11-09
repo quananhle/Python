@@ -47,6 +47,8 @@ __Constraints:__
 
 ---
 
+![image](https://github.com/quananhle/Python/assets/35042430/d0fd0301-2656-463f-a70e-70551f99cb1e)
+
 ###
 
 ```Python
@@ -66,4 +68,25 @@ class Solution:
             ans = (ans + curr_streak) % MOD
 
         return ans
+```
+
+### Sliding Window
+
+```Python
+class Solution:
+    def countHomogenous(self, s: str) -> int:
+        n = len(s)
+        start = 0
+        MOD = 10**9 + 7
+        ans = 0
+
+        for end in range(n):
+            left, right = s[start], s[end]
+            if left == right:
+                ans += end - start + 1
+            else:
+                start = end
+                ans += 1
+        
+        return ans % MOD
 ```
