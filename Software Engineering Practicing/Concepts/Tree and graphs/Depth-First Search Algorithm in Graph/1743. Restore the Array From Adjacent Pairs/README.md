@@ -46,3 +46,40 @@ __Constraints:__
 - There exists some nums that has ```adjacentPairs``` as its pairs.
 
 ---
+
+
+
+
+### Iterative Linked List Path
+
+```Python
+class Solution:
+    def restoreArray(self, adjacentPairs: List[List[int]]) -> List[int]:
+        n = len(adjacentPairs)
+
+        adjacent_graph = collections.defaultdict(list)
+        for u, v in adjacentPairs:
+            adjacent_graph[u].append(v)
+            adjacent_graph[v].append(u)
+
+        m = len(adjacent_graph)
+
+        root = None
+        for node in adjacent_graph:
+            if len(adjacent_graph[node]) == 1:
+                root = node
+                break
+
+        curr = root
+        res = [root]
+        prev = None
+
+        while len(res) < m:
+            for next in adjacent_graph[curr]:
+                if next != prev:
+                    res.append(next)
+                    curr, prev = next, curr
+                    break
+        
+        return res
+```
