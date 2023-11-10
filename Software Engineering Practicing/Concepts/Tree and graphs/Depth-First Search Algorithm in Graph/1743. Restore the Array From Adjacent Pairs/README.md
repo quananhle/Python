@@ -47,8 +47,37 @@ __Constraints:__
 
 ---
 
+### Depth-First Search
 
+```Python
+class Solution:
+    def restoreArray(self, adjacentPairs: List[List[int]]) -> List[int]:
+        n = len(adjacentPairs)
 
+        adjacent_graph = collections.defaultdict(list)
+        for u, v in adjacentPairs:
+            adjacent_graph[u].append(v)
+            adjacent_graph[v].append(u)
+
+        m = len(adjacent_graph)
+
+        start = None
+        for node in adjacent_graph:
+            if len(adjacent_graph[node]) == 1:
+                start = node
+                break
+
+        res = list()
+        def dfs(curr, prev):
+            res.append(curr)
+            for next in adjacent_graph[curr]:
+                if next != prev:
+                    dfs(next, curr)
+        
+        dfs(start, None)
+
+        return res
+```
 
 ### Iterative Linked List Path
 
