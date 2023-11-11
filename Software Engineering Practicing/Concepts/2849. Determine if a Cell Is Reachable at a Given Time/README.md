@@ -34,7 +34,7 @@ Explanation: Starting at cell (3, 1), it takes at least 4 seconds to reach cell 
  
 __Constraints:__
 
-- $1 <= sx, sy, fx, fy <= 109$
-- $0 <= t <= 109$
+- $1 \le s_x, s_y, f_x, f_y \le 10^9$
+- $0 \le t \le 10^9$
     
 ---
