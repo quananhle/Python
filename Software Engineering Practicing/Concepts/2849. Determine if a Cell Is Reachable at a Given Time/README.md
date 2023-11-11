@@ -13,3 +13,28 @@ Return _```true``` if you can reach cell ```(fx, fy)``` after exactly ```t``` se
 A cell's adjacent cells are the 8 cells around it that share at least one corner with it. You can visit the same cell several times.
 
 ---
+
+__Example 1:__
+
+![image](https://assets.leetcode.com/uploads/2023/08/05/example2.svg)
+```
+Input: sx = 2, sy = 4, fx = 7, fy = 7, t = 6
+Output: true
+Explanation: Starting at cell (2, 4), we can reach cell (7, 7) in exactly 6 seconds by going through the cells depicted in the picture above. 
+```
+
+Example 2:
+
+![image](https://assets.leetcode.com/uploads/2023/08/05/example2.svg)
+```
+Input: sx = 3, sy = 1, fx = 7, fy = 3, t = 3
+Output: false
+Explanation: Starting at cell (3, 1), it takes at least 4 seconds to reach cell (7, 3) by going through the cells depicted in the picture above. Hence, we cannot reach cell (7, 3) at the third second.
+```
+ 
+__Constraints:__
+
+- $1 <= sx, sy, fx, fy <= 109$
+- $0 <= t <= 109$
+    
+---
