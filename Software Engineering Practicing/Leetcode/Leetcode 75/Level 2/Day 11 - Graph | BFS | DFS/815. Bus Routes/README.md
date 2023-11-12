@@ -31,12 +31,12 @@ Output: -1
 
 __Constraints:__
 
-- ```1 <= routes.length <= 500```.
-- 1 <= ```routes[i].length``` <= 10<sup>5</sup>
+- $1 \le routes.length \le 500$.
+- $1 \le routes[i].length \le 10^5$
 - All the values of ```routes[i]``` are unique.
-- ```sum(routes[i].length)``` <= 10<sup>5</sup>
-- 0 <= ```routes[i][j]``` < 10<sup>6</sup>
-- 0 <= ```source, target``` < 10<sup>6</sup>
+- $sum(routes[i].length) \le 10^5$
+- $0 \le routes[i][j] \lt 10^6$
+- $0 \le source, target \lt 10^6$
 
 ---
 
