@@ -175,6 +175,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [1578. Minimum Time to Make Rope Colorful](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1578.%20Minimum%20Time%20to%20Make%20Rope%20Colorful/) ```Greedy```
 - :warning::warning: [1679. Max Number of K-Sum Pairs](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1679.%20Max%20Number%20of%20K-Sum%20Pairs) ```Hash Map``` ```Sorting```
 - :four_leaf_clover: [1768. Merge Strings Alternately](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1768.%20Merge%20Strings%20Alternately)
+- :warning::warning: [1877. Minimize Maximum Pair Sum in Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1877.%20Minimize%20Maximum%20Pair%20Sum%20in%20Array) ```Sorting```
 
 #### [kSum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Templates/kSum)
 
