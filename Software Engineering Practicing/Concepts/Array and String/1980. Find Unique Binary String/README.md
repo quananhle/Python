@@ -1,6 +1,6 @@
 ## [1980. Find Unique Binary String](https://leetcode.com/problems/find-unique-binary-string)
 
-```Tag```:
+```Tag```: ```Recursion``` ```
 
 #### Difficulty: Medium
 
@@ -39,3 +39,30 @@ __Constraints:__
 
 ---
 
+### Recursion
+
+```Python
+class Solution:
+    def findDifferentBinaryString(self, nums: List[str]) -> str:
+        n = len(nums)
+        num_set = set(nums)
+        
+        def generate(curr):
+            num = ''.join(curr)
+            # Base case
+            if len(curr) == n:
+                if not num in num_set:
+                    return num
+                return ""
+            
+            add_zero = generate(curr + ['0'])
+            add_one = generate(curr + ['1'])
+            if add_zero:
+                return add_zero
+            elif add_one:
+                return add_one
+            else:
+                return ""
+        
+        return generate([])
+```
