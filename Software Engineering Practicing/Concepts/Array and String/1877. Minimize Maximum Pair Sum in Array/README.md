@@ -47,3 +47,17 @@ __Constraints:__
 
 To ensure the maximum pair sum is minimized, a potential strategy to pair up the smallest integer with the greatest integer and then second-smallest with the second-greatest and so on.
 
+```Python
+class Solution:
+    def minPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        ans = 0
+        
+        left, right = 0, n - 1
+        while left < right:
+            ans = max(ans, nums[left] + nums[right])
+            left += 1; right -= 1
+        
+        return ans
+```
