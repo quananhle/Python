@@ -40,3 +40,10 @@ __Constraints:__
 - $1 \le nums[i] \le 105$
 
 ---
+
+### Sorting
+
+![image](https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/Figures/1877/1877A.png)
+
+To ensure the maximum pair sum is minimized, a potential strategy to pair up the smallest integer with the greatest integer and then second-smallest with the second-greatest and so on.
+
