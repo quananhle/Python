@@ -1,6 +1,6 @@
 ## [1980. Find Unique Binary String](https://leetcode.com/problems/find-unique-binary-string)
 
-```Tag```: ```Recursion``` ```
+```Tag```: ```Recursion```
 
 #### Difficulty: Medium
 
