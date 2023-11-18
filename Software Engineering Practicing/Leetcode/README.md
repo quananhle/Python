@@ -104,7 +104,7 @@
 - :warning::warning: [1004. Max Consecutive Ones III](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/1004.%20Max%20Consecutive%20Ones%20III)
 - :four_leaf_clover: [1065. Index Pairs of a String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1065.%20Index%20Pairs%20of%20a%20String) ```Trie``` ```Hash Set```
 - :warning::warning: [1493. Longest Subarray of 1's After Deleting One Element](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1493.%20Longest%20Subarray%20of%201's%20After%20Deleting%20One%20Element) ```Two Pointers```
-- :warning::warning: [1759. Count Number of Homogenous Substrings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/1759.%20Count%20Number%20of%20Homogenous%20Substrings)
+- :warning::warning: [1759. Count Number of Homogenous Substrings](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1759.%20Count%20Number%20of%20Homogenous%20Substrings)
 - :no_entry::no_entry::no_entry: [2009. Minimum Number of Operations to Make Array Continuous](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2009.%20Minimum%20Number%20of%20Operations%20to%20Make%20Array%20Continuous) ```Binary Search```
 
 - #### Cumulative Sum
