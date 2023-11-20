@@ -3,3 +3,13 @@
 ```Tag```: ```Hash Map```
 
 #### Difficulty: Medium
+
+
+
+
+---
+
+
+---
+
+![image](https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage/Figures/2391/2391A.png)
