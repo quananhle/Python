@@ -1,6 +1,6 @@
 ## [2391. Minimum Amount of Time to Collect Garbage](https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage)
 
-```Tag```: ```Hash Map``` ```Prefix Sum```
+```Tag```: ```Hash Map``` ```Prefix Sum``` ```Bitwise Manipulation```
 
 #### Difficulty: Medium
 
@@ -89,3 +89,27 @@ class Solution:
         
         return ans
 ```
+
+```Python
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        ans = 0
+        n = len(garbage)
+
+        for i in range(1, n - 1):
+            travel[i] = travel[i - 1] + travel[i]
+        
+        last_house = collections.defaultdict(int)
+        for i in range(n):
+            for trash in garbage[i]:
+                last_house[trash] = i
+            ans += len(garbage[i])
+        
+        trash_type = "MPG"
+        for trash in trash_type:
+            ans += last_house[trash] if last_house[trash] == 0 else travel[last_house[trash] - 1]
+        
+        return ans
+```
+
+### 
