@@ -1,6 +1,6 @@
 ## [1887. Reduction Operations to Make the Array Elements Equal](https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal)
 
-```Tag```: ```Sorting```
+```Tag```: ```Array & String``` ```Sorting```
 
 #### Difficulty: Medium
 
@@ -64,6 +64,11 @@ In fact, this idea extends to every position in the array!
 For each position, we can find the number of operations required to reduce the number to ```min``` by counting the number of steps we take down.
 
 ### Sorting
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \cdot \log{N})$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
