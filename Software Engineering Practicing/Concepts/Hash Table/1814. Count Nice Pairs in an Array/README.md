@@ -99,6 +99,13 @@ class Solution:
 
 ![image](https://github.com/quananhle/Python/assets/35042430/1c56d696-8717-4864-8648-72cdbc82338b)
 
+![image](https://leetcode.com/problems/count-nice-pairs-in-an-array/Figures/1814/1.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathca{O}(N)$
+- __Space Complexity__: $\mathca{O}(N)$
+
 ```Python
 class Solution:
     def countNicePairs(self, nums: List[int]) -> int:
