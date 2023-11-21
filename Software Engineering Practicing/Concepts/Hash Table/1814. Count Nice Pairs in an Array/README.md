@@ -103,8 +103,8 @@ class Solution:
 
 __Complexity Analysis__
 
-- __Time Complexity__: $\mathca{O}(N)$
-- __Space Complexity__: $\mathca{O}(N)$
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
