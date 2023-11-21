@@ -13,22 +13,24 @@ Return _the number of nice pairs of indices_. Since that number can be too large
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: nums = [42,11,1,97]
 Output: 2
 Explanation: The two pairs are:
  - (0,3) : 42 + rev(97) = 42 + 79 = 121, 97 + rev(42) = 97 + 24 = 121.
  - (1,2) : 11 + rev(1) = 11 + 1 = 12, 1 + rev(11) = 1 + 11 = 12.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: nums = [13,10,35,24,76]
 Output: 4
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= nums.length <= 105
-0 <= nums[i] <= 109
+- $1 \le nums.length \le 10^5$
+- $0 \le nums[i] \le 10^9$
 
 ---
