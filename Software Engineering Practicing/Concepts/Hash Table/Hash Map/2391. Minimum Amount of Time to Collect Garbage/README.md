@@ -64,6 +64,11 @@ __Constraints__:
 
 ### Hash Map + Prefix Sun
 
+__Complexity Analysis__
+
+- __Time Complexity__: O(N∗K)
+- __Space Complexity__: O(1)
+
 ```Python
 class Solution:
     def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
