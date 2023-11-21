@@ -60,6 +60,56 @@ __Constraints__:
 
 ---
 
+### Array & String
+
+```Python
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        metal_collect_time = paper_collect_time = glass_collect_time = 0
+        metal = paper = glass = 0
+        travel += [0]
+        travel_time = 0
+
+        for i, house in enumerate(garbage):
+            for trash in house:
+                if trash == 'M':
+                    metal += 1
+                    metal_collect_time = travel_time
+                if trash == 'P':
+                    paper += 1
+                    paper_collect_time = travel_time
+                if trash == 'G':
+                    glass += 1
+                    glass_collect_time = travel_time
+            travel_time += travel[i]
+        
+        return metal_collect_time + paper_collect_time + glass_collect_time + metal + paper + glass
+```
+
+```Python
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        metal_collect_time = paper_collect_time = glass_collect_time = 0
+        metal = paper = glass = 0
+        travel = [0] + travel
+        travel_time = 0
+
+        for i, house in enumerate(garbage):
+            travel_time += travel[i] 
+            for trash in house:
+                if trash == 'M':
+                    metal_collect_time = travel_time
+                if trash == 'P':
+                    paper_collect_time = travel_time
+                if trash == 'G':
+                    glass_collect_time = travel_time
+                metal += 'M' == trash
+                paper += 'P' == trash
+                glass += 'G' == trash
+        
+        return metal_collect_time + paper_collect_time + glass_collect_time + metal + paper + glass
+```
+
 ![image](https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage/Figures/2391/2391A.png)
 
 ### Hash Map + Prefix Sun
