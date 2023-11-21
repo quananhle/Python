@@ -66,8 +66,8 @@ __Constraints__:
 
 __Complexity Analysis__
 
-- __Time Complexity__: O(N∗K)
-- __Space Complexity__: O(1)
+- __Time Complexity__: $\mathcal{O}(N \cdot K)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -117,4 +117,8 @@ class Solution:
         return ans
 ```
 
-### 
+### OR
+
+```Python
+
+```
