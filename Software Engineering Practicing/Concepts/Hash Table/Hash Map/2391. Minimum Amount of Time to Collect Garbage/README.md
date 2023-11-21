@@ -189,3 +189,22 @@ class Solution:
 
         return ans
 ```
+
+### ✅ One Pass + Hash Map
+
+```Python
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        travel_time_needed = collections.defaultdict(int)
+        travel = [0] + travel
+        pickup_time = 0
+        travel_time = 0
+
+        for i, house in enumerate(garbage):
+            pickup_time += len(house)
+            travel_time += travel[i]
+            for trash in house:
+                travel_time_needed[trash] = travel_time
+        
+        return pickup_time + sum(travel_time_needed.values())
+```
