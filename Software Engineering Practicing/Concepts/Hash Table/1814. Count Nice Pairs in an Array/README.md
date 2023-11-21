@@ -1,6 +1,6 @@
 ## [1814. Count Nice Pairs in an Array](https://leetcode.com/problems/count-nice-pairs-in-an-array)
 
-```Tag```: ```Array & String``` ```Hash Map```
+```Tag```: ```Array & String``` ```Hash Map``` ```Math```
 
 #### Difficulty: Medium
 
@@ -89,6 +89,39 @@ class Solution:
                     memo[(nums[i], nums[j])] = 1
                     ans += 1
                     ans %= MOD
+
+        return ans % MOD
+```
+
+### Math
+
+#### Intuition
+
+![image](https://github.com/quananhle/Python/assets/35042430/1c56d696-8717-4864-8648-72cdbc82338b)
+
+```Python
+class Solution:
+    def countNicePairs(self, nums: List[int]) -> int:
+        MOD = 10**9 + 7
+
+        def reverse(num):
+            reversed_num = 0
+            while num > 0:
+                reversed_num = reversed_num * 10 + num % 10
+                num //= 10
+            return reversed_num
+
+        arr = list()
+        n = len(nums)
+        for i in range(n):
+            arr.append(nums[i] - reverse(nums[i]))
+
+        ans = 0
+        memo = collections.defaultdict(int)
+
+        for num in arr:
+            ans = (ans + memo[num]) % MOD
+            memo[num] += 1
 
         return ans % MOD
 ```
