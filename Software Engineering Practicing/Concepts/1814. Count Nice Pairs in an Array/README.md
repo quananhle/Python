@@ -34,3 +34,28 @@ __Constraints:__
 - $0 \le nums[i] \le 10^9$
 
 ---
+
+### Brute Force (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def countNicePairs(self, nums: List[int]) -> int:
+        MOD = 10**9 + 7
+
+        def reverse(num):
+            reversed_num = 0
+            while num > 0:
+                reversed_num = reversed_num * 10 + num % 10
+                num //= 10
+            return reversed_num
+
+        ans = 0
+        n = len(nums)
+        for i in range(n - 1):
+            for j in range(i + 1, n):
+                if nums[i] + reverse(nums[j]) == nums[j] + reverse(nums[i]):
+                    ans += 1
+                    ans %= MOD
+
+        return ans % MOD
+```
