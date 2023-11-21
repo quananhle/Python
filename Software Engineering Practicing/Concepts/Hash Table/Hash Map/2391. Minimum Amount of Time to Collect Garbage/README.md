@@ -69,31 +69,33 @@ __Complexity Analysis__
 - __Time Complexity__: $\mathcal{O}(N \cdot K)$
 - __Space Complexity__: $\mathcal{O}(1)$
 
+### Two Hash Maps
+
 ```Python
 class Solution:
     def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
-        ans = 0
+        last_house_schedule = collections.defaultdict(int)
+        pickup_schedule = collections.defaultdict(int)
+
+        for i, house in enumerate(garbage):
+            for trash in house:
+                last_house_schedule[trash] = i
+                pickup_schedule[trash] += 1
+
         n = len(garbage)
-        prefix_sum = [0] * n
-        prefix_sum[1] = travel[0]
-        for i in range(1, n - 1):
-            prefix_sum[i + 1] = prefix_sum[i] + travel[i]
-
-        schedule = collections.defaultdict(int)
-        last_house = collections.defaultdict(int)
-
-        for i in range(n):
-            for trash in garbage[i]:
-                last_house[trash] = i
-                schedule[trash] += 1
-
+        prefix_time_sum = [0] * n
+        for i in range(1, n):
+            prefix_time_sum[i] = travel[i - 1] + prefix_time_sum[i - 1]
+        
+        ans = 0
         garbage_type = "MPG"
         for trash in garbage_type:
-            if trash in schedule:
-                ans += prefix_sum[last_house[trash]] + schedule[trash]
-        
+            ans += pickup_schedule[trash] + prefix_time_sum[last_house_schedule[trash]]
+
         return ans
 ```
+
+### One Hash Map
 
 ```Python
 class Solution:
@@ -120,5 +122,20 @@ class Solution:
 ### OR
 
 ```Python
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        glass = paper = metal = 0
+        # Count total time needed to pick up all garbage, 1 minute each
+        ans = sum(len(g) for g in garbage)
 
+        # Iterate from the last house
+        for i in range(len(travel), 0, -1):
+            # Check which truck is needed to pick up garbage at the current house
+            glass |= 'G' in garbage[i]
+            paper |= 'P' in garbage[i]
+            metal |= 'M' in garbage[i]
+            # Count time needed to travel for the trucks to the current house
+            ans += travel[i - 1] * (glass + paper + metal)
+
+        return ans
 ```
