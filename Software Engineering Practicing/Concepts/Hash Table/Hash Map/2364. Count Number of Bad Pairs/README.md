@@ -35,3 +35,42 @@ __Constraints:__
 - $1 \le nums[i] \le 10^9$
 
 ---
+
+### Math
+
+#### Intuition
+
+```Number of bad pairs = number of total pairs - number of good pairs```
+
+- ```Total number of pairs``` = $n * (n - 1) // 2$
+- ```Good pairs``` = $i - nums[i] == j - nums[j]$
+- ```Bad pairs``` = $i - nums[i] != j - nums[j]$
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def countBadPairs(self, nums: List[int]) -> int:
+        # Number of bad pairs = number of total pairs - number of good pairs
+        # Total number of pairs = n * (n - 1) // 2
+        # Good pairs = i - nums[i] == j - nums[j]
+        # Bad pairs = i - nums[i] != j - nums[j]
+
+        good_pair_list = list()
+        n = len(nums)
+        total_pairs = n * (n - 1) // 2
+
+        for i in range(n):
+            good_pair_list.append(i - nums[i])
+
+        good_pairs = 0
+        memo = collections.defaultdict(int)
+        for num in good_pair_list:
+            good_pairs += memo[num]
+            memo[num] += 1
+
+        return total_pairs - good_pairs
+```
