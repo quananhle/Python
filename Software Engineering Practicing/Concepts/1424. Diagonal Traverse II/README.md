@@ -1,6 +1,6 @@
 ## [1424. Diagonal Traverse II](https://leetcode.com/problems/diagonal-traverse-ii)
 
-```Tag```:
+```Tag```: ```Matrix``` ```Depth-First Search``` ```Breadth-First Search```
 
 #### Difficulty: Medium
 
@@ -32,3 +32,38 @@ __Constraints:__
 - $1 \le nums[i][j] \le 10^5$
 
 ---
+
+### Brute Force
+
+#### Depth-First Search (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
+        longest = 0
+        for row in nums:
+            longest = max(longest, len(row))
+        
+        for row in nums:
+            if len(row) < longest:
+                row += [0] * (longest - len(row))
+
+        ROWS, COLS = len(nums), len(nums[0])
+        DIRECTIONS = [(-1, 1)]
+        res = list()
+
+        def dfs(row, col):
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return
+            
+            if nums[row][col] != 0:
+                res.append(nums[row][col])
+            [dfs(row + dx, col + dy) for dx, dy in DIRECTIONS]
+        
+        for row in range(ROWS):
+            dfs(row, 0)
+        for col in range(1, COLS):
+            dfs(row, col)
+
+        return res
+```
