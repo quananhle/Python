@@ -72,6 +72,11 @@ class Solution:
 
 ![image](https://leetcode.com/problems/diagonal-traverse-ii/Figures/1424/1.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 ```Python
 class Solution:
     def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
@@ -99,6 +104,12 @@ class Solution:
 We start a BFS from ```0, 0```. At each node ```row, col```, we first push ```row + 1, col``` to the queue and then ```row, col + 1```. Note that we only add a square to the queue if it both exists and has not been visited yet.
 
 How do we know if a square has been visited yet? We could use a hash set to keep track of visited squares, but there is a simpler way. We only need to consider the square ```row + 1, col``` (down) if we are at the start of a diagonal. Otherwise, for every other square on the diagonal, the square below it has already been visited by the right edge of the previous square.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(\sqrt{N})$
+
 
 ```Python
 class Solution:
