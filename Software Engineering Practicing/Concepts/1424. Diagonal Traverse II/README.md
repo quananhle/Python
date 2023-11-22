@@ -91,3 +91,29 @@ class Solution:
         
         return res
 ```
+
+### Optimized Breadth-First Search
+
+![image](https://leetcode.com/problems/diagonal-traverse-ii/Figures/1424/2.png)
+
+We start a BFS from ```0, 0```. At each node ```row, col```, we first push ```row + 1, col``` to the queue and then ```row, col + 1```. Note that we only add a square to the queue if it both exists and has not been visited yet.
+
+How do we know if a square has been visited yet? We could use a hash set to keep track of visited squares, but there is a simpler way. We only need to consider the square ```row + 1, col``` (down) if we are at the start of a diagonal. Otherwise, for every other square on the diagonal, the square below it has already been visited by the right edge of the previous square.
+
+```Python
+class Solution:
+    def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
+        queue = collections.deque([(0, 0)])
+        res = list()
+
+        while queue:
+            row, col = queue.popleft()
+            res.append(nums[row][col])
+
+            if col == 0 and row < len(nums) - 1:
+                queue.append((row + 1, col))
+            if col < len(nums[row]) - 1:
+                queue.append((row, col + 1))
+            
+        return res
+```
