@@ -579,6 +579,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [994. Rotting Oranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2010%20-%20Graph%20%7C%20DFS%20%7C%20BFS/994.%20Rotting%20Oranges)
 - :warning::warning: [1091. Shortest Path in Binary Matrix](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/1091.%20Shortest%20Path%20in%20Binary%20Matrix)
 - :warning::warning: [1197. Minimum Knight Moves](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Citadel/1197.%20Minimum%20Knight%20Moves) ```Depth-First Search``` ```Dijkstra's Algorithm```
+- :warning::warning: [1424. Diagonal Traverse II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/1424.%20Diagonal%20Traverse%20II) ```Hash Map```
 - :four_leaf_clover: [1572. Matrix Diagonal Sum](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1572.%20Matrix%20Diagonal%20Sum) ```Depth-First Search``` ```Matrix```
 - :warning::warning: [1660. Correct a Binary Tree](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/1660.%20Correct%20a%20Binary%20Tree) ```Binary Search```
 
