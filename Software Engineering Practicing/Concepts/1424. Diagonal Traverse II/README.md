@@ -1,6 +1,6 @@
 ## [1424. Diagonal Traverse II](https://leetcode.com/problems/diagonal-traverse-ii)
 
-```Tag```: ```Matrix``` ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Matrix``` ```Depth-First Search``` ```Breadth-First Search``` ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -65,5 +65,29 @@ class Solution:
         for col in range(1, COLS):
             dfs(row, col)
 
+        return res
+```
+
+### Diagonal Property
+
+![image](https://leetcode.com/problems/diagonal-traverse-ii/Figures/1424/1.png)
+
+```Python
+class Solution:
+    def findDiagonalOrder(self, nums: List[List[int]]) -> List[int]:
+        groups = collections.defaultdict(list)
+        ROWS = len(nums)
+        for row in range(ROWS - 1, -1, -1):
+            for col in range(len(nums[row])):
+                diagonal = row + col
+                groups[diagonal].append(nums[row][col])
+        
+        res = list()
+        curr = 0
+
+        while curr in groups:
+            res.extend(groups[curr])
+            curr += 1
+        
         return res
 ```
