@@ -1,6 +1,6 @@
 ## [1561. Maximum Number of Coins You Can Get](https://leetcode.com/problems/maximum-number-of-coins-you-can-get)
 
-```Tag```:
+```Tag```: ```Array & String```
 
 #### Difficulty: Medium
 
@@ -47,3 +47,20 @@ __Constraints:__
 - $1 \le piles[i] \le 10^4$
 
 ---
+
+### Sorting
+
+```Python
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+        # Time Limit Exceeded
+        piles.sort()
+        ans = 0
+
+        while piles:
+            alice = piles.pop()
+            ans += piles.pop()
+            piles = piles[1:]
+
+        return ans
+```
