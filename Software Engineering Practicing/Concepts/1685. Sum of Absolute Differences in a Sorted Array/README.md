@@ -34,3 +34,20 @@ __Constraints:__
 - $1 \le nums[i] \le nums[i + 1] \le 10^4$
 
 ---
+
+### Brute Force (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def getSumAbsoluteDifferences(self, nums: List[int]) -> List[int]:
+        res = list()
+        n = len(nums)
+
+        for i in range(n):
+            difference = 0
+            for j in range(n):
+                difference += abs(nums[i] - nums[j])
+            res.append(difference)
+        
+        return res
+```
