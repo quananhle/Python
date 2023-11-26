@@ -10,32 +10,38 @@ Return _the area of the largest submatrix within ```matrix``` where every elemen
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2020/12/29/screenshot-2020-12-30-at-40536-pm.png)
+```
 Input: matrix = [[0,0,1],[1,1,1],[1,0,1]]
 Output: 4
 Explanation: You can rearrange the columns as shown above.
 The largest submatrix of 1s, in bold, has an area of 4.
-Example 2:
+```
 
+__Example 2:__
 
+![image](https://assets.leetcode.com/uploads/2020/12/29/screenshot-2020-12-30-at-40852-pm.png)
+```
 Input: matrix = [[1,0,1,0,1]]
 Output: 3
 Explanation: You can rearrange the columns as shown above.
 The largest submatrix of 1s, in bold, has an area of 3.
-Example 3:
+```
 
+__Example 3:__
+```
 Input: matrix = [[1,1,0],[1,0,1]]
 Output: 2
 Explanation: Notice that you must rearrange entire columns, and there is no way to make a submatrix of 1s larger than an area of 2.
- 
+```
 
-Constraints:
+__Constraints:__
 
-m == matrix.length
-n == matrix[i].length
-1 <= m * n <= 105
-matrix[i][j] is either 0 or 1.
+- $m == matrix.length$
+- $n == matrix[i].length$
+- $1 \le m * n \le 10^5$
+- ```matrix[i][j]``` is either ```0``` or ```1```.
 
 ---
