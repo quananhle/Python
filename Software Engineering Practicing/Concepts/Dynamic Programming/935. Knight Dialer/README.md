@@ -70,6 +70,44 @@ __Constraints:__
 
 ```
 
+```Python
+class Solution:
+    def knightDialer(self, n: int) -> int:
+        jumps = [
+            [4, 6],
+            [6, 8],
+            [7, 9],
+            [4, 8],
+            [3, 9, 0],
+            [],
+            [1, 7, 0],
+            [2, 6],
+            [1, 3],
+            [2, 4]
+        ]
+
+        ans = 0
+        MOD = 10**9 + 7
+
+        @functools.lru_cache(maxsize=None)
+        def dp(curr_cell, curr):
+            # Base case
+            if curr == n:
+                return 1
+            
+            # DP Transitions:
+            ans = 0
+            for next_cell in jumps[curr_cell]:
+                ans = (ans + dp(next_cell, curr + 1)) % MOD
+            
+            return ans
+                
+        for cell in range(10):
+            ans = (ans + dp(cell, 1)) % MOD
+
+        return ans
+```
+
 #### Bottom-Up Dynamic Programming
 
 ```Python
