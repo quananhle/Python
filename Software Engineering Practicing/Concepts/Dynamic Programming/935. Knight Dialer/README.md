@@ -1,6 +1,6 @@
 ## [935. Knight Dialer](https://leetcode.com/problems/knight-dialer)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -23,24 +23,28 @@ As the answer may be very large, return the answer modulo $10^9 + 7$.
 ---
 
 __Example 1:__
-
+```
 Input: n = 1
 Output: 10
 Explanation: We need to dial a number of length 1, so placing the knight over any numeric cell of the 10 cells is sufficient.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: n = 2
 Output: 20
 Explanation: All the valid number we can dial are [04, 06, 16, 18, 27, 29, 34, 38, 40, 43, 49, 60, 61, 67, 72, 76, 81, 83, 92, 94]
-Example 3:
+```
 
+__Example 3:__
+```
 Input: n = 3131
 Output: 136006598
 Explanation: Please take care of the mod.
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= n <= 5000
+- $1 \le n \le 5000$
 
 ---
