@@ -1,6 +1,6 @@
 ## [935. Knight Dialer](https://leetcode.com/problems/knight-dialer)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Math```
 
 #### Difficulty: Medium
 
