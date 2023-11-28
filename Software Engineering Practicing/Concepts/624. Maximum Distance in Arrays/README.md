@@ -1,6 +1,6 @@
 ## [624. Maximum Distance in Arrays](https://leetcode.com/problems/maximum-distance-in-arrays)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Greedy Algorithm```
 
 #### Difficulty: Medium
 
@@ -36,7 +36,12 @@ __Constraints:__
 
 ---
 
-### Brute Force
+### Brute Force (Time Limit Exceeded)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}((n \cdot x)^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -52,3 +57,45 @@ class Solution:
         
         return ans
 ```
+
+#### Time-Optimized Brute Force
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def maxDistance(self, arrays: List[List[int]]) -> int:
+        ans = 0
+        n = len(arrays)
+
+        for i in range(n - 1):
+            for j in range(i + 1, n):
+                ans = max(ans, abs(arrays[i][0] - arrays[j][-1]))
+                ans = max(ans, abs(arrays[i][-1] - arrays[j][0]))
+        return ans
+```
+
+### Greedy Algorithm
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def maxDistance(self, arrays: List[List[int]]) -> int:
+        ans = 0
+        start, end = arrays[0][0], arrays[0][-1]
+        
+        for array in arrays[1:]:
+            ans = max(ans, max(abs(array[0] - end), abs(start - array[-1])))
+            start = min(start, array[0])
+            end = max(end, array[-1])
+            
+        return ans
+```
+
