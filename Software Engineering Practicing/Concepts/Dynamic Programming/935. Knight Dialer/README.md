@@ -1,6 +1,6 @@
 ## [935. Knight Dialer](https://leetcode.com/problems/knight-dialer)
 
-```Tag```: ```Dynamic Programming``` ```Math``` ```Graph```
+```Tag```: ```Dynamic Programming``` ```Graph```
 
 #### Difficulty: Medium
 
@@ -152,6 +152,54 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def knightDialer(self, n: int) -> int:
+        jumps = [
+            [4, 6],
+            [6, 8],
+            [7, 9],
+            [4, 8],
+            [3, 9, 0],
+            [],
+            [1, 7, 0],
+            [2, 6],
+            [1, 3],
+            [2, 4]
+        ]
+        MOD = 10**9 + 7
+        dp = collections.defaultdict(int)
+        
+        # Base cases
+        for cell in range(10):
+            dp[(cell, n)] = 1
+        
+        for curr_len in range(n - 1, -1, -1):
+            for curr in range(10):
+                    ans = 0
+                    for next in jumps[curr]:
+                        ans = (ans + dp[(next, curr_len + 1)]) % MOD
+                    dp[(curr, curr_len)] = ans
+        
+        ans = 0
+        for cell in range(10):
+            ans = (ans + dp[(cell, 1)]) % MOD
+        
+        return ans
+```
+
+#### Space-Optimized Bottom-Up Dynamic Programming
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def knightDialer(self, n: int) -> int:
@@ -186,10 +234,49 @@ class Solution:
             ans = (ans + prev_dp[cell]) % MOD
         
         return ans
+
 ```
 
-#### Space-Optimized Bottom-Up Dynamic Programming
+---
+
+### Iteration On States
+
+![image](https://leetcode.com/problems/knight-dialer/Figures/935/2.png)
+
+Every square in group ```A``` can be considered the same state because each square has identical jump options: go to state ```B``` or state ```C```. The following table lists all possible jumps.
+
+|From|	Can Jump To|
+|--|--|
+|A|	B, C|
+|B|	A|
+|C|	A, D|
+|D|	C|
+|E|	|
+
+![image](https://leetcode.com/problems/knight-dialer/Figures/935/3.png)
+
+![image](https://leetcode.com/problems/knight-dialer/Figures/935/4.png)
+
+![image](https://leetcode.com/problems/knight-dialer/Figures/935/5.png)
+
+![image](https://leetcode.com/problems/knight-dialer/Figures/935/6.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
+class Solution:
+    def knightDialer(self, n: int) -> int:
+        if n == 1:
+            return 10
+        MOD = 10**9 + 7
+        
+        A, B, C, D = 4, 2, 2, 1
 
+        for i in range(n - 1):
+            A, B, C, D = (2 * (B + C)) % MOD, A % MOD, (A + 2 * D) % MOD, C % MOD
+        
+        return (A + B + C + D) % MOD
 ```
