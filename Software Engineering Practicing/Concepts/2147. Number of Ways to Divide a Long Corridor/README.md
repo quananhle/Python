@@ -132,19 +132,78 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
-```Python
+![image](https://github.com/quananhle/Python/assets/35042430/765faaaf-c351-4117-94b6-64a58dbd4365)
 
+```Python
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        n = len(corridor)
+        MOD = 10**9 + 7
+        dp = collections.defaultdict(int)
+
+        dp[(n, 0)], dp[(n, 1)], dp[(n, 2)] = 0, 0, 1
+
+        for i in range(n - 1, -1, -1):
+            if corridor[i] == 'S':
+                dp[(i, 0)] = dp[(i + 1, 1)]
+                dp[(i, 1)] = dp[(i + 1, 2)]
+                dp[(i, 2)] = dp[(i + 1, 1)]
+            else:
+                dp[(i, 0)] = dp[(i + 1, 0)]
+                dp[(i, 1)] = dp[(i + 1, 1)]
+                dp[(i, 2)] = (dp[(i + 1, 0)] + dp[(i + 1, 2)]) % MOD
+            
+        return dp[(0, 0)]
 ```
 
 #### Space-Optimized Dynamic Programming
 
 ```Python
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        n = len(corridor)
+        MOD = 10**9 + 7
 
+        zero, one, two = 0, 0, 1
+
+        for thing in corridor:
+            if thing == 'S':
+                zero = one
+                one, two = two, one
+            else:
+                two = (two + zero) % MOD
+        
+        return zero
 ```
 
 ---
 
 ### Combinatoric
+
+```Python
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        MOD = 10**9 + 7
+        indices = list()
+        for i, thing in enumerate(corridor):
+            if thing == 'S':
+                indices.append(i)
+        
+        if len(indices) == 0 or len(indices) % 2 == 1:
+            return 0
+    
+        ways = 1
+
+        previous_pair_end, current_pair_start = 1, 2
+        while current_pair_start < len(indices):
+            ways = ways * (indices[current_pair_start] - indices[previous_pair_end])
+            ways %= MOD
+            previous_pair_end += 2; current_pair_start += 2
+        
+        return ways
+```
+
+#### Space-Optimized Combinatoric
 
 ```Python
 
