@@ -1,6 +1,6 @@
 ## [2147. Number of Ways to Divide a Long Corridor](https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Math```
 
 #### Difficulty: Hard
 
@@ -51,3 +51,31 @@ __Constraints:__
 - ```corridor[i]``` is either ```'S'``` or ```'P'```.
 
 ---
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+#### Space-Optimized Dynamic Programming
+
+```Python
+
+```
+
+---
+
+### Combinatoric
+
+```Python
+
+```
