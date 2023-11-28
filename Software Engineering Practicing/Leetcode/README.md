@@ -97,6 +97,7 @@
 - :warning::warning: [253. Meeting Rooms II](https://github.com/quananhle/Python/blob/66c7b6505d2cce8287892fe803ccd2469ec10668/Software%20Engineering%20Practicing/Leetcode/Bloomberg/253.%20Meeting%20Rooms%20II) ```Priority Queue``` ```Chronological Ordering``` ```Sorting```
 - :warning::warning: [435. Non-overlapping Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/435.%20Non-overlapping%20Intervals) ```Greedy```
 - :warning::warning: [452. Minimum Number of Arrows to Burst Balloons](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/452.%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons) ```Greedy```
+- :warning::warning: [624. Maximum Distance in Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/624.%20Maximum%20Distance%20in%20Arrays) ```Greedy```
 
 ### [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Sliding%20Window)
 
