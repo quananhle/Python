@@ -206,5 +206,34 @@ class Solution:
 #### Space-Optimized Combinatoric
 
 ```Python
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        current_section = 0
+        n = len(corridor)
+        MOD = 10**9 + 7
 
+        for thing in corridor:
+            if thing == 'S':
+                current_section += 1
+        
+        if current_section % 2 or current_section == 0:
+            return 0
+        
+        if current_section == 2:
+            return 1
+        
+        ways = 1
+        seats = 0
+        previous_pair_last = None
+        
+        for i in range(n):
+            if corridor[i] == 'S':
+                seats += 1
+                if seats % 2 == 0:
+                    previous_pair_last = i
+                if seats % 2 and seats != 1:
+                    ways = ways * (i - previous_pair_last)
+                    ways %= MOD
+        
+        return ways
 ```
