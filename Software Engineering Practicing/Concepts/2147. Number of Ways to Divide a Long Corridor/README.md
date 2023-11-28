@@ -54,10 +54,80 @@ __Constraints:__
 
 ### Dynamic Programming Framework
 
-#### Top-Down Dynamic Programming
+#### Top-Down Dynamic Programming (Memory Limit Exceeded)
 
 ```Python
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        n = len(corridor)
+        MOD = 10**9 + 7
+        memo = collections.defaultdict(int)
 
+        def dp(i, curr):
+            # Base case: at the end of the corridor, check for the current section
+            if i >= n:
+                return 1 if curr == 2 else 0
+            
+            if (i, curr) in memo:
+                return memo[(i, curr)]
+
+            # DP Transitions: does the current section have 2 seats?
+            if curr == 2:
+                # If encounter 'S', close the current section and start a new section from the current i with 1 'S'
+                if corridor[i] == 'S':
+                    ways = dp(i + 1, 1)
+                # Otherwise, encounter 'P', two ways to divide the corridor:
+                #      - 1. Close the current section and start a new section from the current i with 0 'S'
+                #      - 2. Keep expanding the current section with 2 'S'
+                else:
+                    ways = (dp(i + 1, 0) + dp(i + 1, 2)) % MOD
+            else:
+                # If encounter 'S', keep expanding the section, add 1 'S' to the current section
+                if corridor[i] == 'S':
+                    ways = dp(i + 1, curr + 1)
+                # Otherwise, encounter 'P', keep expanding the section with the current number of 'S'
+                else:
+                    ways = dp(i + 1, curr)
+            
+            memo[(i, curr)] = ways
+            return ways
+        
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def numberOfWays(self, corridor: str) -> int:
+        n = len(corridor)
+        MOD = 10**9 + 7
+
+        @functools.lru_cache(maxsize=None)
+        def dp(i, curr):
+            # Base case: at the end of the corridor, check for the current section
+            if i >= n:
+                return 1 if curr == 2 else 0
+            
+            # DP Transitions: does the current section have 2 seats?
+            if curr == 2:
+                # If encounter 'S', close the current section and start a new section from the current i with 1 'S'
+                if corridor[i] == 'S':
+                    ways = dp(i + 1, 1)
+                # Otherwise, encounter 'P', two ways to divide the corridor:
+                #      - 1. Close the current section and start a new section from the current i with 0 'S'
+                #      - 2. Keep expanding the current section with 2 'S'
+                else:
+                    ways = (dp(i + 1, 0) + dp(i + 1, 2)) % MOD
+            else:
+                # If encounter 'S', keep expanding the section, add 1 'S' to the current section
+                if corridor[i] == 'S':
+                    ways = dp(i + 1, curr + 1)
+                # Otherwise, encounter 'P', keep expanding the section with the current number of 'S'
+                else:
+                    ways = dp(i + 1, curr)
+            
+            return ways
+        
+        return dp(0, 0)
 ```
 
 #### Bottom-Up Dynamic Programming
