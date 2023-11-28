@@ -1,6 +1,6 @@
 ## [935. Knight Dialer](https://leetcode.com/problems/knight-dialer)
 
-```Tag```: ```Dynamic Programming``` ```Math```
+```Tag```: ```Dynamic Programming``` ```Math``` ```Graph```
 
 #### Difficulty: Medium
 
@@ -66,8 +66,50 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def knightDialer(self, n: int) -> int:
+        jumps = [
+            [4, 6],
+            [6, 8],
+            [7, 9],
+            [4, 8],
+            [3, 9, 0],
+            [],
+            [1, 7, 0],
+            [2, 6],
+            [1, 3],
+            [2, 4]
+        ]
+        MOD = 10**9 + 7
+
+        memo = collections.defaultdict(int)
+
+        def dp(curr, curr_len):
+            # Base case
+            if curr_len == n:
+                return 1
+
+            if (curr, curr_len) in memo:
+                return memo[(curr, curr_len)]
+
+            # DP Transitions
+            ans = 0
+            for next in jumps[curr]:
+                ans = (ans + dp(next, curr_len + 1)) % MOD
+            
+            memo[(curr, curr_len)] = ans % MOD
+            return ans
+        
+        ans = 0
+        for cell in range(len(jumps)):
+            ans = (ans + dp(cell, 1)) % MOD
+        return ans
 ```
 
 ```Python
@@ -95,7 +137,7 @@ class Solution:
             if curr == n:
                 return 1
             
-            # DP Transitions:
+            # DP Transitions
             ans = 0
             for next_cell in jumps[curr_cell]:
                 ans = (ans + dp(next_cell, curr + 1)) % MOD
@@ -111,7 +153,39 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def knightDialer(self, n: int) -> int:
+        jumps = [
+            [4, 6],
+            [6, 8],
+            [7, 9],
+            [4, 8],
+            [3, 9, 0],
+            [],
+            [1, 7, 0],
+            [2, 6],
+            [1, 3],
+            [2, 4]
+        ]
+        MOD = 10**9 + 7
 
+        dp = collections.defaultdict(int)
+        prev_dp = collections.defaultdict(lambda: 1)
+        
+        for remain in range(1, n):
+            dp = collections.defaultdict(int)
+            for curr in range(10):
+                ans = 0
+                for next in jumps[curr]:
+                    ans = (ans + prev_dp[next]) % MOD
+                dp[curr] = ans
+            prev_dp = dp
+        
+        ans = 0
+        for cell in range(10):
+            ans = (ans + prev_dp[cell]) % MOD
+        
+        return ans
 ```
 
 #### Space-Optimized Bottom-Up Dynamic Programming
