@@ -14,33 +14,40 @@ Return _the number of ways to divide the corridor_. Since the answer may be very
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2021/12/04/1.png)
+```
 Input: corridor = "SSPPSPS"
 Output: 3
 Explanation: There are 3 different ways to divide the corridor.
 The black bars in the above image indicate the two room dividers already installed.
 Note that in each of the ways, each section has exactly two seats.
-Example 2:
+```
 
+__Example 2:__
 
+![image](https://assets.leetcode.com/uploads/2021/12/04/2.png)
+```
 Input: corridor = "PPSPSP"
 Output: 1
 Explanation: There is only 1 way to divide the corridor, by not installing any additional dividers.
 Installing any would create some section that does not have exactly two seats.
-Example 3:
+```
 
+__Example 3:__
 
+![image](https://assets.leetcode.com/uploads/2021/12/12/3.png)
+```
 Input: corridor = "S"
 Output: 0
 Explanation: There is no way to divide the corridor because there will always be a section that does not have exactly two seats.
- 
+```
 
-Constraints:
+__Constraints:__
 
-n == corridor.length
-1 <= n <= 105
-corridor[i] is either 'S' or 'P'.
+- $n == corridor.length$
+- $1 \le n \le 10^5$
+- ```corridor[i]``` is either ```'S'``` or ```'P'```.
 
 ---
