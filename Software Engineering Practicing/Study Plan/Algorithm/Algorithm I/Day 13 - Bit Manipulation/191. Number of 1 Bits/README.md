@@ -11,7 +11,7 @@ __Note:__
 - Note that in some languages, such as Java, there is no unsigned integer type. In this case, the input will be given as a signed integer type. It should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.
 - In Java, the compiler represents the signed integers using 2's complement notation. Therefore, in Example 3, the input represents the signed integer. ```-3```.
 
-![image](https://user-images.githubusercontent.com/35042430/234669779-4400ce77-1bbb-4d31-aff4-ef62bceec434.png)
+![image](https://github.com/quananhle/Python/assets/35042430/20fba5ef-cdd9-4900-b751-348d8f8f0a4c)
 
 ---
 
@@ -67,6 +67,17 @@ class Solution:
                 ans += 1
             '''
             ans += n & 1
+            n >>= 1
+        return ans
+```
+
+```Python
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        ans = 0
+        while n:
+            if n % 2:
+                ans += 1
             n >>= 1
         return ans
 ```
