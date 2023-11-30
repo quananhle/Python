@@ -31,10 +31,10 @@ The max number of consecutive ones is 4.
 ```
 
 __Constraints:__
-```
-1 <= nums.length <= 105
-nums[i] is either 0 or 1.
-```
+
+- $1 \le nums.length \le 10^5$
+- ```nums[i]``` is either ```0``` or ```1```.
+
 
 ---
 
