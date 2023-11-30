@@ -60,7 +60,6 @@ class Solution:
                 # Check if sequence has one or fewer 0's, count the longest consecutive subsequence of 0's
                 if num_zeroes <= 1:
                     ans = max(ans, right - left + 1)
-                    print (ans)
         return ans
 ```
 
@@ -94,7 +93,22 @@ class Solution:
             right += 1
 
         return ans
-
 ```
+
+```Python
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        left, right, ans = -1, 0, 0
+
+        for num in nums:
+            if num == 0:
+                left, right = right, 0
+            else:
+                right += 1
+            ans = max(ans, left + 1 + right)
+        
+        return ans
+```
+
 
 
