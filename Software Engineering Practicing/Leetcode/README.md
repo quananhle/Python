@@ -254,6 +254,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :no_entry::no_entry::no_entry: [847. Shortest Path Visiting All Nodes](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/847.%20Shortest%20Path%20Visiting%20All%20Nodes) ```Graph``` ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search```
 - :warning::warning: [1318. Minimum Flips to Make a OR b Equal to c](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1318.%20Minimum%20Flips%20to%20Make%20a%20OR%20b%20Equal%20to%20c)
 - :four_leaf_clover: [1356. Sort Integers by The Number of 1 Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/JPMorgan/1356.%20Sort%20Integers%20by%20The%20Number%20of%201%20Bits) ```Sorting``` ```Brian Kerninghan's Algorithm```
+- :no_entry::no_entry::no_entry: [1611. Minimum One Bit Operations to Make Integers Zero](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/1611.%20Minimum%20One%20Bit%20Operations%20to%20Make%20Integers%20Zero)
 
 ---
 
