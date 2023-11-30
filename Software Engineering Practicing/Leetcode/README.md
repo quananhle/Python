@@ -102,6 +102,7 @@
 ### [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Sliding%20Window)
 
 - :warning::warning: [438. Find All Anagrams in a String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/438.%20Find%20All%20Anagrams%20in%20a%20String)
+- :warning::warning: [487. Max Consecutive Ones II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Sliding%20Window/487.%20Max%20Consecutive%20Ones%20II)
 - :warning::warning: [567. Permutation in String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2006%20-%20Sliding%20Window/567.%20Permutation%20in%20String) ```Hash Map``` ```Two Pointers```
 - :warning::warning: [1004. Max Consecutive Ones III](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/1004.%20Max%20Consecutive%20Ones%20III)
 - :four_leaf_clover: [1065. Index Pairs of a String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1065.%20Index%20Pairs%20of%20a%20String) ```Trie``` ```Hash Set```
