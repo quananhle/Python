@@ -147,8 +147,6 @@ class Solution(object):
 ```Python
 class Solution:
     def twoSumLessThanK(self, nums: List[int], k: int) -> int:
-        # Time complexity: O(NlogN), sort the array
-        # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
         nums.sort()
         n = len(nums)
         ans = -1
@@ -159,7 +157,7 @@ class Solution:
         left, right = 0, n - 1
 
         while left < right:
-            while right > 0 and (nums[right] > k or nums[left] + nums[right] > k):
+            while right > 0 and nums[left] + nums[right] > k:
                 right -= 1
             
             if nums[left] + nums[right] < k:
