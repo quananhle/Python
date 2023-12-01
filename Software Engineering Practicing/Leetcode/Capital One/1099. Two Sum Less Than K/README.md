@@ -151,6 +151,7 @@ class Solution:
         n = len(nums)
         ans = -1
 
+        # Edge case: nums = [1,2,4,5], k = 6
         if max(nums) == k - 1:
             return max(nums)
 
