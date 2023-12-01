@@ -43,6 +43,11 @@ __Constraints:__
             - Track maximum ```nums[i] + nums[j]``` in the result answer.
 2. Return the result ```answer```.
 
+#### Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution(object):
     def twoSumLessThanK(self, nums, k):
@@ -85,7 +90,10 @@ class Solution(object):
 
 ---
 
-### Two Pass
+### Two Pointers + Sorting
+
+- __Time Complexity__: $\mathcal{O}(N \log N)$
+- __Space Complexity__: $\mathcal{O}(\log N)$ or $\mathcal{O}(N)$
 
 ```Python
 class Solution(object):
