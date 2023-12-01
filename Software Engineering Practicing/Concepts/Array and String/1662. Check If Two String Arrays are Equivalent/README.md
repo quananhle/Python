@@ -12,29 +12,33 @@ A string is represented by an array if the array elements concatenated in order 
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: word1 = ["ab", "c"], word2 = ["a", "bc"]
 Output: true
 Explanation:
 word1 represents string "ab" + "c" -> "abc"
 word2 represents string "a" + "bc" -> "abc"
 The strings are the same, so return true.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: word1 = ["a", "cb"], word2 = ["ab", "c"]
 Output: false
-Example 3:
+```
 
+__Example 3:__
+```
 Input: word1  = ["abc", "d", "defg"], word2 = ["abcddefg"]
 Output: true
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= word1.length, word2.length <= 103
-1 <= word1[i].length, word2[i].length <= 103
-1 <= sum(word1[i].length), sum(word2[i].length) <= 103
-word1[i] and word2[i] consist of lowercase letters.
+- $1 \le word1.length, word2.length \le 10^3$
+- $1 \le word1[i].length, word2[i].length \le 10^3$
+- $1 \le sum(word1[i].length), sum(word2[i].length) \le 10^3$
+- ```word1[i]``` and ```word2[i]``` consist of lowercase letters.
 
 ---
