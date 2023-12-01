@@ -169,3 +169,33 @@ class Solution:
 
         return ans
 ```
+
+---
+
+### Counting Sort
+
+- __Time Complexity__: $\mathcal{O}(N + M)$
+- __Space Complexity__: $\mathcal{O}(M)$
+
+```Python
+class Solution:
+    def twoSumLessThanK(self, nums: List[int], k: int) -> int:
+        ans = -1
+        bucket = [0] * 1001
+        for num in nums:
+            bucket[num] += 1
+        
+        lo, hi = 1, 1000
+
+        while lo <= hi:
+            while lo + hi >= k or bucket[hi] == 0:
+                hi -= 1
+
+            # Check if bucket[lo] is greater than 0 (when lo < hi), or 1 (when lo == hi)
+            if bucket[lo] > (0 if lo < hi else 1):
+                ans = max(ans, lo + hi)
+
+            lo += 1
+        
+        return ans
+```
