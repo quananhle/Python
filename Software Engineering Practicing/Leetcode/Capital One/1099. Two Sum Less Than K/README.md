@@ -1,4 +1,4 @@
-## [Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
+## [1099. Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
 
 ```Tag```: ```Sorting``` ```Two Pointers``` ```Binary Search``` ```Counting Sort```
 
