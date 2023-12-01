@@ -95,6 +95,8 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # Time complexity: O(NlogN), sort the array
+        # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
         nums.sort()
         max_sum = answer = -1
         left, right = 0, len(nums)-1
@@ -109,8 +111,6 @@ class Solution(object):
             return max_sum
         else:
             return answer
-        # Time complexity: O(NlogN), sort the array
-        # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
 ```
 
 ```Python
@@ -121,6 +121,8 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        # Time complexity: O(NlogN), sort the array
+        # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
         nums.sort()
         answer = -1
         left, right = 0, len(nums) -1
@@ -132,14 +134,30 @@ class Solution(object):
             else:
                 right -= 1
         return answer
-        # Time complexity: O(NlogN), sort the array
-        # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
 ```
 
----
-
-### Sorting
-
 ```Python
+class Solution:
+    def twoSumLessThanK(self, nums: List[int], k: int) -> int:
+        # Time complexity: O(NlogN), sort the array
+        # Space complexity: O(logN) or O(N), sorted list depends on the size of input list
+        nums.sort()
+        n = len(nums)
+        ans = -1
 
+        if max(nums) == k - 1:
+            return max(nums)
+
+        left, right = 0, n - 1
+
+        while left < right:
+            while right > 0 and (nums[right] > k or nums[left] + nums[right] > k):
+                right -= 1
+            
+            if nums[left] + nums[right] < k:
+                ans = max(ans, nums[left] + nums[right])
+        
+            left += 1
+
+        return ans
 ```
