@@ -80,6 +80,7 @@
 - :four_leaf_clover: [1822. Sign of the Product of an Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/1822.%20Sign%20of%20the%20Product%20of%20an%20Array)
 - :warning::warning: [1887. Reduction Operations to Make the Array Elements Equal](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Sorting/1887.%20Reduction%20Operations%20to%20Make%20the%20Array%20Elements%20Equal) ```Sorting```
 - :four_leaf_clover: [1909. Remove One Element to Make the Array Strictly Increasing](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/1909.%20Remove%20One%20Element%20to%20Make%20the%20Array%20Strictly%20Increasing)
+- :four_leaf_clover: [2264. Largest 3-Same-Digit Number in String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/2264.%20Largest%203-Same-Digit%20Number%20in%20String) ```Hash Map```
 - :warning::warning: [2483. Minimum Penalty for a Shop](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2483.%20Minimum%20Penalty%20for%20a%20Shop)
 - :four_leaf_clover: [2660. Determine the Winner of a Bowling Game](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2660.%20Determine%20the%20Winner%20of%20a%20Bowling%20Game) ```Brainteasing```
 
