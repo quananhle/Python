@@ -44,7 +44,27 @@ __Complexity Analysis__
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        ans = 0
+        counter = collections.defaultdict(int)
+        for char in chars:
+            counter[char] = 1 + counter.get(char, 0)
 
+        def is_contained(counter):
+            for _, val in counter.items():
+                if val < 0:
+                    return False
+            return True
+
+        for word in words:
+            cnt_temp = counter.copy()
+            for c in word:
+                cnt_temp[c] -= 1 
+            if is_contained(cnt_temp):
+                ans += len(word)
+
+        return ans
 ```
 
 ### Hash Map
@@ -55,7 +75,46 @@ __Complexity Analysis__
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        ans = 0
+        counter = collections.defaultdict(int)
+        for char in chars:
+            counter[char] = 1 + counter.get(char, 0)
 
+        def is_contained(counter):
+            for _, val in counter.items():
+                if val < 0:
+                    return False
+            return True
+
+        for word in words:
+            cnt_temp = counter.copy()
+            for c in word:
+                cnt_temp[c] -= 1 
+            if is_contained(cnt_temp):
+                ans += len(word)
+
+        return ans
 ```
 
+```Python
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        counter = collections.Counter(chars)
+        ans = 0
+
+        for word in words:
+            word_counter = collections.Counter(word)
+            good = True
+            for key, freq in word_counter.items():
+                if counter[key] < freq:
+                    good = not good
+                    break
+            
+            if good:
+                ans += len(word)
+        
+        return ans
+```
 
