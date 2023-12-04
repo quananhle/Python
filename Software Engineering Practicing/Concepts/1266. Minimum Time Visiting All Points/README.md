@@ -19,26 +19,29 @@ You can move according to these rules:
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2019/11/14/1626_example_1.PNG)
+```
 Input: points = [[1,1],[3,4],[-1,0]]
 Output: 7
 Explanation: One optimal path is [1,1] -> [2,2] -> [3,3] -> [3,4] -> [2,3] -> [1,2] -> [0,1] -> [-1,0]   
 Time from [1,1] to [3,4] = 3 seconds 
 Time from [3,4] to [-1,0] = 4 seconds
 Total time = 7 seconds
-Example 2:
+```
 
+__Example 2:__
+```
 Input: points = [[3,2],[-2,2]]
 Output: 5
- 
+```
 
-Constraints:
+__Constraints:__
 
-points.length == n
-1 <= n <= 100
-points[i].length == 2
--1000 <= points[i][0], points[i][1] <= 1000
+- $points.length == n$
+- $1 \le n \le 100$
+- $points[i].length == 2$
+- $-1000 \le points[i][0], points[i][1] \le 1000$
 
 ---
