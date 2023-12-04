@@ -1,6 +1,6 @@
 ## [2264. Largest 3-Same-Digit Number in String](https://leetcode.com/problems/largest-3-same-digit-number-in-string)
 
-```Tag```: ```Hash Map```
+```Tag```: ```Hash Map``` ```Math```
 
 #### Difficulty: Easy
 
@@ -46,3 +46,37 @@ __Constraints:__
 - ```num``` only consists of digits.
 
 ---
+
+### Hash Map
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def largestGoodInteger(self, num: str) -> str:
+        counter = collections.defaultdict(list)
+        for i, c in enumerate(num):
+            counter[c].append(i)
+        
+        def is_contiguos(arr):
+            n = len(arr)
+            '''
+            for i in range(1, n - 1):
+                if (arr[i + 1] - arr[i]) == 1 and (arr[i] - arr[i - 1]) == 1:
+            '''
+            for i in range(2, n):
+                if (arr[i] - arr[i - 1]) == 1 and (arr[i - 1] - arr[i - 2]) == 1:
+                    return True
+            return False
+
+        candidate = -1
+
+        for key, val in counter.items():
+            if is_contiguos(val) and len(val) >= 3:
+                candidate = max(candidate, int(key))
+        
+        return "" if candidate == -1 else str(candidate) * 3
+```
