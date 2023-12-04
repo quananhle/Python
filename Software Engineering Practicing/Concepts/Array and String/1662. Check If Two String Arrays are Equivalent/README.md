@@ -45,6 +45,11 @@ __Constraints:__
 
 ### Two Pointers
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \cdot K)$
+- __Space Complexity__: $\mathcal{O}(N \cdot K)$
+
 ```Python
 class Solution:
     def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
