@@ -1,6 +1,6 @@
 ## [2264. Largest 3-Same-Digit Number in String](https://leetcode.com/problems/largest-3-same-digit-number-in-string)
 
-```Tag```: ```Hash Map``` ```Math```
+```Tag```: ```Array & String``` ```Hash Map``` ```Math```
 
 #### Difficulty: Easy
 
@@ -44,6 +44,34 @@ __Constraints:__
 
 - $3 \le num.length \le 1000$
 - ```num``` only consists of digits.
+
+---
+
+### Array & String
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def largestGoodInteger(self, num: str) -> str:
+        n = len(num)
+
+        def is_good_substring(arr):
+            if len(arr) < 3:
+                return False
+            return arr[2] == arr[1] == arr[0]
+
+        candidate = -1
+
+        for i in range(2, n):
+            if is_good_substring(num[i-2:i+1]):
+                candidate = max(candidate, int(num[i]))
+        
+        return "" if candidate == -1 else str(candidate) * 3
+```
 
 ---
 
