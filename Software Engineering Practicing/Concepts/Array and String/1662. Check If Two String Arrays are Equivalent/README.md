@@ -43,6 +43,31 @@ __Constraints:__
 
 ---
 
+### Two Pointers
+
+```Python
+class Solution:
+    def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+        i = j = 0
+        c1 = c2 = 0
+        n, m = len(word1), len(word2)
+
+        while i < n and j < m:
+            if word1[i][c1] != word2[j][c2]:
+                return False
+            c1 += 1; c2 += 1
+
+            if c1 == len(word1[i]):
+                i += 1
+                c1 = 0
+            
+            if c2 == len(word2[j]):
+                j += 1
+                c2 = 0
+
+        return i == n and j == m
+```
+
 ### String Concatenation
 
 ```Python
