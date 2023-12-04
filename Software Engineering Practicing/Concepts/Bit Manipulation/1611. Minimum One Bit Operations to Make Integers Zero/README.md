@@ -1,6 +1,6 @@
 ## [1611. Minimum One Bit Operations to Make Integers Zero](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero)
 
-```Tag```: ```Bitwise Manipulation```
+```Tag```: ```Bitwise Manipulation``` ```Math``` ```Recursion``` ```Gray Code Algorithm```
 
 #### Difficulty: Hard
 
@@ -40,3 +40,42 @@ __Constraints:__
 - $0 \le n \le 10^9$
 
 ---
+
+### Math + Recursion
+
+![image](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/Figures/1611/1.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/f8bfa0f2-4166-43fa-bc1a-5608112cd0a8)
+
+![image](https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/Figures/1611/3.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/a631d7eb-4f17-463e-8512-f42e88ee5b0e)
+
+```Python
+class Solution:
+    def minimumOneBitOperations(self, n: int) -> int:
+        if n == 0:
+            return 0
+        
+        k = 0
+        curr = 1
+        while (curr * 2) <= n:
+            curr *= 2
+            k += 1
+
+        return 2 ** (k + 1) - 1 - self.minimumOneBitOperations(n ^ curr)
+```
+
+### Gray Code Algorithm
+
+```Python
+class Solution:
+    def minimumOneBitOperations(self, n: int) -> int:
+        ans = n
+        ans ^= ans >> 16
+        ans ^= ans >> 8
+        ans ^= ans >> 4
+        ans ^= ans >> 2
+        ans ^= ans >> 1
+        return ans
+```
