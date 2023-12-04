@@ -1,6 +1,6 @@
 ## [1160. Find Words That Can Be Formed by Characters](https://leetcode.com/problems/find-words-that-can-be-formed-by-characters)
 
-```Tag```: ```Hash Map``` ```Math```
+```Tag```: ```Array & String``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -36,27 +36,10 @@ __Constraints:__
 
 ---
 
-### Hash Map
+### Array & String
 
 ```Python
-class Solution:
-    def largestGoodInteger(self, num: str) -> str:
-        counter = collections.defaultdict(list)
-        for i, c in enumerate(num):
-            counter[c].append(i)
-        
-        def is_contiguos(arr):
-            n = len(arr)
-            for i in range(1, n - 1):
-                if (arr[i + 1] - arr[i]) == 1 and (arr[i] - arr[i - 1]) == 1:
-                    return True
-            return False
 
-        candidate = -1
-
-        for key, val in counter.items():
-            if is_contiguos(val) and len(val) >= 3:
-                candidate = max(candidate, int(key))
-        
-        return "" if candidate == -1 else str(candidate) * 3
 ```
+
+
