@@ -43,3 +43,41 @@ __Constraints:__
 - $1 \le n \le 200$
 
 ---
+
+### Math
+
+```Python
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        ans = 0
+        while n > 1:
+            ans += n // 2
+            n = n // 2 + n % 2
+
+        return ans
+```
+
+```Python
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        ans = 0
+        while n > 1:
+            if n % 2:
+                ans += (n - 1) // 2
+                n = (n - 1) // 2 + 1
+            else:
+                ans += n // 2
+                n //= 2
+
+        return ans
+```
+
+#### One-Liner
+
+```Python
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        # There are n teams, and 1 winner. Thus, n - 1 teams will be eliminated.
+        # As n - 1 teams will be eliminated, there will be n - 1 matches played, with each match eliminating a team.
+        return n - 1
+```
