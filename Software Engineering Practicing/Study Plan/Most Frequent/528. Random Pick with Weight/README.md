@@ -114,5 +114,50 @@ class Solution:
 #### Binary Search
 
 ```Python
+class Solution:
 
+    def __init__(self, w: List[int]):
+        self.bucket = list()
+        prefix_sum = 0
+        for weight in w:
+            prefix_sum += weight
+            self.bucket.append(prefix_sum)
+        self.total = prefix_sum
+
+    def pickIndex(self) -> int:
+        # In most of the programming languages, we have some random() function that generates a random value between 0 and 1.
+        target = self.total * random.random()
+        lo, hi = 0, len(self.bucket)
+        while lo < hi:
+            mi = lo + (hi - lo) // 2
+            if self.bucket[mi] < target:
+                lo = mi + 1
+            else:
+                hi = mi
+        return lo
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
+```
+
+```Python
+class Solution:
+
+    def __init__(self, w: List[int]):
+        self.bucket = list()
+        prefix_sum = 0
+        for weight in w:
+            prefix_sum += weight
+            self.bucket.append(prefix_sum)
+        self.total = prefix_sum
+
+    def pickIndex(self) -> int:
+        # In most of the programming languages, we have some random() function that generates a random value between 0 and 1.
+        target = self.total * random.random()
+        return bisect.bisect_left(self.bucket, target)
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
 ```
