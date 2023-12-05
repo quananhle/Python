@@ -62,7 +62,7 @@ __Constraints:__
 
 ---
 
-### Generate A List Based on Weight of Elements (Memory Limit Exceeded)
+### List (Memory Limit Exceeded)
 
 ```Python
 class Solution:
@@ -86,6 +86,32 @@ class Solution:
 ### Prefix Sums
 
 #### Linear Search
+
+```Python
+class Solution:
+
+    def __init__(self, w: List[int]):
+        self.bucket = list()
+        prefix_sum = 0
+        for weight in w:
+            prefix_sum += weight
+            self.bucket.append(prefix_sum)
+        self.total = prefix_sum
+
+    def pickIndex(self) -> int:
+        # In most of the programming languages, we have some random() function that generates a random value between 0 and 1.
+        target = self.total * random.random()
+
+        for i, prefix_sum in enumerate(self.bucket):
+            if target < prefix_sum:
+                return i
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
+```
+
+#### Binary Search
 
 ```Python
 
