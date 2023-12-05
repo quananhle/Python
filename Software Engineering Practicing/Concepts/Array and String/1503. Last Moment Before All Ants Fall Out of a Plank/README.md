@@ -1,6 +1,6 @@
 ## [1503. Last Moment Before All Ants Fall Out of a Plank](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Brainteasing```
 
 #### Difficulty: Medium
 
@@ -57,3 +57,40 @@ __Constraints:__
 - All values of ```left``` and ```right``` are unique, and each value can appear only in one of the two arrays.
 
 ---
+
+### Logic
+
+1. Collisions happen instantaneously.
+2. All ants walk at the same speed.
+3. All ants eventually fall off the plank
+
+Let's say we have an ant ```A``` walking right and an ant ```B``` walking left, and they are on a collision course.
+
+![image](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/Figures/1503/1.png)
+
+At ```t = 1```, the ants are about to collide. At ```t = 2```, the ants try to walk forward and collide, thus swapping directions immediately.
+
+![image](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/Figures/1503/2.png)
+
+At ```t = 3```, they reach the end of the plank and fall off.
+
+![image](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/Figures/1503/3.png)
+
+Now, let's consider a new scenario with the same ants ```A``` and ```B```
+
+![image](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/Figures/1503/4.png)
+
+![image](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/Figures/1503/5.png)
+
+At ```t = 2``` in the original scenario, the ants collide and swap directions. In the new scenario, the ants will simply pass each other.
+
+![image](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/Figures/1503/6.png)
+
+![image](https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/Figures/1503/7.png)
+
+Because all the ants here are the same, we previously referred to them as ```A``` and ```B``` for better distinction. They have no differences in reality. Thus two ants colliding according to the rules and simply passing through each other are two entirely identical scenarios. If the ant they collided with has their original velocity and is at the same position they would have been at had there not been any collision (and vice-versa), did the collision really change anything? No.
+
+Thus, we can consider the ants walking right simply passing through those walking left. So what will be our answer?
+
+- An ant walking left from position ```num``` will take ```num``` time to fall off the plank.
+- An ant walking right from position ```num``` will take ```n - num``` time to fall off the plank.
