@@ -1,4 +1,4 @@
-## 49. Group Anagrams
+## [49. Group Anagrams](https://leetcode.com/problems/group-anagrams)
 
 ```Tag```: ```Hash Table``` ```Sorting``` ```Tuple```
 
@@ -8,7 +8,7 @@ Given an array of strings ```strs```, group the __anagrams__ together. You can r
 
 An __Anagram__ is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
-![image](https://user-images.githubusercontent.com/35042430/213755141-29293707-67ba-4784-9bbe-d506d667cd19.png)
+![image](https://github.com/quananhle/Python/assets/35042430/48ca11bc-fc68-44a0-924f-d2514255ffd6)
 
 ---
 
