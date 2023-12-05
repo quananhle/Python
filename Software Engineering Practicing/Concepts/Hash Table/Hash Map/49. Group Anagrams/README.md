@@ -30,6 +30,12 @@ Input: strs = ["a"]
 Output: [["a"]]
 ```
 
+__Constraints:__
+
+- $1 \le strs.length \le 10^4$
+- $0 \le strs[i].length \le 100$
+- ```strs[i]``` consists of lowercase English letters.
+
 ---
 
 ### Hash Table
