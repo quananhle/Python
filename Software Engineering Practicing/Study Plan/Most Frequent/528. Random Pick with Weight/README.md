@@ -14,8 +14,8 @@ You need to implement the function ```pickIndex()```, which randomly picks an in
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input
 ["Solution","pickIndex"]
 [[[1]],[]]
@@ -25,8 +25,10 @@ Output
 Explanation
 Solution solution = new Solution([1]);
 solution.pickIndex(); // return 0. The only option is to return 0 since there is only one element in w.
-Example 2:
+```
 
+__Example 2:__
+```
 Input
 ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
 [[[1,3]],[],[],[],[],[]]
@@ -50,12 +52,12 @@ All of the following outputs can be considered correct:
 [null,1,0,1,0,0]
 ......
 and so on.
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= w.length <= 104
-1 <= w[i] <= 105
-pickIndex will be called at most 104 times.
+- $1 \le w.length \le 10^4$
+- $1 \le w[i] \le 10^5$
+- ```pickIndex``` will be called at most $10^4$ times.
 
 ---
