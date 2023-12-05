@@ -61,3 +61,24 @@ __Constraints:__
 - ```pickIndex``` will be called at most $10^4$ times.
 
 ---
+
+###
+
+```Python
+class Solution:
+
+    def __init__(self, w: List[int]):
+        # Memory Limit Exceeded
+        self.bucket = list()
+        total = sum(w)
+        for i in range(len(w)):
+            weight = w[i] / total
+            self.bucket.extend([i] * int(weight * total))
+
+    def pickIndex(self) -> int:
+        return random.choice(self.bucket)
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
+```
