@@ -43,6 +43,20 @@ __Constraints:__
 ```Python
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        memo = collections.defaultdict(list)
+
+        for string in strs:
+            alphabet_order = [0] * 26
+            for c in string:
+                alphabet_order[ord(c) - ord('a')] += 1
+            memo[tuple(alphabet_order)].append(string)
+        
+        return memo.values()
+```
+
+```Python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         #### Time Complexity: O(100 * N), based on constrains, length of the longest single anagram is 100, traverse through every string of the input
         #### Time Complexity: O(26 * N), extra memory space for a list to hold index of 26 characters, and a hash table
         '''
