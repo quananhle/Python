@@ -62,7 +62,7 @@ __Constraints:__
 
 ---
 
-###
+### Generate A List Based on Weight of Elements (Memory Limit Exceeded)
 
 ```Python
 class Solution:
@@ -71,8 +71,8 @@ class Solution:
         # Memory Limit Exceeded
         self.bucket = list()
         total = sum(w)
-        for i in range(len(w)):
-            weight = w[i] / total
+        for i, weight in enumerate(w:
+            weight = weight / total
             self.bucket.extend([i] * int(weight * total))
 
     def pickIndex(self) -> int:
@@ -81,4 +81,12 @@ class Solution:
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(w)
 # param_1 = obj.pickIndex()
+```
+
+### Prefix Sums
+
+#### Linear Search
+
+```Python
+
 ```
