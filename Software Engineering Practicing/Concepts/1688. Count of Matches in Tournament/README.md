@@ -15,8 +15,8 @@ Return _the number of matches played in the tournament until a winner is decided
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: n = 7
 Output: 6
 Explanation: Details of the tournament: 
@@ -24,8 +24,10 @@ Explanation: Details of the tournament:
 - 2nd Round: Teams = 4, Matches = 2, and 2 teams advance.
 - 3rd Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
 Total number of matches = 3 + 2 + 1 = 6.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: n = 14
 Output: 13
 Explanation: Details of the tournament:
@@ -34,10 +36,10 @@ Explanation: Details of the tournament:
 - 3rd Round: Teams = 4, Matches = 2, and 2 teams advance.
 - 4th Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
 Total number of matches = 7 + 3 + 2 + 1 = 13.
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= n <= 200
+- $1 \le n \le 200$
 
 ---
