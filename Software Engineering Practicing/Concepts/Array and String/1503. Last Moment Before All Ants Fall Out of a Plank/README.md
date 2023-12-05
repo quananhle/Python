@@ -94,3 +94,17 @@ Thus, we can consider the ants walking right simply passing through those walkin
 
 - An ant walking left from position ```num``` will take ```num``` time to fall off the plank.
 - An ant walking right from position ```num``` will take ```n - num``` time to fall off the plank.
+
+```Python
+class Solution:
+    def getLastMoment(self, n: int, left: List[int], right: List[int]) -> int:
+        ans = 0
+
+        for pos in left:
+            ans = max(ans, pos)
+
+        for pos in right:
+            ans = max(ans, n - pos)
+        
+        return ans
+```
