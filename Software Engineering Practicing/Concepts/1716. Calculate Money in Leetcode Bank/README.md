@@ -44,6 +44,23 @@ __Constraints:__
 ```Python
 class Solution:
     def totalMoney(self, n: int) -> int:
+      ans = 0
+      start = 1
+
+      while n > 0:
+        for day in range(min(n, 7)):
+          ans += start + day
+        n -= 7
+        start += 1
+      
+      return ans
+```
+
+### Math
+
+```Python
+class Solution:
+    def totalMoney(self, n: int) -> int:
         daily_contributes = [1, 2, 3, 4, 5, 6, 7]
         ans = 0
 
@@ -53,4 +70,23 @@ class Solution:
             ans += daily_contributes[day] + weekly_bonuses 
 
         return ans
+```
+
+![image](https://github.com/quananhle/Python/assets/35042430/7b788c20-e922-4530-8024-bb76ca775ee2)
+
+```Python
+class Solution:
+    def totalMoney(self, n: int) -> int:
+      k = n // 7
+      F = 28
+      L = 28 + (k - 1) * 7
+      arithmetic_sum = k * (F + L) // 2
+
+      monday = 1 + k
+      final_week = 0
+
+      for day in range(n % 7):
+        final_week += monday + day
+
+      return arithmetic_sum + final_week
 ```
