@@ -90,3 +90,19 @@ class Solution:
 
       return arithmetic_sum + final_week
 ```
+
+```Python
+class Solution:
+    def totalMoney(self, n: int) -> int:
+      ans = 0
+
+      complete_week = n // 7
+      remaining_days = n % 7
+
+      # For complete weeks
+      ans += (28 * complete_week) + (7 * (complete_week - 1) * complete_week // 2)
+      # For remaining days in uncomplete week
+      ans += (complete_week + 1 + complete_week + remaining_days) * remaining_days // 2
+
+      return ans
+```
