@@ -1,6 +1,6 @@
 ## [1716. Calculate Money in Leetcode Bank](https://leetcode.com/problems/calculate-money-in-leetcode-bank)
 
-```Tag```: 
+```Tag```: ```Array & String```
 
 #### Difficulty: Easy
 
@@ -38,3 +38,9 @@ __Constraints:__
 - $1 \le n \le 1000$
 
 ---
+
+### 
+
+```Python
+
+```
