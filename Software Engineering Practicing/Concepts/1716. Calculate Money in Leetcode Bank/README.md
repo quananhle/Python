@@ -1,6 +1,6 @@
 ## [1716. Calculate Money in Leetcode Bank](https://leetcode.com/problems/calculate-money-in-leetcode-bank)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Math```
 
 #### Difficulty: Easy
 
@@ -39,8 +39,18 @@ __Constraints:__
 
 ---
 
-### 
+### Simulation
 
 ```Python
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        daily_contributes = [1, 2, 3, 4, 5, 6, 7]
+        ans = 0
 
+        for day in range(n):
+            weekly_bonuses = day // 7
+            day = day % 7
+            ans += daily_contributes[day] + weekly_bonuses 
+
+        return ans
 ```
