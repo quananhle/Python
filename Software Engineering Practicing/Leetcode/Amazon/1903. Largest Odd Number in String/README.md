@@ -4,7 +4,7 @@
 
 #### Difficulty: Easy
 
-You are given a string ```num```, representing a large integer. Return _the largest-valued odd integer (as a string) that is a non-empty substring of ```num```, or an empty string ```""``` if no odd integer exists.
+You are given a string ```num```, representing a large integer. Return _the largest-valued odd integer (as a string) that is a non-empty substring of ```num```, or an empty string ```""``` if no odd integer exists_.
 
 A substring is a contiguous sequence of characters within a string.
 
@@ -39,3 +39,16 @@ __Constraints:__
 - ```num``` only consists of digits and does not contain any leading zeros.
 
 ---
+
+### Array & String
+
+```Python
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        n = len(num)
+        for i in range(n - 1, -1, -1):
+          if int(num[i]) % 2:
+            return num[:i+1]
+        
+        return ""
+```
