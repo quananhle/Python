@@ -42,6 +42,8 @@ __Constraints:__
 
 ### Array & String
 
+#### Right to Left Scan
+
 ```Python
 class Solution:
     def largestOddNumber(self, num: str) -> str:
@@ -51,4 +53,19 @@ class Solution:
                 return num[:i+1]
         
         return ""
+```
+
+#### Left to Right Scan
+
+```Python
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        n = len(num)
+        rightmost_odd = -1
+
+        for i in range(n):
+            if num[i] in '13579':
+                rightmost_odd = max(rightmost_odd, i)
+        
+        return num[:rightmost_odd + 1]
 ```
