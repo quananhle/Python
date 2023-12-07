@@ -69,3 +69,17 @@ class Solution:
         
         return num[:rightmost_odd + 1]
 ```
+
+#### One-Liner
+
+```Python
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        return num[:max(num.rfind(c) for c in '13579') + 1]
+```
+
+```Python
+class Solution:
+    def largestOddNumber(self, num: str) -> str:
+        return num[:max(num.find(c) for c in '13579') + 1]
+```
