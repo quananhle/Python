@@ -113,6 +113,34 @@ class Solution:
 #### Iterative DFS
 
 ```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def tree2str(self, root: Optional[TreeNode]) -> str:
+        ans = list()
 
+        stack = [root]
+        visited = set()
+
+        while stack:
+            curr = stack[-1]
+            if curr in visited:
+                stack.pop()
+                ans.append(")")
+            else:
+                visited.add(curr)
+                ans.extend(["(", str(curr.val)])
+                if not curr.left and curr.right:
+                    ans.append('()')
+                if curr.right:
+                    stack.append(curr.right)
+                if curr.left:
+                    stack.append(curr.left)
+
+        return "".join(ans[1:len(ans) - 1])
 ```
 
