@@ -85,5 +85,53 @@ class Solution:
 ![image](https://leetcode.com/problems/maximum-average-subtree/Figures/1120/1.png)
 
 ```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maximumAverageSubtree(self, root: Optional[TreeNode]) -> float:
+        if not root:
+            return 0
 
+        def dfs(curr):
+            nonlocal ans
+            # Base case
+            if not curr:
+                return (0, 0)
+            
+            left_sum, left_node_cnt = dfs(curr.left)
+            right_sum, right_node_cnt = dfs(curr.right)
+        
+            total = curr.val + left_sum + right_sum
+            nodes = 1 + left_node_cnt + right_node_cnt
+
+            ans = max(ans, total / nodes)
+            return (total, nodes)
+        
+        ans = 0
+        dfs(root)
+        return ans
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maximumAverageSubtree(self, root: Optional[TreeNode]) -> float:
+        def dfs(curr):
+            if not curr:
+                return 0, 0, 0
+            
+            left_subtree, left_total, left_node_cnt = dfs(curr.left)
+            right_subtree, right_total, right_node_cnt = dfs(curr.right)
+            return max(left_subtree, right_subtree, (total := curr.val + left_total + right_total) / (value := 1 + left_node_cnt + right_node_cnt)), total, value
+
+        return dfs(root)[0]
 ```
