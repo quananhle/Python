@@ -10,7 +10,7 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
 
 You must write an algorithm that runs in ```O(n)``` time and without using the division operation.
 
-![image](https://github.com/quananhle/Python/assets/35042430/3958750d-477c-48ca-853d-a2025852dfa7)
+![image](https://github.com/quananhle/Python/assets/35042430/3275f60a-7429-4d7f-9a4a-5a3ab832b6fa)
 
 ---
 
