@@ -42,6 +42,8 @@ __Constraints:__
 
 ### Depth-First Search
 
+#### Pre-order Traversal
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -76,4 +78,12 @@ class Solution:
                 stack.append((curr.right, []))
 
         return ans
+```
+
+#### Postorder Traversal
+
+![image](https://leetcode.com/problems/maximum-average-subtree/Figures/1120/1.png)
+
+```Python
+
 ```
