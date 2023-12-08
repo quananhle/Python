@@ -42,7 +42,12 @@ __Constraints:__
 
 ### Depth-First Search
 
-#### Pre-order Traversal
+#### Brute Force
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(N^2)$
 
 ```Python
 # Definition for a binary tree node.
@@ -83,6 +88,11 @@ class Solution:
 #### Postorder Traversal
 
 ![image](https://leetcode.com/problems/maximum-average-subtree/Figures/1120/1.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 # Definition for a binary tree node.
