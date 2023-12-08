@@ -12,23 +12,27 @@ Omit all the empty parenthesis pairs that do not affect the one-to-one mapping r
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2021/05/03/cons1-tree.jpg)
+```
 Input: root = [1,2,3,4]
 Output: "1(2(4))(3)"
 Explanation: Originally, it needs to be "1(2(4)())(3()())", but you need to omit all the unnecessary empty parenthesis pairs. And it will be "1(2(4))(3)"
-Example 2:
+```
 
+__Example 2:__
 
+![image](https://assets.leetcode.com/uploads/2021/05/03/cons2-tree.jpg)
+```
 Input: root = [1,2,3,null,4]
 Output: "1(2()(4))(3)"
 Explanation: Almost the same as the first example, except we cannot omit the first parenthesis pair to break the one-to-one mapping relationship between the input and the output.
- 
+```
 
-Constraints:
+__Constraints:__
 
-The number of nodes in the tree is in the range [1, 104].
--1000 <= Node.val <= 1000
+- The number of nodes in the tree is in the range $[1, 10^4]$.
+- $-1000 \le Node.val \le 1000$
 
 ---
