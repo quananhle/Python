@@ -1,6 +1,6 @@
 ## [1120. Maximum Average Subtree](https://leetcode.com/problems/maximum-average-subtree)
 
-```Tag```:
+```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Recursion``` ```Stack```
 
 #### Difficulty: Medium
 
@@ -39,3 +39,41 @@ __Constraints:__
 - $0 \le Node.val \le 10^5$
 
 ---
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maximumAverageSubtree(self, root: Optional[TreeNode]) -> float:
+        def dfs(curr, nodes):
+            # Base case
+            if not curr:
+                return 0
+            
+            nodes.append(curr.val)
+            dfs(curr.left, nodes)
+            dfs(curr.right, nodes)
+
+            return nodes
+
+        ans = 0
+
+        stack = [(root, [])]
+        while stack:
+            curr, nodes = stack.pop()
+            node = curr
+            dfs(curr, nodes)
+            ans = max(ans, sum(nodes)/len(nodes))
+            if curr.left:
+                stack.append((curr.left, []))
+            if curr.right:
+                stack.append((curr.right, []))
+
+        return ans
+```
