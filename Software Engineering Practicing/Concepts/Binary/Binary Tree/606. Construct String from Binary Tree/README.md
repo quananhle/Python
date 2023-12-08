@@ -1,6 +1,6 @@
 ## [606. Construct String from Binary Tree](https://leetcode.com/problems/construct-string-from-binary-tree)
 
-```Tag```: ```Binary Tree``` ```Depth-First Search```
+```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Recursion``` ```Stack```
 
 #### Difficulty: Easy
 
@@ -39,6 +39,8 @@ __Constraints:__
 
 ### Depth-First Search
 
+#### Recursive DFS
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -73,3 +75,44 @@ class Solution:
         dfs(root)
         return "".join(ans)
 ```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def tree2str(self, root: Optional[TreeNode]) -> str:
+        ans = list()
+
+        def dfs(curr):
+            # Base case
+            if not curr:
+                return
+
+            ans.append(str(curr.val))
+
+            if not curr.left and not curr.right:
+                return
+
+            ans.append('(')
+            dfs(curr.left)
+            ans.append(')')
+
+            if curr.right:
+                ans.append('(')
+                dfs(curr.right)
+                ans.append(')')
+
+        dfs(root)
+        return "".join(ans)
+```
+
+#### Iterative DFS
+
+```Python
+
+```
+
