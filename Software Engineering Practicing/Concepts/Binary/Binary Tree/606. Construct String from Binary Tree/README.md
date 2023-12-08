@@ -1,10 +1,10 @@
 ## [606. Construct String from Binary Tree](https://leetcode.com/problems/construct-string-from-binary-tree)
 
-```Tag```: ```Binary Tree```
+```Tag```: ```Binary Tree``` ```Depth-First Search```
 
 #### Difficulty: Easy
 
-Given the root of a binary tree, construct a string consisting of parenthesis and integers from a binary tree with the preorder traversal way, and return it.
+Given the ```root``` of a binary tree, construct a string consisting of parenthesis and integers from a binary tree with the preorder traversal way, and return it.
 
 Omit all the empty parenthesis pairs that do not affect the one-to-one mapping relationship between the string and the original binary tree.
 
@@ -36,3 +36,40 @@ __Constraints:__
 - $-1000 \le Node.val \le 1000$
 
 ---
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def tree2str(self, root: Optional[TreeNode]) -> str:
+        ans = list()
+
+        def dfs(curr):
+            # Base case
+            if not curr:
+                return
+
+            ans.append(str(curr.val))
+
+            if not curr.left and curr.right:
+                ans.extend(['(', ')'])
+
+            if curr.left:
+                ans.append('(')
+                dfs(curr.left)
+                ans.append(')')
+
+            if curr.right:
+                ans.append('(')
+                dfs(curr.right)
+                ans.append(')')
+
+        dfs(root)
+        return "".join(ans)
+```
