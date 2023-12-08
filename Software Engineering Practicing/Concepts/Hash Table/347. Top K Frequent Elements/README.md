@@ -23,12 +23,12 @@ Output: [1]
 ```
 
 __Constraints:__
-```
-1 <= nums.length <= 105
--104 <= nums[i] <= 104
-k is in the range [1, the number of unique elements in the array].
-It is guaranteed that the answer is unique.
-```
+
+- $1 \le nums.length \le 10^5$
+- $-10^4 \le nums[i] \le 10^4$
+- ```k``` is in the range ```[1, the number of unique elements in the array]```.
+- It is guaranteed that the answer is unique.
+
 
 ---
 
