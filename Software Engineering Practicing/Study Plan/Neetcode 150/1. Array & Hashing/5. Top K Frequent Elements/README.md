@@ -19,3 +19,19 @@ class Solution:
         
         return res
 ```
+
+```Python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        counter = collections.Counter(nums)
+        if k == len(nums):
+            return nums
+        
+        h = list()
+        for num, freq in counter.items():
+            heapq.heappush(h, (freq, num))
+            if len(h) > k:
+                heapq.heappop(h)
+        
+        return [num[1] for num in h]
+```
