@@ -54,6 +54,10 @@ class Solution:
 
 ### Array & String
 
+![image](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/Figures/1287/1.png)
+
+![image](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/Figures/1287/2.png)
+
 ```Python
 class Solution:
     def findSpecialInteger(self, arr: List[int]) -> int:
@@ -63,4 +67,15 @@ class Solution:
                 return arr[i]
         
         return -1
+```
+
+### Binary Search
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(\log{}n)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+
 ```
