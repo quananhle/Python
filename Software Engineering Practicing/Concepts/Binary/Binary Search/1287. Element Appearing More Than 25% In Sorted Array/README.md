@@ -71,6 +71,8 @@ class Solution:
 
 ### Binary Search
 
+![image](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/Figures/1287/3.png)
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(\log{}n)$
