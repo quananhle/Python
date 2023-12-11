@@ -35,3 +35,18 @@ __Constraints:__
 - $-10^9 \le matrix[i][j] \le 10^9$
 
 ---
+
+### Matrix
+
+```Python
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(matrix), len(matrix[0])
+        res = [[0] * ROWS for _ in range(COLS)]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                res[col][row] = matrix[row][col]
+
+        return res
+```
