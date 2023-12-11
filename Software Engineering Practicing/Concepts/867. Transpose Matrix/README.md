@@ -1,6 +1,6 @@
 ## [867. Transpose Matrix](https://leetcode.com/problems/transpose-matrix)
 
-```Tag```:
+```Tag```: ```Matrix```
 
 #### Difficulty: Easy
 
@@ -14,22 +14,24 @@ The transpose of a matrix is the matrix flipped over its main diagonal, switchin
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
 Output: [[1,4,7],[2,5,8],[3,6,9]]
-Example 2:
+```
 
+__Example 2:__
+```
 Input: matrix = [[1,2,3],[4,5,6]]
 Output: [[1,4],[2,5],[3,6]]
- 
+```
 
-Constraints:
+__Constraints:__
 
-m == matrix.length
-n == matrix[i].length
-1 <= m, n <= 1000
-1 <= m * n <= 105
--109 <= matrix[i][j] <= 109
+- ```m == matrix.length```
+- ```n == matrix[i].length```
+- $1 \le m, n \le 1000$
+- $1 \le m * n \le 10^5$
+- $-10^9 \le matrix[i][j] \le 10^9$
 
 ---
