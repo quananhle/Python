@@ -77,5 +77,47 @@ __Complexity Analysis__
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
+class Solution:
+    def findSpecialInteger(self, arr: List[int]) -> int:
+        n = len(arr)
+        candidates = [arr[n // 4], arr[n // 2], arr[3 * n // 4]]
+        target = n // 4
 
+        def binary_search_left(array, x):
+            lo, hi = 0, len(array)
+
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if array[mi] < x:
+                    lo = mi + 1
+                else:
+                    hi = mi
+            
+            return lo
+        
+        def binary_search_right(array, x):
+            lo, hi = 0, len(array)
+
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if array[mi] <= x:
+                    lo = mi + 1
+                else:
+                    hi = mi
+                
+            return lo
+
+        for candidate in candidates:
+            '''
+            left = bisect.bisect_left(arr, candidate)
+            '''
+            left = binary_search_left(arr, candidate)
+            '''
+            right = bisect.bisect_right(arr, candidate)
+            '''
+            right = binary_search_right(arr, candidate)
+            if right - left > target:
+                return candidate
+            
+        return -1
 ```
