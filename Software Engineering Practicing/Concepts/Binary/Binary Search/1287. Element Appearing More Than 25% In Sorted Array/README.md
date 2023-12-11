@@ -1,6 +1,6 @@
 ## [1287. Element Appearing More Than 25% In Sorted Array](https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array)
 
-```Tag```: ```Binary Search```
+```Tag```: ```Binary Search``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -36,6 +36,18 @@ class Solution:
         for key, val in counter.items():
             if val > len(arr) // 4:
                 return key
+        
+        return -1
+```
+
+```Python
+class Solution:
+    def findSpecialInteger(self, arr: List[int]) -> int:
+        counter = collections.defaultdict(int)
+        for num in arr:
+            counter[num] += 1
+            if counter[num] > len(arr) // 4:
+                return num
         
         return -1
 ```
