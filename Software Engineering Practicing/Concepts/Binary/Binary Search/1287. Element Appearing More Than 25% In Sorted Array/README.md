@@ -26,3 +26,16 @@ __Constraints:__
 - $0 \le arr[i] \le 10^5$
 
 ---
+
+### Counter with Hash Map
+
+```Python
+class Solution:
+    def findSpecialInteger(self, arr: List[int]) -> int:        
+        counter = collections.Counter(arr)
+        for key, val in counter.items():
+            if val > len(arr) // 4:
+                return key
+        
+        return -1
+```
