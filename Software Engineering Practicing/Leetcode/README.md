@@ -356,6 +356,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [120. Triangle](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2012%20-%20Dynamic%20Programming/120.%20Triangle)
 - :warning::warning: [221. Maximal Square](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/The%20Framework/221.%20Maximal%20Square)
 - :warning::warning: [799. Champagne Tower](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Tiktok/799.%20Champagne%20Tower)
+- :four_leaf_clover: [867. Transpose Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/867.%20Transpose%20Matrix)
 - :warning::warning: [931. Minimum Falling Path Sum](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/DP%20for%20Paths%20in%20a%20Matrix/931.%20Minimum%20Falling%20Path%20Sum)
 
 ### Subsequence
