@@ -36,3 +36,23 @@ __Constraints:__
 - $1 \le nums[i] \le 10^3$
 
 ---
+
+### Two Passes
+
+```Python
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        candidate_1 = candidate_2 = 0
+        i = 0
+
+        for idx, num in enumerate(nums):
+            if candidate_1 < num:
+                i = idx
+                candidate_1 = num
+
+        for idx, num in enumerate(nums):
+            if candidate_2 < num and idx != i:
+                candidate_2 = num
+
+        return (candidate_1 - 1) * (candidate_2 - 1)
+```
