@@ -1,6 +1,6 @@
 ## [1464. Maximum Product of Two Elements in an Array](https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Priority Queue``` ```Sorting```
 
 #### Difficulty: Easy
 
@@ -80,3 +80,44 @@ class Solution:
 
 #### One Pass (To Track Second Biggest)
 
+```Python
+
+```
+
+---
+
+### Sort
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \log n)$
+- __Space Complexity__: $\mathcal{O}(\log n)$ or $\mathcal{O}(n)$.
+> The space complexity of the sorting algorithm depends on the implementation of each programming language:
+
+>>- In Java, ```Arrays.sort()``` for primitives is implemented using a variant of the Quick Sort algorithm, which has a space complexity of $\mathcal{O}(\log n)$
+>>- In C++, the ```sort()``` function provided by STL uses a hybrid of Quick Sort, Heap Sort and Insertion Sort, with a worst case space complexity of $\mathcal{O}(\log n)$
+>>- In Python, the ```sort()``` function is implemented using the Timsort algorithm, which has a worst-case space complexity of $\mathcal{O}(n)$.
+
+```Python
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        nums.sort()
+        return (nums[-1] - 1) * (nums[-2] - 1)
+```
+
+### Priority Queue
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \log n)$
+- __Space Complexity__: $\mathcal{O}(\log n)$ or $\mathcal{O}(n)$
+
+```Python
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        h = list()
+        for num in nums:
+            heapq.heappush(h, -num)
+
+        return (heapq.heappop(h) + 1) * (heapq.heappop(h) + 1)
+```
