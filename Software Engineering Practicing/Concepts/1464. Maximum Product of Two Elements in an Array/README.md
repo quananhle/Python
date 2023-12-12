@@ -81,7 +81,17 @@ class Solution:
 #### One Pass (To Track Second Biggest)
 
 ```Python
-
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        biggest = second_biggest = 0
+        for num in nums:
+            if biggest < num:
+                second_biggest = biggest
+                biggest = num
+            else:
+                second_biggest = max(second_biggest, num)
+        
+        return (biggest - 1) * (second_biggest - 1)
 ```
 
 ---
