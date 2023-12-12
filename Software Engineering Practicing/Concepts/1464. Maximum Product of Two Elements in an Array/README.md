@@ -37,7 +37,14 @@ __Constraints:__
 
 ---
 
-### Two Passes
+### Array & String
+
+#### Two Passes (To Track Second Biggest)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -56,3 +63,6 @@ class Solution:
 
         return (candidate_1 - 1) * (candidate_2 - 1)
 ```
+
+#### One Pass (To Track Second Biggest)
+
