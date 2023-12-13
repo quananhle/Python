@@ -1,6 +1,6 @@
 ## [1582. Special Positions in a Binary Matrix](https://leetcode.com/problems/special-positions-in-a-binary-matrix)
 
-```Tag```: ```Matrix```
+```Tag```: ```Matrix``` ```Array & String```
 
 #### Difficulty: Easy
 
@@ -38,3 +38,23 @@ __Constraints:__
 - ```mat[i][j]``` is either ```0``` or ```1```.
 
 ---
+
+### Brute Force
+
+```Python
+
+```
+
+### Precompute
+
+#### Two Passes
+
+```Python
+
+```
+
+#### One Pass
+
+```Python
+
+```
