@@ -41,11 +41,45 @@ __Constraints:__
 
 ### Brute Force
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(m \cdot n \cdot (m + n))$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        ROWS, COLS = len(mat), len(mat[0])
+        ans = 0
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if mat[row][col] == 0:
+                    continue
+                
+                good = True
+                for r in range(ROWS):
+                    if r != row and mat[r][col] == 1:
+                        good = False
+                        break
+
+                for c in range(COLS):
+                    if c != col and mat[row][c] == 1:
+                        good = False
+                        break
+
+                if good:
+                    ans += 1
+
+        return ans 
 ```
 
 ### Precompute
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$
+- __Space Complexity__: $\mathcal{O}(m + n)$
 
 #### Two Passes
 
