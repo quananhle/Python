@@ -4,7 +4,7 @@
 
 #### Difficulty: Easy
 
-Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+Given two strings ```s``` and ```t```, return ```True``` if ```t``` is an anagram of ```s```, and ```False``` otherwise.
 
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
@@ -12,20 +12,22 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: s = "anagram", t = "nagaram"
 Output: true
-Example 2:
+```
 
+__Example 2:__
+```
 Input: s = "rat", t = "car"
 Output: false
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= s.length, t.length <= 5 * 104
-s and t consist of lowercase English letters.
+- $1 \le s.length, t.length \le 5 * 10^4$
+- ```s``` and ```t``` consist of lowercase English letters.
 
 ---
 
