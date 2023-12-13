@@ -89,8 +89,9 @@
 ### 2D Array/Matrix
 
 - :warning::warning: [311. Sparse Matrix Multiplication](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/311.%20Sparse%20Matrix%20Multiplication)
-- :warning::warning: [1055. Shortest Way to Form String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Introduction%20to%202D%20Array/1055.%20Shortest%20Way%20to%20Form%20String) ```String & Array``` ```Two Pointers``` ```Binary Search``` ```2D Array``` ```Dynamic Programming```
+- :warning::warning: [1055. Shortest Way to Form String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Introduction%20to%202D%20Array/1055.%20Shortest%20Way%20to%20Form%20String) ```Two Pointers``` ```Binary Search``` ```2D Array``` ```Dynamic Programming```
 - :four_leaf_clover: [1351. Count Negative Numbers in a Sorted Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1351.%20Count%20Negative%20Numbers%20in%20a%20Sorted%20Matrix) ```Binary Search``` ```Linear Traversal```
+- :four_leaf_clover: [1582. Special Positions in a Binary Matrix](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/1582.%20Special%20Positions%20in%20a%20Binary%20Matrix) ```Hash Map```
 
 ### [Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2017%20-%20Interval)
 
