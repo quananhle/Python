@@ -1,6 +1,6 @@
 ## [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
 
-```Tag```:
+```Tag```: ```String & Array``` ```Hash Map``` ```Sort```
 
 #### Difficulty: Easy
 
@@ -31,4 +31,40 @@ __Constraints:__
 
 ---
 
-Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+### ```ord()```
+
+```Python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        s_counter, t_counter = [0] * 26, [0] * 26
+        for c in s:
+            s_counter[ord(c) - ord('a')] += 1
+        for c in t:
+            t_counter[ord(c) - ord('a')] += 1
+        
+        return s_counter == t_counter
+```
+
+__Follow up__: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+
+### Hash Map
+
+```Python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        # For special character case
+        s_counter, t_counter = collections.defaultdict(int), collections.defaultdict(int)
+        for c in s:
+            s_counter[c] += 1
+        for c in t:
+            t_counter[c] += 1
+        
+        for c, f in s_counter.items():
+            if not c in t_counter or f != t_counter[c]:
+                return False
+        for c, f in t_counter.items():
+            if not c in s_counter or f != s_counter[c]:
+                return False
+        
+        return True
+```
