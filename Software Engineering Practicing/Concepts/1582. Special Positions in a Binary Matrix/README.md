@@ -1,6 +1,6 @@
 ## [1582. Special Positions in a Binary Matrix](https://leetcode.com/problems/special-positions-in-a-binary-matrix)
 
-```Tag```: ```Matrix``` ```Array & String```
+```Tag```: ```Matrix``` ```Array & String``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -71,8 +71,34 @@ class Solution:
         return ans
 ```
 
-#### One Pass
+```Python
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        ROWS, COLS = len(mat), len(mat[0])
+        row_count, col_count = collections.defaultdict(int), collections.defaultdict(int)
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if mat[row][col]:
+                    row_count[row] += 1
+                    col_count[col] += 1
+        
+        ans = 0
+        for row in range(ROWS):
+            for col in range(COLS):
+                if mat[row][col]:
+                    if row_count[row] == 1 and col_count[col] == 1:
+                        ans += 1
+        
+        return ans
+```
+
+### ```zip()```
 
 ```Python
-
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        rows = [row for row, val in enumerate(mat) if sum(val) == 1]
+        cols = [col for col, val in enumerate(zip(*mat)) if sum(val) == 1]
+        return sum(mat[row][col] for row in rows for col in cols)
 ```
