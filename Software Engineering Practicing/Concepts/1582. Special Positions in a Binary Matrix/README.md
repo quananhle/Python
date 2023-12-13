@@ -12,25 +12,29 @@ A position (i, j) is called special if mat[i][j] == 1 and all other elements in 
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://github.com/quananhle/Python/assets/35042430/413ec753-7a29-4a25-b9ba-907bc2f0a360)
+```
 Input: mat = [[1,0,0],[0,0,1],[1,0,0]]
 Output: 1
 Explanation: (1, 2) is a special position because mat[1][2] == 1 and all other elements in row 1 and column 2 are 0.
-Example 2:
+```
 
+__Example 2:__
 
+![image](https://github.com/quananhle/Python/assets/35042430/1fb4db5d-e345-4355-9f21-5f15c7410694)
+```
 Input: mat = [[1,0,0],[0,1,0],[0,0,1]]
 Output: 3
 Explanation: (0, 0), (1, 1) and (2, 2) are special positions.
- 
+```
 
-Constraints:
+__Constraints:__
 
-m == mat.length
-n == mat[i].length
-1 <= m, n <= 100
-mat[i][j] is either 0 or 1.
+- m == mat.length
+- n == mat[i].length
+- 1 <= m, n <= 100
+- mat[i][j] is either 0 or 1.
 
 ---
