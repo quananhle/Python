@@ -45,6 +45,8 @@ class Solution:
         return s_counter == t_counter
 ```
 
+---
+
 __Follow up__: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
 
 ### Hash Map
@@ -67,4 +69,16 @@ class Solution:
                 return False
         
         return True
+```
+
+---
+
+### Sort
+
+#### One Liner
+
+```Python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return sorted(s) == sorted(t)
 ```
