@@ -46,3 +46,24 @@ __Constraints:__
 - All strings consist of lowercase and uppercase English letters and the space character.
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        n = len(paths)
+        for i in range(n):
+            candidate = paths[i][1]
+            found = True
+
+            for j in range(n):
+                if paths[i][0] == candidate:
+                    found = False
+                    break
+                
+                if found:
+                    return candidate
+        
+        return ""
+```
