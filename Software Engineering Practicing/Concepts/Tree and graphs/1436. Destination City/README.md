@@ -1,6 +1,6 @@
 ## [1436. Destination City](https://leetcode.com/problems/destination-city)
 
-```Tag```: ```Graph``` ```Hash Set```
+```Tag```: ```Graph``` ```Hash Set``` ```Depth-First Search```
 
 #### Difficulty: Easy
 
@@ -64,6 +64,40 @@ class Solution:
                 
                 if found:
                     return candidate
+        
+        return ""
+```
+
+### Hash Set
+
+```Python
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        origins, destinations = set(), set()
+        for path in paths:
+            origins.add(path[0])
+            destinations.add(path[1])
+        return (destinations - origins).pop()
+```
+
+### Depth-First Search in Graph
+
+```Python
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        graph = collections.defaultdict(list)
+        stack = list()
+        for origin, destination in paths:
+            graph[origin].append(destination)
+            stack.append(origin)
+
+        # Since it is guaranteed to form a path, no need to record visited city
+        while stack:
+            curr = stack.pop()
+            if not curr in graph:
+                return curr
+            for next in graph[curr]:
+                stack.append(next)
         
         return ""
 ```
