@@ -1,6 +1,6 @@
 ## [2482. Difference Between Ones and Zeros in Row and Column](https://leetcode.com/problems/difference-between-ones-and-zeros-in-row-and-column)
 
-```Tag```: ```Matrix``` ```Math```
+```Tag```: ```Matrix``` ```Array & String``` ```Math```
 
 #### Difficulty: Medium
 
@@ -62,3 +62,11 @@ __Constraints:__
 - ```grid[i][j]``` is either ```0``` or ```1```.
 
 ---
+
+### Array & String
+
+![image](https://github.com/quananhle/Python/assets/35042430/d24a70ca-7852-427c-89bf-2180905cc21a)
+
+```Python
+
+```
