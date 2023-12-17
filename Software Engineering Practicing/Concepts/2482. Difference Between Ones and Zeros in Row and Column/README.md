@@ -1,6 +1,6 @@
 ## [2482. Difference Between Ones and Zeros in Row and Column](https://leetcode.com/problems/difference-between-ones-and-zeros-in-row-and-column)
 
-```Tag```:
+```Tag```: ```Matrix``` ```Math```
 
 #### Difficulty: Medium
 
@@ -20,9 +20,10 @@ Return _the difference matrix ```diff```_.
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://github.com/quananhle/Python/assets/35042430/a8481b52-3922-4afb-ba6a-325139c4181b)
+```
 Input: grid = [[0,1,1],[1,0,1],[0,0,1]]
 Output: [[0,0,4],[0,0,4],[-2,-2,2]]
 Explanation:
@@ -35,9 +36,12 @@ Explanation:
 - diff[2][0] = onesRow2 + onesCol0 - zerosRow2 - zerosCol0 = 1 + 1 - 2 - 2 = -2
 - diff[2][1] = onesRow2 + onesCol1 - zerosRow2 - zerosCol1 = 1 + 1 - 2 - 2 = -2
 - diff[2][2] = onesRow2 + onesCol2 - zerosRow2 - zerosCol2 = 1 + 3 - 2 - 0 = 2
-Example 2:
+```
 
+__Example 2:__
 
+![image](https://github.com/quananhle/Python/assets/35042430/64a3fd9c-6b4f-4728-a111-b05039e1f2c0)
+```
 Input: grid = [[1,1,1],[1,1,1]]
 Output: [[5,5,5],[5,5,5]]
 Explanation:
@@ -47,14 +51,14 @@ Explanation:
 - diff[1][0] = onesRow1 + onesCol0 - zerosRow1 - zerosCol0 = 3 + 2 - 0 - 0 = 5
 - diff[1][1] = onesRow1 + onesCol1 - zerosRow1 - zerosCol1 = 3 + 2 - 0 - 0 = 5
 - diff[1][2] = onesRow1 + onesCol2 - zerosRow1 - zerosCol2 = 3 + 2 - 0 - 0 = 5
- 
+```
 
-Constraints:
+__Constraints:__
 
-m == grid.length
-n == grid[i].length
-1 <= m, n <= 105
-1 <= m * n <= 105
-grid[i][j] is either 0 or 1.
+- $m == grid.length$
+- $n == grid[i].length$
+- $1 \le m, n \le 10^5$
+- $1 \le m \cdot n \le 10^5$
+- ```grid[i][j]``` is either ```0``` or ```1```.
 
 ---
