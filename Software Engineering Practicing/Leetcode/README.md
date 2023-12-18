@@ -291,6 +291,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [1603. Design Parking System](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1603.%20Design%20Parking%20System) ```Hash Table```
 - :warning::warning: [1845. Seat Reservation Manager](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Design/1845.%20Seat%20Reservation%20Manager) ```Priority Queue``` ```Sorted Set```
 - :warning::warning: [2336. Smallest Number in Infinite Set](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/2336.%20Smallest%20Number%20in%20Infinite%20Set) ```Priority Queue```
+- :warning::warning: [2353. Design a Food Rating System](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Design/2353.%20Design%20a%20Food%20Rating%20System) ```Priority Queue``` ```Hash Map``` ```SortedSet```
 
 - Implement Stack using Queues
 - Design Linked List
