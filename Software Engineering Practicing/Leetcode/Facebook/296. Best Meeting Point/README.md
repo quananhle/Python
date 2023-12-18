@@ -1,6 +1,6 @@
 ## [296. Best Meeting Point](https://leetcode.com/problems/best-meeting-point)
 
-```Tag```: ```Matrix``` ```Breadth-First Search``` ```Sort``` ```Math```
+```Tag```: ```Matrix``` ```Breadth-First Search``` ```Sort``` ```Math``` ```SortedSet```
 
 #### Difficulty: Hard
 
@@ -157,6 +157,11 @@ Case #5: 1-1-0-0-1-1
 
 One may think that the optimal meeting point must fall on one of the ```1```'s. This is true for cases with odd number of ```1```'s, but not necessarily true when there are even number of ```1```'s, just like case #5 does. You can choose any of the ```x = 1``` to ```x = 4``` points and the total distance is minimized.
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(mn \cdot \log{}(mn)$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$.
+
 ```Python
 class Solution:
     def minTotalDistance(self, grid: List[List[int]]) -> int:
@@ -179,4 +184,10 @@ class Solution:
         cols.sort()
         col = cols[len(cols) // 2]
         return calculate_distance(rows, row, 0) + calculate_distance(cols, col, 0)
+```
+
+### ```SortedSet```
+
+```Python
+
 ```
