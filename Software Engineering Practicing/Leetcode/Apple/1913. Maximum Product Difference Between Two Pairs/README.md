@@ -1,37 +1,40 @@
 ## [1913. Maximum Product Difference Between Two Pairs](https://leetcode.com/problems/maximum-product-difference-between-two-pairs)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Sort```
 
 #### Difficulty: Easy
 
-The product difference between two pairs (a, b) and (c, d) is defined as (a * b) - (c * d).
+The product difference between two pairs ```(a, b)``` and ```(c, d)``` is defined as ```(a * b) - (c * d)```.
 
-For example, the product difference between (5, 6) and (2, 7) is (5 * 6) - (2 * 7) = 16.
-Given an integer array nums, choose four distinct indices w, x, y, and z such that the product difference between pairs (nums[w], nums[x]) and (nums[y], nums[z]) is maximized.
+- For example, the product difference between ```(5, 6)``` and ```(2, 7)``` is ```(5 * 6) - (2 * 7) = 16```.
 
-Return the maximum such product difference.
+Given an integer array ```nums```, choose four distinct indices ```w```, ```x```, ```y```, and ```z``` such that the product difference between pairs ```(nums[w], nums[x])``` and ```(nums[y], nums[z])``` is __maximized__.
+
+Return _the __maximum__ such product difference_.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/39f97aa7-4e9e-4b06-9562-7ddc82570502)
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: nums = [5,6,2,7,4]
 Output: 34
 Explanation: We can choose indices 1 and 3 for the first pair (6, 7) and indices 2 and 4 for the second pair (2, 4).
 The product difference is (6 * 7) - (2 * 4) = 34.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: nums = [4,2,5,9,7,4,8]
 Output: 64
 Explanation: We can choose indices 3 and 6 for the first pair (9, 8) and indices 1 and 5 for the second pair (2, 4).
 The product difference is (9 * 8) - (2 * 4) = 64.
- 
+```
 
-Constraints:
+__Constraints:__
 
-4 <= nums.length <= 104
-1 <= nums[i] <= 104
+- $4 \le nums.length \le 10^4$
+- $1 \le nums[i] \le 10^4$
 
 ---
