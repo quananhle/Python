@@ -60,3 +60,39 @@ __Constraints:__
 - At most $2 * 10^4$ calls in total will be made to ```changeRating``` and ```highestRated```.
 
 ---
+
+### Priority Queue + Hash Map
+
+```Python
+class FoodRatings:
+
+    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):
+        self.h = collections.defaultdict(list)
+        self.foods = foods
+        self.cuisines = cuisines
+        self.ratings = ratings
+
+        for i, (f, c, r) in enumerate(zip(foods, cuisines, ratings)):
+            heapq.heappush(self.h[c], (-r, f, i))
+
+        self.memo = {f: i for i, f in enumerate(foods)}
+
+    def changeRating(self, food: str, newRating: int) -> None:
+        i = self.memo[food]
+        self.ratings[i] = newRating
+        cuisine = self.cuisines[i]
+        heapq.heappush(self.h[cuisine], (-newRating, food, i))
+        
+    def highestRated(self, cuisine: str) -> str:
+        # for pairs in self.guide[cuisine]:
+        r, f, i = self.h[cuisine][0]
+        while -r != self.ratings[i]:
+            heapq.heappop(self.h[cuisine])
+            r, f, i = self.h[cuisine][0]
+        return f
+
+# Your FoodRatings object will be instantiated and called as such:
+# obj = FoodRatings(foods, cuisines, ratings)
+# obj.changeRating(food,newRating)
+# param_2 = obj.highestRated(cuisine)
+```
