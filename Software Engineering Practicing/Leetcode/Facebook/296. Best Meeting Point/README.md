@@ -1,6 +1,6 @@
 ## [296. Best Meeting Point](https://leetcode.com/problems/best-meeting-point)
 
-```Tag```: ```Matrix``` ```Breadth-First Search``` ```Sort``` ```Math``` ```SortedSet```
+```Tag```: ```Matrix``` ```Breadth-First Search``` ```Sort``` ```Math```
 
 #### Difficulty: Hard
 
@@ -184,10 +184,4 @@ class Solution:
         cols.sort()
         col = cols[len(cols) // 2]
         return calculate_distance(rows, row, 0) + calculate_distance(cols, col, 0)
-```
-
-### ```SortedSet```
-
-```Python
-
 ```
