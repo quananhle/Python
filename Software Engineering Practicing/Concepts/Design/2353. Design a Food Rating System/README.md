@@ -71,6 +71,11 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/design-a-food-rating-system/Figures/2353/Slide3.jpg)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \cdot \log n + m \cdot \log (n + m))$
+- __Space Complexity__: $\mathcal{O}(n + m)$
+
 ```Python
 class Food:
 
@@ -89,7 +94,7 @@ class Food:
 
 class FoodRatings:
 
-    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):
+    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]): # O(nlogn)
         # Map food with its rating
         self.food_rating_map = collections.defaultdict()
         # Map food with its cuisine
@@ -99,27 +104,27 @@ class FoodRatings:
         self.h = collections.defaultdict(list)
 
         n = len(foods)
-        for i in range(n):
+        for i in range(n):                                                                  # O(n)
             self.food_rating_map[foods[i]] = ratings[i]
             self.food_cuisine_map[foods[i]] = cuisines[i]
-            heapq.heappush(self.h[cuisines[i]], Food(ratings[i], foods[i]))
+            heapq.heappush(self.h[cuisines[i]], Food(ratings[i], foods[i]))                 # O(logn)
 
-    def changeRating(self, food: str, newRating: int) -> None:
+    def changeRating(self, food: str, newRating: int) -> None: # O(mlog(n+m))
         # Update food's rating 
-        self.food_rating_map[food] = newRating
+        self.food_rating_map[food] = newRating                                              # O(1)
         # Get cuisine of food
-        cuisine = self.food_cuisine_map[food]
+        cuisine = self.food_cuisine_map[food]                                               
         # Insert new element to priority queue
-        heapq.heappush(self.h[cuisine], Food(newRating, food))
+        heapq.heappush(self.h[cuisine], Food(newRating, food))                              # O(log(n+m))
 
-    def highestRated(self, cuisine: str) -> str:
+    def highestRated(self, cuisine: str) -> str: # O(mlog(n+m))
         # for pairs in self.guide[cuisine]:
-        highest_rated = self.h[cuisine][0]
+        highest_rated = self.h[cuisine][0]                                                  # O(1)
         # Check if the largest rating of food rating map matches the highest rating of food in cuisine from priority queue
-        while self.food_rating_map[highest_rated.food_name] != highest_rated.food_rating:
+        while self.food_rating_map[highest_rated.food_name] != highest_rated.food_rating:   # O(m)
             # Discard unmatched rating element from priority queue
-            heapq.heappop(self.h[cuisine])
-            highest_rated = self.h[cuisine][0]
+            heapq.heappop(self.h[cuisine])                                                  # O(log(n+m))
+            highest_rated = self.h[cuisine][0]                                              # O(1)
         return highest_rated.food_name
 
 # Your FoodRatings object will be instantiated and called as such:
