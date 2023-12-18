@@ -93,3 +93,16 @@ class Solution:
 
         return biggest * second_biggest - smallest * second_smallest
 ```
+
+### Priority Queue
+
+```Python
+class Solution:
+    def maxProductDifference(self, nums: List[int]) -> int:
+        biggest, smallest = list(), list()
+        for num in nums:
+            heapq.heappush(biggest, -num)
+            heapq.heappush(smallest, num)
+        
+        return heapq.heappop(biggest) * heapq.heappop(biggest) - heapq.heappop(smallest) * heapq.heappop(smallest)
+```
