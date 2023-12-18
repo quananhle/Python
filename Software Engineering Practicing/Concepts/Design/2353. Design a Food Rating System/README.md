@@ -172,12 +172,17 @@ class FoodRatings:
 > This data structure internally uses a height-balanced binary search tree (like, a red-black tree, AVL tree, etc.) to keep the data sorted. 
 > Thus, pushing an element, popping an element, and getting the minimum-valued element are all logarithmic time operations because the tree balances itself after each operation.
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}((n + m) \cdot \log{}(n))$
+- __Space Complexity__: $\mathcal{O}(n)$
+
 ```Python
 from sortedcontainers import SortedSet
 
 class FoodRatings:
 
-    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):
+    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):  # O(nlogn)
         self.food_rating_map = collections.defaultdict()
         self.food_cuisine_map = collections.defaultdict()
         self.cuisine_food_map = collections.defaultdict(SortedSet)
@@ -186,9 +191,9 @@ class FoodRatings:
         for i in range(n):
             self.food_rating_map[foods[i]] = ratings[i]
             self.food_cuisine_map[foods[i]] = cuisines[i]
-            self.cuisine_food_map[cuisines[i]].add((-ratings[i], foods[i]))
+            self.cuisine_food_map[cuisines[i]].add((-ratings[i], foods[i]))             # O(logn)
 
-    def changeRating(self, food: str, newRating: int) -> None:
+    def changeRating(self, food: str, newRating: int) -> None:                      # O(mlogn)
         # Get the current rating of the food from food rating map
         curr_rating = (-self.food_rating_map[food], food)
         # Update new rating in the food rating map
@@ -198,10 +203,10 @@ class FoodRatings:
         cuisine = self.food_cuisine_map[food]
         # Remove the current elemenet and update the new element
         self.cuisine_food_map[cuisine].remove(curr_rating)
-        self.cuisine_food_map[cuisine].add((-newRating, food))
+        self.cuisine_food_map[cuisine].add((-newRating, food))                          # O(logn)
 
-    def highestRated(self, cuisine: str) -> str:
-        highest_rated = self.cuisine_food_map[cuisine][0]
+    def highestRated(self, cuisine: str) -> str:                                    # O(m)
+        highest_rated = self.cuisine_food_map[cuisine][0]                                # O(1)
         return highest_rated[1]
 
 
