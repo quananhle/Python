@@ -1,4 +1,4 @@
-## [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array)
+## [215. K<sup>th</sup> Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array)
 
 ```Tag```: ```Priority Queue``` ```Sorting```
 
