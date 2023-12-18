@@ -1,6 +1,6 @@
 ## [2353. Design a Food Rating System](https://leetcode.com/problems/design-a-food-rating-system)
 
-```Tag```: ```Design``` ```Priority Queue``` ```Hash Map```
+```Tag```: ```Design``` ```Priority Queue``` ```Hash Map``` ```SortedSet```
 
 #### Difficulty: Medium
 
@@ -166,3 +166,48 @@ class FoodRatings:
 # obj.changeRating(food,newRating)
 # param_2 = obj.highestRated(cuisine)
 ```
+
+### ```SortedSet```
+
+> This data structure internally uses a height-balanced binary search tree (like, a red-black tree, AVL tree, etc.) to keep the data sorted. 
+> Thus, pushing an element, popping an element, and getting the minimum-valued element are all logarithmic time operations because the tree balances itself after each operation.
+
+```Python
+from sortedcontainers import SortedSet
+
+class FoodRatings:
+
+    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):
+        self.food_rating_map = collections.defaultdict()
+        self.food_cuisine_map = collections.defaultdict()
+        self.cuisine_food_map = collections.defaultdict(SortedSet)
+
+        n = len(foods)
+        for i in range(n):
+            self.food_rating_map[foods[i]] = ratings[i]
+            self.food_cuisine_map[foods[i]] = cuisines[i]
+            self.cuisine_food_map[cuisines[i]].add((-ratings[i], foods[i]))
+
+    def changeRating(self, food: str, newRating: int) -> None:
+        # Get the current rating of the food from food rating map
+        curr_rating = (-self.food_rating_map[food], food)
+        # Update new rating in the food rating map
+        self.food_rating_map[food] = newRating
+
+        # Get the cuisine of the food from the food cuisine map
+        cuisine = self.food_cuisine_map[food]
+        # Remove the current elemenet and update the new element
+        self.cuisine_food_map[cuisine].remove(curr_rating)
+        self.cuisine_food_map[cuisine].add((-newRating, food))
+
+    def highestRated(self, cuisine: str) -> str:
+        highest_rated = self.cuisine_food_map[cuisine][0]
+        return highest_rated[1]
+
+
+# Your FoodRatings object will be instantiated and called as such:
+# obj = FoodRatings(foods, cuisines, ratings)
+# obj.changeRating(food,newRating)
+# param_2 = obj.highestRated(cuisine)
+```
+
