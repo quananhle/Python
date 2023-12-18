@@ -81,7 +81,9 @@ class Solution:
         return ans
 ```
 
-### Manhattan Distance Formula
+### Math
+
+#### Manhattan Distance Formula (Time Limit Exceeded)
 
 __Complexity Analysis__
 
@@ -112,4 +114,30 @@ class Solution:
                 ans = min(ans, curr_distance)
         
         return ans
+```
+
+#### Sort
+
+```Python
+class Solution:
+    def minTotalDistance(self, grid: List[List[int]]) -> int:
+        rows, cols = list(), list()
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col]:
+                    rows.append(row)
+                    cols.append(col)
+                
+        def calculate_distance(points, origin, distance):
+            for point in points:
+                distance += abs(point - origin)
+            return distance
+        
+        row = rows[len(rows) // 2]
+        cols.sort()
+        col = cols[len(cols) // 2]
+        return calculate_distance(rows, row, 0) + calculate_distance(cols, col, 0)
 ```
