@@ -41,6 +41,11 @@ __Constraints:__
 
 ### Sort
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \cdot \log{} n)$
+- __Space Complexity__: $\mathcal{O}(n)$ or $\mathcal{O}(\log n)$
+
 ```Python
 class Solution:
     def maxProductDifference(self, nums: List[int]) -> int:
@@ -49,6 +54,11 @@ class Solution:
 ```
 
 ### Find Two Biggest and Two Smallest
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
@@ -96,13 +106,18 @@ class Solution:
 
 ### Priority Queue
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \cdot \log{} n)$
+- __Space Complexity__: $\mathcal{O}(1)$. Heap sort is an in-place algorithm; it doesn't require any extra space
+
 ```Python
 class Solution:
-    def maxProductDifference(self, nums: List[int]) -> int:
+    def maxProductDifference(self, nums: List[int]) -> int:    # O(n * log n)
         biggest, smallest = list(), list()
-        for num in nums:
-            heapq.heappush(biggest, -num)
-            heapq.heappush(smallest, num)
+        for num in nums:                            # O(n)
+            heapq.heappush(biggest, -num)           # O(log n)
+            heapq.heappush(smallest, num)           # O(log n)
         
         return heapq.heappop(biggest) * heapq.heappop(biggest) - heapq.heappop(smallest) * heapq.heappop(smallest)
 ```
