@@ -1,6 +1,6 @@
 ## [296. Best Meeting Point](https://leetcode.com/problems/best-meeting-point)
 
-```Tag```: ```Matrix```
+```Tag```: ```Matrix``` ```Breadth-First Search``` ```Sort```
 
 #### Difficulty: Hard
 
@@ -40,3 +40,39 @@ __Constraints:__
 - There will be at least two friends in the ```grid```.
 
 ---
+
+### Breadth-First Search (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def minTotalDistance(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        
+        def search(row, col):
+            queue = collections.deque()
+            visited = set()
+            queue.append((row, col, 0))
+            distance = 0
+            while queue:
+                r, c, d = queue.popleft()
+                if not (0 <= r < ROWS and 0 <= c < COLS and not (r, c) in visited):
+                    continue
+                if grid[r][c]:
+                    distance += d
+                visited.add((r, c))
+                '''
+                for dx, dy in DIRECTIONS:
+                    queue.append((r + dx, c + dy, d + 1))
+                '''
+                queue.extend((r + dx, c + dy, d + 1) for dx, dy in DIRECTIONS)
+            return distance
+        
+        ans = math.inf
+        for row in range(ROWS):
+            for col in range(COLS):
+                curr_distance = search(row, col)
+                ans = min(ans, curr_distance)
+        
+        return ans
+```
