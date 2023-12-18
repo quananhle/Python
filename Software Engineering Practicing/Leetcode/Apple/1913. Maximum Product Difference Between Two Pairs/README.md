@@ -47,3 +47,49 @@ class Solution:
         nums.sort()
         return (nums[-1] * nums[-2]) - (nums[0] * nums[1])
 ```
+
+### Find Two Biggest and Two Smallest
+
+```Python
+class Solution:
+    def maxProductDifference(self, nums: List[int]) -> int:
+        biggest = second_biggest = -math.inf
+        smallest = second_smallest = math.inf
+
+        for num in nums:
+            if biggest < num:
+                second_biggest = biggest
+                biggest = num
+            else:
+                second_biggest = max(second_biggest, num)
+
+            if smallest > num:
+                second_smallest = smallest
+                smallest = num
+            else:
+                second_smallest = min(second_smallest, num)
+
+        return biggest * second_biggest - smallest * second_smallest
+```
+
+```Python
+class Solution:
+    def maxProductDifference(self, nums: List[int]) -> int:
+        biggest = second_biggest = -math.inf
+        smallest = second_smallest = math.inf
+
+        for num in nums:
+            if biggest < num:
+                second_biggest = biggest
+                biggest = num
+            elif second_biggest < num:
+                second_biggest = num
+
+            if smallest > num:
+                second_smallest = smallest
+                smallest = num
+            elif second_smallest > num:
+                second_smallest = num
+
+        return biggest * second_biggest - smallest * second_smallest
+```
