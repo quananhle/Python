@@ -63,6 +63,18 @@ __Constraints:__
 
 ### Priority Queue + Hash Map
 
+![image](https://leetcode.com/problems/design-a-food-rating-system/Figures/2353/Slide4.jpg)
+
+![image](https://leetcode.com/problems/design-a-food-rating-system/Figures/2353/Slide5.jpg)
+
+![image](https://leetcode.com/problems/design-a-food-rating-system/Figures/2353/Slide2.jpg)
+
+![image](https://leetcode.com/problems/design-a-food-rating-system/Figures/2353/Slide3.jpg)
+
+```Python
+
+```
+
 ```Python
 class FoodRatings:
 
