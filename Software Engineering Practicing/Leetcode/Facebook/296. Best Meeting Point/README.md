@@ -1,6 +1,6 @@
 ## [296. Best Meeting Point](https://leetcode.com/problems/best-meeting-point)
 
-```Tag```: ```Matrix``` ```Breadth-First Search``` ```Sort```
+```Tag```: ```Matrix``` ```Breadth-First Search``` ```Sort``` ```Math```
 
 #### Difficulty: Hard
 
@@ -77,4 +77,39 @@ class Solution:
             for col in range(COLS):
                 curr_distance = search(row, col, 0)
                 ans = min(ans, curr_distance)
+
+        return ans
+```
+
+### Manhattan Distance Formula
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m^2 \cdot n^2)$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$.
+
+```Python
+class Solution:
+    def minTotalDistance(self, grid: List[List[int]]) -> int:
+        ROWS, COLS = len(grid), len(grid[0])
+        DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+        points = list()
+        for row in range(ROWS):
+            for col in range(COLS):
+                if grid[row][col]:
+                    points.append((row, col))
+
+        def calculate_distance(points, row, col, distance):
+            for curr_row, curr_col in points:
+                distance += abs(curr_row - row) + abs(curr_col - col)
+            return distance
+        
+        ans = math.inf
+        for row in range(ROWS):
+            for col in range(COLS):
+                curr_distance = calculate_distance(points, row, col, 0)
+                ans = min(ans, curr_distance)
+        
+        return ans
 ```
