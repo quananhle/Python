@@ -72,7 +72,60 @@ __Constraints:__
 ![image](https://leetcode.com/problems/design-a-food-rating-system/Figures/2353/Slide3.jpg)
 
 ```Python
+class Food:
 
+    def __init__(self, food_rating, food_name):
+        # Store the food's rating
+        self.food_rating = food_rating
+        # Store the food's name
+        self.food_name = food_name
+    
+    def __lt__(self, other):
+        # Check if food ratings are the same, sort based on their name (lexicographically smaller name food will be on top).
+        if self.food_rating == other.food_rating:
+            return self.food_name < other.food_name
+        # Sort based on food rating (bigger rating food will be on top)
+        return self.food_rating > other.food_rating
+
+class FoodRatings:
+
+    def __init__(self, foods: List[str], cuisines: List[str], ratings: List[int]):
+        # Map food with its rating
+        self.food_rating_map = collections.defaultdict()
+        # Map food with its cuisine
+        self.food_cuisine_map = collections.defaultdict()
+        # Store all food of a cuisine in a priority queue (to sort them on ratings/name).
+        # Priority queue element -> Food: (food_rating, food_name)
+        self.h = collections.defaultdict(list)
+
+        n = len(foods)
+        for i in range(n):
+            self.food_rating_map[foods[i]] = ratings[i]
+            self.food_cuisine_map[foods[i]] = cuisines[i]
+            heapq.heappush(self.h[cuisines[i]], Food(ratings[i], foods[i]))
+
+    def changeRating(self, food: str, newRating: int) -> None:
+        # Update food's rating 
+        self.food_rating_map[food] = newRating
+        # Get cuisine of food
+        cuisine = self.food_cuisine_map[food]
+        # Insert new element to priority queue
+        heapq.heappush(self.h[cuisine], Food(newRating, food))
+
+    def highestRated(self, cuisine: str) -> str:
+        # for pairs in self.guide[cuisine]:
+        highest_rated = self.h[cuisine][0]
+        # Check if the largest rating of food rating map matches the highest rating of food in cuisine from priority queue
+        while self.food_rating_map[highest_rated.food_name] != highest_rated.food_rating:
+            # Discard unmatched rating element from priority queue
+            heapq.heappop(self.h[cuisine])
+            highest_rated = self.h[cuisine][0]
+        return highest_rated.food_name
+
+# Your FoodRatings object will be instantiated and called as such:
+# obj = FoodRatings(foods, cuisines, ratings)
+# obj.changeRating(food,newRating)
+# param_2 = obj.highestRated(cuisine)
 ```
 
 ```Python
