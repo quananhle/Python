@@ -43,17 +43,21 @@ __Constraints:__
 
 ### Breadth-First Search (Time Limit Exceeded)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m^2 \cdot n^2)$.
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$.
+
 ```Python
 class Solution:
     def minTotalDistance(self, grid: List[List[int]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
         DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
         
-        def search(row, col):
+        def search(row, col, distance):
             queue = collections.deque()
             visited = set()
             queue.append((row, col, 0))
-            distance = 0
             while queue:
                 r, c, d = queue.popleft()
                 if not (0 <= r < ROWS and 0 <= c < COLS and not (r, c) in visited):
@@ -71,8 +75,6 @@ class Solution:
         ans = math.inf
         for row in range(ROWS):
             for col in range(COLS):
-                curr_distance = search(row, col)
+                curr_distance = search(row, col, 0)
                 ans = min(ans, curr_distance)
-        
-        return ans
 ```
