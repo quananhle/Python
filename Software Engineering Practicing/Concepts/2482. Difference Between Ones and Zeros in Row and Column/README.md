@@ -67,8 +67,30 @@ __Constraints:__
 
 ![image](https://github.com/quananhle/Python/assets/35042430/d24a70ca-7852-427c-89bf-2180905cc21a)
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(M \cdot N)$
+- __Space Complexity__: $\mathcal{O}(M + N)$
+
+```Python
+class Solution:
+    def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(grid), len(grid[0])
+        ones_row = [0] * ROWS
+        ones_col = [0] * COLS
+
+        for i in range(ROWS):
+            for j in range(COLS):
+                ones_row[i] += grid[i][j]
+                ones_col[j] += grid[i][j]
+        
+        res = [[None] * COLS for _ in range(ROWS)]
+
+        for i in range(ROWS):
+            for j in range(COLS):
+                res[i][j] = ones_row[i] + ones_col[j] - (ROWS - ones_row[i]) - (COLS - ones_col[j])
+        
+        return res
 ```
 
 ### Hash Map
