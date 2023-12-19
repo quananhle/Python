@@ -44,3 +44,55 @@ __Constraints:__
 - $0 \le img[i][j] \le 255$
 
 ---
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(img), len(img[0])
+        # 9 directions including not moving
+        DIRECTIONS = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 0), (0, 1), (1, -1), (1, 0), (1, 1)]
+        res = [[None] * COLS for _ in range(ROWS)]
+
+        def bfs(row, col, total, count):
+            for dx, dy in DIRECTIONS:
+                new_row, new_col = row + dx, col + dy
+                if not (0 <= new_row < ROWS and 0 <= new_col < COLS):
+                    continue
+                total += img[new_row][new_col]
+                count += 1
+
+            return total // count
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                res[row][col] = bfs(row, col, 0, 0)
+        
+        return res
+```
+
+```Python
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(img), len(img[0])
+        # 8 neighbor cells
+        DIRECTIONS = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        res = [[None] * COLS for _ in range(ROWS)]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                total = img[row][col]
+                count = 1
+
+                for dx, dy in DIRECTIONS:
+                    new_row, new_col = row + dx, col + dy
+                    if not (0 <= new_row < ROWS and 0 <= new_col < COLS):
+                        continue
+                    total += img[new_row][new_col]
+                    count += 1
+
+                res[row][col] = total // count
+        
+        return res
+```
