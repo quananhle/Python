@@ -45,6 +45,23 @@ __Constraints:__
 
 ---
 
+To compute the ```smooth_img[i][j]```, we may need to read the following cells from the ```img``` matrix.
+
+- ```img[i][j]```, the cell itself.
+- ```img[i - 1][j - 1]```, the cell that shares the top-left corner with this cell.
+- ```img[i - 1][j]```, the cell that shares the top edge with this cell.
+- ```img[i - 1][j + 1]```, the cell that shares the top-right corner with this cell.
+- ```img[i][j - 1]```, the cell that shares the left edge with this cell.
+- ```img[i][j + 1]```, the cell that shares the right edge with this cell.
+- ```img[i + 1][j - 1]```, the cell that shares the bottom-left corner with this cell.
+- ```img[i + 1][j]```, the cell that shares the bottom edge with this cell.
+- ```img[i + 1][j + 1]```, the cell that shares the bottom-right corner with this cell.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$
+
 ### Breadth-First Search
 
 ```Python
