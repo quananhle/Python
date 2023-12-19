@@ -57,12 +57,13 @@ To compute the ```smooth_img[i][j]```, we may need to read the following cells f
 - ```img[i + 1][j]```, the cell that shares the bottom edge with this cell.
 - ```img[i + 1][j + 1]```, the cell that shares the bottom-right corner with this cell.
 
+
+### Breadth-First Search
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(m \cdot n)$
 - __Space Complexity__: $\mathcal{O}(m \cdot n)$
-
-### Breadth-First Search
 
 ```Python
 class Solution:
@@ -112,4 +113,75 @@ class Solution:
                 res[row][col] = total // count
         
         return res
+```
+
+#### Space Optimized BFS
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(img), len(img[0])
+        temp = [None] * COLS
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                total = count = 0
+
+                # Bottom neighbors
+                if row + 1 < ROWS:
+                    if col - 1 >= 0:
+                        total += img[row + 1][col - 1]
+                        count += 1
+                    total += img[row + 1][col]
+                    count += 1
+                    
+                    if col + 1 < COLS:
+                        total += img[row + 1][col + 1]
+                        count += 1
+                
+                # Right neighbor
+                if col + 1 < COLS:
+                    total += img[row][col + 1]
+                    count += 1
+                
+                # Current cell
+                total += img[row][col]
+                count += 1
+
+                # Left neighbor
+                if col - 1 >= 0:
+                    total += temp[col - 1]
+                    count += 1
+                
+                # Top neighbors
+                if row - 1 >= 0:
+                    # Left-top corner-sharing neighbor.
+                    if col - 1 >= 0:
+                        total += prev_val
+                        count += 1
+                    
+                    # Top edge-sharing neighbor.
+                    total += temp[col]
+                    count += 1
+
+                    # Right-top corner-sharing neighbor.
+                    if col + 1 < COLS:
+                        total += temp[col + 1]
+                        count += 1
+                
+                # Store the original value of temp[j], which represents original value of img[i - 1][j].
+                if row - 1 >= 0:
+                    prev_val = temp[col]
+
+                # Save current value of img[i][j] in temp[j].
+                temp[col] = img[row][col]
+                # Overwrite with smoothed value.
+                img[row][col] = total // count
+            
+        return img
 ```
