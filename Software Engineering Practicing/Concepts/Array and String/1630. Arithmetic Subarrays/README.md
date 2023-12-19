@@ -54,18 +54,26 @@ __Constraints:__
 
 ---
 
-### ```SortedList()```
+### Brute Force
+
+#### ```SortedList()```
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n \cdot \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$
 
 ```Python
 from sortedcontainers import SortedList
+
 class Solution:
     def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
         res = list()
 
-        for i in range(len(l)):
+        for i in range(len(l)):                                     # O(m)
             sorted_list = SortedList()
-            for num in nums[l[i]:r[i] + 1]:
-                sorted_list.add(num)
+            for num in nums[l[i]:r[i] + 1]:                         # O(n)
+                sorted_list.add(num)                                # O(log(n))
             
             if len(sorted_list) < 2:
                 res.append(False)
@@ -73,7 +81,7 @@ class Solution:
 
             diff = sorted_list[1] - sorted_list[0]
             
-            for i in range(2, len(sorted_list)):
+            for i in range(2, len(sorted_list)):                    # O(n)
                 if sorted_list[i] - sorted_list[i - 1] != diff:
                     res.append(False)
                     break
@@ -83,3 +91,33 @@ class Solution:
 
         return res
 ```
+
+### Sort
+
+![image](https://leetcode.com/problems/arithmetic-subarrays/Figures/1630/1.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n \cdot \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+class Solution:
+    def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
+        def check(arr):
+            arr.sort()
+            diff = arr[1] - arr[0]
+            for i in range(2, len(arr)):
+                if arr[i] - arr[i - 1] != diff:
+                    return False
+            return True
+
+        res = list()
+        for i in range(len(l)):
+            arr = nums[l[i]:r[i] + 1][:]
+            res.append(check(arr))
+
+        return res
+```
+
+### 
