@@ -301,7 +301,6 @@ class Solution:
                     for new_col in (col - 1, col, col + 1): 
                         if not (0 <= new_row < ROWS and 0 <= new_col < COLS):
                             continue
-                        # X = 256
                         total += img[new_row][new_col] & 255            # r
                         count += 1
 
