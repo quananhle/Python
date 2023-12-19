@@ -1,6 +1,6 @@
 ## [661. Image Smoother](https://leetcode.com/problems/image-smoother)
 
-```Tag```: ```Matrix``` ```Breadth-First Search```
+```Tag```: ```Matrix``` ```Breadth-First Search``` ```Math``` ```Bit Manipulation```
 
 #### Difficulty: Easy
 
@@ -182,6 +182,45 @@ class Solution:
                 temp[col] = img[row][col]
                 # Overwrite with smoothed value.
                 img[row][col] = total // count
+            
+        return img
+```
+
+#### Constant Space BFS
+
+![image](https://github.com/quananhle/Python/assets/35042430/35c26591-98d4-4c82-815d-d367da71ae83)
+
+![image](https://github.com/quananhle/Python/assets/35042430/6197b921-5b9e-4589-b9f8-9e3e63c7db3d)
+
+![image](https://github.com/quananhle/Python/assets/35042430/5a57cc0c-2ffa-4e86-9dd7-71df560d8e4d)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(img), len(img[0])
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                total = count = 0
+
+                for new_row in (row - 1, row, row + 1):
+                    for new_col in (col - 1, col, col + 1): 
+                        if not (0 <= new_row < ROWS and 0 <= new_col < COLS):
+                            continue
+                        # X = 256
+                        total += img[new_row][new_col] % 256            # r
+                        count += 1
+
+                img[row][col] += (total // count) * 256                 # Y
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                img[row][col] //= 256                                   # p
             
         return img
 ```
