@@ -283,6 +283,33 @@ However, readers can appreciate that only the right shift is sufficient to extra
 - Bitwise OR ```(|)``` of smoothened value with ```img[i][j]``` provided least significant 8 bits of the left-shifted smoothened value are ```0``` $\equiv$ add ```img[i][j]```
 - Right shift ```(>>)``` by 8 bits $\equiv$ divide by ```256```
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(img), len(img[0])
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                total = count = 0
+
+                for new_row in (row - 1, row, row + 1):
+                    for new_col in (col - 1, col, col + 1): 
+                        if not (0 <= new_row < ROWS and 0 <= new_col < COLS):
+                            continue
+                        # X = 256
+                        total += img[new_row][new_col] & 255            # r
+                        count += 1
+
+                img[row][col] |= (total // count) << 8                  # Y
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                img[row][col] >>= 8                                     # p
+            
+        return img
 ```
