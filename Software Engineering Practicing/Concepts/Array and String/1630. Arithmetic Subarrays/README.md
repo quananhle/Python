@@ -1,6 +1,6 @@
 ## [1630. Arithmetic Subarrays](https://leetcode.com/problems/arithmetic-subarrays)
 
-```Tag```: ```Sorted List```
+```Tag```: ```Sorted List``` ```Sort``` ```Math```
 
 #### Difficulty: Medium
 
@@ -120,4 +120,44 @@ class Solution:
         return res
 ```
 
-### 
+---
+
+### Math
+
+![image](https://leetcode.com/problems/arithmetic-subarrays/Figures/1630/3.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+class Solution:
+    def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
+        def check(arr):
+            min_num = min(arr)
+            max_num = max(arr)
+
+            # Check if the differences are evenly divided
+            if (max_num - min_num) % (len(arr) - 1) != 0:
+                return False
+            
+            diff = (max_num - min_num) / (len(arr) - 1) != 0
+            arr_set = set(arr)
+            curr = min_num + diff
+
+            while curr < max_element:
+                if not curr in arr_set:
+                    return False
+                curr += diff
+            
+            return True
+
+
+        res = list()
+        for i in range(len(l)):
+            arr = nums[l[i]:r[i] + 1][:]
+            res.append(check(arr))
+
+        return res
+```
