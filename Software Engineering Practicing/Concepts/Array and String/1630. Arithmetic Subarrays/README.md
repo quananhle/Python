@@ -1,6 +1,6 @@
 ## [1630. Arithmetic Subarrays](https://leetcode.com/problems/arithmetic-subarrays)
 
-```Tag```:
+```Tag```: ```Sorted List```
 
 #### Difficulty: Medium
 
@@ -53,3 +53,33 @@ __Constraints:__
 - $-10^5 \le nums[i] \le 10^5$
 
 ---
+
+### ```SortedList()```
+
+```Python
+from sortedcontainers import SortedList
+class Solution:
+    def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
+        res = list()
+
+        for i in range(len(l)):
+            sorted_list = SortedList()
+            for num in nums[l[i]:r[i] + 1]:
+                sorted_list.add(num)
+            
+            if len(sorted_list) < 2:
+                res.append(False)
+                continue
+
+            diff = sorted_list[1] - sorted_list[0]
+            
+            for i in range(2, len(sorted_list)):
+                if sorted_list[i] - sorted_list[i - 1] != diff:
+                    res.append(False)
+                    break
+            else:
+                res.append(True)
+
+
+        return res
+```
