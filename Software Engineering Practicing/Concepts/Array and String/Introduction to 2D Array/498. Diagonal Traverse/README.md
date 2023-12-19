@@ -1,4 +1,4 @@
-## 498. Diagonal Traverse
+## [498. Diagonal Traverse](https://leetcode.com/problems/diagonal-traverse)
 
 ```Tag```: ```Array``` ```Stack``` ```Depth-First Search``` 
 
@@ -6,7 +6,7 @@
 
 Given an ```m x n``` matrix ```mat```, return _an array of all the elements of the array in a diagonal order_.
 
-![image](https://user-images.githubusercontent.com/35042430/209458335-7697a2a4-2180-4930-885e-7813521958a3.png)
+![image](https://github.com/quananhle/Python/assets/35042430/89f70c8b-4340-41d8-a949-2ca154f8d1cf)
 
 ---
 
