@@ -224,3 +224,65 @@ class Solution:
             
         return img
 ```
+
+---
+
+### Bit Manipulation
+
+![image](https://leetcode.com/problems/image-smoother/Figures/661/661_slide_images_used/Slide8.PNG)
+
+This suggests the idea that in these 23 unused bits, we can store the smoothed value of ```img[i][j]```. This we can achieve by using bit-manipulation. In bit manipulation, we use the bit-wise operators.
+
+Now the smoothed value is an average of nine values ranging from ```0``` to ```255```. Hence, the average will also lie between ```0``` to ```255```. Thus, the smoothed value will also require at most 8 bits to represent it. This we can store together as follows.
+
+![image](https://leetcode.com/problems/image-smoother/Figures/661/661_slide_images_used/Slide9.PNG)
+
+__How do we store smoothened corresponding values?__ Let's see.
+
+Initially, the smoothened corresponding value was a separate integer, as shown in the figure below.
+
+![image](https://leetcode.com/problems/image-smoother/Figures/661/661_slide_images_used/Slide10.PNG)
+
+We can left shift (using the ```<<``` operator ) the integer so that the orientation now looks like as follows.
+
+![image](https://leetcode.com/problems/image-smoother/Figures/661/661_slide_images_used/Slide11.PNG)
+
+Now there is a property of bitwise OR ```(|)``` operator. ```x | 0 = x```. In the context of the diagram, doing bitwise OR of both these separate integers
+
+- The most significant 16 bits will remain 0 because both integers have 0 in those bits.
+- The least significant 8 bits will store the values of ```img[i][j]```
+- The remaining 8 bits will store the values of the smoothened corresponding value.
+
+![image](https://leetcode.com/problems/image-smoother/Figures/661/661_slide_images_used/Slide12.PNG)
+
+__How can we extract the original value of img[i][j] from this mixed integer?__
+
+In other words,
+
+- We wish to set all except the least significant 8 bits to 0. The bitwise AND ```(&)``` operator has property of ```x & 0 = 0```. Thus to set the first 24 bits to 0, we can do bitwise AND with an integer that has the first 24 bits as ```0```.
+- We wish to retain the least significant 8 bits as it is. The bitwise AND ```(&)``` operator has property of ```x & 1 = x```. Thus to retain the last 8 bits as it is, we can do bitwise AND with an integer that has the last 8 bits as ```1```.
+
+Thus, the integer with which we can do bitwise AND ```(&)``` to extract the original value of ```img[i][j]``` is ```00000000000000000000000011111111```, which is ```255``` in decimal, and ```11111111``` in binary.
+
+![image](https://leetcode.com/problems/image-smoother/Figures/661/661_slide_images_used/Slide13.PNG)
+
+__How can we extract the smoothened value from this mixed integer, after we are done with computing all the smoothened values?__
+
+As done above, we perhaps can do bitwise AND ```(&)``` with ```00000000000000001111111100000000```, which is ```65280``` in decimal, and ```1111111100000000``` in binary. This will retain the smoothened value bits as it is, turning off all other bits.
+
+After that, to get the smoothened value, we can right shift (using the ```>>``` operator ) the integer by 8 bits (To encode, we did a left shift by 8 bits). This will bring the smoothened value to the least significant 8 bits.
+
+However, readers can appreciate that only the right shift is sufficient to extract the smoothened value.
+
+![image](https://leetcode.com/problems/image-smoother/Figures/661/661_slide_images_used/Slide14.PNG)
+
+> The bit manipulation works because we have only 8 bits per pixel (abbreviated as "bpp"). The "bpp" is the number of bits used to represent the color of a single pixel in a bitmapped image or video frame buffer. Hence, we can use the remaining bits to store the smoothened value.
+
+- Bitwise AND ```(&)``` with 255 $\equiv$ modulo by ```256```
+- Left shift ```(<<)``` by 8 bits $\equiv$ multiply by ```256```
+- Bitwise OR ```(|)``` of smoothened value with ```img[i][j]``` provided least significant 8 bits of the left-shifted smoothened value are ```0``` $\equiv$ add ```img[i][j]```
+- Right shift ```(>>)``` by 8 bits $\equiv$ divide by ```256```
+
+```Python
+
+```
