@@ -26,10 +26,10 @@ Output: [1,2,3,4]
 
 __Constraints:__
 
-m == mat.length
-n == mat[i].length
-1 <= m, n <= 104
-1 <= m * n <= 104
--105 <= mat[i][j] <= 105
+- $m == mat.length$
+- $n == mat[i].length$
+- $1 \le m, n \le 104$
+- $1 \le m * n \le 104$
+- $-10^5 \le mat[i][j] \le 10^5$
 
 ---
