@@ -1,6 +1,6 @@
 ## [2706. Buy Two Chocolates](https://leetcode.com/problems/buy-two-chocolates)
 
-```Tag```: ```Array & String``` ```Priority Queue``` ```Counting Sort``` ```Bucket Sort```
+```Tag```: ```Array & String``` ```Priority Queue``` ```Counting Sort``` ```Bucket Sort``` ```Greedy Algorithm```
 
 #### Difficulty: Easy
 
@@ -34,14 +34,15 @@ __Constraints:__
 
 ---
 
-### Sort
+### Greedy Algorithm
 
 ```Python
 class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
         prices.sort()
+
         if prices[0] + prices[1] <= money:
             return money - (prices[0] + prices[1])
-        else:
-            return money
+
+        return money
 ```
