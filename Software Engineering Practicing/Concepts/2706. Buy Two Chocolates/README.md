@@ -34,7 +34,26 @@ __Constraints:__
 
 ---
 
+### Find Lowest and Second Lowest Elements
+
+####
+
+```Python
+
+```
+
+#### Python
+
+```
+
+```
+
 ### Greedy Algorithm
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$ or $\mathcal{O}(\log{}n)$
 
 ```Python
 class Solution:
@@ -45,4 +64,10 @@ class Solution:
             return money - (prices[0] + prices[1])
 
         return money
+```
+
+### Counting Sort
+
+```Python
+
 ```
