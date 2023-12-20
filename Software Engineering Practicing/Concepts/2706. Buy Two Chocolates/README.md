@@ -69,5 +69,37 @@ class Solution:
 ### Counting Sort
 
 ```Python
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        n = len(prices)
+
+        freq = [0] * 101
+        for price in prices:
+            freq[price] += 1
+        
+        minimum = second_minimum = 0
+        for price in range(1, 101):
+            if freq[price] > 1:
+                minimum = second_minimum = price
+                break
+            elif freq[price] == 1:
+                minimum = price
+                break
+
+        if second_minimum == 0:
+            for price in range(minimum + 1, 101):
+                if freq[price] > 0:
+                    second_minimum = price
+                    break
+        
+        if minimum + second_minimum <= money:
+            return money - minimum - second_minimum
+        
+        return money
+```
+
+### Priority Queue
+
+```Python
 
 ```
