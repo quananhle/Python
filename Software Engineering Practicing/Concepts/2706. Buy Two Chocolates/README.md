@@ -64,12 +64,40 @@ class Solution:
 
 #### One Pass
 
-```Python
+![image](https://leetcode.com/problems/buy-two-chocolates/Figures/2706/2706_slide_images_used/Slide4_1.PNG)
 
+![image](https://leetcode.com/problems/buy-two-chocolates/Figures/2706/2706_slide_images_used/Slide5_1.PNG)
+
+```Python
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        lowest = second_lowest = math.inf
+        for price in prices:
+            if lowest > price:
+                second_lowest = lowest
+                lowest = price
+            elif second_lowest > price:
+                second_lowest = price
+
+        if lowest + second_lowest <= money:
+            return money - lowest - second_lowest
+        return money
 ```
 
 ```Python
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        lowest = second_lowest = math.inf
+        for price in prices:
+            if lowest > price:
+                second_lowest = lowest
+                lowest = price
+            else:
+                second_lowest = min(second_lowest, price)
 
+        if lowest + second_lowest <= money:
+            return money - lowest - second_lowest
+        return money
 ```
 
 ### Greedy Algorithm
