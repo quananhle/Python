@@ -84,13 +84,12 @@ class Solution:
                 break
             elif freq[price] == 1:
                 minimum = price
+                if second_minimum == 0:
+                    for price in range(minimum + 1, 101):
+                        if freq[price] > 0:
+                            second_minimum = price
+                            break
                 break
-
-        if second_minimum == 0:
-            for price in range(minimum + 1, 101):
-                if freq[price] > 0:
-                    second_minimum = price
-                    break
         
         if minimum + second_minimum <= money:
             return money - minimum - second_minimum
