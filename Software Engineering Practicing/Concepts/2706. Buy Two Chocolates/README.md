@@ -100,6 +100,19 @@ class Solution:
         return money
 ```
 
+#### Priority Queue
+
+```Python
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        heapq.heapify(prices)
+        lowest = heapq.heappop(prices)
+        second_lowest = heapq.heappop(prices)
+        if lowest + second_lowest <= money:
+            return money - lowest - second_lowest
+        return money
+```
+
 ### Greedy Algorithm
 
 __Complexity Analysis__
@@ -147,10 +160,4 @@ class Solution:
             return money - minimum - second_minimum
         
         return money
-```
-
-### Priority Queue
-
-```Python
-
 ```
