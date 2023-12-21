@@ -1,6 +1,6 @@
 ## [1637. Widest Vertical Area Between Two Points Containing No Points](https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points)
 
-```Tag```:
+```Tag```: ```Array & String```
 
 #### Difficulty: Medium
 
@@ -28,12 +28,12 @@ Input: points = [[3,1],[9,0],[1,0],[1,4],[5,3],[8,8]]
 Output: 3
 ```
 
-Constraints:
+__Constraints:__
 
-n == points.length
-2 <= n <= 105
-points[i].length == 2
-0 <= xi, yi <= 109
+- n == points.length
+- 2 <= n <= 105
+- points[i].length == 2
+- 0 <= xi, yi <= 109
 
 ---
 
