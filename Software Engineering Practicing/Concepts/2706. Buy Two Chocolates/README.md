@@ -36,7 +36,7 @@ __Constraints:__
 
 ### Find Lowest and Second Lowest Elements
 
-#### Two Passes
+#### Two Passes (```pop()```)
 
 ![image](https://leetcode.com/problems/buy-two-chocolates/Figures/2706/2706_slide_images_used/Slide1_1.PNG)
 
@@ -46,9 +46,9 @@ __Constraints:__
 
 ```
 
-#### Python
+#### One Pass
 
-```
+```Python
 
 ```
 
