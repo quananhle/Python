@@ -43,7 +43,23 @@ __Constraints:__
 ![image](https://leetcode.com/problems/buy-two-chocolates/Figures/2706/2706_slide_images_used/Slide1_2.PNG)
 
 ```Python
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        def get_min_idx() -> int:
+            n = len(prices)
+            min_idx = 0
+            for i in range(1, n):
+                if prices[i] < prices[min_idx]:
+                    min_idx = i
+            return min_idx
 
+        lowest = prices.pop(get_min_idx())
+        second_lowest = prices.pop(get_min_idx())
+
+        if lowest + second_lowest <= money:
+            return money - lowest - second_lowest
+        
+        return money
 ```
 
 #### One Pass
