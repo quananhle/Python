@@ -36,7 +36,11 @@ __Constraints:__
 
 ### Find Lowest and Second Lowest Elements
 
-####
+#### Two Passes
+
+![image](https://leetcode.com/problems/buy-two-chocolates/Figures/2706/2706_slide_images_used/Slide1_1.PNG)
+
+![image](https://leetcode.com/problems/buy-two-chocolates/Figures/2706/2706_slide_images_used/Slide1_2.PNG)
 
 ```Python
 
