@@ -1,6 +1,6 @@
 ## [1637. Widest Vertical Area Between Two Points Containing No Points](https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points)
 
-```Tag```: ```Array & String``` ```Greedy Algorithm```
+```Tag```: ```Array & String``` ```Greedy Algorithm``` ```Sort```
 
 #### Difficulty: Medium
 
@@ -50,5 +50,13 @@ class Solution:
             ans = max(ans, points[i][0] - points[i - 1][0])
 
         return ans
+```
+
+#### One Liner
+
+```Python
+class Solution:
+    def maxWidthOfVerticalArea(self, points: List[List[int]]) -> int:
+        return max(b - a for a, b in pairwise(sorted(list(zip(*points))[0])))
 ```
 
