@@ -93,6 +93,36 @@ class Solution:
         return ans
 ```
 
+#### One Pass
+
+$score = \mathcal{Z}_L​ + \mathcal{O}_R​ = \mathcal{Z}_L + \mathcal{O}_T​ − \mathcal{O}_L$
+
+- $\mathcal{Z}_L​$ is the number of zeros in the left substring
+- $\mathcal{O}_T​$ is the total number of ones in ```s```
+- $\mathcal{O}_L​$ is the number of ones in the left substring.
+- $\mathcal{O}_R​$ is the number of ones in the right substring = $\mathcal{O}_T​$ - $\mathcal{O}_L​$
+​
+```Python
+class Solution:
+    def maxScore(self, s: str) -> int:
+        ones = zeros = 0
+        ans = -math.inf
+        n = len(s)
+
+        for i in range(n - 1):
+            if s[i] == '1':
+                ones += 1
+            else:
+                zeros += 1
+            ans = max(ans, zeros - ones)
+        
+        # Check the last index to not miss out on the final '1'
+        if s[-1] == '1':
+            ones += 1
+        
+        return ans + ones
+```
+
 ---
 
 ### Hash Map
