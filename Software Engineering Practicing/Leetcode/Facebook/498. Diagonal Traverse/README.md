@@ -1,6 +1,6 @@
 ## [498. Diagonal Traverse](https://leetcode.com/problems/diagonal-traverse)
 
-```Tag```: ```Matrix```
+```Tag```: ```Matrix``` ```Hash Map``` ```Depth-First Search``` ```Simulations```
 
 #### Difficulty: Medium
 
@@ -33,3 +33,36 @@ __Constraints:__
 - $-10^5 \le mat[i][j] \le 10^5$
 
 ---
+
+###  Diagonal Iteration and Reversal
+
+__Key facts:__
+- All cells are grouped by the sum of its row and column indices
+- Diagonals are defined by the sum of indicies in a 2 dimensional array
+- The snake phenomena can be achieved by reversing every other diagonal level, therefore check if divisible by 2
+
+```Python
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+        res = list()
+
+        memo = collections.defaultdict(list)
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if not row + col in memo:
+                    memo[row + col] = [mat[row][col]]
+                else:
+                    memo[row + col].append(mat[row][col])
+        
+        for key, val in memo.items():
+            if key % 2:
+                for num in val:
+                    res.append(num)
+            else:
+                for num in val[::-1]:
+                    res.append(num)
+        
+        return res
+```
