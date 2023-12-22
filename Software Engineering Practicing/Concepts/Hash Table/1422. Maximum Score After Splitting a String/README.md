@@ -43,6 +43,8 @@ __Constraints:__
 
 ---
 
+__Observation:__ Note that we cannot iterate until the final index, but rather the second last index. If we were to iterate to the final index, the right part would be empty, which is not allowed by the problem.
+
 ### Brute Force
 
 ```Python
