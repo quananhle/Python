@@ -45,11 +45,55 @@ __Constraints:__
 
 __Observation:__ Note that we cannot iterate until the final index, but rather the second last index. If we were to iterate to the final index, the right part would be empty, which is not allowed by the problem.
 
-### Brute Force
+### Array & String
+
+#### Brute Force
 
 ```Python
+class Solution:
+    def maxScore(self, s: str) -> int:
+        ans = 0
+        n = len(s)
 
+        for i in range(n - 1):
+            # Count the score for every split
+            curr = 0
+            for j in range(i + 1):
+                if s[j] == '0':
+                    curr += 1
+            
+            for j in range(i + 1, n):
+                if s[j] == '1':
+                    curr += 1
+
+            ans = max(ans, curr)
+    
+        return ans
 ```
+
+#### Count Left Zeros and Right Ones
+
+![image](https://leetcode.com/problems/maximum-score-after-splitting-a-string/Figures/1422/1.png)
+
+```Python
+class Solution:
+    def maxScore(self, s: str) -> int:
+        ones = s.count('1')
+        ans = zeros = 0
+        n = len(s)
+
+        for i in range(n - 1):
+            if s[i] == '1':
+                ones -= 1
+            else:
+                zeros += 1
+            
+            ans = max(ans, zeros + ones)
+        
+        return ans
+```
+
+---
 
 ### Hash Map
 
@@ -62,11 +106,8 @@ class Solution:
         
         ans = zeros = ones = 0
         n = len(s)
-        for i in range(n):
+        for i in range(n - 1):
             if s[i] == '0':
-                # Edge case: right substring is empty
-                if i == n - 1:
-                    continue
                 zeros += 1
             else:
                 ones += 1
