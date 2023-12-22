@@ -42,3 +42,35 @@ __Constraints:__
 - The string ```s``` consists of characters ```'0'``` and ```'1'``` only.
 
 ---
+
+### Brute Force
+
+```Python
+
+```
+
+### Hash Map
+
+```Python
+class Solution:
+    def maxScore(self, s: str) -> int:
+        counter = collections.defaultdict(int)
+        for c in s:
+            counter[c] += 1
+        
+        ans = zeros = ones = 0
+        n = len(s)
+        for i in range(n):
+            if s[i] == '0':
+                # Edge case: right substring is empty
+                if i == n - 1:
+                    continue
+                zeros += 1
+            else:
+                ones += 1
+
+            ans = max(ans, zeros + counter['1'] - ones)
+        
+        return ans
+```
+
