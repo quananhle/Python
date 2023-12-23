@@ -1,6 +1,6 @@
 ## [1496. Path Crossing](https://leetcode.com/problems/path-crossing)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Hash Map``` ```Hash Set```
+```Tag```: ```Hash Map``` ```Hash Set```
 
 #### Difficulty: Easy
 
