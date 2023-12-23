@@ -6,7 +6,7 @@
 
 Given a string ```s```, return _the length of the longest substring that contains at most two distinct characters_.
 
-![image](https://github.com/quananhle/Python/assets/35042430/6e9c77b8-60a5-44fa-abee-3aa1e549fcd3)
+![image](https://github.com/quananhle/Python/assets/35042430/75f89194-a48b-4590-91d7-4a6c426ca6ac)
 
 ---
 
