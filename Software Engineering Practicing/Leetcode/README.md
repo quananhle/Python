@@ -509,6 +509,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 - :four_leaf_clover: [202. Happy Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Leetcode%2075/Level%202/Day%2001%20-%20Implementation%20%7C%20Simulation/202.%20Happy%20Number)
 - :four_leaf_clover: [349. Intersection of Two Arrays](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Two-Pointer%20Technique/349.%20Intersection%20of%20Two%20Arrays) ```Binary Search``` ```Two Pointers```
+- :four_leaf_clover: [1496. Path Crossing](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/Hash%20Set/1496.%20Path%20Crossing) ```Hash Map```
 - :four_leaf_clover: [2215. Find the Difference of Two Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2215.%20Find%20the%20Difference%20of%20Two%20Arrays) ```Array & String```
 
 ---
