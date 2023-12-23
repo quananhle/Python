@@ -37,3 +37,26 @@ __Constraints:__
 - ```path[i]``` is either ```'N'```, ```'S'```, ```'E'```, or ```'W'```.
 
 ---
+
+### Depth-First Search
+
+```Python
+class Solution:
+    def isPathCrossing(self, path: str) -> bool:
+        memo = {'N' : [1, 0], 'S' : [-1, 0], 'E' : [0, 1], 'W' : [0, -1]}
+        visited = set()
+        n = len(path)
+
+        stack = [(0, 0, 0)]
+
+        while stack:
+            curr, row, col = stack.pop()
+            if (row, col) in visited:
+                return True
+            if curr == n:
+                return False
+            
+            visited.add((row, col))
+            dx, dy = memo[path[curr]]
+            stack.append((curr + 1, row + dx, col + dy))
+```
