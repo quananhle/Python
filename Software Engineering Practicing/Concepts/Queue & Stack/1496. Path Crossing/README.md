@@ -1,6 +1,6 @@
 ## [1496. Path Crossing](https://leetcode.com/problems/path-crossing)
 
-```Tag```: ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Depth-First Search``` ```Breadth-First Search``` ```Hash Map``` ```Hash Set```
 
 #### Difficulty: Easy
 
@@ -82,4 +82,23 @@ class Solution:
             visited.add((row, col))
             dx, dy = memo[path[curr]]
             queue.append((curr + 1, row + dx, col + dy))
+```
+
+---
+
+```Python
+class Solution:
+    def isPathCrossing(self, path: str) -> bool:
+        memo = {'N' : [1, 0], 'S' : [-1, 0], 'E' : [0, 1], 'W' : [0, -1]}
+        visited = set([(0, 0)])
+        row = col = 0
+
+        for direction in path:
+            dx, dy = memo[direction]
+            row += dx; col += dy
+            if (row, col) in visited:
+                return True
+            visited.add((row, col))
+        
+        return False
 ```
