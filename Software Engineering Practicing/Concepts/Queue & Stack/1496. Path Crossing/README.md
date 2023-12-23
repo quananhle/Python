@@ -12,23 +12,28 @@ Return _```True``` if the path crosses itself at any point, that is, if at any t
 
 ---
 
-Example 1:
+__Example 1:__
 
+![image](https://assets.leetcode.com/uploads/2020/06/10/screen-shot-2020-06-10-at-123929-pm.png)
 
+```
 Input: path = "NES"
 Output: false 
 Explanation: Notice that the path doesn't cross any point more than once.
-Example 2:
+```
 
+__Example 2:__
 
+![image](https://assets.leetcode.com/uploads/2020/06/10/screen-shot-2020-06-10-at-123843-pm.png)
+```
 Input: path = "NESWW"
 Output: true
 Explanation: Notice that the path visits the origin twice.
- 
+``` 
 
-Constraints:
+__Constraints:__
 
-1 <= path.length <= 104
-path[i] is either 'N', 'S', 'E', or 'W'.
+- $1 \le path.length \le 10^4$
+- ```path[i]``` is either ```'N'```, ```'S'```, ```'E'```, or ```'W'```.
 
 ---
