@@ -38,7 +38,7 @@ __Constraints:__
 
 ---
 
-### Depth-First Search
+### Stack
 
 ```Python
 class Solution:
@@ -59,4 +59,27 @@ class Solution:
             visited.add((row, col))
             dx, dy = memo[path[curr]]
             stack.append((curr + 1, row + dx, col + dy))
+```
+
+### Queue
+
+```Python
+class Solution:
+    def isPathCrossing(self, path: str) -> bool:
+        memo = {'N' : [1, 0], 'S' : [-1, 0], 'E' : [0, 1], 'W' : [0, -1]}
+        visited = set()
+        n = len(path)
+
+        queue = collections.deque([(0, 0, 0)])
+
+        while queue:
+            curr, row, col = queue.popleft()
+            if (row, col) in visited:
+                return True
+            if curr == n:
+                return False
+            
+            visited.add((row, col))
+            dx, dy = memo[path[curr]]
+            queue.append((curr + 1, row + dx, col + dy))
 ```
