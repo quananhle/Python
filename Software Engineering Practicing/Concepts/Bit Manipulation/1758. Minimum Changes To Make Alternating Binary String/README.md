@@ -1,6 +1,6 @@
 ## [1758. Minimum Changes To Make Alternating Binary String](https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string)
 
-```Tag```: ```Bit Manipulation```
+```Tag```: ```Bit Manipulation``` ```Array & String``` ```Simulation```
 
 #### Difficulty: Easy
 
@@ -39,3 +39,9 @@ __Constraints:__
 - ```s[i]``` is either ```'0'``` or ```'1'```.
 
 ---
+
+### Simulation
+
+```Python
+
+```
