@@ -67,24 +67,57 @@ This brings us to our solution. We initialize two integers:
 ```Python
 class Solution:
     def minOperations(self, s: str) -> int:
-        # Two possibilities: start with '0' or start with '1'
-        start_0 = start_1 = 0
+        start_0_possibility = start_1_possibility = 0
 
         for i, c in enumerate(s):
             if i % 2 == 0:
-                # Check if '0's at even indices
-                if c == '0':
-                    start_1 += 1
-                # Otherwise, '1's at even indices
-                else:
+                # 0101: count even indices that have '1'
+                if c != '0':
+                    # Need to change to 0
+                    start_0_possibility += 1
+                # 1010: count even indices that have '0'
+                if c != '1':
+                    # Need to change to 1
+                    start_1_possibility += 1
+            else:
+                # 0101: count odd indices that have '0'
+                if c != '1':
+                    # Need to change to 1
+                    start_0_possibility += 1
+                # 1010: count odd indices that have '1'
+                if c != '0':
+                    # Need to change to 0
+                    start_1_possibility += 1
+
+        return min(start_0_possibility, start_1_possibility)
+```
+
+### Optimizations
+
+```Python
+class Solution:
+    def minOperations(self, s: str) -> int:
+        start_0 = 0
+        
+        for i, c in enumerate(s):
+            if i % 2 == 0:
+                if c == "1":
                     start_0 += 1
             else:
-                # Check if '0's at odd indices
-                if c == '0':
+                if c == "0":
                     start_0 += 1
-                # Otherwise, '1's at odd indices
-                else:
-                    start_1 += 1
+        
+        return min(start_0, len(s) - start_0)
+```
 
-        return min(start_0, start_1
+```Python
+class Solution:
+    def minOperations(self, s: str) -> int:
+        ans, curr = 0, '0'
+
+        for c in s:
+            ans += (c != curr)
+            curr = '1' if curr == '0' else '0'
+        
+        return min(ans, len(s) - ans)
 ```
