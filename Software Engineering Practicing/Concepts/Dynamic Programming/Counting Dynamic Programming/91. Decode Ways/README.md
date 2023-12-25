@@ -23,7 +23,7 @@ Given a string ```s``` containing only digits, return _the __number of ways__ to
 
 The test cases are generated so that the answer fits in a __32-bit__ integer.
 
-![image](https://user-images.githubusercontent.com/35042430/220204128-0d2c0ec9-a11a-4167-a24a-1a893bcc7b01.png)
+![image](https://github.com/quananhle/Python/assets/35042430/8f86e2e3-46d8-4d99-9bf1-df419a0c0978)
 
 ---
 
@@ -50,7 +50,7 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
 
 __Constraints:__
 
-- ```1 <= s.length <= 100```
+- $1 \le s.length \le 100$
 - ```s``` contains only digits and may contain leading zero(s).
 
 ---
@@ -105,7 +105,7 @@ class Solution:
 ```Python
 class Solution:
     def numDecodings(self, s: str) -> int:    
-        @lru_cache(None)
+        @functools.lru_cache(maxsize=None)
         def dp(curr):
             # Base cases
             # Base case return 1 as this is counting dynamic programming, return 0 would reflect 0 itself instead of counting
