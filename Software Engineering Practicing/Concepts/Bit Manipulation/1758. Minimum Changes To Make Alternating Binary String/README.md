@@ -94,6 +94,10 @@ class Solution:
 
 ### Optimizations
 
+![image](https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string/Figures/1758/1.png)
+
+Only need to keep track of 1 possibility
+
 ```Python
 class Solution:
     def minOperations(self, s: str) -> int:
