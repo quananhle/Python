@@ -6,6 +6,8 @@
 
 Given a 2D integer array ```nums```, return _all elements of ```nums``` in diagonal order as shown in the below images_.
 
+![image](https://github.com/quananhle/Python/assets/35042430/2526b7d2-bb65-456c-a6aa-4d3750442a92)
+
 ---
 
 __Example 1:__
