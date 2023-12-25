@@ -137,6 +137,11 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming (Tabulation)
 
+Complexity Analysis
+
+Time Complexity: O(N)
+Space Complexity: o(N)
+
 ```Python
 class Solution:
     def numDecodings(self, s: str) -> int:
@@ -158,6 +163,11 @@ class Solution:
 ```
 
 #### Constant Space Bottom-Up Dynamic Programming
+
+Complexity Analysis
+
+Time Complexity: O(N)
+Space Complexity: o(1)
 
 ```Python
 class Solution:
