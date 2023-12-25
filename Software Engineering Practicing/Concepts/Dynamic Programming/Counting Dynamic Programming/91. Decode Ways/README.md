@@ -69,8 +69,8 @@ The problem deals with finding number of ways of decoding a string. What helps t
 
 __Complexity Analysis__
 
-Time Complexity: O(N)
-Space Complexity: o(N)
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
@@ -139,8 +139,8 @@ class Solution:
 
 __Complexity Analysis__
 
-Time Complexity: O(N)
-Space Complexity: o(N)
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
@@ -162,12 +162,36 @@ class Solution:
         return dp[n]
 ```
 
+```Python
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        n = len(s)
+        dp = collections.defaultdict(int)
+    
+        # Base cases
+        dp[n], dp[n - 1] = 1, 1
+
+        for curr in range(n - 1, -1, -1):
+            if s[curr] == '0':
+                dp[curr] = 0
+                continue
+
+            # Check single digit 
+            dp[curr] = dp[curr + 1]
+            # Check double digit
+            double_digit = int(s[curr:curr + 2])
+            if 10 <= double_digit <= 26:
+                dp[curr] += dp[curr + 2]
+        
+        return dp[0]
+```
+
 #### Constant Space Bottom-Up Dynamic Programming
 
 __Complexity Analysis__
 
-Time Complexity: O(N)
-Space Complexity: o(1)
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
