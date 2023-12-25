@@ -67,7 +67,7 @@ The problem deals with finding number of ways of decoding a string. What helps t
 ![image](https://leetcode.com/problems/decode-ways/solutions/525903/Figures/91/91_Decode_Ways_3.png)
 ![image](https://leetcode.com/problems/decode-ways/solutions/525903/Figures/91/91_Decode_Ways_4.png)
 
-Complexity Analysis
+__Complexity Analysis__
 
 Time Complexity: O(N)
 Space Complexity: o(N)
@@ -137,7 +137,7 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming (Tabulation)
 
-Complexity Analysis
+__Complexity Analysis__
 
 Time Complexity: O(N)
 Space Complexity: o(N)
@@ -164,7 +164,7 @@ class Solution:
 
 #### Constant Space Bottom-Up Dynamic Programming
 
-Complexity Analysis
+__Complexity Analysis__
 
 Time Complexity: O(N)
 Space Complexity: o(1)
