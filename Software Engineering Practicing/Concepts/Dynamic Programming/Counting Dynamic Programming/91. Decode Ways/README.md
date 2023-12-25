@@ -67,6 +67,11 @@ The problem deals with finding number of ways of decoding a string. What helps t
 ![image](https://leetcode.com/problems/decode-ways/solutions/525903/Figures/91/91_Decode_Ways_3.png)
 ![image](https://leetcode.com/problems/decode-ways/solutions/525903/Figures/91/91_Decode_Ways_4.png)
 
+Complexity Analysis
+
+Time Complexity: O(N)
+Space Complexity: o(N)
+
 ```Python
 class Solution:
     def numDecodings(self, s: str) -> int:
