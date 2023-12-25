@@ -41,6 +41,11 @@ __Key facts:__
 - Diagonals are defined by the sum of indicies in a 2 dimensional array
 - The snake phenomena can be achieved by reversing every other diagonal level, therefore check if divisible by 2
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \cdot M)$
+- __Space Complexity__: $\mathcal{O}(min(N, M))$
+
 ```Python
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
