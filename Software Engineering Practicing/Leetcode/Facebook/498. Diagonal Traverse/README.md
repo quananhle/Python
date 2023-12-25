@@ -34,7 +34,7 @@ __Constraints:__
 
 ---
 
-###  Diagonal Iteration and Reversal
+###  Diagonal Iteration and Reversal (Template for Every Diagonally Traversal)
 
 __Key facts:__
 - All cells are grouped by the sum of its row and column indices
@@ -45,6 +45,8 @@ __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(N \cdot M)$
 - __Space Complexity__: $\mathcal{O}(min(N, M))$
+
+#### Hash Map
 
 ```Python
 class Solution:
@@ -70,4 +72,45 @@ class Solution:
                     res.append(num)
         
         return res
+```
+
+#### Array
+
+```Python
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+        groups = [list() for _ in range(ROWS + COLS)]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                groups[row + col].append(mat[row][col])
+        
+        res = list()
+        # Reverse at even indices
+        for i, e in enumerate(groups):
+            if i % 2:
+                res.extend([num for num in e])
+            else:
+                res.extend([num for num in e[::-1]])
+        
+        return res
+```
+
+---
+
+### Simulation
+
+__Key facts:__
+
+- The head would be the node directly below the tail of the previous diagonal. Unless the tail lies in the last row of the matrix in which case the head would be the node right next to the tail.
+
+![image](https://leetcode.com/problems/diagonal-traverse/Figures/498/img4.png)
+
+- The head would be the node to the right of the tail of the previous diagonal. Unless the tail lies in the last column of the matrix in which case the head would be the node directly below the tail.
+
+![image](https://leetcode.com/problems/diagonal-traverse/Figures/498/img5.png)
+
+```Python
+
 ```
