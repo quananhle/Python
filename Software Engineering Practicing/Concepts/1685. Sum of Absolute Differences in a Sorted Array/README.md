@@ -10,6 +10,8 @@ Build and return an integer array result with the same length as nums such that 
 
 In other words, ```result[i]``` is equal to ```sum(|nums[i]-nums[j]|)``` where $0 \le j \lt nums.length$ and $j \neq i$ (__0-indexed__).
 
+![image](https://github.com/quananhle/Python/assets/35042430/8001b36b-3098-4f23-a326-152a19a6862e)
+
 ---
 
 __Example 1:__
