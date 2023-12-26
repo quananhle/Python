@@ -8,7 +8,7 @@ You have ```n``` dice, and each die has ```k``` faces numbered from ```1``` to `
 
 Given three integers ```n```, ```k```, and ```target```, return _the number of possible ways (out of the k<sup>n</sup> total ways) to roll the dice, so the sum of the face-up numbers equals ```target```_. Since the answer may be too large, return it modulo 10<sup>9</sup> + 7.
 
-![image](https://user-images.githubusercontent.com/35042430/221691173-e5bb3f6f-fa2d-41b7-808c-40a6971b306b.png)
+![image](https://github.com/quananhle/Python/assets/35042430/14028776-579f-4bc5-88a1-57362dc17172)
 
 ---
 
@@ -37,8 +37,8 @@ Explanation: The answer must be returned modulo 109 + 7.
 
 __Constraints:__
 
-- ```1 <= n, k <= 30```
-- ```1 <= target <= 1000```
+- $1 \le n, k \le 30$
+- $1 \le target \le 1000$
 
 ---
 
@@ -136,7 +136,7 @@ class Solution:
         MOD = 10**9 + 7
         
         # Top-Down DP (Recursion)
-        @lru_cache(None)
+        @functools.lru_cache(maxsize=None)
         def dp(i, current):
             # Base cases
             if i == n:
