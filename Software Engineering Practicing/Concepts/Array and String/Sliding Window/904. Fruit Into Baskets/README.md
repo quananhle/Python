@@ -1,4 +1,4 @@
-## 904. Fruit Into Baskets
+## [904. Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets)
 
 ```Tag```: ```Sliding Window``` ```Hash Map```
 
