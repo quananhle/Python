@@ -149,7 +149,33 @@ class Solution:
 #### Recusive DFS
 
 ```Python
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        DIRECTIONS = [(1, -1)]
+        ROWS, COLS = len(mat), len(mat[0])
+        res = list()
+        visited = set()
+        up = True
 
+        def dfs(row, col):
+            if not (0 <= row < ROWS and 0 <= col < COLS and not (row, col) in visited):
+                return
+            visited.add((row, col))
+            temp.append(mat[row][col])
+            [dfs(row + dx, col + dy) for dx, dy in DIRECTIONS]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if not (row, col) in visited:
+                    temp = list()
+                    dfs(row, col)
+                    if up:
+                        res.extend(temp[::-1])
+                    else:
+                        res.extend(temp)
+                    up = not up
+        
+        return res
 ```
 
 #### Iterative DFS
