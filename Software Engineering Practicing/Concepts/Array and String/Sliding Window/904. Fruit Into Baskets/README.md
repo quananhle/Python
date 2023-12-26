@@ -43,7 +43,7 @@ If we had started at the first tree, we would only pick from trees [1,2].
 
 __Constraints:__
 
-- $1 \le fruits.length \le 105$
+- $1 \le fruits.length \le 10^5$
 - $0 \le fruits[i] \lt fruits.length$
 
 ---
@@ -158,9 +158,8 @@ class Solution:
 
 ![image](https://leetcode.com/problems/fruit-into-baskets/solutions/2960000/Figures/904/904_sc_3.png)
 
-__Time Complexity__: ```O(N)```, iterate through the input array once
-
-__Space Complexity__: ```O(1)```, only maintain at most 3 types of fruit in the basket hashmap at any given time
+- __Time Complexity__: $\mathcal{O}(N)$, iterate through the input array once
+- __Space Complexity__: $\mathcal{O}(1)$, only maintain at most 3 types of fruit in the basket hashmap at any given time
 
 ```Python
 class Solution:
@@ -187,4 +186,33 @@ class Solution:
             max_picked = max(max_picked, right - left + 1)
         
         return max_picked
+```
+
+```Python
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        n = len(fruits)
+        start = end = ans = 0
+        #  Initialize a counter to track the running number of encountered elements in the window
+        counter = collections.defaultdict(int)
+
+        while end < n:
+            right = fruits[end]
+            counter[right] = 1 + counter.get(right, 0)
+
+            # To ensure there are only 2 elements in the running window
+            while len(counter) > 2:
+                left = fruits[start]
+                counter[left] -= 1
+                if counter[left] == 0:
+                    del counter[left]
+                # Shrink the left boundary of the window to the right
+                start += 1
+            
+            # Keep track of the largest size of the window
+            ans = max(ans, end - start + 1)
+            # Expand the right boundary of the window to the right
+            end += 1
+        
+        return ans
 ```
