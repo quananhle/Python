@@ -130,6 +130,11 @@ class Solution:
 
 ![image](https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/Documents/1155/1155.svg)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \cdot T \cdot K)$
+- __Space Complexity__: $\mathcal{O}(N \cdot T)$
+
 ```Python
 class Solution:
     def numRollsToTarget(self, n: int, k: int, target: int) -> int:
@@ -184,6 +189,11 @@ class Solution:
 ```
 
 #### Bottom-Up Dynamic Programming (Tabulation)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \cdot T \cdot K)$
+- __Space Complexity__: $\mathcal{O}(N \cdot T)$
 
 ```Python
 """
