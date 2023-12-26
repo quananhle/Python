@@ -1,7 +1,6 @@
 ## [498. Diagonal Traverse](https://leetcode.com/problems/diagonal-traverse)
 
 ```Tag```: ```Matrix``` ```Hash Map``` ```Depth-First Search``` ```Simulations```
-
 #### Difficulty: Medium
 
 Given an ```m x n``` matrix ```mat```, return _an array of all the elements of the array in a diagonal order_.
