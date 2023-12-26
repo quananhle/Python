@@ -155,5 +155,32 @@ class Solution:
 #### Iterative DFS
 
 ```Python
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        DIRECTIONS = [(1, -1)]
+        ROWS, COLS = len(mat), len(mat[0])
+        res = list()
+        visited = set()
+        up = True
 
+        for row in range(ROWS):
+            for col in range(COLS):
+                if not (row, col) in visited:
+                    temp = list()
+                    queue = collections.deque([(row, col)])
+                    while queue:
+                        curr_row, curr_col = queue.popleft()
+                        visited.add((curr_row, curr_col))
+                        temp.append(mat[curr_row][curr_col])
+                        for next_row, next_col in [(curr_row + dx, curr_col + dy) for dx, dy in DIRECTIONS]:
+                            if not (0 <= next_row < ROWS and 0 <= next_col < COLS and not (next_row, next_col) in visited):
+                                continue
+                            queue.append((next_row, next_col))
+                    if up:
+                        res.extend(temp[::-1])
+                    else:
+                        res.extend(temp)
+                    up = not up
+        
+        return res
 ```
