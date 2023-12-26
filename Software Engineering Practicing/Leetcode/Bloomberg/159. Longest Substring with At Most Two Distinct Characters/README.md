@@ -33,6 +33,10 @@ __Constraints:__
 
 ### Sliding Window
 
+![image](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/Figures/159/sliding.png)
+
+![image](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/Figures/159/move_left.png)
+
 #### Longest Substring Template
 
 - Time Complexity : $\mathcal{O}(N)$ where ```N``` is a number of characters in the input string.
@@ -68,8 +72,6 @@ class Solution:
 ```
 
 ---
-
-![image](https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/Figures/159/sliding.png)
 
 __Algorithm__
 
