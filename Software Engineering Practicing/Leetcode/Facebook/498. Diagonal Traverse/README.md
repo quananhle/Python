@@ -112,5 +112,32 @@ __Key facts:__
 ![image](https://leetcode.com/problems/diagonal-traverse/Figures/498/img5.png)
 
 ```Python
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        ROWS, COLS = len(mat), len(mat[0])
+        curr_row = curr_col = 0
+        up = True
+        res = list()
 
+        while curr_row < ROWS and curr_col < COLS:
+            res.append(mat[curr_row][curr_col])
+            # [i, j] -> [i - 1, j + 1] if going up and [i, j] -> [i + 1][j - 1] if going down.
+            next_row = curr_row + (-1 if up else 1)
+            next_col = curr_col + (1 if up else -1)
+            if (0 <= next_row < ROWS and 0 <= next_col < COLS):
+                curr_row, curr_col = next_row, next_col
+            else:
+                if up:
+                    # For an upwards going diagonal having [i, j] as its tail
+                    # If [i, j + 1] is within bounds, then it becomes the next head. Otherwise, the element directly below
+                    curr_row += (curr_col == COLS - 1)
+                    curr_col += (curr_col < COLS - 1)
+                else:
+                    # For a downwards going diagonal having [i, j] as its tail
+                    # if [i + 1, j] is within bounds, then it becomes the next head. Otherwise, the element directly below
+                    curr_col += (curr_row == ROWS - 1)
+                    curr_row += (curr_row < ROWS - 1)
+                up = not up
+    
+        return res
 ```
