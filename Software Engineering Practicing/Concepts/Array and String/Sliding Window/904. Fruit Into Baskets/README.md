@@ -14,7 +14,7 @@ You want to collect as much fruit as possible. However, the owner has some stric
 
 Given the integer array ```fruits```, return _the __maximum number__ of fruits you can pick_.
 
-![image](https://user-images.githubusercontent.com/35042430/217147952-2d1b2470-dfe9-49c5-9809-4494f1bce3bc.png)
+![image](https://github.com/quananhle/Python/assets/35042430/a6dc3688-514d-49d2-a22a-800c9c84e479)
 
 ---
 
@@ -43,8 +43,8 @@ If we had started at the first tree, we would only pick from trees [1,2].
 
 __Constraints:__
 
-- 1 <= ```fruits.length``` <= 10<sup>5</sup>
-- ```0 <= fruits[i] < fruits.length```
+- $1 \le fruits.length \le 105$
+- $0 \le fruits[i] \lt fruits.length$
 
 ---
 
