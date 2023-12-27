@@ -1,6 +1,6 @@
 ## [1578. Minimum Time to Make Rope Colorful](https://leetcode.com/problems/minimum-time-to-make-rope-colorful/)
 
-```Tag```: ```Two Pointers``` ```Greedy```
+```Tag```: ```Two Pointers``` ```Greedy``` ```Math```
 
 #### Difficulty: Medium
 
@@ -46,9 +46,9 @@ There are no longer two consecutive balloons of the same color. Total time = 1 +
 
 __Constraints:__
 
-- ```n == colors.length == neededTime.length```
-- ```1 <= n <= 10z^5```
-- ```1 <= neededTime[i] <= 10^4```
+- $n == colors.length == neededTime.length$
+- $1 \le n \le 10^5$
+- $1 \le neededTime[i] \le 10^4$
 - ```colors``` contains only lowercase English letters.
 
 ---
