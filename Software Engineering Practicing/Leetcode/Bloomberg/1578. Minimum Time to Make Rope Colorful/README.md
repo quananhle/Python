@@ -10,7 +10,7 @@ Alice wants the rope to be colorful. She does not want __two consecutive balloon
 
 Return _the minimum time Bob needs to make the rope colorful_.
 
-![image](https://user-images.githubusercontent.com/35042430/228646894-ed83a100-2026-401b-9673-894bbaa49614.png)
+![image](https://github.com/quananhle/Python/assets/35042430/c91a5c75-dea5-4f10-8a80-96d42933efdc)
 
 ---
 
