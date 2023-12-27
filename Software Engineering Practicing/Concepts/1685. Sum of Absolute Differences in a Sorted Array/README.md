@@ -65,6 +65,16 @@ As ```nums``` is sorted, we can focus on all indices less than ```i``` for the f
 
 ![image](https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array/Figures/1685/1.png)
 
+The sum of differences is equivalent to the sum we would have to add to the numbers to make them all equal to ```8```.
+
+![image](https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array/Figures/1685/2.png)
+
+If we made all the numbers equal to ```8```, they would have a sum equal to ```8``` times the count of numbers ```left_cnt```. In this specific example, they would have a sum of ```3 * 8 = 24```. In general, for an index ```i```, there are ```i``` elements less than ```nums[i]```, so we have ```left_cnt = i``` and these numbers would have a sum of ```left_cnt * nums[i]```.
+
+![image](https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array/Figures/1685/3.png)
+
+![image](https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array/Figures/1685/4.png)
+
 ```Python
 class Solution:
     def getSumAbsoluteDifferences(self, nums: List[int]) -> List[int]:
