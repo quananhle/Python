@@ -55,6 +55,21 @@ __Constraints:__
 
 ### Two Pointers
 
+![image](https://github.com/quananhle/Python/assets/35042430/01d00a15-fa2c-4237-b2b6-b95c079d18a8)
+
+![image](https://leetcode.com/problems/minimum-time-to-make-rope-colorful/Figures/1578/1578-p-3.png)
+
+__Key facts__:
+
+- We need to keep exactly one balloon from each group.
+- We should keep the balloon with the largest removal time among each group
+
+![image](https://github.com/quananhle/Python/assets/35042430/5920ee8d-5919-48ac-aeac-2cb3fe6ff146)
+
+![image](https://github.com/quananhle/Python/assets/35042430/0154bfbe-c4aa-4919-aae2-3cbaace8bf5d)
+
+![image](https://github.com/quananhle/Python/assets/35042430/b525691c-12e6-4b83-b485-fc79b6ace5e8)
+
 __Algorithm__
 
 1. Initalize ```totalTime```, ```left``` and ```right``` as ```0```.
