@@ -84,17 +84,17 @@ __Algorithm__
 class Solution:
     def minCost(self, colors: str, neededTime: List[int]) -> int:
         ans = 0
-        n, m = len(colors), len(neededTime)
-        left, right = 0, 0
+        n = len(colors)
+        left = right = 0
 
-        while left < n and right < m:
+        while right < n:
             curr_total = curr_max = 0
 
-            # Check on every balloon group that has the same color
+            # Check all the elements in the same group
             while right < m and colors[left] == colors[right]:
                 # Get the total time needed to remove every balloon in the current group
                 curr_total += neededTime[right]
-                # Get the maximum time needed to remove a balloon in the group
+                # Only track the maximum value in the group to keep
                 curr_max = max(curr_max, neededTime[right])
                 # Iterate to the right until the end of the current group
                 right += 1
@@ -102,7 +102,7 @@ class Solution:
             # No matter how many balloons there are in a same group, can only have at most 1 balloon in each group => leave out the maximum one
             # Hence, the minimum time needed to remove all balloons except the most expensive one is (total - most expensive)
             ans += curr_total - curr_max
-            # Update left pointer to the next balloon group
+            # Move on to the next group
             left = right
         
         return ans
