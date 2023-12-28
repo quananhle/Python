@@ -51,12 +51,8 @@ __Constraints:__
 
 __Complexity Analysis__
 
-- __Time Complexity__: O(nk2)O(nk^2)O(nk 
-2
- ).
-- __Space Complexity__: O(nk2)O(nk^2)O(nk 
-2
- ).
+- __Time Complexity__: $\mathcal{O}(n \cdot k^2)$
+- __Space Complexity__: $\mathcal{O}(n \cdot k^2)$
 
 ```Python
 class Solution:
