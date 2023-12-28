@@ -49,6 +49,15 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: O(nk2)O(nk^2)O(nk 
+2
+ ).
+- __Space Complexity__: O(nk2)O(nk^2)O(nk 
+2
+ ).
+
 ```Python
 class Solution:
     def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
