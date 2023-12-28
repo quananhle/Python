@@ -49,6 +49,20 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/string-compression-ii/Figures/1531/1531_1.png)
+
+- ```i```: Index of the current symbol
+- ```prev```: The last symbol we have in our compression
+- ```count```: The number of ```prev``` we have considered
+- ```k```: The number of symbols we are still allowed to delete
+
+Now we need to understand what parameters to use to define each DP state. We need several of them:
+
+1. First is the number of symbols we have already traversed. We need it to know the next symbol to be processed.
+2. The last letter that was added to the compressed string that we are building. This is so that we can decide how the compression will change if a new symbol is added.
+3. The count of the last letter. Imagine that we have compression ```a3b5```. If we add one more ```b```, our compression will become ```a3b6```. We need to be careful with several cases. When we have, say, ```a3``` compression, and we add a ```b```, then we will now have ```a3b```. Also if we have ```a3b9``` and we add one more ```b```, then we will have ```a3b10```. Similarly, ```a3b99``` will change to ```a3b100``` after addition of a ```b```. Notice that when the count of the last letter is ```0```, ```1```, ```9```, or ```99```, the length of the compression will change. However, when the count of the last letter is anything else, the length of the compression will not change.
+4. Finally, we need to keep track of how many symbols we are still allowed to delete.
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(n \cdot k^2)$
