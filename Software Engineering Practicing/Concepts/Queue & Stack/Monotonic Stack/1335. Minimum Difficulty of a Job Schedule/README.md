@@ -12,7 +12,7 @@ You are given an integer array ```jobDifficulty``` and an integer ```d```. The d
 
 Return _the minimum difficulty of a job schedule_. If you cannot find a schedule for the jobs return ```-1```.
 
-![image](https://user-images.githubusercontent.com/35042430/219433165-e5b07635-a164-4d98-b23f-02407a5be824.png)
+![image](https://github.com/quananhle/Python/assets/35042430/1aacfc81-5a01-42c4-8ae9-fcaa89a45da0)
 
 ---
 
