@@ -143,12 +143,14 @@ class Solution:
             # Precompute the maximum job difficulty for remaining jobs
             memo[i] = hardest_job
 
-        @lru_cache(3000)
         def dp(curr, days_remaining):
             # Base cases
             # At the last day, all the jobs must be finished
             if days_remaining == 1:
                 return memo[curr]
+
+            if (curr, days_remaining) in memo:
+                return memo[(curr, days_remaining)]
 
             ans = math.inf
             # Keep track of the maximum difficulty for today
@@ -158,7 +160,8 @@ class Solution:
                 curr_hardest = max(curr_hardest, jobDifficulty[i])
                 # Recurrence relation
                 ans = min(ans, curr_hardest + dp(i + 1, days_remaining - 1))
-            
+
+            memo[(curr, remaining)] = ans
             return ans
 
         return dp(0, d)
