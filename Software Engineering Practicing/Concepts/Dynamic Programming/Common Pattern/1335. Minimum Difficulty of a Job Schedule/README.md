@@ -90,7 +90,6 @@ __3. Base cases__
 ```Python
 class Solution:
     def minDifficulty(self, jobDifficulty: List[int], d: int) -> int:
-        memo = collections.defaultdict(int)
         hardest_job = 0
         n = len(jobDifficulty)
 
@@ -98,18 +97,17 @@ class Solution:
         if n < d:
             return -1
 
-        for i in range(n - 1, -1, -1):
-            # Get the hardest job
-            hardest_job = max(hardest_job, jobDifficulty[i])
+        remaining_difficulty = jobDifficulty[:]
+        for i in range(n - 2, -1, -1):
             # Precompute the maximum job difficulty for remaining jobs
-            memo[i] = hardest_job
+            remaining_difficulty[i] = max(remaining_difficulty[i], remaining_difficulty[i + 1])
         
         @lru_cache(3000)
         def dp(curr, days_remaining):
             # Base cases
             # At the last day, all the jobs must be finished
             if days_remaining == d:
-                return memo[curr]
+                return remaining_difficulty[curr]
             
             ans = math.inf
             # Keep track of the maximum difficulty for today
@@ -119,7 +117,7 @@ class Solution:
             for i in range(curr, n - (d - days_remaining)):
                 curr_hardest = max(curr_hardest, jobDifficulty[i])
                 # Recurrence relation
-                best = min(best, curr_hardest + dp(i + 1, days_remaining + 1))
+                ans = min(ans, curr_hardest + dp(i + 1, days_remaining + 1))
 
             return ans
             
