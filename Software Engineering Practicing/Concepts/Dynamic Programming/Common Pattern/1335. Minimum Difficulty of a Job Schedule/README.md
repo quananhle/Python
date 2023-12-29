@@ -1,4 +1,4 @@
-## 1335. Minimum Difficulty of a Job Schedule
+## [1335. Minimum Difficulty of a Job Schedule](https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule)
 
 ```Tag```: ```Dynamic Programming```
 
@@ -12,7 +12,7 @@ You are given an integer array ```jobDifficulty``` and an integer ```d```. The d
 
 Return _the minimum difficulty of a job schedule_. If you cannot find a schedule for the jobs return ```-1```.
 
-![image](https://user-images.githubusercontent.com/35042430/219433165-e5b07635-a164-4d98-b23f-02407a5be824.png)
+![image](https://github.com/quananhle/Python/assets/35042430/c4c56314-4890-4f29-9c4c-cf7be9da138c)
 
 ---
 
@@ -43,9 +43,9 @@ Explanation: The schedule is one job per day. total difficulty will be 3.
 
 __Constraints:__
 
-- ```1 <= jobDifficulty.length <= 300```
-- ```0 <= jobDifficulty[i] <= 1000```
-- ```1 <= d <= 10```
+- $1 \le jobDifficulty.length \le 300$
+- $0 \le jobDifficulty[i] \le 1000$
+- $1 \le d \le 10$
 
 ---
 
@@ -55,7 +55,7 @@ We can tell this is a problem where Dynamic Programming can be used because
 
 ![image](https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/solutions/2371487/Figures/1335/1335_1BruteForce.JPG)
 
-### The Framework
+### Dynamic Programming Framework
 
 __1. A function that answers the problem for a given state__
 
@@ -82,9 +82,10 @@ __3. Base cases__
 
 #### Top-Down Dynamic Programming (Recursion)
 
-__Time complexity__: ```O(n^2 ⋅ d)```, since there are n * d possible states, and we need O(n) time to calculate the result for each state.
+![image](https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/Figures/1335/1335_2DFS_to_dp.JPG)
 
-__Space complexity__: ```O(n ⋅ d)```, extra space required to memorize all n ⋅ d states.
+- __Time complexity__: $\mathcal{O}(n^2 \cdot d)$, since there are ```n * d``` possible states, and we need $\mathcal{O}(n)$ time to calculate the result for each state.
+- __Space complexity__: $\mathcal{O}(n \cdot d)$, extra space required to memorize all $n \cdot d$ states.
 
 ```Python
 class Solution:
