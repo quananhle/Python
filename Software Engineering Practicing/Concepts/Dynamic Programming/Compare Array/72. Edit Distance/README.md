@@ -80,7 +80,13 @@ Thus, in this case, we will choose Option 3 and the edit distance would be 1.
 
 __The +1 in the end, is for the current operation.__
 
-### The Framework
+### Brute Force
+
+```Python
+
+```
+
+### Dynamic Programming Framework
 
 1. A function or data structure that will compute/contain the answer to the problem for every given state.
 
