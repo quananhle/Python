@@ -12,9 +12,12 @@ You have the following three operations permitted on a word:
 - Delete a character
 - Replace a character
 
+![image](https://github.com/quananhle/Python/assets/35042430/cce519e7-4480-4315-b317-ceda2b812196)
+
 ---
 
 __Example 1:__
+
 ```
 Input: word1 = "horse", word2 = "ros"
 Output: 3
@@ -25,6 +28,7 @@ rose -> ros (remove 'e')
 ```
 
 __Example 2:__
+
 ```
 Input: word1 = "intention", word2 = "execution"
 Output: 5
@@ -38,7 +42,7 @@ exection -> execution (insert 'u')
 
 __Constraints:__
 
-- ```0 <= word1.length, word2.length <= 500```
+- $0 \le word1.length, word2.length \le 500$
 - ```word1``` and ```word2``` consist of lowercase English letters.
 
 ---
