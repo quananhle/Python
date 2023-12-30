@@ -143,6 +143,7 @@
 
     - :warning::warning: [5. Longest Palindromic Substring](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Cisco/5.%20Longest%20Palindromic%20Substring) ```Dynamic Programming``` ```Sliding Window``` ```Two Pointers``` ```Manacher's Algorithm```
     - :four_leaf_clover: [125. Valid Palindrome](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Palindrome/125.%20Valid%20Palindrome)
+    - :no_entry::no_entry::no_entry: [1216. Valid Palindrome III](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1216.%20Valid%20Palindrome%20III) ```Dynamic Programming``` ```Breadth-First Search``` ```Two Pointers```
 
   - ##### String Matching
 
