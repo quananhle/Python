@@ -35,3 +35,24 @@ __Constraints:__
 - ```words[i]``` consists of lowercase English letters.
 
 ---
+
+### Hash Map
+
+#### Frequency Counter
+
+```Python
+class Solution:
+    def makeEqual(self, words: List[str]) -> bool:
+        counter = collections.defaultdict(int)
+        for word in words:
+            for c in word:
+                counter[c] += 1
+        
+        n = len(words)
+        for _, val in counter.items():
+            # Check if all characters can be equally distributed among every word to make all strings equal
+            if val % n:
+                return False
+        
+        return True
+```
