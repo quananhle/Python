@@ -39,7 +39,27 @@ __Constraints:__
 #### Top-Down Dynamic Programming 
 
 ```Python
+class Solution:
+    def isValidPalindrome(self, s: str, k: int) -> bool:
+        n = len(s)
 
+        @functools.lru_cache(maxsize=None)
+        def dp(left, right):
+            # Base cases
+            # One letter remaining
+            if left == right:
+                return 0
+            # Two letters remaining
+            if left == right - 1:
+                return 1 if s[left] != s[right] else 0
+            
+            # DP Transitions: matching characters or unmatching characters
+            if s[left] == s[right]:
+                return dp(left + 1, right - 1)
+            
+            return 1 + min(dp(left + 1, right), dp(left, right - 1))
+        
+        return dp(0, n - 1) <= k
 ```
 
 #### Bottom-Up Dynamic Programming (2D)
@@ -113,7 +133,7 @@ class Solution(object):
 
 ---
 
-### Breadth-First Search + Two Pointers Technique (Longest Palindromic Subsequence Template)
+### Breadth-First Search + Two-Pointer Technique (Longest Palindromic Subsequence Template)
 
 ```Python
 class Solution:
