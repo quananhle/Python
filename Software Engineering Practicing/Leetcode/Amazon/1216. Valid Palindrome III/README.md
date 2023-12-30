@@ -36,7 +36,13 @@ __Constraints:__
 
 ### Dynamic Programming Framework
 
-#### Top-Down Dynamic Programming
+#### Top-Down Dynamic Programming 
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming (2D)
 
 ![image](https://user-images.githubusercontent.com/35042430/204914626-85e211dd-57c1-47b7-a0d1-7c1bfd2665eb.png)
 
@@ -71,7 +77,7 @@ class Solution(object):
                 # Either delete character at left index or right index
                 res[left][right] = 1 + min(dp(s, left+1, right), dp(s, left, right-1))
                 return res[left][right]
-        print (dp(s, 0, len(s)-1))
+
         return dp(s, 0, len(s)-1) <= k
         '''
         "abcdeca"
@@ -104,3 +110,35 @@ class Solution(object):
         ''' 
 ```
 ![image](https://user-images.githubusercontent.com/35042430/204914985-680e1dcb-7810-4b66-9c76-c8166f79124e.png)
+
+---
+
+### Breadth-First Search + Two Pointers Technique (Longest Palindromic Subsequence Template)
+
+```Python
+class Solution:
+    def isValidPalindrome(self, s: str, k: int) -> bool:
+        n = len(s)
+
+        queue = collections.deque([(0, n - 1, k)])
+        visited = set()
+
+        while queue:
+            left, right, remaining = queue.popleft()
+            if remaining < 0:
+                return False
+            
+            while s[left] == s[right]:
+                left += 1
+                right -= 1
+                if left >= right:
+                    return True
+            
+            if not (left + 1, right) in visited:
+                queue.append((left + 1, right, remaining - 1))
+                visited.add((left + 1, right))
+            
+            if not (left, right - 1) in visited:
+                queue.append((left, right - 1, remaining - 1))
+                visited.add((left, right - 1))
+```
