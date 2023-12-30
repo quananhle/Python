@@ -56,3 +56,25 @@ class Solution:
         
         return True
 ```
+
+---
+
+### Array
+
+#### Frequency Counter
+
+```Python
+class Solution:
+    def makeEqual(self, words: List[str]) -> bool:
+        counter = [0] * 26
+        for word in words:
+            for c in word:
+                counter[ord(c) - ord('a')] += 1
+
+        n = len(words)
+        for frequency in counter:
+            if frequency % n:
+                return False
+        
+        return True
+```
