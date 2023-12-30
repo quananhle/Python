@@ -76,13 +76,7 @@ From the above illustrations, it is clear that Option 1 and Option 2 transform `
 
 Thus, in this case, we will choose Option 3 and the edit distance would be 1.
 
-From this, we can conclude that,
-
-```
-Edit distance to transform "word1" to "word2" = 1 + Minimum (Number of operations after deleting e from "word1", 
-                                                             Number of operations after inserting c in "word1",
-                                                             Number operations after replacing e with c in "word1")
-```
+![image](https://github.com/quananhle/Python/assets/35042430/b3e36671-a47e-4b5c-9be1-d522999e8047)
 
 __The +1 in the end, is for the current operation.__
 
