@@ -59,6 +59,14 @@ class Solution:
         return -1 if ans == -math.inf else ans
 ```
 
+#### One Liner (```find``` + ```rfind```)
+
+```Python
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        return max(s.rfind(c) - s.find(c) - 1 for c in set(s))
+```
+
 ### Hash Map
 
 ```Python
