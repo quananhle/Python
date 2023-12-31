@@ -44,6 +44,13 @@ __Constraints:__
 
 #### Brute Force
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n^2)$. $\frac{n \cdot (n - 1)}{2} = \mathcal{O}(n^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+We aren't using any extra space.
+
 ```Python
 class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
@@ -58,14 +65,39 @@ class Solution:
         return ans
 ```
 
+#### Two Pointers
+
+- __Time Complexity__: $\mathcal{O}(26 \cdot n) = \mathcal{O}(n)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
+
+```Python
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        ans = -1
+        n = len(s)
+
+        for c in set(s):
+            left, right = 0, n - 1
+            while left < n and s[left] != c:
+                left += 1
+            while right > 0 and s[right] != c:
+                right -= 1
+            ans = max(ans, right - left - 1)
+    
+        return ans
+```
+
 #### First Occurrence Memorization
+
+- __Time Complexity__: $\mathcal{O}(n)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
 
 ```Python
 class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
         n = len(s)
         memo = [None] * 26
-        ans = -math.inf
+        ans = -1
 
         for i, c in enumerate(s):
             c = ord(c) - ord('a')
@@ -74,7 +106,7 @@ class Solution:
             else:
                 ans = max(ans, i - memo[c] - 1)
 
-        return -1 if ans == -math.inf else ans
+        return ans
 ```
 
 #### One Liner (```find``` + ```rfind```)
@@ -87,12 +119,15 @@ class Solution:
 
 ### Hash Map
 
+- __Time Complexity__: $\mathcal{O}(n)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
+
 ```Python
 class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
         n = len(s)
         memo = collections.defaultdict(int)
-        ans = -math.inf
+        ans = -1
 
         for i, c in enumerate(s):
             if not c in memo:
@@ -100,6 +135,6 @@ class Solution:
             else:
                 ans = max(ans, i - memo[c] - 1)
 
-        return -1 if ans == -math.inf else ans
+        return ans
 ```
 
