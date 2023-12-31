@@ -43,7 +43,20 @@ __Constraints:__
 ### Array
 
 ```Python
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        n = len(s)
+        memo = [None] * 26
+        ans = -math.inf
 
+        for i, c in enumerate(s):
+            c = ord(c) - ord('a')
+            if memo[c] is None:
+                memo[c] = i
+            else:
+                ans = max(ans, i - memo[c] - 1)
+
+        return -1 if ans == -math.inf else ans
 ```
 
 ### Hash Map
