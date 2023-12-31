@@ -1,6 +1,6 @@
 ## [72. Edit Distance](https://leetcode.com/problems/edit-distance/)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Recursion``` ```Two Pointers```
 
 #### Difficulty: Hard
 
@@ -82,8 +82,33 @@ __The +1 in the end, is for the current operation.__
 
 ### Brute Force
 
-```Python
+#### Recursion + Two-Pointer Technique (Time Limit Exceeded)
 
+```Python
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        m, n = len(word1), len(word2)
+
+        def recurs(i, j):
+            # Edge cases: word1 is empty or run out of character, or word2 is empty or run out of character => number of operation equals the length of the other string
+            
+            # Number of operation equals the rest of the other strings:
+            if i == 0: return j
+            if j == 0: return i
+            # Matching characters
+            if word1[i - 1] == word2[j - 1]:
+                return recurs(i - 1, j - 1)
+            # Not matching characters
+            else:
+                # Insert: j + 1
+                insertion = recurs(i, j - 1)
+                # Delete: i + 1
+                deletion = recurs(i - 1, j)
+                # Replace: i + 1, j + 1
+                replacement = recurs(i - 1, j - 1)
+                return 1 + min(insertion, deletion, replacement)
+            
+        return recurs(m, n)
 ```
 
 ### Dynamic Programming Framework
