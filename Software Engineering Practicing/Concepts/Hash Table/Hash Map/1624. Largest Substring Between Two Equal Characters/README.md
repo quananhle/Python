@@ -4,7 +4,7 @@
 
 #### Difficulty: Easy
 
-Given a string s, return the length of the longest substring between two equal characters, excluding the two characters. If there is no such substring return -1.
+Given a string ```s```, return _the length of the longest substring between two equal characters, excluding the two characters_. If there is no such substring return ```-1```.
 
 A substring is a contiguous sequence of characters within a string.
 
@@ -41,6 +41,24 @@ __Constraints:__
 ---
 
 ### Array
+
+#### Brute Force
+
+```Python
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        ans = -1
+        n = len(s)
+
+        for left in range(n):
+            for right in range(left + 1, n):
+                if s[left] == s[right]:
+                    ans = max(ans, right - left - 1)
+        
+        return ans
+```
+
+#### First Occurrence Memorization
 
 ```Python
 class Solution:
