@@ -96,3 +96,34 @@ class Solution:
         
         return dp(0, '', 0, k)
 ```
+
+```Python
+class Solution:
+    def getLengthOfOptimalCompression(self, s: str, k: int) -> int:
+        n = len(s)
+        memo = collections.defaultdict(int)
+
+        def dp(i, prev, count, k):
+            # Base case
+            if k < 0:
+                return math.inf
+            if i == n:
+                return 0
+
+            if (i, prev, count, k) in memo:
+                return memo[(i, prev, count, k)]
+            
+            # DP Transitions: to delete or to keep
+            to_delete = dp(i + 1, prev, count, k - 1)
+
+            # To keep
+            if s[i] == prev:
+                to_keep = dp(i + 1, prev, count + 1, k) + (count in [1, 9, 99])
+            else:
+                to_keep = dp(i + 1, s[i], 1, k) + 1
+            
+            memo[(i, prev, count, k)] = min(to_delete, to_keep)
+            return memo[(i, prev, count, k)]
+        
+        return dp(0, '', 0, k)
+```
