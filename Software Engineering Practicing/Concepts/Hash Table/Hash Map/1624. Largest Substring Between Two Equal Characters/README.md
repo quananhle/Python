@@ -12,3 +12,55 @@ A substring is a contiguous sequence of characters within a string.
 
 ---
 
+__Example 1:__
+```
+Input: s = "aa"
+Output: 0
+Explanation: The optimal substring here is an empty substring between the two 'a's.
+```
+
+__Example 2:__
+```
+Input: s = "abca"
+Output: 2
+Explanation: The optimal substring here is "bc".
+```
+
+__Example 3:__
+```
+Input: s = "cbzxy"
+Output: -1
+Explanation: There are no characters that appear twice in s.
+```
+
+__Constraints:__
+
+- $1 \le s.length \le 300$
+- ```s``` contains only lowercase English letters.
+
+---
+
+### Array
+
+```Python
+
+```
+
+### Hash Map
+
+```Python
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        n = len(s)
+        memo = collections.defaultdict(int)
+        ans = -math.inf
+
+        for i, c in enumerate(s):
+            if not c in memo:
+                memo[c] = i
+            else:
+                ans = max(ans, i - memo[c] - 1)
+
+        return -1 if ans == -math.inf else ans
+```
+
