@@ -1,6 +1,6 @@
 ## [455. Assign Cookies](https://leetcode.com/problems/assign-cookies/)
 
-```Tag```: ```String & Array``` ```Two Pointers``` ```Sorting``` ```Greedy```
+```Tag```: ```String & Array``` ```Two Pointers``` ```Sorting```
 
 #### Difficulty: Easy
 
@@ -8,7 +8,7 @@ Assume you are an awesome parent and want to give your children some cookies. Bu
 
 Each child ```i``` has a greed factor ```g[i]```, which is the minimum size of a cookie that the child will be content with; and each cookie ```j``` has a size ```s[j]```. If ```s[j] >= g[i]```, we can assign the cookie ```j``` to the child ```i```, and the child ```i``` will be content. Your goal is to maximize the number of your content children and output the maximum number.
 
-![image](https://user-images.githubusercontent.com/35042430/223257996-1f6008f6-cfc9-4cef-a29d-f7291ae19acc.png)
+<img width="511" alt="image" src="https://github.com/quananhle/Python/assets/35042430/9f0745b6-2f74-4e65-bc8e-80797d0aa70e">
 
 ---
 
@@ -32,23 +32,25 @@ You need to output 2.
 
 __Constraints:__
 
-- 1 <= ```g.length``` <= 3 * 10<sup>4</sup>
-- 0 <= ```s.length``` <= 3 * 10<sup>4</sup>
-- 1 <= ```g[i], s[j]``` <= 2<sup>31</sup> - 1
+- $1 \le g.length \le 3 * 10^4$
+- $0 \le s.length \le 3 * 10^4$
+- $1 \le g[i], s[j] \le 2^{31} - 1$
 
 ---
+
+### Sorting + Two-Pointer Technique
 
 ```Python
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
-        ans = 0
         i, j = 0, 0
         n, m = len(g), len(s)
         g.sort(), s.sort()
+
         while i < n and j < m:
             if g[i] <= s[j]:
-                ans += 1
                 i += 1
             j += 1
-        return ans
+
+        return i
 ```
