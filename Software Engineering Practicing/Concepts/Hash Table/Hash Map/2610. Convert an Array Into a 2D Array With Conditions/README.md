@@ -51,6 +51,40 @@ __Constraints:__
 ```Python
 class Solution:
     def findMatrix(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        counter = collections.defaultdict(int)
+        res = list()
+
+        for num in nums:
+            if counter[num] >= len(res):
+                res.append([])
+            res[counter[num]].append(num)
+            counter[num] += 1
+        
+        return res
+```
+
+```Python
+class Solution:
+    def findMatrix(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        counter = [0] * (n + 1)
+        res = list()
+
+        for num in nums:
+            if counter[num] >= len(res):
+                res.append([])
+            res[counter[num]].append(num)
+            counter[num] += 1
+        
+        return res
+```
+
+#### ```Counter()```
+
+```Python
+class Solution:
+    def findMatrix(self, nums: List[int]) -> List[List[int]]:
         '''
         Observations:
             - Number of rows = number of most frequent element
