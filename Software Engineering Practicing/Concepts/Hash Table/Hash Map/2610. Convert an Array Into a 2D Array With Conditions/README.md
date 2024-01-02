@@ -44,3 +44,29 @@ __Constraints:__
 
 ---
 
+### Hash Map
+
+#### Frequency Counter
+
+```Python
+class Solution:
+    def findMatrix(self, nums: List[int]) -> List[List[int]]:
+        '''
+        Observations:
+            - Number of rows = number of most frequent element
+        '''
+        counter = collections.Counter(nums)
+        n = counter.most_common(1)[0][1]
+        
+        res = list()
+        
+        for i in range(n):
+            curr = list()
+            for key, freq in counter.items():
+                if freq:
+                    curr.append(key)
+                    counter[key] -= 1
+            res.append(curr)
+
+        return res
+```
