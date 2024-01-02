@@ -1,6 +1,6 @@
 ## [1066. Campus Bikes II](https://leetcode.com/problems/campus-bikes-ii)
 
-```Tag```: ```Dynamic Programming``` ```Matrix``` ```Greedy Algorithm``` ```Backtracking``` ```Priority Queue``` ```Dijkstra's Algorithm```
+```Tag```: ```Dynamic Programming``` ```Matrix``` ```Greedy Algorithm``` ```Backtracking``` ```Priority Queue``` ```Dijkstra's Algorithm``` ```Bitwise Manipulation```
 
 #### Difficulty: Medium
 
@@ -56,6 +56,8 @@ __Constraints:__
 
 ### Greedy + Backtracking (Time Limit Exceeded)
 
+![image](https://github.com/quananhle/Python/assets/35042430/57e8ef2b-d9ed-44e9-8ea3-5c796d052915)
+
 #### Algorithm
 
 1. For every worker starting from the ```worker``` at index ```0```, traverse over the ```bikes``` and assign the bike to the worker if it is available (```visited[bikeIndex] = False```). After assigning the bike mark it as unavailable (```visited[bikeIndex] = True```).
@@ -63,6 +65,11 @@ __Constraints:__
 3. When the recursive call is finished, make the bike as available again by setting ```visited[bikeIndex]``` to ```False```.
 4. If we have assigned bikes to all the workers, compare the ```currDistanceSum``` with the ```smallestDistanceSum``` and update the ```smallestDistanceSum``` accordingly.
 5. Before assigning any bike to the worker, check if the ```currDistanceSum``` is already greater than or equal to ```smallestDistanceSum```. If so, then skip the rest of the ```workers``` and return. This is because ```currDistanceSum``` can only increase, and thus we will not find a better result than ```smallestDistanceSum``` using the current combination of workers and bikes.
+
+#### Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(\frac{M!}{(M - N)!})$
+- __Space Complexity__: $\mathcal{O}(N + M)$
 
 ```Python
 class Solution:
@@ -93,3 +100,9 @@ class Solution:
         backtrack(0, 0)
         return ans
 ```
+
+---
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
