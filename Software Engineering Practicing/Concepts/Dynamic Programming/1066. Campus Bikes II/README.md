@@ -4,13 +4,13 @@
 
 #### Difficulty: Medium
 
-On a campus represented as a 2D grid, there are n workers and m bikes, with n <= m. Each worker and bike is a 2D coordinate on this grid.
+On a campus represented as a 2D grid, there are ```n``` workers and ```m``` bikes, with ```n <= m```. Each worker and bike is a 2D coordinate on this grid.
 
 We assign one unique bike to each worker so that the sum of the Manhattan distances between each worker and their assigned bike is minimized.
 
-Return the minimum possible sum of Manhattan distances between each worker and their assigned bike.
+Return _```the minimum possible sum of Manhattan distances between each worker and their assigned bike```_.
 
-The Manhattan distance between two points p1 and p2 is Manhattan(p1, p2) = |p1.x - p2.x| + |p1.y - p2.y|.
+The Manhattan distance between two points ```p1``` and ```p2``` is ```Manhattan(p1, p2) = |p1.x - p2.x| + |p1.y - p2.y|```.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/c4372e86-55ae-45a5-b551-4a85109612e1)
 
@@ -105,4 +105,45 @@ class Solution:
 
 ### Dynamic Programming Framework
 
-#### Top-Down Dynamic Programming
+#### Top-Down Dynamic Programming + Bitmasking
+
+__Algorithm__
+
+1. For every worker starting from the worker at index ```0```, traverse over the bits of ```mask``` and assign it to the worker if it is available (bit at ```bikeIndex``` in mask is ```0```). After assigning the bike mark it is unavailable (change the bit at ```bikeIndex``` in mask to ```1```).
+2. Add the Manhattan distance of the above assignment and add it to the distance that will be returned by the recursive function ```dp``` for the next worker ```workerIndex```.
+3. If we have assigned ```bikes``` to all the ```workers``` (```workerIndex >= workers.size()```) then we can return the distance as ```0```.
+4. Use memoization to store the result corresponding to ```mask```, because there will be repeated subproblems as shown below. This will help us to avoid recalculating subproblems.
+
+![image](https://leetcode.com/problems/campus-bikes-ii/Figures/1066/1066A.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: \mathcal{O}(M \cdot 2^M)$
+- __Space Complexity__: \mathcal{O}(2^M)$
+
+```Python
+class Solution:
+    def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> int:
+        ans = math.inf
+        m, n = len(workers), len(bikes)
+
+        def manhattance_distance(worker, bike):
+            return abs(worker[0] - bike[0]) + abs(worker[1] - bike[1])
+
+        @functools.lru_cache(maxsize=None)
+        def dp(curr, mask):
+            # Base case
+            if curr >= m:
+                return 0
+
+            ans = math.inf
+            for i in range(n):
+                if mask & (1 << i) == 0:
+                    ans = min(ans, manhattance_distance(workers[curr], bikes[i]) + dp(curr + 1 , mask | (1 << i)))
+
+            return ans
+    
+        return dp(0, 0)
+```
+
+#### 
