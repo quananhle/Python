@@ -59,3 +59,13 @@ B >> 1 = 00101 >> 1 = 00010 = 2 (in decimal)
 ```
 
 ![image](https://user-images.githubusercontent.com/35042430/229693293-c6bbd6ef-1418-4703-b9ac-31069d065f87.png)
+
+
+#### The below slides show how bitwise AND (```&```) can be used to check if the $i^{th}$ bit is set, how bitwise OR (```|```) can be used to set the $i^{th}$ bit, and how bitwise XOR (```^```) can be used to unset the $i^{th}$ bit.
+
+![image](https://github.com/quananhle/Python/assets/35042430/90780a51-eb17-46c4-94c5-45048532c3c1)
+
+![image](https://github.com/quananhle/Python/assets/35042430/ce9f7dbd-e896-44ee-bd14-d6c4d3a7ee1c)
+
+![image](https://github.com/quananhle/Python/assets/35042430/ddf9bb86-0820-409d-86b2-14f48444f31e)
+
