@@ -107,6 +107,14 @@ class Solution:
 
 #### Top-Down Dynamic Programming + Bitmasking
 
+#### The below slides show how bitwise AND (```&```) can be used to check if the $i^{th}$ bit is set, how bitwise OR (```|```) can be used to set the $i^{th}$ bit, and how bitwise XOR (```^```) can be used to unset the $i^{th}$ bit.
+
+![image](https://github.com/quananhle/Python/assets/35042430/90780a51-eb17-46c4-94c5-45048532c3c1)
+
+![image](https://github.com/quananhle/Python/assets/35042430/ce9f7dbd-e896-44ee-bd14-d6c4d3a7ee1c)
+
+![image](https://github.com/quananhle/Python/assets/35042430/ddf9bb86-0820-409d-86b2-14f48444f31e)
+
 __Algorithm__
 
 1. For every worker starting from the worker at index ```0```, traverse over the bits of ```mask``` and assign it to the worker if it is available (bit at ```bikeIndex``` in mask is ```0```). After assigning the bike mark it is unavailable (change the bit at ```bikeIndex``` in mask to ```1```).
@@ -118,13 +126,38 @@ __Algorithm__
 
 __Complexity Analysis__
 
-- __Time Complexity__: \mathcal{O}(M \cdot 2^M)$
-- __Space Complexity__: \mathcal{O}(2^M)$
+- __Time Complexity__: $\mathcal{O}(M \cdot 2^M)$
+- __Space Complexity__: $\mathcal{O}(2^M)$
 
 ```Python
 class Solution:
     def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> int:
-        ans = math.inf
+        m, n = len(workers), len(bikes)
+        memo = collections.defaultdict(lambda: math.inf)
+
+        def manhattance_distance(worker, bike):
+            return abs(worker[0] - bike[0]) + abs(worker[1] - bike[1])
+
+        def dp(curr, mask):
+            # Base case
+            if curr >= m:
+                return 0
+
+            if (curr, mask) in memo:
+                return memo[(curr, mask)]
+
+            for i in range(n):
+                if mask & (1 << i) == 0:
+                    memo[(curr, mask)] = min(memo[(curr, mask)], manhattance_distance(workers[curr], bikes[i]) + dp(curr + 1 , mask | (1 << i)))
+
+            return memo[(curr, mask)]
+    
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> int:
         m, n = len(workers), len(bikes)
 
         def manhattance_distance(worker, bike):
@@ -145,5 +178,6 @@ class Solution:
     
         return dp(0, 0)
 ```
+
 
 #### 
