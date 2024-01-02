@@ -53,3 +53,43 @@ __Constraints:__
 - All the ```workers``` and the ```bikes``` locations are unique.
 
 ---
+
+### Greedy + Backtracking (Time Limit Exceeded)
+
+#### Algorithm
+
+1. For every worker starting from the ```worker``` at index ```0```, traverse over the ```bikes``` and assign the bike to the worker if it is available (```visited[bikeIndex] = False```). After assigning the bike mark it as unavailable (```visited[bikeIndex] = True```).
+2. Add the Manhattan distance of the above assignment to the total distance incurred so far represented by ```currDistanceSum``` and enter the recursive call for the next worker.
+3. When the recursive call is finished, make the bike as available again by setting ```visited[bikeIndex]``` to ```False```.
+4. If we have assigned bikes to all the workers, compare the ```currDistanceSum``` with the ```smallestDistanceSum``` and update the ```smallestDistanceSum``` accordingly.
+5. Before assigning any bike to the worker, check if the ```currDistanceSum``` is already greater than or equal to ```smallestDistanceSum```. If so, then skip the rest of the ```workers``` and return. This is because ```currDistanceSum``` can only increase, and thus we will not find a better result than ```smallestDistanceSum``` using the current combination of workers and bikes.
+
+```Python
+class Solution:
+    def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> int:
+        ans = math.inf
+        m, n = len(workers), len(bikes)
+        visited = [False] * n
+
+        def manhattance_distance(worker, bike):
+            return abs(worker[0] - bike[0]) + abs(worker[1] - bike[1])
+
+        def backtrack(wkr_idx, curr_distance):
+            nonlocal ans
+            # Base cases
+            if wkr_idx >= m:
+                ans = min(ans, curr_distance)
+                return
+            if curr_distance >= ans:
+                return
+            
+            for bike_idx in range(n):
+                if not visited[bike_idx]:
+                    visited[bike_idx] = True
+                    backtrack(wkr_idx + 1, curr_distance + manhattance_distance(workers[wkr_idx], bikes[bike_idx]))
+                    # Backtracking
+                    visited[bike_idx] = False
+            
+        backtrack(0, 0)
+        return ans
+```
