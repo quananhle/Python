@@ -510,6 +510,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [1814. Count Nice Pairs in an Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/1814.%20Count%20Nice%20Pairs%20in%20an%20Array) ```Math```
 - :warning::warning: [2364. Count Number of Bad Pairs](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/Hash%20Map/2364.%20Count%20Number%20of%20Bad%20Pairs) ```Math```
 - :warning::warning: [2391. Minimum Amount of Time to Collect Garbage](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/Hash%20Map/2391.%20Minimum%20Amount%20of%20Time%20to%20Collect%20Garbage) ```Prefix Sum```
+- :warning::warning: [2610. Convert an Array Into a 2D Array With Conditions](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/Hash%20Map/2610.%20Convert%20an%20Array%20Into%20a%202D%20Array%20With%20Conditions)
 
 ### Hash Set
 
