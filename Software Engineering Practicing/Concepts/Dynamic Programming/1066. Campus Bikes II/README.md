@@ -1,6 +1,6 @@
 ## [1066. Campus Bikes II](https://leetcode.com/problems/campus-bikes-ii)
 
-```Tag```:
+```Tag```: ```Dynamic Programming``` ```Matrix``` ```Greedy Algorithm``` ```Backtracking``` ```Priority Queue``` ```Dijkstra's Algorithm```
 
 #### Difficulty: Medium
 
