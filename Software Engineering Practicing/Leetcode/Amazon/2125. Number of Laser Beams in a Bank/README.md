@@ -55,3 +55,28 @@ __Constraints:__
 - ```bank[i][j]``` is either ```'0'``` or ```'1'```.
 
 ---
+
+### Greedy Algorithm
+
+```Python
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
+        ans = 0
+
+        def count_ones(row):
+            cnt = 0
+            for c in row:
+                if c == '1':
+                    cnt += 1
+            return cnt
+
+        prev = count_ones(bank[0])
+
+        for row in bank[1:]:
+            ones = count_ones(row)
+            if ones:
+                ans += ones * prev
+                prev = ones
+
+        return ans
+```
