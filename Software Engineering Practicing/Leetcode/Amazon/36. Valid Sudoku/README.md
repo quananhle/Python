@@ -1,4 +1,4 @@
-## 36. Valid Sudoku
+## [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku)
 
 #### Difficulty: Medium
 
@@ -14,6 +14,8 @@ A Sudoku board (partially filled) could be valid but is not necessarily solvable
 Only the filled cells need to be validated according to the mentioned rules.
 
 ![image](https://user-images.githubusercontent.com/35042430/203643459-8548d2f2-384f-4894-9834-142148985e22.png)
+
+![image](https://github.com/quananhle/Python/assets/35042430/99358afc-0bd7-49a5-8abf-ea7e0e176a88)
 
 ---
 
