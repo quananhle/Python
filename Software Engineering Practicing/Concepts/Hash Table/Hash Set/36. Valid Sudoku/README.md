@@ -1,4 +1,4 @@
-## 36. Valid Sudoku
+## [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku)
 
 ```Tag```: ```Hash Set```
 
@@ -15,7 +15,7 @@ __Note__:
 - A Sudoku board (partially filled) could be valid but is not necessarily solvable.
 - Only the filled cells need to be validated according to the mentioned rules.
 
-![image](https://user-images.githubusercontent.com/35042430/213787919-1975b293-c89b-4393-af07-511c9e5c8a18.png)
+![image](https://github.com/quananhle/Python/assets/35042430/c4e01be1-1e04-479f-9191-576db90fab2d)
 
 ---
 
