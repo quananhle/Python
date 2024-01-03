@@ -58,6 +58,13 @@ __Constraints:__
 
 ### Greedy Algorithm
 
+![image](https://leetcode.com/problems/number-of-laser-beams-in-a-bank/Figures/2125/2125A.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(M \cdot N)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def numberOfBeams(self, bank: List[str]) -> int:
@@ -73,10 +80,10 @@ class Solution:
         prev = count_ones(bank[0])
 
         for row in bank[1:]:
-            ones = count_ones(row)
-            if ones:
-                ans += ones * prev
-                prev = ones
+            curr = count_ones(row)
+            if curr:
+                ans += curr * prev
+                prev = curr
 
         return ans
 ```
