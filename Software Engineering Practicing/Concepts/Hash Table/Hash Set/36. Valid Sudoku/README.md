@@ -53,11 +53,11 @@ Explanation: Same as Example 1, except with the 5 in the top left corner being m
 ```
 
 __Constraints:__
-```
-board.length == 9
-board[i].length == 9
-board[i][j] is a digit 1-9 or '.'.
-```
+
+- $board.length == 9$
+- $board[i].length == 9$
+- ```board[i][j]``` is a digit ```1-9``` or ```'.'```.
+
 
 ---
 
