@@ -68,11 +68,12 @@ The index of the current box is ```(curr_row / 3) * 3 + (curr_col / 3)``` where 
 ```Python
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
+        N = 9
         ROWS, COLS = len(board), len(board[0])
 
-        row_set = [set() for _ in range(ROWS * COLS)]
-        col_set = [set() for _ in range(ROWS * COLS)]
-        box_set = [set() for _ in range(ROWS * COLS)]
+        row_set = [set() for _ in range(N)]
+        col_set = [set() for _ in range(N)]
+        box_set = [set() for _ in range(N)]
 
         for row in range(ROWS):
             for col in range(COLS):
@@ -100,7 +101,37 @@ class Solution:
 ### Array & String
 
 ```Python
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        N = 9
+        ROWS, COLS = len(board), len(board[0])
 
+        row_set = [[None] * N for _ in range(N)]
+        col_set = [[None] * N for _ in range(N)]
+        box_set = [[None] * N for _ in range(N)]
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                val = board[row][col]
+                if val == '.':
+                    continue
+                pos = int(val) - 1
+
+                if row_set[row][pos]:
+                    return False
+                row_set[row][pos] = val
+
+                if col_set[col][pos]:
+                    return False
+                col_set[col][pos] = val
+
+                # Group cells in a board into 3*3 sub-board: (row / 3) * 3 + (col / 3)
+                box = (row // 3) * 3 + (col // 3)
+                if box_set[box][pos]:
+                    return False
+                box_set[box][pos] = val
+
+        return True
 ```
 
 ### Bitmasking
