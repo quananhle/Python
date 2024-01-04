@@ -1,6 +1,6 @@
 ## [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku)
 
-```Tag```: ```Hash Set```
+```Tag```: ```Array & String``` ```Hash Set``` ```Bitwise Manipulation```
 
 #### Difficulty: Medium
 
@@ -68,33 +68,49 @@ The index of the current box is ```(curr_row / 3) * 3 + (curr_col / 3)``` where 
 ```Python
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        N = 9
         ROWS, COLS = len(board), len(board[0])
-        # Hash Set
-        row_set = [set() for _ in range(N)]
-        col_set = [set() for _ in range(N)]
-        box_set = [set() for _ in range(N)]
+
+        row_set = [set() for _ in range(ROWS * COLS)]
+        col_set = [set() for _ in range(ROWS * COLS)]
+        box_set = [set() for _ in range(ROWS * COLS)]
 
         for row in range(ROWS):
             for col in range(COLS):
                 val = board[row][col]
-                # Check if val is empty
-                if val == ".":
+                if val == '.':
                     continue
-                # Check row
+                
                 if val in row_set[row]:
                     return False
-                row_set[row].add(val)          
-                 # Check col
+                row_set[row].add(val)
+
                 if val in col_set[col]:
                     return False
                 col_set[col].add(val)
-                # Check boxes
-                idx = (row // 3) * 3 + (col // 3)
-                if val in box_set[idx]:
+
+                # Group cells in a board into 3*3 sub-board: (row / 3) * 3 + (col / 3)
+                box = (row // 3) * 3 + (col // 3)
+                if val in box_set[box]:
                     return False
-                box_set[idx].add(val)
+                box_set[box].add(val)
+                
         return True
 ```
+
+### Array & String
+
+```Python
+
+```
+
+### Bitmasking
+
+```Python
+
+```
+
+---
+
+
 
 
