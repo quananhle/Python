@@ -48,7 +48,20 @@ __Constraints:__
 #### Hash Map
 
 ```Python
-
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        counter = collections.defaultdict(int)
+        for num in nums:
+            counter[num] = 1 + counter.get(num, 0)
+        
+        ans = 0
+        for num, freq in counter.items():
+            if freq < 2:
+                return -1
+                
+            ans += math.ceil(freq / 3)
+        
+        return ans
 ```
 
 #### ```collections.Counter```
@@ -65,7 +78,7 @@ class Solution:
         # 1                 --> not possible, return -1
         # 2                 --> 1 operation minimum
         # 3, 6, 9, 12, 15   --> (n // 3) operations 
-        # 4, 7, 10, 13, 16  --> 2 + (n - 2 - 2) // 3 operations
+        # 4, 7, 10, 13, 16  --> 1 + (n - 1) // 3 operations
         # 5, 8, 11, 14, 17  --> 1 + (n - 2) // 3 operations
         frequency = [None] * (max(nums) + 1)
         for num in nums:
