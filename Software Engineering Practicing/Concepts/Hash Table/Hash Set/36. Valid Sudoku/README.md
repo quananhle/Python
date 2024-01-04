@@ -137,7 +137,37 @@ class Solution:
 ### Bitmasking
 
 ```Python
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        N = 9
+        ROWS, COLS = len(board), len(board[0])
 
+        row_set = [0] * N
+        col_set = [0] * N
+        box_set = [0] * N
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                val = board[row][col]
+                if val == '.':
+                    continue
+                pos = int(val) - 1
+
+                if row_set[row] & (1 << pos):
+                    return False
+                row_set[row] = row_set[row] | (1 << pos)
+
+                if col_set[col] & (1 << pos):
+                    return False
+                col_set[col] = col_set[col] | (1 << pos)
+
+                # Group cells in a board into 3*3 sub-board: (row / 3) * 3 + (col / 3)
+                box = (row // 3) * 3 + (col // 3)
+                if box_set[box] & (1 << pos):
+                    return False
+                box_set[box] = box_set[box] | (1 << pos)
+
+        return True
 ```
 
 ---
