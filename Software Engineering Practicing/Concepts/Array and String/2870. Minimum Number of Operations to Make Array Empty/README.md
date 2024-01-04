@@ -42,3 +42,45 @@ __Constraints:__
 - $1 \le nums[i] \le 10^6$
 
 ---
+
+### Frequency Counter
+
+#### Hash Map
+
+```Python
+
+```
+
+#### ```collections.Counter```
+
+```Python
+
+```
+
+#### Array
+
+```Python
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        # 1                 --> not possible, return -1
+        # 2                 --> 1 operation minimum
+        # 3, 6, 9, 12, 15   --> (n // 3) operations 
+        # 4, 7, 10, 13, 16  --> 2 + (n - 2 - 2) // 3 operations
+        # 5, 8, 11, 14, 17  --> 1 + (n - 2) // 3 operations
+        frequency = [None] * (max(nums) + 1)
+        for num in nums:
+            if frequency[num]:
+                frequency[num] += 1
+            else:
+                frequency[num] = 1
+        
+        ans = 0
+        for num, freq in enumerate(frequency):
+            if freq:
+                if freq < 2:
+                    return -1
+                
+                ans += math.ceil(freq / 3)
+        
+        return ans
+```
