@@ -45,6 +45,74 @@ __Constraints:__
 
 ### Frequency Counter
 
+__The count of an element is a multiple of 3.__
+
+__Example: 3, 6, 9, 12,...__
+
+```JavaScript
+* count = 3
+    3 - 3 = 0
+    operations required = 1
+* count = 6
+    6 - 3 - 3  = 0
+    operations required = 2
+* count = 9
+    9 - 3 - 3 - 3  = 0
+    operations required = 3
+* count = 12
+    12 - 3 - 3 - 3 - 3  = 0
+    operations required = 4
+```
+
+__The count of an element is one more than a multiple of 3.__
+
+__Example: 4, 7, 10, 13,...__
+
+In such instances, we can eliminate two pairs, thereby making the count divisible by 3. Following this adjustment, we can proceed to remove the remaining numbers in triplets.
+
+```JavaScript
+* count = 4
+    4 - 2 - 2 = 0 -> eliminate two pairs
+    operations required = 2
+* count = 7
+    7 - 2 - 2 = 3 -> eliminate two pairs
+    3 - 3 = 0 -> eliminate remaining triplets
+    operations required = 3
+* count = 10
+    10 - 2 - 2 = 6 -> eliminate two pairs
+    6 - 3 - 3 = 0 -> eliminate remaining triplets
+    operations required = 4
+* count = 13
+    13 - 2 - 2 = 9 -> eliminate two pairs
+    9 - 3 - 3 - 3 = 0 -> eliminate remaining triplets
+    operations required = 5
+```
+
+__The count of an element is two more than a multiple of 3.__
+
+__Example: 5, 8, 11, 14,...__
+
+In such instances, we can eliminate one pair, thereby making the count divisible by 3. Following this adjustment, we can proceed to remove the remaining numbers in triplets.
+
+```JavaScript
+* count = 5
+    5 - 2 = 3 -> eliminate one pair
+    3 - 3 = 0 -> eliminate remaining triplets
+    operations required = 2
+* count = 8
+    8 - 2 = 6 -> eliminate one pair
+    6 - 3 - 3 = 0 -> eliminate remaining triplets
+    operations required = 3
+* count = 11
+    11 - 2 = 9 -> eliminate one pair
+    9 - 3 - 3 - 3 = 0 -> eliminate remaining triplets
+    operations required = 4
+* count = 14
+    14 - 2 = 12 -> eliminate one pair
+    12 - 3 - 3 - 3 - 3 = 0 -> eliminate remaining triplets
+    operations required = 5
+```
+
 #### Hash Map
 
 ```Python
