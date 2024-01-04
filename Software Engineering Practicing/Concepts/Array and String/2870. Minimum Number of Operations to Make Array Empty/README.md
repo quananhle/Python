@@ -135,7 +135,17 @@ class Solution:
 #### ```collections.Counter```
 
 ```Python
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        counter = collections.Counter(nums)
+        ans = 0
 
+        for num, freq in counter.items():
+            if freq < 2:
+                return -1
+            ans += math.ceil(freq / 3)
+
+        return ans
 ```
 
 #### Array
