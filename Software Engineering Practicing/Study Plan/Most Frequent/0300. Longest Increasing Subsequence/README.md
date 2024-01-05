@@ -105,18 +105,65 @@ class Solution:
 
 ### Dynamic Programming
 
-#### Top-Down Dynamic Programming (Time Limit Exceeded)
+#### Top-Down Dynamic Programming (Memory Limit Exceeded)
 
 ```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        memo = collections.defaultdict(int)
 
+        def dp(i, prev):
+            # Base case
+            if i == n:
+                return 0
+
+            if (i, prev) in memo:
+                return memo[(i, prev)]
+            
+            skip = take = 0
+            skip = dp(i + 1, prev)
+
+            if not prev or prev < nums[i]:
+                take = 1 + dp(i + 1, nums[i])
+
+            memo[(i, prev)] = max(take, skip)
+            return memo[(i, prev)]
+        
+        return dp(0, None)
 ```
 
 ```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        @functools.lru_cache(maxsize=None)
+        def dp(i, prev):
+            # Base case
+            if i == n:
+                return 0
+            
+            skip = take = 0
+            skip = dp(i + 1, prev)
 
+            if not prev or prev < nums[i]:
+                take = 1 + dp(i + 1, nums[i])
+
+            return max(take, skip)
+        
+        return dp(0, None)
 ```
 
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [1] * (n)
 
+        for i in range(n - 2, -1, -1):
+            for j in range(i, n):
+                if nums[i] < nums[j]:
+                    dp[i] = max(dp[i], dp[j] + 1)
+
+        return max(dp)
 ```
