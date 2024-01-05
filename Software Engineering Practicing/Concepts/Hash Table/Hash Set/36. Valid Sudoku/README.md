@@ -61,9 +61,67 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        ROWS, COLS = len(board), len(board[0])
+
+        def check_row():
+            for row in board:
+                row_set = set()
+                for cell in row:
+                    if cell == '.':
+                        continue
+                    if cell in row_set:
+                        return False
+                    row_set.add(cell)
+            return True
+
+        def check_col():
+            for col in zip(*board):
+                col_set = set()
+                for cell in col:
+                    if cell == '.':
+                        continue
+                    if cell in col_set:
+                        return False
+                    col_set.add(cell)
+            return True
+
+        def check_box():
+            sub_size = 3
+            for row in range(0, ROWS, 3):
+                for col in range(0, COLS, 3):
+                    box_set = set()
+                    box = [board[row + dx][col + dy] for dx in range(sub_size) for dy in range(sub_size)]
+                    for cell in box:
+                        if cell == '.':
+                            continue
+                        if cell in box_set:
+                            return False
+                        box_set.add(cell)
+            return True
+
+        return check_row() and check_col() and check_box()
+```
+
+---
+
 The index of the current box is ```(curr_row / 3) * 3 + (curr_col / 3)``` where ```/``` represents floor division
 
 ### Hash Set
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
@@ -99,6 +157,11 @@ class Solution:
 ```
 
 ### Array & String
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
@@ -136,6 +199,11 @@ class Solution:
 
 ### Bitmasking
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 ```Python
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
@@ -169,9 +237,3 @@ class Solution:
 
         return True
 ```
-
----
-
-
-
-
