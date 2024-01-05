@@ -74,3 +74,27 @@ class Solution:
             
         return len(longest_increasing_subsequence)
 ```
+
+```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        longest_increasing_subsequence = [nums[0]]
+
+        for num in nums[1:]:
+            idx = 0
+
+            if num <= longest_increasing_subsequence[-1]:
+                lo, hi = 0, len(longest_increasing_subsequence) - 1
+                while lo < hi:
+                    mi = lo + (hi - lo) // 2
+                    pivot = longest_increasing_subsequence[mi]
+                    if num <= pivot:
+                        hi = mi
+                    else:
+                        lo = mi + 1
+                longest_increasing_subsequence[hi] = num
+            else:
+                longest_increasing_subsequence.append(num)
+            
+        return len(longest_increasing_subsequence)
+```
