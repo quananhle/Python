@@ -41,17 +41,36 @@ __Constraints:__
 ```Python
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        n = len(nums)
         longest_increasing_subsequence = [nums[0]]
 
         for num in nums[1:]:
-            i = 0
+            idx = 0
+
             if longest_increasing_subsequence[-1] < num:
                 longest_increasing_subsequence.append(num)
             else:
-                while longest_increasing_subsequence[i] < num:
-                    i += 1
-                longest_increasing_subsequence[i] = num
+                while longest_increasing_subsequence[idx] < num:
+                    idx += 1
+                longest_increasing_subsequence[idx] = num
 
+        return len(longest_increasing_subsequence)
+```
+
+#### Optimization Using Binary Search
+
+```Python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        longest_increasing_subsequence = [nums[0]]
+
+        for num in nums[1:]:
+            idx = 0
+
+            if num <= longest_increasing_subsequence[-1]:
+                pos = bisect.bisect_left(longest_increasing_subsequence, num)
+                longest_increasing_subsequence[pos] = num
+            else:
+                longest_increasing_subsequence.append(num)
+            
         return len(longest_increasing_subsequence)
 ```
