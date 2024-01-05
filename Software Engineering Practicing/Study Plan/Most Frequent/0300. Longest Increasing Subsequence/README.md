@@ -1,6 +1,6 @@
 ## [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence)
 
-```Tag```: ```Dynamic Programming``` ```Binary Search``` ```Monotonic Stack```
+```Tag```: ```Dynamic Programming``` ```Two-Pointer Technique``` ```Binary Search``` ```Monotonic Stack```
 
 #### Difficulty: Medium
 
@@ -37,6 +37,8 @@ __Constraints:__
 ---
 
 ### Build Longest Increasing Subsequence
+
+#### Two-Pointer Technique + Linear Search
 
 ```Python
 class Solution:
@@ -98,3 +100,7 @@ class Solution:
             
         return len(longest_increasing_subsequence)
 ```
+
+---
+
+### Dynamic Programming
