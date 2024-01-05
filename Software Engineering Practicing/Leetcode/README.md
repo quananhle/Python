@@ -91,6 +91,7 @@
 
 ### 2D Array/Matrix
 
+- :warning::warning: [36. Valid Sudoku](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/Hash%20Set/36.%20Valid%20Sudoku) ```Array & String``` ```Hash Set``` ```Bitwise Manipulation```
 - :warning::warning: [311. Sparse Matrix Multiplication](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/311.%20Sparse%20Matrix%20Multiplication)
 - :warning::warning: [498. Diagonal Traverse](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/498.%20Diagonal%20Traverse) ```Depth First Search``` ```Hash Map```
 - :warning::warning: [1055. Shortest Way to Form String](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Introduction%20to%202D%20Array/1055.%20Shortest%20Way%20to%20Form%20String) ```Two Pointers``` ```Binary Search``` ```2D Array``` ```Dynamic Programming```
