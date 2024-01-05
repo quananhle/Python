@@ -6,7 +6,7 @@
 
 Given an integer array ```nums```, return _the length of the longest __strictly increasing subsequence___.
 
-![image](https://user-images.githubusercontent.com/35042430/216241611-86eed9b4-d633-4e73-84b8-4801e08500e4.png)
+![image](https://github.com/quananhle/Python/assets/35042430/989542c4-68ec-47b6-93bd-43a32a3b90ee)
 
 --- 
 
@@ -31,8 +31,8 @@ Output: 1
 
 __Constraints:__
 
-- ```1 <= nums.length <= 2500```
-- -10<sup>4</sup> <= ```nums[i]``` <= 10<sup>4</sup>
+- $1 \le nums.length \le 2500$
+- $-10^4 \le nums[i] \le 10^4$
 
 ---
 
