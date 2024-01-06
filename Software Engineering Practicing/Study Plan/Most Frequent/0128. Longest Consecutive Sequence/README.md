@@ -4,11 +4,11 @@
 
 #### Difficulty: Medium
 
-Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+Given an unsorted array of integers ```nums```, return _the length of the longest consecutive elements sequence_.
 
-You must write an algorithm that runs in O(n) time.
+You must write an algorithm that runs in ```O(n)``` time.
 
-
+![image](https://github.com/quananhle/Python/assets/35042430/ba7c4e55-67d8-4a2c-8f5c-f13ab21ab459)
 
 ---
 
