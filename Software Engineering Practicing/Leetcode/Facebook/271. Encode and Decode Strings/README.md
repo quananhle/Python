@@ -36,7 +36,7 @@ Implement the ```encode``` and ```decode``` methods.
 
 You are not allowed to solve the problem using any serialize methods (such as ```eval```).
 
-![image](https://github.com/quananhle/Python/assets/35042430/56ff711f-f763-4d14-a180-eecbb35a7d52)
+![image](https://github.com/quananhle/Python/assets/35042430/1bd324ad-36dc-4951-9939-fffe28849687)
 
 ---
 
