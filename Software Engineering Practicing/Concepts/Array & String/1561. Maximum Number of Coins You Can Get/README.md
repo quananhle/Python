@@ -16,6 +16,8 @@ Given an array of integers ```piles``` where ```piles[i]``` is the number of coi
 
 Return _the maximum number of coins that you can have_.
 
+![image](https://github.com/quananhle/Python/assets/35042430/79e64408-617d-48b9-87dd-961f2faad763)
+
 ---
 
 __Example 1:__
