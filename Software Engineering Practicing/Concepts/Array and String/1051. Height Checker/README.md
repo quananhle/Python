@@ -1,4 +1,4 @@
-## 1051. Height Checker
+## [1051. Height Checker](https://leetcode.com/problems/height-checker)
 
 ```Tag```: ```Array``` ```Sort```
 
@@ -8,7 +8,7 @@ A school is trying to take an annual photo of all the students. The students are
 
 You are given an integer array ```heights``` representing the __current order__ that the students are standing in. Each ```heights[i]``` is the height of the i<sup>th</sup> student in line (__0-indexed__).
 
-Return _the __number of indices__ where ```heights[i] != expected[i]```_.
+Return _the __number of indices__ where $heights[i] \neq expected[i]$_.
 
 ![image](https://user-images.githubusercontent.com/35042430/212827430-2807acb3-d7b8-482a-9798-38872ea9f4f4.png)
 
@@ -45,10 +45,9 @@ All indices match.
 ```
 
 __Constraints:__
-```
-1 <= heights.length <= 100
-1 <= heights[i] <= 100
-```
+
+- $1 \le heights.length \le 100$
+- $1 \le heights[i] \le 100$
 
 ---
 
