@@ -1,6 +1,6 @@
 ## [446. Arithmetic Slices II - Subsequence](https://leetcode.com/problems/arithmetic-slices-ii-subsequence)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Backtracking```
 
 #### Difficulty: Hard
 
@@ -48,3 +48,32 @@ __Constraints:__
 - $-2^{31} \le nums[i] \le 2^{31} - 1$
 
 ---
+
+### Backtracking (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        n = len(nums)
+        res = list()
+
+        def backtrack(curr, combination):
+            # Base case
+            if len(combination) >= 3:
+                res.append(combination[:])
+            
+            for next in range(curr, n):
+                if len(combination) < 2:
+                    combination.append(nums[next])
+                    backtrack(next + 1, combination)
+                    combination.pop()
+                else:
+                    diff = combination[1] - combination[0]
+                    if nums[next] - combination[-1] == diff:
+                        combination.append(nums[next])
+                        backtrack(next + 1, combination)
+                        combination.pop()
+            
+        backtrack(0, [])
+        return len(res)
+```
