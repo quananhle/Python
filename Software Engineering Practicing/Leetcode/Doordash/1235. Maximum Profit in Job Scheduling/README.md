@@ -52,7 +52,7 @@ __Constraints:__
 
 ### Intervals
 
-#### Sorting
+#### Array & String + Sorting
 
 __Complexity Analysis__
 
@@ -81,6 +81,35 @@ class Solution:
         return max_profit
 ```
 
+#### Priority Queue + Sorting
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \log N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        n = len(profit)
+        s, e, p = 0, 1, 2
+        jobs = list(zip(startTime, endTime, profit))
+        jobs.sort()
+
+        h = list()
+        max_profit = 0
+
+        for i in range(n):
+            while h and h[0][0] <= jobs[i][s]:
+                max_profit = max(max_profit, heapq.heappop(h)[e])
+            heapq.heappush(h, (jobs[i][e], jobs[i][p] + max_profit))
+
+        while h:
+            max_profit = max(max_profit, heapq.heappop(h)[e])
+        
+        return max_profit
+```
+
 ---
 
 ### Dynamic Programming Framework
@@ -101,8 +130,7 @@ class Solution:
         memo = collections.defaultdict(int)
         jobs = list()
 
-        for s, e, p in zip(startTime, endTime, profit):
-            jobs.append((s, e, p))
+        jobs = list(zip(startTime, endTime, profit))
         jobs.sort()
 
         for i in range(n):
@@ -147,8 +175,7 @@ class Solution:
         n = len(profit)
         jobs = list()
 
-        for s, e, p in zip(startTime, endTime, profit):
-            jobs.append((s, e, p))
+        jobs = list(zip(startTime, endTime, profit))
         jobs.sort()
 
         for i in range(n):
