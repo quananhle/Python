@@ -54,6 +54,11 @@ __Constraints:__
 
 #### Sorting
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \log N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 ```Python
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
@@ -74,4 +79,108 @@ class Solution:
                 max_profit = max(max_profit, profits[idx])
             
         return max_profit
+```
+
+---
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \log N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+![image](https://leetcode.com/problems/maximum-profit-in-job-scheduling/Figures/1235/1235A.png)
+
+```Python
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        n = len(profit)
+        memo = collections.defaultdict(int)
+        jobs = list()
+
+        for s, e, p in zip(startTime, endTime, profit):
+            jobs.append((s, e, p))
+        jobs.sort()
+
+        for i in range(n):
+            startTime[i] = jobs[i][0]
+
+        def binary_search(array, num):
+            lo, hi = 0, len(array) - 1
+            target = len(array)
+
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                if array[mi] < num:
+                    lo = mi + 1
+                else:
+                    target = mi
+                    hi = mi - 1
+
+            return target
+
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return 0
+
+            if curr in memo:
+                return memo[curr]
+
+            next = binary_search(startTime, jobs[curr][1])
+            # DP Transitions:
+            skip = dp(curr + 1)
+            take = dp(next) + jobs[curr][2]
+            memo[curr] = max(skip, take)
+
+            return memo[curr]
+
+        return dp(0)
+```
+
+```Python
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        n = len(profit)
+        jobs = list()
+
+        for s, e, p in zip(startTime, endTime, profit):
+            jobs.append((s, e, p))
+        jobs.sort()
+
+        for i in range(n):
+            startTime[i] = jobs[i][0]
+        
+        def binary_search(array, num):
+            lo, hi = 0, len(array) - 1
+            target = len(array)
+
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                if array[mi] < num:
+                    lo = mi + 1
+                else:
+                    target = mi
+                    hi = mi - 1
+                
+            return target
+
+        @functools.lru_cache(maxsize=None)
+        def dp(curr):
+            # Base case
+            if curr == n:
+                return 0
+            
+            next = binary_search(startTime, jobs[curr][1])
+            # DP Transitions:
+            skip = dp(curr + 1)
+            take = dp(next) + jobs[curr][2]
+            max_profit = max(skip, take)
+
+            return max_profit
+        
+        return dp(0)
 ```
