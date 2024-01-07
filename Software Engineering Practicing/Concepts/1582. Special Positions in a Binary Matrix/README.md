@@ -1,6 +1,6 @@
 ## [1582. Special Positions in a Binary Matrix](https://leetcode.com/problems/special-positions-in-a-binary-matrix)
 
-```Tag```: ```Matrix``` ```Array & String``` ```Hash Map```
+```Tag```: ```Array & String``` ```Matrix``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -8,7 +8,7 @@ Given an ```m x n``` binary matrix ```mat```, return _the number of special posi
 
 A position ```(i, j)``` is called special if ```mat[i][j] == 1``` and all other elements in row ```i``` and column ```j``` are ```0``` (rows and columns are 0-indexed).
 
-![image](https://github.com/quananhle/Python/assets/35042430/1a87ad98-5d6d-48cc-b8ae-78f3cfd5a3d4)
+![image](https://github.com/quananhle/Python/assets/35042430/1117c12e-d243-429b-b607-781a56747a50)
 
 ---
 
