@@ -83,7 +83,7 @@ class Solution:
 
 #### Priority Queue + Sorting
 
-![image](https://github.com/quananhle/Python/assets/35042430/666c9d3d-7903-4404-8011-7fff1a857b1f)
+![image](https://github.com/quananhle/Python/assets/35042430/70eb7a3d-4c00-40eb-add2-6be9ed034b1b)
 
 ![image](https://github.com/quananhle/Python/assets/35042430/88618619-4ec6-429c-9935-6e4b798b9b73)
 
