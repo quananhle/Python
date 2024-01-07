@@ -111,3 +111,26 @@ class Solution:
         dfs(0, [])
         return ans
 ```
+
+### Dynamic Programming
+
+```Python
+class Solution:
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        counter = [collections.defaultdict(int) for _ in range(n)]
+
+        for i in range(1, n):
+            for j in range(i):
+                diff = nums[i] - nums[j]
+                cnt = 0
+
+                if diff in counter[j]:
+                    cnt = counter[j][diff]
+                
+                counter[i][diff] += cnt + 1
+                ans += cnt
+            
+        return ans
+```
