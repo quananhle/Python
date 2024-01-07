@@ -107,6 +107,7 @@
 - :warning::warning: [435. Non-overlapping Intervals](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/435.%20Non-overlapping%20Intervals) ```Greedy```
 - :warning::warning: [452. Minimum Number of Arrows to Burst Balloons](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/452.%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons) ```Greedy```
 - :warning::warning: [624. Maximum Distance in Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/624.%20Maximum%20Distance%20in%20Arrays) ```Greedy```
+- :no_entry::no_entry::no_entry: [1235. Maximum Profit in Job Scheduling](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Doordash/1235.%20Maximum%20Profit%20in%20Job%20Scheduling) ```Dynamic Programming``` ```Priority Queue``` ```Sorting```
 
 ### [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Sliding%20Window)
 
