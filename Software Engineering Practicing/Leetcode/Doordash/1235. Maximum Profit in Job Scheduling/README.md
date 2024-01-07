@@ -83,6 +83,8 @@ class Solution:
 
 #### Priority Queue + Sorting
 
+![image](https://github.com/quananhle/Python/assets/35042430/666c9d3d-7903-4404-8011-7fff1a857b1f)
+
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(N \log N)$
