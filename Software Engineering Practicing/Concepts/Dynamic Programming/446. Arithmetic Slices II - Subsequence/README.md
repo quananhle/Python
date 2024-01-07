@@ -49,7 +49,9 @@ __Constraints:__
 
 ---
 
-### Backtracking (Time Limit Exceeded)
+### Build All Arithmetic Subsequences
+
+#### Backtracking (Time Limit Exceeded)
 
 ```Python
 class Solution:
@@ -97,6 +99,7 @@ class Solution:
                     if combination[next] - combination[next - 1] != diff:
                         return
                 
+                res.append(combination[:])
                 ans += 1
                 return
 
