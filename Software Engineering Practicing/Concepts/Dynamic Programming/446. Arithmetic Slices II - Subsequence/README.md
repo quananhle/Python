@@ -77,3 +77,34 @@ class Solution:
         backtrack(0, [])
         return len(res)
 ```
+
+```Python
+class Solution:
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        n = len(nums)
+        res = list()
+        ans = 0
+
+        def dfs(curr, combination):
+            nonlocal ans
+            # Base case
+            if curr == n:
+                if len(combination) < 3:
+                    return
+                
+                diff = combination[1] - combination[0]
+                for next in range(1, len(combination)):
+                    if combination[next] - combination[next - 1] != diff:
+                        return
+                
+                ans += 1
+                return
+
+            dfs(curr + 1, combination)
+            combination.append(nums[curr])
+            dfs(curr + 1, combination)
+            combination.pop()
+        
+        dfs(0, [])
+        return ans
+```
