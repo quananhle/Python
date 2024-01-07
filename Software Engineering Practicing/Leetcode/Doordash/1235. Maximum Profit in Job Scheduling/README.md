@@ -1,6 +1,6 @@
 ## [1235. Maximum Profit in Job Scheduling](https://leetcode.com/problems/maximum-profit-in-job-scheduling)
 
-```Tag```: ```Dynamic Programming``` ```Priority Queue``` ```Stack``` ```Binary Search```
+```Tag```: ```Dynamic Programming``` ```Priority Queue``` ```Stack``` ```Binary Search``` ```Sorting```
 
 #### Difficulty: Hard
 
@@ -49,3 +49,29 @@ __Constraints:__
 - $1 \le profit[i] \le 10^4$
 
 ---
+
+### Intervals
+
+#### Sorting
+
+```Python
+class Solution:
+    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+        intervals = list()
+        max_profit = 0
+
+        for idx, (s, e, p) in enumerate(zip(startTime, endTime, profit)):
+            intervals.append((s, True, p, idx))
+            intervals.append((e, False, p, idx))
+        
+        intervals.sort()
+        profits = [0] * len(profit)
+
+        for time, start, amount, idx in intervals:
+            if start:
+                profits[idx] = max_profit + amount
+            else:
+                max_profit = max(max_profit, profits[idx])
+            
+        return max_profit
+```
