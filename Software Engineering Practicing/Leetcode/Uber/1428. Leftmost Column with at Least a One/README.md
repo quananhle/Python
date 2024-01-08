@@ -103,6 +103,11 @@ define function binary_search(input_list):
     return the only index remaining in the search space
 ```
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N \log M)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
+
 ```Python
 # """
 # This is BinaryMatrix's API interface.
@@ -137,4 +142,44 @@ class Solution:
             binary_search(row, COLS)
 
         return -1 if ans == COLS else ans
+```
+
+#### Binary Search Optimization
+
+Shrink the upper boundary as we do not care about the right ones of the current best value. 
+
+Therefore, an optimization we could have made was to keep track of the minimum index so far, and then abort the search on any rows where we have discovered a ```0``` at, or to the right of, that minimum index.
+
+We can do even better than that; on each search, we can set ```hi = smallest_index - 1```, where ```smallest_index``` is the smallest index of a ```1``` we've seen so far. In most cases, this is a substantial improvement. It works because we're only interested in finding ```1```s at lower indexes than we previously found. 
+
+![image](https://github.com/quananhle/Python/assets/35042430/0f64495c-bbb8-4e02-96a8-6636fcefb47e)
+
+```Python
+# """
+# This is BinaryMatrix's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class BinaryMatrix(object):
+#    def get(self, row: int, col: int) -> int:
+#    def dimensions(self) -> list[]:
+
+class Solution:
+    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+        ROWS, COLS = binaryMatrix.dimensions()
+        smallest_idx = COLS
+
+        for row in range(ROWS):
+            lo, hi = 0, smallest_idx - 1
+
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if binaryMatrix.get(row, mi):
+                    hi = mi
+                else:
+                    lo = mi + 1
+
+            if binaryMatrix.get(row, lo) == 1:
+                smallest_idx = min(smallest_idx, lo)
+
+        return -1 if smallest_idx == COLS else smallest_idx
 ```
