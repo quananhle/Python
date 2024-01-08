@@ -1,10 +1,12 @@
-## 938. Range Sum of BST
+## [938. Range Sum of BST](https://leetcode.com/problems/range-sum-of-bst)
+
+```Tag```: ```Binary Search Tree``` ```Depth-First Search``` ```Recursion```
 
 #### Difficulty: Easy
 
 Given the ```root``` node of a binary search tree and two integers ```low``` and ```high```, return the sum of values of all nodes with a value in the __inclusive range__ ```[low, high]```.
 
-<img width="527" alt="image" src="https://user-images.githubusercontent.com/35042430/206097194-6710f456-410d-44fb-9929-f579162ad195.png">
+![image](https://github.com/quananhle/Python/assets/35042430/dd5331c9-c010-406b-9e49-ee61011c4a28)
 
 ---
 
@@ -30,14 +32,17 @@ Explanation: Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23.
 
 __Constraints:__
 
-```
-The number of nodes in the tree is in the range [1, 2 * 104].
-1 <= Node.val <= 105
-1 <= low <= high <= 105
-All Node.val are unique.
-```
+
+- The number of nodes in the tree is in the range $[1, 2 * 10^4]$.
+- $1 \le Node.val \le 10^5$
+- $1 \le low \le high \le 10^5$
+- All ```Node.val``` are unique.
 
 ---
+
+### Inorder Traversal
+
+#### Recursive Inorder Traversal
 
 ```Python
 # Definition for a binary tree node.
@@ -66,6 +71,8 @@ class Solution(object):
         dfs(root)
         return sum(res)
 ```
+
+#### Iterative Inorder Traversal
 
 ```Python
 # Definition for a binary tree node.
