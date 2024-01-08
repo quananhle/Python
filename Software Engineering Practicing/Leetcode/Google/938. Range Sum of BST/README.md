@@ -46,6 +46,34 @@ __Constraints:__
 
 ```Python
 # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        # Recursive inorder traversal
+        nodes = list()
+        ans = 0
+
+        def inorder(node):
+            nonlocal ans
+            if not node:
+                return None
+            
+            dfs(node.left)
+            if low <= node.val <= high:
+                nodes.append(node.val)
+                ans += node.val
+            dfs(node.right)
+        
+        dfs(root)
+        return ans
+```
+
+```Python
+# Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
