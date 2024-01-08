@@ -53,3 +53,23 @@ __Constraints:__
 - ```mat[i]``` is sorted in non-decreasing order.
 
 ---
+
+```Python
+# """
+# This is BinaryMatrix's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class BinaryMatrix(object):
+#    def get(self, row: int, col: int) -> int:
+#    def dimensions(self) -> list[]:
+
+class Solution:
+    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+        row, col = binaryMatrix.dimensions()
+        for c in range(col):
+            for r in range(row):
+                if binaryMatrix.get(r, c):
+                    return c
+
+        return -1
+```
