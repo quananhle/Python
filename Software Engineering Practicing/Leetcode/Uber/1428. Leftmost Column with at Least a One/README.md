@@ -1,6 +1,6 @@
 ## [1428. Leftmost Column with at Least a One](https://leetcode.com/problems/leftmost-column-with-at-least-a-one)
 
-```Tag```: ```Matrix```
+```Tag```: ```Matrix``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -182,4 +182,46 @@ class Solution:
                 smallest_idx = min(smallest_idx, lo)
 
         return -1 if smallest_idx == COLS else smallest_idx
+```
+
+---
+
+### Right-to-Left Scan
+
+![image](https://github.com/quananhle/Python/assets/35042430/95ae24d5-9013-447f-8cce-c7f772953da1)
+
+![image](https://github.com/quananhle/Python/assets/35042430/2fe71043-d904-46d4-b226-e1b691e68979)
+
+![image](https://github.com/quananhle/Python/assets/35042430/ede830bd-b971-4abf-af08-5af840d42a51)
+
+![image](https://github.com/quananhle/Python/assets/35042430/a9f22b0a-6d97-4afb-a082-0ae8e438f0ef)
+
+![image](https://github.com/quananhle/Python/assets/35042430/b70eba98-84c6-4bbd-ba78-e1a9dd607bf4)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N + M)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
+
+```Python
+# """
+# This is BinaryMatrix's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class BinaryMatrix(object):
+#    def get(self, row: int, col: int) -> int:
+#    def dimensions(self) -> list[]:
+
+class Solution:
+    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+        ROWS, COLS = binaryMatrix.dimensions()
+        row, col = 0, COLS - 1
+
+        while row < ROWS and col >= 0:
+            if binaryMatrix.get(row, col):
+                col -= 1
+            else:
+                row += 1
+            
+        return col + 1 if col != COLS - 1 else -1
 ```
