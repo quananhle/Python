@@ -54,6 +54,55 @@ __Constraints:__
 
 ---
 
+### Linear Scan
+
+```Python
+class Solution:
+    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+        ROWS, COLS = binaryMatrix.dimensions()
+        ans = COLS
+        for row in range(ROWS):
+            for col in range(COLS):
+                if binaryMatrix.get(row, col):
+                    ans = min(ans, col)
+                    break
+
+        return -1 if ans == COLS else ans
+```
+
+#### Vertical Traverse
+
+```Python
+class Solution:
+    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
+        row, col = binaryMatrix.dimensions()
+        for c in range(col):
+            for r in range(row):
+                if binaryMatrix.get(r, c):
+                    return c
+
+        return -1
+```
+
+### Binary Search
+
+![image](https://github.com/quananhle/Python/assets/35042430/bf72f9fd-0136-4e9e-9ef1-e07d59ea479f)
+
+__Algorithm__
+
+```
+define function binary_search(input_list):
+    lo = the lowest possible index
+    hi = the highest possible index
+    while the search space contains 2 or more items:
+        mid = the middle index in the remaining search space
+        if the element at input_list[mid] is 0:
+            lo = mid + 1 (the first 1 is *further right*, and can't be mid itself)
+        else:
+            hi = mid (the first 1 is either mid itself, *or is further left*)
+    return the only index remaining in the search space
+```
+
 ```Python
 # """
 # This is BinaryMatrix's API interface.
@@ -65,11 +114,27 @@ __Constraints:__
 
 class Solution:
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
-        row, col = binaryMatrix.dimensions()
-        for c in range(col):
-            for r in range(row):
-                if binaryMatrix.get(r, c):
-                    return c
+        ROWS, COLS = binaryMatrix.dimensions()
+        ans = COLS
 
-        return -1
+        def binary_search(row, col):
+            nonlocal ans
+            lo, hi = 0, col - 1
+
+            while lo < hi:
+                mi = lo + (hi - lo) // 2
+                if binaryMatrix.get(row, mi):
+                    hi = mi
+                else:
+                    lo = mi + 1
+
+            if binaryMatrix.get(row, lo):
+                ans = min(ans, lo)
+
+            return ans
+
+        for row in range(ROWS):
+            binary_search(row, COLS)
+
+        return -1 if ans == COLS else ans
 ```
