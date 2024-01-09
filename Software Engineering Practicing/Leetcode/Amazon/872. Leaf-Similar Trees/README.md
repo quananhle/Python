@@ -114,17 +114,20 @@ class Solution(object):
 #         self.right = right
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        def dfs(node, stack):
-            if not node:
+        def dfs(curr, nodes):
+            # Base case
+            if not curr:
                 return None
             
-            if not node.left and not node.right:
-                stack.append(node.val)
-        
-            if node.left: dfs(node.left, stack)
-            if node.right: dfs(node.right, stack)
+            if not curr.left and not curr.right:
+                nodes.append(curr.val)
             
-            return stack
+            dfs(curr.left, nodes)
+            dfs(curr.right, nodes)
+        
+            return nodes
+        
+        return dfs(root1, []) == dfs(root2, [])
 ```
 
 ### Iterations
