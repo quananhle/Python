@@ -1,6 +1,6 @@
 ## [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Hash Set```
 
 #### Difficulty: Medium
 
