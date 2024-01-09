@@ -12,7 +12,7 @@ For example, in the given tree above, the leaf value sequence is ```(6, 7, 4, 9,
 
 Two binary trees are considered _leaf-similar_ if their leaf value sequence is the same.
 
-Return ```true``` if and only if the two given trees with head nodes ```root1``` and ```root2``` are leaf-similar.
+Return _```True``` if and only if the two given trees with head nodes ```root1``` and ```root2``` are leaf-similar_.
 
 ![image](https://user-images.githubusercontent.com/35042430/206362628-86178084-9838-4e37-897a-ed99d558e6ad.png)
 
@@ -30,6 +30,7 @@ Output: true
 __Example 2:__
 
 ![image](https://assets.leetcode.com/uploads/2020/09/03/leaf-similar-2.jpg)
+
 ```
 Input: root1 = [1,2,3], root2 = [1,3,2]
 Output: false
@@ -37,10 +38,8 @@ Output: false
 
 __Constraints:__
 
-```
-The number of nodes in each tree will be in the range [1, 200].
-Both of the given trees will have values in the range [0, 200].
-```
+- The number of nodes in each tree will be in the range ```[1, 200]```.
+- Both of the given trees will have values in the range ```[0, 200]```.
 
 ---
 
