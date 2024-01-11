@@ -43,6 +43,8 @@ __Constraints:__
 
 ### Recursion
 
+#### Top-Down
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -84,6 +86,36 @@ class Solution:
     def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
+
+        def dfs(node, curr_max, curr_min):
+            # Base case
+            if not node:
+                return curr_max - curr_min
+            
+            curr_max = max(node.val, curr_max)
+            curr_min = min(node.val, curr_min)
+
+            # Traverse the subtrees
+            left_subtree = dfs(node.left, curr_max, curr_min)
+            right_subtree = dfs(node.right, curr_max, curr_min)
+            return max(left_subtree, right_subtree)
+
+        return dfs(root, root.val, root.val)
+```
+
+#### Bottom-Up
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
         ans = 0
 
         def dfs(node):
@@ -102,3 +134,5 @@ class Solution:
         dfs(root)
         return ans
 ```
+
+
