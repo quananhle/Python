@@ -4,9 +4,9 @@
 
 #### Difficulty: Medium
 
-Given the root of a binary tree, find the maximum value v for which there exist different nodes a and b where v = |a.val - b.val| and a is an ancestor of b.
+Given the ```root``` of a binary tree, find the maximum value ```v``` for which there exist different nodes ```a``` and ```b``` where ```v = |a.val - b.val|``` and ```a``` is an ancestor of ```b```.
 
-A node a is an ancestor of b if either: any child of a is equal to b or any child of a is an ancestor of b.
+A node ```a``` is an ancestor of ```b``` if either: any child of ```a``` is equal to ```b``` or any child of ```a``` is an ancestor of ```b```.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/aa181deb-16ef-451a-aa94-8edc68437e22)
 
