@@ -72,3 +72,33 @@ class Solution:
         dfs(root, root.val, root.val)
         return ans
 ```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        ans = 0
+
+        def dfs(node):
+            nonlocal ans
+            # Base case
+            if not node:
+                return sys.maxsize, -sys.maxsize-1
+
+            min_left, max_left = dfs(node.left)
+            min_right, max_right = dfs(node.right)
+
+            min_curr, max_curr = min(node.val, min_left, min_right), max(node.val, max_left, max_right)
+            ans = max(ans, abs(node.val - min_curr), abs(node.val - max_curr))
+            return min_curr, max_curr
+        
+        dfs(root)
+        return ans
+```
