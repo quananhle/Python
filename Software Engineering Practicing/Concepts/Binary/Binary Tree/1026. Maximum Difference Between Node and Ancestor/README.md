@@ -1,6 +1,6 @@
 ## [1026. Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor)
 
-```Tag```: ```Binary Tree``` ```Depth-First Search```
+```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Recursion```
 
 #### Difficulty: Medium
 
@@ -40,3 +40,35 @@ __Constraints:__
 - $0 \le Node.val \le 10^5$
 
 ---
+
+### Recursion
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        
+        ans = 0
+
+        def dfs(node, curr_max, curr_min):
+            nonlocal ans
+            # Base case
+            if not node:
+                return
+            
+            ans = max(ans, abs(node.val - curr_max), abs(node.val - curr_min))
+            curr_max = max(node.val, curr_max)
+            curr_min = min(node.val, curr_min)
+            dfs(node.left, curr_max, curr_min)
+            dfs(node.right, curr_max, curr_min)
+
+        dfs(root, root.val, root.val)
+        return ans
+```
