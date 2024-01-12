@@ -1,6 +1,6 @@
 ## [2385. Amount of Time for Binary Tree to Be Infected](https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected)
 
-```Tag```: ```Binary Tree``` ```Breadth-First Search``` ```Graph```
+```Tag```: ```Binary Tree``` ```Breadth-First Search``` ```Graph``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -138,4 +138,12 @@ class Solution:
             minute += 1
 
         return minute - 1   
+```
+
+### Depth-First Search
+
+![image](https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/Documents/2385/2385.drawio.svg)
+
+```Python
+
 ```
