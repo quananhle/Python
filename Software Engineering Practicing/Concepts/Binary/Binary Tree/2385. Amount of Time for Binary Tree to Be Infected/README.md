@@ -98,6 +98,61 @@ Standard Breadth-First Search
 #         self.val = val
 #         self.left = left
 #         self.right = right
+class KeyValueMapping:
+    def __init__(self):
+        self.node = dict()
+
+class Solution:
+    def build_graph(self, curr: TreeNode, prev: TreeNode, tree_map: KeyValueMapping):
+        if not curr:
+            return
+        
+        if not curr.val in tree_map.node:
+            tree_map.node[curr.val] = set()
+        adjacent_list = tree_map.node[curr.val]
+
+        if prev:
+            adjacent_list.add(prev.val)
+        if curr.left:
+            adjacent_list.add(curr.left.val)
+        if curr.right:
+            adjacent_list.add(curr.right.val)
+
+        self.build_graph(curr.left, curr, tree_map)
+        self.build_graph(curr.right, curr, tree_map)
+
+
+    def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
+        tree_map = KeyValueMapping()
+        self.build_graph(root, None, tree_map)
+
+        # Start BFS
+        queue = collections.deque([start])
+        visited = set([start])
+        minute = 0
+
+        while queue:
+            size = len(queue)
+            while size:
+                curr = queue.popleft()
+                for next in tree_map.node[curr]:
+                    if not next in visited:
+                        visited.add(next)
+                        queue.append(next)
+                size -= 1
+            
+            minute += 1
+        
+        return minute - 1
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def tree_to_graph(self, node: TreeNode, parent: int, tree_map: Dict[int, Set[int]]):
         if not node:
@@ -109,10 +164,8 @@ class Solution:
 
         if parent:
             adjacent_graph.add(parent)
-        
         if node.left:
             adjacent_graph.add(node.left.val)
-        
         if node.right:
             adjacent_graph.add(node.right.val)
         
