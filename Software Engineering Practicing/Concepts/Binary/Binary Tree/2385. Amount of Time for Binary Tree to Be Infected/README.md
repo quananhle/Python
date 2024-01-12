@@ -1,6 +1,6 @@
 ## [2385. Amount of Time for Binary Tree to Be Infected](https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected)
 
-```Tag```: ```Binary Tree``` ```Breadth-First Search```
+```Tag```: ```Binary Tree``` ```Breadth-First Search``` ```Graph```
 
 #### Difficulty: Medium
 
@@ -49,3 +49,45 @@ __Constraints:__
 - A node with a value of ```start``` exists in the tree.
 
 ---
+
+### Convert to Graph and Breadth-First Search
+
+#### 1. Convert the binary tree to an undirected graph
+
+A tree is a special kind of graph with a root and subtrees. We want to search the graph from any node, not just the root, and be able to traverse to all neighbors, including parents and children. An undirected graph is a set of vertices with edges that connect them. We will use a map to represent our graph, made up of integer vertices, and an adjacency list to record the edges.
+
+We can define a function that converts our binary tree to an undirected graph by traversing the tree and creating a graph. The parameters are the current node and its parent. We traverse the tree with a preorder traversal, visiting first the root, then the left and right child, so we can log the parent of each node and make a connection to it. When we encounter a new right or left child, we add them to the adjacency list.
+
+```Python
+def convert(self, current: TreeNode, parent: int, tree_map: Dict[int, Set[int]]):
+    if current is None:
+        return
+    if current.val not in tree_map:
+        tree_map[current.val] = set()
+    adjacent_list = tree_map[current.val]
+    if parent != 0:
+        adjacent_list.add(parent)
+    if current.left:
+        adjacent_list.add(current.left.val)
+    if current.right:
+        adjacent_list.add(current.right.val)
+    self.convert(current.left, current.val, tree_map)
+    self.convert(current.right, current.val, tree_map)
+```
+
+#### 2. Conduct a Breath First Search (BFS) to find the maximum distance between the start and other vertices.
+
+We can find the maximum distance between the vertex with the value ```start``` and the rest of the vertices in our graph by using a BFS starting with the ```start```.
+
+Standard Breadth-First Search
+
+1. Add the first node to the queue
+2. While the queue is not empty:
+  - Remove the front node of the queue and mark it as visited.
+  - Check whether all adjacent nodes have been visited. If they have not, add them to the queue
+
+#### Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
