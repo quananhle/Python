@@ -200,6 +200,63 @@ class Solution:
 
 ![image](https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/Documents/2385/2385.drawio.svg)
 
-```Python
+__Algorithm__
 
+1. Declare a variable ```max_distance``` to store maximum distance from the ```start``` node.
+2. Define a function ```dfs``` that performs a depth-first search of the tree that returns ```depth``` and calculates and saves ```max_distance```.
+    - For each call to ```dfs```, we have a new root and declare a variable ```depth = 0```.
+    - If ```root == null```:
+        -  Set ```depth = 0``` and return.
+    - Recursively call ```dfs``` with ```root.left``` and save in the variable ```left_subtree```.
+    - Recursively call ```dfs``` with ```root.right``` and save in the variable ```right_subtree```.
+    - If ```root = start``` the root is the start node:
+        - Set ```max_distance = max(left_subtree, right_subtree)``` to calcualte the start node's max depth.
+        - Set ```depth = -1``` to signify this is the ```start``` node.
+    - If the ```left_subtree``` and ```right_subtree``` are both greater than or equal to ```0```, the ```start``` node is not in this subtree:
+        - Set ```depth = max(left_subtree, right_subtree) + 1``` to calculate the current root's max depth.
+    - Else, the current root's subtree contains the ```start``` node:
+        - Define a variable distance as the sum of ```abs(leftDepth)``` and ```abs(rightDepth)```, which is the distance of the furthest node in the other subtree.
+        - Set ```max_distance = max(max_distance, distance)``` to update ```max_distance``` if ```distance``` is larger.
+        - Set ```depth = min(left_subtree, right_subtree) - 1``` to calculate a negative number that signifies the subtree contains the start node and represents the distance of the ```start``` node from the root.
+    - return ```depth```.
+3. Call ```dfs(root, start)```.
+4. Return ```max_distance```.
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def __init__(self):
+        self.max_distance = 0
+
+    def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
+        def dfs(node):
+            depth = 0
+            if not node:
+                return depth
+            
+            left_subtree = dfs(node.left)
+            right_subtree = dfs(node.right)
+
+            if node.val == start:
+                self.max_distance = max(left_substree, right_subtree)
+                depth -= 1
+            elif left_subtree > 0 and right_subtree >= 0:
+                depth = max(left_subtree, right_subtree) + 1
+            else:
+                distance = abs(left_subtree) + abs(right_subtree)
+                self.max_distance = max(self.max_distance, distance)
+                depth = min(left_subtree, right_subtree) - 1
+            
+            return depth
+        
+        dfs(root, start)
+        return self.max_distance
 ```
