@@ -174,6 +174,9 @@ class Solution:
 
     def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
         # Declare a hash map map to store vertices and their adjacency list for edges.
+        '''
+        tree_map = collections.defaultdict()
+        '''
         tree_map: Dict[int, Set[int]] = {}
         self.tree_to_graph(root, None, tree_map)
         queue = collections.deque([start])
