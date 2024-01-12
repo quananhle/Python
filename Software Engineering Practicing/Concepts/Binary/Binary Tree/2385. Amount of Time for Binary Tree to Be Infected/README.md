@@ -91,3 +91,51 @@ Standard Breadth-First Search
 - __Time Complexity__: $\mathcal{O}(n)$
 - __Space Complexity__: $\mathcal{O}(n)$
 
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def tree_to_graph(self, node: TreeNode, parent: int, tree_map: Dict[int, Set[int]]):
+        if not node:
+            return
+        
+        if not node.val in tree_map:
+            tree_map[node.val] = set()
+        adjacent_graph = tree_map[node.val]
+
+        if parent:
+            adjacent_graph.add(parent)
+        
+        if node.left:
+            adjacent_graph.add(node.left.val)
+        
+        if node.right:
+            adjacent_graph.add(node.right.val)
+        
+        self.tree_to_graph(node.left, node.val, tree_map)
+        self.tree_to_graph(node.right, node.val, tree_map)
+
+    def amountOfTime(self, root: Optional[TreeNode], start: int) -> int:
+        # Declare a hash map map to store vertices and their adjacency list for edges.
+        tree_map: Dict[int, Set[int]] = {}
+        self.tree_to_graph(root, None, tree_map)
+        queue = collections.deque([start])
+        minute = 0
+        visited = {start}
+
+        while queue:
+            level = len(queue)
+            for _ in range(level):
+                curr = queue.popleft()
+                for next in tree_map[curr]:
+                    if not next in visited:
+                        visited.add(next)
+                        queue.append(next)
+            minute += 1
+
+        return minute - 1   
+```
