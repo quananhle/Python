@@ -13,7 +13,7 @@ Each minute, a node becomes infected if:
 
 Return _the number of minutes needed for the entire tree to be infected_.
 
-![image](https://github.com/quananhle/Python/assets/35042430/a8180e94-b3e1-4006-8902-85fe5f2961aa)
+![image](https://github.com/quananhle/Python/assets/35042430/9696da78-9eef-4fcf-97f3-c0c76e78506f)
 
 ---
 
