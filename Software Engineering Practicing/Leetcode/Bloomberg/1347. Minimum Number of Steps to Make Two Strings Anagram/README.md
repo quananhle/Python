@@ -42,3 +42,21 @@ __Constraints:__
 - ```s``` and ```t``` consist of lowercase English letters only.
 
 ---
+
+### Hash Map
+
+```Python
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        counter = [0] * 26
+
+        for i in range(len(s)):
+            counter[ord(s[i]) - ord('a')] += 1
+            counter[ord(t[i]) - ord('a')] -= 1
+        
+        ans = 0
+        for i in range(26):
+            ans += max(0, counter[i])
+
+        return ans
+```
