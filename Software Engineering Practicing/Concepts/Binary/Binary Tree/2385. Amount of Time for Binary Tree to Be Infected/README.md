@@ -232,6 +232,10 @@ __Algorithm__
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# class KeyValueMapping:
+#     def __init__(self):
+#         self.node = dict()
+
 class Solution:
     def __init__(self):
         self.max_distance = 0
@@ -245,11 +249,14 @@ class Solution:
             left_subtree = dfs(node.left)
             right_subtree = dfs(node.right)
 
+            # Get the depth of the other subtree and mark start node as found = -1
             if node.val == start:
-                self.max_distance = max(left_substree, right_subtree)
-                depth -= 1
-            elif left_subtree > 0 and right_subtree >= 0:
+                self.max_distance = max(left_subtree, right_subtree)
+                depth = -1
+            # Calculate the depth of the subtrees
+            elif left_subtree >= 0 and right_subtree >= 0:
                 depth = max(left_subtree, right_subtree) + 1
+            # Otherwise, root node is not start node
             else:
                 distance = abs(left_subtree) + abs(right_subtree)
                 self.max_distance = max(self.max_distance, distance)
@@ -257,6 +264,7 @@ class Solution:
             
             return depth
         
-        dfs(root, start)
+        dfs(root)
         return self.max_distance
+
 ```
