@@ -56,6 +56,10 @@ __Constraints:__
 
 ### HashMap
 
+![image](https://leetcode.com/problems/determine-if-two-strings-are-close/Documents/5603/close_string_condition1.svg)
+
+![image](https://leetcode.com/problems/determine-if-two-strings-are-close/Documents/5603/close_string_condition2.svg)
+
 ```Python
 class Solution(object):
     def closeStrings(self, word1, word2):
