@@ -14,7 +14,7 @@ Two strings are considered __close__ if you can attain one from the other using 
 
 You can use the operations on either string as many times as necessary.
 
-Given two strings, ```word1``` and ```word2```, return ```true``` if ```word1``` and ```word2``` are close, and ```false``` otherwise.
+Given two strings, ```word1``` and ```word2```, return _```True``` if ```word1``` and ```word2``` are close, and ```False``` otherwise_.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/ccd184f0-1e15-4399-977f-f1a537d39664)
 
