@@ -47,10 +47,10 @@ Apply Operation 2: "baaccc" -> "abbccc"
 ```
 
 __Constraints:__
-```
-1 <= word1.length, word2.length <= 105
-word1 and word2 contain only lowercase English letters.
-```
+
+- $1 \le word1.length, word2.length \le 10^5$
+- ```word1``` and ```word2``` contain only lowercase English letters.
+
 
 ---
 
