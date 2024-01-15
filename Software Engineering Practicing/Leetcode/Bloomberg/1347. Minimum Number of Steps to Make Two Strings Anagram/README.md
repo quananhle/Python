@@ -45,6 +45,8 @@ __Constraints:__
 
 ### Hash Map
 
+![image](https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/Figures/1347/1347A.png)
+
 ```Python
 class Solution:
     def minSteps(self, s: str, t: str) -> int:
