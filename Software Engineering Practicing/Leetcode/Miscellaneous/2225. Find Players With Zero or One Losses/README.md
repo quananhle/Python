@@ -17,6 +17,10 @@ The values in the two lists should be returned in ```increasing``` order.
 You should only consider the players that have played __at least one__ match.
 The testcases will be generated such that __no__ two matches will have the __same__ outcome.
 
+![image](https://github.com/quananhle/Python/assets/35042430/4e13219c-350d-402d-8dbd-a3a74d7ef7c0)
+
+---
+
 #### Example 1:
 ```
 Input: matches = [[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]
@@ -39,13 +43,12 @@ Thus, answer[0] = [1,2,5,6] and answer[1] = [].
 ```
 
 #### Constraints:
-```
-1 <= matches.length <= 105
-matches[i].length == 2
-1 <= winneri, loseri <= 105
-winneri != loseri
-All matches[i] are unique.
-```
+
+- 1 <= matches.length <= 105
+- matches[i].length == 2
+- 1 <= winneri, loseri <= 105
+- winneri != loseri
+- All matches[i] are unique.
 
 ---
 
