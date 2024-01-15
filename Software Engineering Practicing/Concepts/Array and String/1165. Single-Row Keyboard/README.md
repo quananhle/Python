@@ -74,3 +74,21 @@ class Solution:
     def calculateTime(self, keyboard: str, word: str) -> int:
         return sum([abs(keyboard.find(word[i]) - keyboard.find(word[i - 1])) for i in range(1, len(word))]) + keyboard.find(word[0])
 ```
+
+### Hash Map
+
+```Python
+class Solution:
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        positions = collections.defaultdict(int)
+        for i, c in enumerate(keyboard):
+            positions[ord(c) - ord('a')] = i
+        n = len(word)
+
+        ans = prev = 0
+        for i in range(n):
+            ans += abs(positions[ord(word[i]) - ord('a')] - prev)
+            prev = positions[ord(word[i]) - ord('a')]
+        
+        return ans
+```
