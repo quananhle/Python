@@ -44,11 +44,11 @@ Thus, answer[0] = [1,2,5,6] and answer[1] = [].
 
 #### Constraints:
 
-- 1 <= matches.length <= 105
-- matches[i].length == 2
-- 1 <= winneri, loseri <= 105
-- winneri != loseri
-- All matches[i] are unique.
+- $1 \le matches.length \le 10^5$
+- $matches[i].length == 2$
+- $1 \le winneri, loseri \le 10^5$
+- $winner_i != loser_i$
+- All ```matches[i]``` are unique.
 
 ---
 
