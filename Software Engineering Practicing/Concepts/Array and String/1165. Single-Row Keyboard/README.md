@@ -1,6 +1,6 @@
 ## [1165. Single-Row Keyboard](https://leetcode.com/problems/single-row-keyboard)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -34,3 +34,43 @@ __Constraints:__
 - ```word[i]``` is an English lowercase letter.
 
 ---
+
+### Array
+
+```Python
+class Solution:
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        positions = [0] * 26
+        for i, c in enumerate(keyboard):
+            positions[ord(c) - ord('a')] = i
+        n = len(word)
+
+        ans = prev = 0
+        for i in range(n):
+            ans += abs(positions[ord(word[i]) - ord('a')] - prev)
+            prev = positions[ord(word[i]) - ord('a')]
+        
+        return ans
+```
+
+#### ```find```
+
+```Python
+class Solution:
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        ans = keyboard.find(word[0])
+        n = len(word)
+
+        for i in range(1, n):
+            ans += abs(keyboard.find(word[i]) - keyboard.find(word[i - 1]))
+
+        return ans
+```
+
+#### One-Liner
+
+```Python
+class Solution:
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        return sum([abs(keyboard.find(word[i]) - keyboard.find(word[i - 1])) for i in range(1, len(word))]) + keyboard.find(word[0])
+```
