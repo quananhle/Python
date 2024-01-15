@@ -47,12 +47,36 @@ Thus, answer[0] = [1,2,5,6] and answer[1] = [].
 - $1 \le matches.length \le 10^5$
 - $matches[i].length == 2$
 - $1 \le winneri, loseri \le 10^5$
-- $winner_i != loser_i$
+- $winner_i \neq loser_i$
 - All ```matches[i]``` are unique.
 
 ---
 
 ### Hash Set
+
+```Python
+class Solution:
+    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
+        zero_loss, one_loss, more_loss = set(), set(), set() 
+        for winner, loser in matches:
+            if not winner in one_loss and not winner in more_loss:
+                zero_loss.add(winner)
+
+            if loser in zero_loss:
+                zero_loss.remove(loser)
+                one_loss.add(loser)
+            elif loser in one_loss:
+                one_loss.remove(loser)
+                more_loss.add(loser)
+            elif loser in more_loss:
+                continue
+            else:
+                one_loss.add(loser)
+            
+        return [sorted(list(zero_loss)), sorted(list(one_loss))]
+```
+
+### Hash Map
 
 ```Python
 class Solution(object):
