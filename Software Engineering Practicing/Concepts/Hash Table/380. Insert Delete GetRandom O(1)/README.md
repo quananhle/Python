@@ -1,4 +1,4 @@
-## 380. Insert Delete GetRandom O(1)
+## [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1)
 
 ```Tag```: ```Hash Set```
 
@@ -13,7 +13,7 @@ Implement the ```RandomizedSet``` class:
 
 You must implement the functions of the class such that each function works in __average__ ```O(1)``` time complexity.
 
- ![image](https://user-images.githubusercontent.com/35042430/214696496-a249ca76-5f83-4fb0-902a-2389b0882815.png)
+![image](https://github.com/quananhle/Python/assets/35042430/f3087e0e-9903-45a3-9ee8-95765b704597)
 
 ---
 
