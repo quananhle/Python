@@ -38,7 +38,7 @@ randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom()
 
 __Constraints:__
 
-- -2<sup>31</sup> <= val <= 2<sup>31</sup> - 1
+- $-2^{31} \le val \le 2^{31} - 1$
 - At most 2 * 10<sup>5</sup> calls will be made to ```insert```, ```remove```, and ```getRandom```.
 - There will be at least one element in the data structure when ```getRandom``` is called.
 
