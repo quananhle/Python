@@ -1,6 +1,6 @@
 ## [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1)
 
-```Tag```: ```Hash Set```
+```Tag```: ```Hash Set``` ```Hash Map``` 
 
 #### Difficulty: Medium
 
