@@ -58,13 +58,93 @@ class Solution:
 
 ### Sorting & Hash Set
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N \log N)$.
+- __Space Complexity__: $\mathcal{O}(N)$ or $\mathcal{O}(1)$.
+
+
+```Python
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        num_set = set(nums)
+        nums = list()
+
+        for num in num_set:
+            nums.append(num)
+
+        ans = 0
+        nums.sort()
+        n = len(nums)
+        i = 0
+        while i < n:
+            curr = 1
+            while i + 1 < n and nums[i] + 1 == nums[i + 1]:
+                i += 1
+                curr += 1
+            ans = max(ans, curr)
+            i += 1
+        
+        return ans
 ```
 
 #### ```SortedList()```
 
 ```Python
+from sortedcontainers import SortedList
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        num_set = set()
+        arr = SortedList()
 
+        for num in nums:
+            if num in num_set:
+                continue
+            arr.add(num)
+            num_set.add(num)
+
+        ans = 0
+        n = len(arr)
+        i = 0
+        while i < n:
+            curr = 1
+            while i + 1 < n and arr[i] + 1 == arr[i + 1]:
+                i += 1
+                curr += 1
+            ans = max(ans, curr)
+            i += 1
+        
+        return ans
 ```
+
+---
+
+### Optimized Brute Force & Hash Set for Intelligent Sequence Building
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$.
+- __Space Complexity__: $\mathcal{O}(N)$.
+
+```Python
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        memo = set(nums)
+        ans = 0
+        
+        for num in memo:
+            # Only build sequences from numbers that are not already part of a longer sequence
+            if not (num - 1) in memo:        # O(1)
+                start_num = num
+                start_len = 1
+
+                while start_num + 1 in memo:
+                    start_len += 1
+                    start_num += 1
+
+                ans = max(ans, start_len)
+
+        return ans
+```
+
 
