@@ -1,6 +1,6 @@
 ## [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome)
 
-```Tag```: ```Two Pointers```
+```Tag```: ```Two Pointers``` ```Regular Expression```
 
 #### Difficulty: Easy
 
@@ -8,7 +8,7 @@ A phrase is a palindrome if, after converting all uppercase letters into lowerca
 
 Given a string ```s```, return _```true``` if it is a palindrome, or ```false``` otherwise_.
 
-![image](https://github.com/quananhle/Python/assets/35042430/8130b909-728e-4b4d-a9d8-469b078fc06f)
+![image](https://github.com/quananhle/Python/assets/35042430/07a7132f-18ba-4be4-b831-0c980ebb287f)
 
 ---
 
