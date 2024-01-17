@@ -34,6 +34,24 @@ __Constraints:__
 
 ### Brute Force
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N^3)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
+
+```Python
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        memo = set(nums)
+        ans = 0
+        
+        for num in nums:
+            start, end = num, num + 1
+            curr_len = 1
+            while end in memo:
+                end += 1
+                curr_len += 1
+            ans = max(ans, curr_len)
+        
+        return ans
 ```
