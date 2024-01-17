@@ -55,3 +55,16 @@ class Solution:
         
         return ans
 ```
+
+### Sorting & Hash Set
+
+```Python
+
+```
+
+#### ```SortedList()```
+
+```Python
+
+```
+
