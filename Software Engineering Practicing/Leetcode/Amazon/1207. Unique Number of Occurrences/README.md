@@ -6,7 +6,7 @@
 
 Given an array of integers ```arr```, return ```true``` _if the number of occurrences of each value in the array_ is __unique__ or ```false``` otherwise.
 
-![image](https://user-images.githubusercontent.com/35042430/208143988-6319d933-f558-4fb4-bf2a-95ca93e11554.png)
+![image](https://github.com/quananhle/Python/assets/35042430/25ff1614-a4d5-4287-a351-dbb203ecad13)
 
 ---
 
@@ -34,10 +34,8 @@ Output: true
 
 __Constraints:__
 
-```
-1 <= arr.length <= 1000
--1000 <= arr[i] <= 1000
-```
+- $1 \le arr.length \le 1000$
+- $-1000 \le arr[i] \le 1000$
 
 ---
 
