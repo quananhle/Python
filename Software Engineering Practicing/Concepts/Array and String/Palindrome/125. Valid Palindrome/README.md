@@ -117,3 +117,22 @@ class Solution:
         
         return True
 ```
+
+---
+
+### Regular Expression
+
+```Python
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = re.sub('[^a-zA-Z0-9]', '', s).lower()
+        return s == s[::-1]
+```
+
+#### One Liner
+
+```Python
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        return re.sub('[^a-zA-Z0-9]', '', s).lower() == re.sub('[^a-zA-Z0-9]', '', s).lower()[::-1]
+```
