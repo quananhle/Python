@@ -1,6 +1,6 @@
 ## [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence)
 
-```Tag```: ```Array & String``` ```Hash Set```
+```Tag```: ```Array & String``` ```Hash Set``` ```Sorting```
 
 #### Difficulty: Medium
 
@@ -31,3 +31,9 @@ __Constraints:__
 - $-10^9 \le nums[i] \le 10^9$
 
 ---
+
+### Brute Force
+
+```Python
+
+```
