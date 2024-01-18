@@ -205,6 +205,15 @@ class Solution:
 
 ### Fibonacci Formula
 
-```Python
+![image](https://github.com/quananhle/Python/assets/35042430/21f97a0b-30b2-48a0-b565-e69b09adab60)
 
+![image](https://github.com/quananhle/Python/assets/35042430/44a17da2-0f8a-4b21-b86c-b770e758cb4d)
+
+```Python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        sqrt5 = math.sqrt(5)
+        phi = (1 + sqrt5) / 2
+        psi = (1 - sqrt5) / 2
+        return int((math.pow(phi, n + 1) - math.pow(psi, n + 1)) / sqrt5)
 ```
