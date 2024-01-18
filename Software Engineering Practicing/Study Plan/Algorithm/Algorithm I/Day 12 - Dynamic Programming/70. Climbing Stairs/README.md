@@ -32,11 +32,20 @@ Explanation: There are three ways to climb to the top.
 ```
 
 __Constraints:__
-```
-1 <= n <= 45
-```
+
+- $1 \le n \le 45$
 
 ---
+
+### Recursion
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+#### Bottom-Up Dynamic Programming
+
+#### Optimized Bottom-Up Dynamic Programming
 
 ```Python
 class Solution(object):
