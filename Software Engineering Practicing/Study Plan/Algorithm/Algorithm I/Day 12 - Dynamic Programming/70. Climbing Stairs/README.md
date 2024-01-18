@@ -1,6 +1,6 @@
 ## [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs)
 
-```Tag```: ```Recursion``` ```Dynamic Programming``` ```Bitwise Manipulations```
+```Tag```: ```Recursion``` ```Dynamic Programming``` ```Bitwise Manipulations``` ```Math```
 
 #### Difficulty: Easy
 
@@ -163,6 +163,18 @@ class Solution:
         return current
 ```
 
+---
+
+### Binets Method
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(\log n)$.
+- __Space Complexity__: $\mathcal{O}(1)$.
+
+```Python
+class Solution:
+    def climbStairs(self, n: int) -> int:
         # Matrix Exponentiation - Binets Method
         #### Time Complexity: O(logN), halving n after every check
         #### Space Complexity: O(1), constant space is used for multiply
@@ -172,7 +184,6 @@ class Solution:
                 for j in range(len(b)):
                     c[i][j] = a[i][0] * b[0][j] + a[i][1] * b[1][j]
             return c
-
 
         def matrix_power(a, n):
             b = [[1, 0], [0, 1]]
@@ -188,4 +199,12 @@ class Solution:
         a = [[1,1],[1,0]]
         a = matrix_power(a, n)
         return a[0][0]
+```
+
+---
+
+### Fibonacci Formula
+
+```Python
+
 ```
