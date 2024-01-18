@@ -37,15 +37,7 @@ __Constraints:__
 
 ---
 
-### Recursion
-
-### Dynamic Programming Framework
-
-#### Top-Down Dynamic Programming
-
-#### Bottom-Up Dynamic Programming
-
-#### Optimized Bottom-Up Dynamic Programming
+### Recursion (Fibonacci Number)
 
 ```Python
 class Solution(object):
@@ -66,7 +58,32 @@ class Solution(object):
             return 2
         else:
             return self.climbStairs(n-1) + self.climbStairs(n-2)
-        """
+```
+
+```Python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        def helper(curr):
+            # Base case
+            if curr > n:
+                return 0
+            elif curr == n:
+                return 1
+            else:
+                return helper(curr + 1) + helper(curr + 2)
+        
+        return helper(0)
+```
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+#### Bottom-Up Dynamic Programming
+
+#### Optimized Bottom-Up Dynamic Programming
+
+
         # Top-Down Dynamic Programming using Memoization
         #### Time Complexity: O(N), calculate each number, starting at 3 up to and including N, is visited, computed and then stored for O(1) access later on.
         #### Space Complexity: O(N), memoization hash table is used, which occupies O(N) space
