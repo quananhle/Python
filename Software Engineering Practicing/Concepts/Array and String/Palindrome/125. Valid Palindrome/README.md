@@ -6,7 +6,7 @@
 
 A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 
-Given a string ```s```, return _```true``` if it is a palindrome, or ```false``` otherwise_.
+Given a string ```s```, return _```True``` if it is a palindrome, or ```False``` otherwise_.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/07a7132f-18ba-4be4-b831-0c980ebb287f)
 
