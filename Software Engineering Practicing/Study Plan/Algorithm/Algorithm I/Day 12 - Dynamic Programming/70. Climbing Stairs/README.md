@@ -102,7 +102,7 @@ class Solution:
 ```Python
 class Solution:
     def climbStairs(self, n: int) -> int:
-        @lru_cache(None)
+        @functools.lru_cache(maxsize=None)
         def dp(steps):
             # Base case
             if steps == 1:
@@ -119,15 +119,13 @@ class Solution:
 
 #### Bottom-Up Dynamic Programming
 
-#### Optimized Bottom-Up Dynamic Programming
-
-
-
-
+```Python
+class Solution:
+    def climbStairs(self, n: int) -> int:
         # Bottom-Up Dynamic Programming using Tabulation
         #### Time Complexity: O(N), calculate each number, starting at 3 up to and including N, is visited, computed and then stored for O(1) access later on.
         #### Space Complexity: O(N), stack keep up to the size of n elements
-        """
+
         # n is inclusive so the cache needs n + 1 index to store all value
         if n <= 2:
             return n
@@ -138,11 +136,17 @@ class Solution:
         for i in range(3, n + 1):
             dp[i] = dp[i-1] + dp[i-2]
         return dp[n]
-        """
+```
+
+#### Optimized Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def climbStairs(self, n: int) -> int:
         # Iterative Bottom-Up Dynamic Programming
         #### Time Complexity: O(N), calculate each number, starting at 3 up to and including N, is visited, computed and then stored for O(1) access later on.
         #### Space Complexity: O(1), constant memory space for pointers
-        """
+
         if n <= 2:
             return n
         current = 0  
@@ -157,7 +161,8 @@ class Solution:
             climb1 = climb2
             climb2 = current
         return current
-        """
+```
+
         # Matrix Exponentiation - Binets Method
         #### Time Complexity: O(logN), halving n after every check
         #### Space Complexity: O(1), constant space is used for multiply
