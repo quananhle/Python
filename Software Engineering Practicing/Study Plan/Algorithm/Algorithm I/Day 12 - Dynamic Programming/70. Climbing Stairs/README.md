@@ -79,19 +79,17 @@ class Solution:
 
 #### Top-Down Dynamic Programming
 
-#### Bottom-Up Dynamic Programming
-
-#### Optimized Bottom-Up Dynamic Programming
-
-
+```Python
+class Solution:
+    def climbStairs(self, n: int) -> int:
         # Top-Down Dynamic Programming using Memoization
         #### Time Complexity: O(N), calculate each number, starting at 3 up to and including N, is visited, computed and then stored for O(1) access later on.
         #### Space Complexity: O(N), memoization hash table is used, which occupies O(N) space
-        """
         memo = dict()
         memo[1], memo[2] = 1, 2   
 
         def dp(num):
+            # Base case
             if num in memo:
                 return memo[num]
             else:
@@ -99,8 +97,11 @@ class Solution:
             return memo[num]
 
         return dp(n)
-        """
-        """
+```
+
+```Python
+class Solution:
+    def climbStairs(self, n: int) -> int:
         @lru_cache(None)
         def dp(steps):
             # Base case
@@ -112,8 +113,17 @@ class Solution:
                 return 3
             else:
                 return dp(steps - 1) + dp(steps - 2)
-        """
+
         return dp(n)
+```
+
+#### Bottom-Up Dynamic Programming
+
+#### Optimized Bottom-Up Dynamic Programming
+
+
+
+
         # Bottom-Up Dynamic Programming using Tabulation
         #### Time Complexity: O(N), calculate each number, starting at 3 up to and including N, is visited, computed and then stored for O(1) access later on.
         #### Space Complexity: O(N), stack keep up to the size of n elements
