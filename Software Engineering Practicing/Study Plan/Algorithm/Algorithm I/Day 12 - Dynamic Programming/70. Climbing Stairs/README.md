@@ -8,7 +8,7 @@ You are climbing a staircase. It takes ```n``` steps to reach the top.
 
 Each time you can either climb ```1``` or ```2``` steps. In how many distinct ways can you climb to the top?
 
-![image](https://user-images.githubusercontent.com/35042430/206768449-24391721-d312-4874-a7dd-5cb8967e0f77.png)
+![image](https://github.com/quananhle/Python/assets/35042430/d10f079a-1424-4e56-b61a-a64d1146d71c)
 
 ---
 
