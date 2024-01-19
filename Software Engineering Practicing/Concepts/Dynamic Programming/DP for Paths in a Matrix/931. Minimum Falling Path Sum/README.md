@@ -48,25 +48,44 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/minimum-falling-path-sum/Figures/931/931_example_3possibilities.png)
 
-Algorithm
+__Algorithm__
 
-Implement a Depth First Search algorithm, by defining a recursive function, findMinFallingPathSum(row, col), that recursively explores all the paths from the current cell (defined by parameters row and col).
-Define Base Case:
-In any recursive function, we must define the terminating condition i.e the base case. When the terminating condition is satisfied, we will exit the recursive search process. The base cases are as follows,
-The row or col values are not within the matrix boundaries.
-We have reached the last row. In this case, we will return the value of the current cell and not make any other recursive calls.
-Recursively explore all paths: If the base case is not satisfied, it means that we have not reached the end of our current path, and we must try all options to extend our path and find the one with the minimum sum:
-minimumPath = Minimum(findMinFallingPathSum(row + 1, col + 1),
-                      findMinFallingPathSum(row + 1, col),
-                      findMinFallingPathSum(row + 1, col - 1))
-Now that we have defined the recursive function, we must find the minimum falling path for all possible starting cells. A starting cell is any cell in the top row.
+1. Implement a Depth First Search algorithm, by defining a recursive function, ```dfs(row, col)```, that recursively explores all the paths from the current cell (defined by parameters ```row``` and ```col```).
+  - Define Base Case: In any recursive function, we must define the terminating condition i.e the base case. When the terminating condition is satisfied, we will exit the recursive search process. The base cases are as follows,
+    - The ```row``` or ```col``` values are not within the matrix boundaries.
+    - We have reached the last ```row```. In this case, we will return the value of the current cell and not make any other recursive calls.
+  - _Recursively explore all paths_: If the base case is not satisfied, it means that we have not reached the end of our current path, and we must try all options to extend our path and find the one with the minimum sum:
+    - minimumPath = Minimum(findMinFallingPathSum(row + 1, col + 1), findMinFallingPathSum(row + 1, col), findMinFallingPathSum(row + 1, col - 1))
+2. Now that we have defined the recursive function, we must find the minimum falling path for all possible starting cells. A starting cell is any cell in the top row. For this, we have to iterate using a for loop and find the minimum falling path for cell in $0^{th}$ row and columns ranging from ```0``` to $\text{matrix.length} - 1$. Define a variable ```minFallingSum``` to track the minimum of all the falling paths found so far and return the result.
 
-For this, we have to iterate using a for loop and find the minimum falling path for cell in 0th0^{th}0 
-th
-  row and columns ranging from 000 to matrix.length−1\text{matrix.length} - 1matrix.length−1. Define a variable minFallingSum to track the minimum of all the falling paths found so far and return the result.
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}({N} \cdot 3^{N})$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        ROWS, COLS = len(matrix), len(matrix[0])
 
+        def dp(row, col):
+            # Base case: check if out of the boundaries
+            if not (0 <= row < ROWS and 0 <= col < COLS):
+                return math.inf
+            # Check if reached the last row
+            if row == ROWS - 1:
+                return matrix[row][col]
+            
+            left = dp(row + 1, col - 1)
+            mid = dp(row + 1, col)
+            right = dp(row + 1, col + 1)
+            return min(left, mid, right) + matrix[row][col]
+
+        ans = math.inf
+        for col in range(COLS):
+            ans = min(ans, dp(0, col))
+        
+        return ans
 ```
 
 ### Dynamic Programming Framework
