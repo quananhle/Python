@@ -32,9 +32,9 @@ Explanation: The falling path with a minimum sum is shown.
 
 __Constraints:__
 
-- ```n == matrix.length == matrix[i].length```
-- ```1 <= n <= 100```
-- ```-100 <= matrix[i][j] <= 100```
+- $n == matrix.length == matrix[i].length$
+- $1 \le n \le 100$
+- $-100 \le matrix[i][j] \le 100$
 
 ---
 
