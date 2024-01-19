@@ -1,6 +1,6 @@
 ## [931. Minimum Falling Path Sum](https://leetcode.com/problems/minimum-falling-path-sum)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -38,9 +38,11 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/minimum-falling-path-sum/solutions/2108185/Figures/931/931_overview.png)
+
 ### Brute Force
 
-![image](https://leetcode.com/problems/minimum-falling-path-sum/solutions/2108185/Figures/931/931_overview.png)
+#### DeptH-First Search
 
 ```Python
 
