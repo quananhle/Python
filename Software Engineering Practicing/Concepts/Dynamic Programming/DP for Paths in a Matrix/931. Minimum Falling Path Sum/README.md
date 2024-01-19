@@ -38,9 +38,15 @@ __Constraints:__
 
 ---
 
+### Brute Force
+
 ![image](https://leetcode.com/problems/minimum-falling-path-sum/solutions/2108185/Figures/931/931_overview.png)
 
-### The Framework
+```Python
+
+```
+
+### Dynamic Programming Framework
 
 #### Top-Down Dynamic Programming
 
