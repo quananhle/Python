@@ -44,6 +44,27 @@ __Constraints:__
 
 #### DeptH-First Search
 
+![image](https://leetcode.com/problems/minimum-falling-path-sum/Figures/931/931_example_problem.png)
+
+![image](https://leetcode.com/problems/minimum-falling-path-sum/Figures/931/931_example_3possibilities.png)
+
+Algorithm
+
+Implement a Depth First Search algorithm, by defining a recursive function, findMinFallingPathSum(row, col), that recursively explores all the paths from the current cell (defined by parameters row and col).
+Define Base Case:
+In any recursive function, we must define the terminating condition i.e the base case. When the terminating condition is satisfied, we will exit the recursive search process. The base cases are as follows,
+The row or col values are not within the matrix boundaries.
+We have reached the last row. In this case, we will return the value of the current cell and not make any other recursive calls.
+Recursively explore all paths: If the base case is not satisfied, it means that we have not reached the end of our current path, and we must try all options to extend our path and find the one with the minimum sum:
+minimumPath = Minimum(findMinFallingPathSum(row + 1, col + 1),
+                      findMinFallingPathSum(row + 1, col),
+                      findMinFallingPathSum(row + 1, col - 1))
+Now that we have defined the recursive function, we must find the minimum falling path for all possible starting cells. A starting cell is any cell in the top row.
+
+For this, we have to iterate using a for loop and find the minimum falling path for cell in 0th0^{th}0 
+th
+  row and columns ranging from 000 to matrix.length−1\text{matrix.length} - 1matrix.length−1. Define a variable minFallingSum to track the minimum of all the falling paths found so far and return the result.
+
 ```Python
 
 ```
