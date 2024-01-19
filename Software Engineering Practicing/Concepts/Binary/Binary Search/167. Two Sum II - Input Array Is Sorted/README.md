@@ -1,6 +1,6 @@
 ## [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted)
 
-```Tag```: ```Two Pointer``` ```Hash Table```
+```Tag```: ```Two Pointer``` ```Hash Table``` ```Binary Search```
 
 #### Difficulty: Medium
 
@@ -12,7 +12,7 @@ The tests are generated such that there is __exactly one solution__. You may not
 
 Your solution must use only __constant extra space__.
 
-![image](https://user-images.githubusercontent.com/35042430/209867460-fea452f2-d20c-4c79-9c6a-b90722630225.png)
+![image](https://github.com/quananhle/Python/assets/35042430/96493cfa-6731-449b-a725-fd9048a313a5)
 
 ---
 
@@ -38,13 +38,12 @@ Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We ret
 ```
 
 __Constraints:__
-```
-2 <= numbers.length <= 3 * 104
--1000 <= numbers[i] <= 1000
-numbers is sorted in non-decreasing order.
--1000 <= target <= 1000
-The tests are generated such that there is exactly one solution.
-```
+
+- $2 \le numbers.length \le 3 * 10^4$
+- $-1000 \le numbers[i] \le 1000$
+- ```numbers``` is sorted in non-decreasing order.
+- $-1000 \le target \le 1000$
+- The tests are generated such that there is exactly one solution.
 
 ---
 
