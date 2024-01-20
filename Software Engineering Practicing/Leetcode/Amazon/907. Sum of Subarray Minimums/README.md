@@ -59,5 +59,22 @@ Brute Force
 ### Monotonic Stack
 
 ```Python
+class Solution:
+    def sumSubarrayMins(self, arr: List[int]) -> int:
+        ans = 0
+        n = len(arr)
+        monotonic_stack = list()
+        MOD = 10 ** 9 + 7
 
+        for i in range(n + 1):
+            while monotonic_stack and (i == n or arr[i] <= arr[monotonic_stack[-1]]):
+                pivot = monotonic_stack.pop()
+                left_boundary = -1 if not monotonic_stack else monotonic_stack[-1]
+                right_boundary = i
+
+                count = (pivot - left_boundary) * (right_boundary - pivot)
+                ans += (count * arr[pivot])
+            monotonic_stack.append(i)
+
+        return ans % MOD
 ```
