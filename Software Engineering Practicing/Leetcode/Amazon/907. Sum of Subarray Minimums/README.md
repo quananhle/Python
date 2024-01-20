@@ -1,6 +1,6 @@
 ## [907. Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums)
 
-```Tag```:
+```Tag```: ```Monotonic Stack``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -32,3 +32,24 @@ __Constraints:__
 - $1 \le arr[i] \le 3 * 10^4$
 
 ---
+
+You can think of the problem as a three-step process:
+
+1. Consider all subarrays of the given array.
+2. For each of the subarrays, calculate the minimum.
+3. Add all the minimums calculated above.
+
+### Brute Force
+
+```Python
+        ans = 0
+        n = len(arr)
+        for i in range(n):
+            curr_min = math.inf
+            running_sum = 0
+            for curr in range(i, n):
+                curr_min = min(curr_min, arr[curr])
+                running_sum += curr_min
+            ans += running_sum
+        return ans
+```
