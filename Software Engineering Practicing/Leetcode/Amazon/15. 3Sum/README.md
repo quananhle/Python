@@ -8,7 +8,7 @@ Given an integer array ```nums```, return _all the triplets ```[nums[i], nums[j]
 
 Notice that the solution set must not contain duplicate triplets.
 
-![image](https://user-images.githubusercontent.com/35042430/225450520-fcfd5fbf-5dc2-4903-84f1-099f9c050f45.png)
+![image](https://github.com/quananhle/Python/assets/35042430/7924a823-cb46-4dbf-8adb-70434399872a)
 
 ---
 
