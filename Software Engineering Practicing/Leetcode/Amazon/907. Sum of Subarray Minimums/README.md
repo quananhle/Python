@@ -39,11 +39,13 @@ You can think of the problem as a three-step process:
 2. For each of the subarrays, calculate the minimum.
 3. Add all the minimums calculated above.
 
-### Brute Force
+Brute Force
 
 ```Python
         ans = 0
         n = len(arr)
+        MOD = 10 ** 9 + 7
+
         for i in range(n):
             curr_min = math.inf
             running_sum = 0
@@ -51,5 +53,11 @@ You can think of the problem as a three-step process:
                 curr_min = min(curr_min, arr[curr])
                 running_sum += curr_min
             ans += running_sum
-        return ans
+        return ans % MOD
+```
+
+### Monotonic Stack
+
+```Python
+
 ```
