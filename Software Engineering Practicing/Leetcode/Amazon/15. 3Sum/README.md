@@ -1,6 +1,6 @@
 ## [15. 3Sum](https://leetcode.com/problems/3sum/)
 
-```Tag```: ```Two Pointers```
+```Tag```: ```Two Pointers``` ```Sorting``` ```Binary Search``` ```Hash Set```
 
 #### Difficulty: Medium
 
