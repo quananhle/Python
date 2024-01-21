@@ -30,10 +30,8 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 
 __Constraints:__
 
-```
-1 <= nums.length <= 100
-0 <= nums[i] <= 400
-```
+- $1 \le nums.length \le 100$
+- $0 \le nums[i] \le 400$
 
 ---
 
