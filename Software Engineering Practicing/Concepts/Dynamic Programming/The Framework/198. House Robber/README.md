@@ -8,7 +8,7 @@ You are a professional robber planning to rob houses along a street. Each house 
 
 Given an integer array ```nums``` representing the amount of money of each house, return _the maximum amount of money you can rob tonight __without alerting the police___.
 
-![image](https://user-images.githubusercontent.com/35042430/207699709-9884864b-7665-4dd1-b858-09ce130f98af.png)
+![image](https://github.com/quananhle/Python/assets/35042430/d0076b8f-b8c1-46f5-b37c-de788f956208)
 
 ---
 
