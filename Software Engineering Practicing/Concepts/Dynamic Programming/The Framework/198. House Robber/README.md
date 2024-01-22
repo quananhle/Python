@@ -149,7 +149,7 @@ class Solution:
     def rob(self, nums: List[int]) -> int:
         n = len(nums)
 
-        @lru_cache(None)
+        @functools.lru_cache(maxsize=None)
         def dp(i):
             # Base case
             if i < 0:
@@ -169,7 +169,7 @@ class Solution:
     def rob(self, nums: List[int]) -> int:
         n = len(nums)
 
-        @lru_cache(None)
+        @functools.lru_cache(maxsize=None)
         def dp(curr):
             # Base case
             if curr >= n:
