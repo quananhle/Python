@@ -32,3 +32,47 @@ __Constraints:__
 - $1 \le nums[i] \le 10^4$
 
 ---
+
+### Brute Force
+
+```Python
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        duplicate = missing = -1
+        n = len(nums)
+        for i in range(1, n + 1):
+            count = 0
+            for num in nums:
+                if i == num:
+                    count += 1
+            if count == 2:
+                duplicate = i
+            if count == 0:
+                missing = i
+        
+        return [duplicate, missing]
+```
+
+#### Optimized Brute Force
+
+```Python
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        duplicate = missing = -1
+        n = len(nums)
+        for i in range(1, n + 1):
+            count = 0
+            for num in nums:
+                if i == num:
+                    count += 1
+                    if count == 2:
+                        break
+            if count == 2:
+                duplicate = i
+            if count == 0:
+                missing = i
+            if duplicate > 0 and missing > 0:
+                break
+        
+        return [duplicate, missing]
+```
