@@ -1,6 +1,6 @@
 ## [645. Set Mismatch](https://leetcode.com/problems/set-mismatch)
 
-```Tag```: ```Hash Set``` ```Hash Map```
+```Tag```: ```Array & String``` ```Hash Set``` ```Hash Map``` ```Bitwise Manipulation```
 
 #### Difficulty: Easy
 
@@ -76,3 +76,41 @@ class Solution:
         
         return [duplicate, missing]
 ```
+
+---
+
+### Sorting
+
+```Python
+
+```
+
+---
+
+### Hash Set + Hash Map
+
+```Python
+
+```
+
+---
+
+### Array
+
+```Python
+
+```
+
+####
+
+---
+
+---
+
+### XOR
+
+```Python
+
+```
+
+
