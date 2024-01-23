@@ -49,3 +49,24 @@ __Constraints:__
 - ```arr[i]``` contains only lowercase English letters.
 
 ---
+
+### Brute Force
+
+#### Build All Strings
+
+```Python
+class Solution:
+    def maxLength(self, arr: List[str]) -> int:
+        ans = 0
+        res = [""]
+
+        for word in arr:
+            for i in range(len(res)):
+                subsequence = res[i] + word
+                if len(subsequence) != len(set(subsequence)):
+                    continue
+                res.append(subsequence)
+                ans = max(ans, len(subsequence))
+            
+        return ans
+```
