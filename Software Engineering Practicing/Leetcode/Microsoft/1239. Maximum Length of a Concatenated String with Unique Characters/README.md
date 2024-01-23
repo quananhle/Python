@@ -4,9 +4,9 @@
 
 #### Difficulty: Medium
 
-You are given an array of strings arr. A string s is formed by the concatenation of a subsequence of arr that has unique characters.
+You are given an array of strings ```arr```. A string s is formed by the concatenation of a subsequence of ```arr``` that has unique characters.
 
-Return the maximum possible length of s.
+Return _the maximum possible length of ```s```_.
 
 A subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
 
@@ -14,8 +14,8 @@ A subsequence is an array that can be derived from another array by deleting som
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: arr = ["un","iq","ue"]
 Output: 4
 Explanation: All the valid concatenations are:
@@ -26,22 +26,26 @@ Explanation: All the valid concatenations are:
 - "uniq" ("un" + "iq")
 - "ique" ("iq" + "ue")
 Maximum length is 4.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: arr = ["cha","r","act","ers"]
 Output: 6
 Explanation: Possible longest valid concatenations are "chaers" ("cha" + "ers") and "acters" ("act" + "ers").
-Example 3:
+```
 
+__Example 3:__
+```
 Input: arr = ["abcdefghijklmnopqrstuvwxyz"]
 Output: 26
 Explanation: The only string in arr has all 26 characters.
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= arr.length <= 16
-1 <= arr[i].length <= 26
-arr[i] contains only lowercase English letters.
+- $1 \le arr.length \le 16$
+- $1 \le arr[i].length \le 26$
+- ```arr[i]``` contains only lowercase English letters.
 
 ---
