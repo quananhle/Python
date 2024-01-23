@@ -1,14 +1,14 @@
 ## [1239. Maximum Length of a Concatenated String with Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Bitwise Manipulation``` ```Recursion``` ```Backtracking```
 
 #### Difficulty: Medium
 
-You are given an array of strings ```arr```. A string s is formed by the concatenation of a subsequence of ```arr``` that has unique characters.
+You are given an array of strings ```arr```. A string ```s``` is formed by the __concatenation__ of a __subsequence__ of ```arr``` that has __unique characters__.
 
-Return _the maximum possible length of ```s```_.
+Return _the __maximum__ possible length of ```s```_.
 
-A subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
+A __subsequence__ is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/277b229f-18e4-420b-ab2e-6b002ca50b02)
 
