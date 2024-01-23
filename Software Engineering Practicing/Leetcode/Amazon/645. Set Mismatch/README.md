@@ -90,7 +90,25 @@ class Solution:
 ### Hash Set + Hash Map
 
 ```Python
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        num_set = set(nums)
+        counter = dict()
+        res = list()
+        n = len(nums)
 
+        for num in nums:
+            counter[num] = 1 + counter.get(num, 0)
+            if counter[num] == 2:
+                res.append(num)
+                break
+
+        for i in range(n + 1):
+            if (i + 1) not in num_set:
+                res.append(i + 1)
+                break
+
+        return res
 ```
 
 ---
@@ -101,9 +119,11 @@ class Solution:
 
 ```
 
-####
+#### Constant Space
 
----
+```Python
+
+```
 
 ---
 
