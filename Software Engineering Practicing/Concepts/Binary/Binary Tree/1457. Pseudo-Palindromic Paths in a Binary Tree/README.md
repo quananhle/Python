@@ -45,7 +45,7 @@ __Constraints:__
 
 #### Build Path Using List
 
-```Oython
+```Python
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -133,3 +133,7 @@ class Solution:
         dfs(root, collections.defaultdict(int))
         return self.count
 ```
+
+---
+
+
