@@ -40,3 +40,96 @@ __Constraints:__
 - $1 \le Node.val \le 9$
 
 ---
+
+### Backtracking + Depth-First Search
+
+#### Build Path Using List
+
+```Oython
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
+        self.count = 0
+        stack = list()
+
+        # Palindromic check
+        def is_pseudo_palindromic(path: list) -> bool:
+            counter = collections.defaultdict(int)
+            mid = False
+            for node in path:
+                counter[node] = 1 + counter.get(node, 0)
+            for count in counter.values():
+                if count % 2:
+                    if mid:
+                        return False
+                    mid = True
+            return True
+
+        # Traverse the tree
+        def dfs(node: Optional[TreeNode], path: list) -> None:
+            # Base case
+            if not node:
+                return None
+            
+            path.append(node.val)
+            if not node.left and not node.right:
+                if is_pseudo_palindromic(path):
+                    self.count += 1
+                
+            dfs(node.left, path)
+            dfs(node.right, path)
+            # Backtracking
+            path.pop()
+
+        dfs(root, [])
+        return self.count
+```
+
+#### Build Path with Node Counter Using Hash Map
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
+        self.count = 0
+        stack = list()
+
+        # Palindromic check
+        def is_pseudo_palindromic(path: dict) -> bool:
+            mid = False
+            for count in path.values():
+                if count % 2:
+                    if mid:
+                        return False
+                    mid = True
+            return True
+
+        # Traverse the tree
+        def dfs(node: Optional[TreeNode], path: dict) -> None:
+            # Base case
+            if not node:
+                return None
+            
+            path[node.val] += 1
+            if not node.left and not node.right:
+                if is_pseudo_palindromic(path):
+                    self.count += 1
+                
+            dfs(node.left, path)
+            dfs(node.right, path)
+            # Backtracking
+            path[node.val] -= 1
+
+        dfs(root, collections.defaultdict(int))
+        return self.count
+```
