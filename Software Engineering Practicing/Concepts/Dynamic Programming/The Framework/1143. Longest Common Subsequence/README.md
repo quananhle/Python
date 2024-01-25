@@ -107,7 +107,6 @@ class Solution:
 ```Python
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-        ans = 0
         m, n = len(text1), len(text2)
 
         @functools.lru_cache(maxsize=None)
