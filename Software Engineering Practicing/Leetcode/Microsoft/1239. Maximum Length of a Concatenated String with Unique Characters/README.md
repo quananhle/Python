@@ -135,11 +135,77 @@ class Solution:
 #### Hash Map
 
 ```Python
+class Solution:
+    def maxLength(self, arr: List[str]) -> int:
+        counter = collections.Counter()
+        n = len(arr)
 
+        def backtracking(curr: int) -> int:
+            # Base case: check for duplicate characters
+            if len(counter) and counter.most_common(1)[0][1] > 1:
+                return 0
+            
+            best = len(counter)
+            for i in range(curr, n):
+                word_map = collections.Counter(arr[i])
+                if len(word_map) != len(arr[i]):
+                    continue
+                counter.update(word_map)
+                best = max(best, backtracking(i + 1))
+
+                # Backtracking
+                for c in word_map:
+                    if counter[c] == word_map[c]:
+                        del counter[c]
+                    else:
+                        counter[c] -= word_map[c]
+
+            return best
+
+        return backtracking(0)
 ```
 
 #### Bitmasking
 
 ```Python
+class Solution:
+    def maxLength(self, arr: List[str]) -> int:
+        opt_set = set()
 
+        def word_to_bitset(word: str) -> None:
+            char_bitset = 0
+            for c in word:
+                mask = 1 << ord(c) - 97
+                # Check if the bitset contains a duplicate character, exit early if so
+                if char_bitset & mask:
+                    return
+                char_bitset += mask
+            opt_set.add(char_bitset + (len(word) << 26))
+        
+
+        for word in arr:
+            word_to_bitset(word)
+        opt_arr = list(opt_set)
+
+        def backtracking(curr: int, curr_chars: int, curr_len: int) -> int:
+            best = curr_len
+            for i in range(curr, len(opt_arr)):
+                new_chars = opt_arr[i] & ((1 << 26) - 1)
+                new_len = opt_arr[i] >> 26
+
+                # Check if two bitsets overlap, skip to the next
+                if new_chars & curr_chars:
+                    continue
+                
+                curr_chars += new_chars
+                curr_len += new_len
+                best = max(best, backtracking(i + 1, curr_chars, curr_len))
+
+                # Backtracking
+                curr_chars -= new_chars
+                curr_len -= new_len
+            
+            return best
+        
+        return backtracking(0, 0, 0)
 ```
