@@ -257,6 +257,22 @@ class Solution:
 ```
 
 ```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        lcs = collections.defaultdict(int)
+        m, n = len(text1), len(text2)
+
+        for i in range(m - 1, -1, -1):
+            for j in range(n - 1, -1, -1):
+                if text1[i] == text2[j]:
+                    lcs[(i, j)] = 1 + lcs[(i + 1, j + 1)]
+                else:
+                    lcs[(i, j)] = max(lcs[(i + 1, j)], lcs[(i, j + 1)])
+
+        return lcs[(0, 0)]
+```
+
+```Python
 class Solution(object):
     def longestCommonSubsequence(self, text1, text2):
         """
