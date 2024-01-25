@@ -73,6 +73,19 @@ class Solution:
 
 ### Bitwise Manipulation
 
+![image](https://github.com/quananhle/Python/assets/35042430/ff205c25-5109-4742-ae5e-e21b3bedb623)
+
+![image](https://github.com/quananhle/Python/assets/35042430/2a4e6eae-7efe-4bdf-a7fd-9bf8107509bf)
+
+![image](https://github.com/quananhle/Python/assets/35042430/0d452f92-989d-4e6e-8397-dbde2fd8cf31)
+
+![image](https://github.com/quananhle/Python/assets/35042430/d0c10220-01e3-4171-8236-46302d61ef57)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(2^N)$
+- __Space Complexity__: $\mathcal{O}(2^{min(N,K)})$
+
 ```Python
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
