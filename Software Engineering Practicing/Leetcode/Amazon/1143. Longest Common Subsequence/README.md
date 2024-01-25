@@ -12,7 +12,7 @@ A __subsequence__ of a string is a new string generated from the original string
 
 A __common subsequence__ of two strings is a subsequence that is common to both strings.
 
-![image](https://user-images.githubusercontent.com/35042430/208002321-3291acc0-dfa9-4f85-9298-bf4432120093.png)
+![image](https://github.com/quananhle/Python/assets/35042430/bd70f2ca-1c68-4293-84c3-2513b8468813)
 
 ---
 
