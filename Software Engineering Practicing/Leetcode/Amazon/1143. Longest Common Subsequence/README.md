@@ -154,7 +154,7 @@ class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         m, n = len(text1), len(text2)
 
-        @lru_cache(maxsize=None)
+        @functools.lru_cache(maxsize=None)
         def dp(p1, p2):
             # Base case
             if p1 == m or p2 == n:
