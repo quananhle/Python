@@ -41,6 +41,31 @@ __Constraints:__
 
 ---
 
+__Two subproblems__
+
+The problem consists of two subproblems:
+
+- Traverse the tree to build all root-to-leaf paths.
+
+- For each root-to-leaf path, check if it's a pseudo-palindromic path or not.
+
+![image](https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/Figures/1457/split.png)
+
+![image](https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/Figures/1457/dfs.png)
+
+```Python
+def check_palindrom(nums):
+    is_palindrom = 0
+
+    for i in range(1, 10):
+        if nums.count(i) % 2 == 1:
+            is_palindrom += 1
+            if is_palindrom > 1:
+                return False
+
+    return True
+```
+
 ### Backtracking + Depth-First Search
 
 #### Build Path Using List
@@ -135,5 +160,4 @@ class Solution:
 ```
 
 ---
-
 
