@@ -127,3 +127,19 @@ class Solution:
         
         return ans
 ```
+
+---
+
+### Backtracking
+
+#### Hash Map
+
+```Python
+
+```
+
+#### Bitmasking
+
+```Python
+
+```
