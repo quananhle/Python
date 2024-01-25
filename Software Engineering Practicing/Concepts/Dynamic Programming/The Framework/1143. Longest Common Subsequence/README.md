@@ -39,7 +39,7 @@ Explanation: There is no such common subsequence, so the result is 0.
 
 __Constraints:__
 
-- ```1 <= text1.length, text2.length <= 1000```
+- $1 \le text1.length, text2.length \le 1000$
 - ```text1``` and ```text2``` consist of only lowercase English characters.
 
 ---
@@ -100,6 +100,32 @@ class Solution:
                 memo[(t1, t2)] = max(dp(t1 + 1, t2), dp(t1, t2 + 1))
             
             return memo[(t1, t2)]
+
+        return dp(0, 0)
+```
+
+```Python
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        ans = 0
+        m, n = len(text1), len(text2)
+
+        @functools.lru_cache(maxsize=None)
+        def dp(i, j):
+            # Base case: when a string is reached the end, no more common element
+            if i == m or j == n:
+                return 0
+            
+            lcs = 0
+            # DP Transitions:
+            #   - Match: if two elements match, move on to the next elements in both strings, count 1 to final answer
+            #   - Unmatch: two cases, check next element of text1 with current element of text2, and vice versa
+            if text1[i] == text2[j]:
+                lcs = dp(i + 1, j + 1) + 1
+            else:
+                lcs = max(dp(i + 1, j), dp(i, j + 1))
+
+            return lcs
 
         return dp(0, 0)
 ```
