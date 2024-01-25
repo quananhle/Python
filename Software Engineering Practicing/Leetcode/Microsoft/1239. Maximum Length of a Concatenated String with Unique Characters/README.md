@@ -1,6 +1,6 @@
 ## [1239. Maximum Length of a Concatenated String with Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters)
 
-```Tag```: ```Array & String``` ```Bitwise Manipulation``` ```Recursion``` ```Backtracking```
+```Tag```: ```Array & String``` ```Bitwise Manipulation``` ```Bitmasking``` ```Recursion``` ```Backtracking```
 
 #### Difficulty: Medium
 
@@ -68,5 +68,49 @@ class Solution:
                 res.append(subsequence)
                 ans = max(ans, len(subsequence))
             
+        return ans
+```
+
+### Bitwise Manipulation
+
+```Python
+class Solution:
+    def maxLength(self, arr: List[str]) -> int:
+        res = set([0])
+        ans = 0
+
+        def build_string(word: str) -> int:
+            char_bitset = 0
+            best = 0
+            for w in word:
+                # Define character mask for current character
+                mask = 1 << ord(w) - 97
+                # Bitwise AND check using character mask to see if character already found. If so, exit early
+                if char_bitset & mask > 0:
+                    return 0
+                
+                # Mark char as seen in char_bitset
+                char_bitset += mask
+            
+            # Check if the initial bitset is already a known result, 
+            if char_bitset + (len(word) << 26) in res:
+                return 0
+            
+            for string in list(res):
+                # Check if the two bitsets overlap, skip to the next result
+                if string & char_bitset:
+                    continue
+                
+                # Merge two into one, add it to result, and keep track of the longest
+                new_res_len = (string >> 26) + len(word)
+                new_char_bitset = char_bitset + string & ((1 << 26) - 1)
+                res.add((new_res_len << 26) + new_char_bitset)
+                best = max(best, new_res_len)
+
+            return best
+        
+        for word in arr:
+            ans = max(ans, build_string(word))
+        
         return ans
 ```
