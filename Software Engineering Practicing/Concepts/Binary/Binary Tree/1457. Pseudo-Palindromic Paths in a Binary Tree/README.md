@@ -161,3 +161,82 @@ class Solution:
 
 ---
 
+### Bitmasking
+
+#### Iterative Preorder Traversal
+
+![image](https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/Figures/1457/xor.png)
+_XOR of zero and a bit results in that bit. XOR of two equal bits (even if they are zeros) results in a zero. Hence, one could see the bit in a path only if it appears an odd number of times._
+
+```Python
+# compute occurences of each digit in the corresponding bit
+path = path ^ (1 << node.val)
+```
+
+![image](https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/Figures/1457/turn_off.png)
+_ _Check if path is a power of two_. ```x & (x - 1)``` is a way to set the rightmost 1-bit to zero, i.e., ```x & (x - 1) == 0``` for the power of two. To subtract 1 means to change the rightmost 1-bit to 0 and to set all the lower bits to 1. Now AND operator: the rightmost 1-bit will be turned off because ```1 & 0 = 0```, and all the lower bits as well.
+
+```Python
+# if it's a leaf, check that at most one digit has an odd frequency
+if path & (path - 1) == 0:
+    count += 1
+```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
+        count = 0
+        stack = [(root, 0)]
+
+        while stack:
+            curr, path = stack.pop()
+            if curr:
+                path = path ^ (1 << curr.val)
+                if not curr.left and not curr.right:
+                    if path & (path - 1) == 0:
+                        count += 1
+                else:
+                    stack.append((curr.left, path))
+                    stack.append((curr.right, path))
+        
+        return count
+```
+
+#### Recursive Preorder Traversal
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
+        count = 0
+
+        def preorder(curr, path):
+            nonlocal count
+            if not curr:
+                return None
+            
+            # Compute occurences of each digit in the corresponding register
+            path ^= (1 << curr.val)
+            # Check when current node is a leaf
+            if not curr.left and not curr.right:
+                # Check if at most one digit has an odd frequency
+                if path & (path - 1) == 0:
+                    count += 1
+
+            preorder(curr.left, path)
+            preorder(curr.right, path)
+        
+        preorder(root, 0)
+        return count
+```
