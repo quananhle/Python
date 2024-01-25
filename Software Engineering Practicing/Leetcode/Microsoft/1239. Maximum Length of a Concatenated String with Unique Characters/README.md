@@ -134,6 +134,8 @@ class Solution:
 
 #### Hash Map
 
+![image](https://github.com/quananhle/Python/assets/35042430/7ae5c03d-ff6a-4a31-8efc-3b82da6e2a0d)
+
 ```Python
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
