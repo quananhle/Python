@@ -210,6 +210,8 @@ class Solution:
 
 #### Recursive Preorder Traversal
 
+![image](https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/Figures/1457/dfs.png)
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
