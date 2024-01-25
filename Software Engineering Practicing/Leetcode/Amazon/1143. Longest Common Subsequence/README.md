@@ -42,10 +42,8 @@ Explanation: There is no such common subsequence, so the result is 0.
 
 __Constraints:__
 
-```
-1 <= text1.length, text2.length <= 1000
-text1 and text2 consist of only lowercase English characters.
-```
+- $1 \le text1.length, text2.length \le 1000$
+- ```text1``` and ```text2``` consist of only lowercase English characters.
 
 ---
 
@@ -127,7 +125,6 @@ class Solution:
         m, n = len(text1), len(text2)
         memo = collections.defaultdict(int)
 
-        @lru_cache(maxsize=None)
         def dp(p1, p2):
             # Base case
             if p1 == m or p2 == n:
