@@ -1,4 +1,4 @@
-## 1143. Longest Common Subsequence
+## [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence)
 
 ```Tag```: ```Dynamic Programming```
 
@@ -12,7 +12,7 @@ A __subsequence__ of a string is a new string generated from the original string
 
 A __common subsequence__ of two strings is a subsequence that is common to both strings.
 
-![image](https://user-images.githubusercontent.com/35042430/219167142-9ee8e0ff-b1e1-4996-aa9e-5866a5764d3f.png)
+![image](https://github.com/quananhle/Python/assets/35042430/ab462b4d-e783-4b57-a570-3833b3a4d86c)
 
 ---
 
