@@ -37,9 +37,9 @@ __Constraints:__
 
 ---
 
-### Brute Force (Time Limit Exceeded)
+### Brute Force
 
-#### Recursion
+#### Recursion (Time Limit Exceeded)
 
 __Complexity Analysis__
 
@@ -65,6 +65,11 @@ class Solution:
 
 #### Optimized Brute Force with Recursion with Memoization
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n \cdot N)$
+- __Space Complexity__: $\mathcal{O}(m \cdot n \cdot N) \cdot memo$
+
 ```Python
 class Solution:
     def __init__(self):
@@ -88,16 +93,16 @@ class Solution:
         return self.memo[(startRow, startColumn, maxMove)] % self.MOD
 ```
 
-__Complexity Analysis__
-
-- __Time Complexity__: $\mathcal{O}(m \cdot n \cdot N)$
-- __Space Complexity__: $\mathcal{O}(m \cdot n \cdot N) \cdot memo$
-
 ---
 
 ### Dynamic Programming Framework
 
 #### Top-Down Dynamic Programming
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n \cdot N)$
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$
 
 ```Python
 class Solution:
@@ -120,4 +125,34 @@ class Solution:
 
         ans = dp(startRow, startColumn, 0)
         return ans % MOD
+```
+
+#### Bottom-Up Dynamic Programming
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n \cdot N)$
+- __Space Complexity__: $\mathcal{O}(m \cdot n)$
+
+```Python
+class Solution:
+    def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
+        MOD = 10**9 + 7
+        dp = collections.defaultdict(int)
+        # Base case
+        dp[(startRow, startColumn)] = 1
+
+        ans = 0
+
+        for move in range(1, maxMove + 1):
+            temp = collections.defaultdict(int)
+            for row in range(m):
+                for col in range(n):
+                    if not (0 <= row < m and 0 <= col < n):
+                        ans += dp[(row, col)] % MOD
+                        continue
+                    temp[(row, col)] = (dp[(row - 1, col)] + dp[(row, col - 1)] + dp[(row + 1, col)] + dp[(row, col + 1)]) % MOD
+            dp = temp
+        
+        return ans
 ```
