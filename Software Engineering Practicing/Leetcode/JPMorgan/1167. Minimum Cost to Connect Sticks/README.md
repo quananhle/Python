@@ -48,13 +48,7 @@ __Constraints:__
 
 ---
 
-### Greedy
-
-```Python
-
-```
-
-### Heap
+### Heap & Greedy Algorithm 
 
 __Complexity Analysis__
 
