@@ -60,5 +60,31 @@ class Solution:
         return (self.findPaths(m, n, maxMove - 1, startRow - 1, startColumn) + \
                self.findPaths(m, n, maxMove - 1, startRow, startColumn - 1) + \
                self.findPaths(m, n, maxMove - 1, startRow + 1, startColumn) + \
-               self.findPaths(m, n, maxMove - 1, startRow, startColumn + 1) % MOD
+               self.findPaths(m, n, maxMove - 1, startRow, startColumn + 1)) % MOD
+```
+
+---
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
+        MOD = 10**9 + 7
+
+        @functools.lru_cache(maxsize=None)
+        def dp(row, col, move):
+            # Base case: out of boundary
+            if not (0 <= row < m and 0 <= col < n and move <= maxMove):
+                return 1
+            
+            if move == maxMove:
+                return 0
+            
+            return (dp(row + 1, col, move + 1) + dp(row, col + 1, move + 1) + dp(row - 1, col, move + 1) + dp(row, col - 1, move + 1)) % MOD
+
+        ans = dp(startRow, startColumn, 0)
+        return ans % MOD
 ```
