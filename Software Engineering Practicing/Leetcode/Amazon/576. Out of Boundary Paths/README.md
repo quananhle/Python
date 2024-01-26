@@ -63,6 +63,36 @@ class Solution:
                self.findPaths(m, n, maxMove - 1, startRow, startColumn + 1)) % MOD
 ```
 
+#### Optimized Brute Force with Recursion with Memoization
+
+```Python
+class Solution:
+    def __init__(self):
+        self.memo = collections.defaultdict(int)
+        self.MOD = 10**9 + 7
+
+    def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
+        # Base case: out of boundary
+        if startRow == m or startColumn == n or startRow < 0 or startColumn < 0: return 1
+
+        # Out of move
+        if maxMove == 0: return 0
+
+        if (startRow, startColumn, maxMove) in self.memo:
+            return self.memo[(startRow, startColumn, maxMove)]
+        
+        self.memo[(startRow, startColumn, maxMove)] = (self.findPaths(m, n, maxMove - 1, startRow - 1, startColumn) + \
+                                                  self.findPaths(m, n, maxMove - 1, startRow, startColumn - 1) + \
+                                                  self.findPaths(m, n, maxMove - 1, startRow + 1, startColumn) + \
+                                                  self.findPaths(m, n, maxMove - 1, startRow, startColumn + 1)) % self.MOD
+        return self.memo[(startRow, startColumn, maxMove)] % self.MOD
+```
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(m \cdot n \cdot N)$
+- __Space Complexity__: $\mathcal{O}(m \cdot n \cdot N) \cdot memo$
+
 ---
 
 ### Dynamic Programming Framework
@@ -83,7 +113,10 @@ class Solution:
             if move == maxMove:
                 return 0
             
-            return (dp(row + 1, col, move + 1) + dp(row, col + 1, move + 1) + dp(row - 1, col, move + 1) + dp(row, col - 1, move + 1)) % MOD
+            return (dp(row + 1, col, move + 1) + \
+                    dp(row, col + 1, move + 1) + \
+                    dp(row - 1, col, move + 1) + \
+                    dp(row, col - 1, move + 1)) % MOD
 
         ans = dp(startRow, startColumn, 0)
         return ans % MOD
