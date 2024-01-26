@@ -8,7 +8,7 @@ You can connect any two sticks of lengths ```x``` and ```y``` into one stick by 
 
 Return _the minimum cost of connecting all the given sticks into one stick in this way_.
 
-![image](https://user-images.githubusercontent.com/35042430/209078415-ab934670-568d-4f67-a865-823b72b4ce51.png)
+![image](https://github.com/quananhle/Python/assets/35042430/5a2ca7c4-552e-4cf9-9af2-8d603f2b72cd)
 
 ---
 
