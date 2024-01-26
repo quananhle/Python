@@ -41,10 +41,10 @@ Explanation: There is only one stick, so you don't need to do anything. The tota
 ```
 
 __Constraints:__
-```
-1 <= sticks.length <= 104
-1 <= sticks[i] <= 104
-```
+
+- $1 \le sticks.length \le 10^4$
+- $1 \le sticks[i] \le 10^4$
+
 
 ---
 
