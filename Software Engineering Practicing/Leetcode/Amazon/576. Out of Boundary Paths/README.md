@@ -1,6 +1,6 @@
 ## [576. Out of Boundary Paths](https://leetcode.com/problems/out-of-boundary-paths)
 
-```Tag```:
+```Tag```: ```Recursion``` ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -37,3 +37,28 @@ __Constraints:__
 
 ---
 
+### Brute Force (Time Limit Exceeded)
+
+#### Recursion
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(4^n)$
+- __Space Complexity__: $\mathcal{O}(n)$
+
+```Python
+class Solution:
+    def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
+        MOD = 10**9 + 7
+
+        # Base case: out of boundary
+        if startRow == m or startColumn == n or startRow < 0 or startColumn < 0: return 1
+
+        # Out of move
+        if maxMove == 0: return 0
+
+        return (self.findPaths(m, n, maxMove - 1, startRow - 1, startColumn) + \
+               self.findPaths(m, n, maxMove - 1, startRow, startColumn - 1) + \
+               self.findPaths(m, n, maxMove - 1, startRow + 1, startColumn) + \
+               self.findPaths(m, n, maxMove - 1, startRow, startColumn + 1) % MOD
+```
