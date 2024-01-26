@@ -156,3 +156,26 @@ class Solution:
         
         return ans
 ```
+
+```Python
+class Solution:
+    def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
+        MOD = 10**9 + 7
+        dp = collections.defaultdict(int)
+        # Base case
+        dp[(startRow, startColumn)] = 1
+
+        ans = 0
+
+        for move in range(1, maxMove + 1):
+            temp = collections.defaultdict(int)
+            for row in range(m):
+                for col in range(n):
+                    if not (0 <= row < m - 1 and 0 <= col < n - 1):
+                        ans += dp[(row, col)] % MOD
+                        continue
+                    temp[(row, col)] = (dp[(row - 1, col)] + dp[(row, col - 1)] + dp[(row + 1, col)] + dp[(row, col + 1)]) % MOD
+            dp = temp
+        
+        return ans
+```
