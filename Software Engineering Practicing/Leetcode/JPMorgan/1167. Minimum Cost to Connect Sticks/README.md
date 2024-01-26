@@ -56,6 +56,11 @@ __Constraints:__
 
 ### Heap
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N\log{N})$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 ```Python
 class Solution:
     def connectSticks(self, sticks: List[int]) -> int:
@@ -72,4 +77,26 @@ class Solution:
             heapq.heappush(sticks, cost)
             min_cost += cost
         return min_cost
+```
+
+```Python
+class Solution:
+    def connectSticks(self, sticks: List[int]) -> int:
+        ans = 0
+        n = len(sticks)
+        heapq.heapify(sticks)
+
+        if n == 1:
+            return 0
+
+        while sticks:
+            stick_1 = heapq.heappop(sticks)
+            stick_2 = heapq.heappop(sticks)
+            cost = stick_1 + stick_2
+            heapq.heappush(sticks, cost)
+            ans += cost
+            if len(sticks) == 1:
+                break
+
+        return ans
 ```
