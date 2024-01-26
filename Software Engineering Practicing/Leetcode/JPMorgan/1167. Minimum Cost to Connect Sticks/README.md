@@ -1,6 +1,6 @@
 ## [1167. Minimum Cost to Connect Sticks](https://leetcode.com/problems/minimum-cost-to-connect-sticks)
 
-```Tag```: ```Heap```
+```Tag```: ```Heap``` ```Greedy Algorithm```
 
 You have some number of sticks with positive integer lengths. These lengths are given as an array ```sticks```, where ```sticks[i]``` is the length of the i<sup>th</sup> stick.
 
@@ -47,6 +47,12 @@ __Constraints:__
 
 
 ---
+
+### Greedy
+
+```Python
+
+```
 
 ### Heap
 
