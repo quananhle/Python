@@ -10,6 +10,10 @@ A subarray is a contiguous __non-empty__ sequence of elements within an array.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/7a7c64eb-5b2d-4274-a0e2-09e92761ff8a)
 
+#### Similar Problem:
+
+- [Number of Submatrices That Sum to Target](https://leetcode.com/problems/number-of-submatrices-that-sum-to-target)
+
 ---
 
 __Example 1:__
@@ -161,4 +165,20 @@ class Solution:
 
 
         return count
+```
+
+```Python
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        prefix_sum = collections.defaultdict(int)
+        prefix_sum[0] = 1
+        curr_sum = 0
+        ans = 0
+
+        for num in nums:
+            curr_sum += num
+            ans += prefix_sum[curr_sum - k]
+            prefix_sum[curr_sum] += 1
+
+        return ans
 ```
