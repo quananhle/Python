@@ -118,3 +118,34 @@ class Solution:
 
         return ans
 ```
+
+### Approach 2: Number of Subarrays that Sum to Target: Vertical 1D Prefix Sum
+
+```Python
+class Solution:
+    def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int: 
+        ROWS, COLS = len(matrix), len(matrix[0])
+        ans = 0
+
+        # Compute 2D prefix sum
+        prefix_sum_2D = collections.defaultdict(int)
+        for row in range(1, ROWS + 1):
+            for col in range(1, COLS + 1):
+                prefix_sum_2D[(row, col)] = prefix_sum_2D[(row - 1, col)] + prefix_sum_2D[(row, col - 1)] - prefix_sum_2D[(row - 1, col - 1)] + matrix[row - 1][col - 1]
+
+        # Flatten 2D matrix to 1D array
+        for c1 in range(1, COLS + 1):
+            for c2 in range(c1, COLS + 1):
+                h = collections.defaultdict(int)
+                h[0] = 1
+
+                for row in range(1, ROWS + 1):
+                    # Current 1D prefix sum
+                    curr_sum = prefix_sum_2D[(row, c2)] - prefix_sum_2D[(row, c1 - 1)]
+                    # Add subarray if curr_sum - target == 0
+                    ans += h[(curr_sum - target)]
+                    # Save current prefix sum
+                    h[curr_sum] += 1
+                
+        return ans
+```
