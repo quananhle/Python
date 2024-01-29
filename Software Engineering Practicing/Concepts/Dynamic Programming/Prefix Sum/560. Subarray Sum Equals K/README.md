@@ -1,6 +1,6 @@
 ## [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) (Number of Continuous Subarrays that Sum to Target)
 
-```Tag``` ```Prefix Sum``` ```Dynamic Programming```
+```Tag``` ```Prefix Sum``` ```Dynamic Programming``` ```Hash Map```
 
 #### Difficulty: Medium
 
