@@ -8,7 +8,7 @@ Given an array of integers ```nums``` and an integer ```k```, return _the total 
 
 A subarray is a contiguous __non-empty__ sequence of elements within an array.
 
-![image](https://user-images.githubusercontent.com/35042430/223839202-da21ec49-d3bc-4c9f-b64f-85d764a67b1f.png)
+![image](https://github.com/quananhle/Python/assets/35042430/7a7c64eb-5b2d-4274-a0e2-09e92761ff8a)
 
 ---
 
