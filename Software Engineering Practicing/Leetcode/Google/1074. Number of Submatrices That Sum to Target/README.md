@@ -90,6 +90,11 @@ for col in range(1, c + 1):
 
 ### Approach 1: Number of Subarrays that Sum to Target: Horizontal 1D Prefix Sum
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(R^2 C)$
+- __Space Complexity__: $\mathcal{O}(RC)$
+
 ```Python
 class Solution:
     def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int:
@@ -119,7 +124,39 @@ class Solution:
         return ans
 ```
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(R^2 C)$
+- __Space Complexity__: $\mathcal{O}(R)$ or $\mathcal{O}(C)$
+
+```Python
+class Solution:
+    def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int: 
+        ROWS, COLS = len(matrix), len(matrix[0])
+        ans = 0
+
+        for r1 in range(ROWS):
+            prefix_sum = [0] * COLS
+            for r2 in range(r1, ROWS):
+                h = collections.defaultdict(int)
+                h[0] = 1
+                row_sum = 0
+
+                for col in range(COLS):
+                    row_sum += matrix[r2][col]
+                    prefix_sum[col] += row_sum
+                    ans += h.get(prefix_sum[col] - target, 0)
+                    h[prefix_sum[col]] = h.get(prefix_sum[col], 0) + 1
+            
+        return ans
+```
+
 ### Approach 2: Number of Subarrays that Sum to Target: Vertical 1D Prefix Sum
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(RC^2)$
+- __Space Complexity__: $\mathcal{O}(RC)$
 
 ```Python
 class Solution:
