@@ -14,7 +14,6 @@ Two submatrices ```(x1, y1, x2, y2)``` and ```(x1', y1', x2', y2')``` are differ
 
 #### Similar Problems:
 
-- [Number of Subarrays that Sum to Target](https://leetcode.com/problems/subarray-sum-equals-k/)
 - [Subarray Sum Equals k](https://leetcode.com/problems/subarray-sum-equals-k/)
 
 ---
