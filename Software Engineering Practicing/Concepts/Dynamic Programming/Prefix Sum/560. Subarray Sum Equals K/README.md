@@ -26,13 +26,13 @@ Output: 2
 
 __Constraints:__
 
-- 1 <= ```nums.length``` <= 2 * 10<sup>4</sup>
-- ```-1000 <= nums[i] <= 1000```
-- -10<sup>7</sup> <= ```k``` <= 10<sup>7</sup>
+- $1 \le nums.length \le 2 * 10^4$
+- $-1000 \le nums[i] \le 1000$
+- $-10^7 \le k \le 10^7$
 
 ---
 
-### Brute Force
+### Brute Force (Time Limit Exceeded)
 
 - __Time complexity__: O(n<sup>3</sup>)
 - __Space complexity__: O(1)
