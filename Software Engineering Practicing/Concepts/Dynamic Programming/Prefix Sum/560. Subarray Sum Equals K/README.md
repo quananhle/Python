@@ -170,15 +170,17 @@ class Solution:
 ```Python
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        prefix_sum = collections.defaultdict(int)
-        prefix_sum[0] = 1
+        counter = collections.defaultdict(int)
+        # a + b = b + c --> a = c, a + b = b + c = a + c --> 3 subarrays in total
         curr_sum = 0
+        # Base case: curr_sum == k --> curr_sum - k = 0
+        counter[0] = 1
         ans = 0
 
         for num in nums:
             curr_sum += num
-            ans += prefix_sum[curr_sum - k]
-            prefix_sum[curr_sum] += 1
-
+            ans += counter[curr_sum - k]
+            counter[curr_sum] += 1
+        
         return ans
 ```
