@@ -12,7 +12,7 @@ Note that division between two integers should truncate toward zero.
 
 It is __guaranteed__ that the given RPN expression is always valid. That means the expression would always evaluate to a result, and there will not be any division by zero operation.
 
-![image](https://user-images.githubusercontent.com/35042430/208998788-1113d042-0f8e-4a0b-881d-82b99749b335.png)
+![image](https://github.com/quananhle/Python/assets/35042430/3a7593a9-6e03-4ba1-b520-8677c2207548)
 
 ---
 
@@ -47,10 +47,9 @@ Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
 ```
 
 __Constraints:__
-```
-1 <= tokens.length <= 104
-tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200].
-```
+
+- $1 \le tokens.length \le 10^4$
+- ```tokens[i]``` is either an operator: ```"+"```, ```"-"```, ```"*"```, or ```"/"```, or an integer in the range $[-200, 200]$.
 
 ---
 
