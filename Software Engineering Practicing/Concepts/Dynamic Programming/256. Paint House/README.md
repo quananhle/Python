@@ -32,10 +32,10 @@ Output: 2
 
 __Constraints:__
 
-- ```costs.length == n```
-- ```costs[i].length == 3```
-- ```1 <= n <= 100```
-- ```1 <= costs[i][j] <= 20```
+- $costs.length == n$
+- $costs[i].length == 3$
+- $1 \le n \le 100$
+- $1 \le costs[i][j] \le 20$
 
 ---
 
@@ -49,7 +49,7 @@ __Constraints:__
 
 ![image](https://leetcode.com/problems/paint-house/Figures/256/brute_force.png)
 
-### The Framework
+### Dynamic ProgrammingR Framework
 
 #### Top-Down Dynamic Programming (Recursion)
 
@@ -62,33 +62,27 @@ __Constraints:__
 ```Python
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
-        if not costs:
-            return 0
+        n = len(costs)
 
-        HOUSES, PAINTS = len(costs), len(costs[0])
-        
-        @lru_cache(None)
+        @functools.lru_cache(maxsize=None)
         def dp(house, paint):
-            # Base case
-            if not (0 <= house < HOUSES and 0 <= paint < PAINTS):
+            # Base case:
+            if not 0 <= house < n:
                 return 0
 
-            cost = costs[house][paint]
+            # DP Transitions: get the best from the remaining possible choices after the previous decision
+            cost = costs[house][(0 if paint == 'BLUE' else 1 if paint == 'GREEN' else 2)]
 
-            # Recurrence relation
-            if paint == 0:
-                cost += min(dp(house + 1, 1), dp(house + 1, 2))
-            elif paint == 1:
-                cost += min(dp(house + 1, 0), dp(house + 1, 2))
+            if paint == 'BLUE':
+                cost += min(dp(house + 1, 'GREEN'), dp(house + 1, 'RED'))
+            elif paint == 'GREEN':
+                cost += min(dp(house + 1, 'BLUE'), dp(house + 1, 'RED'))
             else:
-                cost += min(dp(house + 1, 0), dp(house + 1, 1))
-        
+                cost += min(dp(house + 1, 'BLUE'), dp(house + 1, 'GREEN'))
+            
             return cost
-
-        ans = float('inf')
-        for paint in range(PAINTS):
-            ans = min(ans, dp(0, paint))
-        return ans
+        
+        return min(dp(0, 'BLUE'), dp(0, 'GREEN'), dp(0, 'RED'))
 ```
 
 ```Python
