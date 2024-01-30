@@ -1,6 +1,6 @@
 ## [1074. Number of Submatrices That Sum to Target](https://leetcode.com/problems/number-of-submatrices-that-sum-to-target)
 
-```Tag```: ```Prefix Sum``` ```Matrix```
+```Tag```: ```Prefix Sum``` ```Matrix``` ```Hash Map```
 
 #### Difficulty: Hard
 
