@@ -1,4 +1,4 @@
-## 256. Paint House
+## [256. Paint House](https://leetcode.com/problems/paint-house)
 
 ```Tag```: ```Dynamic Programming``` ```Math```
 
@@ -12,7 +12,7 @@ The cost of painting each house with a certain color is represented by an ```n x
 
 Return _the minimum cost to paint all houses_.
 
-![image](https://user-images.githubusercontent.com/35042430/221101153-2836dcd7-89f1-4e78-ab7d-5b47ce8de382.png)
+![image](https://github.com/quananhle/Python/assets/35042430/d9f0e60c-4d3b-4928-bc56-8de42a4d1cbe)
 
 ---
 
@@ -32,10 +32,10 @@ Output: 2
 
 __Constraints:__
 
-- ```costs.length == n```
-- ```costs[i].length == 3```
-- ```1 <= n <= 100```
-- ```1 <= costs[i][j] <= 20```
+- $costs.length == n$
+- $costs[i].length == 3$
+- $1 \le n \le 100$
+- $1 \le costs[i][j] \le 20$
 
 ---
 
