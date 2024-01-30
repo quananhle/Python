@@ -93,6 +93,31 @@ class Solution:
         return digit_stack.pop()
 ```
 
+```Python
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        num_stack = list()
+
+        for token in tokens:
+            if not token.strip('-').isdigit():
+                num1 = num_stack.pop()
+                num2 = num_stack.pop()
+
+                if token == '*':
+                    num = int(num2) * int(num1)
+                if token == '-':
+                    num = int(num2) - int(num1)
+                if token == '+':
+                    num = int(num2) + int(num1)
+                if token == '/':
+                    num = int(num2) / int(num1)
+                num_stack.append(num)
+                continue
+            num_stack.append(token)
+
+        return int(num_stack.pop())
+```
+
 ### Stack and Lambda
 
 ```Python
