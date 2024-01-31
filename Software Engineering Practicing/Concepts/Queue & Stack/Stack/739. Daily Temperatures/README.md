@@ -1,6 +1,6 @@
 ## [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures)
 
-```Tag```: ```Stack``` ```Dynamic Programming```
+```Tag```: ```Stack``` 
 
 #### Difficulty: Medium
 
