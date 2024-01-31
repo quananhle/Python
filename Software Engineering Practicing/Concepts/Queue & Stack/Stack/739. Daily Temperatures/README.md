@@ -6,7 +6,7 @@
 
 Given an array of integers ```temperatures``` represents the daily temperatures, return _an array ```answer``` such that ```answer[i]``` is the number of days you have to wait after the i<sup>th</sup> day to get a warmer temperature_. If there is no future day for which this is possible, keep ```answer[i] == 0``` instead.
 
-![image](https://user-images.githubusercontent.com/35042430/208484491-996afd9e-6ae7-46b6-a878-ef668120f78b.png)
+![image](https://github.com/quananhle/Python/assets/35042430/7779aa75-c344-4736-ac36-f523c953f62a)
 
 ---
 
@@ -32,10 +32,9 @@ Output: [1,1,0]
 ```
 
 __Constraints:__
-```
-1 <= temperatures.length <= 105
-30 <= temperatures[i] <= 100
-```
+
+- $1 \le temperatures.length \le 10^5$
+- $30 \le temperatures[i] \le 100$
 
 ---
  
