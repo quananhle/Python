@@ -45,7 +45,6 @@ __Constraints:__
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         # Brute Force
         ### Time Limit Exceeded
-        """
         res = [0] * len(temperatures)
         for day in range(len(temperatures)):
             for future_day in range(day+1, len(temperatures)):
@@ -82,9 +81,6 @@ class Solution:
  ```Python
  class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        # Brute Force
-        ### Time Limit Exceeded
-        """
         # Monotonic Stack
         #### Time Complexity: O(N), traversed through input array
         #### Space Complexity: O(N), space required to build answer array
@@ -103,9 +99,6 @@ class Solution:
 ```Python
  class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        # Brute Force
-        ### Time Limit Exceeded
-        """
         # Dynamic Programming with Tabulations
         #### Time Complexity: O(N), traversed through input array
         #### Space Complexity: O(N), space required to build answer array        
