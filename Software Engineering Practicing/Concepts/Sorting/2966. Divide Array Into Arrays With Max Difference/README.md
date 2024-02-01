@@ -40,3 +40,20 @@ __Constraints:__
 - $1 \le k \le 10^5$
 
 ---
+
+### Sorting
+
+```Python
+class Solution:
+    def divideArray(self, nums: List[int], k: int) -> List[List[int]]:
+        res = list()
+        n = len(nums)
+        nums.sort()
+
+        for i in range(0, n, 3):
+            if nums[i] + k < nums[i + 2]:
+                return []
+            res.append([nums[i], nums[i + 1], nums[i + 2]])
+        
+        return res
+```
