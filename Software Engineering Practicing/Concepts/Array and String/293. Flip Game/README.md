@@ -1,6 +1,6 @@
 ## [293. Flip Game](https://leetcode.com/problems/flip-game)
 
-```Tag```:
+```Tag```: ```Array & String```
 
 #### Difficulty: Easy
 
@@ -31,3 +31,16 @@ __Constraints:__
 
 ---
 
+### Linear Iteration
+
+#### ```split``` & ```join```
+
+```Python
+
+```
+
+#### Splice
+
+```Python
+
+```
