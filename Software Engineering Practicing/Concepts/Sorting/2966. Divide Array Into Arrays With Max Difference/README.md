@@ -15,26 +15,28 @@ Return a 2D array containing all the arrays. If it is impossible to satisfy the 
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: nums = [1,3,4,8,7,9,3,5,1], k = 2
 Output: [[1,1,3],[3,4,5],[7,8,9]]
 Explanation: We can divide the array into the following arrays: [1,1,3], [3,4,5] and [7,8,9].
 The difference between any two elements in each array is less than or equal to 2.
 Note that the order of elements is not important.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: nums = [1,3,3,2,7,3], k = 3
 Output: []
 Explanation: It is not possible to divide the array satisfying all the conditions.
- 
+```
 
-Constraints:
+__Constraints:__
 
-n == nums.length
-1 <= n <= 105
-n is a multiple of 3.
-1 <= nums[i] <= 105
-1 <= k <= 105
+- $n == nums.length$
+- $1 \le n \le 10^5$
+- ```n``` is a multiple of ```3```.
+- $1 \le nums[i] \le 10^5$
+- $1 \le k \le 10^5$
 
 ---
