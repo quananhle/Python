@@ -36,11 +36,33 @@ __Constraints:__
 #### ```split``` & ```join```
 
 ```Python
+class Solution:
+    def generatePossibleNextMoves(self, currentState: str) -> List[str]:
+        res = list()
+        curr_state = [c for c in currentState]
+        n = len(curr_state)
 
+        for i in range(1, n):
+            if curr_state[i - 1] == '+' and curr_state[i] == '+':
+                curr_state[i - 1], curr_state[i] = '-', '-'
+                res.append(''.join(curr_state))
+                curr_state[i - 1], curr_state[i] = '+', '+'
+
+        return res
 ```
 
 #### Splice
 
 ```Python
+class Solution:
+    def generatePossibleNextMoves(self, currentState: str) -> List[str]:
+        n = len(currentState)
+        res = list()
 
+        for i in range(n - 1):
+            if currentState[i] == '+' and currentState[i + 1] == '+':
+                flip = currentState[:i] + '--' + currentState[i+2:]
+                res.append(flip)
+
+        return res
 ```
