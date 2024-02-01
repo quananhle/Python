@@ -12,20 +12,22 @@ Return _all possible states of the string currentState after one valid move_. Yo
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: currentState = "++++"
 Output: ["--++","+--+","++--"]
-Example 2:
+```
 
+__Example 2:__
+```
 Input: currentState = "+"
 Output: []
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= currentState.length <= 500
-currentState[i] is either '+' or '-'.
+- $1 \le currentState.length \le 500$
+- ```currentState[i]``` is either ```'+'``` or ```'-'```.
 
 ---
 
