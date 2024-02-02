@@ -30,3 +30,18 @@ __Constraints:__
 
 ---
 
+### Sliding Window
+
+```Python
+class Solution:
+    def sequentialDigits(self, low: int, high: int) -> List[int]:
+        res = list()
+        digits = "123456789"
+        for length in range(len(str(low)), len(str(high)) + 1):
+            for start in range(9):
+                candidate = int(digits[start:start+length])
+                if low <= candidate <= high:
+                    res.append(candidate)
+        
+        return res
+```
