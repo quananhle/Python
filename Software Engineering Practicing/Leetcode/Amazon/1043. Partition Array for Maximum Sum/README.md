@@ -1,6 +1,6 @@
 ## [1043. Partition Array for Maximum Sum](https://leetcode.com/problems/partition-array-for-maximum-sum)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -38,3 +38,25 @@ __Constraints:__
 - $1 \le k \le arr.length$
 
 ---
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
+
+#### Bottom-Up Dynamic Programming
+
+```Python
+
+```
+
+```Python
+
+```
