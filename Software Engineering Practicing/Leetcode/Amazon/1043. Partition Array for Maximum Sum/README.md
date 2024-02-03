@@ -48,7 +48,24 @@ __Constraints:__
 ```
 
 ```Python
+class Solution:
+    def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
+        n = len(arr)
 
+        @functools.lru_cache(maxsize=None)
+        def dp(start):
+            # Base case
+            if start >= n:
+                return 0
+            
+            curr_max = ans = 0
+            for curr in range(start, min(start + k, n)):
+                curr_max = max(curr_max, arr[curr])
+                ans = max(ans, curr_max * (curr - start + 1) + dp(curr + 1))
+            
+            return ans
+
+        return dp(0)
 ```
 
 #### Bottom-Up Dynamic Programming
