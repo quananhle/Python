@@ -36,9 +36,9 @@ Since the largest window of s only has one 'a', return empty string.
 
 __Constraints:__
 
-- ```m == s.length```
-- ```n == t.length```
-- ```1 <= m, n <= 10^5```
+- $m == s.length$
+- $n == t.length$
+- $1 \le m, n \le 10^5$
 - ```s``` and ```t``` consist of uppercase and lowercase English letters.
  
 ---
