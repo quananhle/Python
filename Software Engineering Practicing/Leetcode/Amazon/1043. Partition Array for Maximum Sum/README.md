@@ -44,7 +44,27 @@ __Constraints:__
 #### Top-Down Dynamic Programming
 
 ```Python
+class Solution:
+    def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
+        n = len(arr)
+        memo = collections.defaultdict(int)
 
+        def dp(start):
+            # Base case
+            if start >= n:
+                return 0
+
+            if start in memo:
+                return memo[start]
+
+            curr_max = 0
+            for curr in range(start, min(n, start + k)):
+                curr_max = max(curr_max, arr[curr])
+                memo[start] = max(memo[start], dp(curr + 1) + (curr - start + 1) * curr_max)
+
+            return memo[start]
+
+        return dp(0)
 ```
 
 ```Python
@@ -87,8 +107,4 @@ class Solution:
                 dp[start] = max(dp[start], curr_max * (curr - start + 1) + dp[curr + 1])
         
         return dp[0]
-```
-
-```Python
-
 ```
