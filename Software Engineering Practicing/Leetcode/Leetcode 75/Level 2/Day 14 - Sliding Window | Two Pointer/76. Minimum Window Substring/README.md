@@ -8,7 +8,7 @@ Given two strings ```s``` and ```t``` of lengths ```m``` and ```n``` respectivel
 
 The testcases will be generated such that the answer is unique.
 
-![image](https://user-images.githubusercontent.com/35042430/225948578-136cbb33-3dde-453d-a5bc-fb65fca9cd2d.png)
+![image](https://github.com/quananhle/Python/assets/35042430/5f3ef991-ec19-40ea-aaee-fd380e4482ba)
 
 ---
 
