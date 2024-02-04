@@ -71,7 +71,22 @@ class Solution:
 #### Bottom-Up Dynamic Programming
 
 ```Python
+class Solution:
+    def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
+        n = len(arr)
+        # Base case
+        if n == k:
+            return max(arr) * n
+        
+        dp = collections.defaultdict(int)
 
+        for start in range(n - 1, -1, -1):
+            curr_max = 0
+            for curr in range(start, min(n, start + k)):
+                curr_max = max(curr_max, arr[curr])
+                dp[start] = max(dp[start], curr_max * (curr - start + 1) + dp[curr + 1])
+        
+        return dp[0]
 ```
 
 ```Python
