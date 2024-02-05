@@ -35,19 +35,35 @@ __Constraints:__
 
 ---
 
-### Hash Map
+### Counter
+
+#### Hash Map
 
 ```Python
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        n = len(s)
-
         counter = collections.defaultdict(int)
         for c in s:
             counter[c] = 1 + counter.get(c, 0)
         
         for i, c in enumerate(s):
             if counter[c] == 1:
+                return i
+        
+        return -1
+```
+
+#### Array
+
+```Python
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        bucket = [0] * 26
+        for c in s:
+            bucket[ord(c) - ord('a')] += 1
+        
+        for i, c in enumerate(s):
+            if bucket[ord(c) - ord('a')] == 1:
                 return i
         
         return -1
