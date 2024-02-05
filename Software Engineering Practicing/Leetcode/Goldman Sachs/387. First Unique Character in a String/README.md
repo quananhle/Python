@@ -4,7 +4,7 @@
 
 #### Difficulty: Easy
 
-Given a string ```s```, find the first non-repeating character in it and return _its index_. If it does not exist, return ```-1```.
+Given a string ```s```, find the __first non-repeating character__ in it and return _its index_. If it does not exist, return ```-1```.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/f78361da-aa7c-46b2-8efe-da5c3a2c3519)
 
@@ -34,3 +34,21 @@ __Constraints:__
 - ```s``` consists of only lowercase English letters.
 
 ---
+
+### Hash Map
+
+```Python
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        n = len(s)
+
+        counter = collections.defaultdict(int)
+        for c in s:
+            counter[c] = 1 + counter.get(c, 0)
+        
+        for i, c in enumerate(s):
+            if counter[c] == 1:
+                return i
+        
+        return -1
+```
