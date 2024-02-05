@@ -1,6 +1,6 @@
 ## [387. First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -10,23 +10,27 @@ Given a string ```s```, find the first non-repeating character in it and return 
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: s = "leetcode"
 Output: 0
-Example 2:
+```
 
+__Example 2:__
+```
 Input: s = "loveleetcode"
 Output: 2
-Example 3:
+```
 
+__Example 3:__
+```
 Input: s = "aabb"
 Output: -1
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= s.length <= 105
-s consists of only lowercase English letters.
+- $1 \le s.length \le 10^5$
+- ```s``` consists of only lowercase English letters.
 
 ---
