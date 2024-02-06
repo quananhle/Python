@@ -40,6 +40,8 @@ __Constraints:__
 
 ### Hash Table
 
+![image](https://leetcode.com/problems/group-anagrams/Figures/49_groupanagrams1.png)
+
 ```Python
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
