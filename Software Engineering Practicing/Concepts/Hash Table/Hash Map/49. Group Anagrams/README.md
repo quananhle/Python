@@ -8,7 +8,7 @@ Given an array of strings ```strs```, group the __anagrams__ together. You can r
 
 An __Anagram__ is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
-![image](https://github.com/quananhle/Python/assets/35042430/48ca11bc-fc68-44a0-924f-d2514255ffd6)
+![image](https://github.com/quananhle/Python/assets/35042430/93a0ff69-25f3-418a-918e-7bdc0b924ea2)
 
 ---
 
