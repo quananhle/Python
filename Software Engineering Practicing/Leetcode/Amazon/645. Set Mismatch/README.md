@@ -82,7 +82,17 @@ class Solution:
 ### Sorting
 
 ```Python
-
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        nums.sort()
+        n = len(nums)
+        duplicate = missing = 1
+        for i in range(1, n):
+            if nums[i] == nums[i - 1]:
+                duplicate = nums[i]
+            elif nums[i] > nums[i - 1] + 1:
+                missing = nums[i - 1] + 1
+        return [duplicate, n if nums[n - 1] != n else missing]
 ```
 
 ---
