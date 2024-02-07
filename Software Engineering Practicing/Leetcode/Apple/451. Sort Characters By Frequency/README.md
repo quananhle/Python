@@ -37,14 +37,19 @@ Note that 'A' and 'a' are treated as two different characters.
 ```
 
 __Constraints:__
-```
-1 <= s.length <= 5 * 105
-s consists of uppercase and lowercase English letters and digits.
-```
+
+- $1 \le s.length \le 5 * 10^5$
+- ```s``` consists of uppercase and lowercase English letters and digits.
 
 ---
 
-### HashMap and Sort
+### Hash Map & Priority Queue
+
+```Python
+
+```
+
+### Hash Map & Sort
 
 ![image](https://leetcode.com/problems/sort-characters-by-frequency/Figures/451/hashmap.png)
 
