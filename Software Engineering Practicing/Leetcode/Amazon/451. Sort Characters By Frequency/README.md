@@ -1,4 +1,6 @@
-## 451. Sort Characters By Frequency
+## [451. Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency)
+
+```Tag```: ```Hash Map``` ```Priority Queue```
 
 #### Difficulty: Medium
 
