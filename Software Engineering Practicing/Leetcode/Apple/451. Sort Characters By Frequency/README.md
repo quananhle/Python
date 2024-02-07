@@ -1,6 +1,6 @@
 ## [451. Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency)
 
-```Tag```: ```Hash Map``` ```Priority Queue```
+```Tag```: ```Hash Map``` ```Priority Queue``` ```Bucket Sort```
 
 #### Difficulty: Medium
 
@@ -113,7 +113,7 @@ class Solution:
 
 #### Complexity Analysis
 
-- __Time Complexity__: $\mathcal{O}(N \cdot \log{}N)$
+- __Time Complexity__: $\mathcal{O}(N \cdot \log{}N)$ or $\mathcal{O}(N + k \log{} k)$.
 - __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
@@ -176,20 +176,18 @@ class Solution(object):
         # Multiset and Bucket Sort
         #### Time Complexity: O(N), traverse through the length of input s
         #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
-        if not s:
-            return s
         counter = collections.Counter(s)
         max_freq = max(counter.values())
-        # Bucket sort the characters by frequency
-        bucket = [[] for _ in range(max_freq+1)]
-        # Extend size to extra 1 for 0th-index placeholder
-        for char,freq in counter.items():
-            # Sort characters based on frequency
-            bucket[freq].append(char)
-        ans = ""
-        # Get element in decreasing order
-        for i in range(len(bucket)-1, 0, -1):
-            for c in bucket[i]:
-                ans += c * i
-        return ans
+
+        bucket = [[] for _ in range(max_freq + 1)]
+        for key, val in counter.items():
+            bucket[val].append(key)
+        
+        res = list()
+        for freq in range(max_freq, 0, -1):
+            for c in bucket[freq]:
+                res.append(c * freq)
+        
+        return "".join(res)
+
 ```
