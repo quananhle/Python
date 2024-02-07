@@ -6,7 +6,7 @@ Given a string ```s```, sort it in __decreasing order__ based on the __frequency
 
 Return the _sorted string_. If there are multiple answers, return _any_ of them.
 
-![image](https://user-images.githubusercontent.com/35042430/205841751-b270e812-0e87-4d06-adcd-37e7039662a0.png)
+![image](https://github.com/quananhle/Python/assets/35042430/bcd529b1-b1e0-4ffb-8bae-915cfd4271d6)
 
 ---
 
