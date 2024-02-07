@@ -48,7 +48,7 @@ __Constraints:__
 #### Complexity Analysis
 
 - __Time Complexity__: $\mathcal{O}(N \cdot \log{}N)$
-- __Space Complexity__: $\mathcal{O}(N)
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
@@ -114,7 +114,7 @@ class Solution:
 #### Complexity Analysis
 
 - __Time Complexity__: $\mathcal{O}(N \cdot \log{}N)$
-- __Space Complexity__: $\mathcal{O}(N)
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution(object):
@@ -164,7 +164,7 @@ class Solution(object):
 #### Complexity Analysis
 
 - __Time Complexity__: $\mathcal{O}(N)$
-- __Space Complexity__: $\mathcal{O}(N)
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution(object):
