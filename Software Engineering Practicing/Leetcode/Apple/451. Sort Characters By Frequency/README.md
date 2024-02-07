@@ -45,6 +45,11 @@ __Constraints:__
 
 ### Hash Map & Priority Queue
 
+#### Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(N \cdot \log{}N)$
+- __Space Complexity__: $\mathcal{O}(N)
+
 ```Python
 class Solution:
     def frequencySort(self, s: str) -> str:
@@ -69,8 +74,6 @@ class Solution:
 class Solution:
     def frequencySort(self, s: str) -> str:
         # Priority Queue with Heap
-        #### Time Complexity: O(N), traverse through the length of input s
-        #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
         
         # Using reverse sliding
         counter = collections.Counter(s)
@@ -88,9 +91,7 @@ class Solution:
 class Solution:
     def frequencySort(self, s: str) -> str:
         # Priority Queue with Heap
-        #### Time Complexity: O(N), traverse through the length of input s
-        #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
-        
+
         # Using negative frequencies
         counter = collections.Counter(s)
         priority_queue = list()
@@ -109,6 +110,11 @@ class Solution:
 ![image](https://leetcode.com/problems/sort-characters-by-frequency/Figures/451/hashmap.png)
 
 ![image](https://leetcode.com/problems/sort-characters-by-frequency/Figures/451/hashmap_sorted.png)
+
+#### Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(N \cdot \log{}N)$
+- __Space Complexity__: $\mathcal{O}(N)
 
 ```Python
 class Solution(object):
@@ -154,6 +160,11 @@ class Solution(object):
 ```
 
 ### Multiset and Bucket Sort
+
+#### Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)
 
 ```Python
 class Solution(object):
