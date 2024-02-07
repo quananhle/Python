@@ -10,7 +10,7 @@ You are given an integer array ```nums``` representing the data status of this s
 
 Find the number that occurs twice and the number that is missing and return _them in the form of an array_.
 
-![image](https://github.com/quananhle/Python/assets/35042430/0371b4a8-36b0-4ff2-8693-366d099f9da3)
+![image](https://github.com/quananhle/Python/assets/35042430/ee9a3daa-f0bc-4a2f-bb53-0850f09db38f)
 
 ---
 
