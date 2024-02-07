@@ -46,7 +46,28 @@ __Constraints:__
 ### Hash Map & Priority Queue
 
 ```Python
-### Priority Queue with Heap
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        h = list()
+        res = list()
+
+        counter = collections.defaultdict(int)
+        for c in s:
+            counter[c] = 1 + counter.get(c, 0)
+        
+        for key, val in counter.items():
+            heapq.heappush(h, (-val, key))
+        
+        while h:
+            n, c = heapq.heappop(h)
+            res.extend([c * (-n)])
+
+        return "".join(res)
+```
+
+```Python
+class Solution:
+    def frequencySort(self, s: str) -> str:
         # Priority Queue with Heap
         #### Time Complexity: O(N), traverse through the length of input s
         #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
@@ -64,7 +85,8 @@ __Constraints:__
 ```
 
 ```Python
-### Priority Queue with Heap
+class Solution:
+    def frequencySort(self, s: str) -> str:
         # Priority Queue with Heap
         #### Time Complexity: O(N), traverse through the length of input s
         #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
