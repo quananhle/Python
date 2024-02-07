@@ -46,6 +46,39 @@ __Constraints:__
 ### Hash Map & Priority Queue
 
 ```Python
+### Priority Queue with Heap
+        # Priority Queue with Heap
+        #### Time Complexity: O(N), traverse through the length of input s
+        #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
+        
+        # Using reverse sliding
+        counter = collections.Counter(s)
+        priority_queue = list()
+        for char, freq in counter.items():
+            heapq.heappush(priority_queue, (freq, char))
+        res = list()
+        for _ in range(len(priority_queue)):
+            freq, char = heapq.heappop(priority_queue)
+            res += freq*char
+        return res[::-1]
+```
+
+```Python
+### Priority Queue with Heap
+        # Priority Queue with Heap
+        #### Time Complexity: O(N), traverse through the length of input s
+        #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
+        
+        # Using negative frequencies
+        counter = collections.Counter(s)
+        priority_queue = list()
+        for char, freq in counter.items():
+            heapq.heappush(priority_queue, (-freq, char))
+        res = list()
+        for _ in range(len(priority_queue)):
+            freq, char = heapq.heappop(priority_queue)
+            res += (-freq)*char
+        return res
 
 ```
 
@@ -126,41 +159,4 @@ class Solution(object):
             for c in bucket[i]:
                 ans += c * i
         return ans
-```
-
-```Python
-### Priority Queue with Heap
-        # Priority Queue with Heap
-        #### Time Complexity: O(N), traverse through the length of input s
-        #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
-        
-        # Using reverse sliding
-        counter = collections.Counter(s)
-        priority_queue = list()
-        for char, freq in counter.items():
-            heapq.heappush(priority_queue, (freq, char))
-        res = list()
-        for _ in range(len(priority_queue)):
-            freq, char = heapq.heappop(priority_queue)
-            res += freq*char
-        return res[::-1]
-```
-
-```Python
-### Priority Queue with Heap
-        # Priority Queue with Heap
-        #### Time Complexity: O(N), traverse through the length of input s
-        #### Space Complexity: O(N), constant space required for HashMap to store 26 characters, but output may keep up to the size of input s
-        
-        # Using negative frequencies
-        counter = collections.Counter(s)
-        priority_queue = list()
-        for char, freq in counter.items():
-            heapq.heappush(priority_queue, (-freq, char))
-        res = list()
-        for _ in range(len(priority_queue)):
-            freq, char = heapq.heappop(priority_queue)
-            res += (-freq)*char
-        return res
-
 ```
