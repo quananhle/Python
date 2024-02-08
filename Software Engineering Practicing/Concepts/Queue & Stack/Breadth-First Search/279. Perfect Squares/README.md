@@ -62,6 +62,28 @@ __Constraints:__
 ```Python
 class Solution:
     def numSquares(self, n: int) -> int:
+        memo = collections.defaultdict(int)
+
+        def dp(remaining):
+            # Base cases: only remaining == 0 is valid answer, remaining < 0 is invalid
+            if remaining < 0:
+                return math.inf
+            if remaining == 0:
+                return 0
+            
+            if remaining in memo:
+                return memo[remaining]
+
+            # DP Transition:
+            memo[remaining] = 1 + min(dp(remaining - (i**2)) for i in range(1, int(math.sqrt(n)) + 1))
+            return memo[remaining]
+
+        return dp(n)
+```
+
+```Python
+class Solution:
+    def numSquares(self, n: int) -> int:
         @functools.lru_cache(maxsize=None)
         def dp(remaining):
             # Base cases
@@ -76,6 +98,21 @@ class Solution:
         return dp(n)
 ```
 
+#### Bottom-Up Dynamic Programming
+
+```Python
+class Solution:
+    def numSquares(self, n: int) -> int:
+        dp = [math.inf for _ in range(n + 1)]
+        dp[0] = 0
+
+        for remaining in range(1, n + 1):
+            dp[remaining] = 1 + min(dp[remaining - (i**2)] for i in range(1, int(math.sqrt(n)) + 1))
+
+        return dp[n]
+```
+
+---
 ### Breadth-First Search
 
 ```Python
