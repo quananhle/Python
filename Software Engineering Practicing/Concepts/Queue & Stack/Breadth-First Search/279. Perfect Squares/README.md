@@ -57,6 +57,11 @@ __Constraints:__
 
 ### Dynamic Programming Framework
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N\cdot\sqrt{N})$
+- __Space Complexity__: $\mathcal{O}(N)$
+
 #### Top-Down Dynamic Programming
 
 ```Python
