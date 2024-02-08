@@ -1,6 +1,6 @@
 ## [279. Perfect Squares](https://leetcode.com/problems/perfect-squares)
 
-```Tag```: ```Queue``` ```Breadth-First Search``` ```Dynamic Programming``` ```Greedy```
+```Tag```: ```Queue``` ```Breadth-First Search``` ```Dynamic Programming``` ```Greedy``` ```Math```
 
 #### Difficulty: Medium
 
@@ -27,11 +27,39 @@ Explanation: 13 = 4 + 9.
 ```
  
 __Constraints:__
-```
-1 <= n <= 104
-```
+
+- $1 \le n \le 10^4$
 
 ---
+
+### Brute Force
+
+#### Recursion
+
+```Python
+
+```
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def numSquares(self, n: int) -> int:
+        @functools.lru_cache(maxsize=None)
+        def dp(remaining):
+            # Base cases
+            if remaining == 0:
+                return 0
+            if remaining < 0:
+                return math.inf
+            
+            # DP Transitions
+            return 1 + min(dp(remaining - (i**2)) for i in range(1, int(math.sqrt(n)) + 1))
+        
+        return dp(n)
+```
 
 ### Breadth-First Search
 
