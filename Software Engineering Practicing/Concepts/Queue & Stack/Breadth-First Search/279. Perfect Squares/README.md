@@ -37,7 +37,22 @@ __Constraints:__
 #### Recursion
 
 ```Python
+        square_nums = [i**2 for i in range(1, int(math.sqrt(n))+1)]
 
+        def helper(k):
+            if k in square_nums:
+                return 1
+            ans = math.inf
+
+            for square in square_nums:
+                if k < square:
+                    break
+                new_num = helper(k - square) + 1
+                ans = min(ans, new_num)
+            
+            return ans
+
+        return helper(n)
 ```
 
 ### Dynamic Programming Framework
