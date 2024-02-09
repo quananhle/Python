@@ -15,20 +15,22 @@ If there are multiple solutions, return _any of them_.
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: n = 12
 Output: 3
 Explanation: 12 = 4 + 4 + 4.
-Example 2:
+```
 
+__Example 2:__
+```
 Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
- 
+```
 
-Constraints:
+__Constraints:__
 
-1 <= n <= 104
+- $1 \le n \le 10^4$
 
 ---
