@@ -1,6 +1,6 @@
 ## [368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Medium
 
@@ -34,3 +34,37 @@ __Constraints:__
 - $1 \le n \le 10^4$
 
 ---
+
+### Dynamic Programming Framework
+
+#### Top-Down Dynamic Programming
+
+```Python
+class Solution:
+    def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
+        if len(nums) == 0:
+            return []
+
+        nums.sort()
+        n = len(nums)
+
+        @functools.lru_cache(maxsize=None)
+        def dp(curr):
+            tail = nums[curr]
+            res = list()
+
+            for i in range(0, curr):
+                if tail % nums[i] == 0:
+                    subset = dp(i)
+                    if len(res) < len(subset):
+                        res = subset
+                    
+            res = res.copy()
+            res.append(tail)
+            
+            # memo[curr] = res
+            return res
+
+        return max([dp(curr) for curr in range(n)], key=len)
+```
+
