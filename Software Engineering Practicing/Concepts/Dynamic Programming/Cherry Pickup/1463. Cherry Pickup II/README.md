@@ -1,6 +1,6 @@
 ## [1463. Cherry Pickup II](https://leetcode.com/problems/cherry-pickup-ii)
 
-```Tag```:
+```Tag```: ```Dynamic Programming```
 
 #### Difficulty: Hard
 
@@ -22,31 +22,35 @@ Both robots should reach the bottom row in grid.
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2020/04/29/sample_1_1802.png)
+```
 Input: grid = [[3,1,1],[2,5,1],[1,5,5],[2,1,1]]
 Output: 24
 Explanation: Path of robot #1 and #2 are described in color green and blue respectively.
 Cherries taken by Robot #1, (3 + 2 + 5 + 2) = 12.
-Cherries taken by Robot #2, (1 + 5 + 5 + 1) = 12.
+Cherries taken by Robot #2, (1 + 5 + 5 +1) = 12.
 Total of cherries: 12 + 12 = 24.
-Example 2:
+```
 
+__Example 2:__
 
+![image](https://assets.leetcode.com/uploads/2020/04/23/sample_2_1802.png)
+```
 Input: grid = [[1,0,0,0,0,0,1],[2,0,0,0,0,3,0],[2,0,9,0,0,0,0],[0,3,0,5,4,0,0],[1,0,2,3,0,0,6]]
 Output: 28
 Explanation: Path of robot #1 and #2 are described in color green and blue respectively.
 Cherries taken by Robot #1, (1 + 9 + 5 + 2) = 17.
 Cherries taken by Robot #2, (1 + 3 + 4 + 3) = 11.
 Total of cherries: 17 + 11 = 28.
- 
+```
 
-Constraints:
+__Constraints:__
 
-rows == grid.length
-cols == grid[i].length
-2 <= rows, cols <= 70
-0 <= grid[i][j] <= 100
+- $rows == grid.length$
+- $cols == grid[i].length$
+- $2 \le rows, cols \le 70$
+- $0 \le grid[i][j] \le 100$
 
 ---
