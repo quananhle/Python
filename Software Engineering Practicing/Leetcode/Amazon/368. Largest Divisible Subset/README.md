@@ -62,7 +62,6 @@ class Solution:
             res = res.copy()
             res.append(tail)
             
-            # memo[curr] = res
             return res
 
         return max([dp(curr) for curr in range(n)], key=len)
