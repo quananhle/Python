@@ -21,3 +21,32 @@ Both robots should reach the bottom row in grid.
 ![image](https://github.com/quananhle/Python/assets/35042430/d158902b-3408-4d99-b2f7-e525bec1a86e)
 
 ---
+
+Example 1:
+
+
+Input: grid = [[3,1,1],[2,5,1],[1,5,5],[2,1,1]]
+Output: 24
+Explanation: Path of robot #1 and #2 are described in color green and blue respectively.
+Cherries taken by Robot #1, (3 + 2 + 5 + 2) = 12.
+Cherries taken by Robot #2, (1 + 5 + 5 + 1) = 12.
+Total of cherries: 12 + 12 = 24.
+Example 2:
+
+
+Input: grid = [[1,0,0,0,0,0,1],[2,0,0,0,0,3,0],[2,0,9,0,0,0,0],[0,3,0,5,4,0,0],[1,0,2,3,0,0,6]]
+Output: 28
+Explanation: Path of robot #1 and #2 are described in color green and blue respectively.
+Cherries taken by Robot #1, (1 + 9 + 5 + 2) = 17.
+Cherries taken by Robot #2, (1 + 3 + 4 + 3) = 11.
+Total of cherries: 17 + 11 = 28.
+ 
+
+Constraints:
+
+rows == grid.length
+cols == grid[i].length
+2 <= rows, cols <= 70
+0 <= grid[i][j] <= 100
+
+---
