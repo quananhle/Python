@@ -105,6 +105,8 @@ class Solution:
                 return num
 ```
 
+---
+
 ### Hash Map
 
 __Complexity Analysis__
@@ -119,6 +121,8 @@ class Solution:
         return max(counts.keys(), key=counts.get)
 ```
 
+---
+
 ### Sorting
 
 __Complexity Analysis__
@@ -132,6 +136,8 @@ class Solution:
         nums.sort()
         return nums[len(nums) // 2]
 ```
+
+---
 
 ### Bitwise Manipulation
 
@@ -162,8 +168,50 @@ class Solution:
         return candidate
 ```
 
+---
+
 ### Math
 
 #### Randomization
 
 Because more than $\lfloor \dfrac{n}{2} \rfloor$ array indices are occupied by the majority element, a random array index is likely to contain the majority element.
+
+Complexity Analysis
+- __Time Complexity__: $\mathcal{O}(\inft)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+import random
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        majority = len(nums) // 2
+        while True:
+            candidate = random.choice(nums)
+            if sum(1 for elem in nums if elem == candidate) > majority:
+                return candidate
+```
+
+```Python
+import random
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        majority = len(nums) // 2
+        seen = set()
+        while True:
+            candidate = random.choice(nums)
+            if candidate in seen:
+                continue
+            seen.add(candidate)
+            if sum(1 for elem in nums if elem == candidate) > majority:
+                return candidate
+```
+
+---
+
+### Divide & Conquer
+
+```Python
+
+```
