@@ -64,6 +64,7 @@
 - :no_entry::no_entry::no_entry: [135. Candy](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Most%20Frequent/135.%20Candy)
 - :four_leaf_clover: [163. Missing Ranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/163.%20Missing%20Ranges)
 - :four_leaf_clover: [168. Excel Sheet Column Title](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/168.%20Excel%20Sheet%20Column%20Title) ```Math```
+- :four_leaf_clover: [169. Majority Element](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/169.%20Majority%20Element) ```Array & String``` ```Sort``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Boyer-Moore Voting Algorithm``` ```Divide & Conquer``` ```Math```
 - :four_leaf_clover: [228. Summary Ranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/228.%20Summary%20Ranges)
 - :warning::warning: [229. Majority Element II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Algorithms/Boyer-Moore%20Voting%20Algorithm/229.%20Majority%20Element%20II) ```Hash Map``` ```Boyer-Moore Voting Algorithm```
 - :warning::warning: [238. Product of Array Except Self](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/238.%20Product%20of%20Array%20Except%20Self) ```Prefix Sum``` ```Two Pointers```
