@@ -37,6 +37,49 @@ __Follow-up__: Could you solve the problem in linear time and in ```O(1)``` spac
 
 ### Brute Force
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        # Time Limit Exceeded
+        n = len(nums)
+        for i in range(n):
+            curr = 0
+            for j in range(n):
+                if nums[i] == nums[j]:
+                    curr += 1
+                if curr > n // 2:
+                    return nums[i]
+    
+        return -1
+```
+
+#### Optimized Brute Force + Hash Set
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        n = len(nums)
+        seen = set()
+        for i in range(n):
+            if nums[i] in seen:
+                continue
+            seen.add(nums[i])
+            curr = 0
+            for j in range(n):
+                if nums[i] == nums[j]:
+                    curr += 1
+                if curr > n // 2:
+                    return nums[i]
+    
+        return -1
 ```
