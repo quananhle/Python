@@ -1,6 +1,6 @@
 ## [169. Majority Element](https://leetcode.com/problems/majority-element)
 
-```Tag```: ```Array & String``` ```Sort``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Boyce-Moore Algorithms``` ```Divide & Conquer```
+```Tag```: ```Array & String``` ```Sort``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Boyce-Moore Algorithms``` ```Divide & Conquer``` ```Math```
 
 #### Difficulty: Easy
 
@@ -135,6 +135,11 @@ class Solution:
 
 ### Bitwise Manipulation
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N\log{C})$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
@@ -156,3 +161,9 @@ class Solution:
             
         return candidate
 ```
+
+### Math
+
+#### Randomization
+
+Because more than $\lfloor \dfrac{n}{2} \rfloor$ array indices are occupied by the majority element, a random array index is likely to contain the majority element.
