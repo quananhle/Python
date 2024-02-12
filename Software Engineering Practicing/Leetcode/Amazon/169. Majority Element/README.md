@@ -1,6 +1,6 @@
 ## [169. Majority Element](https://leetcode.com/problems/majority-element)
 
-```Tag```: ```Array & String``` ```Sort``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Boyce-Moore Algorithms``` ```Divide & Conquer``` ```Math```
+```Tag```: ```Array & String``` ```Sort``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Boyer-Moore Voting Algorithm``` ```Divide & Conquer``` ```Math```
 
 #### Difficulty: Easy
 
@@ -211,6 +211,37 @@ class Solution:
 ---
 
 ### Divide & Conquer
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N\log{N})$
+- __Space Complexity__: $\mathcal{O}(\log{N})$
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        def divide_and_conquer(lo, hi):
+            if lo == hi:
+                return nums[lo]
+            
+            mi = lo + (hi - lo) // 2
+            left = divide_and_conquer(lo, mi)
+            right = divide_and_conquer(mi + 1, hi)
+
+            if left == right:
+                return left
+            
+            left_cnt = sum(1 for i in range(lo, hi + 1) if nums[i] == left)
+            right_cnt = sum(1 for i in range(lo, hi + 1) if nums[i] == right)
+
+            return left if left_cnt > right_cnt else right
+    
+        return divide_and_conquer(0, len(nums) - 1)
+```
+
+---
+
+### Boyer-Moore Voting Algorithm
 
 ```Python
 
