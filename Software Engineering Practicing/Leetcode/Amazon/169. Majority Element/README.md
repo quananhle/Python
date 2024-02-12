@@ -177,7 +177,7 @@ class Solution:
 Because more than $\lfloor \dfrac{n}{2} \rfloor$ array indices are occupied by the majority element, a random array index is likely to contain the majority element.
 
 Complexity Analysis
-- __Time Complexity__: $\mathcal{O}(\inft)$
+- __Time Complexity__: $\mathcal{O}(\infty)$
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
