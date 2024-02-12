@@ -243,6 +243,23 @@ class Solution:
 
 ### Boyer-Moore Voting Algorithm
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        count = 0
+        candidate = None
+
+        for num in nums:
+            # If num is not a majority element, its count will eventually be 0.
+            if not count:
+                candidate = num
+            # It is impossible to discard more majority elements than minority elements
+            count += (1 if num == candidate else -1)
+        
+        return candidate
 ```
