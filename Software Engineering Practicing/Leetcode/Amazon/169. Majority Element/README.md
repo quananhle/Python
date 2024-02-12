@@ -1,10 +1,10 @@
 ## [169. Majority Element](https://leetcode.com/problems/majority-element)
 
-```Tag```: ```Array & String``` ```Sort``` ```Hash Map``` ```Bitwise Manipulations```
+```Tag```: ```Array & String``` ```Sort``` ```Hash Map``` ```Bitwise Manipulations``` ```Boyce-Moore Algorithms``` ```Divide & Conquer```
 
 #### Difficulty: Easy
 
-Given an array nums of size ```n```, return _the majority element_.
+Given an array ```nums``` of size ```n```, return _the majority element_.
 
 The majority element is the element that appears more than $⌊n / 2⌋$ times. You may assume that the majority element always exists in the array.
 
@@ -34,3 +34,9 @@ __Constraints:__
 __Follow-up__: Could you solve the problem in linear time and in ```O(1)``` space?
 
 ---
+
+### Brute Force
+
+```Python
+
+```
