@@ -107,6 +107,8 @@ class Solution:
 
 ### Hash Map
 
+__Complexity Analysis__
+
 - __Time Complexity__: $\mathcal{O}(N)$
 - __Space Complexity__: $\mathcal{O}(N)$
 
@@ -115,4 +117,42 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         counts = collections.Counter(nums)
         return max(counts.keys(), key=counts.get)
+```
+
+### Sorting
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N\log{N})$
+- __Space Complexity__: $\mathcal{O}(N)$ or $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        nums.sort()
+        return nums[len(nums) // 2]
+```
+
+### Bitwise Manipulation
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        n = len(nums)
+        candidate = 0
+        bit_mask = 1
+
+        for _ in range(31):
+            bit_count = sum(bool(num & bit_mask) for num in nums)
+            if bit_count > n // 2:
+                candidate += bit_mask
+            # Shift bit to the left one space. i.e. '00100' << 1 = '01000'
+            bit_mask <<= 1
+
+        # In python 1 << 31 will automatically be considered as positive value -> count negative numbers to determine if the majority element is negative
+        is_negative = sum(num < 0 for num in nums) > (n // 2)
+        if is_negative:
+            candidate -= bit_mask
+            
+        return candidate
 ```
