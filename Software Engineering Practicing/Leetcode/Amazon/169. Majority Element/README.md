@@ -1,6 +1,6 @@
 ## [169. Majority Element](https://leetcode.com/problems/majority-element)
 
-```Tag```: ```Array & String``` ```Sort``` ```Hash Map``` ```Bitwise Manipulations``` ```Boyce-Moore Algorithms``` ```Divide & Conquer```
+```Tag```: ```Array & String``` ```Sort``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Boyce-Moore Algorithms``` ```Divide & Conquer```
 
 #### Difficulty: Easy
 
@@ -54,8 +54,17 @@ class Solution:
                     curr += 1
                 if curr > n // 2:
                     return nums[i]
-    
-        return -1
+```
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        # Time Limit Exceeded
+        majority = len(nums) // 2
+        for num in nums:
+            count = sum(1 for elem in nums if elem == num)
+            if count > majority:
+                return num
 ```
 
 #### Optimized Brute Force + Hash Set
@@ -63,7 +72,7 @@ class Solution:
 __Complexity Analysis__
 
 - __Time Complexity__: $\mathcal{O}(N^2)$
-- __Space Complexity__: $\mathcal{O}(1)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
@@ -80,6 +89,30 @@ class Solution:
                     curr += 1
                 if curr > n // 2:
                     return nums[i]
-    
-        return -1
+```
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        seen = set()
+        majority = len(nums) // 2
+        for num in nums:
+            if num in seen:
+                continue
+            seen.add(num)
+            count = sum(1 for elem in nums if elem == num)
+            if count > majority:
+                return num
+```
+
+### Hash Map
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        counts = collections.Counter(nums)
+        return max(counts.keys(), key=counts.get)
 ```
