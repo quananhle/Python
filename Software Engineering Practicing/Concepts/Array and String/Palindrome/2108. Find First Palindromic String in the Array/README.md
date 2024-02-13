@@ -1,6 +1,6 @@
 ## [2108. Find First Palindromic String in the Array](https://leetcode.com/problems/find-first-palindromic-string-in-the-array)
 
-```Tag```: ```Array & String```
+```Tag```: ```Array & String``` ```Two Pointers```
 
 #### Difficulty: Easy
 
@@ -44,6 +44,8 @@ __Constraints:__
 
 ### Check Palindrome
 
+#### Two Pointers
+
 ```Python
 class Solution:
     def firstPalindrome(self, words: List[str]) -> str:
@@ -60,4 +62,16 @@ class Solution:
                 return word
         
         return ''
+```
+
+### Reverse
+
+```Python
+class Solution:
+    def firstPalindrome(self, words: List[str]) -> str:
+        for word in words:
+            if word == word[::-1]:
+                return word
+        
+        return ""
 ```
