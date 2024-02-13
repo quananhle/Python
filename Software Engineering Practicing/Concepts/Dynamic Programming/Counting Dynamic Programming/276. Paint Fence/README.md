@@ -1,4 +1,4 @@
-## 276. Paint Fence
+## [276. Paint Fence](https://leetcode.com/problems/paint-fence)
 
 ```Tag```: ```Dynamic Programming```
 
