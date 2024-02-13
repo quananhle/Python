@@ -87,10 +87,66 @@ class Solution:
         return ans
 ```
 
+#### Optimized Brute Force
+
+```Python
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+        memo = collections.defaultdict(int)
+
+        def is_palindrome(string):
+            left, right = 0, len(string) - 1
+
+            while left < right:
+                if string[left] != string[right]:
+                    return False
+                left += 1; right -= 1
+
+            return True
+
+        for start in range(n):
+            for end in range(n, start, -1):
+                if s[start:end] in memo:
+                    ans += memo[s[start:end]]
+                    continue
+                memo[s[start:end]] = is_palindrome(s[start:end])
+                ans += memo[s[start:end]]
+
+        return ans
+```
+
 ---
 
 ### Dynamic Programming
 
-```Python
+#### Bottom-Up Dynamic Programming
 
+```Python
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+
+        dp = [[1] * n for _ in range(n)]
+
+        # Base case: single letter substrings
+        for i in range(n):
+            ans += dp[i][i]
+
+        # Base case: double letter substrings
+        for i in range(n - 1):
+            dp[i][i + 1] = s[i] == s[i + 1]
+            ans += dp[i][i + 1]
+
+        # All other cases: substrings of length 3 to n
+        for length in range(3, n + 1):
+            for start in range(n - length + 1):
+                end = start + length - 1
+                dp[start][end] = dp[start + 1][end - 1] and (s[start] == s[end])
+                ans += dp[start][end]
+
+        return ans
 ```
+
