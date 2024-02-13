@@ -39,6 +39,11 @@ __Constraints:__
 
 #### Check All Substrings
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^3)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def countSubstrings(self, s: str) -> int:
@@ -80,4 +85,12 @@ class Solution:
                 ans += is_palindrome(s[start:end])
 
         return ans
+```
+
+---
+
+### Dynamic Programming
+
+```Python
+
 ```
