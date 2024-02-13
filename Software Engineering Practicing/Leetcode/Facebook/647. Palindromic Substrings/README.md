@@ -12,4 +12,6 @@ A substring is a contiguous sequence of characters within the string.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/80ad76d6-2c39-4082-bdc5-e62d2ccac511)
 
+![image](https://github.com/quananhle/Python/assets/35042430/052acd1b-ccb0-4b84-a287-0a9b5f971741)
+
 ---
