@@ -1,6 +1,6 @@
 ## [276. Paint Fence](https://leetcode.com/problems/paint-fence)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Recursion```
 
 #### Difficulty: Medium
 
@@ -45,6 +45,39 @@ __Constraints:__
 
 ---
 
+### Brute Foce
+
+```Python
+class Solution:
+    def numWays(self, n: int, k: int) -> int:
+        if n == 1:
+            return k
+        elif n == 2:
+            return k * k
+        else:
+            return (k - 1) * (self.numWays(n - 1, k) + self.numWays(n - 2, k))
+```
+
+```Python
+class Solution:
+    def numWays(self, n: int, k: int) -> int:
+        def total_ways(curr_fence, paints):
+            # Base cases:
+            # If there is only 1 fence, number of ways to paint = number of k paints
+            if curr_fence == 1:
+                return paints
+            # If there are 2 fences, number of ways to paint = number of k paints * k
+            elif curr_fence == 2:
+                return paints * paints
+            # If there are 3 or more fences, there are two ways:
+            #   - Choose the differenet paint
+            #   - Chose the same paint, as long as (curr_fence-2)th fence has different paint
+            else:
+                return (paints - 1) * (total_ways(curr_fence - 1, paints) + total_ways(curr_fence - 2, paints))
+
+        return total_ways(n, k)
+```
+
 A dynamic programming algorithm typically has 3 components. Learning these components is extremely valuable, as most dynamic programming problems can be solved this way.
 
 - First, we need some function or array that represents the answer to the problem for a given state. For this problem, let's say that we have a function ```dp```, where ```dp(i)``` returns the number of ways to paint ```i``` posts. Because we only have one argument, this is a one-dimensional dynamic programming problem.
@@ -55,7 +88,9 @@ A dynamic programming algorithm typically has 3 components. Learning these compo
 
 - The third component is establishing __base cases__. If we have one post, there are ```k``` ways to paint it. If we have two posts, then there are ```k * k``` ways to paint it (since we are allowed to paint two posts in a row be the same color). Therefore, ```dp(1) = k```, ```dp(2) = k * k```.
 
-### The Framework
+### Dynamic Programming Framework
+
+![image](https://leetcode.com/problems/paint-fence/Figures/276/276_1.png)
 
 #### Top-Down Dynamic Programming (Recursion)
 
