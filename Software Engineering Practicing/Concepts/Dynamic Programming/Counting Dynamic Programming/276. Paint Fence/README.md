@@ -126,25 +126,24 @@ class Solution:
 ```Python
 class Solution:
     def numWays(self, n: int, k: int) -> int:
-        # Top-Down DP (Recursion)
-        @lru_cache(None)
-        def dp(i):
+
+        @functools.lru_cache(maxsize=None)
+        def dp(curr_post):
             # Base case
-            # Check if there is only 1 post, number of ways = number of k
-            if i == 1:
-                return i * k
-            # Check if there are 2 posts, number of ways = k * k
-            if i == 2:
+            if curr_post == 1:
+                return k
+            if curr_post == 2:
                 return k * k
-
-            # Recurrence relation
-            # Less 1 paint from k to paint every time
-            # Paint the current post different color than the previous post: (k - 1) * dp(i - 1)
-            # Paint the current post same color as the previous post: (k - 1) * dp(i - 2)
-            i = (k - 1) * (dp(i - 1) + dp(i - 2))
-
-            return i
-
+            
+            # DP Transitions: choose the same paint or choose the different paint for the current post?
+            # - Choose the different paint, move on to the next post
+            diff = (k - 1) * dp(curr_post - 1)
+            # - Choose the same paint, iff (curr_post-2)th post has different color than (curr_post-1)th fence
+            same = (k - 1) * dp(curr_post - 2) 
+            
+            # Add two scenarios together
+            return diff + same
+        
         return dp(n)
 ```
 
