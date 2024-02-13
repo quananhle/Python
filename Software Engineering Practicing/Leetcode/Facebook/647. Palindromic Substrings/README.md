@@ -34,3 +34,27 @@ __Constraints:__
 - ```s``` consists of lowercase English letters.
 
 ---
+
+### Brute Force
+
+#### Check All Substrings
+
+```Python
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+
+        def is_palindrome(string, start, end):
+            while start < end:
+                if string[start] != string[end]:
+                    return False
+                start += 1; end -= 1
+            return True
+
+        for start in range(n):
+            for end in range(start, n):
+                ans += is_palindrome(s, start, end)
+        
+        return ans
+```
