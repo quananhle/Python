@@ -39,6 +39,8 @@ __Constraints:__
 
 #### Top-Down Dynamic Programming
 
+![image](https://leetcode.com/problems/largest-divisible-subset/Figures/368/368_recursion_memoization.png)
+
 ```Python
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
@@ -65,5 +67,20 @@ class Solution:
             return res
 
         return max([dp(curr) for curr in range(n)], key=len)
+```
+
+#### Bottom-Up Dynamic Programming
+
+![image](https://leetcode.com/problems/largest-divisible-subset/Figures/368/368_dp.png)
+
+```Python
+class Solution:
+    def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
+        subsets = {-1: set()}
+
+        for num in sorted(nums):
+            subsets[num] = max([subsets[k] for k in subsets if num % k == 0 or k % num == 0], key=len) | {num}
+        
+        return max(subsets.values(), key=len)
 ```
 
