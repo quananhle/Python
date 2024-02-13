@@ -58,3 +58,26 @@ class Solution:
         
         return ans
 ```
+
+```Python
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+
+        def is_palindrome(string):
+            left, right = 0, len(string) - 1
+
+            while left < right:
+                if string[left] != string[right]:
+                    return False
+                left += 1; right -= 1
+
+            return True
+
+        for start in range(n):
+            for end in range(n, start, -1):
+                ans += is_palindrome(s[start:end])
+
+        return ans
+```
