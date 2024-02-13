@@ -1,6 +1,6 @@
 ## [647. Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings)
 
-```Tag```: ```Dynamic Programming```
+```Tag```: ```Dynamic Programming``` ```Manacher's Algorithm```
 
 #### Difficulty: Medium
 
@@ -121,6 +121,11 @@ class Solution:
 
 ### Dynamic Programming
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(N^2)$
+
 #### Bottom-Up Dynamic Programming
 
 ```Python
@@ -147,6 +152,38 @@ class Solution:
                 dp[start][end] = dp[start + 1][end - 1] and (s[start] == s[end])
                 ans += dp[start][end]
 
+        return ans
+```
+
+---
+
+### Manacher'S Algorithm | Expand Around Possible Centers
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N^2)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        def count_palindrome_around_center(s, lo, hi):
+            ans = 0
+            while 0 <= lo and hi < len(s):
+                if s[lo] != s[hi]:
+                    break
+                lo -= 1; hi += 1
+            
+                ans += 1
+            return ans
+        
+        ans = 0
+        for i in range(len(s)):
+            # Odd-length palindromes, single character center
+            ans += count_palindrome_around_center(s, i, i)
+            # Even-length palindromes, consecutive characters center
+            ans += count_palindrome_around_center(s, i, i + 1)
+        
         return ans
 ```
 
