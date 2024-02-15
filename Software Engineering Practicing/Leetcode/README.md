@@ -93,6 +93,7 @@
 - :four_leaf_clover: [2660. Determine the Winner of a Bowling Game](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2660.%20Determine%20the%20Winner%20of%20a%20Bowling%20Game) ```Brainteasing```
 - :four_leaf_clover: [2706. Buy Two Chocolates](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/2706.%20Buy%20Two%20Chocolates) ```Priority Queue``` ```Counting Sort``` ```Bucket Sort``` ```Greedy Algorithm```
 - :warning::warning: [2966. Divide Array Into Arrays With Max Difference](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Sorting/2966.%20Divide%20Array%20Into%20Arrays%20With%20Max%20Difference) ```Sorting```
+- :warning::warning: [2971. Find Polygon With the Largest Perimeter](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/2971.%20Find%20Polygon%20With%20the%20Largest%20Perimeter) ```Sorting```
 
 ### 2D Array/Matrix
 
