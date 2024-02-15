@@ -1,6 +1,6 @@
 ## [2971. Find Polygon With the Largest Perimeter](https://leetcode.com/problems/find-polygon-with-the-largest-perimeter)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Sorting```
 
 #### Difficulty: Medium
 
@@ -45,3 +45,25 @@ $3 \le n \le 10^5$
 $1 \le nums[i] \le 10^9$
 
 ---
+
+### Sorting
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N\log{N})$
+- __Space Complexity__: $\mathcal{O}(\log N)$ or $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def largestPerimeter(self, nums: List[int]) -> int:
+        nums.sort()
+        running_sum = 0
+        ans = -1
+
+        for num in nums:
+            if num < running_sum:
+                ans = num + running_sum
+            running_sum += num
+        
+        return ans
+```
