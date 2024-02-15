@@ -32,7 +32,7 @@ We cannot have a polygon with either 12 or 50 as the longest side because it is 
 It can be shown that the largest possible perimeter is 12.
 ```
 
-__Example 3:___
+__Example 3:__
 ```
 Input: nums = [5,5,50]
 Output: -1
