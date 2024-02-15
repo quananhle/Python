@@ -41,8 +41,8 @@ Explanation: There is no possible way to form a polygon from nums, as a polygon 
 
 __Constraints:__
 
-$3 \le n \le 10^5$
-$1 \le nums[i] \le 10^9$
+- $3 \le n \le 10^5$
+- $1 \le nums[i] \le 10^9$
 
 ---
 
