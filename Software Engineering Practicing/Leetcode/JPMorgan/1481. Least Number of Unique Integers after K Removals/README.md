@@ -29,7 +29,26 @@ __Constraints:__
 
 ---
 
-### Hash Map & Priority Queue
+### Sorting
+
+```Python
+class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        counter = collections.Counter(arr)
+        # Get the frequencies of all unique elements
+        freqs = list(counter.values())
+        freqs.sort()
+        ans = 0
+
+        for i in range(len(freqs)):
+            # Increment the running count of frequency that can be removed
+            ans += freqs[i]
+            # If running frequency is bigger than k, can only remove up to but not including current element
+            if ans > k:
+                return len(freqs) - i
+```
+
+### Hash Map & Priority Queue (Min Heap)
 
 ```Python
 class Solution:
