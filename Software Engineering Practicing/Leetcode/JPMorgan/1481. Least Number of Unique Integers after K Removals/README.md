@@ -1,6 +1,6 @@
 ## [1481. Least Number of Unique Integers after K Removals](https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals)
 
-```Tag```:
+```Tag```: ```Priority Queue``` ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -28,3 +28,27 @@ __Constraints:__
 - $0 \le k \le arr.length$
 
 ---
+
+### Hash Map & Priority Queue
+
+```Python
+class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        counter = collections.defaultdict(int)
+        for num in arr:
+            counter[num] = 1 + counter.get(num, 0)
+
+        h = list()
+        for key, val in counter.items():
+            heapq.heappush(h, (val, key))
+        
+        while k and h:
+            count, num = heapq.heappop(h)
+            if count == 1:
+                del counter[num]
+            else:
+                heapq.heappush(h, (count-1, num))
+            k -= 1
+        
+        return len(counter)
+```
