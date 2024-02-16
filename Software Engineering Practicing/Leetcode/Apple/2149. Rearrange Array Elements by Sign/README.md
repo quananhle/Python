@@ -45,3 +45,25 @@ __Constraints:__
 - ```nums``` consists of equal number of positive and negative integers.
 
 ---
+
+### Sweep Line Algorithm
+
+![image](https://leetcode.com/problems/remove-interval/Figures/1272/sweep2.png)
+
+__Algorithm__
+
+- Current interval has no overlaps with ```toBeRemoved``` one. That means there is nothing to take care of, just update the output.
+
+![image](https://leetcode.com/problems/remove-interval/Figures/1272/no_overlaps.png)
+
+- The second situation is when ```toBeRemoved``` interval is inside of the current interval. Then one has to add two non-overlapping parts of the current interval in the output.
+
+![image](https://leetcode.com/problems/remove-interval/Figures/1272/inside2.png)
+
+- "Left" overlap.
+
+![image](https://leetcode.com/problems/remove-interval/Figures/1272/left_overlap.png)
+
+- "Right" overlap.
+
+![image](https://leetcode.com/problems/remove-interval/Figures/1272/right_overlap.png)
