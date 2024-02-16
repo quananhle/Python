@@ -67,3 +67,24 @@ __Algorithm__
 - "Right" overlap.
 
 ![image](https://leetcode.com/problems/remove-interval/Figures/1272/right_overlap.png)
+
+```Python
+class Solution:
+    def removeInterval(self, intervals: List[List[int]], toBeRemoved: List[int]) -> List[List[int]]:
+        removed_start, removed_end = toBeRemoved
+        res = list()
+
+        for curr_start, curr_end in intervals:
+            # Case 1: no overlap
+            if curr_start > removed_end or curr_end < removed_start:
+                res.append([curr_start, curr_end])
+            else:
+                # Left overlap
+                if curr_start < removed_start:
+                    res.append([curr_start, removed_start])
+                # Right overlap
+                if removed_end < curr_end:
+                    res.append([removed_end, curr_end])
+            
+        return res
+```
