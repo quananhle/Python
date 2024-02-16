@@ -88,3 +88,18 @@ class Solution:
             
         return res
 ```
+
+```Python
+class Solution:
+    def removeInterval(self, intervals: List[List[int]], toBeRemoved: List[int]) -> List[List[int]]:
+        removed_start, removed_end = toBeRemoved
+        res = list()
+
+        for curr_start, curr_end in intervals:
+            if curr_start < removed_start:
+                res.append([curr_start, min(removed_start, curr_end)])
+            if removed_end < curr_end:
+                res.append([max(removed_end, curr_start), curr_end])
+        
+        return res
+```
