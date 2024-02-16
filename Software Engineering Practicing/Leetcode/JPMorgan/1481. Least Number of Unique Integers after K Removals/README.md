@@ -31,6 +31,11 @@ __Constraints:__
 
 ### Sorting
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$ or $\mathcal{O}(\log{}n)$
+
 ```Python
 class Solution:
     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
@@ -38,17 +43,36 @@ class Solution:
         # Get the frequencies of all unique elements
         freqs = list(counter.values())
         freqs.sort()
-        ans = 0
+        elements_to_remove = 0
 
         for i in range(len(freqs)):
-            # Increment the running count of frequency that can be removed
-            ans += freqs[i]
+            # Removing frequencies[i] elements, which equates to removing one unique element
+            elements_to_remove += freqs[i]
             # If running frequency is bigger than k, can only remove up to but not including current element
-            if ans > k:
+            if elements_to_remove > k:
                 return len(freqs) - i
 ```
 
 ### Hash Map & Priority Queue (Min Heap)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n \log{}n)$
+- __Space Complexity__: $\mathcal{O}(n)$$
+
+```Python
+class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        counter = collections.Counter(arr)
+        freqs = list(counter.values())
+        heapq.heapify(freqs)
+        elements_to_remove = 0
+
+        while freqs:
+            elements_to_remove += heapq.heappop(freqs)
+            if elements_to_remove > k:
+                return len(freqs) + 1
+```
 
 ```Python
 class Solution:
