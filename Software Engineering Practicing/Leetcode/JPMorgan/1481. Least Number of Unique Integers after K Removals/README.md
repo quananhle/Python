@@ -4,7 +4,7 @@
 
 #### Difficulty: Medium
 
-Given an array of integers arr and an integer k. Find the least number of unique integers after removing exactly k elements.
+Given an array of integers ```arr``` and an integer ```k```. Find the least number of unique integers after removing exactly ```k``` elements.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/3d39e22a-9317-4323-895f-33f007fb319a)
 
@@ -94,4 +94,30 @@ class Solution:
             k -= 1
         
         return len(counter)
+```
+
+### Counting Sort
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(n)$
+- __Space Complexity__: $\mathcal{O}(n)$$
+
+```Python
+class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        counter = collections.Counter(arr)
+        n = len(arr)
+        unique_elements = len(counter)
+        
+        frequency_counter = [0 for _ in range(n + 1)]
+        for num in counter.values():
+            frequency_counter[num] += 1
+        
+        for frequency in range(1, n + 1):
+            num_elements_to_remove = min(k // frequency, frequency_counter[frequency])
+            k -= frequency * num_elements_to_remove
+            unique_elements -= num_elements_to_remove
+            if k < frequency:
+                return unique_elements
 ```
