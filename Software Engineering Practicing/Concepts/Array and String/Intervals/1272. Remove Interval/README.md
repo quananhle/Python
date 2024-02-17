@@ -1,6 +1,6 @@
 ## [1272. Remove Interval](https://leetcode.com/problems/remove-interval)
 
-```Tag```:
+```Tag```: ```Greedy Algorithm```
 
 #### Difficulty: Medium
 
