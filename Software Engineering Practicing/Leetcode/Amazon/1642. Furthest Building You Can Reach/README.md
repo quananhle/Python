@@ -1,6 +1,6 @@
 ## [1642. Furthest Building You Can Reach](https://leetcode.com/problems/furthest-building-you-can-reach)
 
-```Tag```:
+```Tag```: ```Priority Queue```
 
 #### Difficulty: Medium
 
@@ -54,4 +54,26 @@ __Constraints:__
 
 ---
 
+![image](https://leetcode.com/problems/furthest-building-you-can-reach/Figures/1642/example_1_solution.png)
+
 The best strategy is to use the ladders for the longest climbs and the bricks for the shortest climbs. This shouldn’t seem too surprising; a ladder is most valuable in the cases where we would have to use a lot of bricks.
+
+```Python
+class Solution:
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+        n = len(heights)
+        height_differences = list()
+
+        for i in range(1, n):
+            climb = heights[i] - heights[i - 1]
+            if climb <= 0:
+                continue
+            heapq.heappush(height_differences, climb)
+            if len(height_differences) <= ladders:
+                continue
+            bricks -= heapq.heappop(height_differences)
+            if bricks < 0:
+                return i - 1
+
+        return n - 1
+```
