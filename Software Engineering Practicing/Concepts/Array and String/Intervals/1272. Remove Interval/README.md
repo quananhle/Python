@@ -43,6 +43,19 @@ __Constraints:__
 
 ### Sweep Line
 
+Sweep Line algorithm is a sort of geometrical visualization. Let's imagine a vertical line that is swept across the plane, stopping at some points. That could create various situations, and the decision to make depends on the stop point.
+
+![image](https://leetcode.com/problems/remove-interval/Figures/1272/sweep2.png)
+
+__Algorithm__
+
+Let's sweep the line by iterating over input intervals and consider what it could bring to us.
+
+- Current interval has no overlaps with toBeRemoved one. That means there is nothing to take care of, just update the output.
+
+![image](https://leetcode.com/problems/remove-interval/Figures/1272/no_overlaps.png)
+
+
 ```Python
 class Solution:
     def removeInterval(self, intervals: List[List[int]], toBeRemoved: List[int]) -> List[List[int]]:
