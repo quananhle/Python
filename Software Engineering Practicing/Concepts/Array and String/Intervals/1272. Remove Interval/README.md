@@ -40,3 +40,26 @@ __Constraints:__
 - $-10^9 \le a_i \lt bi \le 10^9$
 
 ---
+
+### Sweep Line
+
+```Python
+class Solution:
+    def removeInterval(self, intervals: List[List[int]], toBeRemoved: List[int]) -> List[List[int]]:
+        removed_start, removed_end = toBeRemoved
+        res = list()
+
+        for curr_start, curr_end in intervals:
+            # If there are no overlaps, add the interval to the list as is.
+            if curr_start > removed_end or curr_end < removed_start:
+                res.append([curr_start, curr_end])
+            else:
+                # Is there a left interval we need to keep?
+                if curr_start < removed_start:
+                    res.append([curr_start, removed_start])
+                # Is there a right interval we need to keep?
+                if removed_end < curr_end:
+                    res.append([removed_end, curr_end])
+
+        return res
+```
