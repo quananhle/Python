@@ -55,6 +55,10 @@ Let's sweep the line by iterating over input intervals and consider what it coul
 
 ![image](https://leetcode.com/problems/remove-interval/Figures/1272/no_overlaps.png)
 
+- The second situation is when toBeRemoved interval is inside of the current interval. Then one has to add two non-overlapping parts of the current interval in the output.
+
+![image](https://leetcode.com/problems/remove-interval/Figures/1272/inside2.png)
+
 
 ```Python
 class Solution:
