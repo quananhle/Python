@@ -6,7 +6,7 @@
 
 Given an array ```nums``` containing ```n``` distinct numbers in the range ```[0, n]```, return _the only number in the range that is missing from the array_.
 
-![image](https://github.com/quananhle/Python/assets/35042430/603a158e-aa1a-43ab-a1a4-19c2e18bfe33)
+![image](https://github.com/quananhle/Python/assets/35042430/75a51eba-d6dc-46e3-b179-e0238e8158eb)
 
 ---
 
