@@ -8,7 +8,7 @@ Given an integer ```n```, return _```True``` if it is a power of two_. Otherwise
 
 An integer ```n``` is a power of two, if there exists an integer ```x``` such that $n == 2^x$.
 
-![image](https://user-images.githubusercontent.com/35042430/234656264-268ceecc-9dad-4508-be2d-93ba38476bec.png)
+![image](https://github.com/quananhle/Python/assets/35042430/c8de52a6-8581-4331-bdf6-68d881956840)
 
 ---
 
