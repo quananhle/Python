@@ -4,9 +4,9 @@
 
 #### Difficulty: Easy
 
-Given an integer ```n```, return _```true``` if it is a power of two_. Otherwise, return ```false```.
+Given an integer ```n```, return _```True``` if it is a power of two_. Otherwise, return ```False```.
 
-An integer ```n``` is a power of two, if there exists an integer ```x``` such that ```n == 2```<sup>```x```</sup>.
+An integer ```n``` is a power of two, if there exists an integer ```x``` such that $n == 2^x$.
 
 ![image](https://user-images.githubusercontent.com/35042430/234656264-268ceecc-9dad-4508-be2d-93ba38476bec.png)
 
@@ -34,7 +34,7 @@ Output: false
 
 __Constraints:__
 
--2<sup>31</sup> <= n <= 2<sup>31</sup> - 1
+- $-2^31 \le n \le 2^31 - 1$
 
 ---
 
