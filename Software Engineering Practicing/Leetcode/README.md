@@ -273,6 +273,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :four_leaf_clover: [190. Reverse Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/190.%20Reverse%20Bits)
 - :four_leaf_clover: [191. Number of 1 Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/191.%20Number%20of%201%20Bits)
 - :four_leaf_clover: [231. Power of Two](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/231.%20Power%20of%20Two)
+- :four_leaf_clover: [268. Missing Number](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/268.%20Missing%20Number) ```Sorting``` ```Hash Map``` ```Hash Set``` ```Math```
 - :warning::warning: [319. Bulb Switcher](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/319.%20Bulb%20Switcher) ```Brainteaser``` ```Math```
 - :four_leaf_clover: [338. Counting Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/338.%20Counting%20Bits) ```Dynamic Programming```
 - :four_leaf_clover: [342. Power of Four](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/342.%20Power%20of%20Four) ```Math```
