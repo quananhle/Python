@@ -90,6 +90,17 @@ class Solution:
         return -1
 ```
 
+```Python
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        for i, num in enumerate(nums):
+            if i != num:
+                return i
+        return i + 1
+```
+
 ### Hash Map
 
 __Complexity Analysis__
