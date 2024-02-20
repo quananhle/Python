@@ -16,14 +16,14 @@ __Example 1:__
 ```
 Input: n = 1
 Output: true
-Explanation: 20 = 1
+Explanation: 2^0 = 1
 ```
 
 __Example 2:__
 ```
 Input: n = 16
 Output: true
-Explanation: 24 = 16
+Explanation: 2^4 = 16
 ```
 
 __Example 3:__
@@ -34,7 +34,7 @@ Output: false
 
 __Constraints:__
 
-- $-2^31 \le n \le 2^31 - 1$
+- $-2^{31} \le n \le 2^{31} - 1$
 
 ---
 
