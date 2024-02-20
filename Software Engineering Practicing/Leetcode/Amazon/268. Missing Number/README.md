@@ -34,7 +34,7 @@ Explanation: n = 9 since there are 9 numbers, so all numbers are in the range [0
 __Constraints:__
 
 - $n == nums.length$
-- $1 \le n \le 104$
+- $1 \le n \le 10^4$
 - $0 \le nums[i] \le n$
 - All the numbers of ```nums``` are unique.
 
