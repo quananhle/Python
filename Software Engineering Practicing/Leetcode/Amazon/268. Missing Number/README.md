@@ -146,6 +146,8 @@ class Solution:
         return -1
 ```
 
+---
+
 __Follow up__: Could you implement a solution using only ```O(1)``` extra space complexity and ```O(n)``` runtime complexity?
 
 ### Bit Manipulation
