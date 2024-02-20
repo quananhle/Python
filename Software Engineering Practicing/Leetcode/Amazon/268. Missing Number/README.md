@@ -94,7 +94,7 @@ class Solution:
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         nums.sort()
-        n = len(nums)
+
         for i, num in enumerate(nums):
             if i != num:
                 return i
@@ -154,6 +154,11 @@ __Follow up__: Could you implement a solution using only ```O(1)``` extra space 
 
 ![image](https://github.com/quananhle/Python/assets/35042430/abde9a9c-ddfc-409c-bc09-48d4cc1dcaea)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
@@ -167,6 +172,31 @@ class Solution:
 
 ### Math
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        total = 0
+        for i in range(len(nums) + 1):
+            total += i
+        return total - sum(nums)
+```
+
+#### Gauss' Formula
+
+```Python
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n = len(nums)
+        expected_sum = n * (n + 1) // 2
+        actual_sum = sum(nums)
+        return expected_sum - actual_sum
+```
+
 #### One Liner
 
 __Complexity Analysis__
@@ -178,20 +208,4 @@ __Complexity Analysis__
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         return sum([i for i in range(len(nums) + 1)]) - sum(nums)
-```
-
-#### Gauss' Formula
-
-__Complexity Analysis__
-
-- __Time Complexity__: $\mathcal{O}(N)$
-- __Space Complexity__: $\mathcal{O}(1)$
-
-```Python
-class Solution:
-    def missingNumber(self, nums: List[int]) -> int:
-        n = len(nums)
-        expected_sum = n * (n + 1) // 2
-        actual_sum = sum(nums)
-        return expected_sum - actual_sum
 ```
