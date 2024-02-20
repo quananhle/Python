@@ -167,7 +167,25 @@ class Solution:
 
 ### Math
 
+#### One Liner
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        return sum([i for i in range(len(nums) + 1)]) - sum(nums)
+```
+
 #### Gauss' Formula
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
 class Solution:
