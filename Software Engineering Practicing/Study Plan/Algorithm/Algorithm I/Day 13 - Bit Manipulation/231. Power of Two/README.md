@@ -1,6 +1,6 @@
 ## [231. Power of Two](https://leetcode.com/problems/power-of-two)
 
-```Tag```: ```Bitwise Manipulation``` ```Math```
+```Tag```: ```Bitwise Manipulation``` ```Math``` ```Hash Set```
 
 #### Difficulty: Easy
 
@@ -65,6 +65,23 @@ class Solution:
             n /= 2
         return n == 1
 ```
+
+### Hash Set
+
+```Python
+class PowerOfTwo:
+    def __init__(self):
+        self.set = set()
+        for i in range(32):
+            self.set.add(2**i)
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        power_of_two = PowerOfTwo()
+        return n in power_of_two.set
+```
+
+---
 
 __Follow up__: Could you solve it without loops/recursion?
 
