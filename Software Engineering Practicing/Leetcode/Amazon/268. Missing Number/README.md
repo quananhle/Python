@@ -179,7 +179,7 @@ __Complexity Analysis__
 - __Time Complexity__: $\mathcal{O}(N)$
 - __Space Complexity__: $\mathcal{O}(1)$
 
-```
+```Python
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         total = 0
