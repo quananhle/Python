@@ -66,22 +66,30 @@ __Constraints:__
 ```Python
 class Solution:
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
+        # Keep track of room that is available for meeting
         room_availability_time = [0] * n
+        # Keep track of number of meetings held in each room
         meeting_count = [0] * n
 
         for start, end in sorted(meetings):
             min_room_availability_time = math.inf
             min_available_time_room = 0
             unused_room_found = False
-            for i in range(n):
-                if room_availability_time[i] <= start:
+            for room_number in range(n):
+                # Populate meetings into available rooms
+                if room_availability_time[room_number] <= start:
                     unused_room_found = True
-                    meeting_count[i] += 1
-                    room_availability_time[i] = end
+                    # Update number of meeting held in the room
+                    meeting_count[room_number] += 1
+                    # Update end time in meeting room
+                    room_availability_time[room_number] = end
                     break
-                if min_room_availability_time > room_availability_time[i]:
-                    min_room_availability_time = room_availability_time[i]
-                    min_available_time_room = i
+                if min_room_availability_time > room_availability_time[room_number]:
+                    # Keep track of the earlist end time
+                    min_room_availability_time = room_availability_time[room_number]
+                    # Keep track of the earlist available room
+                    min_available_time_room = room_number
+            # When no room is available, find the earlist available room
             if not unused_room_found:
                 room_availability_time[min_available_time_room] += end - start
                 meeting_count[min_available_time_room] += 1
