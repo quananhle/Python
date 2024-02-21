@@ -1,6 +1,6 @@
 ## [2402. Meeting Rooms III](https://leetcode.com/problems/meeting-rooms-iii)
 
-```Tag```:
+```Tag```: ```Sorting``` ```Priority Queue```
 
 #### Difficulty: Hard
 
@@ -61,3 +61,30 @@ __Constraints:__
 
 ---
 
+### Sorting
+
+```Python
+class Solution:
+    def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
+        room_availability_time = [0] * n
+        meeting_count = [0] * n
+
+        for start, end in sorted(meetings):
+            min_room_availability_time = math.inf
+            min_available_time_room = 0
+            unused_room_found = False
+            for i in range(n):
+                if room_availability_time[i] <= start:
+                    unused_room_found = True
+                    meeting_count[i] += 1
+                    room_availability_time[i] = end
+                    break
+                if min_room_availability_time > room_availability_time[i]:
+                    min_room_availability_time = room_availability_time[i]
+                    min_available_time_room = i
+            if not unused_room_found:
+                room_availability_time[min_available_time_room] += end - start
+                meeting_count[min_available_time_room] += 1
+        
+        return meeting_count.index(max(meeting_count))
+```
