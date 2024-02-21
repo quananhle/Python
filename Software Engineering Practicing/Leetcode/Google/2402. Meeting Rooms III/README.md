@@ -63,6 +63,11 @@ __Constraints:__
 
 ### Sorting
 
+#### Complexity Analysis
+
+- __Time Complexity__: $\mathcal{O}(M\cdot logM + M\cdot N)$
+- __Space Complexity__: $\mathcal{O}(N + sort)$
+
 ```Python
 class Solution:
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
