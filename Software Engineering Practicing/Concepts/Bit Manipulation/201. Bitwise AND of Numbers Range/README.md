@@ -1,6 +1,6 @@
 ## [201. Bitwise AND of Numbers Range](https://leetcode.com/problems/bitwise-and-of-numbers-range)
 
-```Tag```: ```Bitwise Manipulation```
+```Tag```: ```Bitwise Manipulation``` ```Brian Kernighan's Algorithm```
 
 #### Difficulty: Medium
 
@@ -39,6 +39,12 @@ __Constraints:__
 ```Python
 class Solution:
     def rangeBitwiseAnd(self, left: int, right: int) -> int:
+        '''
+        5:          00000101
+        6:          00000110
+        7:          00000111
+        5 & 6 & 7:  00000100
+        '''
         ans = left
         for num in range(left + 1, right + 1):
             ans = ans & num
@@ -51,6 +57,11 @@ class Solution:
 
 ![image](https://leetcode.com/problems/bitwise-and-of-numbers-range/Figures/201/201_bit_shifting.png)
 
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(1)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
 ```Python
 class Solution:
     def rangeBitwiseAnd(self, left: int, right: int) -> int:
@@ -60,4 +71,17 @@ class Solution:
             right >>= 1
             shift += 1
         return left << shift
+```
+
+### Approach 2: Brian Kernighan's Algorithm
+
+![image](https://leetcode.com/problems/bitwise-and-of-numbers-range/Figures/201/201_bk_example.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(1)$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+```Python
+
 ```
