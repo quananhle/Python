@@ -2,7 +2,7 @@
 
 ```Tag```: ```Bitwise Manipulation```
 
-###3 Difficulty: Medium
+#### Difficulty: Medium
 
 Given two integers ```left``` and ```right``` that represent the range ```[left, right]```, return _the bitwise AND of all numbers in this range, inclusive_.
 
@@ -33,3 +33,21 @@ __Constraints:__
 - $0 \le left \le right \le 2^{31} - 1$
 
 ---
+
+### Brute Force (Time Limit Exceeded)
+
+```Python
+class Solution:
+    def rangeBitwiseAnd(self, left: int, right: int) -> int:
+        ans = left
+        for num in range(left + 1, right + 1):
+            ans = ans & num
+        return ans
+```
+
+![image](https://leetcode.com/problems/bitwise-and-of-numbers-range/Figures/201/201_prefix.png)
+
+### Approach 1: Bit Shift
+
+![image](https://leetcode.com/problems/bitwise-and-of-numbers-range/Figures/201/201_bit_shifting.png)
+
