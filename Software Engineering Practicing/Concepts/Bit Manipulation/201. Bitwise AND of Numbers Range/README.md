@@ -83,5 +83,9 @@ __Complexity Analysis__
 - __Space Complexity__: $\mathcal{O}(1)$
 
 ```Python
-
+class Solution:
+    def rangeBitwiseAnd(self, left: int, right: int) -> int:
+        while left < right:
+            right &= right - 1
+        return left & right
 ```
