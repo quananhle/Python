@@ -67,32 +67,34 @@ __Constraints:__
 class Solution:
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
         # Keep track of room that is available for meeting
-        room_availability_time = [0] * n
+        room_in_use = [0] * n
         # Keep track of number of meetings held in each room
-        meeting_count = [0] * n
+        meeting_cnt = [0] * n
 
-        for start, end in sorted(meetings):
-            min_room_availability_time = math.inf
-            min_available_time_room = 0
-            unused_room_found = False
+        for start_time, end_time in sorted(meetings):
+            earliest_available_time = math.inf
+            available_unused_room = False
+            earliest_available_room = 0
+
             for room_number in range(n):
                 # Populate meetings into available rooms
-                if room_availability_time[room_number] <= start:
-                    unused_room_found = True
-                    # Update number of meeting held in the room
-                    meeting_count[room_number] += 1
+                if room_in_use[room_number] <= start_time:
                     # Update end time in meeting room
-                    room_availability_time[room_number] = end
+                    room_in_use[room_number] = end_time
+                    # Update number of meeting held in the room
+                    meeting_cnt[room_number] += 1
+                    available_unused_room = True
                     break
-                if min_room_availability_time > room_availability_time[room_number]:
+                if room_in_use[room_number] < earliest_available_time:
                     # Keep track of the earlist end time
-                    min_room_availability_time = room_availability_time[room_number]
+                    earliest_available_time = room_in_use[room_number]
                     # Keep track of the earlist available room
-                    min_available_time_room = room_number
+                    earliest_available_room = room_number
+
             # When no room is available, find the earlist available room
-            if not unused_room_found:
-                room_availability_time[min_available_time_room] += end - start
-                meeting_count[min_available_time_room] += 1
-        
-        return meeting_count.index(max(meeting_count))
+            if not available_unused_room:
+                room_in_use[earliest_available_room] += end_time - start_time
+                meeting_cnt[earliest_available_room] += 1
+            
+        return meeting_cnt.index(max(meeting_cnt))
 ```
