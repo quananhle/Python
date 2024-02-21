@@ -4,28 +4,32 @@
 
 ###3 Difficulty: Medium
 
-Given two integers left and right that represent the range [left, right], return the bitwise AND of all numbers in this range, inclusive.
+Given two integers ```left``` and ```right``` that represent the range ```[left, right]```, return _the bitwise AND of all numbers in this range, inclusive_.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/ee2d9494-c306-44b5-a0ca-964e816a7d0d)
 
 ---
 
-Example 1:
-
+__Example 1:__
+```
 Input: left = 5, right = 7
 Output: 4
-Example 2:
+```
 
+__Example 2:__
+```
 Input: left = 0, right = 0
 Output: 0
-Example 3:
+```
 
+__Example 3:__
+```
 Input: left = 1, right = 2147483647
 Output: 0
- 
+```
 
-Constraints:
+__Constraints:__
 
-0 <= left <= right <= 231 - 1
+- $0 \le left \le right \le 2^{31} - 1$
 
 ---
