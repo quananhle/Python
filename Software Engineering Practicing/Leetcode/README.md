@@ -449,6 +449,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Graph
 
+- :four_leaf_clover: [997. Find the Town Judge](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Apple/997.%20Find%20the%20Town%20Judge)
 - :warning::warning: [1236. Web Crawler](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Bloomberg/1236.%20Web%20Crawler) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1466. Reorder Routes to Make All Paths Lead to the City Zero](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1466.%20Reorder%20Routes%20to%20Make%20All%20Paths%20Lead%20to%20the%20City%20Zero) ```Breadth-First Search``` ```Depth-First Search```
 - :warning::warning: [1557. Minimum Number of Vertices to Reach All Nodes](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/1557.%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes) ```Hash Map``` ```Hash Set```
