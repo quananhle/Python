@@ -115,5 +115,29 @@ class Solution:
 ### Sorting, Counting using Priority Queues
 
 ```Python
+class Solution:
+    def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
+        unused_rooms, used_rooms = list(range(n)), []
+        heapq.heapify(unused_rooms)
+        meeting_count = [0] * n
 
+        for start_time, end_time in meetings:
+            # Check if meeting is finished, remove used room and make it available
+            while used_rooms and used_rooms[0][0] <= start_time:
+                _, room_number = heapq.heappop(used_rooms)
+                heapq.heappush(unused_rooms, room_number)
+            # Check if there are available rooms
+            if unused_rooms:
+                # Get the room with the smallest number
+                room_number = heapq.heappop(unused_rooms)
+                # Allocate the meeting and update the used room
+                heapq.heappush(used_rooms, [end_time, room_number])
+            # Otherwise, get the earliest available room to schedule the meeting
+            else:
+                earliest_available_time, room_number = heapq.heappop(used_rooms)
+                # Update used room with new available time and room number
+                heapq.heappush(used_rooms, [earliest_available_time + end_time - start_time, room_number])
+            meeting_count[room_number] += 1
+        
+        return meeting_count.index(max(meeting_count))
 ```
