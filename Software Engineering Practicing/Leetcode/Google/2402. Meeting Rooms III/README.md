@@ -63,6 +63,14 @@ __Constraints:__
 
 ### Sorting
 
+__Algorithm__
+
+1. Initialize two arrays, ```room_in_use``` and ```meeting_cnt```, both of size ```n```, to keep track of the availability time for each room and the count of meetings held in each room, respectively.
+2. Iterate through each meeting in the sorted order based on their start times:
+    - For each meeting, find the earliest available room by iterating through the ```room_in_use``` array. If a room is available (its availability time is less than or equal to the current meeting's start time), allocate the meeting to that room, update the meeting count for that room, and set the room's availability time to the meeting's end time. Break out of the loop.
+    - If no available room is found (i.e., ```available_unused_room``` is ```False```), find the room with the earliest availability time (```earliest_available_time```). Update the availability time for that room to accommodate the delayed meeting, and increment the meeting count for that room.
+3. After processing all meetings, return the index of the room with the maximum meeting count using. If there are multiple rooms with the same maximum meeting count, return the room with the lowest index.
+
 #### Complexity Analysis
 
 - __Time Complexity__: $\mathcal{O}(M\cdot logM + M\cdot N)$
@@ -102,4 +110,10 @@ class Solution:
                 meeting_cnt[earliest_available_room] += 1
             
         return meeting_cnt.index(max(meeting_cnt))
+```
+
+### Sorting, Counting using Priority Queues
+
+```Python
+
 ```
