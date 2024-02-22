@@ -13,11 +13,11 @@ If the town judge exists, then:
 
 There is exactly one person that satisfies properties 1 and 2.
 
-You are given an array ```trust``` where ```trust[i]``` = [a<sub>i</sub>, b<sub>i</sub>] representing that the person labeled a<sub>i</sub> trusts the person labeled b<sub>i</sub>.
+You are given an array ```trust``` where ```trust[i]``` = $[a_i, b_i]$ representing that the person labeled a<sub>i</sub> trusts the person labeled b<sub>i</sub>.
 
 Return _the label of the town judge if the town judge exists and can be identified_, or return ```-1``` otherwise.
 
-![image](https://user-images.githubusercontent.com/35042430/213986662-f76a8197-0abf-4e36-9eec-ab93adf823b5.png)
+![image](https://github.com/quananhle/Python/assets/35042430/62464300-03ab-469e-ad3f-7995772bebaf)
 
 ---
 
@@ -40,14 +40,13 @@ Output: -1
 ```
 
 __Constraints:__
-```
-1 <= n <= 1000
-0 <= trust.length <= 104
-trust[i].length == 2
-All the pairs of trust are unique.
-ai != bi
-1 <= ai, bi <= n
-```
+
+- $1 \le n \le 1000$
+- $0 \le trust.length \le 10^4$
+- $trust[i].length == 2$
+- All the pairs of ```trust``` are unique.
+- $a_i \neq b_i$
+- $1 \le a_i, b_i \le n$
 
 ---
 
@@ -84,7 +83,6 @@ class Solution:
 Build a score system, with the result of ```(indegree - outdegree)``` for each person. In other words, we'll ```+1``` to their "score" for each person they are trusted by, and ```-1``` from their "score" for each person they trust. Therefore, for a person to maximize their "score", they should be trusted by as many people as possible, and trust as few people as possible.
 
 __Time Complexity__: ```O(E)```, with E is the number of edges representing the total of trusts
-
 __Space Complexity__: ```O(N)```, arrays to have up to n people
 
 ```Python
@@ -112,7 +110,6 @@ class Solution:
 #### Two Hash Maps
 
 __Time Complexity__: ```O(E)```, with E is the number of edges representing the total of trusts
-
 __Space Complexity__: ```O(N)```, arrays to have up to n people
 
 ```Python
