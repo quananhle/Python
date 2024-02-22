@@ -1,6 +1,6 @@
 ## [1245. Tree Diameter](https://leetcode.com/problems/tree-diameter)
 
-```Tag```: 
+```Tag```: ```Graph``` ```Breadth-First Search``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
@@ -41,3 +41,37 @@ __Constraints:__
 
 ---
 
+### Breadth-First Search
+
+```Python
+class Solution:
+    def treeDiameter(self, edges: List[List[int]]) -> int:
+        adjacent_graph = collections.defaultdict(set)
+        for v, e in edges:
+            adjacent_graph[v].add(e)
+            adjacent_graph[e].add(v)
+
+        def bfs(start):
+            visited = set()
+            visited.add(start)
+            queue = collections.deque([start])
+            distance = -1
+            last_node = None
+            while queue:
+                next_queue = collections.deque()
+                while queue:
+                    curr = queue.popleft()
+                    for next in adjacent_graph[curr]:
+                        if not next in visited:
+                            visited.add(next)
+                            next_queue.append(next)
+                            last_node = next
+                distance += 1
+                queue = next_queue
+            
+            return last_node, distance
+
+        farthest_node, _ = bfs(0)
+        another_farthest_node, distance = bfs(farthest_node)
+        return distance
+```
