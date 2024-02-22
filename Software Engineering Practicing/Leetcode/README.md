@@ -117,6 +117,7 @@
 - :warning::warning: [624. Maximum Distance in Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/624.%20Maximum%20Distance%20in%20Arrays) ```Greedy```
 - :no_entry::no_entry::no_entry: [1235. Maximum Profit in Job Scheduling](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Doordash/1235.%20Maximum%20Profit%20in%20Job%20Scheduling) ```Dynamic Programming``` ```Priority Queue``` ```Sorting```
 - :warning::warning: [1272. Remove Interval](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Intervals/1272.%20Remove%20Interval) ```Greedy```
+- :no_entry::no_entry::no_entry: [2402. Meeting Rooms III](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/2402.%20Meeting%20Rooms%20III) ```Priority Queue``` ```Sorting```
 
 ### [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Sliding%20Window)
 
