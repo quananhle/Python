@@ -43,6 +43,10 @@ __Constraints:__
 
 ### Breadth-First Search
 
+#### Farthest Node
+
+![image](https://leetcode.com/problems/tree-diameter/Figures/1245/1245_peripheral_nodes.png)
+
 ```Python
 class Solution:
     def treeDiameter(self, edges: List[List[int]]) -> int:
@@ -74,4 +78,10 @@ class Solution:
         farthest_node, _ = bfs(0)
         another_farthest_node, distance = bfs(farthest_node)
         return distance
+```
+
+#### Centroid Graph
+
+```Python
+
 ```
