@@ -1,4 +1,4 @@
-## 997. Find the Town Judge
+## [997. Find the Town Judge](https://leetcode.com/problems/find-the-town-judge)
 
 ```Tag```: ```Array``` ```Hash Map``` ```Graph```
 
@@ -13,7 +13,7 @@ If the town judge exists, then:
 
 There is exactly one person that satisfies properties 1 and 2.
 
-You are given an array ```trust``` where ```trust[i]``` = $[a_i, b_i]$ representing that the person labeled a<sub>i</sub> trusts the person labeled b<sub>i</sub>.
+You are given an array ```trust``` where ```trust[i]``` = $[a_i , b_i]$ representing that the person labeled a<sub>i</sub> trusts the person labeled b<sub>i</sub>.
 
 Return _the label of the town judge if the town judge exists and can be identified_, or return ```-1``` otherwise.
 
