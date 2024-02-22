@@ -43,9 +43,12 @@ __Constraints:__
 
 ### Breadth-First Search
 
-#### Farthest Node
-
 ![image](https://leetcode.com/problems/tree-diameter/Figures/1245/1245_peripheral_nodes.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
 class Solution:
@@ -80,8 +83,42 @@ class Solution:
         return distance
 ```
 
-#### Centroid Graph
+### Depth-First Search
+
+![image](https://leetcode.com/problems/tree-diameter/Figures/1245/1245_longest_distances.png)
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}(N)$
+- __Space Complexity__: $\mathcal{O}(N)$
 
 ```Python
+class Solution:
+    def treeDiameter(self, edges: List[List[int]]) -> int:
+        diameter = 0
+        
+        adjacent_graph = collections.defaultdict(list)
+        for v, e in edges:
+            adjacent_graph[v].append(e)
+            adjacent_graph[e].append(v)
+        
+        def dfs(node, parent):
+            nonlocal diameter
 
+            distance_1, distance_2 = 0, 0
+            for neighbor in adjacent_graph[node]:
+                if neighbor == parent:
+                    continue
+                
+                distance = dfs(neighbor, node)
+                if distance_1 < distance_2:
+                    distance_1 = max(distance_1, distance)
+                else:
+                    distance_2 = max(distance_2, distance)
+                
+            diameter = max(diameter, distance_1 + distance_2)
+            return max(distance_1, distance_2) + 1
+        
+        dfs(0, None)
+        return diameter
 ```
