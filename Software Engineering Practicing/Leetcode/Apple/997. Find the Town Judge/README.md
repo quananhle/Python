@@ -152,8 +152,8 @@ class Solution:
             # Check if there exists an exact one person who gets a scores of n - 1
             if score[person] == n - 1:
                 return person
-        else:
-            return -1
+
+        return -1
 ```
 
 ### Bonus
