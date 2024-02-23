@@ -62,7 +62,31 @@ The best strategy is to use the ladders for the longest climbs and the bricks fo
 
 ![image](https://leetcode.com/problems/furthest-building-you-can-reach/Figures/1642/example_1_solution.png)
 
-![image](https://leetcode.com/problems/furthest-building-you-can-reach/Figures/1642/example_1_solution.png)
+```
+define function furthestBuilding(heights, bricks, ladders):
+    ladder_allocations = a new min heap
+    for each i from 0 to heights.length - 2 (including the end point):
+        current_height = heights[i]
+        next_height = heights[i + 1]
+        difference = next_height - current_height
+        if difference is 0 or difference is negative:
+            continue
+        rename difference to climb
+        if there are ladders remaining:
+            add climb to ladder_allocations
+            subtract 1 from ladders
+        else: (There are no ladders remaining)
+            smallest_ladder_allocation = peek at the minimum in ladder_allocations
+            if smallest_ladder_allocation is null or climb is smaller:
+                subtract climb from bricks
+            else: (smallest_ladder_allocation is smaller)
+                pop smallest_ladder_allocation from ladder_allocations
+                add climb to ladder_allocations
+                subtract smallest_ladder_allocation from bricks
+            if bricks is now negative:
+                return i (we didn't have enough bricks to climb to i + 1)
+    return heights.length - 1 (we must have covered all of the climbs)
+```
 
 __Complexity Analysis__
 
