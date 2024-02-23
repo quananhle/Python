@@ -97,6 +97,40 @@ __Complexity Analysis__
 class Solution:
     def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
         n = len(heights)
+        ladder_allocations = list()
+        
+        for i in range(n - 1):
+            height_difference = heights[i + 1] - heights[i]
+            if height_difference <= 0:
+                continue
+            
+            climb = height_difference
+            del height_difference
+
+            if ladders:
+                heapq.heappush(ladder_allocations, climb)
+                ladders -= 1
+            else:
+                if ladder_allocations:
+                    smallest_ladder_allocation = heapq.heappop(ladder_allocations)
+                    if smallest_ladder_allocation < climb:
+                        heapq.heappush(ladder_allocations, climb)
+                        bricks -= smallest_ladder_allocation
+                    else:
+                        heapq.heappush(ladder_allocations, smallest_ladder_allocation)
+                        bricks -= climb
+                else:
+                    bricks -= climb
+                if bricks < 0:
+                    return i
+            
+        return n - 1
+```
+
+```Python
+class Solution:
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+        n = len(heights)
         height_differences = list()
 
         for i in range(1, n):
@@ -111,4 +145,10 @@ class Solution:
                 return i - 1
 
         return n - 1
+```
+
+### Max-Heap
+
+```Python
+
 ```
