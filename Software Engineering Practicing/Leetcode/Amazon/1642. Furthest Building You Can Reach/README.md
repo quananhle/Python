@@ -56,9 +56,13 @@ __Constraints:__
 
 ### Min-Heap
 
-![image](https://leetcode.com/problems/furthest-building-you-can-reach/Figures/1642/example_1_solution.png)
+![image](https://leetcode.com/problems/furthest-building-you-can-reach/Figures/1642/example_1.png)
 
 The best strategy is to use the ladders for the longest climbs and the bricks for the shortest climbs. This shouldn’t seem too surprising; a ladder is most valuable in the cases where we would have to use a lot of bricks.
+
+![image](https://leetcode.com/problems/furthest-building-you-can-reach/Figures/1642/example_1_solution.png)
+
+![image](https://leetcode.com/problems/furthest-building-you-can-reach/Figures/1642/example_1_solution.png)
 
 __Complexity Analysis__
 
