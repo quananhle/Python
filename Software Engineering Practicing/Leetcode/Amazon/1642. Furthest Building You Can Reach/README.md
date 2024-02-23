@@ -127,6 +127,25 @@ class Solution:
         return n - 1
 ```
 
+```
+define function furthestBuilding(heights, bricks, ladders):
+    ladder_allocations = a new min heap
+    for each i from 0 to heights.length - 2 (including the end point):
+        current_height = heights[i]
+        next_height = heights[i + 1]
+        difference = next_height - current_height
+        if difference is 0 or difference is negative:
+            continue
+        rename difference to climb
+        add climb to ladder_allocations
+        if climbs in ladder_allocations is now greater than ladders:
+            smallest_ladder_allocation = remove minimum from ladder_allocations
+            subtract smallest_ladder_allocation from bricks
+            if bricks is now negative:
+                return i (we didn't have enough bricks to climb to i + 1)
+    return heights.length - 1 (we must have covered all of the climbs)
+```
+
 ```Python
 class Solution:
     def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
@@ -150,5 +169,24 @@ class Solution:
 ### Max-Heap
 
 ```Python
+class Solution:
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+        n = len(heights)
+        bricks_allocations = list()
 
+        for i in range(1, n):
+            height = heights[i] - heights[i - 1]
+            if height <= 0:
+                continue
+            heapq.heappush(bricks_allocations, -height)
+            bricks -= height
+
+            if bricks < 0 and ladders == 0:
+                return i - 1
+            
+            if bricks < 0:
+                bricks += -heapq.heappop(bricks_allocations)
+                ladders -= 1
+
+        return n - 1
 ```
