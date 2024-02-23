@@ -1,4 +1,4 @@
-## 787. Cheapest Flights Within K Stops
+## [787. Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops)
 
 ```Tag```: ```Dynamic Programming``` ```Depth-First Search``` ```Breadth-First Search``` ```Graph``` ```Heap (Priority Queue)``` ```Shortest Path```
 
@@ -8,7 +8,7 @@ There are ```n``` cities connected by some number of flights. You are given an a
 
 You are also given three integers ```src```, ```dst```, and ```k```, return _the __cheapest price__ from ```src``` to ```dst``` with __at most__ ```k``` stops_. If there is no such route, return ```-1```.
 
-![image](https://user-images.githubusercontent.com/35042430/214763952-16f232e6-8511-4547-8842-8b12e3f17424.png)
+![image](https://github.com/quananhle/Python/assets/35042430/784f65c7-a850-415a-97a5-ddd5ebaf2ae6)
 
 ---
 
@@ -48,15 +48,15 @@ The optimal path with no stops from city 0 to 2 is marked in red and has cost 50
 
 __Constraints:__
 
-- ```1 <= n <= 100```
-- ```0 <= flights.length <= (n * (n - 1) / 2)```
-- ```flights[i].length == 3```
-- 0 <= from<sub>i</sub>, to<sub>i</sub> < n
-- from<sub>i</sub> != to<sub>i</sub>
-- 1 <= price<sub>i</sub> <= 10<sup>4</sup>
+- $1 \le n \le 100$
+- $0 \le flights.length \le \frac{n * (n - 1)}{2}$
+- $flights[i].length == 3$
+- $0 \le from_i, to_i \lt n$
+- $from_i \neq to_i$
+- $1 \le price_i \le 10^4$
 - There will not be any multiple flights between two cities.
-- ```0 <= src, dst, k < n```
-- ```src != dst```
+- $0 \le src, dst, k \lt n$
+- $src \neq dst$
 
 ---
 
