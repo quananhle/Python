@@ -105,6 +105,14 @@ class Solution:
         return n & (-n) == n
 ```
 
+#### One Liner
+
+```Python
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        return n > 0 and n & (~n + 1) == n
+```
+
 #### Turn off the Rightmost 1-bit
 
 ![image](https://leetcode.com/problems/power-of-two/Figures/231/turn2.png)
