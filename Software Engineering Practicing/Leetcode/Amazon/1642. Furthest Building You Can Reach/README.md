@@ -318,7 +318,7 @@ So, it is the upper-middle that we want.
 
 > The short rule to remember is: if you used ```hi = mi - 1```, then use the higher midpoint. If you used ```lo = mi + 1```, then use the lower midpoint. If you used both of these, then you can use either midpoint. If you didn’t use either (i.e., you have ```lo = mi``` and ```hi = mi```), then, unfortunately, your code is buggy, and you won’t be able to guarantee convergence.
 
-Whenever we want the upper middle, we use either ```mi = (lo + hi + 1) // 2``` or ```mi = lo + (hi - lo + 1) // 2```. These formulas ensure that on even-lengthed search spaces, the upper middle is chosen and on odd-lengthed search spaces, the actual middle is chosen.
+Whenever we want the upper middle, we use either ```mi = (lo + hi + 1) // 2``` or ```mi = lo + (hi - lo + 1) // 2``` or ```mi = hi - (hi - lo) // 2```. Thus, for lower middle, ```mi = lo + (hi - lo) // 2```. These formulas ensure that on even-lengthed search spaces, the upper middle is chosen and on odd-lengthed search spaces, the actual middle is chosen.
 
 This completes our binary search algorithm.
 
@@ -333,6 +333,41 @@ while lo is less than hi:
 return lo
 ```
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N \log^2{N})$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+        def is_reachable(building_idx):
+            height_differences = list()
+            for h1, h2 in zip(heights[:building_idx], heights[1:building_idx+1]):
+                if h2 - h1 > 0:
+                    height_differences.append(h2 - h1)
+            height_differences.sort()
+            bricks_remaining = bricks
+            ladders_remaining = ladders
+            for climb in height_differences:
+                # Bricks to be used first to smaller height
+                if climb <= bricks_remaining:
+                    bricks_remaining -= climb
+                # If not enough bricks, use ladder
+                elif ladders_remaining >= 1:
+                    ladders_remaining -= 1
+                # If there is no ladder, can't go any further
+                else:
+                    return False
+            return True
+
+        lo, hi = 0, len(heights) - 1
+        while lo < hi:
+            mi = hi - (hi - lo) // 2
+            if is_reachable(mi):
+                lo = mi
+            else:
+                hi = mi - 1
+        
+        return lo
 ```
