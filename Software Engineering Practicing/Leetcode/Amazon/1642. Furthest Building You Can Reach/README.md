@@ -371,3 +371,46 @@ class Solution:
         
         return lo
 ```
+
+#### Improved Binary Search
+
+If we were to simply extract all the climbs, put them in a list, and sort them, then ```isReachable(...)``` would run into the problem of not knowing which climbs are within the relevant range and which are not. The solution to this is surprisingly simple, though: attach an index to each climb in the climbs list. This way, ```isReachable(...)``` can iterate over the sorted list in the same fashion as before, but with an extra conditional telling it to skip any climbs with an index higher than the index of the building we're checking the reachability of.
+
+__Algorithm__
+
+```
+heights, bricks, and ladders are as specified in the problem
+
+sorted_climbs = a new list
+for each i between 0 and heights.length - 2 (inclusive):
+    difference = heights[i + 1] - heights[i]
+    if difference is positive:
+        add pair(difference, i + 1) to sorted_climbs
+min-sort sorted_climbs using the first value (climb distances) of each pair
+```
+
+While the binary search algorithm stays the same, the implementation of ```isReachable(...)``` needs to be changed slightly. We no longer need to build and sort a list of climbs within it. We should, instead, use ```sorted_climbs``` and add an additional check to skip any climbs that are beyond the index we're checking the reachability of.
+
+```
+heights, bricks, and ladders are as specified in the problem
+sorted_climbs is the list we defined just above
+
+define function isReachable(building_index):
+    bricks_remaining = bricks
+    ladders_remaining = ladders
+    for each value in sorted_climbs:
+        climb, index = split value into its two parts
+        if index is greater than building_index:
+            continue to the next iteration
+        if bricks_remaining is at least climb:
+            subtract climb from bricks_remaining
+        else if ladders_remaining greater than 0:
+            subtract 1 from ladders_available
+        else:
+            return false
+     return true
+```
+
+```Python
+
+```
