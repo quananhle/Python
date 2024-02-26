@@ -8,7 +8,7 @@ Given the roots of two binary trees ```p``` and ```q```, write a function to che
 
 Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
 
-![image](https://user-images.githubusercontent.com/35042430/211455297-7a961d14-4c63-443e-a3b8-d7387aa960de.png)
+![image](https://github.com/quananhle/Python/assets/35042430/238c9eff-8dac-460b-8ce2-49d2916a2c0c)
 
 ---
 
