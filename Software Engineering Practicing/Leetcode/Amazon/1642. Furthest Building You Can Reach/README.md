@@ -452,3 +452,88 @@ class Solution:
         # Note that return lo would be equivalent
         return hi  
 ```
+
+### Binary Search on Threshold (Advanced)
+
+All of our approaches so far have used a strategy of allocating bricks to the shortest climbs and ladders to the longest climbs until no ladders or "usable" bricks remained. This guaranteed that at least one of the following conditions was true at the end.
+
+- We reached the final building.
+- We were not able to go any further, and there was no way of rearranging bricks or ladders so that we could go any further.
+
+Let's quickly define and prove what we mean by "we were not able to go any further".
+
+More precisely, each of the previous approaches guaranteed that all of the following conditions were true of an optimal solution (in cases where it was not possible to reach the final building).
+
+1. There were no ```ladders``` remaining, and there were not enough bricks for the next climb.
+2. The number of ```bricks``` remaining at the end was *less* than the length of the shortest climb to use a ladder.
+3. The longest climb to use bricks was shorter than, or equal to, the shortest climb to use a ladder.
+
+Condition 3 from above is particularly interesting: the longest climb to use bricks is not greater than the shortest climb to use a ladder. The implication of this is that for all optimal solutions identified by our previous approaches, there exists some threshold value, ```K```, where the shortest climb to use a ladder is equal to this ```K```, and there is no climb greater than ```K``` that used bricks.
+
+If we somehow knew ```K``` beforehand (we don't, but let's just follow this thought through), then coming up with the optimal solution could be done in linear time and constant space! Let's write an algorithm to do exactly this.
+
+The main challenge in designing the algorithm is handling climbs of length ```K``` itself; some will be with ```bricks```, and others with ```ladders```. We'll start by pretending that all climb lengths are unique, and as such, there will be at most one climb of length ```K```, and this would be covered with a ladder.
+
+```
+heights, bricks, and ladders are as specified in the problem
+
+define function solveWithGivenThreshold(K):
+    
+    ladders_remaining = ladders
+    bricks_remaining = bricks
+    
+    for each i between 0 and building_index - 1 (inclusive):
+    
+        climb = heights[i + 1] - heights[i]
+        if climb is not positive:
+            continue (this is not a climb)
+    
+        if climb is greater than or equal to K:
+            subtract 1 from ladders_remaining
+        else:
+            subtract climb from bricks_remaining
+    
+        if bricks_remaining or ladders_remaining is now negative:
+            return i
+    
+    return heights.length - 1
+```
+
+The way that we can make it work with non-unique climb lengths is to allocate ladders to climbs of length ```K```, but keep track of how many ladders were allocated in this way. If we then come across a climb of length ```K``` when we only have bricks left, we should simply cover it with bricks. And if we come across a climb longer than ```K``` and are out of ladders, we should check if we used any ladders on ```K``` length climbs, and if so, attempt to replace that ladder with bricks to reclaim it. Essentially, we are optimizing the use of ```ladders``` and ```bricks``` on this edge case.
+
+```Python
+heights, bricks, and ladders are as specified in the problem
+
+define function solveWithGivenThreshold(K):
+    
+    ladders_remaining = ladders
+    bricks_remaining = bricks
+    ladders_assigned_on_threshold = 0
+    
+    for each i between 0 and building_index - 1 (inclusive):
+        
+        climb = heights[i + 1] - heights[i]
+        if climb is not positive:
+            continue (this is not a climb)
+        
+        if climb is greater than or equal to K:
+            subtract 1 from ladders_remaining
+            if climb is equal to K:
+                ladders_assigned_on_threshold += 1
+        else:
+            subtract climb from bricks_remaining
+        
+        if ladders_remaining is now negative:
+            if ladders_assigned_on_threshold is positive:
+                subtract 1 from ladders_assigned_on_threshold
+                add 1 to ladders_remaining
+                subtract K from bricks_remaining
+                [Note: if this made bricks_remaining negative, the next condition will catch it]
+            else:
+                return i
+        
+        if bricks_remaining is now negative:
+            return i
+
+    return heights.length - 1
+```
