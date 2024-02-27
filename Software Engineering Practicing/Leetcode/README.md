@@ -64,7 +64,7 @@
 - :no_entry::no_entry::no_entry: [135. Candy](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Most%20Frequent/135.%20Candy)
 - :four_leaf_clover: [163. Missing Ranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/163.%20Missing%20Ranges)
 - :four_leaf_clover: [168. Excel Sheet Column Title](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Microsoft/168.%20Excel%20Sheet%20Column%20Title) ```Math```
-- :four_leaf_clover: [169. Majority Element](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/169.%20Majority%20Element) ```Sort``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Boyer-Moore Voting Algorithm``` ```Divide & Conquer``` ```Math```
+- :four_leaf_clover: [169. Majority Element](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/169.%20Majority%20Element) ```Sort``` ```Hash Map``` ```Hash Set``` ```Bitwise Manipulations``` ```Boyer-Moore Voting Algorithm``` ```Divide & Conquer``` ```Math```
 - :four_leaf_clover: [228. Summary Ranges](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/228.%20Summary%20Ranges)
 - :warning::warning: [229. Majority Element II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Algorithms/Boyer-Moore%20Voting%20Algorithm/229.%20Majority%20Element%20II) ```Hash Map``` ```Boyer-Moore Voting Algorithm```
 - :warning::warning: [238. Product of Array Except Self](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/238.%20Product%20of%20Array%20Except%20Self) ```Prefix Sum``` ```Two Pointers```
@@ -116,7 +116,7 @@
 - :warning::warning: [452. Minimum Number of Arrows to Burst Balloons](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/452.%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons) ```Greedy```
 - :warning::warning: [624. Maximum Distance in Arrays](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/624.%20Maximum%20Distance%20in%20Arrays) ```Greedy```
 - :no_entry::no_entry::no_entry: [1235. Maximum Profit in Job Scheduling](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Doordash/1235.%20Maximum%20Profit%20in%20Job%20Scheduling) ```Dynamic Programming``` ```Priority Queue``` ```Sorting```
-- :warning::warning: [1272. Remove Interval](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Intervals/1272.%20Remove%20Interval) ```Greedy```
+- :warning::warning: [1272. Remove Interval](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Array%20and%20String/Intervals/1272.%20Remove%20Interval) ```Greedy```
 - :no_entry::no_entry::no_entry: [2402. Meeting Rooms III](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Google/2402.%20Meeting%20Rooms%20III) ```Priority Queue``` ```Sorting```
 
 ### [Sliding Window](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Templates/Sliding%20Window)
@@ -273,9 +273,9 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :warning::warning: [137. Single Number II](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/137.%20Single%20Number%20II) ```Sorting``` ```Hash Map``` ```Mathematics``` ```Karnaugh Map```
 - :four_leaf_clover: [190. Reverse Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2014%20-%20Bit%20Manipulation/190.%20Reverse%20Bits)
 - :four_leaf_clover: [191. Number of 1 Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/191.%20Number%20of%201%20Bits)
-- :warning::warning: [201. Bitwise AND of Numbers Range](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/201.%20Bitwise%20AND%20of%20Numbers%20Range) ```Bitwise Manipulation``` ```Brian Kernighan's Algorithm```
+- :warning::warning: [201. Bitwise AND of Numbers Range](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/201.%20Bitwise%20AND%20of%20Numbers%20Range) ```Bitwise Manipulation``` ```Brian Kernighan's Algorithm```
 - :four_leaf_clover: [231. Power of Two](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2013%20-%20Bit%20Manipulation/231.%20Power%20of%20Two)
-- :four_leaf_clover: [268. Missing Number](https://github.com/quananhle/Python/edit/main/Software%20Engineering%20Practicing/Leetcode/Amazon/268.%20Missing%20Number) ```Sorting``` ```Hash Map``` ```Hash Set``` ```Math```
+- :four_leaf_clover: [268. Missing Number](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/268.%20Missing%20Number) ```Sorting``` ```Hash Map``` ```Hash Set``` ```Math```
 - :warning::warning: [319. Bulb Switcher](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Facebook/319.%20Bulb%20Switcher) ```Brainteaser``` ```Math```
 - :four_leaf_clover: [338. Counting Bits](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/338.%20Counting%20Bits) ```Dynamic Programming```
 - :four_leaf_clover: [342. Power of Four](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Bit%20Manipulation/342.%20Power%20of%20Four) ```Math```
