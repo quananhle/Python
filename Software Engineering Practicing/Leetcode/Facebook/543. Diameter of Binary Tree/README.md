@@ -39,6 +39,8 @@ __Constraints:__
 
 ### Depth-First Search
 
+![image](https://leetcode.com/problems/diameter-of-binary-tree/Figures/543/543.png)
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
