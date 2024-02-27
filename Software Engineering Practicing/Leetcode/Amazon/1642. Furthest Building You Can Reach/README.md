@@ -501,7 +501,7 @@ define function solveWithGivenThreshold(K):
 
 The way that we can make it work with non-unique climb lengths is to allocate ladders to climbs of length ```K```, but keep track of how many ladders were allocated in this way. If we then come across a climb of length ```K``` when we only have bricks left, we should simply cover it with bricks. And if we come across a climb longer than ```K``` and are out of ladders, we should check if we used any ladders on ```K``` length climbs, and if so, attempt to replace that ladder with bricks to reclaim it. Essentially, we are optimizing the use of ```ladders``` and ```bricks``` on this edge case.
 
-```Python
+```
 heights, bricks, and ladders are as specified in the problem
 
 define function solveWithGivenThreshold(K):
@@ -536,4 +536,122 @@ define function solveWithGivenThreshold(K):
             return i
 
     return heights.length - 1
+```
+
+_Laying the foundations for a binary search on ```K```_
+
+What is the range of values that this K could be?
+
+Well, the shortest climb to use a ladder must be the shortest climb that can be extracted from the heights array. If K was this value, then potentially all climbs would be using a ladder, other than possibly a few of length K itself that were using bricks.
+
+The other extreme would be that we're not using ladders at all. In this case, the shortest climb to use a ladder would essentially be 1 more than the longest climb from the height array (in code, we can get away with just setting it to be the length of the longest climb; the optimization around K itself will cover the possibility of no ladders being used on ```K```).
+
+With this, we could do a linear search until we find a solution that is optimal, based on our definition above of an optimal solution. This linear search wouldn't work very well; the possible range in climb length is huge! In the worst case, it will be equal to the maximum height in heights, and according to the problem description, that is a very big number!
+
+As I said earlier in this article, when linear search is too slow, consider using binary search!
+
+A binary search would work by identifying the maximum possible value for ```K```, the lowest possible value, and then cutting out half of the possible values on each iteration.
+
+We've already figured out a way of knowing if a solution is optimal, but in the case that it's not, how do we know whether the value we tried was too high or too low? It turns out there is a way, and that's what we're going to look at next.
+
+Identifying when mid is greater than ```K```
+
+If ```mid > K```, then it turns out that either we'd reach the final building regardless, or we'd have at least one ladder left over. But why?
+
+Well, the optimal solution, whatever it is, makes CCC climbs. Additionally, we know that LLL of those climbs have to be with ladders (remember, optimal solutions that don't reach the end have to use all of the ladders!). These ladders were allocated to all climbs greater than K, and at least one climb equal to K. If mid was not optimal, then it has to have made a subset of those CCC climbs (i.e., it can't have covered any climbs that were beyond the optimal solution's final-reachable-building). Of that subset, it only put ladders on the climbs greater than K, which is strictly a smaller number of climbs than the optimal solution put ladders on. Therefore, there has to be at least one ladder left over at the end.
+
+So, if there is at least one ladder left over, then we know that mid is too high.
+
+Identifying when mid is less than ```K```
+
+If ```mid < K```, then either we'd reach the final building regardless, or we'd have a non-optimal solution that used all of the ladders.
+
+By setting mid below ```K```, we're essentially going to be wasting a lot of ladders on climbs that the optimal solution would have used bricks for. Remember that our not-optimal solution could only make a subset of the CCC climbs that the optimal solution must make. There are enough bricks to get to the optimal solution's final-reachable-index using a higher threshold, and so our lower threshold definitely won't run out of bricks. So, it will be running out of ladders that causes it to fail to go all of the way.
+
+Putting everything together
+
+You now have all the ingredients you need to assemble the code for this algorithm.
+
+Firstly, we should modify the ```solveWithGivenThreshold``` function so that it returns a 2D array with 3 values: the index reached, ladders remaining, and bricks remaining. Secondly, we need to write the binary search. It needs to interpret the return value from ```solveWithGivenThreshold``` to know how to proceed with the search. Keep in mind: this algorithm is not allowed to use auxiliary memory!
+
+```
+define function furthestBuilding(heights, bricks, ladders):
+
+    lo = find the minimum climb 
+    hi = find the maximum climb
+    if lo and hi are undefined (there was no climbs):
+        return heights.length - 1
+
+    while lo is not greater than hi:
+        mid = lo + (hi - lo) / 2
+        result = solveWithGivenThreshold(mid)
+        index_reached, ladders_remaining, bricks_remaining = unpack result
+        if index_reached is heights.length - 1:
+            return heights.length - 1
+        if ladders_remaining is not zero:
+            hi = mid - 1
+        else if the climb from index_reached to index_reached + 1 could be covered
+                with the bricks_remaining, or bricks_remaining was at least K:
+            lo = mid + 1
+        else:
+            return index_reached
+```
+
+- __Time Complexity__: $\mathcal{O}(N \log{maxClimb})$
+- __Space Complexity__: $\mathcal{O}(1)$
+
+    ```Python
+class Solution:
+    def furthestBuilding(self, heights, bricks, ladders):
+        def solveWithGivenThreshold(K):
+            ladders_remaining = ladders
+            bricks_remaining = bricks
+            ladders_used_on_threshold = 0
+
+            for i in range(len(heights) - 1):
+                climb = heights[i + 1] - heights[i]
+                if climb <= 0:
+                    continue
+                
+                if climb == K:
+                    ladders_used_on_threshold += 1
+                    ladders_remaining -= 1
+                elif climb > K:
+                    ladders_remaining -= 1
+                else:
+                    bricks_remaining -= climb
+                
+                if ladders_remaining < 0:
+                    if ladders_used_on_threshold:
+                        ladders_used_on_threshold -= 1
+                        ladders_remaining += 1
+                        bricks_remaining -= K
+                    else:
+                        return [i, ladders_remaining, bricks_remaining]
+
+                if bricks_remaining < 0:
+                    return [i, ladders_remaining, bricks_remaining]
+            
+            return [len(heights) - 1, ladders_remaining, bricks_remaining]
+
+        lo, hi = math.inf, -math.inf
+        for i in range(len(heights) - 1):
+            climb = heights[i + 1] - heights[i]
+            if climb <= 0:
+                continue
+            lo, hi = min(lo, climb), max(hi, climb)
+
+            while lo <= hi:
+                mi = lo + (hi - lo) // 2
+                index_reached, ladders_remaining, bricks_remaining = solveWithGivenThreshold(mi)
+                if index_reached == len(heights) - 1:
+                    return len(heights) - 1
+                if ladders_remaining > 0:
+                    hi = mi - 1
+                    continue
+                next_climb = heights[index_reached + 1] - heights[index_reached]
+                if bricks_remaining < next_climb and bricks_remaining < mi:
+                    return index_reached
+                
+                lo = mi + 1
 ```
