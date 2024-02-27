@@ -411,6 +411,44 @@ define function isReachable(building_index):
      return true
 ```
 
-```Python
+__Complexity Analysis__
 
+- __Time Complexity__: $\mathcal{O}(N \log{N})$
+- __Space Complexity__: $\mathcal{O}(N)$
+
+```Python
+class Solution:
+    def furthestBuilding(self, heights, bricks, ladders):
+        # Make a sorted list of all the climbs
+        sorted_climbs = []
+        for i in range(len(heights) - 1):
+            climb = heights[i + 1] - heights[i]
+            if climb <= 0:
+                continue
+            sorted_climbs.append((climb, i + 1))
+        sorted_climbs.sort()
+
+        def is_reachable(building_index, bricks, ladders):
+            for climb, index in climbs:
+                # Check if this climb is within the range.
+                if index > building_index:
+                    continue
+                # In a sorted heights, allocate bricks first if enough remain; otherwise, allocate a ladder if at least one remains
+                if climb <= bricks:
+                    bricks -= climb
+                elif ladders >= 1:
+                    ladders -= 1
+                else:
+                    return False
+            return True
+
+        lo, hi = 0, len(heights) - 1
+        while lo < hi:
+            mi = hi - (hi - lo) // 2
+            if is_reachable(mi, sorted_climbs, bricks, ladders):
+                lo = mi
+            else:
+                hi = mi - 1
+        # Note that return lo would be equivalent
+        return hi  
 ```
