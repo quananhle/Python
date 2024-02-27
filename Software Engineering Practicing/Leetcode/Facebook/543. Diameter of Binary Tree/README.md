@@ -14,21 +14,25 @@ The __length__ of a path between two nodes is represented by the number of edges
 
 ---
 
-Example 1:
+__Example 1:__
 
-
+![image](https://assets.leetcode.com/uploads/2021/03/06/diamtree.jpg)
+```
 Input: root = [1,2,3,4,5]
 Output: 3
 Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
-Example 2:
+```
 
+__Example 2:__
+
+```
 Input: root = [1,2]
 Output: 1
- 
+```
 
-Constraints:
+__Constraints:__
 
-The number of nodes in the tree is in the range [1, 104].
--100 <= Node.val <= 100
+- The number of nodes in the tree is in the range [1, 104].
+- -100 <= Node.val <= 100
 
 ---
