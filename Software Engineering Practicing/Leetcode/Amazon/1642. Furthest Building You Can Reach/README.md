@@ -600,7 +600,7 @@ define function furthestBuilding(heights, bricks, ladders):
 - __Time Complexity__: $\mathcal{O}(N \log{maxClimb})$
 - __Space Complexity__: $\mathcal{O}(1)$
 
-    ```Python
+```Python
 class Solution:
     def furthestBuilding(self, heights, bricks, ladders):
         def solveWithGivenThreshold(K):
