@@ -32,3 +32,34 @@ __Constraints:__
 - $-2^{31} \le Node.val \le 2^{31} - 1$
 
 ---
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        max_depth = -1
+        ans = 0
+
+        def dfs(curr, level):
+            nonlocal ans, max_depth
+            # Base case
+            if not curr:
+                return
+            
+            if level > max_depth:
+                max_depth = level
+                ans = curr.val
+
+            dfs(curr.left, level + 1)
+            dfs(curr.right, level + 1)
+
+        dfs(root, 0)
+        return ans
+```
