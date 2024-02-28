@@ -62,3 +62,32 @@ __Constraints:__
 - $1 \le firstPerson \le n - 1$
 
 ---
+
+### Breadth-First Search
+
+```Python
+class Solution:
+    def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
+        graph = collections.defaultdict(list)
+
+        for x, y, time in meetings:
+            # if a person xi has the secret at timei, then they will share the secret with person yi, and vice versa.
+            graph[x].append((y, time))
+            graph[y].append((x, time))
+        
+        earliest = [math.inf] * n
+        earliest[0] = 0
+        earliest[firstPerson] = 0
+
+        queue = collections.deque()
+        queue.append((0, 0))
+        queue.append((firstPerson, 0))
+        while queue:
+            curr, time = queue.popleft()
+            for next, t in graph[curr]:
+                if earliest[next] > t >= time:
+                    earliest[next] = t
+                    queue.append((next, t))  
+
+        return [i for i in range(n) if earliest[i] != math.inf]
+```
