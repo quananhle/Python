@@ -57,13 +57,32 @@ __Constraints:__
 - $1 \le meetings.length \le 10^5$
 - $meetings[i].length == 3$
 - $0 \le x_i, y_i \le n - 1$
-- $x_i != y_i$
-- $1 \le time_i <= 10^5$
+- $x_i \neq y_i$
+- $1 \le time_i \le 10^5$
 - $1 \le firstPerson \le n - 1$
 
 ---
 
 ### Breadth-First Search
+
+__Algorithm__
+
+1. Create a ```graph``` to store the information about ```meetings```. For every person, we store the meeting time and label of the person met. We can use ```HashMap``` to store the information. The key of ```HashMap``` will be ```person```, and the value will be a list of ```(person, time)``` pairs.
+2. Create a queue ```queue``` to store the people whom we need to process. It will store ```(person, time of knowing the secret)```. Initially, we will add ```(0, 0)``` and ```(firstPerson, 0)``` to the queue since both of them know the secret at time ```t = 0```.
+3. Create an earliest array of size ```n```. It will store the earliest time at which a person learned the secret as per the current state of knowledge. It will be initialized with ```INT.MAX``` for all the people indicating that no one knows the secret. However, for person ```0``` and ```firstPerson```, we will update the earliest array with ```0``` since they know the secret at time ```t = 0```.
+4. Do the following while the ```queue``` is not empty:
+    a. Deque the front of ```queue``` and store it in ```(curr_person, curr_time)```.
+    b. Iterate over neighbors of ```person``` using the ```for``` loop. Let's say the neighbor is ```(next_person, next_time)```.
+    - If $t \gt time$ and ```earliest[next_person] > next_time```, then update ```earliest[next_person] = next_time``` and add ```(next_person, next_time)``` to the queue.
+    - We are adding ```(next_person, next_time)``` to the queue because we have updated ```earliest[nextPerson]``` and we need to process all the people whom ```next_person``` meets after time ```next_time```.
+    - We are checking $next_time \gt curr_time$ because the ```next_person``` can know the secret only if he/she meets person after the time at which person learned the secret.
+    - We are checking ```earliest[next_person] > next_time``` because we are interested in the earliest time at which ```next_person``` learned the secret. If $earliest[next_person] \lt next_time$, then we have already processed ```next_person``` at an earlier time, and we don't need to process it again.
+5. Iterate over the ```earliest``` array and return indices of all the people who know the secret. They are identified by the fact that ```earliest[i] != INT.MAX```.
+
+__Complexity Analysis__
+
+- __Time Complexity__: $\mathcal{O}( M \cdot (M + N) )$
+- __Space Complexity__: $\mathcal{O}(M + N)$
 
 ```Python
 class Solution:
@@ -71,7 +90,7 @@ class Solution:
         graph = collections.defaultdict(list)
 
         for x, y, time in meetings:
-            # if a person xi has the secret at timei, then they will share the secret with person yi, and vice versa.
+            # A person xi has the secret at timei, then they will share the secret with person yi, and vice versa.
             graph[x].append((y, time))
             graph[y].append((x, time))
         
@@ -82,12 +101,13 @@ class Solution:
         queue = collections.deque()
         queue.append((0, 0))
         queue.append((firstPerson, 0))
+
         while queue:
-            curr, time = queue.popleft()
-            for next, t in graph[curr]:
-                if earliest[next] > t >= time:
-                    earliest[next] = t
-                    queue.append((next, t))  
+            curr_person, curr_time = queue.popleft()
+            for next_person, next_time in graph[curr_person]:
+                if earliest[next_person] > next_time >= curr_time:
+                    earliest[next_person] = next_time
+                    queue.append((next_person, next_time))  
 
         return [i for i in range(n) if earliest[i] != math.inf]
 ```
