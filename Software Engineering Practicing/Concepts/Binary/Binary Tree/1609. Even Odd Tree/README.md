@@ -59,6 +59,8 @@ __Constraints:__
 
 ### Depth-First Search
 
+#### Two Passes
+
 ```Python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -106,4 +108,59 @@ class Solution:
 
         dfs(root, 0)
         return is_even_odd(nodes)
+```
+
+#### One Pass
+
+To handle a node, we must check the conditions to determine whether it meets the requirements to be an Even-Odd tree:
+
+- Check whether the current value has the correct parity:
+
+    - Nodes on even levels must have odd values
+    - Nodes on odd levels must have even values
+
+- Check whether the current value is in the correct order:
+
+    - Nodes on even levels must be in strictly increasing order. If true, the node breaks the increasing condition, and we can return ```False```.
+      ```node.val <= prev[level] // True when node.val is less than or equal to `prev```
+    - Nodes on odd levels must be in strictly decreasing order. If true, the node breaks the decreasing condition, and we can return ```False```.
+      ```node.val >= prev[level] // True when node.val is greater than or equal to `prev` ```
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
+        levels = list()
+
+        def dfs(curr, level):
+            # Base case: an empty tree is Even-Odd
+            if not curr:
+                return True
+
+            # Compare the parity of current and level
+            if curr.val % 2 == level % 2:
+                return False
+            
+            # Add new level to levels
+            while len(levels) <= level:
+                levels.append(0)
+            
+            # Nodes on even levels must be in strictly increasing order
+            # Nodes on odd levels must be in strictly decreasing order
+
+            if levels[level] != 0 and \
+                ((level % 2 == 0 and curr.val <= levels[level]) or \
+                 (level % 2 != 0 and curr.val >= levels[level])):
+                return False
+            
+            # Update current value for the nodes of the same level
+            levels[level] = curr.val
+            return dfs(curr.left, level + 1) and dfs(curr.right, level + 1)
+        
+        return dfs(root, 0)
 ```
