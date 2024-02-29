@@ -56,3 +56,54 @@ __Constraints:__
 - $1 \le Node.val \le 10^6$
 
 ---
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
+        nodes = list()
+
+        def is_even_odd(nodes):
+            for i, node in enumerate(nodes):
+                if i % 2 == 0:
+                    prev = node.pop()
+                    if prev % 2 == 0:
+                        return False
+                    while node:
+                        curr = node.pop()
+                        if prev <= curr or curr % 2 == 0:
+                            return False
+                        prev = curr
+                else:
+                    prev = node.pop()
+                    if prev % 2 != 0:
+                        return False
+                    while node:
+                        curr = node.pop()
+                        if prev >= curr or curr % 2 != 0:
+                            return False
+                        prev = curr
+            return True
+
+        def dfs(curr, level):
+            # Base case
+            if not curr:
+                return
+
+            if not nodes or level == len(nodes):
+                nodes.append([])
+            nodes[level].append(curr.val)
+
+            dfs(curr.left, level + 1)
+            dfs(curr.right, level + 1)
+
+        dfs(root, 0)
+        return is_even_odd(nodes)
+```
