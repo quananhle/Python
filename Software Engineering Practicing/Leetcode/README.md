@@ -374,6 +374,7 @@ parent problem for 3 pointers -> 992. Subarrays with K Different Integers
 - :no_entry::no_entry::no_entry: [2361. Minimum Costs Using the Train Line](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Citadel/2361.%20Minimum%20Costs%20Using%20the%20Train%20Line)
 - :warning::warning: [2369. Check if There is a Valid Partition For The Array](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Google/2369.%20Check%20if%20There%20is%20a%20Valid%20Partition%20For%20The%20Array)
 - :warning::warning: [2466. Count Ways To Build Good Strings](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Miscellaneous/2466.%20Count%20Ways%20To%20Build%20Good%20Strings)
+- :no_entry::no_entry::no_entry: [2742. Painting the Walls](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Amazon/2742.%20Painting%20the%20Walls)
 - :warning::warning: [2770. Maximum Number of Jumps to Reach the Last Index](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/2770.%20Maximum%20Number%20of%20Jumps%20to%20Reach%20the%20Last%20Index)
 
 ### Fibonacci
