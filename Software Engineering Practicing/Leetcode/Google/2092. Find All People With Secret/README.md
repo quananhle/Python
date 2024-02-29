@@ -75,9 +75,9 @@ __Algorithm__
     b. Iterate over neighbors of ```person``` using the ```for``` loop. Let's say the neighbor is ```(next_person, next_time)```.
     - If $t \gt time$ and ```earliest[next_person] > next_time```, then update ```earliest[next_person] = next_time``` and add ```(next_person, next_time)``` to the queue.
     - We are adding ```(next_person, next_time)``` to the queue because we have updated ```earliest[nextPerson]``` and we need to process all the people whom ```next_person``` meets after time ```next_time```.
-    - We are checking $next_time \gt curr_time$ because the ```next_person``` can know the secret only if he/she meets person after the time at which person learned the secret.
-    - We are checking ```earliest[next_person] > next_time``` because we are interested in the earliest time at which ```next_person``` learned the secret. If $earliest[next_person] \lt next_time$, then we have already processed ```next_person``` at an earlier time, and we don't need to process it again.
-5. Iterate over the ```earliest``` array and return indices of all the people who know the secret. They are identified by the fact that ```earliest[i] != INT.MAX```.
+    - We are checking ```next_time >= curr_time``` because the ```next_person``` can know the secret only if he/she meets person after the time at which person learned the secret.
+    - We are checking ```earliest[next_person] > next_time``` because we are interested in the earliest time at which ```next_person``` learned the secret. If ```earliest[next_person] <= next_time```, then we have already processed ```next_person``` at an earlier time, and we don't need to process it again.
+5. Iterate over the ```earliest``` array and return indices of all the people who know the secret. They are identified by the fact that $earliest[i] \neq INT.MAX$.
 
 __Complexity Analysis__
 
