@@ -46,3 +46,33 @@ __Constraints:__
 - $0 \le Node.val \le 10^5$
 
 ---
+
+### Depth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def equalToDescendants(self, root: Optional[TreeNode]) -> int:
+        nodes = 0
+
+        def dfs(curr):
+            nonlocal nodes
+            # Base case
+            if not curr:
+                return 0
+            
+            left_path = dfs(curr.left)
+            right_path = dfs(curr.right)
+            if left_path + right_path == curr.val:
+                nodes += 1
+            
+            return left_path + right_path + curr.val
+        
+        dfs(root)
+        return nodes
+```
