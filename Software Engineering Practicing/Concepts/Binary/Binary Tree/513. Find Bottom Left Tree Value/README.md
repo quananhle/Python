@@ -63,3 +63,34 @@ class Solution:
         dfs(root, 0)
         return ans
 ```
+
+### Breadth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        node, level = 0, -1
+
+        queue = collections.deque()
+        queue.append([root, 0])
+
+        while queue:
+            size = len(queue)
+            for _ in range(size):
+                curr_node, curr_level = queue.popleft()
+                if level < curr_level:
+                    node = curr_node.val
+                    level = curr_level
+                if curr_node.left:
+                    queue.append([curr_node.left, curr_level + 1])
+                if curr_node.right:
+                    queue.append([curr_node.right, curr_level + 1])
+
+        return node
+```
