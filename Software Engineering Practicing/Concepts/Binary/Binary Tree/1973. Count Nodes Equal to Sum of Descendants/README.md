@@ -1,6 +1,6 @@
 ## [1973. Count Nodes Equal to Sum of Descendants](https://leetcode.com/problems/count-nodes-equal-to-sum-of-descendants)
 
-```Tag```: ```Binary Tree``` ```Depth-First Search``` ```Breadth-First Search```
+```Tag```: ```Binary Tree``` ```Depth-First Search```
 
 #### Difficulty: Medium
 
