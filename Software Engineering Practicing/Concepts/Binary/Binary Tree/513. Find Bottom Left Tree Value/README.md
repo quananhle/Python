@@ -94,3 +94,31 @@ class Solution:
 
         return node
 ```
+
+#### BFS Property
+
+BFS of a tree is often implemented such that the left child of a given node is visited first, then the right child. If we implement BFS such that the right child of a given node is visited first, then the left child, the last node we visit is the leftmost node in the bottom level of the tree. This makes a variable for depth unnecessary. We can just return the value of the last node we encounter during the search.
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        queue = collections.deque([root])
+
+        while queue:
+            curr = queue.popleft()
+
+            if curr.right:
+                queue.append(curr.right)
+            if curr.left:
+                queue.append(curr.left)
+
+            node = curr.val
+
+        return node
+```
