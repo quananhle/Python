@@ -164,3 +164,42 @@ class Solution:
         
         return dfs(root, 0)
 ```
+
+### Breadth-First Search
+
+```Python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
+        levels = list()
+        queue = collections.deque([root])
+        even = True
+
+        while queue:
+            size = len(queue)
+            prev = math.inf
+            if even:
+                prev = -math.inf
+            
+            while size:
+                curr = queue.popleft()
+                if (even and (curr.val % 2 == 0 or curr.val <= prev)) or (not even and (curr.val % 2 != 0 or curr.val >= prev)):
+                    return False
+                
+                prev = curr.val
+                if curr.left:
+                    queue.append(curr.left)
+                if curr.right:
+                    queue.append(curr.right)
+                
+                size -= 1
+            
+            even = not even
+        
+        return True
+```
