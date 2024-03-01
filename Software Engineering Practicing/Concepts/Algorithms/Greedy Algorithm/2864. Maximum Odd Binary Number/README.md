@@ -91,3 +91,25 @@ class Solution:
         
         return ''.join(arr)
 ```
+
+### Greedy Bit Manipulation (Two Pointers)
+
+```Python
+class Solution:
+    def maximumOddBinaryNumber(self, s: str) -> str:
+        n = len(s)
+        arr = [c for c in s]
+
+        left, right = 0, n - 1
+        while left <= right:
+            if arr[left] == '1':
+                left += 1
+            if arr[right] == '0':
+                right -= 1
+            if left <= right and arr[left] == '0' and arr[right] == '1':
+                arr[left], arr[right] = arr[right], arr[left]
+            
+        arr[left - 1], arr[n - 1] = '0', '1'
+        
+        return "".join(arr)
+```
