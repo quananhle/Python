@@ -78,3 +78,50 @@ __Constraints:__
 - The value of each even-indexed node is even.
 
 ---
+
+### Two Pointers
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def gameResult(self, head: Optional[ListNode]) -> str:
+        team_0, team_1 = None, None
+        odd = even = 0
+        nodes = head
+
+        while nodes:
+            team_0, team_1 = nodes.val, nodes.next.val
+            if team_0 > team_1:
+                even += 1
+            elif team_0 < team_1:
+                odd += 1
+            else:
+                even += 1; odd += 1
+            nodes = nodes.next.next
+        
+        return "Odd" if odd > even else "Even" if odd < even else "Tie"
+```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def gameResult(self, head: Optional[ListNode]) -> str:
+        even = 0
+
+        while head:
+            if head.val < head.next.val:
+                even -= 1
+            else:
+                even += 1
+            head = head.next.next
+
+        return "Even" if even > 0 else "Odd" if even < 0 else "Tie"
+```
