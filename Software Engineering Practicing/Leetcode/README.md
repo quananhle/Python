@@ -596,6 +596,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :warning::warning: [1836. Remove Duplicates From an Unsorted Linked List](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Goldman%20Sachs/1836.%20Remove%20Duplicates%20From%20an%20Unsorted%20Linked%20List/) ```Stack``` ```Hash Map``` ```Two Pointers```
 - :warning::warning: [2095. Delete the Middle Node of a Linked List](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/2095.%20Delete%20the%20Middle%20Node%20of%20a%20Linked%20List) ```Two Pointers``` ```Floyd's Tortoise and Hare```
 - :warning::warning: [2130. Maximum Twin Sum of a Linked List](https://github.com/quananhle/Python/blob/3bb6eb8847f40d4b8d8ab17ee3d6d616736877f4/Software%20Engineering%20Practicing/Leetcode/Amazon/2130.%20Maximum%20Twin%20Sum%20of%20a%20Linked%20List) ```Stack``` ```Two Pointers```
+- :four_leaf_clover: [3062. Winner of the Linked List Game](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/3062.%20Winner%20of%20the%20Linked%20List%20Game) ```Two Pointers```
 
 ---
 
