@@ -106,6 +106,10 @@ class Solution:
         return "Odd" if odd > even else "Even" if odd < even else "Tie"
 ```
 
+---
+
+### Points Difference
+
 ```Python
 # Definition for singly-linked list.
 # class ListNode:
@@ -122,6 +126,23 @@ class Solution:
             else:
                 even += 1
             head = head.next.next
+
+        return "Even" if even > 0 else "Odd" if even < 0 else "Tie"
+```
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def gameResult(self, head: Optional[ListNode]) -> str:
+        curr, even = head, 0
+
+        while curr:
+            even += (curr.val > curr.next.val) - (curr.val < curr.next.val)
+            curr = curr.next.next
 
         return "Even" if even > 0 else "Odd" if even < 0 else "Tie"
 ```
