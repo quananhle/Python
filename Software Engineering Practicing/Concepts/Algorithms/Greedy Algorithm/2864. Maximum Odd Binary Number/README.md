@@ -1,6 +1,6 @@
 ## [2864. Maximum Odd Binary Number](https://leetcode.com/problems/maximum-odd-binary-number)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Greedy``` ```Two Pointers``` ```Bit Manipulations```
 
 #### Difficulty: Easy
 
@@ -37,3 +37,32 @@ __Constraints:__
 - ```s``` contains at least one ```'1'```.
 
 ---
+
+### Greedy Bit Manipulation (Counting Ones)
+
+#### Two Passes
+
+```Python
+class Solution:
+    def maximumOddBinaryNumber(self, s: str) -> str:
+        one_count = zero_count = 0
+        n = len(s)
+
+        for c in s:
+            if c == '1':
+                one_count += 1
+            else:
+                zero_count += 1
+
+        ans = []
+        while one_count > 1:
+            ans.append('1')
+            one_count -= 1
+        while zero_count:
+            ans.append('0')
+            zero_count -= 1
+        
+        ans.append('1')
+
+        return ''.join(ans)
+```
