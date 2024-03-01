@@ -66,3 +66,20 @@ class Solution:
 
         return ''.join(ans)
 ```
+
+#### One Pass
+
+```Python
+class Solution:
+    def maximumOddBinaryNumber(self, s: str) -> str:
+        one_count = s.count('1')
+        n = len(s)
+
+        return ''.join(['1'] * (one_count - 1) + ['0'] * (n - one_count) + ['1'])
+```
+
+### Greedy Bit Manipulation (Sorting and Swapping)
+
+```Python
+
+```
