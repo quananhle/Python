@@ -81,5 +81,13 @@ class Solution:
 ### Greedy Bit Manipulation (Sorting and Swapping)
 
 ```Python
+class Solution:
+    def maximumOddBinaryNumber(self, s: str) -> str:
+        arr = sorted(s)
+        n = len(s)
 
+        for i in range(n // 2):
+            arr[i], arr[n - i - 2] = arr[n - i - 2], arr[i]
+        
+        return ''.join(arr)
 ```
