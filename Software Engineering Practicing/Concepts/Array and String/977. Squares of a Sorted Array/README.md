@@ -6,7 +6,7 @@
 
 Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
 
-![image](https://user-images.githubusercontent.com/35042430/213083965-466db0ff-9705-49c1-beed-e10b1fe50557.png)
+![image](https://github.com/quananhle/Python/assets/35042430/973fd563-d67d-44c1-a84a-d935d69a6955)
 
 ---
 
