@@ -6,7 +6,7 @@
 
 Given the ```head``` of a linked list, remove the n<sup>th</sup> node from the end of the list and return its head.
 
-![image](https://user-images.githubusercontent.com/35042430/210295310-f960ddce-005e-4044-9f32-d223c0dd37e3.png)
+![image](https://github.com/quananhle/Python/assets/35042430/05486c13-7bfb-4ec2-b724-eddb3ebcab4c)
 
 ---
 
