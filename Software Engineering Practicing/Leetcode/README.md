@@ -578,7 +578,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 ## Linked List
 
 - :warning::warning: [2. Add Two Numbers](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/2.%20Add%20Two%20Numbers)
-- :warning::warning: [19. Remove Nth Node From End of List](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2005%20-%20Two%20Pointers/19.%20Remove%20Nth%20Node%20From%20End%20of%20List) ```Two Pointers```
+- :warning::warning: [19. Remove N<sup>th</sup> Node From End of List](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Study%20Plan/Algorithm/Algorithm%20I/Day%2005%20-%20Two%20Pointers/19.%20Remove%20Nth%20Node%20From%20End%20of%20List) ```Two Pointers```
 - :four_leaf_clover: [21. Merge Two Sorted Lists](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Linked%20List/21.%20Merge%20Two%20Sorted%20Lists) ```Recursion```
 - :no_entry::no_entry::no_entry: [23. Merge k Sorted Lists](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Leetcode/Amazon/23.%20Merge%20k%20Sorted%20Lists) ```Stack``` ```Priority Queue``` ```Divide & Conquer```
 - :warning::warning: [24. Swap Nodes in Pairs](https://github.com/quananhle/Python/blob/0f8dccd662fa89df20d6f0bcfdab6e5f7eca69c5/Software%20Engineering%20Practicing/Concepts/Recursion/Recursion%20I/24.%20Swap%20Nodes%20in%20Pairs) ```Recursion```
