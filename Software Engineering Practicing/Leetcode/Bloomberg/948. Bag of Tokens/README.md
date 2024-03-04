@@ -62,3 +62,17 @@ __Constraints:__
 - $0 \le tokens[i], power \lt 10^4$
 
 ---
+
+### Greedy Algorithm
+
+#### Two Pointer Technique
+
+```Python
+
+```
+
+#### Sorting
+
+```Python
+
+```
