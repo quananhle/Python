@@ -1,6 +1,6 @@
 ## [948. Bag of Tokens](https://leetcode.com/problems/bag-of-tokens)
 
-```Tag```: ```Greedy Algorithm``` ```Sorting``` ```Two Pointers```
+```Tag```: ```Greedy Algorithm``` ```Sorting``` ```Two Pointers``` ```Queue```
 
 #### Difficulty: Medium
 
@@ -94,8 +94,26 @@ class Solution:
         return ans
 ```
 
-#### Sorting
+#### Queue
 
 ```Python
+class Solution:
+    def bagOfTokensScore(self, tokens: List[int], power: int) -> int:
+        tokens.sort()
+        score = 0
+        n = len(tokens)
 
+        queue = collections.deque(tokens)
+        while queue:
+            if queue[0] <= power:
+                score += 1
+                power -= queue.popleft()
+            elif len(queue) > 2 and score > 0:
+                score -= 1
+                power += queue.pop()
+            else:
+                # No possible move
+                return score
+                    
+        return score
 ```
