@@ -68,7 +68,30 @@ __Constraints:__
 #### Two Pointer Technique
 
 ```Python
+class Solution:
+    def bagOfTokensScore(self, tokens: List[int], power: int) -> int:
+        tokens.sort()
+        score = ans = 0
+        n = len(tokens)
 
+        left, right = 0, n - 1
+        while left <= right:
+            if tokens[left] <= power:
+                score += 1
+                power -= tokens[left]
+                left += 1
+            else:
+                if score > 0:
+                    score -= 1
+                    power += tokens[right]
+                    right -= 1
+                else:
+                    # No possible move
+                    return 0
+            
+            ans = max(score, ans)
+        
+        return ans
 ```
 
 #### Sorting
