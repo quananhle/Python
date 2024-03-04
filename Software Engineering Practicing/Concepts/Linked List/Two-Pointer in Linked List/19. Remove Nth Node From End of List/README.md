@@ -31,12 +31,12 @@ Output: [1]
 ```
 
 __Constraints:__
-```
-The number of nodes in the list is sz.
-1 <= sz <= 30
-0 <= Node.val <= 100
-1 <= n <= sz
-```
+
+- The number of nodes in the list is ```sz```.
+- $1 \le sz \le 30$
+- $0 \le Node.val \le 100$
+- $1 \le n \le sz$
+
 
 ---
 
@@ -81,6 +81,33 @@ class Solution:
         return head
 ```
 
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        size = 0
+        curr, prev = head, head
+
+        while curr:
+            size += 1
+            curr = curr.next
+        
+        k = size - n
+        while prev and k > 1:
+            prev = prev.next
+            k -= 1
+        
+        if size == n:
+            return head.next
+        
+        prev.next = prev.next.next
+        return head
+```
+
 __Follow up__: Could you do this in one pass?
 
 ### One Pass Algorithm
@@ -95,14 +122,16 @@ class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         size = 1
         curr, node = head, head
+
         while node.next:
             node = node.next
             if size > n:
                 curr = curr.next
             size += 1
+
         if size == n:
             return head.next
-        else:
-            curr.next = curr.next.next
+
+        curr.next = curr.next.next
         return head
 ```
