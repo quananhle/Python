@@ -1,6 +1,6 @@
 ## [1750. Minimum Length of String After Deleting Similar Ends](https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends)
 
-```Tag```: ```Array & String``` ```Two Pointers```
+```Tag```: ```Array & String``` ```Two Pointers``` ```Recursion```
 
 Given a string ```s``` consisting only of characters ```'a'```, ```'b'```, and ```'c'```. You are asked to apply the following algorithm on the string any number of times:
 
@@ -66,4 +66,24 @@ class Solution:
                 right -= 1
 
         return right - left + 1
+```
+
+### Tail Recursion
+
+```Python
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        def delete_similar_ends(start, end):
+            if start >= end or s[start] != s[end]:
+                return end - start + 1
+            else:
+                l, r = s[start], s[end]
+
+                while start <= end and s[start] == l:
+                    start += 1
+                while start < end and s[end] == r:
+                    end -= 1
+            return delete_similar_ends(start, end)
+        
+        return delete_similar_ends(0, len(s) - 1)
 ```
