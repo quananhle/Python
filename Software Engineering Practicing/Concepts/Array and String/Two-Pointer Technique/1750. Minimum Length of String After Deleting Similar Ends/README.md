@@ -47,3 +47,23 @@ __Constraints:__
 - ```s``` only consists of characters ```'a'```, ```'b'```, and ```'c'```.
 
 ---
+
+### Two Pointers
+
+```Python
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        n = len(s)
+        left, right = 0, n - 1
+
+        while left < right and s[left] == s[right]:
+            start, end = s[left], s[right]
+
+            while left <= right and s[left] == start:
+                left += 1
+            
+            while left < right and s[right] == end:
+                right -= 1
+
+        return right - left + 1
+```
