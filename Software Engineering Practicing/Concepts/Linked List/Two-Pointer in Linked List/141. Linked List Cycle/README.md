@@ -10,7 +10,7 @@ There is a cycle in a linked list if there is some node in the list that can be 
 
 Return _```true``` if there is a cycle in the linked list. Otherwise, return ```false```_.
 
-![image](https://user-images.githubusercontent.com/35042430/210279241-1f1baa9d-828b-439f-a605-1655cf66a205.png)
+![image](https://github.com/quananhle/Python/assets/35042430/8a1fc014-c7e0-472a-987c-c70e88e9a251)
 
 ---
 
