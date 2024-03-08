@@ -71,3 +71,25 @@ class Solution:
             
         return frequency_of_max_frequency * max_frequency
 ```
+
+### One Pass
+
+```Python
+class Solution:
+    def maxFrequencyElements(self, nums: List[int]) -> int:
+        counter = collections.defaultdict(int)
+        max_frequency = 0
+        total_frequencies = 0
+
+        for num in nums:
+            counter[num] = 1 + counter.get(num, 0)
+            frequency = counter[num]
+            
+            if frequency > max_frequency:
+                max_frequency = frequency
+                total_frequencies = frequency
+            elif frequency == max_frequency:
+                total_frequencies += frequency
+            
+        return total_frequencies
+```
