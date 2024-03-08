@@ -53,3 +53,21 @@ class Solution:
         
         return ans
 ```
+
+### Hash Map
+
+```Python
+class Solution:
+    def maxFrequencyElements(self, nums: List[int]) -> int:
+        counter = collections.Counter(nums)
+        max_frequency = 0
+        for freq in counter.values():
+            max_frequency = max(max_frequency, freq)
+        
+        frequency_of_max_frequency = 0
+        for freq in counter.values():
+            if freq == max_frequency:
+                frequency_of_max_frequency += 1
+            
+        return frequency_of_max_frequency * max_frequency
+```
