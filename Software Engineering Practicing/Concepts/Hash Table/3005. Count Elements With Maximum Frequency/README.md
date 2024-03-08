@@ -1,6 +1,6 @@
 ## [3005. Count Elements With Maximum Frequency](https://leetcode.com/problems/count-elements-with-maximum-frequency)
 
-```Tag```:
+```Tag```: ```Array & String```
 
 #### Difficulty: Easy
 
@@ -34,3 +34,22 @@ __Constraints:__
 - $1 \le nums[i] \le 100$
 
 ---
+
+### Array
+
+```Python
+class Solution:
+    def maxFrequencyElements(self, nums: List[int]) -> int:
+        n = len(nums)
+        freq = [0] * (max(nums) + 1)
+
+        for num in nums:
+            freq[num] += 1
+        
+        ans = 0
+        for _, f in enumerate(freq):
+            if f == max(freq):
+                ans += f
+        
+        return ans
+```
