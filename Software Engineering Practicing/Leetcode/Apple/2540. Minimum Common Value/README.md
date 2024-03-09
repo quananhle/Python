@@ -1,6 +1,6 @@
 ## [2540. Minimum Common Value](https://leetcode.com/problems/minimum-common-value)
 
-```Tag```:
+```Tag```: ```Hash Set``` ```Two Pointers``` ```Binary Search```
 
 #### Difficulty: Easy
 
@@ -33,3 +33,28 @@ __Constraints:__
 - Both nums1 and nums2 are sorted in non-decreasing order.
 
 ---
+
+### Two Pointers
+
+```Python
+class Solution:
+    def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
+        if len(nums1) > len(nums2):
+            nums1, nums2 = nums2, nums1
+
+        m, n = len(nums1), len(nums2)
+        i = j = 0
+
+        while i < m and j < n:
+            if j < n:
+                while i < m and nums1[i] < nums2[j]: 
+                    i += 1
+            if i < m:
+                while j < n and nums2[j] < nums1[i]:
+                    j += 1
+
+            if i < m and j < n and nums1[i] == nums2[j]:
+                return nums1[i]
+
+        return -1
+```
