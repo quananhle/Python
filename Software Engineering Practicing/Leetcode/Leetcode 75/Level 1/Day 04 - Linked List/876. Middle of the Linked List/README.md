@@ -8,7 +8,7 @@ Given the ```head``` of a singly linked list, return _the middle node of the lin
 
 If there are two middle nodes, return __the second middle__ node.
 
-<img width="667" alt="image" src="https://user-images.githubusercontent.com/35042430/205469894-820539c5-5094-46e5-9c6f-966aed2bdd22.png">
+![image](https://github.com/quananhle/Python/assets/35042430/029cf029-435c-411d-8001-1d3ac5c9dbac)
 
 ---
 
