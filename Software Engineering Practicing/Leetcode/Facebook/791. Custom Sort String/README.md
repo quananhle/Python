@@ -67,3 +67,22 @@ class Solution:
         res.extend([c for c in s if not c in order_set])
         return ''.join(res)
 ```
+
+#### Hash Map
+
+```Python
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        counter = collections.defaultdict(int)
+        for c in s:
+            counter[c] += 1
+        
+        res = list()
+        for c in order:
+            res += [c] * counter[c]
+        
+        for c in set(s) - set(order):
+            res += [c] * counter[c]
+        
+        return "".join(res)
+```
