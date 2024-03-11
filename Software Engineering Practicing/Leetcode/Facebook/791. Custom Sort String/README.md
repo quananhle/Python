@@ -4,11 +4,11 @@
 
 #### Difficulty: Medium
 
-You are given two strings order and s. All the characters of order are unique and were sorted in some custom order previously.
+You are given two strings ```order``` and ```s```. All the characters of ```order``` are unique and were sorted in some custom order previously.
 
-Permute the characters of s so that they match the order that order was sorted. More specifically, if a character x occurs before a character y in order, then x should occur before y in the permuted string.
+Permute the characters of ```s``` so that they match the order that ```order``` was sorted. More specifically, if a character ```x``` occurs before a character ```y``` in ```order```, then ```x``` should occur before ```y``` in the permuted string.
 
-Return any permutation of s that satisfies this property.
+Return _any permutation of ```s``` that satisfies this property_.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/87807a08-1288-48e6-8112-760099eb06cd)
 
@@ -39,9 +39,9 @@ Following the order of appearance in order, "b", "c", and "a" from s should be a
 
 __Constraints:__
 
-- 1 <= order.length <= 26
-- 1 <= s.length <= 200
-- order and s consist of lowercase English letters.
-- All the characters of order are unique.
+- $1 \le order.length \le 26$
+- $1 \le s.length \le 200$
+- ```order``` and ```s``` consist of lowercase English letters.
+- All the characters of ```order``` are unique.
 
 ---
