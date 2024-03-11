@@ -1,6 +1,6 @@
 ## [791. Custom Sort String](https://leetcode.com/problems/custom-sort-string)
 
-```Tag```:
+```Tag```: ```Array & String``` ```Hash Map```
 
 #### Difficulty: Medium
 
@@ -45,3 +45,25 @@ __Constraints:__
 - All the characters of ```order``` are unique.
 
 ---
+
+### Counter
+
+#### Array & String
+
+```Python
+class Solution:
+    def customSortString(self, order: str, s: str) -> str:
+        counter = [0] * 26
+        res, s_set, order_set  = list(), set(), set()
+
+        for c in s:
+            counter[ord(c) - ord('a')] += 1
+            s_set.add(c)
+
+        for c in order:
+            res.extend([c] * counter[ord(c) - ord('a')])
+            order_set.add(c)
+
+        res.extend([c for c in s if not c in order_set])
+        return ''.join(res)
+```
