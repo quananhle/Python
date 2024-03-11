@@ -1,6 +1,6 @@
 ## [3063. Linked List Frequency](https://leetcode.com/problems/linked-list-frequency)
 
-```Tag```:
+```Tag```: ```Linked List``` ```Hash Map```
 
 #### Difficulty: Easy
 
@@ -42,3 +42,29 @@ __Constraints:__
 
 ---
 
+### Counter
+
+#### Hash Map
+
+```Python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def frequenciesOfElements(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        counter = collections.defaultdict()
+        sentinel = curr = ListNode()
+        
+        node = head
+        while node:
+            counter[node.val] = 1 + counter.get(node.val, 0)
+            node = node.next
+        
+        for _, freq in counter.items():
+            curr.next = ListNode(freq)
+            curr = curr.next
+
+        return sentinel.next
+```
