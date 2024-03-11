@@ -525,6 +525,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 
 ## Hash Map/Hash Set
 
+- :warning::warning: [791. Custom Sort String](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/Facebook/791.%20Custom%20Sort%20String) ```Array & String``` ```Hash Map```
 ### Hash Map
 
 - :warning::warning: [49. Group Anagrams](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Hash%20Table/Hash%20Map/49.%20Group%20Anagrams)
