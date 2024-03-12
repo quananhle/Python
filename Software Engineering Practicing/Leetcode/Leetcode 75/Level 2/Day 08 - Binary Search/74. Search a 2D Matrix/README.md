@@ -13,7 +13,7 @@ Given an integer ```target```, return _```true``` if ```target``` is in ```matri
 
 You must write a solution in ```O(log(m * n))``` time complexity.
 
-![image](https://user-images.githubusercontent.com/35042430/223943764-75063ad1-503c-49cb-a6fe-d688df8f8b29.png)
+![image](https://github.com/quananhle/Python/assets/35042430/b54baa98-cbd4-4f08-9527-01e045492ce6)
 
 ---
 
@@ -42,6 +42,8 @@ __Constraints:__
 
 ---
 
+### Flatten 2D -> 1D
+
 ```Python
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
@@ -66,6 +68,40 @@ class Solution:
                 
         return False
 ```
+
+
+### Two Binary Searches
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        ROWS = len(matrix)
+        lo_row, hi_row = 0, ROWS - 1
+
+        while lo_row <= hi_row:                         # O(log m)
+            mi_row = hi_row - (hi_row - lo_row) // 2
+
+            row = matrix[mi_row]
+            lo, hi = 0, len(row) - 1
+            while lo <= hi:                             # O(log n)
+                mi = hi - (hi - lo) // 2
+                curr = row[mi]
+                if target == curr:
+                    return True
+                elif target < curr:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+
+            if target < row[-1]:                        # O(1)
+                hi_row = mi_row - 1
+            else:                                       # O(1)
+                lo_row = mi_row + 1 
+            
+        return False
+```
+
+### One Binary Search
 
 ```Python
 class Solution:
