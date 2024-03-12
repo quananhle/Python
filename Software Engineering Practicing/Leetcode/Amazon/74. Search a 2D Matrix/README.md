@@ -13,7 +13,7 @@ Given an integer ```target```, return _```true``` if ```target``` is in ```matri
 
 You must write a solution in $\mathcal{O}(\log(m \cdot n))$ time complexity.
 
-![image](https://github.com/quananhle/Python/assets/35042430/d8393bba-bcd0-4328-abbc-a91005908fd6)
+![image](https://github.com/quananhle/Python/assets/35042430/5d4caff1-a7d6-4985-bfa3-fec361c8abf5)
 
 ---
 
@@ -79,6 +79,37 @@ class Solution:
             else:
                 return True
 
+        return False
+```
+
+#### Two Binary Searches
+
+```Python
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        ROWS = len(matrix)
+        lo_row, hi_row = 0, ROWS - 1
+
+        while lo_row <= hi_row:                         # O(log m)
+            mi_row = hi_row - (hi_row - lo_row) // 2
+
+            row = matrix[mi_row]
+            lo, hi = 0, len(row) - 1
+            while lo <= hi:                             # O(log n)
+                mi = hi - (hi - lo) // 2
+                curr = row[mi]
+                if target == curr:
+                    return True
+                elif target < curr:
+                    hi = mi - 1
+                else:
+                    lo = mi + 1
+
+            if target < row[-1]:                        # O(1)
+                hi_row = mi_row - 1
+            else:                                       # O(1)
+                lo_row = mi_row + 1 
+            
         return False
 ```
 
