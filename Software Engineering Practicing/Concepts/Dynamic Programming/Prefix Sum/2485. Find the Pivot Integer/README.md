@@ -102,14 +102,9 @@ class Solution:
 #### Precomputed Prefix Sum
 
 ```Python
-class PrefixSum:
-    def __init__(self):
+class PrefixSum:                                                                    # O(n)
+    def __init__(self, n: int) -> None:
         self.memo = collections.defaultdict(int)
-
-    def find(self, pair: tuple) -> int:
-        return self.memo[pair]
-    
-    def get_running_sum(self, n: int):
         left_sum = 0
         total = sum([i for i in range(1, n + 1)])
         for pivot in range(1, n + 1):
@@ -117,18 +112,21 @@ class PrefixSum:
             self.memo[(pivot, 'left')] = left_sum
             self.memo[(pivot, 'right')] = total - left_sum + pivot
 
+    def find(self, pair: tuple) -> int:
+        return self.memo[pair]
+
 class Solution:
     def pivotInteger(self, n: int) -> int:
-        prefix_sum = PrefixSum()
-        prefix_sum.get_running_sum(n)
+        # Precomputed the running sums of all pivot index
+        prefix_sum = PrefixSum(n)
         
         lo, hi = 1, n
 
-        while lo <= hi:
+        while lo <= hi:                                                                # O(log n)
             mi = hi - (hi - lo) // 2
-            if prefix_sum.find((mi, 'left')) == prefix_sum.find((mi, 'right')):
+            if prefix_sum.find((mi, 'left')) == prefix_sum.find((mi, 'right')):        # O(1)
                 return mi
-            elif prefix_sum.find((mi, 'left')) < prefix_sum.find((mi, 'right')):
+            elif prefix_sum.find((mi, 'left')) < prefix_sum.find((mi, 'right')):       # O(1)
                 lo = mi + 1
             else:
                 hi = mi - 1
