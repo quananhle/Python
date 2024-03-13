@@ -99,6 +99,43 @@ class Solution:
         return -1  
 ```
 
+#### Precomputed Prefix Sum
+
+```Python
+class PrefixSum:
+    def __init__(self):
+        self.memo = collections.defaultdict(int)
+
+    def find(self, pair: tuple) -> int:
+        return self.memo[pair]
+    
+    def get_running_sum(self, n: int):
+        left_sum = 0
+        total = sum([i for i in range(1, n + 1)])
+        for pivot in range(1, n + 1):
+            left_sum += pivot
+            self.memo[(pivot, 'left')] = left_sum
+            self.memo[(pivot, 'right')] = total - left_sum + pivot
+
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        prefix_sum = PrefixSum()
+        prefix_sum.get_running_sum(n)
+        
+        lo, hi = 1, n
+
+        while lo <= hi:
+            mi = hi - (hi - lo) // 2
+            if prefix_sum.find((mi, 'left')) == prefix_sum.find((mi, 'right')):
+                return mi
+            elif prefix_sum.find((mi, 'left')) < prefix_sum.find((mi, 'right')):
+                lo = mi + 1
+            else:
+                hi = mi - 1
+            
+        return -1
+```
+
 ### Binary Search
 
 ```Python
