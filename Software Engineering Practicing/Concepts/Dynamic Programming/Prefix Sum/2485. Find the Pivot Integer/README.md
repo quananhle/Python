@@ -99,7 +99,27 @@ class Solution:
         return -1  
 ```
 
-#### Precomputed Prefix Sum
+### Binary Search
+
+```Python
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        lo, hi = 1, n
+
+        while lo <= hi:
+            mi = hi - (hi - lo) // 2
+            if sum([i for i in range(mi + 1)]) == sum([i for i in range(mi, n + 1)]):
+                return mi
+            elif sum([i for i in range(mi + 1)]) < sum([i for i in range(mi, n + 1)]):
+                lo = mi + 1
+            else:
+                hi = mi - 1
+            
+        return -1
+```
+
+
+#### Precomputed Prefix Sum + Binary Search
 
 ```Python
 class PrefixSum:                                                                    # O(n)
@@ -127,25 +147,6 @@ class Solution:
             if prefix_sum.find((mi, 'left')) == prefix_sum.find((mi, 'right')):        # O(1)
                 return mi
             elif prefix_sum.find((mi, 'left')) < prefix_sum.find((mi, 'right')):       # O(1)
-                lo = mi + 1
-            else:
-                hi = mi - 1
-            
-        return -1
-```
-
-### Binary Search
-
-```Python
-class Solution:
-    def pivotInteger(self, n: int) -> int:
-        lo, hi = 1, n
-
-        while lo <= hi:
-            mi = hi - (hi - lo) // 2
-            if sum([i for i in range(mi + 1)]) == sum([i for i in range(mi, n + 1)]):
-                return mi
-            elif sum([i for i in range(mi + 1)]) < sum([i for i in range(mi, n + 1)]):
                 lo = mi + 1
             else:
                 hi = mi - 1
