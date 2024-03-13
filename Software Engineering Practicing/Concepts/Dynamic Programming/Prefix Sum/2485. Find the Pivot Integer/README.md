@@ -1,6 +1,6 @@
-## 2485. Find the Pivot Integer
+## [2485. Find the Pivot Integer](https://leetcode.com/problems/find-the-pivot-integer)
 
-```Tag```: ```Prefix Sum``` ```Dynamic Programming```
+```Tag```: ```Prefix Sum``` ```Dynamic Programming``` ```Binary Search```
 
 #### Difficulty: Easy
 
@@ -10,7 +10,7 @@ Given a positive integer ```n```, find the __pivot integer__ ```x``` such that:
 
 Return _the __pivot integer__ ```x```_. If no such integer exists, return ```-1```. It is guaranteed that there will be at most one pivot index for the given input.
 
-![image](https://user-images.githubusercontent.com/35042430/218198561-2b06b830-04af-4872-be29-80b90e748638.png)
+![image](https://github.com/quananhle/Python/assets/35042430/86e8d8a7-7e47-4f2b-bb9f-74d70f9fe355)
 
 ---
 
@@ -37,7 +37,7 @@ Explanation: It can be proved that no such integer exist.
 
 __Constraints:__
 
-- ```1 <= n <= 1000```
+- $1 \le n \le 1000$
 
 ---
 
@@ -99,4 +99,22 @@ class Solution:
         return -1  
 ```
 
+### Binary Search
+
+```Python
+class Solution:
+    def pivotInteger(self, n: int) -> int:
+        lo, hi = 1, n
+
+        while lo <= hi:
+            mi = hi - (hi - lo) // 2
+            if sum([i for i in range(mi + 1)]) == sum([i for i in range(mi, n + 1)]):
+                return mi
+            elif sum([i for i in range(mi + 1)]) < sum([i for i in range(mi, n + 1)]):
+                lo = mi + 1
+            else:
+                hi = mi - 1
+            
+        return -1
+```
 
