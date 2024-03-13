@@ -449,6 +449,7 @@ Similar Problems: 72, 10, 44, 97, 115, 583, 712, 1187, 1143, 1092, 718
 - :four_leaf_clover: [724. Find Pivot Index](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Prefix%20Sum/724.%20Find%20Pivot%20Index)
 - :four_leaf_clover: [1732. Find the Highest Altitude](https://github.com/quananhle/Python/tree/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Prefix%20Sum/1732.%20Find%20the%20Highest%20Altitude)
 - :warning::warning: [2439. Minimize Maximum of Array](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Leetcode/2439.%20Minimize%20Maximum%20of%20Array) ```Dynamic Programming```
+- :four_leaf_clover: [2485. Find the Pivot Integer](https://github.com/quananhle/Python/blob/main/Software%20Engineering%20Practicing/Concepts/Dynamic%20Programming/Prefix%20Sum/2485.%20Find%20the%20Pivot%20Integer) ```Binary Search```
 ---
 
 ## Graph
