@@ -28,7 +28,7 @@ Output: [0,0,9,0,0]
 
 __Constraints:__
 
-- $2 <= nums.length <= 10^5$
+- $2 \le nums.length \le 10^5$
 - $-30 \le nums[i] \le 30$
 - The product of any prefix or suffix of ```nums``` is guaranteed to fit in a 32-bit integer.
  
