@@ -84,6 +84,20 @@ class Solution:
         return res
 ```
 
+```Python
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        left_prods, right_prods = [1] * (n + 1), [1] * (n + 1)
+
+        for i in range(1, n):
+            left_prefix[i] = left_prefix[i - 1] * nums[i - 1]
+        for i in range(n - 2, -1, -1):
+            right_prefix[i] = right_prefix[i + 1] * nums[i + 1]
+
+        return [i * j for (i, j) in zip(left_prefix, right_prefix)][:-1]
+```
+
 ### Optimized Space Left and Right
 
 - __Time complexity__: ```O(N)```
