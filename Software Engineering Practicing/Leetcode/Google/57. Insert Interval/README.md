@@ -38,6 +38,7 @@ __Constraints:__
 
 ---
 
+### Linear Search
 
 ```Python
 class Solution:
@@ -60,5 +61,29 @@ class Solution:
                 new_end = max(end, new_end)
                 newInterval = [new_start, new_end]
         res.append(newInterval)
+        return res
+```
+
+```Python
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        n = len(intervals)
+        res = list()
+        new_start, new_end = newInterval
+        i = 0
+
+        while i < n and intervals[i][1] < new_start:
+            res.append(intervals[i])
+            i += 1
+        
+        while i < n and intervals[i][0] <= new_end:
+            new_start, new_end = min(intervals[i][0], new_start), max(intervals[i][1], new_end)
+            i += 1
+        res.append([new_start, new_end])
+
+        while i < n:
+            res.append(intervals[i])
+            i += 1
+        
         return res
 ```
