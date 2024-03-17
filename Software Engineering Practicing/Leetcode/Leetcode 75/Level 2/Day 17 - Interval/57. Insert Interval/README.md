@@ -29,12 +29,12 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 
 __Constraints:__
 
-- 0 <= ```intervals.length``` <= 10<sup>4</sup>
-- ```intervals[i].length == 2```
-- 0 <= start<sub>i</sub> <= end<sub>i</sub> <= 10<sup>5</sup>
-- ```intervals``` is sorted by start<sub>i</sub> in ascending order.
-- ```newInterval.length == 2```
-- 0 <= start <= end <= 10<sup>5</sup>
+- $0 \le intervals.length \le 10^4$
+- $intervals[i].length == 2$
+- $0 \le start_i \le end_i \le 10^5$
+- ```intervals``` is sorted by $start_i$ in ascending order.
+- $newInterval.length == 2$
+- $0 \le start \le end \le 10^5$
 
 ---
 
