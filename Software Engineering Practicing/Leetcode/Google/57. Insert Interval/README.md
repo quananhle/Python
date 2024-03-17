@@ -28,14 +28,13 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 ```
 
 __Constraints:__
-```
-0 <= intervals.length <= 104
-intervals[i].length == 2
-0 <= starti <= endi <= 105
-intervals is sorted by starti in ascending order.
-newInterval.length == 2
-0 <= start <= end <= 105
-```
+
+- $0 \le intervals.length \le 10^4$
+- $intervals[i].length == 2$
+- $0 \le start_i \le end_i \le 10^5$
+- ```intervals``` is sorted by $start_i$ in ascending order.
+- $newInterval.length == 2$
+- $0 \le start \le end \le 10^5$
 
 ---
 
