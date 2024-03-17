@@ -10,7 +10,7 @@ Insert ```newInterval``` into ```intervals``` such that ```intervals``` is still
 
 Return ```intervals``` after the insertion.
 
-![image](https://user-images.githubusercontent.com/35042430/226203632-63858af6-8a51-4201-9516-ded2f8e1fc62.png)
+![image](https://github.com/quananhle/Python/assets/35042430/96fba50a-2681-496c-94c8-b759d05a3a45)
 
 ---
 
