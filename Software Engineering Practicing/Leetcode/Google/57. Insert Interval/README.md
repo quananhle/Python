@@ -81,9 +81,8 @@ class Solution:
             i += 1
         res.append([new_start, new_end])
 
-        while i < n:
-            res.append(intervals[i])
-            i += 1
+        if i < n:
+            res.extend(intervals[i:])
         
         return res
 ```
