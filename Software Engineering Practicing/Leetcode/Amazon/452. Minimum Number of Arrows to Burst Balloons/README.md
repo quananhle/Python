@@ -10,7 +10,7 @@ Arrows can be shot up __directly vertically__ (in the positive y-direction) from
 
 Given the array ```points```, return _the minimum number of arrows that must be shot to burst all balloons_.
 
-![image](https://user-images.githubusercontent.com/35042430/210689167-df8dd1c6-83b9-4eb3-9989-bc5f02f671b0.png)
+![image](https://github.com/quananhle/Python/assets/35042430/ad1eae8f-c8a9-4126-9b4a-76ff31ef5924)
 
 ---
 
