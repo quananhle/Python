@@ -87,7 +87,7 @@ class Solution:
         return idle_time + len(tasks)
 ```
 
-### Heap
+### Priority Queue / Max Heap
 
 ```Python
 class Solution:
@@ -114,6 +114,40 @@ class Solution:
                 idle_time -= curr_freq
 
         return idle_time + len(tasks) if idle_time > 0 else len(tasks)
+```
+
+```Python
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        counter = collections.defaultdict(int)
+        for task in tasks:
+            counter[task] = 1 + counter.get(task, 0)
+
+        h = list()
+        for task, count in counter.items():
+            heapq.heappush(h, (-count, task))
+
+        scheduler = list()
+        time = 0
+
+        while h:
+            idles = n + 1
+            cycle = list()
+            count = 0
+
+            while idles and h:
+                freq, task = heapq.heappop(h)
+                if -freq > 1:
+                    cycle.append(-(-freq - 1))
+                count += 1
+                idles -= 1
+
+            for freq in cycle:
+                heapq.heappush(h, (freq, task))
+                
+            time += count if not h else n + 1
+
+        return time
 ```
 
 ### Math
