@@ -10,7 +10,7 @@ However, there is a non-negative integer ```n``` that represents the cooldown pe
 
 Return _the least number of units of times that the CPU will take to finish all the given tasks_.
 
-![image](https://user-images.githubusercontent.com/35042430/223026966-0a79acbf-5692-4324-aff2-1948607fc69f.png)
+![image](https://github.com/quananhle/Python/assets/35042430/b4148952-ae0f-4d25-b088-5110bfe9a86a)
 
 ---
 
