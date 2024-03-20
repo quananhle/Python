@@ -1,6 +1,6 @@
 ## [1669. Merge In Between Linked Lists](https://leetcode.com/problems/merge-in-between-linked-lists)
 
-```Tag```:
+```Tag```: ```Linked List```
 
 #### Difficulty: Medium
 
@@ -12,7 +12,7 @@ The blue edges and nodes in the following figure indicate the result:
 
 ![image](https://assets.leetcode.com/uploads/2020/11/05/fig1.png)
 
-_Build the result list and return its ```head```_.
+_Build the result list and return its head_.
 
 ![image](https://github.com/quananhle/Python/assets/35042430/518678e1-a28b-485e-991b-260ad1e2794b)
 
