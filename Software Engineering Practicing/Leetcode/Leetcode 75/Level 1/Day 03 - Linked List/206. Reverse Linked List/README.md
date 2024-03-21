@@ -4,7 +4,7 @@
 
 Given the ```head``` of a singly linked list, reverse the list, and _return the reversed list_.
 
-![image](https://user-images.githubusercontent.com/35042430/205354599-f2387f08-b3be-481f-84b3-f2e9ff0b378b.png)
+![image](https://github.com/quananhle/Python/assets/35042430/83e0fe6e-6c8a-4148-90b5-a651e225c7d9)
 
 ---
 
