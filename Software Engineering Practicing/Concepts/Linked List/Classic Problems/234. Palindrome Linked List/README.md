@@ -6,7 +6,7 @@
 
 Given the ```head``` of a singly linked list, return _```true``` if it is a palindrome or ```false``` otherwise_.
 
-![image](https://user-images.githubusercontent.com/35042430/210603028-90b61b98-86dc-4f71-9a47-9dccc611da18.png)
+![image](https://github.com/quananhle/Python/assets/35042430/67dbc609-3037-4e6f-8e96-02890e04fd3f)
 
 ---
 
