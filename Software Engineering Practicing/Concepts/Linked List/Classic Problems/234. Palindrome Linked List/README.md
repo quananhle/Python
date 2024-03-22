@@ -1,6 +1,6 @@
 ## [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list)
 
-```Tag```: ```Two Pointers``` ```List```
+```Tag```: ```Linked List``` ```Two Pointers``` ```List```
 
 #### Difficulty: Easy
 
@@ -27,10 +27,9 @@ Output: false
 ```
 
 __Constraints:__
-```
-The number of nodes in the list is in the range [1, 105].
-0 <= Node.val <= 9
-```
+
+- The number of nodes in the list is in the range $[1, 10^5]$.
+- $0 \le Node.val \le 9$
 
 ---
 
