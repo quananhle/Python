@@ -6,7 +6,7 @@
 
 Given the ```head``` of a singly linked list, return _```true``` if it is a palindrome or ```false``` otherwise_.
 
-![image](https://user-images.githubusercontent.com/35042430/222883428-4539f288-a673-43ec-b1cb-cbf4ba6fe9fa.png)
+![image](https://github.com/quananhle/Python/assets/35042430/0c8b1d0d-0eb6-4ee9-bd33-21f0122bbb9f)
 
 ---
 
@@ -28,8 +28,8 @@ Output: false
 
 __Constraints:__
 
-- The number of nodes in the list is in the range ```[1, 10^5]```.
-- ```0 <= Node.val <= 9```
+- The number of nodes in the list is in the range $[1, 10^5]$.
+- $0 \le Node.val \le 9$
 
 ---
 
